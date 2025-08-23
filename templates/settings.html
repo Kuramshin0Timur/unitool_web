@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="autoRefreshStatus" class="auto-refresh-status mt-2"></div>
+    <div class="row">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Автообновление данных</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Интервал автообновления (минуты)</label>
+                    <input type="number" class="form-control" id="autoRefreshInterval" min="1" max="60" value="5">
+                    <div class="form-text">Интервал в минутах для автоматического обновления данных</div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-success" id="startAutoRefresh">
+                            <i class="bi bi-play-fill"></i> Запустить автообновление
+                        </button>
+                        <button type="button" class="btn btn-danger" id="stopAutoRefresh" disabled>
+                            <i class="bi bi-stop-fill"></i> Остановить автообновление
+                        </button>
+                        <button type="button" class="btn btn-info" id="refreshStatus">
+                            <i class="bi bi-info-circle"></i> Статус
+                        </button>
+                    </div>
+                    <div id="autoRefreshStatus" class="mt-2 text-muted"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <h2>Настройки</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Основные настройки</h5>
+            </div>
+            <div class="card-body">
+                <form id="settingsForm">
+                    <div class="mb-3">
+                        <label for="syncApiKey" class="form-label">Sync API Key</label>
+                        <input type="text" class="form-control" id="syncApiKey">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="proxy" class="form-label">SOCKS5 Proxy (ip:port:user:pass)</label>
+                        <input type="text" class="form-control" id="proxy" placeholder="127.0.0.1:1080:user:pass">
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="useProxy">
+                        <label class="form-check-label" for="useProxy">Использовать прокси</label>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="autoRefreshCampaigns">
+                        <label class="form-check-label" for="autoRefreshCampaigns">Автообновление кампаний</label>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="autoRefreshAdsets">
+                        <label class="form-check-label" for="autoRefreshAdsets">Автообновление адсетов</label>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="telegramBotToken" class="form-label">Telegram Bot Token</label>
+                        <input type="text" class="form-control" id="telegramBotToken">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="telegramChatId" class="form-label">Telegram Chat ID</label>
+                        <input type="text" class="form-control" id="telegramChatId">
+                    </div>
+
+                    <!-- Keitaro Settings -->
+                    <div class="mb-3">
+                        <label for="keitaroApiKey" class="form-label">Keitaro API Key</label>
+                        <input type="password" class="form-control" id="keitaroApiKey" 
+                               placeholder="Введите API ключ Keitaro">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="keitaroDomain" class="form-label">Домен Keitaro</label>
+                        <input type="text" class="form-control" id="keitaroDomain" 
+                               placeholder="uniaffnu.com" value="uniaffnu.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="keitaroRangeDays" class="form-label">Дней для отчета</label>
+                        <input type="number" class="form-control" id="keitaroRangeDays" 
+                               min="1" max="30" value="1">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Сохранить настройки
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

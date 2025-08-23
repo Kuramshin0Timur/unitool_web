@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2><i class="bi bi-gear"></i> Автоконтроль</h2>
+    
+    <!-- Статистика и управление -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-layers"></i> Всего AdSets</h5>
+                    <h3 id="totalAdsets">0</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-play-circle"></i> Активные</h5>
+                    <h3 id="activeAdsets">0</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-secondary text-white">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-pause-circle"></i> На паузе</h5>
+                    <h3 id="pausedAdsets">0</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Управление автоконтролем -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h5><i class="bi bi-play-btn"></i> Управление автоконтролем</h5>
+        </div>
+        <div class="card-body">
+            <div class="d-flex gap-2 mb-3">
+                <button id="runAutoControl" class="btn btn-success">
+                    <i class="bi bi-play-fill"></i> Запустить автоконтроль
+                </button>
+                <button id="stopAutoControl" class="btn btn-danger" disabled>
+                    <i class="bi bi-stop-fill"></i> Остановить автоконтроль
+                </button>
+            </div>
+            <div class="text-muted">
+                <small><i class="bi bi-info-circle"></i> Последний запуск: <span id="lastRun">никогда</span></small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таблица GEO правил -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h5><i class="bi bi-globe"></i> GEO Правила автоконтроля</h5>
+            <div>
+                <button id="saveGeoRules" class="btn btn-success btn-sm">
+                    <i class="bi bi-save"></i> Сохранить правила
+                </button>
+                <button id="addGeoRule" class="btn btn-primary btn-sm ms-2">
+                    <i class="bi bi-plus"></i> Добавить GEO
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="geoRulesTable" class="hot-container"></div>
+        </div>
+    </div>
+
+    <!-- Логи -->
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h5><i class="bi bi-list-check"></i> Лог выполнения</h5>
+        </div>
+        <div class="card-body">
+            <div id="autoControlLog" class="log-container" style="height: 200px; overflow-y: auto;"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Handsontable -->
+<script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
+
+<script src="{{ url_for('static', filename='js/auto_controls.js') }}"></script>
+<script src="{{ url_for('static', filename='js/geo_rules.js') }}"></script>
+{% endblock %}

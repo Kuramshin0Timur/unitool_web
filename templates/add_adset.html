@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Добавить новый AdSet</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('add_adset_page') }}">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Название AdSet</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="adset_id" class="form-label">ID AdSet</label>
+                            <input type="text" class="form-control" id="adset_id" name="adset_id" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="ucpc" class="form-label">uCPC</label>
+                            <input type="number" step="0.01" class="form-control" id="ucpc" name="ucpc" required>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="spend" class="form-label">Spend</label>
+                            <input type="number" step="0.01" class="form-control" id="spend" name="spend" required>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="cpa" class="form-label">CPA</label>
+                            <input type="number" step="0.01" class="form-control" id="cpa" name="cpa" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="status" class="form-label">Статус</label>
+                            <select class="form-select" id="status" name="status" required>
+                                <option value="ACTIVE">Активен</option>
+                                <option value="PAUSED">На паузе</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="geo" class="form-label">GEO (код страны)</label>
+                            <input type="text" class="form-control" id="geo" name="geo" maxlength="2" required>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="token" class="form-label">Токен доступа</label>
+                            <input type="text" class="form-control" id="token" name="token" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="leads" class="form-label">Leads</label>
+                            <input type="number" class="form-control" id="leads" name="leads" required>
+                        </div>
+                        
+                        <div class="col-md-3 mb-3">
+                            <div class="form-check pt-4">
+                                <input class="form-check-input" type="checkbox" id="manual_pause" name="manual_pause">
+                                <label class="form-check-label" for="manual_pause">Ручная пауза</label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 mb-3">
+                            <label for="king" class="form-label">KING</label>
+                            <input type="text" class="form-control" id="king" name="king" required>
+                        </div>
+                        
+                        <div class="col-md-3 mb-3">
+                            <label for="budget" class="form-label">Бюджет ($)</label>
+                            <input type="number" step="0.01" class="form-control" id="budget" name="budget" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="effective_status" class="form-label">Effective Status</label>
+                            <select class="form-select" id="effective_status" name="effective_status" required>
+                                <option value="ACTIVE">Active</option>
+                                <option value="PAUSED">Paused</option>
+                                <option value="DISAPPROVED">Disapproved</option>
+                                <option value="PENDING_REVIEW">Pending Review</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="ad_name" class="form-label">Название объявления</label>
+                            <input type="text" class="form-control" id="ad_name" name="ad_name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Добавить AdSet</button>
+                        <a href="{{ url_for('adsets') }}" class="btn btn-secondary">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

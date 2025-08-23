@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Добавить новую компанию</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('add_campaign_page') }}">
+                    <div class="mb-3">
+                        <label for="king" class="form-label">KING</label>
+                        <input type="text" class="form-control" id="king" name="king" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Название кампании</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Статус</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="ACTIVE">Активна</option>
+                            <option value="PAUSED">На паузе</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="campaign_id" class="form-label">ID кампании</label>
+                        <input type="text" class="form-control" id="campaign_id" name="campaign_id" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="account_id" class="form-label">ID аккаунта</label>
+                        <input type="text" class="form-control" id="account_id" name="account_id" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="token" class="form-label">Токен доступа</label>
+                        <input type="text" class="form-control" id="token" name="token" required>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Добавить кампанию</button>
+                        <a href="{{ url_for('campaigns') }}" class="btn btn-secondary">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

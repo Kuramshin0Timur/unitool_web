@@ -1,0 +1,292 @@
+/* Основные стили */
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Подсветка строк */
+.table-success {
+    background-color: rgba(40, 167, 69, 0.1) !important;
+}
+
+.table-danger {
+    background-color: rgba(220, 53, 69, 0.1) !important;
+}
+
+.table-info {
+    background-color: rgba(23, 162, 184, 0.1) !important;
+}
+
+.table-purple {
+    background-color: rgba(108, 43, 217, 0.1) !important;
+}
+
+.table-yellow {
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+/* Логи */
+.log-container {
+    font-family: monospace;
+    font-size: 0.9rem;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+}
+
+/* Кнопки */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+/* Иконки */
+.bi {
+    vertical-align: middle;
+}/* Стили для таблицы ручного ввода */
+#manualDataTable td[contenteditable="true"] {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+#manualDataTable td[contenteditable="true"]:focus {
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Стили для логов */
+.log-container {
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.log-info {
+    color: #0d6efd;
+}
+
+.log-error {
+    color: #dc3545;
+}
+
+.log-success {
+    color: #198754;
+}
+/* Стили для редактируемой таблицы */
+[contenteditable="true"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+[contenteditable="true"]:focus {
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.table-responsive {
+    margin-top: 20px;
+}
+
+.delete-btn {
+    margin-left: 5px;
+}
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.table-responsive {
+    min-height: 300px;
+}
+
+/* Стили для статусов */
+.badge.bg-success { background-color: #198754 !important; }
+.badge.bg-danger { background-color: #dc3545 !important; }
+.badge.bg-warning { background-color: #ffc107 !important; color: #000 !important; }
+/* Стили для страницы резервных токенов */
+.token-preview {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #dee2e6;
+}
+
+.table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Анимация спиннера */
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+/* Добавьте в ваш основной CSS файл */
+.fixed-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dataTables_wrapper {
+    position: relative;
+}
+
+#adsetsTable {
+    width: 100% !important;
+    margin-bottom: 1rem;
+}
+
+#adsetsTable th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    padding: 12px 8px;
+    font-weight: 600;
+    color: #495057;
+    vertical-align: middle;
+}
+
+#adsetsTable td {
+    padding: 8px;
+    vertical-align: middle;
+}
+
+/* Стили для числовых колонок */
+#adsetsTable td.text-end {
+    text-align: right !important;
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+}
+
+/* Сортировка по цене */
+#adsetsTable th.sorting,
+#adsetsTable th.sorting_asc,
+#adsetsTable th.sorting_desc {
+    cursor: pointer;
+    position: relative;
+}
+
+#adsetsTable th.sorting:after,
+#adsetsTable th.sorting_asc:after,
+#adsetsTable th.sorting_desc:after {
+    content: "↕";
+    position: absolute;
+    right: 8px;
+    opacity: 0.5;
+}
+
+#adsetsTable th.sorting_asc:after {
+    content: "↑";
+    opacity: 1;
+}
+
+#adsetsTable th.sorting_desc:after {
+    content: "↓";
+    opacity: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    #adsetsTable {
+        font-size: 0.875rem;
+    }
+    
+    #adsetsTable th,
+    #adsetsTable td {
+        padding: 6px 4px;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+.log-entry {
+    font-size: 14px;
+    padding: 4px 6px;
+    margin-bottom: 2px;
+    border-left: 4px solid transparent;
+    white-space: pre-wrap;
+}
+
+.log-info    { color: #0d6efd; border-color: #0d6efd; }
+.log-warn    { color: #ffc107; border-color: #ffc107; }
+.log-error   { color: #dc3545; border-color: #dc3545; }
+.log-success { color: #198754; border-color: #198754; }
+/* Стили для кнопок авто-бюджета */
+.budget-settings-btn {
+    color: #fff;
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+
+.budget-settings-btn:hover {
+    background-color: #31d2f2;
+    border-color: #25cff2;
+}
+
+.btn-group-sm {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.btn-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.375rem;
+}
+
+/* Стили для модального окна */
+.modal-content {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.modal-title {
+    color: #495057;
+    font-weight: 600;
+}
+
+.form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Анимация для кнопки запуска */
+#autoBudgetBtn {
+    transition: all 0.3s ease;
+}
+
+#autoBudgetBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+}
