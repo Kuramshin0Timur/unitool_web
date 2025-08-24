@@ -8,10 +8,6 @@ from logging.handlers import RotatingFileHandler
 
 import requests
 from apscheduler.schedulers.background import BackgroundScheduler
-from flask import (Flask, flash, jsonify, redirect, render_template, request,
-                   session, url_for)
-from fuzzywuzzy import fuzz, process
-
 from database import (add_user_adset, add_user_campaign, authenticate_user,
                       create_user, get_db_connection, get_user_adsets,
                       get_user_campaigns, get_user_geo_config,
@@ -19,6 +15,9 @@ from database import (add_user_adset, add_user_campaign, authenticate_user,
                       update_campaign_stats, update_user_adset_budget,
                       update_user_adset_status, update_user_campaign_status,
                       update_user_settings)
+from flask import (Flask, flash, jsonify, redirect, render_template, request,
+                   session, url_for)
+from fuzzywuzzy import fuzz, process
 
 lock = threading.Lock()
 
@@ -136,11 +135,13 @@ def get_session():
 def fetch_keitaro_report(api_key, domain, interval="today", group_by="sub_id_9"):
     """
     Получает отчет из Keitaro с расчетом лидов по формуле Spend / CPA.
+    Включает CPC данные из Keitaro.
     """
     logger = logging.getLogger(__name__)
     url = f"https://{domain}/admin_api/v1/report/build"
     headers = {"Api-Key": api_key, "Content-Type": "application/json"}
 
+    # Добавляем cpc в метрики
     metrics = ["campaign_unique_clicks", "ucpc", "conversions", "sales", "cost", "cpa", "cpc"]
     limit = 250
     offset = 0
@@ -173,6 +174,7 @@ def fetch_keitaro_report(api_key, domain, interval="today", group_by="sub_id_9")
             for row in rows:
                 cost = float(row.get("cost", 0) or 0)
                 cpa = float(row.get("cpa", 0) or 0)
+                cpc = float(row.get("cpc", 0) or 0)  # CPC из Keitaro
                 
                 # Рассчитываем лиды по формуле Spend / CPA
                 calculated_leads = 0
@@ -181,6 +183,7 @@ def fetch_keitaro_report(api_key, domain, interval="today", group_by="sub_id_9")
                 
                 row['calculated_leads'] = calculated_leads
                 row['leads'] = calculated_leads  # Добавляем в основное поле
+                row['cpc'] = cpc  # Сохраняем CPC из Keitaro
             
             all_rows.extend(rows)
 
@@ -1603,6 +1606,24 @@ def fetch_facebook_data():
     except Exception as e:
         logger.error(f"Ошибка получения данных из Facebook: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
+def reset_old_ucpc(user_id, days=7):
+    """Сбрасывает uCPC у адсетов, которые не обновлялись более N дней"""
+    try:
+        cutoff_date = datetime.datetime.utcnow() - datetime.timedelta(days=days)
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                UPDATE adsets
+                SET ucpc = 0
+                WHERE user_id = ?
+                  AND (updated_at IS NULL OR updated_at < ?)
+            """, (user_id, cutoff_date))
+            conn.commit()
+        logger.info(f"uCPC сброшен у адсетов старше {days} дней")
+    except Exception as e:
+        logger.error(f"Ошибка сброса старых uCPC: {e}")
+
 @app.route('/api/test_facebook_connection', methods=['POST'])
 @login_required
 def test_facebook_connection():
@@ -1779,6 +1800,7 @@ def process_keitaro_data(report):
         })
     
     return processed_data
+
 @app.route('/api/sync/keitaro_only', methods=['POST'])
 @login_required
 def sync_keitaro_only():
@@ -2056,6 +2078,7 @@ def set_adset_budget_api():
     except Exception as e:
         logger.error(f"Ошибка установки бюджета: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/')
 def index():
     """Перенаправляет на страницу входа"""
@@ -2294,6 +2317,7 @@ def save_and_sync():
     try:
         logger.info("=== НАЧАЛО СИНХРОНИЗАЦИИ ===")
         user_id = session['user_id']
+        reset_old_ucpc(user_id, days=7)
         accounts_data = request.json.get('accounts', [])
         if not accounts_data:
             return jsonify({'success': False, 'error': 'Нет данных для сохранения'})
@@ -2368,11 +2392,9 @@ def save_and_sync():
             parts = re.split(r'[\s\-_]+', clean_str.lower())
             # Убираем пустые строки
             return [p for p in parts if p]
-
-        # Функция поиска статистики
         def find_stats(fb_id=None, fb_name=None, fb_parent_name=None):
-            """Поиск данных Keitaro с расчетом лидов"""
-            weak_words = {"monah", "test", "copy", "vst"}
+            """Поиск данных Keitaro с улучшенным матчингом и проверкой дат"""
+            weak_words = {"monah", "test", "copy", "vst", "old", "archive"}
 
             def score_match(fb_parts, key_parts):
                 common = set(fb_parts) & set(key_parts)
@@ -2382,39 +2404,62 @@ def save_and_sync():
                 strong_common = {w for w in common if w not in weak_words}
                 return len(strong_common), common
 
-            # 1. По ID
+            # 1. По ID - самый точный матч
             if fb_id and fb_id in keitaro_data:
                 logger.debug(f"[MATCH BY ID] FB {fb_id} → Keitaro {fb_id}")
                 return keitaro_data[fb_id]
 
-            # Составляем список кандидатов
+            # 2. По точному совпадению имени кампании
+            if fb_name and fb_name in keitaro_data:
+                logger.debug(f"[EXACT NAME MATCH] FB '{fb_name}' → Keitaro '{fb_name}'")
+                return keitaro_data[fb_name]
+
+            # 3. По частичному совпадению с приоритетом по ID
             candidates = []
             fb_sources = [(fb_name, "ADSET"), (fb_parent_name, "CAMPAIGN")]
+            
             for fb_source, label in fb_sources:
                 if not fb_source:
                     continue
+                
                 fb_parts = split_clean(fb_source)
+                if not fb_parts:
+                    continue
+                    
                 for key, stats in keitaro_data.items():
+                    # Пропускаем записи с нулевым spend (старые данные)
+                    if stats.get('spend', 0) <= 0:
+                        continue
+                        
                     key_parts = split_clean(key)
                     score, common = score_match(fb_parts, key_parts)
+                    
                     if score > 0:
-                        candidates.append((score, key, stats, label, common))
+                        # Даем больший вес совпадениям по ID в названии
+                        id_bonus = 0
+                        if fb_id and fb_id in key:
+                            id_bonus = 5
+                        elif any(part.isdigit() and len(part) > 3 for part in key_parts):
+                            id_bonus = 2
+                            
+                        total_score = score + id_bonus
+                        candidates.append((total_score, key, stats, label, common))
 
             if not candidates:
                 logger.debug(f"[NO MATCH] FB(id={fb_id}, name={fb_name}, parent={fb_parent_name})")
-                return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0}
+                return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0, 'cpc': 0}
 
-            # Берем лучший матч
+            # Сортируем кандидатов по score и отбираем лучший
             candidates.sort(key=lambda x: x[0], reverse=True)
-            score, key, stats, label, common = candidates[0]
+            best_score, best_key, best_stats, best_label, best_common = candidates[0]
 
-            if score >= 2:
-                logger.debug(f"[STRONG MATCH by {label}] FB '{fb_name or fb_parent_name}' → Keitaro '{key}' (общие: {common})")
-                return stats
+            # Минимальный порог для принятия решения
+            if best_score >= 2:
+                logger.debug(f"[MATCH by {best_label}] FB '{fb_name or fb_parent_name}' → Keitaro '{best_key}' (score: {best_score}, общие: {best_common})")
+                return best_stats
             else:
-                logger.debug(f"[WEAK MATCH IGNORED] FB '{fb_name or fb_parent_name}' → Keitaro '{key}' (общие: {common})")
-                return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0}
-
+                logger.debug(f"[WEAK MATCH IGNORED] FB '{fb_name or fb_parent_name}' → Keitaro '{best_key}' (score: {best_score})")
+                return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0, 'cpc': 0}
         saved_accounts = total_campaigns = total_adsets = keitaro_updated = 0
 
         for acc in accounts_data:
@@ -2441,6 +2486,9 @@ def save_and_sync():
                 
                 for camp in campaigns:
                     stats = find_stats(fb_id=camp['id'], fb_name=camp.get('name'))
+                    if stats.get('spend', 0) == 0 and stats.get('leads', 0) == 0 and stats.get('cpa', 0) == 0:
+                        logger.warning(f"Пропуск кампании {camp['id']} — нет данных из Keitaro/Facebook")
+                        continue
                     add_user_campaign(user_id, {
                         'king': 'Facebook',
                         'name': camp.get('name', ''),
@@ -2469,6 +2517,9 @@ def save_and_sync():
                     )
                     budget = float(ad.get('daily_budget', 0)) / 100 if ad.get('daily_budget') else 0
                     cpc_info = facebook_cpc_data.get(account_id, {}).get(ad.get('id', ''), {})
+                    if stats.get('spend', 0) == 0 and stats.get('leads', 0) == 0 and stats.get('cpa', 0) == 0:
+                        logger.warning(f"Пропуск адсета {ad.get('id')} — нет данных из Keitaro/Facebook")
+                        continue
                     add_user_adset(user_id, {
                         'name': ad_name,
                         'adset_id': ad.get('id', ''),
@@ -2479,7 +2530,6 @@ def save_and_sync():
                         'budget': budget,
                         'geo': geo,
                         'ucpc': stats.get('ucpc', 0),
-                        'cpc': cpc_info.get('cpc', 0),  # Добавьте CPC из Facebook insights если доступно
                         'spend': stats.get('spend', 0),
                         'cpa': stats.get('cpa', 0),
                         'leads': stats.get('leads', 0),
@@ -2508,6 +2558,7 @@ def save_and_sync():
     except Exception as e:
         logger.error(f"Критическая ошибка синхронизации: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/api/adsets/sync_status', methods=['POST'])
 @login_required
 def sync_adsets_status():
@@ -2840,22 +2891,7 @@ def resume_adset_api():
         logger.error(f"Ошибка включения AdSet «{data.get('name', 'unknown')}»: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
-@app.route('/api/adset/budget', methods=['POST'])
-@login_required
-def set_adset_budget():
-    data = request.json
-    adset_id = data.get('adset_id')
-    name = data.get('name')
-    dollars = float(data.get('budget'))
-    
-    try:
-        update_user_adset_budget(session['user_id'], adset_id, dollars)
-        logger.info(f"💰 Бюджет ${dollars:.2f} установлен для «{name}»")
-        send_telegram_message(f"💰 Бюджет ${dollars:.2f} установлен для «{name}»")
-        return jsonify({'success': True, 'new_budget': f"{dollars:.2f} $"})
-    except Exception as e:
-        logger.error(f"Ошибка установки бюджета для «{name}»: {e}")
-        return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/api/auto_refresh', methods=['POST'])
 @login_required
 def handle_auto_refresh():

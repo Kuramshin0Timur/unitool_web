@@ -1,383 +1,268 @@
-2025-08-24 01:11:46,224 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'3', '08', 'k', '17', 'my'})
-2025-08-24 01:11:46,231 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (общие: {'2', 'vst1', 'k', 'my', '1'})
-2025-08-24 01:11:46,238 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'08', 'k', '17', 'my', '1'})
-2025-08-24 01:11:46,245 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 4' (общие: {'4', 'voltaren1', '08', 'k', '80', '17', 'my'})
-2025-08-24 01:11:46,251 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'3', 'voltaren1', '08', 'k', '80', '17', 'my'})
-2025-08-24 01:11:46,257 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 2' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'voltaren1', '08', '80', 'k', '17', 'my'})
-2025-08-24 01:11:46,263 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 5' (общие: {'5', 'voltaren1', '08', '80', 'k', '17', 'my'})
-2025-08-24 01:11:46,269 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'voltaren1', '08', '80', 'k', '17', 'my', '1'})
-2025-08-24 01:11:46,275 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 4' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'2', '08', '18', 'vst1'})
-2025-08-24 01:11:46,280 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 5' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'2', '08', '18', 'vst1'})
-2025-08-24 01:11:46,285 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 2' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'2', '08', '18', 'vst1'})
-2025-08-24 01:11:46,290 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 3' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'2', '08', '18', 'vst1'})
-2025-08-24 01:11:46,295 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 1' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (общие: {'2', 'my', 'vst1', '1'})
-2025-08-24 01:11:46,300 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,304 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '2', 'th', '1'})
-2025-08-24 01:11:46,308 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,313 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,317 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,321 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 5' (общие: {'k', 'th', '5'})
-2025-08-24 01:11:46,325 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'4', '07', 'th', 'k'})
-2025-08-24 01:11:46,329 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th', 'k'})
-2025-08-24 01:11:46,333 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 1' (общие: {'k', '1', 'th'})
-2025-08-24 01:11:46,337 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'k', '2', '07', 'th'})
-2025-08-24 01:11:46,340 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 5' (общие: {'th', '5'})
-2025-08-24 01:11:46,344 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 4' (общие: {'4', 'th'})
-2025-08-24 01:11:46,347 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 3' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3' (общие: {'3', 'y', 'th', 'monah'})
-2025-08-24 01:11:46,351 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 2' → Keitaro 'IN 6134_ IN Y-67 V.2 KOROTISH Йоги 3' (общие: {'2', 'y', '67'})
-2025-08-24 01:11:46,354 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 1' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 1' (общие: {'1', 'y', 'th', 'monah'})
-2025-08-24 01:11:46,358 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'k', '2', '17'})
-2025-08-24 01:11:46,361 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'k', '2', '17'})
-2025-08-24 01:11:46,364 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'k', '2', '17'})
-2025-08-24 01:11:46,367 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH2' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'k', '2', '17'})
-2025-08-24 01:11:46,370 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'k', '2', '17'})
-2025-08-24 01:11:46,373 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY5' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th', 'monah'})
-2025-08-24 01:11:46,377 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th', 'monah'})
-2025-08-24 01:11:46,380 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY3' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th', 'monah'})
-2025-08-24 01:11:46,383 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th', 'monah'})
-2025-08-24 01:11:46,386 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY1' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th', 'monah'})
-2025-08-24 01:11:46,389 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL5' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:11:46,392 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL4' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:11:46,395 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL3' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:11:46,398 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL2' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:11:46,401 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL1' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:11:46,404 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:11:46,407 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:11:46,410 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:11:46,415 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:11:46,418 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS1' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:11:46,421 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:11:46,424 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH3' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:11:46,427 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:11:46,430 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH5' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:11:46,433 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH1' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:11:46,436 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT52' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,439 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT51' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,442 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT53' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,444 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA4' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:11:46,447 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA3' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:11:46,450 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA2' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:11:46,453 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA1' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:11:46,456 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P5' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:11:46,459 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P4' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:11:46,462 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P3' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:11:46,465 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:11:46,468 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:11:46,471 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT5' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,474 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT4' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,477 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT3' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,480 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT2' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,483 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT1' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:11:46,485 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:11:46] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-08-24 01:11:48,713 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:11:48] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:11:53,133 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:11:53] "GET /adsets HTTP/1.1" 200 -
-2025-08-24 01:11:53,417 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:11:53] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
-2025-08-24 01:11:53,425 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:11:53] "GET /static/css/style.css HTTP/1.1" 200 -
-2025-08-24 01:11:54,065 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:11:54] "GET /api/auto_control/logs?ts=1755986951656 HTTP/1.1" 200 -
-2025-08-24 01:11:54,121 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:11:54] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:13:21,824 - werkzeug - ERROR - 91.196.152.68 - - [24/Aug/2025 01:13:21] code 400, message Bad request version ('À#À¬À®À+À')
-2025-08-24 01:13:21,825 - werkzeug - INFO - 91.196.152.68 - - [24/Aug/2025 01:13:21] "[31m[1m\x16\x03\x03\x01¦\x01\x00\x01¢\x03\x03t.!Kêa\x9cò\x06*\x9c2'$Ê×i`§\x02àïÝÃ£Ó6\x1cx9Jó ûÓNï4 å\x8a\x1e$ë$¢\x17\x92\x9fxãÜ*HöÏH\x14ß¢Ú\x13Ï\x14\x19\x00\x8a\x00\x16\x003\x00gÀ\x9eÀ¢\x00\x9e\x009\x00kÀ\x9fÀ£\x00\x9f\x00E\x00¾\x00\x88\x00Ä\x00\x9aÀ\x08À\x09À#À¬À®À+À[0m" 400 -
-2025-08-24 01:13:26,265 - werkzeug - INFO - 91.196.152.42 - - [24/Aug/2025 01:13:26] "[32mGET / HTTP/1.1[0m" 302 -
-2025-08-24 01:14:53,290 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-08-24 20:05:50,260 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-08-24 20:05:50,265 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 20:05:50,782 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1320
+2025-08-24 20:05:50,783 - __main__ - INFO - Получено 31 кампаний для аккаунта 519765377868615
+2025-08-24 20:05:50,787 - __main__ - DEBUG - [MATCH by ADSET] FB '6193_K-94 TH y-52 podcast monah(vst2)' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 7, общие: {'podcast', '52', 'y', 'vst2', 'k'})
+2025-08-24 20:05:50,792 - venv - INFO - Обновлена статистика кампании 120232567211520073 с CPC из Facebook: None
+2025-08-24 20:05:50,794 - __main__ - DEBUG - [MATCH by ADSET] FB '6053_K-89 TH novostik  18.08_3(vst1)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (score: 6, общие: {'3', 'th', 'k', 'vst1'})
+2025-08-24 20:05:50,798 - venv - INFO - Обновлена статистика кампании 120232309087380073 с CPC из Facebook: None
+2025-08-24 20:05:50,800 - __main__ - DEBUG - [MATCH by ADSET] FB '6032_K-84 TH voltaren1 15.08(vst1)' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 8, общие: {'08', 'th', 'voltaren1', 'k', '15', '84'})
+2025-08-24 20:05:50,805 - venv - INFO - Обновлена статистика кампании 120232245153810073 с CPC из Facebook: None
+2025-08-24 20:05:50,807 - __main__ - DEBUG - [MATCH by ADSET] FB '6030_K-87 TH korotish and voltaren(vst2)' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 5, общие: {'th', 'vst2', 'k'})
+2025-08-24 20:05:50,812 - venv - INFO - Обновлена статистика кампании 120232244829020073 с CPC из Facebook: None
+2025-08-24 20:05:50,814 - __main__ - DEBUG - [MATCH by ADSET] FB '5915_ID Swype_vitya6 monah 12.08(vv1)' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'08'})
+2025-08-24 20:05:50,819 - venv - INFO - Обновлена статистика кампании 120232037599450073 с CPC из Facebook: None
+2025-08-24 20:05:50,822 - __main__ - DEBUG - [MATCH by ADSET] FB '5910_ID  voltaren1 muslim 12.08(vvs1)' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 4, общие: {'08', 'voltaren1'})
+2025-08-24 20:05:50,826 - venv - INFO - Обновлена статистика кампании 120232036321970073 с CPC из Facebook: None
+2025-08-24 20:05:50,828 - __main__ - DEBUG - [MATCH by ADSET] FB '5893_K-68 monah per to ajan gpt1  11.08(vst1)' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 5, общие: {'08', 'k', 'vst1'})
+2025-08-24 20:05:50,832 - venv - INFO - Обновлена статистика кампании 120231986394570073 с CPC из Facebook: None
+2025-08-24 20:05:50,834 - __main__ - DEBUG - [MATCH by ADSET] FB '5892_Y-67 TH gemorr  monah1 11.08(vst2)' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'08', 'vst2', 'th'})
+2025-08-24 20:05:50,839 - venv - INFO - Обновлена статистика кампании 120231986275770073 с CPC из Facebook: None
+2025-08-24 20:05:50,841 - __main__ - DEBUG - [MATCH by ADSET] FB '5887_k-79 mug zhena 11.08(vst1)' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 5, общие: {'08', 'k', 'vst1'})
+2025-08-24 20:05:50,845 - venv - INFO - Обновлена статистика кампании 120231984739940073 с CPC из Facebook: None
+2025-08-24 20:05:50,847 - __main__ - DEBUG - [MATCH by ADSET] FB '5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1)' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 6, общие: {'08', '2', 'th', 'vst1'})
+2025-08-24 20:05:50,852 - venv - INFO - Обновлена статистика кампании 120231401757890073 с CPC из Facebook: None
+2025-08-24 20:05:50,854 - __main__ - DEBUG - [MATCH by ADSET] FB '5600_TH  Zаходим V.1  03.08_2(vst2)' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'vst2', 'th', '1'})
+2025-08-24 20:05:50,858 - venv - INFO - Обновлена статистика кампании 120231401249330073 с CPC из Facebook: None
+2025-08-24 20:05:50,860 - __main__ - DEBUG - [MATCH by ADSET] FB '5540_Y-68 TH korotish 15.07 monah3_4(lang1)' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 5, общие: {'15', 'th', '4'})
+2025-08-24 20:05:50,864 - venv - INFO - Обновлена статистика кампании 120231282211130073 с CPC из Facebook: None
+2025-08-24 20:05:50,865 - __main__ - DEBUG - [MATCH by ADSET] FB '5460_Y-68 TH korotish  15.07 monah_1(lang1)' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:50,869 - venv - INFO - Обновлена статистика кампании 120230938479940073 с CPC из Facebook: None
+2025-08-24 20:05:50,870 - __main__ - DEBUG - [MATCH by ADSET] FB '5543_Y-68 TH korotish  15.07 monah2_5(lang1)' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 5' (score: 5, общие: {'15', 'th', '5'})
+2025-08-24 20:05:50,874 - venv - INFO - Обновлена статистика кампании 120230523317110073 с CPC из Facebook: None
+2025-08-24 20:05:50,876 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH K-68 monah vrach 17.07(lang1)' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 4, общие: {'th', 'k'})
+2025-08-24 20:05:50,880 - venv - INFO - Обновлена статистика кампании 120230513874000073 с CPC из Facebook: None
+2025-08-24 20:05:50,882 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH K-69 monah 23.07_1ira(lang1)' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 4, общие: {'th', 'k'})
+2025-08-24 20:05:50,886 - venv - INFO - Обновлена статистика кампании 120230400552720073 с CPC из Facebook: None
+2025-08-24 20:05:50,887 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH voltaren2.2 veo 16.07(lang2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:50,891 - venv - INFO - Обновлена статистика кампании 120230397028830073 с CPC из Facebook: None
+2025-08-24 20:05:50,892 - __main__ - DEBUG - [MATCH by ADSET] FB 'Th ilya_kpop3 news_monah 20.07(lang2)' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:50,896 - venv - INFO - Обновлена статистика кампании 120230100952100073 с CPC из Facebook: None
+2025-08-24 20:05:50,897 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 18.07 sereg_podcast monah_2(lang2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'sereg'})
+2025-08-24 20:05:50,901 - venv - INFO - Обновлена статистика кампании 120229975650130073 с CPC из Facebook: None
+2025-08-24 20:05:50,902 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 14.07 K-8 artem japan(2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'k'})
+2025-08-24 20:05:50,906 - venv - INFO - Обновлена статистика кампании 120229658090040073 с CPC из Facebook: None
+2025-08-24 20:05:50,907 - __main__ - DEBUG - [MATCH by ADSET] FB 'Y-67 ID terewan 13.07(1)' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 4, общие: {'y', '1'})
+2025-08-24 20:05:50,911 - venv - INFO - Обновлена статистика кампании 120229581995690073 с CPC из Facebook: None
+2025-08-24 20:05:50,912 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID newsolega6 terawan(2)' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'2'})
+2025-08-24 20:05:50,916 - venv - INFO - Обновлена статистика кампании 120229435239170073 с CPC из Facebook: None
+2025-08-24 20:05:50,917 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 11.06  novosti olega 1 terewan_1(1)' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (score: 3, общие: {'1'})
+2025-08-24 20:05:50,921 - venv - INFO - Обновлена статистика кампании 120229433357740073 с CPC из Facebook: None
+2025-08-24 20:05:50,922 - __main__ - DEBUG - [MATCH by ADSET] FB 'Y-59 mug sgena USA soda(lang2)' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 3, общие: {'y'})
+2025-08-24 20:05:50,926 - venv - INFO - Обновлена статистика кампании 120229260874670073 с CPC из Facebook: None
+2025-08-24 20:05:50,926 - __main__ - DEBUG - [MATCH by ADSET] FB 'y-72 TH  korotish_yad Dr Tany2(2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:50,929 - venv - INFO - Обновлена статистика кампании 120229188974040073 с CPC из Facebook: None
+2025-08-24 20:05:50,930 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID Joint pain protein 29.06pz(1)' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (score: 3, общие: {'1'})
+2025-08-24 20:05:50,933 - venv - INFO - Обновлена статистика кампании 120229183595910073 с CPC из Facebook: None
+2025-08-24 20:05:50,934 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID Goldotzv2 08.07(z2)' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'08'})
+2025-08-24 20:05:50,936 - venv - INFO - Обновлена статистика кампании 120229181199840073 с CPC из Facebook: None
+2025-08-24 20:05:50,937 - __main__ - DEBUG - [MATCH by ADSET] FB 'Y-72 ID korotish_yad aishah_kompas 25.05(lang1)' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 3, общие: {'y'})
+2025-08-24 20:05:50,943 - venv - INFO - Обновлена статистика кампании 120229087416280073 с CPC из Facebook: None
+2025-08-24 20:05:50,944 - __main__ - DEBUG - [NO MATCH] FB(id=120229086376520073, name=11.06 11 ID_Sust_NovostiOlega1_Zag3_11.06(pz2), parent=None)
+2025-08-24 20:05:50,944 - __main__ - WARNING - Пропуск кампании 120229086376520073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:50,945 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 28.06 markanovosti1(zz1)' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:50,948 - venv - INFO - Обновлена статистика кампании 120228998419680073 с CPC из Facebook: None
+2025-08-24 20:05:50,949 - __main__ - DEBUG - [MATCH by ADSET] FB '27_Kostochka Ruslan TH 02.04 news1(pz2)' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:50,952 - venv - INFO - Обновлена статистика кампании 120228997411130073 с CPC из Facebook: None
+2025-08-24 20:05:50,953 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 20:05:51,765 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 2242
+2025-08-24 20:05:51,767 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 20:05:52,371 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100&after=QVFIU3F3amRVamFTbHpMTEQ2TlBucjNvaVI4M2FUUjBYSHkwc3JrR3FyaVltcDBGOVFSRXU2S21QWTBJckpmcl9FY2FHQ1htRlBxbTgyNTdweGh2bnpmUXhR HTTP/1.1" 200 1246
+2025-08-24 20:05:52,374 - __main__ - INFO - Получено 155 адсетов для аккаунта 519765377868615
+2025-08-24 20:05:52,377 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3'
+2025-08-24 20:05:52,377 - __main__ - WARNING - Пропуск адсета 120232567281130073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,379 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6193_K-94 TH y-52 podcast monah(vst2) 4' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 4' (score: 8, общие: {'podcast', '52', 'y', '4', 'vst2', 'k'})
+2025-08-24 20:05:52,385 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6193_K-94 TH y-52 podcast monah(vst2) 5' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 7, общие: {'podcast', '52', 'y', 'vst2', 'k'})
+2025-08-24 20:05:52,387 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'TH 6193_K-94 TH y-52 podcast monah(vst2) 2' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 2'
+2025-08-24 20:05:52,388 - __main__ - WARNING - Пропуск адсета 120232567281090073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,388 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'TH 6193_K-94 TH y-52 podcast monah(vst2) 1' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 1'
+2025-08-24 20:05:52,388 - __main__ - WARNING - Пропуск адсета 120232567211510073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,391 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6053_K-89 TH novostik  18.08_3(vst1) 5' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 5' (score: 7, общие: {'08', 'th', 'vst1', 'k', '5'})
+2025-08-24 20:05:52,397 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6053_K-89 TH novostik  18.08_3(vst1) 4' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 7, общие: {'08', '4', 'th', 'vst1', 'k'})
+2025-08-24 20:05:52,402 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6053_K-89 TH novostik  18.08_3(vst1) 3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (score: 6, общие: {'3', 'th', 'k', 'vst1'})
+2025-08-24 20:05:52,408 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6053_K-89 TH novostik  18.08_3(vst1) 2' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 7, общие: {'08', 'th', '2', 'vst1', 'k'})
+2025-08-24 20:05:52,410 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'TH 6053_K-89 TH novostik  18.08_3(vst1) 1' → Keitaro 'TH 6053_K-89 TH novostik  18.08_3(vst1) 1'
+2025-08-24 20:05:52,411 - __main__ - WARNING - Пропуск адсета 120232309087410073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,414 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6032_K-84 TH voltaren1 15.08(vst1) 4' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 8, общие: {'08', 'th', 'voltaren1', 'k', '15', '84'})
+2025-08-24 20:05:52,419 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6032_K-84 TH voltaren1 15.08(vst1) 3' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 8, общие: {'08', 'th', 'voltaren1', 'k', '15', '84'})
+2025-08-24 20:05:52,425 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6032_K-84 TH voltaren1 15.08(vst1) 2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (score: 9, общие: {'08', 'th', '2', 'voltaren1', 'k', '15', '84'})
+2025-08-24 20:05:52,430 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6032_K-84 TH voltaren1 15.08(vst1) 5' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 8, общие: {'08', 'th', 'voltaren1', 'k', '15', '84'})
+2025-08-24 20:05:52,435 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6032_K-84 TH voltaren1 15.08(vst1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 9, общие: {'08', 'th', 'voltaren1', 'k', '1', '15', '84'})
+2025-08-24 20:05:52,440 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6030_K-87 TH korotish and voltaren(vst2) 4' → Keitaro 'TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 4' (score: 6, общие: {'th', 'vst2', '4', 'k'})
+2025-08-24 20:05:52,444 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6030_K-87 TH korotish and voltaren(vst2) 5' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 6, общие: {'th', 'vst2', '5', 'k'})
+2025-08-24 20:05:52,449 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6030_K-87 TH korotish and voltaren(vst2) 2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (score: 6, общие: {'th', 'vst2', '2', 'k'})
+2025-08-24 20:05:52,454 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6030_K-87 TH korotish and voltaren(vst2) 3' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 3' (score: 6, общие: {'3', 'th', 'vst2', 'k'})
+2025-08-24 20:05:52,458 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 6030_K-87 TH korotish and voltaren(vst2) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'th', 'vst2', '1', 'k'})
+2025-08-24 20:05:52,462 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5915_ID Swype_vitya6 monah 12.08(vv1) 5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 5' (score: 4, общие: {'08', '5'})
+2025-08-24 20:05:52,466 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5915_ID Swype_vitya6 monah 12.08(vv1) 4' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 4, общие: {'08', '4'})
+2025-08-24 20:05:52,470 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5915_ID Swype_vitya6 monah 12.08(vv1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (score: 4, общие: {'3', '08'})
+2025-08-24 20:05:52,474 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5915_ID Swype_vitya6 monah 12.08(vv1) 2' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 4, общие: {'08', '2'})
+2025-08-24 20:05:52,477 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5915_ID Swype_vitya6 monah 12.08(vv1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 4, общие: {'08', '1'})
+2025-08-24 20:05:52,481 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5910_ID  voltaren1 muslim 12.08(vvs1) 5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 5' (score: 5, общие: {'08', 'voltaren1', '5'})
+2025-08-24 20:05:52,484 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5910_ID  voltaren1 muslim 12.08(vvs1) 4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 4' (score: 5, общие: {'08', '4', 'voltaren1'})
+2025-08-24 20:05:52,488 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5910_ID  voltaren1 muslim 12.08(vvs1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (score: 5, общие: {'3', '08', 'voltaren1'})
+2025-08-24 20:05:52,491 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5910_ID  voltaren1 muslim 12.08(vvs1) 2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (score: 5, общие: {'08', '2', 'voltaren1'})
+2025-08-24 20:05:52,495 - __main__ - DEBUG - [MATCH by ADSET] FB 'ID 5910_ID  voltaren1 muslim 12.08(vvs1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'08', 'voltaren1', '1'})
+2025-08-24 20:05:52,500 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'th', '1', 'k'})
+2025-08-24 20:05:52,504 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'th', '1', 'k'})
+2025-08-24 20:05:52,507 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'th', '1', 'k'})
+2025-08-24 20:05:52,510 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'th', '1', 'k'})
+2025-08-24 20:05:52,513 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'th', '1', 'k'})
+2025-08-24 20:05:52,516 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 4' → Keitaro 'TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 4' (score: 6, общие: {'08', 'vst2', '4', 'th'})
+2025-08-24 20:05:52,520 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 3' → Keitaro 'TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 3' (score: 6, общие: {'3', '08', 'vst2', 'th'})
+2025-08-24 20:05:52,523 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (score: 6, общие: {'08', 'vst2', '2', 'th'})
+2025-08-24 20:05:52,526 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'vst2', 'th', '1'})
+2025-08-24 20:05:52,529 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 5' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 5, общие: {'th', 'vst2', '5'})
+2025-08-24 20:05:52,530 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'TH 5887_k-79 mug zhena 11.08(vst1) 4' → Keitaro 'TH 5887_k-79 mug zhena 11.08(vst1) 4'
+2025-08-24 20:05:52,531 - __main__ - WARNING - Пропуск адсета 120231984990220073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,532 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5887_k-79 mug zhena 11.08(vst1) 2' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 7, общие: {'08', 'th', '2', 'vst1', 'k'})
+2025-08-24 20:05:52,535 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5887_k-79 mug zhena 11.08(vst1) 3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (score: 6, общие: {'3', 'th', 'k', 'vst1'})
+2025-08-24 20:05:52,538 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5887_k-79 mug zhena 11.08(vst1) 5' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 5' (score: 7, общие: {'08', 'th', 'vst1', 'k', '5'})
+2025-08-24 20:05:52,540 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5887_k-79 mug zhena 11.08(vst1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'th', '1', 'k'})
+2025-08-24 20:05:52,543 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 2' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 6, общие: {'08', '2', 'th', 'vst1'})
+2025-08-24 20:05:52,546 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 5' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 5' (score: 7, общие: {'08', 'th', '2', 'vst1', '5'})
+2025-08-24 20:05:52,549 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 4' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 7, общие: {'08', '4', '2', 'th', 'vst1'})
+2025-08-24 20:05:52,551 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 3' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 6, общие: {'08', '2', 'th', 'vst1'})
+2025-08-24 20:05:52,554 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 1' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 6, общие: {'08', '2', 'th', 'vst1'})
+2025-08-24 20:05:52,557 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5600_TH  Zаходим V.1  03.08_2(vst2) 5' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'vst2', 'th', '1'})
+2025-08-24 20:05:52,559 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5600_TH  Zаходим V.1  03.08_2(vst2) 4' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'vst2', 'th', '1'})
+2025-08-24 20:05:52,562 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5600_TH  Zаходим V.1  03.08_2(vst2) 3' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'vst2', 'th', '1'})
+2025-08-24 20:05:52,565 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5600_TH  Zаходим V.1  03.08_2(vst2) 2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'vst2', 'th', '1'})
+2025-08-24 20:05:52,567 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5600_TH  Zаходим V.1  03.08_2(vst2) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 6, общие: {'08', 'vst2', 'th', '1'})
+2025-08-24 20:05:52,570 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 5' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 5' (score: 5, общие: {'15', 'th', '5'})
+2025-08-24 20:05:52,572 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 2' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 5' (score: 6, общие: {'15', 'th', '2', '5'})
+2025-08-24 20:05:52,575 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 4' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 5, общие: {'15', 'th', '4'})
+2025-08-24 20:05:52,577 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 3' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 5' (score: 5, общие: {'15', 'th', '5'})
+2025-08-24 20:05:52,579 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 5' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 5, общие: {'15', 'th', '4'})
+2025-08-24 20:05:52,583 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 4' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 5, общие: {'15', 'th', '4'})
+2025-08-24 20:05:52,586 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 3' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 5, общие: {'15', 'th', '4'})
+2025-08-24 20:05:52,588 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 2' → Keitaro 'TH 6023_K-86 TH GOLD3  15.08_2(vst1) 4' (score: 6, общие: {'15', 'th', '2', '4'})
+2025-08-24 20:05:52,590 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:52,593 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 5' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:52,596 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 4' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:52,598 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 3' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:52,600 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:52,603 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:52,605 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (score: 5, общие: {'15', 'th', '1'})
+2025-08-24 20:05:52,608 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH y-52 podcast monah(lang2) 2407 4' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 4' (score: 6, общие: {'y', 'podcast', '4', '52'})
+2025-08-24 20:05:52,610 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH y-52 podcast monah(lang2) 2407 5' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 5, общие: {'y', 'podcast', '52'})
+2025-08-24 20:05:52,613 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH y-52 podcast monah(lang2) 2407 3' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 5, общие: {'y', 'podcast', '52'})
+2025-08-24 20:05:52,615 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH y-52 podcast monah(lang2) 2407 2' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 5, общие: {'y', 'podcast', '52'})
+2025-08-24 20:05:52,618 - __main__ - DEBUG - [MATCH by ADSET] FB 'TH y-52 podcast monah(lang2) 2407 1' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 6, общие: {'y', 'podcast', '1', '52'})
+2025-08-24 20:05:52,620 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'MAG5' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 4, общие: {'th', 'k'})
+2025-08-24 20:05:52,623 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'MAG4' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 4, общие: {'th', 'k'})
+2025-08-24 20:05:52,627 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'MAG3' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 4, общие: {'th', 'k'})
+2025-08-24 20:05:52,630 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'MAG2' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 4, общие: {'th', 'k'})
+2025-08-24 20:05:52,632 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'MAG1' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 4, общие: {'th', 'k'})
+2025-08-24 20:05:52,635 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:52,637 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:52,640 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:52,642 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:52,644 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ1' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:52,647 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'TTA4' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,649 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'TTA3' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,652 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'TTA2' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,654 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'TTA5' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,656 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'TTA1' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,659 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KK5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'sereg'})
+2025-08-24 20:05:52,661 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KK4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'sereg'})
+2025-08-24 20:05:52,664 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KK3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'sereg'})
+2025-08-24 20:05:52,666 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KK2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'sereg'})
+2025-08-24 20:05:52,667 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'KK1' → Keitaro 'KK1'
+2025-08-24 20:05:52,668 - __main__ - WARNING - Пропуск адсета 120229975650140073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,669 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'UU2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'k'})
+2025-08-24 20:05:52,671 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'UU5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'k'})
+2025-08-24 20:05:52,673 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'UU4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'k'})
+2025-08-24 20:05:52,676 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'UU3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'k'})
+2025-08-24 20:05:52,678 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'UU1' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 5, общие: {'th', '2', 'k'})
+2025-08-24 20:05:52,681 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'RR5' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 4, общие: {'y', '1'})
+2025-08-24 20:05:52,683 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'RR4' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 4, общие: {'y', '1'})
+2025-08-24 20:05:52,685 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'RR3' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 4, общие: {'y', '1'})
+2025-08-24 20:05:52,688 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'RR2' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 4, общие: {'y', '1'})
+2025-08-24 20:05:52,690 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'RR1' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 4, общие: {'y', '1'})
+2025-08-24 20:05:52,692 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KKS5' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'2'})
+2025-08-24 20:05:52,695 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KKS4' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'2'})
+2025-08-24 20:05:52,697 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KKS3' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'2'})
+2025-08-24 20:05:52,699 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KKS2' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'2'})
+2025-08-24 20:05:52,702 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'KKS1' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'2'})
+2025-08-24 20:05:52,703 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T4' → Keitaro 'T4'
+2025-08-24 20:05:52,703 - __main__ - WARNING - Пропуск адсета 120229433959540073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,703 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T3' → Keitaro 'T3'
+2025-08-24 20:05:52,703 - __main__ - WARNING - Пропуск адсета 120229433959530073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,705 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'T2' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (score: 3, общие: {'1'})
+2025-08-24 20:05:52,706 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T5' → Keitaro 'T5'
+2025-08-24 20:05:52,706 - __main__ - WARNING - Пропуск адсета 120229433959490073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,706 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T1' → Keitaro 'T1'
+2025-08-24 20:05:52,706 - __main__ - WARNING - Пропуск адсета 120229433357750073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,706 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T3' → Keitaro 'T3'
+2025-08-24 20:05:52,706 - __main__ - WARNING - Пропуск адсета 120229261503200073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,706 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T5' → Keitaro 'T5'
+2025-08-24 20:05:52,706 - __main__ - WARNING - Пропуск адсета 120229261503190073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,706 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T4' → Keitaro 'T4'
+2025-08-24 20:05:52,707 - __main__ - WARNING - Пропуск адсета 120229261503170073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,708 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'T2' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 3, общие: {'y'})
+2025-08-24 20:05:52,709 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T1' → Keitaro 'T1'
+2025-08-24 20:05:52,709 - __main__ - WARNING - Пропуск адсета 120229260874690073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,710 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'LL2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:52,711 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'LL5' → Keitaro 'LL5'
+2025-08-24 20:05:52,711 - __main__ - WARNING - Пропуск адсета 120229189265710073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,712 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'LL4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (score: 4, общие: {'th', '2'})
+2025-08-24 20:05:52,714 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'LL3' → Keitaro 'LL3'
+2025-08-24 20:05:52,714 - __main__ - WARNING - Пропуск адсета 120229189265680073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,714 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'LL1' → Keitaro 'LL1'
+2025-08-24 20:05:52,714 - __main__ - WARNING - Пропуск адсета 120229188973970073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,714 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T4' → Keitaro 'T4'
+2025-08-24 20:05:52,714 - __main__ - WARNING - Пропуск адсета 120229184315240073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,714 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T3' → Keitaro 'T3'
+2025-08-24 20:05:52,714 - __main__ - WARNING - Пропуск адсета 120229184315230073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,715 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'T2' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (score: 3, общие: {'1'})
+2025-08-24 20:05:52,716 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T5' → Keitaro 'T5'
+2025-08-24 20:05:52,717 - __main__ - WARNING - Пропуск адсета 120229184315190073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,717 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T1' → Keitaro 'T1'
+2025-08-24 20:05:52,717 - __main__ - WARNING - Пропуск адсета 120229183595920073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,718 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ5' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'08'})
+2025-08-24 20:05:52,720 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ3' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'08'})
+2025-08-24 20:05:52,722 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ2' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'08'})
+2025-08-24 20:05:52,725 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ4' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'08'})
+2025-08-24 20:05:52,727 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'JJ1' → Keitaro 'MY 6048_MY dekz40 18.08_2(vst1) 4' (score: 3, общие: {'08'})
+2025-08-24 20:05:52,729 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T5' → Keitaro 'T5'
+2025-08-24 20:05:52,729 - __main__ - WARNING - Пропуск адсета 120229089071390073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,729 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T4' → Keitaro 'T4'
+2025-08-24 20:05:52,729 - __main__ - WARNING - Пропуск адсета 120229089071380073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,729 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T3' → Keitaro 'T3'
+2025-08-24 20:05:52,729 - __main__ - WARNING - Пропуск адсета 120229089071370073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,730 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'T2' → Keitaro 'MY 6185_K-98 MY  y-52 podcast(vst2) 1' (score: 3, общие: {'y'})
+2025-08-24 20:05:52,732 - __main__ - DEBUG - [EXACT NAME MATCH] FB 'T1' → Keitaro 'T1'
+2025-08-24 20:05:52,732 - __main__ - WARNING - Пропуск адсета 120229087416290073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,733 - __main__ - DEBUG - [NO MATCH] FB(id=120229086456550073, name=HS5, parent=11.06 11 ID_Sust_NovostiOlega1_Zag3_11.06(pz2))
+2025-08-24 20:05:52,733 - __main__ - WARNING - Пропуск адсета 120229086456550073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,734 - __main__ - DEBUG - [NO MATCH] FB(id=120229086456540073, name=HS4, parent=11.06 11 ID_Sust_NovostiOlega1_Zag3_11.06(pz2))
+2025-08-24 20:05:52,734 - __main__ - WARNING - Пропуск адсета 120229086456540073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,735 - __main__ - DEBUG - [NO MATCH] FB(id=120229086456530073, name=HS2, parent=11.06 11 ID_Sust_NovostiOlega1_Zag3_11.06(pz2))
+2025-08-24 20:05:52,735 - __main__ - WARNING - Пропуск адсета 120229086456530073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,736 - __main__ - DEBUG - [NO MATCH] FB(id=120229086456520073, name=HS1, parent=11.06 11 ID_Sust_NovostiOlega1_Zag3_11.06(pz2))
+2025-08-24 20:05:52,736 - __main__ - WARNING - Пропуск адсета 120229086456520073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,737 - __main__ - DEBUG - [NO MATCH] FB(id=120229086376610073, name=HS3, parent=11.06 11 ID_Sust_NovostiOlega1_Zag3_11.06(pz2))
+2025-08-24 20:05:52,737 - __main__ - WARNING - Пропуск адсета 120229086376610073 — нет данных из Keitaro/Facebook
+2025-08-24 20:05:52,738 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'VV2' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,741 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'VV5' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,743 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'VV4' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,745 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'VV3' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,748 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'VV1' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,751 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'BB5' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,755 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'BB4' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,758 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'BB3' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,760 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'BB2' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,763 - __main__ - DEBUG - [MATCH by CAMPAIGN] FB 'BB1' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 5' (score: 3, общие: {'th'})
+2025-08-24 20:05:52,765 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 20:05:52] "POST /api/save_and_sync HTTP/1.1" 200 -
+2025-08-24 20:05:55,077 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 20:05:55] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-24 20:06:33,248 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:8000
  * Running on http://82.97.251.126:8000
-2025-08-24 01:14:53,290 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-08-24 01:14:54,629 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:14:54] "[32mGET / HTTP/1.1[0m" 302 -
-2025-08-24 01:14:54,862 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:14:54] "[32mGET /login HTTP/1.1[0m" 302 -
-2025-08-24 01:14:55,040 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:14:55] "GET /dashboard HTTP/1.1" 200 -
-2025-08-24 01:14:55,313 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:14:55] "GET /static/css/style.css HTTP/1.1" 200 -
-2025-08-24 01:15:00,633 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:00] "GET /adsets HTTP/1.1" 200 -
-2025-08-24 01:15:00,875 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-24 01:15:00,883 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:00] "GET /static/js/adsets.js HTTP/1.1" 200 -
-2025-08-24 01:15:01,534 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:01] "GET /api/auto_control/logs?ts=1755987139138 HTTP/1.1" 200 -
-2025-08-24 01:15:01,599 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:01] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:15:05,617 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:15:06,566 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0/120231895370380345?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 16
-2025-08-24 01:15:06,570 - __main__ - INFO - 🟢 AdSet «MY 6048_MY dekz40 18.08_2(vst1) 5» включён
-2025-08-24 01:15:06,570 - __main__ - DEBUG - Telegram не настроен — пропуск отправки
-2025-08-24 01:15:06,573 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:06] "POST /api/adset/resume HTTP/1.1" 200 -
-2025-08-24 01:15:06,837 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:06] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:15:09,710 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:15:10,509 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0/120231895370380345?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 16
-2025-08-24 01:15:10,513 - __main__ - INFO - 🔴 AdSet «MY 6048_MY dekz40 18.08_2(vst1) 5» отключён
-2025-08-24 01:15:10,513 - __main__ - DEBUG - Telegram не настроен — пропуск отправки
-2025-08-24 01:15:10,516 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:10] "POST /api/adset/pause HTTP/1.1" 200 -
-2025-08-24 01:15:10,816 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:10] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:15:33,101 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:33] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:15:41,819 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:41] "GET /api/accounts HTTP/1.1" 200 -
-2025-08-24 01:15:42,049 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
-2025-08-24 01:15:42,051 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:15:42,654 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Ccpc%2Cspend&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
-2025-08-24 01:15:42,655 - __main__ - INFO - Получено CPC данных для 2 адсетов
-2025-08-24 01:15:42,661 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-08-24 01:15:43,417 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
-2025-08-24 01:15:43,422 - __main__ - INFO - Обработано 153 записей из Keitaro
-2025-08-24 01:15:43,424 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:15:44,087 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Cspend%2Ccpc%2Ccost_per_conversion%2Cconversions&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
-2025-08-24 01:15:44,088 - __main__ - INFO - Получено insights для 2 адсетов
-2025-08-24 01:15:44,090 - __main__ - INFO - Получено CPC данных для аккаунта 1229693575829178: 2 записей
-2025-08-24 01:15:44,092 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:15:44,490 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
-2025-08-24 01:15:44,494 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:15:44,980 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 777
-2025-08-24 01:15:44,981 - __main__ - INFO - Получено 14 кампаний для аккаунта 1229693575829178
-2025-08-24 01:15:44,985 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'my', 'k', '17', '1', '08'})
-2025-08-24 01:15:44,991 - venv - INFO - Обновлена статистика кампании 120231897671310345 с CPC из Facebook: None
-2025-08-24 01:15:44,993 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6055_K-80 MY voltaren1 17.08(vst1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'my', 'k', '17', '80', 'voltaren1', '08'})
-2025-08-24 01:15:44,998 - venv - INFO - Обновлена статистика кампании 120231896621750345 с CPC из Facebook: None
-2025-08-24 01:15:45,001 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6048_MY dekz40 18.08_2(vst1)' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '18', '2', '08'})
-2025-08-24 01:15:45,006 - venv - INFO - Обновлена статистика кампании 120231895157680345 с CPC из Facebook: None
-2025-08-24 01:15:45,008 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5556_TH 09.06 blogger monah2 V.1_2(lang1)' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,013 - venv - INFO - Обновлена статистика кампании 120231104711990345 с CPC из Facebook: None
-2025-08-24 01:15:45,015 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5451_k-78 mug zhena 28.07 kakmaks(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'k', '07'})
-2025-08-24 01:15:45,020 - venv - INFO - Обновлена статистика кампании 120230688444300345 с CPC из Facebook: None
-2025-08-24 01:15:45,023 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5369_Y-67 TH short  monah(lang2)' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3' (общие: {'y', 'monah', 'th'})
-2025-08-24 01:15:45,027 - venv - INFO - Обновлена статистика кампании 120230472593120345 с CPC из Facebook: None
-2025-08-24 01:15:45,033 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'K-68 2monah vrach 17.07_2(lang1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'k', '17'})
-2025-08-24 01:15:45,037 - venv - INFO - Обновлена статистика кампании 120230289482370345 с CPC из Facebook: None
-2025-08-24 01:15:45,040 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '21.07_Y-67 TH short  monah_2(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'monah', 'th'})
-2025-08-24 01:15:45,044 - venv - INFO - Обновлена статистика кампании 120230285305850345 с CPC из Facebook: None
-2025-08-24 01:15:45,047 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH monah 72.3 21.07(1)' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:15:45,051 - venv - INFO - Обновлена статистика кампании 120230128425010345 с CPC из Facebook: None
-2025-08-24 01:15:45,053 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 20.07 olegneizd 3(lang2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:15:45,058 - venv - INFO - Обновлена статистика кампании 120230085902090345 с CPC из Facebook: None
-2025-08-24 01:15:45,060 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 20.07 olegneizd 2(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:15:45,065 - venv - INFO - Обновлена статистика кампании 120230085814640345 с CPC из Facebook: None
-2025-08-24 01:15:45,067 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH Goldotzv2 18.07(lang3)' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:15:45,071 - venv - INFO - Обновлена статистика кампании 120230026604440345 с CPC из Facebook: None
-2025-08-24 01:15:45,073 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH swype_ilyak2 monah(2)' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:15:45,077 - venv - INFO - Обновлена статистика кампании 120229979179030345 с CPC из Facebook: None
-2025-08-24 01:15:45,079 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH monah 72.2 17.07_1(lang2)' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,084 - venv - INFO - Обновлена статистика кампании 120229977871790345 с CPC из Facebook: None
-2025-08-24 01:15:45,086 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:15:45,693 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1368
-2025-08-24 01:15:45,694 - __main__ - INFO - Получено 72 адсетов для аккаунта 1229693575829178
-2025-08-24 01:15:45,699 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 5' (общие: {'my', 'k', '5', '1', 'vst1'})
-2025-08-24 01:15:45,706 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'my', 'k', '17', '1', '08'})
-2025-08-24 01:15:45,713 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'my', 'k', '17', '08', '3'})
-2025-08-24 01:15:45,720 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (общие: {'my', 'k', '2', '1', 'vst1'})
-2025-08-24 01:15:45,728 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'my', 'k', '17', '1', '08'})
-2025-08-24 01:15:45,735 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 4' (общие: {'my', 'k', '17', '80', 'voltaren1', '08', '4'})
-2025-08-24 01:15:45,743 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'my', 'k', '17', '80', 'voltaren1', '08', '3'})
-2025-08-24 01:15:45,749 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 2' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'my', 'k', '17', '80', 'voltaren1', '2', '08'})
-2025-08-24 01:15:45,755 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 5' (общие: {'my', 'k', '17', '80', 'voltaren1', '5', '08'})
-2025-08-24 01:15:45,761 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'my', 'k', '17', '80', 'voltaren1', '1', '08'})
-2025-08-24 01:15:45,767 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 4' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '18', '2', '08'})
-2025-08-24 01:15:45,772 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 5' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '18', '2', '08'})
-2025-08-24 01:15:45,778 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 2' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '18', '2', '08'})
-2025-08-24 01:15:45,783 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 3' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '18', '2', '08'})
-2025-08-24 01:15:45,792 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 1' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (общие: {'my', 'vst1', '1', '2'})
-2025-08-24 01:15:45,796 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,800 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', '2', 'th'})
-2025-08-24 01:15:45,805 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,809 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,813 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,817 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 5' (общие: {'k', '5', 'th'})
-2025-08-24 01:15:45,821 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'4', 'k', '07', 'th'})
-2025-08-24 01:15:45,825 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'k', 'th'})
-2025-08-24 01:15:45,829 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1' → Keitaro 'TH 6191_K-96 TH sereg-podctast(vst2) 1' (общие: {'1', 'k', 'th'})
-2025-08-24 01:15:45,832 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'k', '07', 'th'})
-2025-08-24 01:15:45,836 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 5' (общие: {'5', 'th'})
-2025-08-24 01:15:45,840 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 4' (общие: {'4', 'th'})
-2025-08-24 01:15:45,843 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 3' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3' (общие: {'3', 'y', 'monah', 'th'})
-2025-08-24 01:15:45,847 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 2' → Keitaro 'IN 6134_ IN Y-67 V.2 KOROTISH Йоги 3' (общие: {'2', '67', 'y'})
-2025-08-24 01:15:45,850 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 1' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 1' (общие: {'1', 'y', 'monah', 'th'})
-2025-08-24 01:15:45,853 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'k', '17'})
-2025-08-24 01:15:45,856 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'k', '17'})
-2025-08-24 01:15:45,860 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'k', '17'})
-2025-08-24 01:15:45,863 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH2' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'k', '17'})
-2025-08-24 01:15:45,866 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'k', '17'})
-2025-08-24 01:15:45,869 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY5' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'monah', 'th'})
-2025-08-24 01:15:45,872 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'monah', 'th'})
-2025-08-24 01:15:45,875 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY3' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'monah', 'th'})
-2025-08-24 01:15:45,880 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'monah', 'th'})
-2025-08-24 01:15:45,883 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY1' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'monah', 'th'})
-2025-08-24 01:15:45,886 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL5' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:15:45,889 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL4' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:15:45,892 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL3' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:15:45,895 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL2' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:15:45,898 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL1' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'3', '1', 'th'})
-2025-08-24 01:15:45,902 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:15:45,905 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:15:45,908 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:15:45,911 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:15:45,914 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS1' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'3', 'th'})
-2025-08-24 01:15:45,917 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:15:45,920 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH3' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:15:45,923 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:15:45,927 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH5' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:15:45,930 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH1' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
-2025-08-24 01:15:45,933 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT52' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,936 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT51' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,939 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT53' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,942 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA4' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:15:45,945 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA3' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:15:45,949 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA2' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:15:45,952 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA1' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:15:45,958 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P5' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:15:45,961 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P4' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:15:45,964 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P3' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:15:45,967 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P2' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:15:45,970 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
-2025-08-24 01:15:45,973 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT5' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,976 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT4' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,979 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT3' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,982 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT2' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,985 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT1' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'1', '2', 'th'})
-2025-08-24 01:15:45,987 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:45] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-08-24 01:15:48,213 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:15:48] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:16:37,839 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:16:37] "GET /campaigns HTTP/1.1" 200 -
-2025-08-24 01:16:38,106 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:16:38] "GET /static/css/style.css HTTP/1.1" 200 -
-2025-08-24 01:16:38,143 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:16:38] "GET /static/js/campaigns.js HTTP/1.1" 200 -
-2025-08-24 01:16:38,774 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:16:38] "GET /api/campaigns?_=1755987236324 HTTP/1.1" 200 -
-2025-08-24 01:17:05,282 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:17:05] "[33mPOST /api/sync_account HTTP/1.1[0m" 404 -
-2025-08-24 01:17:26,675 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:17:26] "[33mPOST /api/sync_account HTTP/1.1[0m" 404 -
-2025-08-24 01:17:35,289 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:17:35] "GET /adsets HTTP/1.1" 200 -
-2025-08-24 01:17:35,553 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:17:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-24 01:17:35,561 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:17:35] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
-2025-08-24 01:17:36,311 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:17:36] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:17:36,329 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:17:36] "GET /api/auto_control/logs?ts=1755987293866 HTTP/1.1" 200 -
-2025-08-24 01:21:19,389 - werkzeug - INFO - 91.196.152.55 - - [24/Aug/2025 01:21:19] "GET /login HTTP/1.1" 200 -
-2025-08-24 01:21:22,403 - werkzeug - INFO - 91.196.152.48 - - [24/Aug/2025 01:21:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-2025-08-24 01:27:14,053 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-08-24 20:06:33,248 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-24 20:06:45,759 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:8000
  * Running on http://82.97.251.126:8000
-2025-08-24 01:27:14,054 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-08-24 01:27:15,586 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:15] "[32mGET / HTTP/1.1[0m" 302 -
-2025-08-24 01:27:15,817 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:15] "[32mGET /login HTTP/1.1[0m" 302 -
-2025-08-24 01:27:16,067 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:16] "GET /dashboard HTTP/1.1" 200 -
-2025-08-24 01:27:16,405 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-24 01:27:18,940 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:18] "GET /adsets HTTP/1.1" 200 -
-2025-08-24 01:27:19,235 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-24 01:27:19,240 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:19] "GET /static/js/adsets.js HTTP/1.1" 200 -
-2025-08-24 01:27:19,849 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:19] "GET /api/auto_control/logs?ts=1755987877445 HTTP/1.1" 200 -
-2025-08-24 01:27:19,883 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:19] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:27:29,014 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:29] "GET /api/accounts HTTP/1.1" 200 -
-2025-08-24 01:27:29,172 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
-2025-08-24 01:27:29,175 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:27:29,721 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Ccpc%2Cspend&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
-2025-08-24 01:27:29,722 - __main__ - INFO - Получено CPC данных для 2 адсетов
-2025-08-24 01:27:29,729 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-08-24 01:27:31,898 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
-2025-08-24 01:27:31,902 - __main__ - INFO - Обработано 158 записей из Keitaro
-2025-08-24 01:27:31,904 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:27:32,790 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Cspend%2Ccpc%2Ccost_per_conversion%2Cconversions&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
-2025-08-24 01:27:32,791 - __main__ - INFO - Получено insights для 2 адсетов
-2025-08-24 01:27:32,792 - __main__ - INFO - Получено CPC данных для аккаунта 1229693575829178: 2 записей
-2025-08-24 01:27:32,795 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:27:33,127 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
-2025-08-24 01:27:33,131 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:27:33,665 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 777
-2025-08-24 01:27:33,666 - __main__ - INFO - Получено 14 кампаний для аккаунта 1229693575829178
-2025-08-24 01:27:33,670 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1)' → Keitaro 'MY 6058_MY  voltaren1 17.08(vst1) 1' (общие: {'vst1', '08', '17', 'my', '1'})
-2025-08-24 01:27:33,674 - venv - INFO - Обновлена статистика кампании 120231897671310345 с CPC из Facebook: None
-2025-08-24 01:27:33,676 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6055_K-80 MY voltaren1 17.08(vst1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'08', '17', 'my', 'k', 'voltaren1', '80'})
-2025-08-24 01:27:33,680 - venv - INFO - Обновлена статистика кампании 120231896621750345 с CPC из Facebook: None
-2025-08-24 01:27:33,683 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6048_MY dekz40 18.08_2(vst1)' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'vst1', '08', '2'})
-2025-08-24 01:27:33,688 - venv - INFO - Обновлена статистика кампании 120231895157680345 с CPC из Facebook: None
-2025-08-24 01:27:33,691 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5556_TH 09.06 blogger monah2 V.1_2(lang1)' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:33,696 - venv - INFO - Обновлена статистика кампании 120231104711990345 с CPC из Facebook: None
-2025-08-24 01:27:33,698 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5451_k-78 mug zhena 28.07 kakmaks(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'07', 'k'})
-2025-08-24 01:27:33,703 - venv - INFO - Обновлена статистика кампании 120230688444300345 с CPC из Facebook: None
-2025-08-24 01:27:33,706 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5369_Y-67 TH short  monah(lang2)' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3' (общие: {'y', 'th', 'monah'})
-2025-08-24 01:27:33,711 - venv - INFO - Обновлена статистика кампании 120230472593120345 с CPC из Facebook: None
-2025-08-24 01:27:33,713 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'K-68 2monah vrach 17.07_2(lang1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'17', '2', 'k'})
-2025-08-24 01:27:33,718 - venv - INFO - Обновлена статистика кампании 120230289482370345 с CPC из Facebook: None
-2025-08-24 01:27:33,720 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '21.07_Y-67 TH short  monah_2(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'monah', '2', 'th', '07'})
-2025-08-24 01:27:33,725 - venv - INFO - Обновлена статистика кампании 120230285305850345 с CPC из Facebook: None
-2025-08-24 01:27:33,728 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH monah 72.3 21.07(1)' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'th', '1', '3'})
-2025-08-24 01:27:33,733 - venv - INFO - Обновлена статистика кампании 120230128425010345 с CPC из Facebook: None
-2025-08-24 01:27:33,735 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 20.07 olegneizd 3(lang2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3'})
-2025-08-24 01:27:33,739 - venv - INFO - Обновлена статистика кампании 120230085902090345 с CPC из Facebook: None
-2025-08-24 01:27:33,742 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 20.07 olegneizd 2(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'th', '07'})
-2025-08-24 01:27:33,746 - venv - INFO - Обновлена статистика кампании 120230085814640345 с CPC из Facebook: None
-2025-08-24 01:27:33,748 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH Goldotzv2 18.07(lang3)' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:27:33,752 - venv - INFO - Обновлена статистика кампании 120230026604440345 с CPC из Facebook: None
-2025-08-24 01:27:33,754 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH swype_ilyak2 monah(2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (общие: {'2', 'th'})
-2025-08-24 01:27:33,758 - venv - INFO - Обновлена статистика кампании 120229979179030345 с CPC из Facebook: None
-2025-08-24 01:27:33,761 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH monah 72.2 17.07_1(lang2)' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:33,765 - venv - INFO - Обновлена статистика кампании 120229977871790345 с CPC из Facebook: None
-2025-08-24 01:27:33,767 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-24 01:27:34,458 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1368
-2025-08-24 01:27:34,459 - __main__ - INFO - Получено 72 адсетов для аккаунта 1229693575829178
-2025-08-24 01:27:34,465 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 5' (общие: {'vst1', 'my', '1', 'k', '5'})
-2025-08-24 01:27:34,471 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4' → Keitaro 'MY 6058_MY  voltaren1 17.08(vst1) 4' (общие: {'vst1', '08', '17', '4', 'my'})
-2025-08-24 01:27:34,477 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'08', '17', 'my', 'k', '3'})
-2025-08-24 01:27:34,484 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (общие: {'vst1', 'my', '1', 'k', '2'})
-2025-08-24 01:27:34,492 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1' → Keitaro 'MY 6058_MY  voltaren1 17.08(vst1) 1' (общие: {'vst1', '08', '17', 'my', '1'})
-2025-08-24 01:27:34,499 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 4' (общие: {'08', '17', '4', 'my', 'k', 'voltaren1', '80'})
-2025-08-24 01:27:34,506 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'08', '17', 'my', 'k', 'voltaren1', '3', '80'})
-2025-08-24 01:27:34,512 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 2' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'08', '17', 'my', 'k', 'voltaren1', '2', '80'})
-2025-08-24 01:27:34,518 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 5' (общие: {'08', '17', 'my', 'k', '5', 'voltaren1', '80'})
-2025-08-24 01:27:34,524 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'08', '17', 'my', '1', 'k', 'voltaren1', '80'})
-2025-08-24 01:27:34,530 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 4' → Keitaro 'MY 6058_MY  voltaren1 17.08(vst1) 4' (общие: {'vst1', '08', '4', 'my'})
-2025-08-24 01:27:34,535 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 5' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'vst1', '08', '2'})
-2025-08-24 01:27:34,540 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 2' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'vst1', '08', '2'})
-2025-08-24 01:27:34,545 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 3' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'vst1', '08', '2'})
-2025-08-24 01:27:34,550 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 1' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (общие: {'vst1', 'my', '1', '2'})
-2025-08-24 01:27:34,555 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,559 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'2', 'th', '1', '3'})
-2025-08-24 01:27:34,564 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,568 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,572 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,576 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 5' (общие: {'th', 'k', '5'})
-2025-08-24 01:27:34,580 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'4', 'th', 'k', '07'})
-2025-08-24 01:27:34,585 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3', 'k'})
-2025-08-24 01:27:34,588 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 1' (общие: {'th', '1', 'k'})
-2025-08-24 01:27:34,592 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'th', 'k', '07'})
-2025-08-24 01:27:34,596 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 5' (общие: {'th', '5'})
-2025-08-24 01:27:34,599 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 4' → Keitaro 'TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 4' (общие: {'4', 'th'})
-2025-08-24 01:27:34,603 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 3' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3' (общие: {'y', 'th', '3', 'monah'})
-2025-08-24 01:27:34,606 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 2' → Keitaro 'IN 6134_ IN Y-67 V.2 KOROTISH Йоги 3' (общие: {'2', '67', 'y'})
-2025-08-24 01:27:34,610 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 5369_Y-67 TH short  monah(lang2) 1' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 1' (общие: {'y', 'th', '1', 'monah'})
-2025-08-24 01:27:34,613 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'17', '2', 'k'})
-2025-08-24 01:27:34,616 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'17', '2', 'k'})
-2025-08-24 01:27:34,619 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'17', '2', 'k'})
-2025-08-24 01:27:34,623 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH2' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'17', '2', 'k'})
-2025-08-24 01:27:34,626 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'17', '2', 'k'})
-2025-08-24 01:27:34,629 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY5' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'monah', '2', 'th', '07'})
-2025-08-24 01:27:34,633 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'monah', '2', 'th', '07'})
-2025-08-24 01:27:34,636 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY3' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'monah', '2', 'th', '07'})
-2025-08-24 01:27:34,639 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'monah', '2', 'th', '07'})
-2025-08-24 01:27:34,642 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'YY1' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'monah', '2', 'th', '07'})
-2025-08-24 01:27:34,645 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL5' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'th', '1', '3'})
-2025-08-24 01:27:34,649 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL4' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'th', '1', '3'})
-2025-08-24 01:27:34,652 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL3' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'th', '1', '3'})
-2025-08-24 01:27:34,655 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL2' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'th', '1', '3'})
-2025-08-24 01:27:34,658 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'KKL1' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'th', '1', '3'})
-2025-08-24 01:27:34,662 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3'})
-2025-08-24 01:27:34,665 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3'})
-2025-08-24 01:27:34,668 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3'})
-2025-08-24 01:27:34,671 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3'})
-2025-08-24 01:27:34,676 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HHS1' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3'})
-2025-08-24 01:27:34,679 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH4' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'th', '07'})
-2025-08-24 01:27:34,682 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH3' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'th', '07'})
-2025-08-24 01:27:34,685 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH2' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'th', '07'})
-2025-08-24 01:27:34,688 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH5' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'th', '07'})
-2025-08-24 01:27:34,691 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'HH1' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'th', '07'})
-2025-08-24 01:27:34,694 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT52' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,698 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT51' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,701 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT53' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,704 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA4' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:27:34,707 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA3' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:27:34,710 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA2' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:27:34,713 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'SSA1' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'18', 'th'})
-2025-08-24 01:27:34,716 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P5' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (общие: {'2', 'th'})
-2025-08-24 01:27:34,719 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P4' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (общие: {'2', 'th'})
-2025-08-24 01:27:34,722 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P3' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (общие: {'2', 'th'})
-2025-08-24 01:27:34,725 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P2' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (общие: {'2', 'th'})
-2025-08-24 01:27:34,728 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'P1' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 2' (общие: {'2', 'th'})
-2025-08-24 01:27:34,732 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT5' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,735 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT4' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,738 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT3' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,741 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT2' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,744 - __main__ - DEBUG - [STRONG MATCH by CAMPAIGN] FB 'TT1' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
-2025-08-24 01:27:34,746 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:34] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-08-24 01:27:36,972 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:27:36] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-24 01:29:04,540 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8000
- * Running on http://82.97.251.126:8000
-2025-08-24 01:29:04,540 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-24 20:06:45,760 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

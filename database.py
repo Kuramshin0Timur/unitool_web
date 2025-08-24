@@ -23,17 +23,16 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
             try:
                 cursor.execute("""
                 INSERT OR REPLACE INTO adsets (
-                    user_id, name, adset_id, ucpc, cpc, spend, cpa, status, geo, token, 
+                    user_id, name, adset_id, ucpc, spend, cpa, status, geo, token, 
                     leads, manual_pause, king, effective_status, ad_name, budget,
                     campaign_id, account_id, auto_budget_increase, auto_budget_decrease,
                     max_budget, min_budget, budget_increase_step, budget_decrease_step
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     user_id,
                     data.get('name', ''),
                     data.get('adset_id', ''),
                     data.get('ucpc', 0),
-                    data.get('cpc', 0),  # Добавлено CPC
                     data.get('spend', 0),
                     data.get('cpa', 0),
                     data.get('status', 'PAUSED'),
@@ -54,6 +53,7 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
                     data.get('budget_increase_step', 1.2),
                     data.get('budget_decrease_step', 0.8)
                 ))
+
                 conn.commit()
                 return True
             except Exception as e:
@@ -202,26 +202,28 @@ def init_db():
             # Таблица кампаний - УДАЛЯЕМ ВНЕШНИЙ КЛЮЧ НА user_id
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS campaigns (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    user_id INTEGER NOT NULL,
-                    king TEXT NOT NULL,
-                    name TEXT NOT NULL,
-                    status TEXT NOT NULL,
-                    campaign_id TEXT NOT NULL,
-                    account_id TEXT NOT NULL,
-                    token TEXT,
-                    spend REAL DEFAULT 0,
-                    leads INTEGER DEFAULT 0,
-                    cpa REAL DEFAULT 0,
-                    ucpc REAL DEFAULT 0,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(user_id, campaign_id)
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                king TEXT NOT NULL,
+                name TEXT NOT NULL,
+                status TEXT NOT NULL,
+                campaign_id TEXT NOT NULL,
+                account_id TEXT NOT NULL,
+                token TEXT,
+                spend REAL DEFAULT 0,
+                leads INTEGER DEFAULT 0,
+                cpa REAL DEFAULT 0,
+                ucpc REAL DEFAULT 0,
+                cpc REAL DEFAULT 0,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE(user_id, campaign_id)
                 )
             """)
 
             
             # Таблица адсетов - УПРОЩЕННАЯ ВЕРСИЯ БЕЗ ВНЕШНИХ КЛЮЧЕЙ
             # В функции init_db() обновите таблицу adsets:
+            # In the init_db() function, replace the adsets table creation with this:
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS adsets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -235,7 +237,7 @@ def init_db():
                 budget REAL DEFAULT 0,
                 geo TEXT DEFAULT 'N/A',
                 ucpc REAL DEFAULT 0,
-                cpc REAL DEFAULT 0,
+                cpc REAL DEFAULT 0,  -- ADD THIS COLUMN
                 spend REAL DEFAULT 0,
                 cpa REAL DEFAULT 0,
                 leads INTEGER DEFAULT 0,
@@ -682,6 +684,7 @@ def update_campaign_stats(user_id, campaign_id, spend=None, leads=None, cpa=None
                 cursor.execute(query, params)
                 conn.commit()
                 logger.info(f"Обновлена статистика кампании {campaign_id} с CPC из Facebook: {cpc}")
+
 def update_user_campaign_status(user_id: int, campaign_id: str, status: str):
     """Обновляет статус кампании пользователя"""
     with lock:
@@ -692,7 +695,6 @@ def update_user_campaign_status(user_id: int, campaign_id: str, status: str):
             WHERE user_id = ? AND campaign_id = ?
             """, (status, user_id, campaign_id))
             conn.commit()
-# In database.py, update the add_user_adset function
 def add_user_adset(user_id: int, data: Dict[str, Any]):
     """Добавляет новый адсет для пользователя"""
     with lock:
@@ -718,7 +720,7 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
                     data.get('name', ''),
                     data.get('adset_id', ''),
                     data.get('ucpc', 0),
-                    data.get('cpc', 0),
+                    data.get('cpc', 0),  # ADD CPC VALUE
                     data.get('spend', 0),
                     data.get('cpa', 0),
                     data.get('status', 'PAUSED'),
@@ -746,7 +748,6 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
                 conn.rollback()
                 logger.error(f"Error adding adset: {e}")
                 raise ValueError(f"Database error: {str(e)}")
-
 def update_user_adset_status(user_id: int, adset_id: str, status: str):
     """Обновляет статус адсета пользователя"""
     with lock:
