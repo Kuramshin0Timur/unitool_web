@@ -219,11 +219,6 @@ def init_db():
                 UNIQUE(user_id, campaign_id)
                 )
             """)
-
-            
-            # Таблица адсетов - УПРОЩЕННАЯ ВЕРСИЯ БЕЗ ВНЕШНИХ КЛЮЧЕЙ
-            # В функции init_db() обновите таблицу adsets:
-            # In the init_db() function, replace the adsets table creation with this:
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS adsets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -254,6 +249,7 @@ def init_db():
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users (id)
+                UNIQUE(user_id, adset_id)
             )
             """)
             cursor.execute("""

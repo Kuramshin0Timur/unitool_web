@@ -9,12 +9,12 @@ from logging.handlers import RotatingFileHandler
 import requests
 from apscheduler.schedulers.background import BackgroundScheduler
 from database import (add_user_adset, add_user_campaign, authenticate_user,
-                      create_user, get_db_connection, get_user_adsets,
-                      get_user_campaigns, get_user_geo_config,
-                      get_user_geo_rules, get_user_settings, init_db,
-                      update_campaign_stats, update_user_adset_budget,
-                      update_user_adset_status, update_user_campaign_status,
-                      update_user_settings)
+                      create_user, get_adset_budget_settings,
+                      get_db_connection, get_user_adsets, get_user_campaigns,
+                      get_user_geo_config, get_user_geo_rules,
+                      get_user_settings, init_db, update_campaign_stats,
+                      update_user_adset_budget, update_user_adset_status,
+                      update_user_campaign_status, update_user_settings)
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    session, url_for)
 from fuzzywuzzy import fuzz, process
@@ -238,6 +238,7 @@ def fetch_keitaro_report(api_key, domain, interval="today", group_by="sub_id_9")
         logger.error(f"Неожиданная ошибка: {e}")
 
     return {"rows": [], "totals": {}}
+
 def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
     """Безопасная отправка сообщения в Telegram"""
     try:
@@ -2486,9 +2487,6 @@ def save_and_sync():
                 
                 for camp in campaigns:
                     stats = find_stats(fb_id=camp['id'], fb_name=camp.get('name'))
-                    if stats.get('spend', 0) == 0 and stats.get('leads', 0) == 0 and stats.get('cpa', 0) == 0:
-                        logger.warning(f"Пропуск кампании {camp['id']} — нет данных из Keitaro/Facebook")
-                        continue
                     add_user_campaign(user_id, {
                         'king': 'Facebook',
                         'name': camp.get('name', ''),
@@ -2517,9 +2515,6 @@ def save_and_sync():
                     )
                     budget = float(ad.get('daily_budget', 0)) / 100 if ad.get('daily_budget') else 0
                     cpc_info = facebook_cpc_data.get(account_id, {}).get(ad.get('id', ''), {})
-                    if stats.get('spend', 0) == 0 and stats.get('leads', 0) == 0 and stats.get('cpa', 0) == 0:
-                        logger.warning(f"Пропуск адсета {ad.get('id')} — нет данных из Keitaro/Facebook")
-                        continue
                     add_user_adset(user_id, {
                         'name': ad_name,
                         'adset_id': ad.get('id', ''),
