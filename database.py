@@ -494,12 +494,31 @@ def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:
             return [dict(row) for row in cursor.fetchall()]
 
 def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
-    """Возвращает список адсетов пользователя"""
+    """Возвращает список адсетов пользователя с гарантированным наличием поля status"""
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM adsets WHERE user_id = ?", (user_id,))
-            return [dict(row) for row in cursor.fetchall()]
+            cursor.execute("""
+                SELECT 
+                    id, user_id, name, adset_id, campaign_id, 
+                    COALESCE(effective_status, status, 'UNKNOWN') as status,
+                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, 
+                    king, effective_status, ad_name, manual_pause,
+                    auto_budget_increase, auto_budget_decrease,
+                    max_budget, min_budget, budget_increase_step, budget_decrease_step,
+                    created_at, updated_at
+                FROM adsets 
+                WHERE user_id = ?
+            """, (user_id,))
+            
+            adsets = []
+            for row in cursor.fetchall():
+                adset = dict(row)
+                # Гарантируем, что статус всегда есть и является строкой
+                adset['status'] = str(adset.get('status', 'UNKNOWN')).strip()
+                adsets.append(adset)
+            
+            return adsets
 
 def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
     """Возвращает конфигурацию GEO пользователя"""
@@ -738,18 +757,22 @@ def update_user_adset_status(user_id: int, adset_id: str, status: str):
             WHERE user_id = ? AND adset_id = ?
             """, (status, user_id, adset_id))
             conn.commit()
-
 def update_user_adset_budget(user_id: int, adset_id: str, budget: float):
-    """Обновляет бюджет адсета пользователя"""
+    """Обновляет бюджет адсета пользователя в базе данных"""
     with lock:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-            UPDATE adsets SET budget = ? 
-            WHERE user_id = ? AND adset_id = ?
-            """, (budget, user_id, adset_id))
-            conn.commit()
-
+        try:
+            with get_db_connection(user_id) as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP 
+                WHERE user_id = ? AND adset_id = ?
+                """, (budget, user_id, adset_id))
+                conn.commit()
+                logger.info(f"Бюджет обновлен в БД: adset_id={adset_id}, budget=${budget:.2f}")
+                return True
+        except Exception as e:
+            logger.error(f"Ошибка обновления бюджета в БД: {e}")
+            return False
 def add_user_geo_config(user_id: int, data: Dict[str, Any]):
     """Добавляет или обновляет конфигурацию GEO пользователя"""
     with lock:

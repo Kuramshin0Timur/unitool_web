@@ -1,0 +1,753 @@
+2025-08-24 00:37:38,548 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://82.97.251.126:8000
+2025-08-24 00:37:38,548 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-24 00:46:42,533 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://82.97.251.126:8000
+2025-08-24 00:46:42,533 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-24 00:46:50,830 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:46:50] "GET /adsets HTTP/1.1" 200 -
+2025-08-24 00:46:51,065 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:46:51] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-24 00:46:51,234 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:46:51] "GET /static/js/adsets.js HTTP/1.1" 200 -
+2025-08-24 00:46:52,491 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:46:52] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-24 00:46:52,659 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:46:52] "GET /api/auto_control/logs?ts=1755985450055 HTTP/1.1" 200 -
+2025-08-24 00:46:57,958 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:46:57] "GET /api/accounts HTTP/1.1" 200 -
+2025-08-24 00:46:58,152 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
+2025-08-24 00:46:58,155 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:46:58,646 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Ccpc%2Cspend&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
+2025-08-24 00:46:58,647 - __main__ - INFO - Получено CPC данных для 2 адсетов
+2025-08-24 00:46:58,654 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-08-24 00:46:59,466 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-08-24 00:46:59,470 - __main__ - INFO - Обработано 137 записей из Keitaro
+2025-08-24 00:46:59,473 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:47:00,262 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Cspend%2Ccpc%2Ccost_per_conversion%2Cconversions&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
+2025-08-24 00:47:00,263 - __main__ - INFO - Получено insights для 2 адсетов
+2025-08-24 00:47:00,265 - __main__ - INFO - Получено CPC данных для аккаунта 1229693575829178: 2 записей
+2025-08-24 00:47:00,267 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:47:00,669 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
+2025-08-24 00:47:00,675 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:47:01,195 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 777
+2025-08-24 00:47:01,196 - __main__ - INFO - Получено 14 кампаний для аккаунта 1229693575829178
+2025-08-24 00:47:01,200 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'k', '17', '1', 'my', '08'})
+2025-08-24 00:47:01,200 - __main__ - ERROR - Критическая ошибка синхронизации: get expected at most 2 arguments, got 3
+2025-08-24 00:47:01,201 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:47:01] "POST /api/save_and_sync HTTP/1.1" 200 -
+2025-08-24 00:47:25,710 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:47:25] "GET /api/accounts HTTP/1.1" 200 -
+2025-08-24 00:47:25,911 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
+2025-08-24 00:47:25,913 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:47:26,483 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Ccpc%2Cspend&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
+2025-08-24 00:47:26,483 - __main__ - INFO - Получено CPC данных для 2 адсетов
+2025-08-24 00:47:26,490 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-08-24 00:47:27,324 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-08-24 00:47:27,330 - __main__ - INFO - Обработано 137 записей из Keitaro
+2025-08-24 00:47:27,333 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:47:27,932 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Cspend%2Ccpc%2Ccost_per_conversion%2Cconversions&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
+2025-08-24 00:47:27,933 - __main__ - INFO - Получено insights для 2 адсетов
+2025-08-24 00:47:27,935 - __main__ - INFO - Получено CPC данных для аккаунта 1229693575829178: 2 записей
+2025-08-24 00:47:27,937 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:47:28,362 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
+2025-08-24 00:47:28,366 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 00:47:28,821 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 777
+2025-08-24 00:47:28,822 - __main__ - INFO - Получено 14 кампаний для аккаунта 1229693575829178
+2025-08-24 00:47:28,825 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'k', '17', '1', 'my', '08'})
+2025-08-24 00:47:28,826 - __main__ - ERROR - Критическая ошибка синхронизации: get expected at most 2 arguments, got 3
+2025-08-24 00:47:28,826 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 00:47:28] "POST /api/save_and_sync HTTP/1.1" 200 -
+2025-08-24 01:01:21,655 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://82.97.251.126:8000
+2025-08-24 01:01:21,656 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-24 01:01:33,010 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:01:33] "GET /adsets HTTP/1.1" 200 -
+2025-08-24 01:01:33,418 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:01:33] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-24 01:01:33,606 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:01:33] "GET /static/js/adsets.js HTTP/1.1" 200 -
+2025-08-24 01:01:34,506 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:01:34] "GET /api/auto_control/logs?ts=1755986332121 HTTP/1.1" 200 -
+2025-08-24 01:01:34,707 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:01:34] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-24 01:04:13,568 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://82.97.251.126:8000
+2025-08-24 01:04:13,568 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-24 01:04:21,986 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:04:21] "GET /adsets HTTP/1.1" 200 -
+2025-08-24 01:04:22,240 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:04:22] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-24 01:04:22,431 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:04:22] "GET /static/js/adsets.js HTTP/1.1" 200 -
+2025-08-24 01:04:22,914 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:04:22] "GET /api/auto_control/logs?ts=1755986500526 HTTP/1.1" 200 -
+2025-08-24 01:04:23,115 - werkzeug - INFO - 151.115.98.121 - - [24/Aug/2025 01:04:23] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-24 01:04:54,247 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://82.97.251.126:8000
+2025-08-24 01:04:54,247 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-24 01:04:57,138 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:04:57] "[32mGET /?id=0006d608-ccbb-4cf7-9e54-d688b8926157&vscodeBrowserReqId=1755986534715 HTTP/1.1[0m" 302 -
+2025-08-24 01:04:57,366 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:04:57] "GET /login HTTP/1.1" 200 -
+2025-08-24 01:04:57,541 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:04:57] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-24 01:05:06,383 - __main__ - INFO - Автоконтроль запущен для пользователя 1
+2025-08-24 01:05:06,384 - __main__ - INFO - Автообновление запущено для пользователя 1, интервал: 5 мин
+2025-08-24 01:05:06,385 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-08-24 01:05:06,388 - __main__ - DEBUG - Telegram не настроен — пропуск отправки
+2025-08-24 01:05:06,390 - __main__ - INFO - Используются правила из старой таблицы geo_config
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,419 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,420 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,421 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,430 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,431 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,432 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,433 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,434 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,435 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,436 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,437 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,438 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,439 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,440 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1
+2025-08-24 01:05:06,441 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 4
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 3
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 2
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 5
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6055_K-80 MY voltaren1 17.08(vst1) 1
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 4
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 5
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 2
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 3
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6048_MY dekz40 18.08_2(vst1) 1
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 2
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 3
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 4
+2025-08-24 01:05:06,442 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 5
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5556_TH 09.06 blogger monah2 V.1_2(lang1) 1
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 5
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 4
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 3
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 1
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5451_k-78 mug zhena 28.07 kakmaks(lang2) 2
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 5
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 4
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 3
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 2
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5369_Y-67 TH short  monah(lang2) 1
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,443 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY5
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY4
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY3
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY2
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) YY1
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL5
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL4
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL3
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL2
+2025-08-24 01:05:06,444 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKL1
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS4
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS3
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS2
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS5
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HHS1
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT52
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT51
+2025-08-24 01:05:06,445 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT53
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA4
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA3
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA2
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SSA1
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P5
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P4
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P3
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P2
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) P1
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-24 01:05:06,446 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-24 01:05:06,447 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-24 01:05:06,447 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-24 01:05:06,581 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:06] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-08-24 01:05:06,780 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:06] "GET /login?next=http://127.0.0.1:8000/dashboard HTTP/1.1" 200 -
+2025-08-24 01:05:06,924 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-24 01:05:09,600 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:09] "[32mGET /?id=0006d608-ccbb-4cf7-9e54-d688b8926157&vscodeBrowserReqId=1755986547183 HTTP/1.1[0m" 302 -
+2025-08-24 01:05:09,788 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:09] "GET /login HTTP/1.1" 200 -
+2025-08-24 01:05:10,012 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-24 01:05:15,466 - __main__ - INFO - Автообновление запущено для пользователя 1, интервал: 5 мин
+2025-08-24 01:05:15,467 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-08-24 01:05:15,618 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:15] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-08-24 01:05:15,906 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:15] "GET /login?next=http://127.0.0.1:8000/dashboard HTTP/1.1" 200 -
+2025-08-24 01:05:16,052 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-24 01:05:21,929 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:21] "[32mGET /?id=eb90ac56-955f-414a-99fb-c304196416b9&vscodeBrowserReqId=1755986559509 HTTP/1.1[0m" 302 -
+2025-08-24 01:05:22,160 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:22] "GET /login HTTP/1.1" 200 -
+2025-08-24 01:05:22,346 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-24 01:05:29,320 - __main__ - INFO - Автообновление запущено для пользователя 1, интервал: 5 мин
+2025-08-24 01:05:29,321 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-08-24 01:05:29,482 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:29] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-08-24 01:05:29,669 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:29] "GET /login?next=http://127.0.0.1:8000/dashboard HTTP/1.1" 200 -
+2025-08-24 01:05:29,892 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-24 01:05:32,760 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:32] "[32mGET / HTTP/1.1[0m" 302 -
+2025-08-24 01:05:32,962 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:32] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-08-24 01:05:33,110 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:33] "GET /dashboard HTTP/1.1" 200 -
+2025-08-24 01:05:33,396 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-24 01:05:37,693 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:37] "GET /adsets HTTP/1.1" 200 -
+2025-08-24 01:05:37,933 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-24 01:05:37,941 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:37] "GET /static/js/adsets.js HTTP/1.1" 200 -
+2025-08-24 01:05:38,646 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:38] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-24 01:05:38,659 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:38] "GET /api/auto_control/logs?ts=1755986576180 HTTP/1.1" 200 -
+2025-08-24 01:05:44,986 - werkzeug - INFO - 127.0.0.1 - - [24/Aug/2025 01:05:44] "GET /api/accounts HTTP/1.1" 200 -
+2025-08-24 01:05:45,216 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
+2025-08-24 01:05:45,218 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 01:05:45,725 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Ccpc%2Cspend&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
+2025-08-24 01:05:45,726 - __main__ - INFO - Получено CPC данных для 2 адсетов
+2025-08-24 01:05:45,733 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-08-24 01:05:47,011 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-08-24 01:05:47,015 - __main__ - INFO - Обработано 149 записей из Keitaro
+2025-08-24 01:05:47,017 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 01:05:47,846 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/insights?level=adset&fields=adset_id%2Cspend%2Ccpc%2Ccost_per_conversion%2Cconversions&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 174
+2025-08-24 01:05:47,847 - __main__ - INFO - Получено insights для 2 адсетов
+2025-08-24 01:05:47,849 - __main__ - INFO - Получено CPC данных для аккаунта 1229693575829178: 2 записей
+2025-08-24 01:05:47,851 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 01:05:48,240 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
+2025-08-24 01:05:48,244 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 01:05:48,733 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 777
+2025-08-24 01:05:48,734 - __main__ - INFO - Получено 14 кампаний для аккаунта 1229693575829178
+2025-08-24 01:05:48,738 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'k', '17', '1', '08', 'my'})
+2025-08-24 01:05:48,745 - venv - INFO - Обновлена статистика кампании 120231897671310345 с CPC из Facebook: None
+2025-08-24 01:05:48,748 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6055_K-80 MY voltaren1 17.08(vst1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'my', 'k', '17', 'voltaren1', '08', '80'})
+2025-08-24 01:05:48,755 - venv - INFO - Обновлена статистика кампании 120231896621750345 с CPC из Facebook: None
+2025-08-24 01:05:48,758 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '6048_MY dekz40 18.08_2(vst1)' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '2', '08', '18'})
+2025-08-24 01:05:48,764 - venv - INFO - Обновлена статистика кампании 120231895157680345 с CPC из Facebook: None
+2025-08-24 01:05:48,766 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5556_TH 09.06 blogger monah2 V.1_2(lang1)' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
+2025-08-24 01:05:48,773 - venv - INFO - Обновлена статистика кампании 120231104711990345 с CPC из Facebook: None
+2025-08-24 01:05:48,775 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5451_k-78 mug zhena 28.07 kakmaks(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'k', '07'})
+2025-08-24 01:05:48,781 - venv - INFO - Обновлена статистика кампании 120230688444300345 с CPC из Facebook: None
+2025-08-24 01:05:48,783 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '5369_Y-67 TH short  monah(lang2)' → Keitaro 'TH 6193_K-94 TH y-52 podcast monah(vst2) 3' (общие: {'monah', 'th', 'y'})
+2025-08-24 01:05:48,788 - venv - INFO - Обновлена статистика кампании 120230472593120345 с CPC из Facebook: None
+2025-08-24 01:05:48,790 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'K-68 2monah vrach 17.07_2(lang1)' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'2', 'k', '17'})
+2025-08-24 01:05:48,797 - venv - INFO - Обновлена статистика кампании 120230289482370345 с CPC из Facebook: None
+2025-08-24 01:05:48,800 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB '21.07_Y-67 TH short  monah_2(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', 'monah', '07', 'th'})
+2025-08-24 01:05:48,806 - venv - INFO - Обновлена статистика кампании 120230285305850345 с CPC из Facebook: None
+2025-08-24 01:05:48,809 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH monah 72.3 21.07(1)' → Keitaro 'TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1' (общие: {'th', '1', '3'})
+2025-08-24 01:05:48,814 - venv - INFO - Обновлена статистика кампании 120230128425010345 с CPC из Facebook: None
+2025-08-24 01:05:48,816 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 20.07 olegneizd 3(lang2)' → Keitaro 'TH 6190_K-96 TH sereg-podctast(vst1) 3' (общие: {'th', '3'})
+2025-08-24 01:05:48,822 - venv - INFO - Обновлена статистика кампании 120230085902090345 с CPC из Facebook: None
+2025-08-24 01:05:48,823 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH 20.07 olegneizd 2(lang2)' → Keitaro 'TH 5730_TH K-69 monah 23.07_2(Vst1) 4' (общие: {'2', '07', 'th'})
+2025-08-24 01:05:48,828 - venv - INFO - Обновлена статистика кампании 120230085814640345 с CPC из Facebook: None
+2025-08-24 01:05:48,829 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH Goldotzv2 18.07(lang3)' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'th', '18'})
+2025-08-24 01:05:48,833 - venv - INFO - Обновлена статистика кампании 120230026604440345 с CPC из Facebook: None
+2025-08-24 01:05:48,834 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH swype_ilyak2 monah(2)' → Keitaro 'TH 6033_K-84 TH voltaren1 15.08(vst2) 2' (общие: {'2', 'th'})
+2025-08-24 01:05:48,839 - venv - INFO - Обновлена статистика кампании 120229979179030345 с CPC из Facebook: None
+2025-08-24 01:05:48,840 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'TH monah 72.2 17.07_1(lang2)' → Keitaro 'TH 6019_K-85 TH LimonchellaBorya_2(vst1) 1' (общие: {'2', 'th', '1'})
+2025-08-24 01:05:48,845 - venv - INFO - Обновлена статистика кампании 120229977871790345 с CPC из Facebook: None
+2025-08-24 01:05:48,847 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-24 01:05:49,544 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1368
+2025-08-24 01:05:49,545 - __main__ - INFO - Получено 72 адсетов для аккаунта 1229693575829178
+2025-08-24 01:05:49,549 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 5' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 5' (общие: {'k', '5', '1', 'vst1', 'my'})
+2025-08-24 01:05:49,556 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'k', '17', '1', '08', 'my'})
+2025-08-24 01:05:49,564 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'k', '3', '17', '08', 'my'})
+2025-08-24 01:05:49,573 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 2' → Keitaro 'MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 2' (общие: {'2', 'k', '1', 'vst1', 'my'})
+2025-08-24 01:05:49,583 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6062_K-88 MY Z-SWIPE-1 otzv 17.08(vst1) 1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'k', '17', '1', '08', 'my'})
+2025-08-24 01:05:49,591 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 4' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 4' (общие: {'my', '4', 'k', '17', 'voltaren1', '08', '80'})
+2025-08-24 01:05:49,597 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 3' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 3' (общие: {'my', 'k', '3', '17', 'voltaren1', '08', '80'})
+2025-08-24 01:05:49,604 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 2' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 2' (общие: {'my', '2', 'k', '17', 'voltaren1', '08', '80'})
+2025-08-24 01:05:49,612 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 5' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 5' (общие: {'my', 'k', '17', '5', 'voltaren1', '08', '80'})
+2025-08-24 01:05:49,618 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6055_K-80 MY voltaren1 17.08(vst1) 1' → Keitaro 'MY 6057_K-80 MY voltaren1 17.08(vst2) 1' (общие: {'my', 'k', '17', 'voltaren1', '1', '08', '80'})
+2025-08-24 01:05:49,626 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 4' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '2', '08', '18'})
+2025-08-24 01:05:49,632 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 5' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '2', '08', '18'})
+2025-08-24 01:05:49,639 - __main__ - DEBUG - [STRONG MATCH by ADSET] FB 'MY 6048_MY dekz40 18.08_2(vst1) 2' → Keitaro 'TH 6050_K-89 TH novostik  18.08_2(vst1) 2' (общие: {'vst1', '2', '08', '18'})

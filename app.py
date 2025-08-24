@@ -1362,7 +1362,7 @@ def manual_import_bulk():
 def save_manual_adsets():
     """Сохраняет адсеты из ручного ввода"""
     try:
-        user_id = session['refresh_adsets_with_keitaro()']
+        user_id = session['user_id']
         data = request.json.get('adsets', [])
         
         if not data:
@@ -1934,16 +1934,18 @@ def update_adset_budget_facebook(adset_id, new_budget, access_token):
         response.raise_for_status()
         result = response.json()
         
+        logger.info(f"Facebook API response for budget update: {result}")
+        
         if result.get('success') or result.get('id') == adset_id:
             return True
         else:
-            logger.error(f"Ошибка обновления бюджета: {result}")
+            error_msg = result.get('error', {}).get('message', 'Unknown error')
+            logger.error(f"Facebook API error: {error_msg}")
             return False
             
     except Exception as e:
         logger.error(f"Ошибка обновления бюджета через Facebook API: {e}")
         return False
-
 def update_user_adset_budget(user_id, adset_id, new_budget):
     """Обновляет бюджет адсета в базе данных"""
     try:
@@ -2017,10 +2019,9 @@ def update_adset_budget_settings():
         logger.error(f"Ошибка обновления настроек бюджета: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
-@app.route('/api/adset/set_budget', methods=['POST'])
+@app.route('/api/adset/budget', methods=['POST'])
 @login_required
 def set_adset_budget_api():
-    """Ручное установление бюджета адсета"""
     try:
         user_id = session['user_id']
         data = request.json
@@ -2029,6 +2030,9 @@ def set_adset_budget_api():
         name = data.get('name')
         token = data.get('token')
         new_budget = float(data.get('budget', 0))
+        
+        if not all([adset_id, name, token]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
         
         # Обновляем через Facebook API
         success = update_adset_budget_facebook(adset_id, new_budget, token)
@@ -2041,9 +2045,13 @@ def set_adset_budget_api():
             logger.info(msg)
             send_telegram_message(msg, user_id=user_id)
             
-            return jsonify({'success': True, 'message': msg})
+            return jsonify({
+                'success': True, 
+                'message': msg,
+                'new_budget': new_budget
+            })
         else:
-            return jsonify({'success': False, 'error': 'Ошибка установки бюджета'})
+            return jsonify({'success': False, 'error': 'Ошибка установки бюджета через Facebook API'})
             
     except Exception as e:
         logger.error(f"Ошибка установки бюджета: {e}")
@@ -2500,7 +2508,48 @@ def save_and_sync():
     except Exception as e:
         logger.error(f"Критическая ошибка синхронизации: {e}")
         return jsonify({'success': False, 'error': str(e)})
-
+@app.route('/api/adsets/sync_status', methods=['POST'])
+@login_required
+def sync_adsets_status():
+    """Синхронизирует статусы адсетов с Facebook API"""
+    try:
+        user_id = session['user_id']
+        adsets = get_user_adsets(user_id)
+        
+        updated_count = 0
+        for adset in adsets:
+            try:
+                # Получаем актуальный статус из Facebook
+                url = f"https://graph.facebook.com/v18.0/{adset['adset_id']}"
+                params = {
+                    'fields': 'status,effective_status',
+                    'access_token': adset['token']
+                }
+                
+                response = requests.get(url, params=params, timeout=10)
+                response.raise_for_status()
+                data = response.json()
+                
+                if 'error' not in data:
+                    new_status = data.get('status') or data.get('effective_status')
+                    if new_status and new_status != adset['status']:
+                        # Обновляем статус в базе
+                        update_user_adset_status(user_id, adset['adset_id'], new_status)
+                        updated_count += 1
+                        
+            except Exception as e:
+                logger.error(f"Ошибка синхронизации статуса для адсета {adset['adset_id']}: {e}")
+                continue
+        
+        return jsonify({
+            'success': True,
+            'message': f'Обновлено {updated_count} статусов адсетов',
+            'updated_count': updated_count
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка синхронизации статусов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 def normalize_campaign_name(name):
     """Нормализует название кампании для поиска (без regex)"""
     if not name:
@@ -2663,9 +2712,15 @@ def get_adsets_api():
     try:
         adsets = get_user_adsets(session['user_id'])
         print(f"DEBUG: Found {len(adsets)} adsets")
+        
+        # Проверяем структуру данных
+        if adsets and len(adsets) > 0:
+            print(f"DEBUG: First adset structure: {adsets[0]}")
+        
         return jsonify({
             'success': True,
-            'data': adsets
+            'data': adsets,
+            'count': len(adsets)
         })
     except Exception as e:
         logger.error(f"Error getting adsets: {e}")

@@ -247,38 +247,78 @@ function syncAllData() {
 }
 // Также добавьте глобальную функцию для доступа из HTML
 window.syncAllData = syncAllData;
-    function loadAdsets() {
-        console.log('Загрузка адсетов...');
-        showLoading();
-        
-        fetch('/api/adsets')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+function loadAdsets() {
+    console.log('Загрузка адсетов...');
+    showLoading();
+    
+    fetch('/api/adsets')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Проверяем структуру данных
+                console.log('Adsets data structure:', data);
+                
+                // Обрабатываем разные форматы данных
+                const adsetsData = Array.isArray(data.data) ? data.data : 
+                                 Array.isArray(data.adsets) ? data.adsets : 
+                                 Array.isArray(data) ? data : [];
+                
+                console.log('Processed adsets data:', adsetsData);
+                
+                if (adsetsData.length > 0) {
+                    // Проверяем структуру первого элемента
+                    console.log('First adset structure:', adsetsData[0]);
                 }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    adsetsData = data.data || [];
-                    renderAdsets(adsetsData);
-                    addLogEntry('Список адсетов обновлён');
-                    
-                    if (adsetsData.length === 0) {
-                        showInfo('Нет данных', 'Адсеты не найдены. Импортируйте данные сначала.');
-                    }
-                } else {
-                    showError('Ошибка загрузки адсетов', data.error || 'Неизвестная ошибка');
+                
+                renderAdsets(adsetsData);
+                addLogEntry('Список адсетов обновлён');
+                
+                if (adsetsData.length === 0) {
+                    showInfo('Нет данных', 'Адсеты не найдены. Импортируйте данные сначала.');
                 }
-            })
-            .catch(error => {
-                console.error('Ошибка загрузки адсетов:', error);
-                showError('Ошибка загрузки адсетов', error.message);
-            })
-            .finally(() => {
-                hideLoading();
-            });
+            } else {
+                showError('Ошибка загрузки адсетов', data.error || 'Неизвестная ошибка');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки адсетов:', error);
+            showError('Ошибка загрузки адсетов', error.message);
+        })
+        .finally(() => {
+            hideLoading();
+        });
+}
+function debugDataStructure(data) {
+    if (!data || typeof data !== 'object') {
+        console.log('Data is not an object or is null');
+        return;
     }
+    
+    console.log('=== DATA STRUCTURE ANALYSIS ===');
+    console.log('Type:', Array.isArray(data) ? 'Array' : 'Object');
+    
+    if (Array.isArray(data) && data.length > 0) {
+        console.log('Array length:', data.length);
+        console.log('First item keys:', Object.keys(data[0]));
+        console.log('First item:', data[0]);
+    } else if (typeof data === 'object') {
+        console.log('Object keys:', Object.keys(data));
+        for (const key in data) {
+            if (Array.isArray(data[key]) && data[key].length > 0) {
+                console.log(`Array ${key} first item:`, data[key][0]);
+            }
+        }
+    }
+    console.log('=== END ANALYSIS ===');
+}
+
+// Используйте в loadAdsets:
+// debugDataStructure(data);
 function renderAdsets(data) {
     if (!window.adsetsTable) {
         console.error('DataTable не инициализирован');
@@ -293,19 +333,22 @@ function renderAdsets(data) {
     }
     
     data.forEach(adset => {
+        // Убедимся, что статус правильно извлекается
+        const status = adset.status || adset.effective_status || 'UNKNOWN';
+        
         const row = [
-            createCheckboxCell(adset), // 0: Чекбокс
-            adset.name || 'N/A', // 1: Название
-            createStatusCell(adset.status), // 2: Статус
-            adset.ucpc || 0, // 3: uCPC
-            adset.cpc || 0, // 4: CPC из Facebook
-            adset.spend || 0, // 5: Spend
-            adset.cpa || 0, // 6: CPA
-            adset.leads || 0, // 7: Leads
-            adset.geo || 'N/A', // 8: GEO
-            adset.king || 'N/A', // 9: King
-            adset.budget || 0, // 10: Бюджет
-            createActionsCell(adset) // 11: Действия
+            createCheckboxCell(adset),
+            adset.name || 'N/A',
+            createStatusCell(status), // Используем нормализованный статус
+            adset.ucpc ? parseFloat(adset.ucpc).toFixed(2) : '0.00',
+            adset.cpc ? parseFloat(adset.cpc).toFixed(2) : '0.00',
+            adset.spend ? parseFloat(adset.spend).toFixed(2) : '0.00',
+            adset.cpa ? parseFloat(adset.cpa).toFixed(2) : '0.00',
+            adset.leads || 0,
+            adset.geo || 'N/A',
+            adset.king || 'N/A',
+            adset.budget ? parseFloat(adset.budget).toFixed(2) : '0.00',
+            createActionsCell(adset, status) // Передаем статус в actions
         ];
         
         window.adsetsTable.row.add(row);
@@ -374,23 +417,83 @@ function createAutoBudgetCell(value) {
     const icon = isEnabled ? 'bi-check-circle-fill' : 'bi-x-circle-fill';
     return `<i class="bi ${icon} ${colorClass}"></i>`;
 }
-    function createCheckboxCell(adset) {
-        return `
-            <input type="checkbox" class="form-check-input adset-checkbox" 
-                   data-id="${adset.adset_id}" 
-                   onchange="toggleAdsetSelection('${adset.adset_id}', this.checked)">
-        `;
+function createCheckboxCell(adset) {
+    const adsetId = adset.adset_id || adset.adsetId || adset.id || '';
+    if (!adsetId) {
+        return '<input type="checkbox" class="form-check-input" disabled>';
     }
     
-    function createStatusCell(status) {
-        const statusClass = status === 'ACTIVE' ? 'bg-success' : 'bg-secondary';
-        return `<span class="badge ${statusClass}">${status}</span>`;
+    return `
+        <input type="checkbox" class="form-check-input adset-checkbox" 
+               data-id="${adsetId}" 
+               onchange="toggleAdsetSelection('${adsetId}', this.checked)">
+    `;
+}
+function createStatusCell(status) {
+    // Добавляем проверку на undefined и null
+    if (!status || status === undefined || status === null) {
+        return '<span class="badge bg-warning">UNKNOWN</span>';
     }
     
-    function createActionsCell(adset) {
+    const statusUpper = String(status).toUpperCase().trim();
+    let statusClass = 'bg-secondary';
+    let displayStatus = statusUpper;
+    
+    // Нормализация статусов
+    if (statusUpper === 'ACTIVE' || statusUpper === 'ENABLED' || statusUpper === '1') {
+        statusClass = 'bg-success';
+        displayStatus = 'ACTIVE';
+    } else if (statusUpper === 'PAUSED' || statusUpper === 'DISABLED' || statusUpper === '0') {
+        statusClass = 'bg-secondary';
+        displayStatus = 'PAUSED';
+    } else if (statusUpper.includes('ERROR') || statusUpper.includes('FAIL')) {
+        statusClass = 'bg-danger';
+    } else if (statusUpper.includes('PENDING') || statusUpper.includes('REVIEW')) {
+        statusClass = 'bg-warning';
+    } else if (statusUpper === 'UNKNOWN' || statusUpper === 'N/A') {
+        statusClass = 'bg-warning';
+    }
+    
+    return `<span class="badge ${statusClass}">${displayStatus}</span>`;
+}
+function syncAdsetsStatus() {
+    const btn = document.getElementById('syncStatusBtn');
+    const originalText = btn.innerHTML;
+    
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Синхронизация...';
+    
+    fetch('/api/adsets/sync_status', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire('Успех!', data.message, 'success');
+            // Перезагружаем данные
+            setTimeout(loadAdsets, 1000);
+        } else {
+            showError('Ошибка синхронизации', data.error);
+        }
+    })
+    .catch(error => {
+        showError('Ошибка синхронизации', error);
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+    });
+}
+function createActionsCell(adset, status) {
+    const normalizedStatus = status.toUpperCase().trim();
+    const isActive = normalizedStatus === 'ACTIVE' || normalizedStatus === 'ENABLED';
+    
     return `
         <div class="btn-group-sm">
-            ${adset.status === 'ACTIVE' ? `
+            ${isActive ? `
                 <button class="btn btn-sm btn-danger pause-btn" 
                         onclick="pauseAdset('${adset.adset_id}', '${adset.token}', '${adset.name.replace(/'/g, "\\'")}')">
                     <i class="bi bi-pause-fill"></i>
@@ -1151,20 +1254,30 @@ function renderAdsets(data) {
         return;
     }
     
+    console.log('Rendering adsets data:', data); // Для отладки
+    
     data.forEach(adset => {
+        // Безопасное извлечение статуса с fallback значениями
+        const status = adset.status || adset.effective_status || adset.Status || 'UNKNOWN';
+        const name = adset.name || adset.Name || 'N/A';
+        const adsetId = adset.adset_id || adset.adsetId || adset.id || 'N/A';
+        const token = adset.token || '';
+        const geo = adset.geo || 'N/A';
+        const king = adset.king || 'N/A';
+        
         const row = [
-            createCheckboxCell(adset), // 0: Чекбокс
-            adset.name || 'N/A', // 1: Название
-            createStatusCell(adset.status), // 2: Статус
-            adset.ucpc ? parseFloat(adset.ucpc).toFixed(2) : '0.00', // 3: uCPC
-            adset.cpc ? parseFloat(adset.cpc).toFixed(2) : '0.00', // 4: CPC из Facebook
-            adset.spend ? parseFloat(adset.spend).toFixed(2) : '0.00', // 5: Spend
-            adset.cpa ? parseFloat(adset.cpa).toFixed(2) : '0.00', // 6: CPA
-            adset.leads || 0, // 7: Leads
-            adset.geo || 'N/A', // 8: GEO
-            adset.king || 'N/A', // 9: King
-            adset.budget ? parseFloat(adset.budget).toFixed(2) : '0.00', // 10: Бюджет
-            createActionsCell(adset) // 11: Действия
+            createCheckboxCell(adset),
+            name,
+            createStatusCell(status),
+            adset.ucpc ? parseFloat(adset.ucpc).toFixed(2) : '0.00',
+            adset.cpc ? parseFloat(adset.cpc).toFixed(2) : '0.00',
+            adset.spend ? parseFloat(adset.spend).toFixed(2) : '0.00',
+            adset.cpa ? parseFloat(adset.cpa).toFixed(2) : '0.00',
+            adset.leads || 0,
+            geo,
+            king,
+            adset.budget ? parseFloat(adset.budget).toFixed(2) : '0.00',
+            createActionsCell(adset, status)
         ];
         
         window.adsetsTable.row.add(row);
@@ -1314,22 +1427,36 @@ function addAutoBudgetButton() {
 }
 
 // Обновляем функцию createActionsCell для добавления кнопки настроек бюджета
-function createActionsCell(adset) {
+function createActionsCell(adset, status) {
+    // Безопасное определение статуса
+    const normalizedStatus = status ? String(status).toUpperCase().trim() : 'UNKNOWN';
+    const isActive = normalizedStatus === 'ACTIVE' || normalizedStatus === 'ENABLED' || normalizedStatus === '1';
+    
+    // Безопасное извлечение данных
+    const adsetId = adset.adset_id || adset.adsetId || adset.id || '';
+    const token = adset.token || '';
+    const name = adset.name || adset.Name || '';
+    const safeName = name.replace(/'/g, "\\'");
+    
+    if (!adsetId || !token) {
+        return '<div class="btn-group-sm"><span class="text-muted">Нет данных</span></div>';
+    }
+    
     return `
         <div class="btn-group-sm">
-            ${adset.status === 'ACTIVE' ? `
+            ${isActive ? `
                 <button class="btn btn-sm btn-danger pause-btn" 
-                        onclick="pauseAdset('${adset.adset_id}', '${adset.token}', '${adset.name.replace(/'/g, "\\'")}')">
+                        onclick="pauseAdset('${adsetId}', '${token}', '${safeName}')">
                     <i class="bi bi-pause-fill"></i>
                 </button>
             ` : `
                 <button class="btn btn-sm btn-success resume-btn" 
-                        onclick="resumeAdset('${adset.adset_id}', '${adset.token}', '${adset.name.replace(/'/g, "\\'")}')">
+                        onclick="resumeAdset('${adsetId}', '${token}', '${safeName}')">
                     <i class="bi bi-play-fill"></i>
                 </button>
             `}
             <button class="btn btn-sm btn-info budget-settings-btn" 
-                    onclick="openBudgetSettings('${adset.adset_id}', '${adset.name.replace(/'/g, "\\'")}')">
+                    onclick="openBudgetSettings('${adsetId}', '${safeName}')">
                 <i class="bi bi-gear-fill"></i>
             </button>
         </div>
