@@ -2146,6 +2146,94 @@ def sync_keitaro_only():
     except Exception as e:
         logger.error(f"Ошибка синхронизации Keitaro: {e}")
         return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/campaign/status', methods=['POST'])
+@login_required
+def update_campaign_status():
+    """Обновляет статус кампании"""
+    try:
+        data = request.json
+        campaign_id = data.get('campaign_id')
+        name = data.get('name')
+        token = data.get('token')
+        new_status = data.get('status')  # 'ACTIVE' или 'PAUSED'
+        
+        if not all([campaign_id, name, token, new_status]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        if new_status not in ['ACTIVE', 'PAUSED']:
+            return jsonify({'success': False, 'error': 'Invalid status'})
+        
+        # Обновляем через Facebook API
+        url = f"https://graph.facebook.com/v18.0/{campaign_id}"
+        response = requests.post(
+            url,
+            params={"access_token": token},
+            data={"status": new_status},
+            timeout=10
+        )
+        response.raise_for_status()
+        result = response.json()
+        
+        if result.get('success') or result.get('id') == campaign_id:
+            # Обновляем статус в базе данных
+            update_user_campaign_status(session['user_id'], campaign_id, new_status)
+            
+            status_emoji = "🟢" if new_status == 'ACTIVE' else "🔴"
+            logger.info(f"{status_emoji} Кампания «{name}» статус изменен на {new_status}")
+            send_telegram_message(f"{status_emoji} Кампания «{name}» статус изменен на {new_status}")
+            
+            return jsonify({'success': True, 'new_status': new_status})
+        else:
+            error_msg = result.get('error', {}).get('message', 'Unknown error')
+            raise Exception(f"Facebook API error: {error_msg}")
+            
+    except Exception as e:
+        logger.error(f"Ошибка изменения статуса кампании «{data.get('name', 'unknown')}»: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/adset/status', methods=['POST'])
+@login_required
+def update_adset_status():
+    """Обновляет статус адсета"""
+    try:
+        data = request.json
+        adset_id = data.get('adset_id')
+        name = data.get('name')
+        token = data.get('token')
+        new_status = data.get('status')  # 'ACTIVE' или 'PAUSED'
+        
+        if not all([adset_id, name, token, new_status]):
+            return jsonify({'success': False, 'error': 'Missing required parameters'})
+        
+        if new_status not in ['ACTIVE', 'PAUSED']:
+            return jsonify({'success': False, 'error': 'Invalid status'})
+        
+        # Обновляем через Facebook API
+        url = f"https://graph.facebook.com/v18.0/{adset_id}"
+        response = requests.post(
+            url,
+            params={"access_token": token},
+            data={"status": new_status},
+            timeout=10
+        )
+        response.raise_for_status()
+        result = response.json()
+        
+        if result.get('success') or result.get('id') == adset_id:
+            # Обновляем статус в базе данных
+            update_user_adset_status(session['user_id'], adset_id, new_status)
+            
+            status_emoji = "🟢" if new_status == 'ACTIVE' else "🔴"
+            logger.info(f"{status_emoji} AdSet «{name}» статус изменен на {new_status}")
+            send_telegram_message(f"{status_emoji} AdSet «{name}» статус изменен на {new_status}")
+            
+            return jsonify({'success': True, 'new_status': new_status})
+        else:
+            error_msg = result.get('error', {}).get('message', 'Unknown error')
+            raise Exception(f"Facebook API error: {error_msg}")
+            
+    except Exception as e:
+        logger.error(f"Ошибка изменения статуса AdSet «{data.get('name', 'unknown')}»: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 def get_budget_rules(user_id):
     """Получает правила бюджета для пользователя"""
     try:
