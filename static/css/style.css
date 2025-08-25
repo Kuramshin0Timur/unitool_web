@@ -290,3 +290,109 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
 }
+/* admin_panel.css */
+.account-status-active { 
+    background-color: rgba(40, 167, 69, 0.1) !important;
+}
+
+.account-status-disabled { 
+    background-color: rgba(220, 53, 69, 0.1) !important;
+}
+
+.account-status-pending { 
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+.stat-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.refresh-btn {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.refresh-btn:hover {
+    color: #007bff;
+    transform: rotate(180deg);
+}
+
+.progress {
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.badge {
+    font-size: 0.85em;
+    padding: 0.5em 0.75em;
+}
+
+.btn-group-vertical .btn {
+    margin-bottom: 0.25rem;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn-group-vertical {
+        flex-direction: row;
+    }
+    
+    .btn-group-vertical .btn {
+        margin-bottom: 0;
+        margin-right: 0.25rem;
+    }
+}
+
+/* Кастомные скроллбары */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

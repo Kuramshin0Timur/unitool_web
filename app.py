@@ -266,7 +266,285 @@ def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
     except Exception as e:
         logger.warning(f"Telegram сообщение не отправлено: {e}")
         return False
+import json
+from typing import Any, Dict, List
 
+# Добавьте в начало файла с другими импортами
+import requests
+
+
+def get_all_users() -> List[Dict[str, Any]]:
+    """Получает список всех пользователей"""
+    try:
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, username, created_at FROM users ORDER BY created_at DESC")
+            return [dict(row) for row in cursor.fetchall()]
+    except Exception as e:
+        logger.error(f"Ошибка получения списка пользователей: {e}")
+        return []
+def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
+    """Получает статистику по аккаунтам пользователя с проверкой валидности"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем ВСЕ аккаунты, включая невалидные
+            cursor.execute("""
+                SELECT DISTINCT account_id, token 
+                FROM campaigns 
+                WHERE user_id = ? 
+                AND account_id IS NOT NULL
+            """, (user_id,))
+            
+            accounts = []
+            for row in cursor.fetchall():
+                account_id = row['account_id']
+                token = row['token']
+                
+                # Добавляем даже невалидные аккаунты для отображения
+                accounts.append({
+                    'account_id': account_id or 'N/A',
+                    'token': token or 'N/A'
+                })
+            
+            logger.info(f"Найдено {len(accounts)} аккаунтов у пользователя {user_id}")
+            return accounts
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения статистики аккаунтов пользователя {user_id}: {e}")
+        return []
+@app.route('/api/admin/test_tokens')
+@login_required
+def test_tokens():
+    """Тестирует токены всех аккаунтов"""
+    if not is_admin_user(session['user_id']):
+        return jsonify({'success': False, 'error': 'Доступ запрещен'})
+    
+    try:
+        all_accounts = get_all_accounts_stats()
+        results = []
+        
+        for account in all_accounts:
+            account_info = get_account_limits_info(account['account_id'], account['token'])
+            
+            result = {
+                'user_id': account['user_id'],
+                'username': account['username'],
+                'account_id': account['account_id'],
+                'token_valid': False,
+                'error': None
+            }
+            
+            if account_info:
+                if 'error' in account_info:
+                    result['error'] = account_info['error']
+                else:
+                    result['token_valid'] = True
+                    result['account_name'] = account_info['name']
+                    result['status'] = account_info['status']
+            
+            results.append(result)
+        
+        return jsonify({
+            'success': True,
+            'results': results
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка тестирования токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/admin/debug_accounts')
+@login_required
+def debug_accounts():
+    """Отладочная информация об аккаунтах"""
+    if not is_admin_user(session['user_id']):
+        return jsonify({'success': False, 'error': 'Доступ запрещен'})
+    
+    try:
+        # Получаем сырые данные
+        users = get_all_users()
+        all_accounts_data = get_all_accounts_stats()
+        
+        # Проверяем аккаунты
+        checked_accounts = []
+        for account_data in all_accounts_data:
+            account_info = get_account_limits_info(account_data['account_id'], account_data['token'])
+            if account_info:
+                account_info.update(account_data)
+                checked_accounts.append(account_info)
+        
+        return jsonify({
+            'success': True,
+            'users_count': len(users),
+            'raw_accounts_count': len(all_accounts_data),
+            'valid_accounts_count': len(checked_accounts),
+            'users': users,
+            'raw_accounts': all_accounts_data[:10],  # Первые 10 для отладки
+            'valid_accounts': checked_accounts[:10]   # Первые 10 для отладки
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка отладки аккаунтов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+def get_all_accounts_stats() -> List[Dict[str, Any]]:
+    """Получает статистику по всем аккаунтам всех пользователей"""
+    try:
+        users = get_all_users()
+        all_accounts = []
+        
+        for user in users:
+            user_id = user['id']
+            try:
+                # Получаем аккаунты пользователя
+                accounts = get_user_accounts_stats(user_id)
+                
+                for account in accounts:
+                    account_info = {
+                        'user_id': user_id,
+                        'username': user['username'],
+                        'account_id': account['account_id'],
+                        'token': account['token']
+                    }
+                    all_accounts.append(account_info)
+                    
+            except Exception as e:
+                logger.error(f"Ошибка получения аккаунтов пользователя {user_id}: {e}")
+                continue
+        
+        logger.info(f"Найдено {len(all_accounts)} аккаунтов у {len(users)} пользователей")
+        return all_accounts
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения статистики всех аккаунтов: {e}")
+        return []
+def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any]:
+    """Получает информацию о лимитах аккаунта из Facebook API"""
+    try:
+        # Проверяем валидность входных данных
+        if not account_id or account_id == 'N/A' or not access_token or access_token == 'N/A':
+            return {
+                'account_id': account_id or 'unknown',
+                'name': 'Невалидные данные',
+                'status': 'INVALID_DATA',
+                'spend': 0,
+                'balance': 0,
+                'spend_cap': 0,
+                'daily_limit': 0,
+                'requests_today': 0,
+                'requests_limit': 100,
+                'requests_usage_percent': 0,
+                'error': 'Невалидный account_id или token'
+            }
+        
+        clean_account_id = account_id.replace('act_', '')
+        
+        url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}"
+        
+        # Упрощенные поля
+        params = {
+            'fields': 'id,name,account_status,amount_spent,balance,spend_cap',
+            'access_token': access_token
+        }
+        
+        response = requests.get(url, params=params, timeout=10)
+        data = response.json()
+        
+        # Проверяем наличие ошибок
+        if 'error' in data:
+            error_msg = data['error'].get('message', 'Unknown error')
+            error_code = data['error'].get('code', 'Unknown')
+            
+            return {
+                'account_id': clean_account_id,
+                'name': f'Ошибка: {error_code}',
+                'status': 'API_ERROR',
+                'spend': 0,
+                'balance': 0,
+                'spend_cap': 0,
+                'daily_limit': 0,
+                'requests_today': 0,
+                'requests_limit': 100,
+                'requests_usage_percent': 0,
+                'error': f"{error_code}: {error_msg}"
+            }
+        
+        # Успешный ответ
+        return {
+            'account_id': clean_account_id,
+            'name': data.get('name', 'N/A'),
+            'status': data.get('account_status', 'UNKNOWN'),
+            'spend': float(data.get('amount_spent', 0)) / 100,
+            'balance': float(data.get('balance', 0)) / 100,
+            'spend_cap': float(data.get('spend_cap', 0)) / 100,
+            'daily_limit': 0,
+            'requests_today': 0,
+            'requests_limit': 100,
+            'requests_usage_percent': 0
+        }
+        
+    except requests.exceptions.RequestException as e:
+        return {
+            'account_id': account_id.replace('act_', ''),
+            'name': 'Ошибка сети',
+            'status': 'NETWORK_ERROR',
+            'spend': 0,
+            'balance': 0,
+            'spend_cap': 0,
+            'daily_limit': 0,
+            'requests_today': 0,
+            'requests_limit': 100,
+            'requests_usage_percent': 0,
+            'error': f"Ошибка сети: {str(e)}"
+        }
+    except Exception as e:
+        return {
+            'account_id': account_id.replace('act_', ''),
+            'name': 'Неизвестная ошибка',
+            'status': 'ERROR',
+            'spend': 0,
+            'balance': 0,
+            'spend_cap': 0,
+            'daily_limit': 0,
+            'requests_today': 0,
+            'requests_limit': 100,
+            'requests_usage_percent': 0,
+            'error': f"Неизвестная ошибка: {str(e)}"
+        }
+def get_reserve_tokens(user_id: int, king: str = None) -> Dict[str, List[str]]:
+    """Получает резервные токены для конкретного KING или все"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            if king:
+                cursor.execute(
+                    "SELECT token FROM reserve_tokens WHERE user_id = ? AND king = ?",
+                    (user_id, king)
+                )
+            else:
+                cursor.execute(
+                    "SELECT king, token FROM reserve_tokens WHERE user_id = ?",
+                    (user_id,)
+                )
+            
+            tokens = {}
+            for row in cursor.fetchall():
+                if 'king' in row:
+                    k = row['king']
+                    token = row['token']
+                else:
+                    k = king
+                    token = row['token']
+                
+                if k not in tokens:
+                    tokens[k] = []
+                tokens[k].append(token)
+            
+            return tokens
+    except Exception as e:
+        logger.error(f"Ошибка получения резервных токенов: {e}")
+        return {}
 def auto_control(user_id):
     """Функция автоконтроля для работы с базой данных и резервными токенами"""
     try:
@@ -460,14 +738,22 @@ def auto_control(user_id):
 
 def is_admin_user(user_id):
     """Проверяет, является ли пользователь администратором"""
-    with get_db_connection(user_id) as conn:
-        cursor = conn.cursor()
-        cursor.execute("SELECT username FROM users WHERE id = ?", (user_id,))
-        user = cursor.fetchone()
-        
-        # Список администраторов - добавьте нужные username
-        admin_users = ['admin', 'boss', 'administrator', 'root']
-        return user and user['username'].lower() in admin_users
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT username FROM users WHERE id = ?", (user_id,))
+            user = cursor.fetchone()
+            
+            if not user:
+                return False
+            
+            # Список администраторов - можно хранить в настройках или отдельной таблице
+            admin_users = ['admin', 'administrator', 'root', 'boss', 'owner']
+            return user['username'].lower() in admin_users
+            
+    except Exception as e:
+        logger.error(f"Ошибка проверки прав администратора: {e}")
+        return False
 def get_facebook_account_limits(account_id, access_token):
     """Получает информацию о лимитах аккаунта из Facebook API"""
     try:
@@ -1003,18 +1289,6 @@ def save_manual_campaigns():
     except Exception as e:
         logger.error(f"Error saving manual campaigns: {e}")
         return jsonify({'success': False, 'error': str(e)})
-# Добавьте этот код в app.py
-# app.py - Update the geo_rules endpoint
-
-@app.route('/admin/limits')
-@login_required
-def admin_limits():
-    """Скрытая админ панель с лимитами аккаунтов"""
-    # Проверяем права доступа
-    if not is_admin_user(session['user_id']):
-        return render_template('access_denied.html')
-    
-    return render_template('admin_panel.html')
 
 @app.route('/api/admin/check_access')
 @login_required
@@ -2393,74 +2667,65 @@ def save_and_sync():
             parts = re.split(r'[\s\-_]+', clean_str.lower())
             # Убираем пустые строки
             return [p for p in parts if p]
-        def find_stats(fb_id=None, fb_name=None, fb_parent_name=None):
-            """Поиск данных Keitaro с улучшенным матчингом и проверкой дат"""
+        used_keys = set()  # глобально в save_and_sync, чтобы помнить, что уже использовали
+
+        def find_stats(fb_id=None, fb_name=None, fb_parent_name=None, fb_campaign_id=None):
+            """Поиск данных Keitaro с приоритетом и без повторов"""
             weak_words = {"monah", "test", "copy", "vst", "old", "archive"}
 
             def score_match(fb_parts, key_parts):
                 common = set(fb_parts) & set(key_parts)
-                if not common:
-                    return 0, common
-                # слабые слова не считаем
                 strong_common = {w for w in common if w not in weak_words}
                 return len(strong_common), common
 
-            # 1. По ID - самый точный матч
-            if fb_id and fb_id in keitaro_data:
-                logger.debug(f"[MATCH BY ID] FB {fb_id} → Keitaro {fb_id}")
+            # 1. По ID адсета
+            if fb_id and fb_id in keitaro_data and fb_id not in used_keys:
+                used_keys.add(fb_id)
                 return keitaro_data[fb_id]
 
-            # 2. По точному совпадению имени кампании
-            if fb_name and fb_name in keitaro_data:
-                logger.debug(f"[EXACT NAME MATCH] FB '{fb_name}' → Keitaro '{fb_name}'")
+            # 2. По ID кампании
+            if fb_campaign_id and fb_campaign_id in keitaro_data and fb_campaign_id not in used_keys:
+                used_keys.add(fb_campaign_id)
+                return keitaro_data[fb_campaign_id]
+
+            # 3. По точному имени
+            if fb_name and fb_name in keitaro_data and fb_name not in used_keys:
+                used_keys.add(fb_name)
                 return keitaro_data[fb_name]
 
-            # 3. По частичному совпадению с приоритетом по ID
+            # 4. Частичный матч
             candidates = []
             fb_sources = [(fb_name, "ADSET"), (fb_parent_name, "CAMPAIGN")]
-            
+
             for fb_source, label in fb_sources:
                 if not fb_source:
                     continue
-                
                 fb_parts = split_clean(fb_source)
                 if not fb_parts:
                     continue
-                    
+
                 for key, stats in keitaro_data.items():
-                    # Пропускаем записи с нулевым spend (старые данные)
-                    if stats.get('spend', 0) <= 0:
+                    if key in used_keys or stats.get('spend', 0) <= 0:
                         continue
-                        
                     key_parts = split_clean(key)
                     score, common = score_match(fb_parts, key_parts)
-                    
                     if score > 0:
-                        # Даем больший вес совпадениям по ID в названии
-                        id_bonus = 0
-                        if fb_id and fb_id in key:
-                            id_bonus = 5
-                        elif any(part.isdigit() and len(part) > 3 for part in key_parts):
-                            id_bonus = 2
-                            
+                        id_bonus = 5 if fb_id and fb_id in key else 0
                         total_score = score + id_bonus
                         candidates.append((total_score, key, stats, label, common))
 
             if not candidates:
-                logger.debug(f"[NO MATCH] FB(id={fb_id}, name={fb_name}, parent={fb_parent_name})")
                 return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0, 'cpc': 0}
 
-            # Сортируем кандидатов по score и отбираем лучший
             candidates.sort(key=lambda x: x[0], reverse=True)
             best_score, best_key, best_stats, best_label, best_common = candidates[0]
 
-            # Минимальный порог для принятия решения
-            if best_score >= 2:
-                logger.debug(f"[MATCH by {best_label}] FB '{fb_name or fb_parent_name}' → Keitaro '{best_key}' (score: {best_score}, общие: {best_common})")
+            if best_score >= 3:  # подняли порог
+                used_keys.add(best_key)
                 return best_stats
             else:
-                logger.debug(f"[WEAK MATCH IGNORED] FB '{fb_name or fb_parent_name}' → Keitaro '{best_key}' (score: {best_score})")
                 return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0, 'cpc': 0}
+
         saved_accounts = total_campaigns = total_adsets = keitaro_updated = 0
 
         for acc in accounts_data:
@@ -3299,6 +3564,151 @@ def apply_auto_budget_rules(user_id, adset):
     except Exception as e:
         logger.error(f"Ошибка применения авто-бюджета: {e}")
         return False
+# Добавьте эти маршруты в app.py
+
+@app.route('/admin/limits')
+@login_required
+def admin_limits():
+    """Админ панель с лимитами всех аккаунтов"""
+    if not is_admin_user(session['user_id']):
+        return render_template('access_denied.html')
+    
+    return render_template('admin_panel.html')
+@app.route('/api/admin/all_accounts_limits')
+@login_required
+def get_all_accounts_limits():
+    """Возвращает информацию о лимитах всех аккаунтов всех пользователей"""
+    if not is_admin_user(session['user_id']):
+        return jsonify({'success': False, 'error': 'Доступ запрещен'})
+    
+    try:
+        all_accounts_data = get_all_accounts_stats()
+        accounts_info = []
+        total_stats = {
+            'total_accounts': 0,
+            'active_accounts': 0,
+            'disabled_accounts': 0,
+            'error_accounts': 0,
+            'total_spend': 0,
+            'total_balance': 0,
+            'total_limit': 0,
+            'total_requests': 0
+        }
+        
+        for account_data in all_accounts_data:
+            account_info = get_account_limits_info(account_data['account_id'], account_data['token'])
+            
+            if account_info:
+                # Добавляем информацию о пользователе
+                account_info['user_id'] = account_data['user_id']
+                account_info['username'] = account_data['username']
+                accounts_info.append(account_info)
+                
+                # Обновляем общую статистику
+                total_stats['total_accounts'] += 1
+                
+                if account_info['status'] == 'ACTIVE':
+                    total_stats['active_accounts'] += 1
+                elif account_info['status'] in ['DISABLED', 'INVALID_DATA', 'API_ERROR', 'NETWORK_ERROR', 'ERROR']:
+                    total_stats['error_accounts'] += 1
+                else:
+                    total_stats['disabled_accounts'] += 1
+                
+                total_stats['total_spend'] += account_info.get('spend', 0)
+                total_stats['total_balance'] += account_info.get('balance', 0)
+                total_stats['total_limit'] += account_info.get('spend_cap', 0)
+                total_stats['total_requests'] += account_info.get('requests_today', 0)
+        
+        logger.info(f"Обработано {len(accounts_info)} аккаунтов из {len(all_accounts_data)}")
+        
+        return jsonify({
+            'success': True,
+            'stats': total_stats,
+            'accounts': accounts_info,
+            'debug': {
+                'total_raw_accounts': len(all_accounts_data),
+                'total_processed_accounts': len(accounts_info)
+            }
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения лимитов всех аккаунтов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/admin/users')
+@login_required
+def get_all_users_api():
+    """Возвращает список всех пользователей (только для админов)"""
+    if not is_admin_user(session['user_id']):
+        return jsonify({'success': False, 'error': 'Доступ запрещен'})
+    
+    try:
+        users = get_all_users()
+        return jsonify({
+            'success': True,
+            'users': users
+        })
+    except Exception as e:
+        logger.error(f"Ошибка получения списка пользователей: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/admin/user/<int:user_id>/accounts')
+@login_required
+def get_user_accounts_api(user_id):
+    """Возвращает аккаунты конкретного пользователя (только для админов)"""
+    if not is_admin_user(session['user_id']):
+        return jsonify({'success': False, 'error': 'Доступ запрещен'})
+    
+    try:
+        accounts = get_user_accounts_stats(user_id)
+        accounts_info = []
+        
+        for account in accounts:
+            account_info = get_account_limits_info(account['account_id'], account['token'])
+            if account_info:
+                accounts_info.append(account_info)
+        
+        return jsonify({
+            'success': True,
+            'accounts': accounts_info
+        })
+    except Exception as e:
+        logger.error(f"Ошибка получения аккаунтов пользователя {user_id}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/admin/reserve_tokens_stats')
+@login_required
+def get_reserve_tokens_stats():
+    """Возвращает статистику по резервным токенам всех пользователей"""
+    if not is_admin_user(session['user_id']):
+        return jsonify({'success': False, 'error': 'Доступ запрещен'})
+    
+    try:
+        users = get_all_users()
+        tokens_stats = []
+        
+        for user in users:
+            user_id = user['id']
+            tokens = get_reserve_tokens(user_id)
+            
+            if tokens:
+                total_tokens = sum(len(token_list) for token_list in tokens.values())
+                kings_count = len(tokens)
+                
+                tokens_stats.append({
+                    'user_id': user_id,
+                    'username': user['username'],
+                    'total_tokens': total_tokens,
+                    'kings_count': kings_count,
+                    'kings': list(tokens.keys())
+                })
+        
+        return jsonify({
+            'success': True,
+            'stats': tokens_stats
+        })
+    except Exception as e:
+        logger.error(f"Ошибка получения статистики резервных токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 def apply_auto_budget_rules(user_id, adset):
     """Применяет правила авто-бюджета к адсету"""
     current_budget = float(adset.get('budget', 0))
