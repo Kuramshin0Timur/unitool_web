@@ -1,5 +1,6 @@
 // settings.js - полная версия с автообновлением
 document.addEventListener('DOMContentLoaded', function() {
+    loadKeitaroCampaigns()
     // Загрузка текущих настроек
     loadSettings();
     
@@ -43,7 +44,9 @@ function loadSettings() {
                 document.getElementById('keitaroApiKey').value = config.keitaro_api_key || '';
                 document.getElementById('keitaroDomain').value = config.keitaro_domain || 'uniaffnu.com';
                 document.getElementById('keitaroRangeDays').value = config.keitaro_range_days || 1;
-                
+                document.getElementById('autoHeadlineOptimization').checked = config.auto_headline_optimization || false;
+                document.getElementById('headlineOptimizationInterval').value = config.headline_optimization_interval || 60;
+                document.getElementById('minRoiThreshold').value = config.min_roi_threshold || 20;
                 console.log('Настройки загружены успешно');
             } else {
                 console.error('Ошибка загрузки настроек:', data.error);
@@ -68,7 +71,10 @@ function saveSettings() {
         telegram_chat_id: document.getElementById('telegramChatId').value,
         keitaro_api_key: document.getElementById('keitaroApiKey').value,
         keitaro_domain: document.getElementById('keitaroDomain').value,
-        keitaro_range_days: parseInt(document.getElementById('keitaroRangeDays').value) || 1
+        keitaro_range_days: parseInt(document.getElementById('keitaroRangeDays').value) || 1,
+        auto_headline_optimization: document.getElementById('autoHeadlineOptimization').checked,
+        headline_optimization_interval: parseInt(document.getElementById('headlineOptimizationInterval').value) || 60,
+        min_roi_threshold: parseInt(document.getElementById('minRoiThreshold').value) || 20
     };
     
     console.log('Сохранение настроек:', settings);
@@ -467,3 +473,239 @@ function updateNextRefreshInfo() {
 
 // Запускаем обновление информации каждую минуту
 setInterval(updateNextRefreshInfo, 60000);
+// Добавить в конец файла
+document.getElementById('runHeadlineOptimization')?.addEventListener('click', runHeadlineOptimization);
+document.getElementById('headlineOptimizationStatus')?.addEventListener('click', checkHeadlineOptimizationStatus);
+
+function runHeadlineOptimization() {
+    const btn = document.getElementById('runHeadlineOptimization');
+    const originalText = btn.innerHTML;
+    
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Оптимизация...';
+    
+    fetch('/api/headline_optimization/run', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            campaign_id: 'all' // или можно выбрать конкретную кампанию
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Успех!',
+                text: data.message,
+                timer: 3000,
+                showConfirmButton: false
+            });
+            // Обновляем статус после оптимизации
+            setTimeout(checkHeadlineOptimizationStatus, 1000);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ошибка!',
+                text: data.error,
+                confirmButtonText: 'OK'
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Ошибка сети!',
+            text: 'Не удалось запустить оптимизацию',
+            confirmButtonText: 'OK'
+        });
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-lightning-fill"></i> Запустить оптимизацию';
+    });
+}
+function loadKeitaroCampaigns() {
+    fetch('/api/keitaro/campaigns')
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const select = document.getElementById('campaignSelect');
+            // Очищаем существующие options, кроме первого
+            while (select.options.length > 1) {
+                select.remove(1);
+            }
+            
+            // Добавляем кампании
+            data.campaigns.forEach(campaign => {
+                const option = document.createElement('option');
+                option.value = campaign.id;
+                option.textContent = `${campaign.name} (ID: ${campaign.id})`;
+                select.appendChild(option);
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка загрузки кампаний:', error);
+    });
+}
+
+// Обновите функцию checkHeadlineOptimizationStatus
+function checkHeadlineOptimizationStatus() {
+    const btn = document.getElementById('headlineOptimizationStatus');
+    const originalText = btn.innerHTML;
+    
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Проверка...';
+    
+    // Получаем выбранную кампанию
+    const campaignSelect = document.getElementById('campaignSelect');
+    const campaignId = campaignSelect ? campaignSelect.value : 'all';
+    
+    fetch(`/api/headline_optimization/status?campaign_id=${campaignId}`)
+    .then(response => response.json())
+    .then(data => {
+        const resultsContainer = document.getElementById('headlineOptimizationResults');
+        
+        if (data.success) {
+            if (data.streams && data.streams.length > 0) {
+                let html = `<h6>Статус потоков: ${data.campaign_id === 'all' ? 'Все кампании' : 'Кампания ' + data.campaign_id}</h6>`;
+                html += `<p class="small">Всего потоков: ${data.total_streams}, Активных: ${data.active_streams}</p>`;
+                html += '<div class="table-responsive"><table class="table table-sm table-striped stream-table">';
+                html += '<thead><tr><th>Кампания</th><th>Поток</th><th>Вес</th><th>Конв.</th><th>Расход</th><th>Доход</th><th>ROI</th><th>Статус</th><th>Действия</th></tr></thead><tbody>';
+                
+                data.streams.forEach(stream => {
+                    const isActive = stream.is_active ? '✅' : '❌';
+                    const roiClass = stream.roi >= 0 ? 'text-success' : 'text-danger';
+                    const roiIcon = stream.roi >= 0 ? '📈' : '📉';
+                    
+                    html += `<tr>
+                        <td>${stream.campaign_name || 'N/A'}</td>
+                        <td>${stream.name}</td>
+                        <td>${stream.weight}%</td>
+                        <td>${stream.conversions}</td>
+                        <td>$${stream.cost.toFixed(2)}</td>
+                        <td>$${stream.revenue.toFixed(2)}</td>
+                        <td class="${roiClass} fw-bold">${roiIcon} ${stream.roi.toFixed(1)}%</td>
+                        <td>${isActive}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <input type="number" class="form-control form-control-sm weight-control" 
+                                    value="${stream.weight}" min="0" max="100" 
+                                    onchange="updateStreamWeight(${stream.id}, this.value)"
+                                    style="width: 60px;">
+                            </div>
+                        </td>
+                    </tr>`;
+                });
+                
+                html += '</tbody></table></div>';
+                resultsContainer.innerHTML = html;
+            } else {
+                resultsContainer.innerHTML = '<div class="alert alert-info">Нет данных о потоках</div>';
+            }
+        } else {
+            resultsContainer.innerHTML = `<div class="alert alert-danger">Ошибка: ${data.error}</div>`;
+        }
+    })
+    .catch(error => {
+        document.getElementById('headlineOptimizationResults').innerHTML = 
+            '<div class="alert alert-danger">Ошибка получения статуса</div>';
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-info-circle"></i> Статус';
+    });
+}
+function checkHeadlineOptimizationStatus() {
+    const btn = document.getElementById('headlineOptimizationStatus');
+    const originalText = btn.innerHTML;
+    
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Проверка...';
+    
+    // Получаем выбранную кампанию (или 'all' для всех)
+    const campaignSelect = document.getElementById('campaignSelect');
+    const campaignId = campaignSelect ? campaignSelect.value : 'all';
+    
+    fetch(`/api/headline_optimization/status?campaign_id=${campaignId}`)
+    .then(response => response.json())
+    .then(data => {
+        const resultsContainer = document.getElementById('headlineOptimizationResults');
+        
+        if (data.success) {
+            if (data.streams && data.streams.length > 0) {
+                let html = `<h6>Статус потоков: ${data.campaign_id === 'all' ? 'Все кампании' : 'Кампания ' + data.campaign_id}</h6>`;
+                html += '<div class="table-responsive"><table class="table table-sm table-striped stream-table">';
+                html += '<thead><tr><th>Кампания</th><th>Поток</th><th>Вес</th><th>Конверсии</th><th>Расход</th><th>CPA</th><th>ROI</th><th>Действия</th></tr></thead><tbody>';
+                
+                data.streams.forEach(stream => {
+                    const isActive = stream.is_active ? '✅' : '❌';
+                    html += `<tr>
+                        <td>${stream.campaign_name || 'N/A'}</td>
+                        <td>${stream.name}</td>
+                        <td>${stream.weight}%</td>
+                        <td>${stream.conversions}</td>
+                        <td>$${stream.cost.toFixed(2)}</td>
+                        <td>$${stream.cpa.toFixed(2)}</td>
+                        <td class="${stream.roi >= 0 ? 'text-success' : 'text-danger'} fw-bold">${stream.roi.toFixed(1)}%</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <input type="number" class="form-control form-control-sm weight-control" 
+                                    value="${stream.weight}" min="0" max="100" 
+                                    onchange="updateStreamWeight(${stream.id}, this.value)"
+                                    style="width: 60px;">
+                            </div>
+                        </td>
+                    </tr>`;
+                });
+                
+                html += '</tbody></table></div>';
+                resultsContainer.innerHTML = html;
+            } else {
+                resultsContainer.innerHTML = '<div class="alert alert-info">Нет данных о потоках</div>';
+            }
+        } else {
+            resultsContainer.innerHTML = `<div class="alert alert-danger">Ошибка: ${data.error}</div>`;
+        }
+    })
+    .catch(error => {
+        document.getElementById('headlineOptimizationResults').innerHTML = 
+            '<div class="alert alert-danger">Ошибка получения статуса</div>';
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-info-circle"></i> Статус';
+    });
+}
+
+// Функция для обновления веса потока вручную
+function updateStreamWeight(streamId, newWeight) {
+    fetch('/api/headline_optimization/update_weight', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            stream_id: streamId,
+            new_weight: newWeight
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire('Успех!', data.message, 'success');
+            checkHeadlineOptimizationStatus(); // Обновляем статус
+        } else {
+            Swal.fire('Ошибка!', data.error, 'error');
+        }
+    })
+    .catch(error => {
+        Swal.fire('Ошибка сети!', 'Не удалось обновить вес', 'error');
+    });
+}
+
+// Автоматическая проверка статуса каждые 30 секунд
+setInterval(checkHeadlineOptimizationStatus, 30000);

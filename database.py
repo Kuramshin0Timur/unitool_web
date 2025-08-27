@@ -188,12 +188,14 @@ def init_db():
                 use_proxy BOOLEAN DEFAULT TRUE,
                 auto_refresh_campaigns BOOLEAN DEFAULT TRUE,
                 auto_refresh_adsets BOOLEAN DEFAULT TRUE,
-                auto_refresh_interval INTEGER DEFAULT 5,  -- НОВОЕ ПОЛЕ: интервал в минутах
+                auto_refresh_interval INTEGER DEFAULT 5,
                 telegram_bot_token TEXT,
                 telegram_chat_id TEXT,
                 keitaro_api_key TEXT DEFAULT '',
                 keitaro_domain TEXT DEFAULT 'uniaffnu.com',
                 keitaro_range_days INTEGER DEFAULT 1,
+                auto_headline_optimization BOOLEAN DEFAULT FALSE,
+                headline_optimization_interval INTEGER DEFAULT 4,
                 FOREIGN KEY (user_id) REFERENCES users (id),
                 UNIQUE(user_id)
             )
@@ -573,7 +575,7 @@ def get_user_settings(user_id: int) -> Dict[str, Any]:
         logger.error(f"Ошибка получения настроек: {e}")
         return default_settings
 def update_user_settings(user_id: int, data: Dict[str, Any]):
-    """Обновляет настройки пользователя"""
+    """Обновляет настройки пользователя с новыми полями оптимизации"""
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -590,9 +592,15 @@ def update_user_settings(user_id: int, data: Dict[str, Any]):
                 telegram_chat_id = :telegram_chat_id,
                 keitaro_api_key = :keitaro_api_key,
                 keitaro_domain = :keitaro_domain,
-                keitaro_range_days = :keitaro_range_days
+                keitaro_range_days = :keitaro_range_days,
+                auto_headline_optimization = :auto_headline_optimization,
+                headline_optimization_interval = :headline_optimization_interval
             WHERE user_id = :user_id
             """
+            
+            # Добавляем значения по умолчанию для новых полей
+            data.setdefault('auto_headline_optimization', 0)
+            data.setdefault('headline_optimization_interval', 4)
             
             data['user_id'] = user_id
             cursor.execute(query, data)

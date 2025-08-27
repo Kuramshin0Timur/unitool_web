@@ -396,3 +396,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
 }
+.stream-table {
+    font-size: 0.85rem;
+}
+
+.stream-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.weight-control {
+    width: 60px;
+    display: inline-block;
+}
+
+.btn-weight {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.75rem;
+}

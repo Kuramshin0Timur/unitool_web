@@ -8,6 +8,10 @@ from logging.handlers import RotatingFileHandler
 
 import requests
 from apscheduler.schedulers.background import BackgroundScheduler
+from flask import (Flask, flash, jsonify, redirect, render_template, request,
+                   session, url_for)
+from fuzzywuzzy import fuzz, process
+
 from database import (add_user_adset, add_user_campaign, authenticate_user,
                       create_user, get_adset_budget_settings,
                       get_db_connection, get_user_adsets, get_user_campaigns,
@@ -15,9 +19,6 @@ from database import (add_user_adset, add_user_campaign, authenticate_user,
                       get_user_settings, init_db, update_campaign_stats,
                       update_user_adset_budget, update_user_adset_status,
                       update_user_campaign_status, update_user_settings)
-from flask import (Flask, flash, jsonify, redirect, render_template, request,
-                   session, url_for)
-from fuzzywuzzy import fuzz, process
 
 lock = threading.Lock()
 
@@ -39,7 +40,7 @@ logger = logging.getLogger(__name__)
 import datetime
 import json
 import time
-from typing import Dict, Optional
+from typing import Dict, Optional, Set, Tuple
 
 auto_control_threads = {}
 auto_control_lock = threading.Lock()
@@ -132,17 +133,18 @@ def get_session():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     })
     return session
-def fetch_keitaro_report(api_key, domain, interval="today", group_by="sub_id_9"):
+def fetch_keitaro_report(api_key, domain, interval="today"):
     """
-    Получает отчет из Keitaro с расчетом лидов по формуле Spend / CPA.
-    Включает CPC данные из Keitaro.
+    Получает отчет из Keitaro.
+    Считает лиды по формуле Spend / CPA.
+    Берёт CPC и UCPC из Keitaro.
+    Группировка только по sub_id_9 (название адсета).
     """
     logger = logging.getLogger(__name__)
     url = f"https://{domain}/admin_api/v1/report/build"
     headers = {"Api-Key": api_key, "Content-Type": "application/json"}
 
-    # Добавляем cpc в метрики
-    metrics = ["campaign_unique_clicks", "ucpc", "conversions", "sales", "cost", "cpa", "cpc"]
+    metrics = ["ucpc", "cpc", "conversions", "cost", "cpa"]
     limit = 250
     offset = 0
     all_rows = []
@@ -152,8 +154,7 @@ def fetch_keitaro_report(api_key, domain, interval="today", group_by="sub_id_9")
             payload = {
                 "range": {"interval": interval, "timezone": "Europe/Moscow"},
                 "metrics": metrics,
-                "columns": [],
-                "grouping": [group_by],
+                "grouping": ["sub_id_9"],   # 🚨 только имя адсета
                 "filters": [],
                 "sort": [{"name": "ucpc", "order": "desc"}],
                 "limit": limit,
@@ -164,80 +165,30 @@ def fetch_keitaro_report(api_key, domain, interval="today", group_by="sub_id_9")
             response.raise_for_status()
             report = response.json()
 
-            if not report or "rows" not in report:
-                logger.warning("Пустой или некорректный ответ от Keitaro")
+            rows = report.get("rows", [])
+            if not rows:
                 break
 
-            rows = report.get("rows", [])
-            
-            # Добавляем расчет лидов для каждой строки
             for row in rows:
                 cost = float(row.get("cost", 0) or 0)
                 cpa = float(row.get("cpa", 0) or 0)
-                cpc = float(row.get("cpc", 0) or 0)  # CPC из Keitaro
-                
-                # Рассчитываем лиды по формуле Spend / CPA
-                calculated_leads = 0
-                if cpa > 0 and cost > 0:
-                    calculated_leads = round(cost / cpa)
-                
-                row['calculated_leads'] = calculated_leads
-                row['leads'] = calculated_leads  # Добавляем в основное поле
-                row['cpc'] = cpc  # Сохраняем CPC из Keitaro
-            
+                cpc = float(row.get("cpc", 0) or 0)
+
+                leads = round(cost / cpa) if cpa > 0 and cost > 0 else 0
+                row["leads"] = leads
+                row["cpc"] = cpc
+
             all_rows.extend(rows)
 
             if len(rows) < limit:
                 break
             offset += limit
 
-        # Подсчёт итогов
-        total_cost = total_profit = total_cpa = total_cpc = total_leads = 0.0
-        cpa_count = cpc_count = 0
+        return {"rows": all_rows}
 
-        for row in all_rows:
-            cost = float(row.get("cost", 0) or 0)
-            profit = float(row.get("profit_confirmed", 0) or 0)
-            cpa = float(row.get("cpa", 0) or 0)
-            cpc = float(row.get("cpc", 0) or 0)
-            leads = row.get('calculated_leads', 0)
-
-            total_cost += cost
-            total_profit += profit
-            total_leads += leads
-            
-            if cpa > 0:
-                total_cpa += cpa
-                cpa_count += 1
-            
-            if cpc > 0:
-                total_cpc += cpc
-                cpc_count += 1
-
-        avg_cpa = total_cpa / cpa_count if cpa_count > 0 else 0
-        avg_cpc = total_cpc / cpc_count if cpc_count > 0 else 0
-        total_roi = (total_profit / total_cost * 100) if total_cost > 0 else 0
-
-        return {
-            "rows": all_rows,
-            "totals": {
-                "cost": total_cost,
-                "profit": total_profit,
-                "leads": total_leads,
-                "average_cpa": avg_cpa,
-                "average_cpc": avg_cpc,
-                "total_roi": total_roi
-            }
-        }
-
-    except requests.HTTPError as e:
-        logger.error(f"HTTP ошибка Keitaro: {e.response.status_code} {e.response.text}")
-    except requests.RequestException as e:
-        logger.error(f"Ошибка запроса Keitaro: {e}")
     except Exception as e:
-        logger.error(f"Неожиданная ошибка: {e}")
-
-    return {"rows": [], "totals": {}}
+        logger.error(f"Ошибка при запросе отчета Keitaro: {e}")
+        return {"rows": []}
 
 def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
     """Безопасная отправка сообщения в Telegram"""
@@ -996,6 +947,7 @@ def fetch_facebook_campaigns(account_id, access_token, fields=None):
     except Exception as e:
         logger.error(f"Неожиданная ошибка при получении кампаний: {e}")
         return []
+
 def fetch_facebook_adsets(account_id, access_token, fields=None):
     """Получает адсеты из Facebook API"""
     if fields is None:
@@ -1036,45 +988,7 @@ def fetch_facebook_adsets(account_id, access_token, fields=None):
     except Exception as e:
         logger.error(f"Неожиданная ошибка при получении адсетов: {e}")
         return []
-def fetch_facebook_adsets(account_id, access_token, fields=None):
-    """Получает адсеты из Facebook API с актуальными статусами"""
-    if fields is None:
-        fields = "id,name,campaign_id,daily_budget,status,effective_status"
-    
-    try:
-        clean_account_id = account_id.replace('act_', '')
-        url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets"
-        
-        params = {
-            "fields": fields,
-            "access_token": access_token,
-            "limit": 100,
-        }
-        
-        all_adsets = []
-        
-        while url:
-            response = requests.get(url, params=params, timeout=30)
-            response.raise_for_status()
-            
-            data = response.json()
-            adsets = data.get('data', [])
-            all_adsets.extend(adsets)
-            
-            # Обрабатываем пагинацию
-            next_url = data.get('paging', {}).get('next')
-            url = next_url
-            params = {}
-        
-        logger.info(f"Получено {len(all_adsets)} адсетов для аккаунта {clean_account_id}")
-        return all_adsets
-        
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Ошибка получения адсетов: {e}")
-        return []
-    except Exception as e:
-        logger.error(f"Неожиданная ошибка при получении адсетов: {e}")
-        return []
+
 def check_and_pause_campaigns(user_id):
     """Проверяет и отключает кампании, если все их адсеты отключены"""
     try:
@@ -2509,6 +2423,473 @@ def register():
             flash('Это имя пользователя уже занято', 'danger')
     
     return render_template('register.html')
+
+def get_campaign_name(api_key, domain, campaign_id):
+    """Получает название кампании по ID"""
+    try:
+        url = f"https://{domain}/admin_api/v1/campaigns/{campaign_id}"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code == 200:
+            data = response.json()
+            if isinstance(data, dict):
+                return data.get('name', 'Unknown')
+    except Exception as e:
+        logger.warning(f"Не удалось получить название кампании {campaign_id}: {e}")
+    
+    return 'Unknown'
+import requests
+
+
+def get_keitaro_streams(base_url, api_key, campaign_id):
+    """
+    Получение потоков Keitaro с автоподстановкой схемы и пути API.
+    
+    base_url: домен трекера (с https:// или без), например:
+              "tracker.mydomain.com" или "https://tracker.mydomain.com/admin_api/v1"
+    api_key: API key
+    campaign_id: ID кампании или "all"
+    """
+    # Убираем пробелы и лишние слэши
+    base_url = base_url.strip().rstrip("/")
+
+    # Если нет схемы — добавляем https://
+    if not base_url.startswith(("http://", "https://")):
+        base_url = "https://" + base_url
+
+    # Если нет пути /admin_api/v1 — добавляем
+    if "/admin_api/v1" not in base_url:
+        base_url = base_url.rstrip("/") + "/admin_api/v1"
+
+    headers = {
+        "Api-Key": api_key,
+        "Content-Type": "application/json"
+    }
+
+    try:
+        if campaign_id == "all":
+            # Получаем все кампании
+            campaigns_url = f"{base_url}/campaigns"
+            campaigns_resp = requests.get(campaigns_url, headers=headers)
+            campaigns_resp.raise_for_status()
+            campaigns = campaigns_resp.json()
+
+            all_streams = {}
+            return all_streams
+        else:
+            # Потоки по одной кампании
+            streams_url = f"{base_url}/campaigns/{campaign_id}/streams"
+            resp = requests.get(streams_url, headers=headers)
+            resp.raise_for_status()
+            return resp.json()
+
+    except requests.HTTPError as e:
+        if e.response.status_code == 404:
+            print(f"Ошибка 404: Не найдено. Проверь, что ID кампании {campaign_id} существует и API-ключ имеет доступ.")
+        else:
+            print(f"HTTP ошибка: {e}")
+        return None
+    except requests.RequestException as e:
+        print(f"Ошибка при запросе потоков Keitaro: {e}")
+        return None
+
+def update_keitaro_stream_weight(api_key, domain, stream_id, new_weight):
+    """Обновляет вес потока в Keitaro - исправленная версия"""
+    try:
+        url = f"https://{domain}/admin_api/v1/streams/{stream_id}"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        payload = {"weight": int(new_weight)}
+        
+        response = requests.put(url, headers=headers, json=payload, timeout=30)
+        response.raise_for_status()
+        
+        result = response.json()
+        return result
+        
+    except Exception as e:
+        logger.error(f"Ошибка обновления веса потока {stream_id}: {e}")
+        return None
+def analyze_stream_performance(api_key, domain, campaign_id=None, interval="today"):
+    """Анализирует производительность потоков кампании - исправленная версия"""
+    try:
+        url = f"https://{domain}/admin_api/v1/report/build"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        # Базовый payload для анализа потоков
+        payload = {
+            "range": {"interval": interval, "timezone": "Europe/Moscow"},
+            "metrics": ["conversions", "revenue", "cost", "roi", "epc", "clicks"],
+            "grouping": ["stream_id", "campaign_id"],
+            "limit": 1000
+        }
+        
+        # Добавляем фильтр по кампании если указана
+        if campaign_id and campaign_id != 'all':
+            try:
+                campaign_id_int = int(campaign_id)
+                payload["filters"] = [{
+                    "name": "campaign_id", 
+                    "operator": "EQUALS", 
+                    "expression": str(campaign_id_int)
+                }]
+            except ValueError:
+                logger.error(f"Неверный ID кампании для фильтра: {campaign_id}")
+        
+        response = requests.post(url, headers=headers, json=payload, timeout=30)
+        response.raise_for_status()
+        
+        report = response.json()
+        return report.get('rows', [])
+        
+    except Exception as e:
+        logger.error(f"Ошибка анализа производительности потоков: {e}")
+        return []
+
+def optimize_headlines_automation(user_id):
+    """Автоматическая оптимизация заголовков на основе производительности - исправленная версия"""
+    try:
+        settings = get_user_settings(user_id)
+        api_key = settings.get('keitaro_api_key')
+        domain = settings.get('keitaro_domain')
+        
+        if not api_key:
+            return
+        
+        # Получаем все кампании из Keitaro
+        streams = get_keitaro_streams(domain, api_key)
+        
+        if not streams:
+            logger.info("Не найдено потоков для оптимизации")
+            return
+        
+        # Группируем потоки по кампаниям
+        campaigns = {}
+        for stream in streams:
+            campaign_id = stream.get('campaign_id')
+            if campaign_id not in campaigns:
+                campaigns[campaign_id] = {
+                    'name': stream.get('campaign_name', 'Unknown'),
+                    'streams': []
+                }
+            campaigns[campaign_id]['streams'].append(stream)
+        
+        # Анализируем и оптимизируем каждую кампанию
+        for campaign_id, campaign_data in campaigns.items():
+            try:
+                # Получаем статистику для этой кампании
+                stream_stats = analyze_stream_performance(api_key, domain, campaign_id, "today")
+                
+                if not stream_stats:
+                    continue
+                
+                # Создаем словарь для статистики
+                stats_by_stream = {}
+                for stat in stream_stats:
+                    stream_id = stat.get('landing_id')
+                    if stream_id:
+                        cost = float(stat.get('cost', 0))
+                        conversions = int(stat.get('conversions', 0))
+                        revenue = float(stat.get('revenue', 0))
+                        
+                        cpa = cost / conversions if conversions > 0 else 0
+                        roi = ((revenue - cost) / cost * 100) if cost > 0 else 0
+                        
+                        stats_by_stream[stream_id] = {
+                            'conversions': conversions,
+                            'cost': cost,
+                            'revenue': revenue,
+                            'cpa': cpa,
+                            'roi': roi
+                        }
+                
+                # Применяем оптимизацию
+                optimize_campaign_streams(api_key, domain, campaign_data['streams'], stats_by_stream, user_id)
+                
+            except Exception as e:
+                logger.error(f"Ошибка оптимизации кампании {campaign_id}: {e}")
+                continue
+                
+    except Exception as e:
+        logger.error(f"Ошибка оптимизации заголовков: {e}")
+
+def optimize_campaign_streams(api_key, domain, streams, stats, user_id):
+    """Оптимизирует потоки конкретной кампании"""
+    performance_data = []
+    
+    for stream in streams:
+        stream_id = stream.get('id')
+        stat = stats.get(stream_id, {})
+        
+        conversions = stat.get('conversions', 0)
+        cost = stat.get('cost', 0)
+        revenue = stat.get('revenue', 0)
+        cpa = stat.get('cpa', 0)
+        roi = stat.get('roi', 0)
+        
+        # Минимальный порог для участия в оптимизации
+        if cost < 5:  # Минимум $5 трат
+            continue
+            
+        performance_data.append({
+            'stream_id': stream_id,
+            'stream_name': stream.get('name', 'Unknown'),
+            'current_weight': stream.get('weight', 0),
+            'conversions': conversions,
+            'cost': cost,
+            'revenue': revenue,
+            'cpa': cpa,
+            'roi': roi,
+            'is_active': stream.get('is_active', False)
+        })
+    
+    if not performance_data:
+        return
+    
+    # Сортируем по ROI (лучшие сначала)
+    performance_data.sort(key=lambda x: x['roi'], reverse=True)
+    
+    total_streams = len(performance_data)
+    base_weight = 100 // max(total_streams, 1)
+    
+    for i, perf in enumerate(performance_data):
+        stream_id = perf['stream_id']
+        
+        # Определяем новый вес на основе производительности
+        if i == 0 and total_streams > 1:  # Лучший поток
+            new_weight = min(base_weight * 2, 70)
+        elif i == total_streams - 1 and total_streams > 1:  # Худший поток
+            new_weight = max(base_weight // 2, 5)
+        else:
+            new_weight = base_weight
+        
+        # Обновляем вес только если изменился
+        if abs(new_weight - perf['current_weight']) > 5: 
+            update_result = update_keitaro_stream_weight(api_key, domain, stream_id, new_weight)
+            
+            if update_result:
+                msg = (f"📊 Оптимизация: Кампания {streams[0].get('campaign_name', 'Unknown')} | "
+                      f"Поток '{perf['stream_name']}' | Вес: {perf['current_weight']}% → {new_weight}% | "
+                      f"ROI: {perf['roi']:.1f}% | Конверсии: {perf['conversions']}")
+                
+                logger.info(msg)
+                send_telegram_message(msg, user_id=user_id)
+@app.route('/api/keitaro/campaigns', methods=['GET'])
+@login_required
+def get_keitaro_campaigns():
+    """Возвращает список всех кампаний из Keitaro"""
+    try:
+        user_id = session['user_id']
+        settings = get_user_settings(user_id)
+        api_key = settings.get('keitaro_api_key')
+        domain = settings.get('keitaro_domain')
+        
+        if not api_key:
+            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})
+        
+        url = f"https://{domain}/admin_api/v1/campaigns"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        
+        data = response.json()
+        
+        # Обрабатываем разные форматы ответа
+        if isinstance(data, list):
+            campaigns = data
+        elif isinstance(data, dict) and 'campaigns' in data:
+            campaigns = data.get('campaigns', [])
+        elif isinstance(data, dict) and 'data' in data:
+            campaigns = data.get('data', [])
+        else:
+            campaigns = []
+        
+        # Форматируем ответ
+        formatted_campaigns = []
+        for campaign in campaigns:
+            formatted_campaigns.append({
+                'id': campaign.get('id'),
+                'name': campaign.get('name', 'Unknown'),
+                'status': campaign.get('status', 'active'),
+                'group_id': campaign.get('group_id'),
+                'cost': campaign.get('cost', 0),
+                'revenue': campaign.get('revenue', 0)
+            })
+        
+        return jsonify({
+            'success': True,
+            'campaigns': formatted_campaigns,
+            'total': len(formatted_campaigns)
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения кампаний Keitaro: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/headline_optimization/status', methods=['GET'])
+@login_required
+def get_headline_optimization_status():
+    """Возвращает статус оптимизации заголовков для кампании - исправленная версия"""
+    try:
+        user_id = session['user_id']
+        campaign_id = request.args.get('campaign_id')
+        
+        settings = get_user_settings(user_id)
+        api_key = settings.get('keitaro_api_key')
+        domain = settings.get('keitaro_domain')
+        
+        if not api_key:
+            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})
+        
+        # Получаем текущие потоки
+        streams = get_keitaro_streams(domain, api_key, campaign_id)
+        if not streams:
+            return jsonify({
+                'success': True,
+                'campaign_id': campaign_id,
+                'streams': [],
+                'message': 'No streams found'
+            })
+        
+        # Получаем статистику потоков
+        stream_stats = analyze_stream_performance(api_key, domain, campaign_id, "today")
+        
+        # Создаем словарь для быстрого поиска статистики по stream_id
+        stats_by_stream = {}
+        for stat in stream_stats:
+            stream_id = stat.get('stream_id')
+            if stream_id:
+                cost = float(stat.get('cost', 0))
+                conversions = int(stat.get('conversions', 0))
+                revenue = float(stat.get('revenue', 0))
+                clicks = int(stat.get('clicks', 0))
+                
+                cpa = cost / conversions if conversions > 0 else 0
+                roi = ((revenue - cost) / cost * 100) if cost > 0 else 0
+                ctr = (conversions / clicks * 100) if clicks > 0 else 0
+                
+                stats_by_stream[stream_id] = {
+                    'conversions': conversions,
+                    'cost': cost,
+                    'revenue': revenue,
+                    'clicks': clicks,
+                    'cpa': cpa,
+                    'roi': roi,
+                    'ctr': ctr
+                }
+        
+        # Формируем ответ с детальной информацией
+        stream_data = []
+        for stream in streams:
+            stream_id = stream.get('id')
+            stat = stats_by_stream.get(stream_id, {})
+            
+            stream_data.append({
+                'id': stream_id,
+                'name': stream.get('name', 'Unknown'),
+                'campaign_id': stream.get('campaign_id'),
+                'campaign_name': stream.get('campaign_name', 'Unknown'),
+                'weight': stream.get('weight', 0),
+                'is_active': stream.get('is_active', False),
+                'url': stream.get('url', ''),
+                'source': stream.get('source', ''),
+                'conversions': stat.get('conversions', 0),
+                'cost': stat.get('cost', 0),
+                'revenue': stat.get('revenue', 0),
+                'clicks': stat.get('clicks', 0),
+                'cpa': stat.get('cpa', 0),
+                'roi': stat.get('roi', 0),
+                'ctr': stat.get('ctr', 0)
+            })
+        
+        return jsonify({
+            'success': True,
+            'campaign_id': campaign_id,
+            'streams': stream_data,
+            'total_streams': len(stream_data),
+            'active_streams': len([s for s in stream_data if s['is_active']])
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения статуса оптимизации: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/headline_optimization/run', methods=['POST'])
+@login_required
+def run_headline_optimization():
+    """Запускает оптимизацию заголовков для кампании"""
+    try:
+        user_id = session['user_id']
+        data = request.json
+        campaign_id = data.get('campaign_id')
+        
+        if not campaign_id:
+            return jsonify({'success': False, 'error': 'Campaign ID required'})
+        
+        # Запускаем оптимизацию
+        optimize_headlines_automation(user_id)
+        
+        return jsonify({
+            'success': True,
+            'message': f'Оптимизация заголовков запущена для кампании {campaign_id}'
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка запуска оптимизации: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+def schedule_headline_optimization():
+    """Планировщик для автоматической оптимизации заголовков"""
+    try:
+        users = get_all_users()
+        
+        for user in users:
+            user_id = user['id']
+            settings = get_user_settings(user_id)
+            
+            if settings.get('auto_headline_optimization', False):
+                optimize_headlines_automation(user_id)
+                
+    except Exception as e:
+        logger.error(f"Ошибка в планировщике оптимизации: {e}")
+
+@app.route('/api/headline_optimization/update_weight', methods=['POST'])
+@login_required
+def update_stream_weight():
+    """Ручное обновление веса потока"""
+    try:
+        user_id = session['user_id']
+        data = request.json
+        
+        stream_id = data.get('stream_id')
+        new_weight = data.get('new_weight')
+        
+        if not stream_id or new_weight is None:
+            return jsonify({'success': False, 'error': 'Stream ID and weight required'})
+        
+        settings = get_user_settings(user_id)
+        api_key = settings.get('keitaro_api_key')
+        domain = settings.get('keitaro_domain')
+        
+        result = update_keitaro_stream_weight(api_key, domain, stream_id, new_weight)
+        
+        if result:
+            return jsonify({
+                'success': True,
+                'message': f'Вес потока обновлен до {new_weight}%'
+            })
+        else:
+            return jsonify({'success': False, 'error': 'Ошибка обновления веса'})
+            
+    except Exception as e:
+        logger.error(f"Ошибка обновления веса потока: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/headline_optimization')
+@login_required
+def headline_optimization():
+    """Страница оптимизации заголовков"""
+    return render_template('headline_optimization.html')
 @app.route('/api/test_keitaro', methods=['POST'])
 @login_required
 def test_keitaro_connection():
@@ -2674,6 +3055,295 @@ def fetch_facebook_cpc_data(account_id, access_token):
     except Exception as e:
         logger.error(f"Ошибка получения CPC данных: {e}")
         return {}
+
+
+# ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ПОСТРОЕНИЯ И ПОИСКА В ДЕРЕВЕ ----------
+def split_clean(s: str) -> List[str]:
+    weak_words = {
+    # GEO коды (чтобы они не доминировали в сопоставлении)
+    "th", "id", "my", "sg", "vn", "ph", "br", "us", "uk", "ca", "au", "de", 
+    "fr", "es", "it", "ru", "jp", "kr", "cn", "in", "mx", "ar", "co", "pe",
+    "cl", "za", "ng", "eg", "sa", "ae", "tr", "pl", "nl", "se", "no", "dk",
+    "fi", "be", "ch", "at",
+    
+    # Общие слова в названиях кампаний
+    "monah", "test", "copy", "vst", "old", "archive", "arch", "backup", "bk",
+    "final", "new", "beta", "visual", "lang", "gpt", "voltaren", "swype",
+    "korotish", "yavis", "nepokupay", "olegneizd", "sereg", "podctast",
+    "doposle", "legend", "voda", "duhi", "duh",
+    
+    # Технические термины и аббревиатуры
+    "k", "y", "rr", "kk", "tt", "d", "dd", "sa", "am", "campaign", "adset",
+    "ad", "fb", "facebook", "api",
+    
+    # Слова-модификаторы
+    "ver", "version", "v", "var", "variant", "test", "testing", "temp",
+    "temporary", "demo", "sample", "example",
+    
+    # Даты и числа (общие паттерны)
+    "08", "07", "06", "05", "04", "03", "02", "01", "11", "12", "13", "14",
+    "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
+    "27", "28", "29", "30", "31", "2023", "2024", "2025",
+    
+    # Общие слова
+    "the", "and", "or", "of", "in", "on", "at", "to", "for", "with", "by",
+    "from", "a", "an", "the", "is", "are", "was", "were", "be", "been", "being",
+    
+    # Размеры и позиции
+    "big", "small", "large", "medium", "size", "pos", "position", "place",
+    
+    # Статусы
+    "active", "paused", "deleted", "disabled", "enabled", "running", "stopped"
+}
+    """Нормализация строки с фильтрацией слабых слов"""
+    if not s:
+        return []
+    
+    # Базовая очистка
+    clean_str = re.sub(r'[^a-zA-Z0-9\s]', ' ', str(s))
+    parts = re.split(r'[\s\-_]+', clean_str.lower())
+    
+    # Убираем пустые строки и фильтруем слабые слова
+    filtered_parts = [p for p in parts if p and p not in weak_words and len(p) > 1]
+    
+    return filtered_parts
+def build_keitaro_tree(keitaro_data: Dict[str, Dict]) -> Dict:
+    """
+    Улучшенное построение индекса Keitaro с дополнительными ключами
+    """
+    id_index: Dict[str, Dict] = {}
+    name_index: Dict[str, Dict] = {}
+    token_index: Dict[str, List[Dict]] = {}
+    entries_by_key: Dict[str, Dict] = {}
+    weak_words = {
+    # GEO коды (чтобы они не доминировали в сопоставлении)
+    "th", "id", "my", "sg", "vn", "ph", "br", "us", "uk", "ca", "au", "de", 
+    "fr", "es", "it", "ru", "jp", "kr", "cn", "in", "mx", "ar", "co", "pe",
+    "cl", "za", "ng", "eg", "sa", "ae", "tr", "pl", "nl", "se", "no", "dk",
+    "fi", "be", "ch", "at",
+    
+    # Общие слова в названиях кампаний
+    "monah", "test", "copy", "vst", "old", "archive", "arch", "backup", "bk",
+    "final", "new", "beta", "visual", "lang", "gpt", "voltaren", "swype",
+    "korotish", "yavis", "nepokupay", "olegneizd", "sereg", "podctast",
+    "doposle", "legend", "voda", "duhi", "duh",
+    
+    # Технические термины и аббревиатуры
+    "k", "y", "rr", "kk", "tt", "d", "dd", "sa", "am", "campaign", "adset",
+    "ad", "fb", "facebook", "api",
+    
+    # Слова-модификаторы
+    "ver", "version", "v", "var", "variant", "test", "testing", "temp",
+    "temporary", "demo", "sample", "example",
+    
+    # Даты и числа (общие паттерны)
+    "08", "07", "06", "05", "04", "03", "02", "01", "11", "12", "13", "14",
+    "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
+    "27", "28", "29", "30", "31", "2023", "2024", "2025",
+    
+    # Общие слова
+    "the", "and", "or", "of", "in", "on", "at", "to", "for", "with", "by",
+    "from", "a", "an", "the", "is", "are", "was", "were", "be", "been", "being",
+    
+    # Размеры и позиции
+    "big", "small", "large", "medium", "size", "pos", "position", "place",
+    
+    # Статусы
+    "active", "paused", "deleted", "disabled", "enabled", "running", "stopped"
+}
+    def looks_like_id(k: str) -> bool:
+        k0 = k.strip()
+        # Более строгая проверка на ID
+        return bool(re.fullmatch(r'\d{10,}', k0)) or bool(re.search(r'^\d+\.\d+$', k0))
+
+    for key, stats in keitaro_data.items():
+        if not key:  # Пропускаем пустые ключи
+            continue
+            
+        tokens = set(split_clean(key))
+        kind = 'id' if looks_like_id(key) else 'name'
+        entry = {'key': key, 'stats': stats, 'tokens': tokens, 'kind': kind}
+        entries_by_key[key] = entry
+
+        if kind == 'id':
+            id_index[key] = entry
+        else:
+            name_index[key] = entry
+
+        # Индекс по токенам (только значимые слова)
+        for t in tokens:
+            if t not in weak_words and len(t) > 2:  # Исключаем слабые и короткие слова
+                token_index.setdefault(t, []).append(entry)
+                
+        # Добавляем альтернативные ключи для лучшего поиска
+        if kind == 'name':
+            # Нормализованная версия
+            normalized = normalize_campaign_name(key)
+            if normalized and normalized != key and normalized not in entries_by_key:
+                alt_entry = entry.copy()
+                alt_entry['key'] = normalized
+                name_index[normalized] = alt_entry
+                entries_by_key[normalized] = alt_entry
+                
+            # Версия без дат
+            no_dates = re.sub(r'\d{1,2}\.\d{1,2}', '', key).strip()
+            if no_dates and no_dates != key and no_dates not in entries_by_key:
+                alt_entry = entry.copy()
+                alt_entry['key'] = no_dates
+                name_index[no_dates] = alt_entry
+                entries_by_key[no_dates] = alt_entry
+
+    logger.info(f"[TREE] Улучшенный индекс Keitaro: id_index={len(id_index)}, name_index={len(name_index)}, "
+                f"token_index(tokens)={len(token_index)}, entries={len(entries_by_key)}")
+    return {
+        'id_index': id_index,
+        'name_index': name_index,
+        'token_index': token_index,
+        'entries_by_key': entries_by_key
+    }
+def find_in_tree(
+    tree: Dict,
+    used_keys: Set[str],
+    fb_id: str = None,
+    fb_name: str = None,
+    fb_parent_name: str = None,
+    fb_campaign_id: str = None,
+    min_score: int = 5  # Увеличиваем порог для более точного сопоставления
+) -> Dict:
+    """
+    Улучшенный поиск соответствия в Keitaro-дереве с проверкой релевантности
+    """
+    weak_words = {"monah", "test", "copy", "vst", "old", "archive", "arch", "backup", 
+                 "bk", "final", "new", "beta", "th", "id", "my", "sg", "vn", "ph"}
+    
+    zeros = {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0, 'cpc': 0}
+
+    id_index = tree.get('id_index', {})
+    name_index = tree.get('name_index', {})
+    token_index = tree.get('token_index', {})
+
+    # 1) По ID адсета (точное совпадение)
+    if fb_id:
+        e = id_index.get(fb_id)
+        if e and e['key'] not in used_keys:
+            used_keys.add(e['key'])
+            logger.info(f"[MATCH] Прямой ID-матч по adset_id: {fb_id} -> {e['key']}")
+            return e['stats']
+
+    # 2) По ID кампании (точное совпадение)
+    if fb_campaign_id:
+        e = id_index.get(fb_campaign_id)
+        if e and e['key'] not in used_keys:
+            used_keys.add(e['key'])
+            logger.info(f"[MATCH] Прямой ID-матч по campaign_id: {fb_campaign_id} -> {e['key']}")
+            return e['stats']
+
+    # 3) По точному имени
+    if fb_name:
+        e = name_index.get(fb_name)
+        if e and e['key'] not in used_keys:
+            used_keys.add(e['key'])
+            logger.info(f"[MATCH] Прямой матч по имени: \"{fb_name}\" -> {e['key']}")
+            return e['stats']
+
+    # 4) Улучшенный частичный матч по токенам
+    def _advanced_token_match(query_name: str, is_adset: bool = True) -> Dict:
+        if not query_name:
+            return None
+            
+        qtokens = split_clean(query_name)
+        if not qtokens:
+            return None
+
+        # Фильтруем слабые слова
+        strong_qtokens = [t for t in qtokens if t not in weak_words and len(t) > 2]
+        if not strong_qtokens:
+            return None
+
+        candidates = {}
+        
+        # Ищем кандидатов по токенному индексу
+        for token in strong_qtokens:
+            for entry in token_index.get(token, []):
+                if entry['key'] in used_keys:
+                    continue
+                    
+                # Пропускаем записи без данных
+                if entry['stats'].get('spend', 0) <= 0 and entry['stats'].get('leads', 0) <= 0:
+                    continue
+                
+                # Сравниваем токены
+                entry_tokens = entry['tokens']
+                common_strong = len([t for t in strong_qtokens if t in entry_tokens and t not in weak_words])
+                common_total = len(set(qtokens) & entry_tokens)
+                
+                if common_strong <= 0:
+                    continue
+                
+                # Дополнительные проверки релевантности
+                relevance_score = 0
+                
+                # Проверка на совпадение GEO кодов
+                query_geo = extract_geo_from_name(query_name, [])
+                entry_geo = extract_geo_from_name(entry['key'], [])
+                if query_geo != 'N/A' and entry_geo != 'N/A' and query_geo == entry_geo:
+                    relevance_score += 3
+                
+                # Проверка на совпадение числовых идентификаторов
+                query_numbers = re.findall(r'\d+', query_name)
+                entry_numbers = re.findall(r'\d+', entry['key'])
+                common_numbers = set(query_numbers) & set(entry_numbers)
+                if common_numbers:
+                    relevance_score += len(common_numbers) * 2
+                
+                # Проверка на совпадение дат
+                query_dates = re.findall(r'\d{1,2}\.\d{1,2}', query_name)
+                entry_dates = re.findall(r'\d{1,2}\.\d{1,2}', entry['key'])
+                common_dates = set(query_dates) & set(entry_dates)
+                if common_dates:
+                    relevance_score += len(common_dates) * 3
+                
+                total_score = common_strong + relevance_score
+                
+                if total_score >= min_score:
+                    candidates[entry['key']] = {
+                        'score': total_score,
+                        'common_strong': common_strong,
+                        'common_total': common_total,
+                        'relevance': relevance_score,
+                        'entry': entry
+                    }
+        
+        if not candidates:
+            return None
+        
+        # Выбираем лучшего кандидата
+        best_candidate = max(candidates.values(), key=lambda x: (x['score'], x['relevance']))
+        
+        if best_candidate['score'] >= min_score:
+            used_keys.add(best_candidate['entry']['key'])
+            logger.info(f"[MATCH] Улучшенный матч: \"{query_name}\" -> {best_candidate['entry']['key']} "
+                       f"(score={best_candidate['score']}, strong={best_candidate['common_strong']}, "
+                       f"relevance={best_candidate['relevance']})")
+            return best_candidate['entry']['stats']
+        
+        return None
+
+    # 5) Поиск по имени адсета
+    if fb_name:
+        stats = _advanced_token_match(fb_name, is_adset=True)
+        if stats:
+            return stats
+
+    # 6) Поиск по имени кампании (родителя)
+    if fb_parent_name:
+        stats = _advanced_token_match(fb_parent_name, is_adset=False)
+        if stats:
+            return stats
+
+    logger.info(f"[MATCH] Не найдено релевантных совпадений для: "
+                f"id={fb_id}, name={fb_name}, parent={fb_parent_name}, campaign_id={fb_campaign_id}")
+    return zeros
 @app.route('/api/save_and_sync', methods=['POST'])
 @login_required
 def save_and_sync():
@@ -2684,208 +3354,100 @@ def save_and_sync():
         accounts_data = request.json.get('accounts', [])
         if not accounts_data:
             return jsonify({'success': False, 'error': 'Нет данных для сохранения'})
-        facebook_cpc_data = {}
-        for account_data in accounts_data:
-            account_id = account_data.get('account_id', '').replace('act_', '')
-            token = account_data.get('token', '')
-            
-            if account_id and token:
-                try:
-                    cpc_data = fetch_facebook_cpc_data(account_id, token)
-                    facebook_cpc_data[account_id] = cpc_data
-                except Exception as e:
-                    logger.error(f"Ошибка получения CPC для аккаунта {account_id}: {e}")
 
-        # Получаем известные GEO коды
-        geo_rules = get_user_geo_rules(user_id)
-        known_geos = list(geo_rules.keys()) if geo_rules else []
-        
         # Настройки Keitaro
         settings = get_user_settings(user_id)
         keitaro_api_key = settings.get('keitaro_api_key')
         keitaro_domain = settings.get('keitaro_domain', 'uniaffnu.com')
 
-        # Загружаем данные из Keitaro (без CPC)
-        keitaro_data = {}
+        # Загружаем данные Keitaro
+        keitaro_data_by_name = {}
         if keitaro_api_key:
             report = fetch_keitaro_report(keitaro_api_key, keitaro_domain)
-            for row in report.get('rows', []):
-                cost = float(row.get('cost', 0) or 0)
-                cpa = float(row.get('cpa', 0) or 0)
-                
-                # Рассчитываем лиды по формуле Spend / CPA
-                leads = 0
-                if cpa > 0 and cost > 0:
-                    leads = round(cost / cpa)
-                
-                record = {
-                    'spend': cost,
-                    'leads': leads,  # Используем рассчитанные лиды
-                    'cpa': cpa,
-                    'ucpc': float(row.get('ucpc', 0) or 0),
+            for row in report.get("rows", []):
+                adset_name = str(row.get("sub_id_9") or "").strip()
+                if not adset_name:
+                    continue
+
+                metrics = {
+                    "spend": float(row.get("cost", 0) or 0),
+                    "leads": int(row.get("leads", 0) or 0),
+                    "cpa": float(row.get("cpa", 0) or 0),
+                    "ucpc": float(row.get("ucpc", 0) or 0),
+                    "cpc": float(row.get("cpc", 0) or 0)
                 }
-                key_id = str(row.get('sub_id_9') or "").strip()
-                key_name = str(row.get('campaign') or "").strip()
-                if key_id:
-                    keitaro_data[key_id] = record
-                if key_name:
-                    keitaro_data[key_name] = record
-            logger.info(f"Обработано {len(keitaro_data)} записей из Keitaro")
+                keitaro_data_by_name[adset_name] = metrics
 
-        # Получаем CPC из Facebook для каждого аккаунта
-        facebook_cpc_data = {}
-        for account_data in accounts_data:
-            account_id = account_data.get('account_id', '').replace('act_', '')
-            token = account_data.get('token', '')
-            
-            if account_id and token:
-                try:
-                    insights = fetch_facebook_adsets_insights(account_id, token)
-                    facebook_cpc_data[account_id] = insights
-                    logger.info(f"Получено CPC данных для аккаунта {account_id}: {len(insights)} записей")
-                except Exception as e:
-                    logger.error(f"Ошибка получения CPC для аккаунта {account_id}: {e}")
-        # Функция для разделения и очистки строки
-        def split_clean(s: str) -> list[str]:
-            """Разделяет строку на части и очищает их"""
-            if not s:
-                return []
-            # Удаляем специальные символы и разделяем по пробелам, дефисам, подчеркиваниям
-            clean_str = re.sub(r'[^a-zA-Z0-9\s]', ' ', str(s))
-            parts = re.split(r'[\s\-_]+', clean_str.lower())
-            # Убираем пустые строки
-            return [p for p in parts if p]
-        used_keys = set()  # глобально в save_and_sync, чтобы помнить, что уже использовали
+            logger.info(f"Обработано записей из Keitaro: {len(keitaro_data_by_name)} по имени")
 
-        def find_stats(fb_id=None, fb_name=None, fb_parent_name=None, fb_campaign_id=None):
-            """Поиск данных Keitaro с приоритетом и без повторов"""
-            weak_words = {"monah", "test", "copy", "vst", "old", "archive"}
-
-            def score_match(fb_parts, key_parts):
-                common = set(fb_parts) & set(key_parts)
-                strong_common = {w for w in common if w not in weak_words}
-                return len(strong_common), common
-
-            # 1. По ID адсета
-            if fb_id and fb_id in keitaro_data and fb_id not in used_keys:
-                used_keys.add(fb_id)
-                return keitaro_data[fb_id]
-
-            # 2. По ID кампании
-            if fb_campaign_id and fb_campaign_id in keitaro_data and fb_campaign_id not in used_keys:
-                used_keys.add(fb_campaign_id)
-                return keitaro_data[fb_campaign_id]
-
-            # 3. По точному имени
-            if fb_name and fb_name in keitaro_data and fb_name not in used_keys:
-                used_keys.add(fb_name)
-                return keitaro_data[fb_name]
-
-            # 4. Частичный матч
-            candidates = []
-            fb_sources = [(fb_name, "ADSET"), (fb_parent_name, "CAMPAIGN")]
-
-            for fb_source, label in fb_sources:
-                if not fb_source:
-                    continue
-                fb_parts = split_clean(fb_source)
-                if not fb_parts:
-                    continue
-
-                for key, stats in keitaro_data.items():
-                    if key in used_keys or stats.get('spend', 0) <= 0:
-                        continue
-                    key_parts = split_clean(key)
-                    score, common = score_match(fb_parts, key_parts)
-                    if score > 0:
-                        id_bonus = 5 if fb_id and fb_id in key else 0
-                        total_score = score + id_bonus
-                        candidates.append((total_score, key, stats, label, common))
-
-            if not candidates:
-                return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0, 'cpc': 0}
-
-            candidates.sort(key=lambda x: x[0], reverse=True)
-            best_score, best_key, best_stats, best_label, best_common = candidates[0]
-
-            if best_score >= 3:  # подняли порог
-                used_keys.add(best_key)
-                return best_stats
-            else:
-                return {'spend': 0, 'leads': 0, 'cpa': 0, 'ucpc': 0, 'cpc': 0}
-
-        saved_accounts = total_campaigns = total_adsets = keitaro_updated = 0
+        saved_accounts = total_campaigns = total_adsets = keitaro_matched = 0
 
         for acc in accounts_data:
-            account_id = acc.get('account_id', '').replace('act_', '')
-            token = acc.get('token', '')
+            account_id = acc.get("account_id", "").replace("act_", "")
+            token = acc.get("token", "")
             if not account_id or not token:
                 continue
 
-            # Проверка токена
             try:
+                # Проверяем токен
                 res = requests.get(
                     f"https://graph.facebook.com/v18.0/act_{account_id}",
-                    params={'access_token': token, 'fields': 'id,name,account_status'}, 
+                    params={"access_token": token, "fields": "id,name,account_status"},
                     timeout=30
                 ).json()
-                
-                if 'error' in res:
+                if "error" in res:
                     logger.warning(f"Неверный токен для {account_id}: {res['error']['message']}")
                     continue
 
                 # Кампании
                 campaigns = fetch_facebook_campaigns(account_id, token)
-                campaign_names = {c['id']: c['name'] for c in campaigns}
-                
                 for camp in campaigns:
-                    stats = find_stats(fb_id=camp['id'], fb_name=camp.get('name'))
+                    camp_id = camp["id"]
+                    camp_name = camp.get("name", "")
+
                     add_user_campaign(user_id, {
-                        'king': 'Facebook',
-                        'name': camp.get('name', ''),
-                        'status': camp.get('status', 'PAUSED'),
-                        'campaign_id': camp['id'],
-                        'account_id': account_id,
-                        'token': token
+                        "king": "Facebook",
+                        "name": camp_name,
+                        "status": camp.get("status", "PAUSED"),
+                        "campaign_id": camp_id,
+                        "account_id": account_id,
+                        "token": token
                     })
-                    update_campaign_stats(user_id, camp['id'], **stats)
-                    keitaro_updated += 1
                     total_campaigns += 1
 
                 # Адсеты
                 adsets = fetch_facebook_adsets(account_id, token)
                 for ad in adsets:
-                    camp_id = ad.get('campaign_id')
-                    ad_name = ad.get('name', '')
-                    
-                    # Определяем GEO из названия адсета
-                    geo = extract_geo_from_name(ad_name, known_geos)
-                    
-                    stats = find_stats(
-                        fb_id=ad.get('id'),
-                        fb_name=ad_name,
-                        fb_parent_name=campaign_names.get(camp_id)
-                    )
-                    budget = float(ad.get('daily_budget', 0)) / 100 if ad.get('daily_budget') else 0
-                    cpc_info = facebook_cpc_data.get(account_id, {}).get(ad.get('id', ''), {})
+                    ad_name = ad.get("name", "")
+                    adset_id = ad.get("id", "")
+                    camp_id = ad.get("campaign_id", "")
+
+                    stats = keitaro_data_by_name.get(ad_name, {})
+
+                    budget = float(ad.get("daily_budget", 0)) / 100 if ad.get("daily_budget") else 0
+
                     add_user_adset(user_id, {
-                        'name': ad_name,
-                        'adset_id': ad.get('id', ''),
-                        'campaign_id': camp_id,
-                        'status': ad.get('status', 'PAUSED'),
-                        'account_id': account_id,
-                        'token': token,
-                        'budget': budget,
-                        'geo': geo,
-                        'ucpc': stats.get('ucpc', 0),
-                        'spend': stats.get('spend', 0),
-                        'cpa': stats.get('cpa', 0),
-                        'leads': stats.get('leads', 0),
-                        'king': 'Facebook',
-                        'effective_status': ad.get('effective_status', ''),
-                        'ad_name': ad_name,
-                        'manual_pause': 0
+                        "name": ad_name,
+                        "adset_id": adset_id,
+                        "campaign_id": camp_id,
+                        "status": ad.get("status", "PAUSED"),
+                        "account_id": account_id,
+                        "token": token,
+                        "budget": budget,
+                        "spend": stats.get("spend", 0),
+                        "leads": stats.get("leads", 0),
+                        "cpa": stats.get("cpa", 0),
+                        "ucpc": stats.get("ucpc", 0),
+                        "cpc": stats.get("cpc", 0),
+                        "king": "Facebook",
+                        "effective_status": ad.get("effective_status", ""),
+                        "ad_name": ad_name,
+                        "manual_pause": 0
                     })
+
+                    if stats:
+                        keitaro_matched += 1
+
                     total_adsets += 1
 
                 saved_accounts += 1
@@ -2895,17 +3457,17 @@ def save_and_sync():
                 continue
 
         return jsonify({
-            'success': True,
-            'saved_accounts': saved_accounts,
-            'total_campaigns': total_campaigns,
-            'total_adsets': total_adsets,
-            'keitaro_updated': keitaro_updated,
-            'keitaro_records': len(keitaro_data)
+            "success": True,
+            "saved_accounts": saved_accounts,
+            "total_campaigns": total_campaigns,
+            "total_adsets": total_adsets,
+            "keitaro_matched": keitaro_matched,
+            "keitaro_records": len(keitaro_data_by_name)
         })
 
     except Exception as e:
         logger.error(f"Критическая ошибка синхронизации: {e}")
-        return jsonify({'success': False, 'error': str(e)})
+        return jsonify({"success": False, "error": str(e)})
 
 @app.route('/api/adsets/sync_status', methods=['POST'])
 @login_required
@@ -2950,26 +3512,23 @@ def sync_adsets_status():
         logger.error(f"Ошибка синхронизации статусов: {e}")
         return jsonify({'success': False, 'error': str(e)})
 def normalize_campaign_name(name):
-    """Нормализует название кампании для поиска (без regex)"""
+    """Улучшенная нормализация названия кампании"""
     if not name:
         return ""
     
     # Приводим к нижнему регистру
     normalized = name.lower()
     
-    # Простая замена специальных символов на пробелы
-    for char in '!@#$%^&*()_+-=[]{}|;:,.<>?/~`':
-        normalized = normalized.replace(char, ' ')
+    # Удаляем специальные символы, но сохраняем точки в датах
+    normalized = re.sub(r'[^a-z0-9\s\.]', ' ', normalized)
     
-    # Удаляем multiple spaces (простой способ)
-    while '  ' in normalized:
-        normalized = normalized.replace('  ', ' ')
+    # Заменяем multiple spaces
+    normalized = re.sub(r'\s+', ' ', normalized)
     
     # Удаляем leading/trailing spaces
     normalized = normalized.strip()
     
     return normalized
-
 @app.route('/api/accounts', methods=['GET'])
 @login_required
 def get_accounts():
@@ -4037,4 +4596,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port=8000, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=8001, debug=False, threaded=True)

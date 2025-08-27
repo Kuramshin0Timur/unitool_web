@@ -99,6 +99,42 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-save"></i> Сохранить настройки
                     </button>
+                    <!-- Добавить после существующей формы -->
+<div class="card mt-4">
+    <div class="card-header">
+        <h5 class="mb-0">Оптимизация заголовков</h5>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Интервал оптимизации (минуты)</label>
+                <input type="number" class="form-control" id="headlineOptimizationInterval" min="5" max="1440" value="60">
+                <div class="form-text">Интервал автоматической оптимизации заголовков</div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Минимальный ROI для оптимизации (%)</label>
+                <input type="number" class="form-control" id="minRoiThreshold" min="0" max="1000" value="20">
+                <div class="form-text">Минимальный ROI для включения в оптимизацию</div>
+            </div>
+        </div>
+        
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="autoHeadlineOptimization">
+            <label class="form-check-label" for="autoHeadlineOptimization">Автоматическая оптимизация заголовков</label>
+        </div>
+        
+        <div class="d-flex gap-2">
+            <button type="button" class="btn btn-primary" id="runHeadlineOptimization">
+                <i class="bi bi-lightning-fill"></i> Запустить оптимизацию
+            </button>
+            <button type="button" class="btn btn-info" id="headlineOptimizationStatus">
+                <i class="bi bi-info-circle"></i> Статус
+            </button>
+        </div>
+        
+        <div id="headlineOptimizationResults" class="mt-3"></div>
+    </div>
+</div>
                 </form>
             </div>
         </div>

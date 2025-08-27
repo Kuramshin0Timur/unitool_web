@@ -1,23 +1,5 @@
 [
     {
-        "label": "logging",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
-        "documentation": {}
-    },
-    {
-        "label": "requests",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
-        "documentation": {}
-    },
-    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
@@ -27,567 +9,12 @@
         "documentation": {}
     },
     {
-        "label": "sys",
+        "label": "logging",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "pytz",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pytz",
-        "description": "pytz",
-        "detail": "pytz",
-        "documentation": {}
-    },
-    {
-        "label": "QModelIndex",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QSortFilterProxyModel",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "Qt",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QThread",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QTimer",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "Qt",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QAbstractTableModel",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QModelIndex",
-        "importPath": "PySide2.QtCore",
-        "description": "PySide2.QtCore",
-        "isExtraImport": true,
-        "detail": "PySide2.QtCore",
-        "documentation": {}
-    },
-    {
-        "label": "QAbstractItemView",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QApplication",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QCheckBox",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QComboBox",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QDoubleSpinBox",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QHBoxLayout",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QLabel",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QLineEdit",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QMessageBox",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QProgressDialog",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QPushButton",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QSpinBox",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QSplitter",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QTableView",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QTextEdit",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QVBoxLayout",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QWidget",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QWidget",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QVBoxLayout",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QLabel",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QLineEdit",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QPushButton",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QMessageBox",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QFormLayout",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "QCheckBox",
-        "importPath": "PySide2.QtWidgets",
-        "description": "PySide2.QtWidgets",
-        "isExtraImport": true,
-        "detail": "PySide2.QtWidgets",
-        "documentation": {}
-    },
-    {
-        "label": "evaluate_adset",
-        "importPath": "unitool.adset_evaluator",
-        "description": "unitool.adset_evaluator",
-        "isExtraImport": true,
-        "detail": "unitool.adset_evaluator",
-        "documentation": {}
-    },
-    {
-        "label": "get_auto_refresh_adsets",
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "isExtraImport": true,
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "get_auto_refresh_campaigns",
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "isExtraImport": true,
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "load_config",
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "isExtraImport": true,
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "save_config",
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "isExtraImport": true,
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "refresh_session",
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "isExtraImport": true,
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "refresh_session",
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "isExtraImport": true,
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "load_geo_config_from_sheet",
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "isExtraImport": true,
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "safe_worksheet",
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "isExtraImport": true,
-        "detail": "unitool.sheets_client",
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
         "documentation": {}
     },
     {
@@ -597,135 +24,6 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPAdapter",
-        "importPath": "requests.adapters",
-        "description": "requests.adapters",
-        "isExtraImport": true,
-        "detail": "requests.adapters",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPAdapter",
-        "importPath": "requests.adapters",
-        "description": "requests.adapters",
-        "isExtraImport": true,
-        "detail": "requests.adapters",
-        "documentation": {}
-    },
-    {
-        "label": "Retry",
-        "importPath": "urllib3.util.retry",
-        "description": "urllib3.util.retry",
-        "isExtraImport": true,
-        "detail": "urllib3.util.retry",
-        "documentation": {}
-    },
-    {
-        "label": "Retry",
-        "importPath": "urllib3.util.retry",
-        "description": "urllib3.util.retry",
-        "isExtraImport": true,
-        "detail": "urllib3.util.retry",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "gspread",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "gspread",
-        "description": "gspread",
-        "detail": "gspread",
-        "documentation": {}
-    },
-    {
-        "label": "RotatingFileHandler",
-        "importPath": "logging.handlers",
-        "description": "logging.handlers",
-        "isExtraImport": true,
-        "detail": "logging.handlers",
-        "documentation": {}
-    },
-    {
-        "label": "RotatingFileHandler",
-        "importPath": "logging.handlers",
-        "description": "logging.handlers",
-        "isExtraImport": true,
-        "detail": "logging.handlers",
-        "documentation": {}
-    },
-    {
-        "label": "QBrush",
-        "importPath": "PySide2.QtGui",
-        "description": "PySide2.QtGui",
-        "isExtraImport": true,
-        "detail": "PySide2.QtGui",
-        "documentation": {}
-    },
-    {
-        "label": "QColor",
-        "importPath": "PySide2.QtGui",
-        "description": "PySide2.QtGui",
-        "isExtraImport": true,
-        "detail": "PySide2.QtGui",
-        "documentation": {}
-    },
-    {
-        "label": "Credentials",
-        "importPath": "google.oauth2.service_account",
-        "description": "google.oauth2.service_account",
-        "isExtraImport": true,
-        "detail": "google.oauth2.service_account",
         "documentation": {}
     },
     {
@@ -752,6 +50,23 @@
         "description": "functools",
         "isExtraImport": true,
         "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "RotatingFileHandler",
+        "importPath": "logging.handlers",
+        "description": "logging.handlers",
+        "isExtraImport": true,
+        "detail": "logging.handlers",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
         "documentation": {}
     },
     {
@@ -875,6 +190,14 @@
         "documentation": {}
     },
     {
+        "label": "get_adset_budget_settings",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "get_db_connection",
         "importPath": "database",
         "description": "database",
@@ -987,11 +310,149 @@
         "documentation": {}
     },
     {
-        "label": "get_db_connection",
-        "importPath": "database",
-        "description": "database",
+        "label": "datetime",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "database",
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Set",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -1001,6 +462,30 @@
         "importPath": "sqlite3",
         "description": "sqlite3",
         "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
+        "isExtraImport": true,
+        "detail": "venv",
         "documentation": {}
     },
     {
@@ -1045,591 +530,6 @@
         "documentation": {}
     },
     {
-        "label": "evaluate_adset",
-        "kind": 2,
-        "importPath": "unitool.adset_evaluator",
-        "description": "unitool.adset_evaluator",
-        "peekOfCode": "def evaluate_adset(row, geo_config):\n    try:\n        adset_name = row[0].strip().upper()\n        geo = adset_name[:2]  # первые 2 буквы AdSet Name — например, \"TR\"\n        spend = float(row[3].replace(\",\", \".\")) if row[3] else 0.0\n        cpa = float(row[4].replace(\",\", \".\")) if row[4] else 0.0\n        leads = int(row[8]) if row[8].isdigit() else 0\n        config = geo_config.get(geo)\n        if not config:\n            logging.warning(f\"⚠️ GEO-конфигурация не найдена для кода: {geo}\")",
-        "detail": "unitool.adset_evaluator",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.adset_evaluator",
-        "description": "unitool.adset_evaluator",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef evaluate_adset(row, geo_config):\n    try:\n        adset_name = row[0].strip().upper()\n        geo = adset_name[:2]  # первые 2 буквы AdSet Name — например, \"TR\"\n        spend = float(row[3].replace(\",\", \".\")) if row[3] else 0.0\n        cpa = float(row[4].replace(\",\", \".\")) if row[4] else 0.0\n        leads = int(row[8]) if row[8].isdigit() else 0\n        config = geo_config.get(geo)\n        if not config:",
-        "detail": "unitool.adset_evaluator",
-        "documentation": {}
-    },
-    {
-        "label": "get_session",
-        "kind": 2,
-        "importPath": "unitool.auto_control",
-        "description": "unitool.auto_control",
-        "peekOfCode": "def get_session() -> requests.Session:\n    if not get_use_proxy():\n        logger.info(\"🔓 Прокси отключён — создаётся обычная сессия\")\n        return requests.Session()\n    proxies = get_verified_proxy()\n    if not proxies:\n        raise RuntimeError(\"❌ Прокси включён, но не удалось подключиться\")\n    session = requests.Session()\n    session.proxies.update(proxies)\n    return session",
-        "detail": "unitool.auto_control",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.auto_control",
-        "description": "unitool.auto_control",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.info(f\"🔧 Прокси используется: {get_use_proxy()}\")\n# --- Сессия с учётом прокси ---\ndef get_session() -> requests.Session:\n    if not get_use_proxy():\n        logger.info(\"🔓 Прокси отключён — создаётся обычная сессия\")\n        return requests.Session()\n    proxies = get_verified_proxy()\n    if not proxies:\n        raise RuntimeError(\"❌ Прокси включён, но не удалось подключиться\")",
-        "detail": "unitool.auto_control",
-        "documentation": {}
-    },
-    {
-        "label": "CampaignFilterProxyModel",
-        "kind": 6,
-        "importPath": "unitool.campaign_manager",
-        "description": "unitool.campaign_manager",
-        "peekOfCode": "class CampaignFilterProxyModel(QSortFilterProxyModel):\n    def __init__(self, parent=None,\n                 status_filter=None, king_filter=None, king_column=0,\n                 name_filter=None, name_column=1, status_column=2):\n        super().__init__(parent)\n        self.status_filter = status_filter\n        self.king_filter = king_filter\n        self.name_filter = name_filter\n        self.king_column = king_column\n        self.name_column = name_column",
-        "detail": "unitool.campaign_manager",
-        "documentation": {}
-    },
-    {
-        "label": "GenericFilterProxyModel",
-        "kind": 6,
-        "importPath": "unitool.campaign_manager",
-        "description": "unitool.campaign_manager",
-        "peekOfCode": "class GenericFilterProxyModel(QSortFilterProxyModel):\n    def __init__(self, parent=None,\n                 status_filter=None, text_filter=None,\n                 filter_column=None, status_column=2):\n        super().__init__(parent)\n        self.status_filter = status_filter\n        self.text_filter = text_filter\n        self.filter_column = filter_column\n        self.status_column = status_column\n        if status_filter:",
-        "detail": "unitool.campaign_manager",
-        "documentation": {}
-    },
-    {
-        "label": "AutoControlWorker",
-        "kind": 6,
-        "importPath": "unitool.campaign_manager",
-        "description": "unitool.campaign_manager",
-        "peekOfCode": "class AutoControlWorker(QThread):\n    def __init__(self, interval_minutes):\n        super().__init__()\n        self.interval = interval_minutes * 60\n        self._running = True\n    def run(self):\n        while self._running:\n            auto_control()\n            for _ in range(int(self.interval / 5)):\n                if not self._running:",
-        "detail": "unitool.campaign_manager",
-        "documentation": {}
-    },
-    {
-        "label": "CampaignManager",
-        "kind": 6,
-        "importPath": "unitool.campaign_manager",
-        "description": "unitool.campaign_manager",
-        "peekOfCode": "class CampaignManager(QWidget):\n    def __init__(self):\n        super().__init__()\n        refresh_session()\n        self.setWindowTitle(\"UNITOOL\")\n        self.resize(1200, 700)\n        self.log_widget = QTextEdit(readOnly=True)\n        self.log_widget.setMinimumHeight(150)\n        setup_logging(LOG_FILE, ui_log_widget=self.log_widget)\n        self.red_style = \"\"\" QPushButton { background-color: #d9534f; color:white; border-radius:5px; padding:5px 10px; }",
-        "detail": "unitool.campaign_manager",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.campaign_manager",
-        "description": "unitool.campaign_manager",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CampaignFilterProxyModel(QSortFilterProxyModel):\n    def __init__(self, parent=None,\n                 status_filter=None, king_filter=None, king_column=0,\n                 name_filter=None, name_column=1, status_column=2):\n        super().__init__(parent)\n        self.status_filter = status_filter\n        self.king_filter = king_filter\n        self.name_filter = name_filter\n        self.king_column = king_column",
-        "detail": "unitool.campaign_manager",
-        "documentation": {}
-    },
-    {
-        "label": "load_config",
-        "kind": 2,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "def load_config() -> dict:\n    \"\"\"\n    Безопасная загрузка config.json.\n    Возвращает словарь конфигурации, либо пустой словарь.\n    \"\"\"\n    try:\n        if CONFIG_PATH.exists():\n            with open(CONFIG_PATH, \"r\", encoding=\"utf-8\") as f:\n                return json.load(f)\n        else:",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "get_use_proxy",
-        "kind": 2,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "def get_use_proxy() -> bool:\n    \"\"\"\n    Возвращает актуальное значение use_proxy из config.json.\n    По умолчанию — True.\n    \"\"\"\n    config = load_config()\n    return config.get(\"use_proxy\", True)\n# Для обратной совместимости:\nUSE_PROXY = get_use_proxy()\ndef get_auto_refresh_campaigns() -> bool:",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "get_auto_refresh_campaigns",
-        "kind": 2,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "def get_auto_refresh_campaigns() -> bool:\n    config = load_config()\n    return config.get(\"auto_refresh_campaigns\", True)\ndef get_auto_refresh_adsets() -> bool:\n    config = load_config()\n    return config.get(\"auto_refresh_adsets\", True)\ndef save_config(data: dict):\n    \"\"\"Сохраняет словарь в config.json\"\"\"\n    try:\n        with open(CONFIG_PATH, \"w\", encoding=\"utf-8\") as f:",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "get_auto_refresh_adsets",
-        "kind": 2,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "def get_auto_refresh_adsets() -> bool:\n    config = load_config()\n    return config.get(\"auto_refresh_adsets\", True)\ndef save_config(data: dict):\n    \"\"\"Сохраняет словарь в config.json\"\"\"\n    try:\n        with open(CONFIG_PATH, \"w\", encoding=\"utf-8\") as f:\n            json.dump(data, f, indent=2, ensure_ascii=False)\n    except Exception as e:\n        logger.error(f\"❌ Ошибка при сохранении config.json: {e}\")",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "save_config",
-        "kind": 2,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "def save_config(data: dict):\n    \"\"\"Сохраняет словарь в config.json\"\"\"\n    try:\n        with open(CONFIG_PATH, \"w\", encoding=\"utf-8\") as f:\n            json.dump(data, f, indent=2, ensure_ascii=False)\n    except Exception as e:\n        logger.error(f\"❌ Ошибка при сохранении config.json: {e}\")",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nCONFIG_PATH = Path(\"config.json\")\n# Значения по умолчанию\nSPREADSHEET_NAME = os.getenv(\"SPREADSHEET_NAME\", \"REPORT KLIM\")\nCAMPAIGN_SHEET = os.getenv(\"CAMPAIGN_SHEET\", \"CampaignControl\")\nDATA_SHEET_NAME = os.getenv(\"DATA_SHEET_NAME\", \"AdSetControl\")\nCONFIG_SHEET_NAME = os.getenv(\"CONFIG_SHEET_NAME\", \"Config\")\nRESERVE_API_SHEET_NAME = os.getenv(\"RESERVE_API_SHEET_NAME\", \"RESERV_API\")\nTELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "CONFIG_PATH",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "CONFIG_PATH = Path(\"config.json\")\n# Значения по умолчанию\nSPREADSHEET_NAME = os.getenv(\"SPREADSHEET_NAME\", \"REPORT KLIM\")\nCAMPAIGN_SHEET = os.getenv(\"CAMPAIGN_SHEET\", \"CampaignControl\")\nDATA_SHEET_NAME = os.getenv(\"DATA_SHEET_NAME\", \"AdSetControl\")\nCONFIG_SHEET_NAME = os.getenv(\"CONFIG_SHEET_NAME\", \"Config\")\nRESERVE_API_SHEET_NAME = os.getenv(\"RESERVE_API_SHEET_NAME\", \"RESERV_API\")\nTELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "SPREADSHEET_NAME",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "SPREADSHEET_NAME = os.getenv(\"SPREADSHEET_NAME\", \"REPORT KLIM\")\nCAMPAIGN_SHEET = os.getenv(\"CAMPAIGN_SHEET\", \"CampaignControl\")\nDATA_SHEET_NAME = os.getenv(\"DATA_SHEET_NAME\", \"AdSetControl\")\nCONFIG_SHEET_NAME = os.getenv(\"CONFIG_SHEET_NAME\", \"Config\")\nRESERVE_API_SHEET_NAME = os.getenv(\"RESERVE_API_SHEET_NAME\", \"RESERV_API\")\nTELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "CAMPAIGN_SHEET",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "CAMPAIGN_SHEET = os.getenv(\"CAMPAIGN_SHEET\", \"CampaignControl\")\nDATA_SHEET_NAME = os.getenv(\"DATA_SHEET_NAME\", \"AdSetControl\")\nCONFIG_SHEET_NAME = os.getenv(\"CONFIG_SHEET_NAME\", \"Config\")\nRESERVE_API_SHEET_NAME = os.getenv(\"RESERVE_API_SHEET_NAME\", \"RESERV_API\")\nTELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "DATA_SHEET_NAME",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "DATA_SHEET_NAME = os.getenv(\"DATA_SHEET_NAME\", \"AdSetControl\")\nCONFIG_SHEET_NAME = os.getenv(\"CONFIG_SHEET_NAME\", \"Config\")\nRESERVE_API_SHEET_NAME = os.getenv(\"RESERVE_API_SHEET_NAME\", \"RESERV_API\")\nTELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",\n]",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "CONFIG_SHEET_NAME",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "CONFIG_SHEET_NAME = os.getenv(\"CONFIG_SHEET_NAME\", \"Config\")\nRESERVE_API_SHEET_NAME = os.getenv(\"RESERVE_API_SHEET_NAME\", \"RESERV_API\")\nTELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",\n]\ndef load_config() -> dict:",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "RESERVE_API_SHEET_NAME",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "RESERVE_API_SHEET_NAME = os.getenv(\"RESERVE_API_SHEET_NAME\", \"RESERV_API\")\nTELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",\n]\ndef load_config() -> dict:\n    \"\"\"",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "TELEGRAM_BOT_TOKEN",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "TELEGRAM_BOT_TOKEN = os.getenv(\"TELEGRAM_BOT_TOKEN\", \"7434332656:AAFTQzifyHJJr__V1NMP3uArqyi4ew9mwlI\")\nTELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",\n]\ndef load_config() -> dict:\n    \"\"\"\n    Безопасная загрузка config.json.",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "TELEGRAM_CHAT_ID",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "TELEGRAM_CHAT_ID = os.getenv(\"TELEGRAM_CHAT_ID\", \"7941692968\")\nLOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",\n]\ndef load_config() -> dict:\n    \"\"\"\n    Безопасная загрузка config.json.\n    Возвращает словарь конфигурации, либо пустой словарь.",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "LOG_FILE",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "LOG_FILE = os.getenv(\"LOG_FILE\", \"adset_log.txt\")\nSCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",\n]\ndef load_config() -> dict:\n    \"\"\"\n    Безопасная загрузка config.json.\n    Возвращает словарь конфигурации, либо пустой словарь.\n    \"\"\"",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "SCOPES",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "SCOPES = [\n    \"https://www.googleapis.com/auth/spreadsheets\",\n    \"https://www.googleapis.com/auth/drive\",\n]\ndef load_config() -> dict:\n    \"\"\"\n    Безопасная загрузка config.json.\n    Возвращает словарь конфигурации, либо пустой словарь.\n    \"\"\"\n    try:",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "USE_PROXY",
-        "kind": 5,
-        "importPath": "unitool.config",
-        "description": "unitool.config",
-        "peekOfCode": "USE_PROXY = get_use_proxy()\ndef get_auto_refresh_campaigns() -> bool:\n    config = load_config()\n    return config.get(\"auto_refresh_campaigns\", True)\ndef get_auto_refresh_adsets() -> bool:\n    config = load_config()\n    return config.get(\"auto_refresh_adsets\", True)\ndef save_config(data: dict):\n    \"\"\"Сохраняет словарь в config.json\"\"\"\n    try:",
-        "detail": "unitool.config",
-        "documentation": {}
-    },
-    {
-        "label": "refresh_session",
-        "kind": 2,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "def refresh_session() -> None:\n    \"\"\"Создаёт глобальную сессию заново.\"\"\"\n    global _SESSION\n    _SESSION = _make_session()\n    logger.info(\"🔄 Сессия Facebook API успешно обновлена\")\ndef _ensure_session() -> None:\n    \"\"\"Гарантирует, что сессия инициализирована.\"\"\"\n    global _SESSION\n    if _SESSION is None:\n        refresh_session()",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "pause_campaign",
-        "kind": 2,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "def pause_campaign(campaign_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(campaign_id, token, method=\"POST\", data={\"status\": \"PAUSED\"})\ndef resume_campaign(campaign_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(campaign_id, token, method=\"POST\", data={\"status\": \"ACTIVE\"})\ndef pause_adset(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"POST\", data={\"status\": \"PAUSED\"})\ndef resume_adset(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"POST\", data={\"status\": \"ACTIVE\"})\ndef get_adset_budget(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"GET\", fields=\"daily_budget,lifetime_budget\")",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "resume_campaign",
-        "kind": 2,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "def resume_campaign(campaign_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(campaign_id, token, method=\"POST\", data={\"status\": \"ACTIVE\"})\ndef pause_adset(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"POST\", data={\"status\": \"PAUSED\"})\ndef resume_adset(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"POST\", data={\"status\": \"ACTIVE\"})\ndef get_adset_budget(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"GET\", fields=\"daily_budget,lifetime_budget\")\ndef update_adset_budget(\n    adset_id: str,",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "pause_adset",
-        "kind": 2,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "def pause_adset(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"POST\", data={\"status\": \"PAUSED\"})\ndef resume_adset(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"POST\", data={\"status\": \"ACTIVE\"})\ndef get_adset_budget(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"GET\", fields=\"daily_budget,lifetime_budget\")\ndef update_adset_budget(\n    adset_id: str,\n    token: str,\n    *,",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "resume_adset",
-        "kind": 2,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "def resume_adset(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"POST\", data={\"status\": \"ACTIVE\"})\ndef get_adset_budget(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"GET\", fields=\"daily_budget,lifetime_budget\")\ndef update_adset_budget(\n    adset_id: str,\n    token: str,\n    *,\n    daily_budget: Optional[int] = None,\n    lifetime_budget: Optional[int] = None,",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "get_adset_budget",
-        "kind": 2,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "def get_adset_budget(adset_id: str, token: str) -> Dict[str, Any]:\n    return _graph_request(adset_id, token, method=\"GET\", fields=\"daily_budget,lifetime_budget\")\ndef update_adset_budget(\n    adset_id: str,\n    token: str,\n    *,\n    daily_budget: Optional[int] = None,\n    lifetime_budget: Optional[int] = None,\n    start_time: Optional[str] = None,\n    end_time: Optional[str] = None",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "update_adset_budget",
-        "kind": 2,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "def update_adset_budget(\n    adset_id: str,\n    token: str,\n    *,\n    daily_budget: Optional[int] = None,\n    lifetime_budget: Optional[int] = None,\n    start_time: Optional[str] = None,\n    end_time: Optional[str] = None\n) -> Dict[str, Any]:\n    payload: Dict[str, Any] = {}",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nAPI_VERSION = \"v18.0\"\nBASE_URL = f\"https://graph.facebook.com/{API_VERSION}\"\nDEFAULT_TIMEOUT = 10\nMAX_RETRIES = 3\nBACKOFF_FACTOR = 1.0\nSTATUS_FORCELIST = [500, 502, 503, 504]\n_SESSION: Optional[requests.Session] = None\ndef _make_session() -> requests.Session:\n    \"\"\"Создаёт сессию requests с повторами и прокси, если включено.\"\"\"",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "API_VERSION",
-        "kind": 5,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "API_VERSION = \"v18.0\"\nBASE_URL = f\"https://graph.facebook.com/{API_VERSION}\"\nDEFAULT_TIMEOUT = 10\nMAX_RETRIES = 3\nBACKOFF_FACTOR = 1.0\nSTATUS_FORCELIST = [500, 502, 503, 504]\n_SESSION: Optional[requests.Session] = None\ndef _make_session() -> requests.Session:\n    \"\"\"Создаёт сессию requests с повторами и прокси, если включено.\"\"\"\n    session = requests.Session()",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "BASE_URL",
-        "kind": 5,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "BASE_URL = f\"https://graph.facebook.com/{API_VERSION}\"\nDEFAULT_TIMEOUT = 10\nMAX_RETRIES = 3\nBACKOFF_FACTOR = 1.0\nSTATUS_FORCELIST = [500, 502, 503, 504]\n_SESSION: Optional[requests.Session] = None\ndef _make_session() -> requests.Session:\n    \"\"\"Создаёт сессию requests с повторами и прокси, если включено.\"\"\"\n    session = requests.Session()\n    retry = Retry(",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_TIMEOUT",
-        "kind": 5,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "DEFAULT_TIMEOUT = 10\nMAX_RETRIES = 3\nBACKOFF_FACTOR = 1.0\nSTATUS_FORCELIST = [500, 502, 503, 504]\n_SESSION: Optional[requests.Session] = None\ndef _make_session() -> requests.Session:\n    \"\"\"Создаёт сессию requests с повторами и прокси, если включено.\"\"\"\n    session = requests.Session()\n    retry = Retry(\n        total=MAX_RETRIES,",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "MAX_RETRIES",
-        "kind": 5,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "MAX_RETRIES = 3\nBACKOFF_FACTOR = 1.0\nSTATUS_FORCELIST = [500, 502, 503, 504]\n_SESSION: Optional[requests.Session] = None\ndef _make_session() -> requests.Session:\n    \"\"\"Создаёт сессию requests с повторами и прокси, если включено.\"\"\"\n    session = requests.Session()\n    retry = Retry(\n        total=MAX_RETRIES,\n        backoff_factor=BACKOFF_FACTOR,",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "BACKOFF_FACTOR",
-        "kind": 5,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "BACKOFF_FACTOR = 1.0\nSTATUS_FORCELIST = [500, 502, 503, 504]\n_SESSION: Optional[requests.Session] = None\ndef _make_session() -> requests.Session:\n    \"\"\"Создаёт сессию requests с повторами и прокси, если включено.\"\"\"\n    session = requests.Session()\n    retry = Retry(\n        total=MAX_RETRIES,\n        backoff_factor=BACKOFF_FACTOR,\n        status_forcelist=STATUS_FORCELIST,",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "STATUS_FORCELIST",
-        "kind": 5,
-        "importPath": "unitool.fb_api",
-        "description": "unitool.fb_api",
-        "peekOfCode": "STATUS_FORCELIST = [500, 502, 503, 504]\n_SESSION: Optional[requests.Session] = None\ndef _make_session() -> requests.Session:\n    \"\"\"Создаёт сессию requests с повторами и прокси, если включено.\"\"\"\n    session = requests.Session()\n    retry = Retry(\n        total=MAX_RETRIES,\n        backoff_factor=BACKOFF_FACTOR,\n        status_forcelist=STATUS_FORCELIST,\n        allowed_methods=[\"GET\", \"POST\"]",
-        "detail": "unitool.fb_api",
-        "documentation": {}
-    },
-    {
-        "label": "load_proxy_from_config",
-        "kind": 2,
-        "importPath": "unitool.global_proxy",
-        "description": "unitool.global_proxy",
-        "peekOfCode": "def load_proxy_from_config() -> Optional[Dict[str, str]]:\n    \"\"\"Загружает настройки SOCKS5 прокси из config.json и возвращает словарь для requests.\"\"\"\n    try:\n        with open(CONFIG_PATH, \"r\", encoding=\"utf-8\") as f:\n            config = json.load(f)\n            raw = config.get(\"proxy\", \"\").strip()\n            if not raw:\n                raise ValueError(\"Поле 'proxy' отсутствует или пустое\")\n            parts = raw.split(\":\")\n            if len(parts) != 4:",
-        "detail": "unitool.global_proxy",
-        "documentation": {}
-    },
-    {
-        "label": "check_proxy",
-        "kind": 2,
-        "importPath": "unitool.global_proxy",
-        "description": "unitool.global_proxy",
-        "peekOfCode": "def check_proxy(proxy_dict: Dict[str, str]) -> bool:\n    \"\"\"Проверяет работоспособность переданного прокси.\"\"\"\n    try:\n        response = requests.get(\"https://api.ipify.org\", proxies=proxy_dict, timeout=10)\n        response.raise_for_status()\n        logger.info(f\"✅ Прокси успешно подключён. Текущий IP: {response.text}\")\n        return True\n    except Exception as e:\n        logger.warning(f\"⚠️ Прокси не работает: {e}\")\n        return False",
-        "detail": "unitool.global_proxy",
-        "documentation": {}
-    },
-    {
-        "label": "get_verified_proxy",
-        "kind": 2,
-        "importPath": "unitool.global_proxy",
-        "description": "unitool.global_proxy",
-        "peekOfCode": "def get_verified_proxy() -> Optional[Dict[str, str]]:\n    \"\"\"\n    Возвращает рабочий прокси, если включён в настройках и работает.\n    Если прокси включён, но не прошёл проверку — вызывает RuntimeError.\n    Если прокси выключен — возвращает None.\n    \"\"\"\n    if not get_use_proxy():\n        logger.info(\"🔓 Прокси отключён — используется прямое подключение\")\n        return None\n    for attempt in range(2):",
-        "detail": "unitool.global_proxy",
-        "documentation": {}
-    },
-    {
-        "label": "CONFIG_PATH",
-        "kind": 5,
-        "importPath": "unitool.global_proxy",
-        "description": "unitool.global_proxy",
-        "peekOfCode": "CONFIG_PATH = \"config.json\"\nlogger = logging.getLogger(__name__)\ndef load_proxy_from_config() -> Optional[Dict[str, str]]:\n    \"\"\"Загружает настройки SOCKS5 прокси из config.json и возвращает словарь для requests.\"\"\"\n    try:\n        with open(CONFIG_PATH, \"r\", encoding=\"utf-8\") as f:\n            config = json.load(f)\n            raw = config.get(\"proxy\", \"\").strip()\n            if not raw:\n                raise ValueError(\"Поле 'proxy' отсутствует или пустое\")",
-        "detail": "unitool.global_proxy",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.global_proxy",
-        "description": "unitool.global_proxy",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef load_proxy_from_config() -> Optional[Dict[str, str]]:\n    \"\"\"Загружает настройки SOCKS5 прокси из config.json и возвращает словарь для requests.\"\"\"\n    try:\n        with open(CONFIG_PATH, \"r\", encoding=\"utf-8\") as f:\n            config = json.load(f)\n            raw = config.get(\"proxy\", \"\").strip()\n            if not raw:\n                raise ValueError(\"Поле 'proxy' отсутствует или пустое\")\n            parts = raw.split(\":\")",
-        "detail": "unitool.global_proxy",
-        "documentation": {}
-    },
-    {
-        "label": "get_keitaro_api_key",
-        "kind": 2,
-        "importPath": "unitool.keitaro",
-        "description": "unitool.keitaro",
-        "peekOfCode": "def get_keitaro_api_key() -> str:\n    \"\"\"Чтение Keitaro API key из Google Sheets (лист 'KEYS').\"\"\"\n    try:\n        gc = gspread.service_account(filename=\"credentials.json\")  # твой json от Google API\n        sh = gc.open(\"Копия REPORT KLIM\")  # название таблицы\n        ws = sh.worksheet(\"KEYS\")\n        records = ws.get_all_records()\n        for row in records:\n            if str(row.get(\"Key\")).strip().lower() == \"keitaro_api\":\n                return str(row.get(\"Value\")).strip()",
-        "detail": "unitool.keitaro",
-        "documentation": {}
-    },
-    {
-        "label": "setup_logging",
-        "kind": 2,
-        "importPath": "unitool.logger",
-        "description": "unitool.logger",
-        "peekOfCode": "def setup_logging(log_file: str, ui_log_widget=None):\n    \"\"\"\n    Настраивает вывод в файл и (опционально) в QTextEdit.\n    \"\"\"\n    logger = logging.getLogger()\n    logger.setLevel(logging.INFO)\n    # Файловый логер с ротацией\n    fh = RotatingFileHandler(log_file, maxBytes=2_000_000, backupCount=5, encoding=\"utf-8\")\n    fh.setFormatter(logging.Formatter(\"%(asctime)s %(levelname)s: %(message)s\"))\n    logger.addHandler(fh)",
-        "detail": "unitool.logger",
-        "documentation": {}
-    },
-    {
-        "label": "CampaignTableModel",
-        "kind": 6,
-        "importPath": "unitool.models",
-        "description": "unitool.models",
-        "peekOfCode": "class CampaignTableModel(QAbstractTableModel):\n    headers = [\"KING\", \"Название\", \"Status\", \"Campaign ID\", \"Account ID\", \"Token\"]\n    def __init__(self, data=None):\n        super().__init__()\n        self._data = data or []\n        self._colors = []  # Пока не используется, но оставлено для возможной подсветки\n    def update(self, data, colors=None):\n        self.beginResetModel()\n        self._data = data or []\n        self._colors = colors or [None] * len(self._data)",
-        "detail": "unitool.models",
-        "documentation": {}
-    },
-    {
-        "label": "AdSetTableModel",
-        "kind": 6,
-        "importPath": "unitool.models",
-        "description": "unitool.models",
-        "peekOfCode": "class AdSetTableModel(QAbstractTableModel):\n    headers = [\n        \"AdSet Name\", \"AdSet ID\", \"uCPC\", \"Spend\", \"CPA\",\n        \"Status\", \"Account ID\", \"Token\", \"Leads\",\n        \"ManualPause\", \"KING\", \"Effective Status\", \"Ad Name\", \"Budget\"\n    ]\n    def __init__(self, data=None, colors=None):\n        super().__init__()\n        self._data = data or []\n        self._colors = colors or []",
-        "detail": "unitool.models",
-        "documentation": {}
-    },
-    {
-        "label": "get_verified_proxy",
-        "kind": 2,
-        "importPath": "unitool.proxy_handler",
-        "description": "unitool.proxy_handler",
-        "peekOfCode": "def get_verified_proxy() -> Optional[Dict[str, str]]:\n    \"\"\"\n    Загружает прокси из config.json, проверяет и возвращает словарь прокси.\n    Ожидаемый формат: ip:port:user:pass\n    \"\"\"\n    if not get_use_proxy():\n        logger.info(\"🔓 Прокси отключён (use_proxy=False)\")\n        return None\n    if not CONFIG_PATH.exists():\n        raise FileNotFoundError(\"⚠️ Файл config.json не найден\")",
-        "detail": "unitool.proxy_handler",
-        "documentation": {}
-    },
-    {
-        "label": "connect_with_retry",
-        "kind": 2,
-        "importPath": "unitool.proxy_handler",
-        "description": "unitool.proxy_handler",
-        "peekOfCode": "def connect_with_retry():\n    \"\"\"\n    Создаёт глобальную сессию requests с прокси и повторной попыткой при сбое.\n    Заменяет методы requests.get/post/request глобально.\n    \"\"\"\n    global _session\n    if not get_use_proxy():\n        logger.info(\"🔓 Прокси отключён — используется прямое соединение\")\n        return\n    for attempt in range(2):",
-        "detail": "unitool.proxy_handler",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.proxy_handler",
-        "description": "unitool.proxy_handler",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nCONFIG_PATH = Path(\"config.json\")\nPROXY_TEST_URL = \"https://api.ipify.org?format=json\"\nRETRY_DELAY = 3  # секунд\n_session: Optional[requests.Session] = None\ndef _check_proxy(proxies: Dict[str, str]) -> bool:\n    \"\"\"Проверяет доступность прокси по API IP-адреса.\"\"\"\n    try:\n        response = requests.get(PROXY_TEST_URL, proxies=proxies, timeout=5)\n        response.raise_for_status()",
-        "detail": "unitool.proxy_handler",
-        "documentation": {}
-    },
-    {
-        "label": "CONFIG_PATH",
-        "kind": 5,
-        "importPath": "unitool.proxy_handler",
-        "description": "unitool.proxy_handler",
-        "peekOfCode": "CONFIG_PATH = Path(\"config.json\")\nPROXY_TEST_URL = \"https://api.ipify.org?format=json\"\nRETRY_DELAY = 3  # секунд\n_session: Optional[requests.Session] = None\ndef _check_proxy(proxies: Dict[str, str]) -> bool:\n    \"\"\"Проверяет доступность прокси по API IP-адреса.\"\"\"\n    try:\n        response = requests.get(PROXY_TEST_URL, proxies=proxies, timeout=5)\n        response.raise_for_status()\n        logger.info(f\"✅ Прокси успешно подключён. IP: {response.json().get('ip')}\")",
-        "detail": "unitool.proxy_handler",
-        "documentation": {}
-    },
-    {
-        "label": "PROXY_TEST_URL",
-        "kind": 5,
-        "importPath": "unitool.proxy_handler",
-        "description": "unitool.proxy_handler",
-        "peekOfCode": "PROXY_TEST_URL = \"https://api.ipify.org?format=json\"\nRETRY_DELAY = 3  # секунд\n_session: Optional[requests.Session] = None\ndef _check_proxy(proxies: Dict[str, str]) -> bool:\n    \"\"\"Проверяет доступность прокси по API IP-адреса.\"\"\"\n    try:\n        response = requests.get(PROXY_TEST_URL, proxies=proxies, timeout=5)\n        response.raise_for_status()\n        logger.info(f\"✅ Прокси успешно подключён. IP: {response.json().get('ip')}\")\n        return True",
-        "detail": "unitool.proxy_handler",
-        "documentation": {}
-    },
-    {
-        "label": "RETRY_DELAY",
-        "kind": 5,
-        "importPath": "unitool.proxy_handler",
-        "description": "unitool.proxy_handler",
-        "peekOfCode": "RETRY_DELAY = 3  # секунд\n_session: Optional[requests.Session] = None\ndef _check_proxy(proxies: Dict[str, str]) -> bool:\n    \"\"\"Проверяет доступность прокси по API IP-адреса.\"\"\"\n    try:\n        response = requests.get(PROXY_TEST_URL, proxies=proxies, timeout=5)\n        response.raise_for_status()\n        logger.info(f\"✅ Прокси успешно подключён. IP: {response.json().get('ip')}\")\n        return True\n    except Exception as e:",
-        "detail": "unitool.proxy_handler",
-        "documentation": {}
-    },
-    {
-        "label": "SettingsTab",
-        "kind": 6,
-        "importPath": "unitool.settings_tab",
-        "description": "unitool.settings_tab",
-        "peekOfCode": "class SettingsTab(QWidget):\n    def __init__(self):\n        super().__init__()\n        self.setLayout(QVBoxLayout())\n        self.config = load_config()\n        # Основная форма\n        form = QFormLayout()\n        self.api_key_input = QLineEdit(self.config.get(\"sync_api_key\", \"\"))\n        self.proxy_input = QLineEdit(self.config.get(\"proxy\", \"\"))\n        self.fb_token_input = QLineEdit(self.config.get(\"fb_access_token\", \"\"))",
-        "detail": "unitool.settings_tab",
-        "documentation": {}
-    },
-    {
-        "label": "init_client",
-        "kind": 2,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "def init_client():\n    global _creds, _gc\n    _creds = Credentials.from_service_account_file(\"credentials.json\", scopes=SCOPES)\n    _gc = gspread.authorize(_creds)\ndef safe_worksheet(sheet_name, max_retries=3, delay=2):\n    for attempt in range(1, max_retries + 1):\n        try:\n            return _gc.open(SPREADSHEET_NAME).worksheet(sheet_name)\n        except Exception as e:\n            if attempt == max_retries:",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "safe_worksheet",
-        "kind": 2,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "def safe_worksheet(sheet_name, max_retries=3, delay=2):\n    for attempt in range(1, max_retries + 1):\n        try:\n            return _gc.open(SPREADSHEET_NAME).worksheet(sheet_name)\n        except Exception as e:\n            if attempt == max_retries:\n                raise\n            time.sleep(delay)\n            delay *= 2\n            init_client()",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_campaigns",
-        "kind": 2,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "def fetch_campaigns():\n    sheet = safe_worksheet(CAMPAIGN_SHEET)\n    rows = sheet.get_all_values()\n    campaigns = []\n    for row in rows[1:]:\n        if len(row) >= 6:\n            campaigns.append([\n                row[0].strip(),        # KING\n                row[1].strip(),        # Name\n                row[3].strip().upper(),# Status",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_adsets",
-        "kind": 2,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "def fetch_adsets():\n    sheet = safe_worksheet(DATA_SHEET_NAME)\n    rows = sheet.get_all_values()\n    adsets = []\n    for row in rows[1:]:\n        if len(row) >= 13:\n            adsets.append([\n                row[0].strip(),  # AdSet Name\n                row[1].strip(),  # AdSet ID\n                row[2].strip(),  # uCPC",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "load_reserve_tokens",
-        "kind": 2,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "def load_reserve_tokens():\n    try:\n        sheet = safe_worksheet(\"RESERV_API\")\n        rows = sheet.get_all_values()\n        reserve_map = {}\n        for row in rows[1:]:\n            if not row or not row[0].strip():\n                continue\n            king = row[0].strip()\n            tokens = [t.strip() for t in row[1:] if t.strip()]",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "load_geo_config_from_sheet",
-        "kind": 2,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "def load_geo_config_from_sheet(sheet):\n    rows = sheet.get_all_values()\n    geo_config = {}\n    for row in rows[1:]:\n        if not any(cell.strip() for cell in row):\n            continue\n        if len(row) < 5:\n            logger.warning(f\"Некорректная строка в GEOcfg: {row}\")\n            continue\n        try:",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "_creds",
-        "kind": 5,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "_creds = None\n_gc = None\nlogger = logging.getLogger(__name__)\ndef init_client():\n    global _creds, _gc\n    _creds = Credentials.from_service_account_file(\"credentials.json\", scopes=SCOPES)\n    _gc = gspread.authorize(_creds)\ndef safe_worksheet(sheet_name, max_retries=3, delay=2):\n    for attempt in range(1, max_retries + 1):\n        try:",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "_gc",
-        "kind": 5,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "_gc = None\nlogger = logging.getLogger(__name__)\ndef init_client():\n    global _creds, _gc\n    _creds = Credentials.from_service_account_file(\"credentials.json\", scopes=SCOPES)\n    _gc = gspread.authorize(_creds)\ndef safe_worksheet(sheet_name, max_retries=3, delay=2):\n    for attempt in range(1, max_retries + 1):\n        try:\n            return _gc.open(SPREADSHEET_NAME).worksheet(sheet_name)",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "unitool.sheets_client",
-        "description": "unitool.sheets_client",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef init_client():\n    global _creds, _gc\n    _creds = Credentials.from_service_account_file(\"credentials.json\", scopes=SCOPES)\n    _gc = gspread.authorize(_creds)\ndef safe_worksheet(sheet_name, max_retries=3, delay=2):\n    for attempt in range(1, max_retries + 1):\n        try:\n            return _gc.open(SPREADSHEET_NAME).worksheet(sheet_name)\n        except Exception as e:",
-        "detail": "unitool.sheets_client",
-        "documentation": {}
-    },
-    {
         "label": "login_required",
         "kind": 2,
         "importPath": "app",
@@ -1670,7 +570,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef fetch_keitaro_report(api_key, domain, interval=\"today\", group_by=\"sub_id_9\"):\n    \"\"\"\n    Получает отчет из Keitaro с расчетом лидов по формуле Spend / CPA.",
+        "peekOfCode": "def get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.",
         "detail": "app",
         "documentation": {}
     },
@@ -1679,7 +579,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\", group_by=\"sub_id_9\"):\n    \"\"\"\n    Получает отчет из Keitaro с расчетом лидов по формуле Spend / CPA.\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n    metrics = [\"campaign_unique_clicks\", \"ucpc\", \"conversions\", \"sales\", \"cost\", \"cpa\", \"cpc\"]\n    limit = 250\n    offset = 0",
+        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.\n    Считает лиды по формуле Spend / CPA.\n    Берёт CPC и UCPC из Keitaro.\n    Группировка только по sub_id_9 (название адсета).\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}",
         "detail": "app",
         "documentation": {}
     },
@@ -1689,6 +589,69 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        # Если нет chat_id или bot_token — пробуем получить из настроек\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_all_users() -> List[Dict[str, Any]]:\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_accounts_stats",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем ВСЕ аккаунты, включая невалидные\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "test_tokens",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def test_tokens():\n    \"\"\"Тестирует токены всех аккаунтов\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        all_accounts = get_all_accounts_stats()\n        results = []\n        for account in all_accounts:\n            account_info = get_account_limits_info(account['account_id'], account['token'])\n            result = {",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "debug_accounts",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def debug_accounts():\n    \"\"\"Отладочная информация об аккаунтах\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        # Получаем сырые данные\n        users = get_all_users()\n        all_accounts_data = get_all_accounts_stats()\n        # Проверяем аккаунты\n        checked_accounts = []",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_accounts_stats",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_all_accounts_stats() -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по всем аккаунтам всех пользователей\"\"\"\n    try:\n        users = get_all_users()\n        all_accounts = []\n        for user in users:\n            user_id = user['id']\n            try:\n                # Получаем аккаунты пользователя\n                accounts = get_user_accounts_stats(user_id)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_account_limits_info",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any]:\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        # Проверяем валидность входных данных\n        if not account_id or account_id == 'N/A' or not access_token or access_token == 'N/A':\n            return {\n                'account_id': account_id or 'unknown',\n                'name': 'Невалидные данные',\n                'status': 'INVALID_DATA',\n                'spend': 0,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_reserve_tokens(user_id: int, king: str = None) -> Dict[str, List[str]]:\n    \"\"\"Получает резервные токены для конкретного KING или все\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            if king:\n                cursor.execute(\n                    \"SELECT token FROM reserve_tokens WHERE user_id = ? AND king = ?\",\n                    (user_id, king)\n                )",
         "detail": "app",
         "documentation": {}
     },
@@ -1706,7 +669,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def is_admin_user(user_id):\n    \"\"\"Проверяет, является ли пользователь администратором\"\"\"\n    with get_db_connection(user_id) as conn:\n        cursor = conn.cursor()\n        cursor.execute(\"SELECT username FROM users WHERE id = ?\", (user_id,))\n        user = cursor.fetchone()\n        # Список администраторов - добавьте нужные username\n        admin_users = ['admin', 'boss', 'administrator', 'root']\n        return user and user['username'].lower() in admin_users\ndef get_facebook_account_limits(account_id, access_token):",
+        "peekOfCode": "def is_admin_user(user_id):\n    \"\"\"Проверяет, является ли пользователь администратором\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT username FROM users WHERE id = ?\", (user_id,))\n            user = cursor.fetchone()\n            if not user:\n                return False\n            # Список администраторов - можно хранить в настройках или отдельной таблице",
         "detail": "app",
         "documentation": {}
     },
@@ -1792,15 +755,6 @@
         "documentation": {}
     },
     {
-        "label": "fetch_facebook_adsets",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает адсеты из Facebook API с актуальными статусами\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "check_and_pause_campaigns",
         "kind": 2,
         "importPath": "app",
@@ -1842,15 +796,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def save_manual_campaigns():\n    \"\"\"Сохраняет кампании из ручного ввода\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json.get('campaigns', [])\n        if not data:\n            return jsonify({'success': False, 'error': 'Нет данных для сохранения'})\n        saved = 0\n        for campaign in data:\n            if campaign and len(campaign) >= 6:",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "admin_limits",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def admin_limits():\n    \"\"\"Скрытая админ панель с лимитами аккаунтов\"\"\"\n    # Проверяем права доступа\n    if not is_admin_user(session['user_id']):\n        return render_template('access_denied.html')\n    return render_template('admin_panel.html')\n@app.route('/api/admin/check_access')\n@login_required\ndef check_admin_access():\n    \"\"\"Проверяет права доступа к админ панели\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -1931,7 +876,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def save_manual_adsets():\n    \"\"\"Сохраняет адсеты из ручного ввода\"\"\"\n    try:\n        user_id = session['refresh_adsets_with_keitaro()']\n        data = request.json.get('adsets', [])\n        if not data:\n            return jsonify({'success': False, 'error': 'Нет данных для сохранения'})\n        saved = 0\n        for adset in data:\n            if adset and len(adset) >= 14:",
+        "peekOfCode": "def save_manual_adsets():\n    \"\"\"Сохраняет адсеты из ручного ввода\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json.get('adsets', [])\n        if not data:\n            return jsonify({'success': False, 'error': 'Нет данных для сохранения'})\n        saved = 0\n        for adset in data:\n            if adset and len(adset) >= 14:",
         "detail": "app",
         "documentation": {}
     },
@@ -1959,6 +904,15 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def fetch_facebook_data():\n    \"\"\"Получает данные из Facebook API по токену и account_id\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json\n        account_id = data.get('account_id')\n        access_token = data.get('access_token')\n        if not account_id or not access_token:\n            return jsonify({\n                'success': False, ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "reset_old_ucpc",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def reset_old_ucpc(user_id, days=7):\n    \"\"\"Сбрасывает uCPC у адсетов, которые не обновлялись более N дней\"\"\"\n    try:\n        cutoff_date = datetime.datetime.utcnow() - datetime.timedelta(days=days)\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE adsets\n                SET ucpc = 0\n                WHERE user_id = ?",
         "detail": "app",
         "documentation": {}
     },
@@ -2026,6 +980,24 @@
         "documentation": {}
     },
     {
+        "label": "update_campaign_status",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_campaign_status():\n    \"\"\"Обновляет статус кампании\"\"\"\n    try:\n        data = request.json\n        campaign_id = data.get('campaign_id')\n        name = data.get('name')\n        token = data.get('token')\n        new_status = data.get('status')  # 'ACTIVE' или 'PAUSED'\n        if not all([campaign_id, name, token, new_status]):\n            return jsonify({'success': False, 'error': 'Missing required parameters'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_adset_status",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_adset_status():\n    \"\"\"Обновляет статус адсета\"\"\"\n    try:\n        data = request.json\n        adset_id = data.get('adset_id')\n        name = data.get('name')\n        token = data.get('token')\n        new_status = data.get('status')  # 'ACTIVE' или 'PAUSED'\n        if not all([adset_id, name, token, new_status]):\n            return jsonify({'success': False, 'error': 'Missing required parameters'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "get_budget_rules",
         "kind": 2,
         "importPath": "app",
@@ -2084,7 +1056,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def set_adset_budget_api():\n    \"\"\"Ручное установление бюджета адсета\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json\n        adset_id = data.get('adset_id')\n        name = data.get('name')\n        token = data.get('token')\n        new_budget = float(data.get('budget', 0))\n        # Обновляем через Facebook API",
+        "peekOfCode": "def set_adset_budget_api():\n    try:\n        user_id = session['user_id']\n        data = request.json\n        adset_id = data.get('adset_id')\n        name = data.get('name')\n        token = data.get('token')\n        new_budget = float(data.get('budget', 0))\n        if not all([adset_id, name, token]):\n            return jsonify({'success': False, 'error': 'Missing required parameters'})",
         "detail": "app",
         "documentation": {}
     },
@@ -2121,6 +1093,114 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def register():\n    if 'user_id' in session:\n        return redirect(url_for('dashboard'))\n    if request.method == 'POST':\n        username = request.form['username']\n        password = request.form['password']\n        user_id = create_user(username, password)\n        if user_id:\n            flash('Регистрация прошла успешно. Теперь вы можете войти.', 'success')\n            # УБРАНО: генерация тестовых данных для нового пользователя",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_campaign_name",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_campaign_name(api_key, domain, campaign_id):\n    \"\"\"Получает название кампании по ID\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/campaigns/{campaign_id}\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        response = requests.get(url, headers=headers, timeout=10)\n        if response.status_code == 200:\n            data = response.json()\n            if isinstance(data, dict):\n                return data.get('name', 'Unknown')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_keitaro_streams",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_keitaro_streams(base_url, api_key, campaign_id):\n    \"\"\"\n    Получение потоков Keitaro с автоподстановкой схемы и пути API.\n    base_url: домен трекера (с https:// или без), например:\n              \"tracker.mydomain.com\" или \"https://tracker.mydomain.com/admin_api/v1\"\n    api_key: API key\n    campaign_id: ID кампании или \"all\"\n    \"\"\"\n    # Убираем пробелы и лишние слэши\n    base_url = base_url.strip().rstrip(\"/\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_keitaro_stream_weight",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_keitaro_stream_weight(api_key, domain, stream_id, new_weight):\n    \"\"\"Обновляет вес потока в Keitaro - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/streams/{stream_id}\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        payload = {\"weight\": int(new_weight)}\n        response = requests.put(url, headers=headers, json=payload, timeout=30)\n        response.raise_for_status()\n        result = response.json()\n        return result",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "analyze_stream_performance",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def analyze_stream_performance(api_key, domain, campaign_id=None, interval=\"today\"):\n    \"\"\"Анализирует производительность потоков кампании - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/report/build\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        # Базовый payload для анализа потоков\n        payload = {\n            \"range\": {\"interval\": interval, \"timezone\": \"Europe/Moscow\"},\n            \"metrics\": [\"conversions\", \"revenue\", \"cost\", \"roi\", \"epc\", \"clicks\"],\n            \"grouping\": [\"stream_id\", \"campaign_id\"],",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "optimize_headlines_automation",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def optimize_headlines_automation(user_id):\n    \"\"\"Автоматическая оптимизация заголовков на основе производительности - исправленная версия\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')\n        if not api_key:\n            return\n        # Получаем все кампании из Keitaro\n        streams = get_keitaro_streams(domain, api_key)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "optimize_campaign_streams",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def optimize_campaign_streams(api_key, domain, streams, stats, user_id):\n    \"\"\"Оптимизирует потоки конкретной кампании\"\"\"\n    performance_data = []\n    for stream in streams:\n        stream_id = stream.get('id')\n        stat = stats.get(stream_id, {})\n        conversions = stat.get('conversions', 0)\n        cost = stat.get('cost', 0)\n        revenue = stat.get('revenue', 0)\n        cpa = stat.get('cpa', 0)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_keitaro_campaigns",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_keitaro_campaigns():\n    \"\"\"Возвращает список всех кампаний из Keitaro\"\"\"\n    try:\n        user_id = session['user_id']\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')\n        if not api_key:\n            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})\n        url = f\"https://{domain}/admin_api/v1/campaigns\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_headline_optimization_status",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_headline_optimization_status():\n    \"\"\"Возвращает статус оптимизации заголовков для кампании - исправленная версия\"\"\"\n    try:\n        user_id = session['user_id']\n        campaign_id = request.args.get('campaign_id')\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')\n        if not api_key:\n            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "run_headline_optimization",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def run_headline_optimization():\n    \"\"\"Запускает оптимизацию заголовков для кампании\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json\n        campaign_id = data.get('campaign_id')\n        if not campaign_id:\n            return jsonify({'success': False, 'error': 'Campaign ID required'})\n        # Запускаем оптимизацию\n        optimize_headlines_automation(user_id)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "schedule_headline_optimization",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def schedule_headline_optimization():\n    \"\"\"Планировщик для автоматической оптимизации заголовков\"\"\"\n    try:\n        users = get_all_users()\n        for user in users:\n            user_id = user['id']\n            settings = get_user_settings(user_id)\n            if settings.get('auto_headline_optimization', False):\n                optimize_headlines_automation(user_id)\n    except Exception as e:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_stream_weight",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_stream_weight():\n    \"\"\"Ручное обновление веса потока\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json\n        stream_id = data.get('stream_id')\n        new_weight = data.get('new_weight')\n        if not stream_id or new_weight is None:\n            return jsonify({'success': False, 'error': 'Stream ID and weight required'})\n        settings = get_user_settings(user_id)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "headline_optimization",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def headline_optimization():\n    \"\"\"Страница оптимизации заголовков\"\"\"\n    return render_template('headline_optimization.html')\n@app.route('/api/test_keitaro', methods=['POST'])\n@login_required\ndef test_keitaro_connection():\n    \"\"\"Тестирует соединение с Keitaro API\"\"\"\n    try:\n        user_id = session['user_id']\n        settings = get_user_settings(user_id)",
         "detail": "app",
         "documentation": {}
     },
@@ -2197,11 +1277,47 @@
         "documentation": {}
     },
     {
+        "label": "split_clean",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def split_clean(s: str) -> List[str]:\n    weak_words = {\n    # GEO коды (чтобы они не доминировали в сопоставлении)\n    \"th\", \"id\", \"my\", \"sg\", \"vn\", \"ph\", \"br\", \"us\", \"uk\", \"ca\", \"au\", \"de\", \n    \"fr\", \"es\", \"it\", \"ru\", \"jp\", \"kr\", \"cn\", \"in\", \"mx\", \"ar\", \"co\", \"pe\",\n    \"cl\", \"za\", \"ng\", \"eg\", \"sa\", \"ae\", \"tr\", \"pl\", \"nl\", \"se\", \"no\", \"dk\",\n    \"fi\", \"be\", \"ch\", \"at\",\n    # Общие слова в названиях кампаний\n    \"monah\", \"test\", \"copy\", \"vst\", \"old\", \"archive\", \"arch\", \"backup\", \"bk\",\n    \"final\", \"new\", \"beta\", \"visual\", \"lang\", \"gpt\", \"voltaren\", \"swype\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "build_keitaro_tree",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def build_keitaro_tree(keitaro_data: Dict[str, Dict]) -> Dict:\n    \"\"\"\n    Улучшенное построение индекса Keitaro с дополнительными ключами\n    \"\"\"\n    id_index: Dict[str, Dict] = {}\n    name_index: Dict[str, Dict] = {}\n    token_index: Dict[str, List[Dict]] = {}\n    entries_by_key: Dict[str, Dict] = {}\n    weak_words = {\n    # GEO коды (чтобы они не доминировали в сопоставлении)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "find_in_tree",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def find_in_tree(\n    tree: Dict,\n    used_keys: Set[str],\n    fb_id: str = None,\n    fb_name: str = None,\n    fb_parent_name: str = None,\n    fb_campaign_id: str = None,\n    min_score: int = 5  # Увеличиваем порог для более точного сопоставления\n) -> Dict:\n    \"\"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "save_and_sync",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def save_and_sync():\n    try:\n        logger.info(\"=== НАЧАЛО СИНХРОНИЗАЦИИ ===\")\n        user_id = session['user_id']\n        accounts_data = request.json.get('accounts', [])\n        if not accounts_data:\n            return jsonify({'success': False, 'error': 'Нет данных для сохранения'})\n        facebook_cpc_data = {}\n        for account_data in accounts_data:\n            account_id = account_data.get('account_id', '').replace('act_', '')",
+        "peekOfCode": "def save_and_sync():\n    try:\n        logger.info(\"=== НАЧАЛО СИНХРОНИЗАЦИИ ===\")\n        user_id = session['user_id']\n        reset_old_ucpc(user_id, days=7)\n        accounts_data = request.json.get('accounts', [])\n        if not accounts_data:\n            return jsonify({'success': False, 'error': 'Нет данных для сохранения'})\n        # Настройки Keitaro\n        settings = get_user_settings(user_id)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "sync_adsets_status",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def sync_adsets_status():\n    \"\"\"Синхронизирует статусы адсетов с Facebook API\"\"\"\n    try:\n        user_id = session['user_id']\n        adsets = get_user_adsets(user_id)\n        updated_count = 0\n        for adset in adsets:\n            try:\n                # Получаем актуальный статус из Facebook\n                url = f\"https://graph.facebook.com/v18.0/{adset['adset_id']}\"",
         "detail": "app",
         "documentation": {}
     },
@@ -2210,7 +1326,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def normalize_campaign_name(name):\n    \"\"\"Нормализует название кампании для поиска (без regex)\"\"\"\n    if not name:\n        return \"\"\n    # Приводим к нижнему регистру\n    normalized = name.lower()\n    # Простая замена специальных символов на пробелы\n    for char in '!@#$%^&*()_+-=[]{}|;:,.<>?/~`':\n        normalized = normalized.replace(char, ' ')\n    # Удаляем multiple spaces (простой способ)",
+        "peekOfCode": "def normalize_campaign_name(name):\n    \"\"\"Улучшенная нормализация названия кампании\"\"\"\n    if not name:\n        return \"\"\n    # Приводим к нижнему регистру\n    normalized = name.lower()\n    # Удаляем специальные символы, но сохраняем точки в датах\n    normalized = re.sub(r'[^a-z0-9\\s\\.]', ' ', normalized)\n    # Заменяем multiple spaces\n    normalized = re.sub(r'\\s+', ' ', normalized)",
         "detail": "app",
         "documentation": {}
     },
@@ -2291,7 +1407,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_adsets_api():\n    try:\n        adsets = get_user_adsets(session['user_id'])\n        print(f\"DEBUG: Found {len(adsets)} adsets\")\n        return jsonify({\n            'success': True,\n            'data': adsets\n        })\n    except Exception as e:\n        logger.error(f\"Error getting adsets: {e}\")",
+        "peekOfCode": "def get_adsets_api():\n    try:\n        adsets = get_user_adsets(session['user_id'])\n        print(f\"DEBUG: Found {len(adsets)} adsets\")\n        # Проверяем структуру данных\n        if adsets and len(adsets) > 0:\n            print(f\"DEBUG: First adset structure: {adsets[0]}\")\n        return jsonify({\n            'success': True,\n            'data': adsets,",
         "detail": "app",
         "documentation": {}
     },
@@ -2337,15 +1453,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def resume_adset_api():\n    try:\n        data = request.json\n        adset_id = data.get('adset_id')\n        name = data.get('name')\n        token = data.get('token')\n        if not all([adset_id, name, token]):\n            return jsonify({'success': False, 'error': 'Missing required parameters'})\n        # Включаем через Facebook API\n        url = f\"https://graph.facebook.com/v18.0/{adset_id}\"",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "set_adset_budget",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def set_adset_budget():\n    data = request.json\n    adset_id = data.get('adset_id')\n    name = data.get('name')\n    dollars = float(data.get('budget'))\n    try:\n        update_user_adset_budget(session['user_id'], adset_id, dollars)\n        logger.info(f\"💰 Бюджет ${dollars:.2f} установлен для «{name}»\")\n        send_telegram_message(f\"💰 Бюджет ${dollars:.2f} установлен для «{name}»\")\n        return jsonify({'success': True, 'new_budget': f\"{dollars:.2f} $\"})",
         "detail": "app",
         "documentation": {}
     },
@@ -2449,6 +1556,51 @@
         "documentation": {}
     },
     {
+        "label": "admin_limits",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def admin_limits():\n    \"\"\"Админ панель с лимитами всех аккаунтов\"\"\"\n    if not is_admin_user(session['user_id']):\n        return render_template('access_denied.html')\n    return render_template('admin_panel.html')\n@app.route('/api/admin/all_accounts_limits')\n@login_required\ndef get_all_accounts_limits():\n    \"\"\"Возвращает информацию о лимитах всех аккаунтов всех пользователей\"\"\"\n    if not is_admin_user(session['user_id']):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_accounts_limits",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_all_accounts_limits():\n    \"\"\"Возвращает информацию о лимитах всех аккаунтов всех пользователей\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        all_accounts_data = get_all_accounts_stats()\n        accounts_info = []\n        total_stats = {\n            'total_accounts': 0,\n            'active_accounts': 0,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users_api",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_all_users_api():\n    \"\"\"Возвращает список всех пользователей (только для админов)\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        users = get_all_users()\n        return jsonify({\n            'success': True,\n            'users': users\n        })",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_accounts_api",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_user_accounts_api(user_id):\n    \"\"\"Возвращает аккаунты конкретного пользователя (только для админов)\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        accounts = get_user_accounts_stats(user_id)\n        accounts_info = []\n        for account in accounts:\n            account_info = get_account_limits_info(account['account_id'], account['token'])\n            if account_info:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens_stats",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_reserve_tokens_stats():\n    \"\"\"Возвращает статистику по резервным токенам всех пользователей\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        users = get_all_users()\n        tokens_stats = []\n        for user in users:\n            user_id = user['id']\n            tokens = get_reserve_tokens(user_id)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "apply_auto_budget_rules",
         "kind": 2,
         "importPath": "app",
@@ -2525,7 +1677,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional\nauto_control_threads = {}",
+        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional, Set, Tuple\nauto_control_threads = {}",
         "detail": "app",
         "documentation": {}
     },
@@ -2534,7 +1686,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional\nauto_control_threads = {}\nauto_control_lock = threading.Lock()",
+        "peekOfCode": "app.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()",
         "detail": "app",
         "documentation": {}
     },
@@ -2543,7 +1695,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):",
         "detail": "app",
         "documentation": {}
     },
@@ -2723,7 +1875,7 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список кампаний пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM campaigns WHERE user_id = ?\", (user_id,))\n            return [dict(row) for row in cursor.fetchall()]\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя\"\"\"\n    with lock:",
+        "peekOfCode": "def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список кампаний пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM campaigns WHERE user_id = ?\", (user_id,))\n            return [dict(row) for row in cursor.fetchall()]\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя с гарантированным наличием поля status\"\"\"\n    with lock:",
         "detail": "database",
         "documentation": {}
     },
@@ -2732,7 +1884,7 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM adsets WHERE user_id = ?\", (user_id,))\n            return [dict(row) for row in cursor.fetchall()]\ndef get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    \"\"\"Возвращает конфигурацию GEO пользователя\"\"\"\n    with lock:",
+        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя с гарантированным наличием поля status\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, ",
         "detail": "database",
         "documentation": {}
     },
@@ -2759,7 +1911,7 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def update_user_settings(user_id: int, data: Dict[str, Any]):\n    \"\"\"Обновляет настройки пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            query = \"\"\"\n            UPDATE settings SET \n                sync_api_key = :sync_api_key,\n                proxy = :proxy,\n                use_proxy = :use_proxy,",
+        "peekOfCode": "def update_user_settings(user_id: int, data: Dict[str, Any]):\n    \"\"\"Обновляет настройки пользователя с новыми полями оптимизации\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            query = \"\"\"\n            UPDATE settings SET \n                sync_api_key = :sync_api_key,\n                proxy = :proxy,\n                use_proxy = :use_proxy,",
         "detail": "database",
         "documentation": {}
     },
@@ -2809,11 +1961,47 @@
         "documentation": {}
     },
     {
+        "label": "get_all_users",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_all_users():\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_accounts_stats",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_user_accounts_stats(user_id):\n    \"\"\"Получает статистику по аккаунтам пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем уникальные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_accounts_stats",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_all_accounts_stats():\n    \"\"\"Получает статистику по всем аккаунтам всех пользователей\"\"\"\n    users = get_all_users()\n    all_accounts = []\n    for user in users:\n        user_id = user['id']\n        accounts = get_user_accounts_stats(user_id)\n        for account in accounts:\n            account['user_id'] = user_id\n            account['username'] = user['username']",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_account_limits_info",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "update_user_adset_budget",
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    \"\"\"Обновляет бюджет адсета пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE adsets SET budget = ? \n            WHERE user_id = ? AND adset_id = ?\n            \"\"\", (budget, user_id, adset_id))\n            conn.commit()",
+        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    \"\"\"Обновляет бюджет адсета пользователя в базе данных\"\"\"\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))",
         "detail": "database",
         "documentation": {}
     },
@@ -2869,15 +2057,6 @@
         "description": "init_db",
         "peekOfCode": "def generate_test_data():\n    \"\"\"Генерирует тестовые данные для базы данных\"\"\"\n    conn = get_db_connection()\n    cursor = conn.cursor()\n    # Очищаем таблицы\n    cursor.execute(\"DELETE FROM campaigns\")\n    cursor.execute(\"DELETE FROM adsets\")\n    cursor.execute(\"DELETE FROM geo_config\")\n    cursor.execute(\"DELETE FROM settings\")\n    # Добавляем настройки",
         "detail": "init_db",
-        "documentation": {}
-    },
-    {
-        "label": "migrate_database",
-        "kind": 2,
-        "importPath": "migration",
-        "description": "migration",
-        "peekOfCode": "def migrate_database():\n    \"\"\"Добавляет новые колонки в таблицу settings\"\"\"\n    with get_db_connection() as conn:\n        cursor = conn.cursor()\n        # Проверяем существование колонок и добавляем их если нужно\n        cursor.execute(\"PRAGMA table_info(settings)\")\n        columns = [column[1] for column in cursor.fetchall()]\n        new_columns = [\n            ('keitaro_api_key', 'TEXT'),\n            ('keitaro_domain', 'TEXT DEFAULT \"uniaffnu.com\"'),",
-        "detail": "migration",
         "documentation": {}
     }
 ]

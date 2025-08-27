@@ -1,679 +1,750 @@
-2025-08-25 02:48:29,374 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-25 02:48:29,378 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:29,846 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-25 02:48:29,848 - __main__ - INFO - Обработано 7 аккаунтов из 7
-2025-08-25 02:48:29,850 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:48:29] "GET /api/admin/all_accounts_limits HTTP/1.1" 200 -
-2025-08-25 02:48:32,969 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:48:32] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-08-25 02:48:33,128 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:48:33] "GET /login HTTP/1.1" 200 -
-2025-08-25 02:48:33,451 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:48:33] "GET /static/css/style.css HTTP/1.1" 200 -
-2025-08-25 02:48:40,602 - __main__ - INFO - Автоконтроль запущен для пользователя 2
-2025-08-25 02:48:40,603 - __main__ - INFO - Автообновление запущено для пользователя 2, интервал: 5 мин
-2025-08-25 02:48:40,604 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:48:40] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-08-25 02:48:40,606 - __main__ - DEBUG - Telegram не настроен — пропуск отправки
-2025-08-25 02:48:40,608 - __main__ - INFO - Используются правила из старой таблицы geo_config
-2025-08-25 02:48:40,613 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB1
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB2
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB3
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB4
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB5
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV1
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV3
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV4
-2025-08-25 02:48:40,614 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV5
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV2
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS3
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS1
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS2
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS4
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS5
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:48:40,615 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL1
-2025-08-25 02:48:40,616 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL3
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL4
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL5
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL2
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:48:40,617 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS1
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS2
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS3
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS4
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS5
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
-2025-08-25 02:48:40,618 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU1
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU3
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU4
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU5
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU2
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK2
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK5
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA1
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA5
-2025-08-25 02:48:40,619 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA2
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA3
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA4
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG1
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG2
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG3
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG4
-2025-08-25 02:48:40,620 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG5
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 1
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 2
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 3
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 5
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 4
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 1
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 1
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 2
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 3
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 4
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 5
-2025-08-25 02:48:40,621 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 1
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 2
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 3
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 4
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 5
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 3
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 4
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 2
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 5
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 1
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 2
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 3
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 4
-2025-08-25 02:48:40,622 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 5
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 1
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 3
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 4
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 5
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 2
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 1
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 5
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 3
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 2
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 4
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 5
-2025-08-25 02:48:40,623 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 1
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 2
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 3
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 4
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 1
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 2
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 3
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 4
-2025-08-25 02:48:40,624 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 5
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 1
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 2
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 3
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 4
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 5
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 1
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 3
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 2
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 5
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 4
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 1
-2025-08-25 02:48:40,625 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 5
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 2
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 3
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 4
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 1
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 2
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 3
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 4
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 5
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 1
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 2
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 5
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 4
-2025-08-25 02:48:40,626 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 3
-2025-08-25 02:48:40,820 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:48:40] "GET /dashboard HTTP/1.1" 200 -
-2025-08-25 02:48:41,110 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:48:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:48:43,915 - __main__ - INFO - Найдено 2 аккаунтов у пользователя 5
-2025-08-25 02:48:43,916 - __main__ - INFO - Найдено 0 аккаунтов у пользователя 4
-2025-08-25 02:48:43,916 - __main__ - INFO - Найдено 3 аккаунтов у пользователя 3
-2025-08-25 02:48:43,917 - __main__ - INFO - Найдено 1 аккаунтов у пользователя 2
-2025-08-25 02:48:43,918 - __main__ - INFO - Найдено 1 аккаунтов у пользователя 1
-2025-08-25 02:48:43,918 - __main__ - INFO - Найдено 7 аккаунтов у 5 пользователей
-2025-08-25 02:48:43,919 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:44,342 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-25 02:48:44,345 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:44,902 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-25 02:48:44,907 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:45,321 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-25 02:48:45,326 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:46,035 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-25 02:48:46,039 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:46,427 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-25 02:48:46,431 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:46,850 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-25 02:48:46,854 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:48:47,423 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-25 02:48:47,425 - __main__ - INFO - Обработано 7 аккаунтов из 7
-2025-08-25 02:48:47,426 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:48:47] "GET /api/admin/all_accounts_limits HTTP/1.1" 200 -
-2025-08-25 02:48:51,562 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:48:51] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-08-25 02:48:51,757 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:48:51] "GET /login HTTP/1.1" 200 -
-2025-08-25 02:48:52,102 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:48:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:48:59,805 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:48:59] "[32mGET /admin/limits HTTP/1.1[0m" 302 -
-2025-08-25 02:48:59,994 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:48:59] "GET /login?next=http://82.97.251.126:8000/admin/limits HTTP/1.1" 200 -
-2025-08-25 02:49:00,255 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:49:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:49:05,682 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:49:05] "GET /api/admin/all_accounts_limits HTTP/1.1" 200 -
-2025-08-25 02:49:05,709 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:49:05] "GET /api/admin/reserve_tokens_stats HTTP/1.1" 200 -
-2025-08-25 02:49:10,806 - __main__ - INFO - Автообновление запущено для пользователя 2, интервал: 5 мин
-2025-08-25 02:49:10,807 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:49:10] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-08-25 02:49:11,023 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:49:11] "GET /dashboard HTTP/1.1" 200 -
-2025-08-25 02:49:11,350 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:49:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:49:20,153 - werkzeug - INFO - 151.115.98.121 - - [25/Aug/2025 02:49:20] "GET /admin/limits HTTP/1.1" 200 -
-2025-08-25 02:49:52,389 - __main__ - INFO - Автоконтроль остановлен для пользователя 2
-2025-08-25 02:49:52,389 - __main__ - INFO - Автообновление остановлено для пользователя 2
-2025-08-25 02:49:52,390 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:49:52] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-08-25 02:49:52,547 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:49:52] "GET /login HTTP/1.1" 200 -
-2025-08-25 02:49:52,831 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:49:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:54:00,875 - werkzeug - INFO - 149.86.227.49 - - [25/Aug/2025 02:54:00] "[32mGET / HTTP/1.1[0m" 302 -
-2025-08-25 02:54:04,102 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8000
- * Running on http://82.97.251.126:8000
-2025-08-25 02:54:04,102 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-08-25 02:54:05,326 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:05] "[32mGET / HTTP/1.1[0m" 302 -
-2025-08-25 02:54:05,572 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:05] "GET /login HTTP/1.1" 200 -
-2025-08-25 02:54:05,811 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:54:06,101 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:06] "[32mGET /api/admin/reserve_tokens_stats HTTP/1.1[0m" 302 -
-2025-08-25 02:54:06,129 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:06] "[32mGET /api/admin/all_accounts_limits HTTP/1.1[0m" 302 -
-2025-08-25 02:54:06,341 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:06] "GET /login?next=http://127.0.0.1:8000/api/admin/reserve_tokens_stats HTTP/1.1" 200 -
-2025-08-25 02:54:06,368 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:06] "GET /login?next=http://127.0.0.1:8000/api/admin/all_accounts_limits HTTP/1.1" 200 -
-2025-08-25 02:54:09,438 - __main__ - INFO - Автоконтроль запущен для пользователя 1
-2025-08-25 02:54:09,438 - __main__ - INFO - Автообновление запущено для пользователя 1, интервал: 5 мин
-2025-08-25 02:54:09,439 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:09] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-08-25 02:54:09,442 - __main__ - DEBUG - Telegram не настроен — пропуск отправки
-2025-08-25 02:54:09,444 - __main__ - INFO - Используются правила из старой таблицы geo_config
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB1
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB2
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB3
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB4
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB5
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV1
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV3
-2025-08-25 02:54:09,449 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV4
-2025-08-25 02:54:09,450 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV5
-2025-08-25 02:54:09,450 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV2
-2025-08-25 02:54:09,450 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS3
-2025-08-25 02:54:09,450 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS1
-2025-08-25 02:54:09,450 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS2
-2025-08-25 02:54:09,450 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS4
-2025-08-25 02:54:09,450 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS5
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:54:09,451 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL1
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL3
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL4
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL5
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL2
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:54:09,452 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS1
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS2
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS3
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS4
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS5
-2025-08-25 02:54:09,453 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU1
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU3
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU4
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU5
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU2
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK2
-2025-08-25 02:54:09,454 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK5
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA1
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA5
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA2
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA3
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA4
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
-2025-08-25 02:54:09,455 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG1
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG2
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG3
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG4
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG5
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 1
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 2
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 3
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 5
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 4
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 1
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 1
-2025-08-25 02:54:09,456 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 2
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 3
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 4
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 5
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 1
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 2
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 3
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 4
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 5
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 3
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 4
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 2
-2025-08-25 02:54:09,457 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 5
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 1
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 2
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 3
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 4
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 5
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 1
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 3
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 4
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 5
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 2
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 1
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 5
-2025-08-25 02:54:09,458 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 3
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 2
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 4
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 5
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 1
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 2
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 3
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 4
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:54:09,459 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 1
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 2
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 3
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 4
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 5
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 1
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 2
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 3
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 4
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 5
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 1
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 3
-2025-08-25 02:54:09,460 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 2
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 5
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 4
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 1
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 5
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 2
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 3
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 4
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 1
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 2
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 3
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 4
-2025-08-25 02:54:09,461 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 5
-2025-08-25 02:54:09,462 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 1
-2025-08-25 02:54:09,462 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 2
-2025-08-25 02:54:09,462 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 5
-2025-08-25 02:54:09,462 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 4
-2025-08-25 02:54:09,462 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 3
-2025-08-25 02:54:09,609 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:09] "GET /dashboard HTTP/1.1" 200 -
-2025-08-25 02:54:09,919 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:54:16,371 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:16] "GET /adsets HTTP/1.1" 200 -
-2025-08-25 02:54:16,687 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:54:16,715 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:16] "GET /static/js/adsets.js HTTP/1.1" 200 -
-2025-08-25 02:54:17,449 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:17] "GET /api/auto_control/logs?ts=1756079493282 HTTP/1.1" 200 -
-2025-08-25 02:54:17,462 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:17] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-25 02:54:20,639 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:20] "GET /api/accounts HTTP/1.1" 200 -
-2025-08-25 02:54:20,864 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
-2025-08-25 02:54:20,867 - __main__ - INFO - uCPC сброшен у адсетов старше 7 дней
-2025-08-25 02:54:20,867 - __main__ - ERROR - Ошибка получения CPC для аккаунта 519765377868615: name 'fetch_facebook_cpc_data' is not defined
-2025-08-25 02:54:20,870 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-08-25 02:54:43,962 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:43] "GET /manual_data HTTP/1.1" 200 -
-2025-08-25 02:54:44,325 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:54:44,331 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:44] "GET /static/js/handsontable-init.js HTTP/1.1" 200 -
-2025-08-25 02:54:45,045 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:45] "GET /api/accounts HTTP/1.1" 200 -
-2025-08-25 02:54:46,256 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:46] "GET /adsets HTTP/1.1" 200 -
-2025-08-25 02:54:46,562 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:54:46,590 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:46] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
-2025-08-25 02:54:47,297 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:47] "GET /api/auto_control/logs?ts=1756079523151 HTTP/1.1" 200 -
-2025-08-25 02:54:47,326 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:47] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-25 02:54:50,521 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:50] "GET /manual_data HTTP/1.1" 200 -
-2025-08-25 02:54:50,801 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:54:50,829 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:50] "[36mGET /static/js/handsontable-init.js HTTP/1.1[0m" 304 -
-2025-08-25 02:54:51,533 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:54:51] "GET /api/accounts HTTP/1.1" 200 -
-2025-08-25 02:55:12,487 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
-2025-08-25 02:55:12,489 - __main__ - INFO - uCPC сброшен у адсетов старше 7 дней
-2025-08-25 02:55:12,490 - __main__ - ERROR - Ошибка получения CPC для аккаунта 519765377868615: name 'fetch_facebook_cpc_data' is not defined
-2025-08-25 02:55:12,490 - __main__ - ERROR - Ошибка получения CPC для аккаунта 1229752641939602: name 'fetch_facebook_cpc_data' is not defined
-2025-08-25 02:55:12,493 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-08-25 02:55:17,887 - __main__ - ERROR - Ошибка запроса Keitaro: HTTPSConnectionPool(host='uniaffnu.com', port=443): Read timed out. (read timeout=30)
-2025-08-25 02:55:17,887 - __main__ - INFO - Обработано 0 записей из Keitaro
-2025-08-25 02:55:17,888 - __main__ - ERROR - Ошибка получения CPC для аккаунта 519765377868615: name 'fetch_facebook_adsets_insights' is not defined
-2025-08-25 02:55:17,891 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:18,335 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-08-25 02:55:18,340 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:18,883 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1320
-2025-08-25 02:55:18,884 - __main__ - INFO - Получено 31 кампаний для аккаунта 519765377868615
-2025-08-25 02:55:18,891 - venv - INFO - Обновлена статистика кампании 120232567211520073 с CPC из Facebook: 0
-2025-08-25 02:55:18,896 - venv - INFO - Обновлена статистика кампании 120232309087380073 с CPC из Facebook: 0
-2025-08-25 02:55:18,901 - venv - INFO - Обновлена статистика кампании 120232245153810073 с CPC из Facebook: 0
-2025-08-25 02:55:18,905 - venv - INFO - Обновлена статистика кампании 120232244829020073 с CPC из Facebook: 0
-2025-08-25 02:55:18,909 - venv - INFO - Обновлена статистика кампании 120232037599450073 с CPC из Facebook: 0
-2025-08-25 02:55:18,913 - venv - INFO - Обновлена статистика кампании 120232036321970073 с CPC из Facebook: 0
-2025-08-25 02:55:18,918 - venv - INFO - Обновлена статистика кампании 120231986394570073 с CPC из Facebook: 0
-2025-08-25 02:55:18,924 - venv - INFO - Обновлена статистика кампании 120231986275770073 с CPC из Facebook: 0
-2025-08-25 02:55:18,929 - venv - INFO - Обновлена статистика кампании 120231984739940073 с CPC из Facebook: 0
-2025-08-25 02:55:18,940 - venv - INFO - Обновлена статистика кампании 120231401757890073 с CPC из Facebook: 0
-2025-08-25 02:55:18,944 - venv - INFO - Обновлена статистика кампании 120231401249330073 с CPC из Facebook: 0
-2025-08-25 02:55:18,948 - venv - INFO - Обновлена статистика кампании 120231282211130073 с CPC из Facebook: 0
-2025-08-25 02:55:18,953 - venv - INFO - Обновлена статистика кампании 120230938479940073 с CPC из Facebook: 0
-2025-08-25 02:55:18,957 - venv - INFO - Обновлена статистика кампании 120230523317110073 с CPC из Facebook: 0
-2025-08-25 02:55:18,961 - venv - INFO - Обновлена статистика кампании 120230513874000073 с CPC из Facebook: 0
-2025-08-25 02:55:18,965 - venv - INFO - Обновлена статистика кампании 120230400552720073 с CPC из Facebook: 0
-2025-08-25 02:55:18,969 - venv - INFO - Обновлена статистика кампании 120230397028830073 с CPC из Facebook: 0
-2025-08-25 02:55:18,973 - venv - INFO - Обновлена статистика кампании 120230100952100073 с CPC из Facebook: 0
-2025-08-25 02:55:18,976 - venv - INFO - Обновлена статистика кампании 120229975650130073 с CPC из Facebook: 0
-2025-08-25 02:55:18,979 - venv - INFO - Обновлена статистика кампании 120229658090040073 с CPC из Facebook: 0
-2025-08-25 02:55:18,982 - venv - INFO - Обновлена статистика кампании 120229581995690073 с CPC из Facebook: 0
-2025-08-25 02:55:18,986 - venv - INFO - Обновлена статистика кампании 120229435239170073 с CPC из Facebook: 0
-2025-08-25 02:55:18,989 - venv - INFO - Обновлена статистика кампании 120229433357740073 с CPC из Facebook: 0
-2025-08-25 02:55:18,992 - venv - INFO - Обновлена статистика кампании 120229260874670073 с CPC из Facebook: 0
-2025-08-25 02:55:18,995 - venv - INFO - Обновлена статистика кампании 120229188974040073 с CPC из Facebook: 0
-2025-08-25 02:55:18,998 - venv - INFO - Обновлена статистика кампании 120229183595910073 с CPC из Facebook: 0
-2025-08-25 02:55:19,001 - venv - INFO - Обновлена статистика кампании 120229181199840073 с CPC из Facebook: 0
-2025-08-25 02:55:19,004 - venv - INFO - Обновлена статистика кампании 120229087416280073 с CPC из Facebook: 0
-2025-08-25 02:55:19,006 - venv - INFO - Обновлена статистика кампании 120229086376520073 с CPC из Facebook: 0
-2025-08-25 02:55:19,009 - venv - INFO - Обновлена статистика кампании 120228998419680073 с CPC из Facebook: 0
-2025-08-25 02:55:19,012 - venv - INFO - Обновлена статистика кампании 120228997411130073 с CPC из Facebook: 0
-2025-08-25 02:55:19,013 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:19,651 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 2262
-2025-08-25 02:55:19,654 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:20,292 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100&after=QVFIU3F3amRVamFTbHpMTEQ2TlBucjNvaVI4M2FUUjBYSHkwc3JrR3FyaVltcDBGOVFSRXU2S21QWTBJckpmcl9FY2FHQ1htRlBxbTgyNTdweGh2bnpmUXhR HTTP/1.1" 200 1246
-2025-08-25 02:55:20,295 - __main__ - INFO - Получено 155 адсетов для аккаунта 519765377868615
-2025-08-25 02:55:20,508 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:20] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-08-25 02:55:42,709 - __main__ - ERROR - Ошибка запроса Keitaro: HTTPSConnectionPool(host='uniaffnu.com', port=443): Read timed out. (read timeout=30)
-2025-08-25 02:55:42,709 - __main__ - INFO - Обработано 0 записей из Keitaro
-2025-08-25 02:55:42,709 - __main__ - ERROR - Ошибка получения CPC для аккаунта 519765377868615: name 'fetch_facebook_adsets_insights' is not defined
-2025-08-25 02:55:42,709 - __main__ - ERROR - Ошибка получения CPC для аккаунта 1229752641939602: name 'fetch_facebook_adsets_insights' is not defined
-2025-08-25 02:55:42,711 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:43,097 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-08-25 02:55:43,102 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:43,600 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1320
-2025-08-25 02:55:43,601 - __main__ - INFO - Получено 31 кампаний для аккаунта 519765377868615
-2025-08-25 02:55:43,608 - venv - INFO - Обновлена статистика кампании 120232567211520073 с CPC из Facebook: 0
-2025-08-25 02:55:43,613 - venv - INFO - Обновлена статистика кампании 120232309087380073 с CPC из Facebook: 0
-2025-08-25 02:55:43,618 - venv - INFO - Обновлена статистика кампании 120232245153810073 с CPC из Facebook: 0
-2025-08-25 02:55:43,622 - venv - INFO - Обновлена статистика кампании 120232244829020073 с CPC из Facebook: 0
-2025-08-25 02:55:43,627 - venv - INFO - Обновлена статистика кампании 120232037599450073 с CPC из Facebook: 0
-2025-08-25 02:55:43,631 - venv - INFO - Обновлена статистика кампании 120232036321970073 с CPC из Facebook: 0
-2025-08-25 02:55:43,635 - venv - INFO - Обновлена статистика кампании 120231986394570073 с CPC из Facebook: 0
-2025-08-25 02:55:43,639 - venv - INFO - Обновлена статистика кампании 120231986275770073 с CPC из Facebook: 0
-2025-08-25 02:55:43,644 - venv - INFO - Обновлена статистика кампании 120231984739940073 с CPC из Facebook: 0
-2025-08-25 02:55:43,649 - venv - INFO - Обновлена статистика кампании 120231401757890073 с CPC из Facebook: 0
-2025-08-25 02:55:43,653 - venv - INFO - Обновлена статистика кампании 120231401249330073 с CPC из Facebook: 0
-2025-08-25 02:55:43,657 - venv - INFO - Обновлена статистика кампании 120231282211130073 с CPC из Facebook: 0
-2025-08-25 02:55:43,662 - venv - INFO - Обновлена статистика кампании 120230938479940073 с CPC из Facebook: 0
-2025-08-25 02:55:43,667 - venv - INFO - Обновлена статистика кампании 120230523317110073 с CPC из Facebook: 0
-2025-08-25 02:55:43,672 - venv - INFO - Обновлена статистика кампании 120230513874000073 с CPC из Facebook: 0
-2025-08-25 02:55:43,676 - venv - INFO - Обновлена статистика кампании 120230400552720073 с CPC из Facebook: 0
-2025-08-25 02:55:43,681 - venv - INFO - Обновлена статистика кампании 120230397028830073 с CPC из Facebook: 0
-2025-08-25 02:55:43,685 - venv - INFO - Обновлена статистика кампании 120230100952100073 с CPC из Facebook: 0
-2025-08-25 02:55:43,690 - venv - INFO - Обновлена статистика кампании 120229975650130073 с CPC из Facebook: 0
-2025-08-25 02:55:43,694 - venv - INFO - Обновлена статистика кампании 120229658090040073 с CPC из Facebook: 0
-2025-08-25 02:55:43,698 - venv - INFO - Обновлена статистика кампании 120229581995690073 с CPC из Facebook: 0
-2025-08-25 02:55:43,703 - venv - INFO - Обновлена статистика кампании 120229435239170073 с CPC из Facebook: 0
-2025-08-25 02:55:43,713 - venv - INFO - Обновлена статистика кампании 120229433357740073 с CPC из Facebook: 0
-2025-08-25 02:55:43,717 - venv - INFO - Обновлена статистика кампании 120229260874670073 с CPC из Facebook: 0
-2025-08-25 02:55:43,720 - venv - INFO - Обновлена статистика кампании 120229188974040073 с CPC из Facebook: 0
-2025-08-25 02:55:43,723 - venv - INFO - Обновлена статистика кампании 120229183595910073 с CPC из Facebook: 0
-2025-08-25 02:55:43,726 - venv - INFO - Обновлена статистика кампании 120229181199840073 с CPC из Facebook: 0
-2025-08-25 02:55:43,730 - venv - INFO - Обновлена статистика кампании 120229087416280073 с CPC из Facebook: 0
-2025-08-25 02:55:43,733 - venv - INFO - Обновлена статистика кампании 120229086376520073 с CPC из Facebook: 0
-2025-08-25 02:55:43,736 - venv - INFO - Обновлена статистика кампании 120228998419680073 с CPC из Facebook: 0
-2025-08-25 02:55:43,739 - venv - INFO - Обновлена статистика кампании 120228997411130073 с CPC из Facebook: 0
-2025-08-25 02:55:43,741 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:44,448 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 2262
-2025-08-25 02:55:44,451 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:45,064 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100&after=QVFIU3F3amRVamFTbHpMTEQ2TlBucjNvaVI4M2FUUjBYSHkwc3JrR3FyaVltcDBGOVFSRXU2S21QWTBJckpmcl9FY2FHQ1htRlBxbTgyNTdweGh2bnpmUXhR HTTP/1.1" 200 1246
-2025-08-25 02:55:45,067 - __main__ - INFO - Получено 155 адсетов для аккаунта 519765377868615
-2025-08-25 02:55:45,356 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:45,703 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-08-25 02:55:45,707 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:46,188 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 1075
-2025-08-25 02:55:46,188 - __main__ - INFO - Получено 24 кампаний для аккаунта 1229752641939602
-2025-08-25 02:55:46,195 - venv - INFO - Обновлена статистика кампании 120227806543740139 с CPC из Facebook: 0
-2025-08-25 02:55:46,200 - venv - INFO - Обновлена статистика кампании 120227710229610139 с CPC из Facebook: 0
-2025-08-25 02:55:46,204 - venv - INFO - Обновлена статистика кампании 120227709812170139 с CPC из Facebook: 0
-2025-08-25 02:55:46,209 - venv - INFO - Обновлена статистика кампании 120227555379030139 с CPC из Facebook: 0
-2025-08-25 02:55:46,213 - venv - INFO - Обновлена статистика кампании 120227554580730139 с CPC из Facebook: 0
-2025-08-25 02:55:46,218 - venv - INFO - Обновлена статистика кампании 120227420599480139 с CPC из Facebook: 0
-2025-08-25 02:55:46,227 - venv - INFO - Обновлена статистика кампании 120227419815350139 с CPC из Facebook: 0
-2025-08-25 02:55:46,231 - venv - INFO - Обновлена статистика кампании 120227419549510139 с CPC из Facebook: 0
-2025-08-25 02:55:46,236 - venv - INFO - Обновлена статистика кампании 120227369221680139 с CPC из Facebook: 0
-2025-08-25 02:55:46,240 - venv - INFO - Обновлена статистика кампании 120226735195530139 с CPC из Facebook: 0
-2025-08-25 02:55:46,245 - venv - INFO - Обновлена статистика кампании 120226733753840139 с CPC из Facebook: 0
-2025-08-25 02:55:46,249 - venv - INFO - Обновлена статистика кампании 120226617139880139 с CPC из Facebook: 0
-2025-08-25 02:55:46,253 - venv - INFO - Обновлена статистика кампании 120226612781730139 с CPC из Facebook: 0
-2025-08-25 02:55:46,257 - venv - INFO - Обновлена статистика кампании 120226346133440139 с CPC из Facebook: 0
-2025-08-25 02:55:46,262 - venv - INFO - Обновлена статистика кампании 120226345832580139 с CPC из Facebook: 0
-2025-08-25 02:55:46,267 - venv - INFO - Обновлена статистика кампании 120225685644940139 с CPC из Facebook: 0
-2025-08-25 02:55:46,271 - venv - INFO - Обновлена статистика кампании 120225684739580139 с CPC из Facebook: 0
-2025-08-25 02:55:46,276 - venv - INFO - Обновлена статистика кампании 120225679404420139 с CPC из Facebook: 0
-2025-08-25 02:55:46,280 - venv - INFO - Обновлена статистика кампании 120225618155680139 с CPC из Facebook: 0
-2025-08-25 02:55:46,284 - venv - INFO - Обновлена статистика кампании 120225616135610139 с CPC из Facebook: 0
-2025-08-25 02:55:46,288 - venv - INFO - Обновлена статистика кампании 120225306887720139 с CPC из Facebook: 0
-2025-08-25 02:55:46,292 - venv - INFO - Обновлена статистика кампании 120225179375160139 с CPC из Facebook: 0
-2025-08-25 02:55:46,296 - venv - INFO - Обновлена статистика кампании 120225175824150139 с CPC из Facebook: 0
-2025-08-25 02:55:46,300 - venv - INFO - Обновлена статистика кампании 120225175611130139 с CPC из Facebook: 0
-2025-08-25 02:55:46,303 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:47,012 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 2088
-2025-08-25 02:55:47,018 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:55:47,494 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100&after=QVFIU1NadUI4cnVNTkIyVnVXckFOeU1yWnZA6Sk12VzUyelJ0aVRwQlVUM1JnQTkzUUh0X0wzUUZA1aUxCcTBKamd4ZAEk4b3d0UGtkWHg5ZAzdjYUVrN1hyUGtn HTTP/1.1" 200 874
-2025-08-25 02:55:47,497 - __main__ - INFO - Получено 116 адсетов для аккаунта 1229752641939602
-2025-08-25 02:55:47,691 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:47] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-08-25 02:55:53,128 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:53] "GET /adsets HTTP/1.1" 200 -
-2025-08-25 02:55:53,477 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:55:53,503 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:53] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
-2025-08-25 02:55:54,232 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:54] "GET /api/auto_control/logs?ts=1756079590092 HTTP/1.1" 200 -
-2025-08-25 02:55:54,270 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:54] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-25 02:55:57,768 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:55:57] "GET /api/accounts HTTP/1.1" 200 -
-2025-08-25 02:55:57,932 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
-2025-08-25 02:55:57,935 - __main__ - INFO - uCPC сброшен у адсетов старше 7 дней
-2025-08-25 02:55:57,935 - __main__ - ERROR - Ошибка получения CPC для аккаунта 1229752641939602: name 'fetch_facebook_cpc_data' is not defined
-2025-08-25 02:55:57,935 - __main__ - ERROR - Ошибка получения CPC для аккаунта 519765377868615: name 'fetch_facebook_cpc_data' is not defined
-2025-08-25 02:55:57,937 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-08-25 02:56:28,570 - __main__ - ERROR - Ошибка запроса Keitaro: HTTPSConnectionPool(host='uniaffnu.com', port=443): Read timed out. (read timeout=30)
-2025-08-25 02:56:28,570 - __main__ - INFO - Обработано 0 записей из Keitaro
-2025-08-25 02:56:28,570 - __main__ - ERROR - Ошибка получения CPC для аккаунта 1229752641939602: name 'fetch_facebook_adsets_insights' is not defined
-2025-08-25 02:56:28,571 - __main__ - ERROR - Ошибка получения CPC для аккаунта 519765377868615: name 'fetch_facebook_adsets_insights' is not defined
-2025-08-25 02:56:28,572 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:29,041 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-08-25 02:56:29,046 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:29,454 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 1075
-2025-08-25 02:56:29,455 - __main__ - INFO - Получено 24 кампаний для аккаунта 1229752641939602
-2025-08-25 02:56:29,462 - venv - INFO - Обновлена статистика кампании 120227806543740139 с CPC из Facebook: 0
-2025-08-25 02:56:29,466 - venv - INFO - Обновлена статистика кампании 120227710229610139 с CPC из Facebook: 0
-2025-08-25 02:56:29,471 - venv - INFO - Обновлена статистика кампании 120227709812170139 с CPC из Facebook: 0
-2025-08-25 02:56:29,475 - venv - INFO - Обновлена статистика кампании 120227555379030139 с CPC из Facebook: 0
-2025-08-25 02:56:29,479 - venv - INFO - Обновлена статистика кампании 120227554580730139 с CPC из Facebook: 0
-2025-08-25 02:56:29,483 - venv - INFO - Обновлена статистика кампании 120227420599480139 с CPC из Facebook: 0
-2025-08-25 02:56:29,488 - venv - INFO - Обновлена статистика кампании 120227419815350139 с CPC из Facebook: 0
-2025-08-25 02:56:29,493 - venv - INFO - Обновлена статистика кампании 120227419549510139 с CPC из Facebook: 0
-2025-08-25 02:56:29,497 - venv - INFO - Обновлена статистика кампании 120227369221680139 с CPC из Facebook: 0
-2025-08-25 02:56:29,502 - venv - INFO - Обновлена статистика кампании 120226735195530139 с CPC из Facebook: 0
-2025-08-25 02:56:29,506 - venv - INFO - Обновлена статистика кампании 120226733753840139 с CPC из Facebook: 0
-2025-08-25 02:56:29,511 - venv - INFO - Обновлена статистика кампании 120226617139880139 с CPC из Facebook: 0
-2025-08-25 02:56:29,515 - venv - INFO - Обновлена статистика кампании 120226612781730139 с CPC из Facebook: 0
-2025-08-25 02:56:29,526 - venv - INFO - Обновлена статистика кампании 120226346133440139 с CPC из Facebook: 0
-2025-08-25 02:56:29,530 - venv - INFO - Обновлена статистика кампании 120226345832580139 с CPC из Facebook: 0
-2025-08-25 02:56:29,534 - venv - INFO - Обновлена статистика кампании 120225685644940139 с CPC из Facebook: 0
-2025-08-25 02:56:29,537 - venv - INFO - Обновлена статистика кампании 120225684739580139 с CPC из Facebook: 0
-2025-08-25 02:56:29,541 - venv - INFO - Обновлена статистика кампании 120225679404420139 с CPC из Facebook: 0
-2025-08-25 02:56:29,545 - venv - INFO - Обновлена статистика кампании 120225618155680139 с CPC из Facebook: 0
-2025-08-25 02:56:29,549 - venv - INFO - Обновлена статистика кампании 120225616135610139 с CPC из Facebook: 0
-2025-08-25 02:56:29,552 - venv - INFO - Обновлена статистика кампании 120225306887720139 с CPC из Facebook: 0
-2025-08-25 02:56:29,557 - venv - INFO - Обновлена статистика кампании 120225179375160139 с CPC из Facebook: 0
-2025-08-25 02:56:29,561 - venv - INFO - Обновлена статистика кампании 120225175824150139 с CPC из Facebook: 0
-2025-08-25 02:56:29,564 - venv - INFO - Обновлена статистика кампании 120225175611130139 с CPC из Facebook: 0
-2025-08-25 02:56:29,567 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:30,298 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 2088
-2025-08-25 02:56:30,301 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:30,829 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100&after=QVFIU1NadUI4cnVNTkIyVnVXckFOeU1yWnZA6Sk12VzUyelJ0aVRwQlVUM1JnQTkzUUh0X0wzUUZA1aUxCcTBKamd4ZAEk4b3d0UGtkWHg5ZAzdjYUVrN1hyUGtn HTTP/1.1" 200 874
-2025-08-25 02:56:30,832 - __main__ - INFO - Получено 116 адсетов для аккаунта 1229752641939602
-2025-08-25 02:56:31,029 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:31,384 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-08-25 02:56:31,387 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:31,876 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1320
-2025-08-25 02:56:31,877 - __main__ - INFO - Получено 31 кампаний для аккаунта 519765377868615
-2025-08-25 02:56:31,883 - venv - INFO - Обновлена статистика кампании 120232567211520073 с CPC из Facebook: 0
-2025-08-25 02:56:31,888 - venv - INFO - Обновлена статистика кампании 120232309087380073 с CPC из Facebook: 0
-2025-08-25 02:56:31,892 - venv - INFO - Обновлена статистика кампании 120232245153810073 с CPC из Facebook: 0
-2025-08-25 02:56:31,897 - venv - INFO - Обновлена статистика кампании 120232244829020073 с CPC из Facebook: 0
-2025-08-25 02:56:31,901 - venv - INFO - Обновлена статистика кампании 120232037599450073 с CPC из Facebook: 0
-2025-08-25 02:56:31,905 - venv - INFO - Обновлена статистика кампании 120232036321970073 с CPC из Facebook: 0
-2025-08-25 02:56:31,908 - venv - INFO - Обновлена статистика кампании 120231986394570073 с CPC из Facebook: 0
-2025-08-25 02:56:31,913 - venv - INFO - Обновлена статистика кампании 120231986275770073 с CPC из Facebook: 0
-2025-08-25 02:56:31,917 - venv - INFO - Обновлена статистика кампании 120231984739940073 с CPC из Facebook: 0
-2025-08-25 02:56:31,922 - venv - INFO - Обновлена статистика кампании 120231401757890073 с CPC из Facebook: 0
-2025-08-25 02:56:31,926 - venv - INFO - Обновлена статистика кампании 120231401249330073 с CPC из Facebook: 0
-2025-08-25 02:56:31,930 - venv - INFO - Обновлена статистика кампании 120231282211130073 с CPC из Facebook: 0
-2025-08-25 02:56:31,934 - venv - INFO - Обновлена статистика кампании 120230938479940073 с CPC из Facebook: 0
-2025-08-25 02:56:31,939 - venv - INFO - Обновлена статистика кампании 120230523317110073 с CPC из Facebook: 0
-2025-08-25 02:56:31,943 - venv - INFO - Обновлена статистика кампании 120230513874000073 с CPC из Facebook: 0
-2025-08-25 02:56:31,947 - venv - INFO - Обновлена статистика кампании 120230400552720073 с CPC из Facebook: 0
-2025-08-25 02:56:31,951 - venv - INFO - Обновлена статистика кампании 120230397028830073 с CPC из Facebook: 0
-2025-08-25 02:56:31,955 - venv - INFO - Обновлена статистика кампании 120230100952100073 с CPC из Facebook: 0
-2025-08-25 02:56:31,960 - venv - INFO - Обновлена статистика кампании 120229975650130073 с CPC из Facebook: 0
-2025-08-25 02:56:31,964 - venv - INFO - Обновлена статистика кампании 120229658090040073 с CPC из Facebook: 0
-2025-08-25 02:56:31,968 - venv - INFO - Обновлена статистика кампании 120229581995690073 с CPC из Facebook: 0
-2025-08-25 02:56:31,972 - venv - INFO - Обновлена статистика кампании 120229435239170073 с CPC из Facebook: 0
-2025-08-25 02:56:31,976 - venv - INFO - Обновлена статистика кампании 120229433357740073 с CPC из Facebook: 0
-2025-08-25 02:56:31,985 - venv - INFO - Обновлена статистика кампании 120229260874670073 с CPC из Facebook: 0
-2025-08-25 02:56:31,989 - venv - INFO - Обновлена статистика кампании 120229188974040073 с CPC из Facebook: 0
-2025-08-25 02:56:31,993 - venv - INFO - Обновлена статистика кампании 120229183595910073 с CPC из Facebook: 0
-2025-08-25 02:56:31,996 - venv - INFO - Обновлена статистика кампании 120229181199840073 с CPC из Facebook: 0
-2025-08-25 02:56:31,999 - venv - INFO - Обновлена статистика кампании 120229087416280073 с CPC из Facebook: 0
-2025-08-25 02:56:32,003 - venv - INFO - Обновлена статистика кампании 120229086376520073 с CPC из Facebook: 0
-2025-08-25 02:56:32,007 - venv - INFO - Обновлена статистика кампании 120228998419680073 с CPC из Facebook: 0
-2025-08-25 02:56:32,010 - venv - INFO - Обновлена статистика кампании 120228997411130073 с CPC из Facebook: 0
-2025-08-25 02:56:32,013 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:32,750 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 2262
-2025-08-25 02:56:32,753 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:56:33,310 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100&after=QVFIU3F3amRVamFTbHpMTEQ2TlBucjNvaVI4M2FUUjBYSHkwc3JrR3FyaVltcDBGOVFSRXU2S21QWTBJckpmcl9FY2FHQ1htRlBxbTgyNTdweGh2bnpmUXhR HTTP/1.1" 200 1246
-2025-08-25 02:56:33,313 - __main__ - INFO - Получено 155 адсетов для аккаунта 519765377868615
-2025-08-25 02:56:33,531 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:56:33] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-08-25 02:56:36,108 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:56:36] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-25 02:57:15,766 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8000
- * Running on http://82.97.251.126:8000
-2025-08-25 02:57:15,766 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-08-25 02:57:17,637 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:17] "[32mGET / HTTP/1.1[0m" 302 -
-2025-08-25 02:57:17,824 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:17] "[32mGET /login HTTP/1.1[0m" 302 -
-2025-08-25 02:57:18,045 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:18] "GET /dashboard HTTP/1.1" 200 -
-2025-08-25 02:57:18,325 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:57:21,335 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:21] "GET /adsets HTTP/1.1" 200 -
-2025-08-25 02:57:21,592 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-25 02:57:21,621 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:21] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
-2025-08-25 02:57:22,314 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:22] "GET /api/adsets HTTP/1.1" 200 -
-2025-08-25 02:57:22,332 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:22] "GET /api/auto_control/logs?ts=1756079678167 HTTP/1.1" 200 -
-2025-08-25 02:57:25,392 - werkzeug - INFO - 127.0.0.1 - - [25/Aug/2025 02:57:25] "GET /api/accounts HTTP/1.1" 200 -
-2025-08-25 02:57:25,624 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
-2025-08-25 02:57:25,627 - __main__ - INFO - uCPC сброшен у адсетов старше 7 дней
-2025-08-25 02:57:25,629 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:57:26,277 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/insights?level=adset&fields=adset_id%2Ccpc%2Cspend&date_preset=today&time_increment=1&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 11
-2025-08-25 02:57:26,278 - __main__ - INFO - Получено CPC данных для 0 адсетов
-2025-08-25 02:57:26,281 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:57:26,789 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/insights?level=adset&fields=adset_id%2Ccpc%2Cspend&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 176
-2025-08-25 02:57:26,790 - __main__ - INFO - Получено CPC данных для 2 адсетов
-2025-08-25 02:57:26,797 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-08-25 02:57:56,986 - __main__ - ERROR - Ошибка запроса Keitaro: HTTPSConnectionPool(host='uniaffnu.com', port=443): Read timed out. (read timeout=30)
-2025-08-25 02:57:56,986 - __main__ - INFO - Обработано 0 записей из Keitaro
-2025-08-25 02:57:56,987 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:57:57,914 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/insights?level=adset&fields=adset_id%2Cspend%2Ccpc%2Ccost_per_conversion%2Cconversions&date_preset=today&time_increment=1&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 11
-2025-08-25 02:57:57,915 - __main__ - INFO - Получено insights для 0 адсетов
-2025-08-25 02:57:57,917 - __main__ - INFO - Получено CPC данных для аккаунта 1229752641939602: 0 записей
-2025-08-25 02:57:57,919 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:57:58,878 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/insights?level=adset&fields=adset_id%2Cspend%2Ccpc%2Ccost_per_conversion%2Cconversions&date_preset=today&time_increment=1&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 176
-2025-08-25 02:57:58,879 - __main__ - INFO - Получено insights для 2 адсетов
-2025-08-25 02:57:58,881 - __main__ - INFO - Получено CPC данных для аккаунта 519765377868615: 2 записей
-2025-08-25 02:57:58,883 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:57:59,253 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-08-25 02:57:59,257 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-25 02:57:59,718 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 1075
-2025-08-25 02:57:59,719 - __main__ - INFO - Получено 24 кампаний для аккаунта 1229752641939602
-2025-08-25 02:57:59,727 - venv - INFO - Обновлена статистика кампании 120227806543740139 с CPC из Facebook: 0
-2025-08-25 02:57:59,732 - venv - INFO - Обновлена статистика кампании 120227710229610139 с CPC из Facebook: 0
-2025-08-25 02:57:59,737 - venv - INFO - Обновлена статистика кампании 120227709812170139 с CPC из Facebook: 0
-2025-08-25 02:57:59,742 - venv - INFO - Обновлена статистика кампании 120227555379030139 с CPC из Facebook: 0
-2025-08-25 02:57:59,746 - venv - INFO - Обновлена статистика кампании 120227554580730139 с CPC из Facebook: 0
-2025-08-25 02:57:59,755 - venv - INFO - Обновлена статистика кампании 120227420599480139 с CPC из Facebook: 0
-2025-08-25 02:57:59,760 - venv - INFO - Обновлена статистика кампании 120227419815350139 с CPC из Facebook: 0
-2025-08-25 02:57:59,764 - venv - INFO - Обновлена статистика кампании 120227419549510139 с CPC из Facebook: 0
-2025-08-25 02:57:59,769 - venv - INFO - Обновлена статистика кампании 120227369221680139 с CPC из Facebook: 0
-2025-08-25 02:57:59,772 - venv - INFO - Обновлена статистика кампании 120226735195530139 с CPC из Facebook: 0
+2025-08-27 21:44:48,422 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 2
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 5
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 1
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 2
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 3
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 4
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 5
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 1
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 3
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 4
+2025-08-27 21:44:48,423 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 5
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 2
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 1
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 3
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 4
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 5
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 2
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 1
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 5
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 2
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 3
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 4
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 1
+2025-08-27 21:44:48,424 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 5
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 3
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 2
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 4
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 5
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 1
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 2
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 3
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 4
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:44:48,425 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 1
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 2
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 3
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 4
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 5
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 1
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 2
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 3
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 4
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 5
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 1
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 2
+2025-08-27 21:44:48,426 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 3
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 4
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 5
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 1
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 2
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 3
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 4
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 5
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 1
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 3
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 2
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 5
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 4
+2025-08-27 21:44:48,427 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 1
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 5
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 2
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 3
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 4
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 1
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 2
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 3
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 4
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 5
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 1
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 2
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 5
+2025-08-27 21:44:48,428 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 4
+2025-08-27 21:44:48,429 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 3
+2025-08-27 21:44:48,429 - __main__ - INFO - Автообновление запущено для пользователя 1, интервал: 5 мин
+2025-08-27 21:49:41,340 - __main__ - DEBUG - Telegram не настроен — пропуск отправки
+2025-08-27 21:49:41,343 - __main__ - INFO - Используются правила из старой таблицы geo_config
+2025-08-27 21:49:41,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-27 21:49:41,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D1
+2025-08-27 21:49:41,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D2
+2025-08-27 21:49:41,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D3
+2025-08-27 21:49:41,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D4
+2025-08-27 21:49:41,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
+2025-08-27 21:49:41,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG1
+2025-08-27 21:49:41,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG5
+2025-08-27 21:49:41,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG2
+2025-08-27 21:49:41,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG3
+2025-08-27 21:49:41,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG4
+2025-08-27 21:49:41,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL1
+2025-08-27 21:49:41,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL2
+2025-08-27 21:49:41,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL3
+2025-08-27 21:49:41,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL4
+2025-08-27 21:49:41,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL5
+2025-08-27 21:49:41,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF1
+2025-08-27 21:49:41,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF2
+2025-08-27 21:49:41,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF3
+2025-08-27 21:49:41,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF4
+2025-08-27 21:49:41,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF5
+2025-08-27 21:49:41,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK1
+2025-08-27 21:49:41,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK3
+2025-08-27 21:49:41,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK4
+2025-08-27 21:49:41,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK5
+2025-08-27 21:49:41,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK2
+2025-08-27 21:49:41,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-27 21:49:41,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK2
+2025-08-27 21:49:41,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
+2025-08-27 21:49:41,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
+2025-08-27 21:49:41,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK5
+2025-08-27 21:49:41,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR1
+2025-08-27 21:49:41,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR5
+2025-08-27 21:49:41,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR4
+2025-08-27 21:49:41,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR3
+2025-08-27 21:49:41,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR2
+2025-08-27 21:49:41,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ1
+2025-08-27 21:49:41,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ2
+2025-08-27 21:49:41,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ3
+2025-08-27 21:49:41,372 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ4
+2025-08-27 21:49:41,372 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ5
+2025-08-27 21:49:41,372 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL1
+2025-08-27 21:49:41,372 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL5
+2025-08-27 21:49:41,372 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL2
+2025-08-27 21:49:41,373 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL3
+2025-08-27 21:49:41,373 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL4
+2025-08-27 21:49:41,373 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
+2025-08-27 21:49:41,373 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
+2025-08-27 21:49:41,374 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
+2025-08-27 21:49:41,374 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
+2025-08-27 21:49:41,374 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
+2025-08-27 21:49:41,375 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-27 21:49:41,375 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-27 21:49:41,375 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-27 21:49:41,376 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-27 21:49:41,376 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-27 21:49:41,376 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF1
+2025-08-27 21:49:41,377 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF3
+2025-08-27 21:49:41,377 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF4
+2025-08-27 21:49:41,377 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF5
+2025-08-27 21:49:41,377 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF2
+2025-08-27 21:49:41,377 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 1
+2025-08-27 21:49:41,378 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 2
+2025-08-27 21:49:41,378 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 4
+2025-08-27 21:49:41,378 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 5
+2025-08-27 21:49:41,378 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 3
+2025-08-27 21:49:41,378 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 1
+2025-08-27 21:49:41,378 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 2
+2025-08-27 21:49:41,379 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 3
+2025-08-27 21:49:41,379 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 4
+2025-08-27 21:49:41,379 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 5
+2025-08-27 21:49:41,379 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:41,379 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:41,379 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:41,380 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:41,380 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:41,380 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 1
+2025-08-27 21:49:41,380 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 2
+2025-08-27 21:49:41,380 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 3
+2025-08-27 21:49:41,381 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 4
+2025-08-27 21:49:41,381 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 5
+2025-08-27 21:49:41,381 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 1
+2025-08-27 21:49:41,381 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 3
+2025-08-27 21:49:41,381 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 4
+2025-08-27 21:49:41,381 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 5
+2025-08-27 21:49:41,381 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 2
+2025-08-27 21:49:41,382 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 1
+2025-08-27 21:49:41,382 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 2
+2025-08-27 21:49:41,382 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 3
+2025-08-27 21:49:41,382 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 4
+2025-08-27 21:49:41,382 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 5
+2025-08-27 21:49:41,382 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 1
+2025-08-27 21:49:41,383 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 2
+2025-08-27 21:49:41,383 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 3
+2025-08-27 21:49:41,383 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 4
+2025-08-27 21:49:41,383 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 5
+2025-08-27 21:49:41,383 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-27 21:49:41,383 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-27 21:49:41,384 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-27 21:49:41,384 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-27 21:49:41,384 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-27 21:49:41,384 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1
+2025-08-27 21:49:41,384 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2
+2025-08-27 21:49:41,384 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3
+2025-08-27 21:49:41,385 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 4
+2025-08-27 21:49:41,385 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5
+2025-08-27 21:49:41,385 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 1
+2025-08-27 21:49:41,385 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 2
+2025-08-27 21:49:41,385 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 3
+2025-08-27 21:49:41,385 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 4
+2025-08-27 21:49:41,385 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 5
+2025-08-27 21:49:41,386 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
+2025-08-27 21:49:41,386 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
+2025-08-27 21:49:41,386 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
+2025-08-27 21:49:41,386 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
+2025-08-27 21:49:41,386 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
+2025-08-27 21:49:41,386 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 1
+2025-08-27 21:49:41,386 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 3
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 4
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 5
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 2
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 1
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 5
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 4
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 3
+2025-08-27 21:49:41,387 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 2
+2025-08-27 21:49:41,388 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 1
+2025-08-27 21:49:41,388 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 5
+2025-08-27 21:49:41,388 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 2
+2025-08-27 21:49:41,388 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 3
+2025-08-27 21:49:41,388 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 4
+2025-08-27 21:49:41,388 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 1
+2025-08-27 21:49:41,388 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 2
+2025-08-27 21:49:41,389 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 3
+2025-08-27 21:49:41,389 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 4
+2025-08-27 21:49:41,389 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 5
+2025-08-27 21:49:41,389 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D1
+2025-08-27 21:49:41,389 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D2
+2025-08-27 21:49:41,389 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D3
+2025-08-27 21:49:41,389 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D4
+2025-08-27 21:49:41,390 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
+2025-08-27 21:49:41,390 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT1
+2025-08-27 21:49:41,390 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT2
+2025-08-27 21:49:41,390 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT3
+2025-08-27 21:49:41,390 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT4
+2025-08-27 21:49:41,390 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT5
+2025-08-27 21:49:41,390 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 1
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 2
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 3
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 4
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 5
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 1
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 2
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 3
+2025-08-27 21:49:41,391 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 4
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 5
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB1
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB2
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB3
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB4
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB5
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV1
+2025-08-27 21:49:41,392 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV3
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV4
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV5
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV2
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS3
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS1
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS2
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS4
+2025-08-27 21:49:41,393 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS5
+2025-08-27 21:49:41,394 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:41,394 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:41,394 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:41,394 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:41,394 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:41,394 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks1
+2025-08-27 21:49:41,394 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks2
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks3
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks4
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks5
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA1
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA2
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA3
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA4
+2025-08-27 21:49:41,395 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA5
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM1
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM2
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM3
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM4
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM5
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
+2025-08-27 21:49:41,396 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL1
+2025-08-27 21:49:41,397 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL3
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL4
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL5
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL2
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:41,398 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 1
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 2
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 3
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 4
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 5
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 1
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 3
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 4
+2025-08-27 21:49:41,399 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 5
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 2
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS1
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS2
+2025-08-27 21:49:41,400 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS3
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS4
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS5
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU1
+2025-08-27 21:49:41,401 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU3
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU4
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU5
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU2
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK2
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK5
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA1
+2025-08-27 21:49:41,402 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA5
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA2
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA3
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA4
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA1
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA4
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA5
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA2
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA3
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD1
+2025-08-27 21:49:41,403 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD3
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD4
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD5
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD2
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D3
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D1
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D4
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D2
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
+2025-08-27 21:49:41,404 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) tt1
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) tt5
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) tt2
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) tt3
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) tt4
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
+2025-08-27 21:49:41,405 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG1
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG2
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG3
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG4
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MAG5
+2025-08-27 21:49:41,406 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 1
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 2
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 3
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 5
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH y-52 podcast monah(lang2) 2407 4
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 1
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK2
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
+2025-08-27 21:49:41,407 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK5
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5361_TH y-7 yavis2  2507_2(lang1) 1
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5361_TH y-7 yavis2  2507_2(lang1) 4
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5361_TH y-7 yavis2  2507_2(lang1) 5
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5361_TH y-7 yavis2  2507_2(lang1) 2
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5361_TH y-7 yavis2  2507_2(lang1) 3
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5365_TH K-12 serge serega monah 25.07_2(lang2) 1
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5365_TH K-12 serge serega monah 25.07_2(lang2) 2
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5365_TH K-12 serge serega monah 25.07_2(lang2) 5
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5365_TH K-12 serge serega monah 25.07_2(lang2) 4
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5365_TH K-12 serge serega monah 25.07_2(lang2) 3
+2025-08-27 21:49:41,408 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 1
+2025-08-27 21:49:41,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 2
+2025-08-27 21:49:41,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 3
+2025-08-27 21:49:41,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 4
+2025-08-27 21:49:41,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5460_Y-68 TH korotish  15.07 monah_1(lang1) 5
+2025-08-27 21:49:41,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 1
+2025-08-27 21:49:41,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 2
+2025-08-27 21:49:41,409 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 3
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 4
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5540_Y-68 TH korotish 15.07 monah3_4(lang1) 5
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 3
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 4
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 2
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5543_Y-68 TH korotish  15.07 monah2_5(lang1) 5
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 1
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 2
+2025-08-27 21:49:41,410 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 3
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 4
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5600_TH  Zаходим V.1  03.08_2(vst2) 5
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 1
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 3
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 4
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 5
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5605_TH voltaren2.2 veo 03.08_1_bazeprimary(vst1) 2
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 1
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 3
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 4
+2025-08-27 21:49:41,411 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 5
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 2
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 1
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 5
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 2
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 3
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 4
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 1
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 5
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 3
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 2
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 4
+2025-08-27 21:49:41,412 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 5
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 1
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 2
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 3
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5892_Y-67 TH gemorr  monah1 11.08(vst2) 4
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-27 21:49:41,413 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 1
+2025-08-27 21:49:41,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 2
+2025-08-27 21:49:41,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 3
+2025-08-27 21:49:41,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 4
+2025-08-27 21:49:41,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5910_ID  voltaren1 muslim 12.08(vvs1) 5
+2025-08-27 21:49:41,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 1
+2025-08-27 21:49:41,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 2
+2025-08-27 21:49:41,414 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 3
+2025-08-27 21:49:41,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 4
+2025-08-27 21:49:41,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 5
+2025-08-27 21:49:41,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 1
+2025-08-27 21:49:41,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 2
+2025-08-27 21:49:41,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 3
+2025-08-27 21:49:41,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 4
+2025-08-27 21:49:41,415 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5875_ID Swype_vitya6 monah 12.08(vst1) 5
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 1
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 2
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 3
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 4
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5880_K-68 monah per to ajan gpt1  11.08(vst1) 5
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 1
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 3
+2025-08-27 21:49:41,416 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 2
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 5
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 4
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 1
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 5
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 2
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 3
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 4
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 1
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 2
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 3
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 4
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6053_K-89 TH novostik  18.08_3(vst1) 5
+2025-08-27 21:49:41,417 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 1
+2025-08-27 21:49:41,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 2
+2025-08-27 21:49:41,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 5
+2025-08-27 21:49:41,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 4
+2025-08-27 21:49:41,418 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 3
+2025-08-27 21:49:48,384 - __main__ - INFO - Автообновление данных для пользователя 1
+2025-08-27 21:49:48,388 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:48,912 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 1081
+2025-08-27 21:49:48,912 - __main__ - INFO - Получено 24 кампаний для аккаунта 1229752641939602
+2025-08-27 21:49:48,968 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:49,534 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 658
+2025-08-27 21:49:49,535 - __main__ - INFO - Получено 8 кампаний для аккаунта 684941790597261
+2025-08-27 21:49:49,561 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:50,035 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 933
+2025-08-27 21:49:50,036 - __main__ - INFO - Получено 17 кампаний для аккаунта 2094484354409294
+2025-08-27 21:49:50,072 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:50,600 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 1320
+2025-08-27 21:49:50,601 - __main__ - INFO - Получено 31 кампаний для аккаунта 519765377868615
+2025-08-27 21:49:50,657 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:51,442 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 2103
+2025-08-27 21:49:51,445 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:51,958 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100&after=QVFIU1NadUI4cnVNTkIyVnVXckFOeU1yWnZA6Sk12VzUyelJ0aVRwQlVUM1JnQTkzUUh0X0wzUUZA1aUxCcTBKamd4ZAEk4b3d0UGtkWHg5ZAzdjYUVrN1hyUGtn HTTP/1.1" 200 874
+2025-08-27 21:49:51,961 - __main__ - INFO - Получено 116 адсетов для аккаунта 1229752641939602
+2025-08-27 21:49:52,143 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:52,674 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 949
+2025-08-27 21:49:52,675 - __main__ - INFO - Получено 40 адсетов для аккаунта 684941790597261
+2025-08-27 21:49:52,780 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:53,608 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=100 HTTP/1.1" 200 1519
+2025-08-27 21:49:53,609 - __main__ - INFO - Получено 85 адсетов для аккаунта 2094484354409294
+2025-08-27 21:49:53,739 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:54,479 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100 HTTP/1.1" 200 2262
+2025-08-27 21:49:54,481 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-27 21:49:55,122 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v23.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=100&after=QVFIU3F3amRVamFTbHpMTEQ2TlBucjNvaVI4M2FUUjBYSHkwc3JrR3FyaVltcDBGOVFSRXU2S21QWTBJckpmcl9FY2FHQ1htRlBxbTgyNTdweGh2bnpmUXhR HTTP/1.1" 200 1246
+2025-08-27 21:49:55,125 - __main__ - INFO - Получено 155 адсетов для аккаунта 519765377868615
+2025-08-27 21:49:55,333 - __main__ - INFO - Обновлено 396 адсетов с определением GEO
+2025-08-27 21:49:55,333 - __main__ - ERROR - Ошибка автообновления для пользователя 1: name 'sync_keitaro_only_internal' is not defined
+2025-08-27 21:49:55,336 - __main__ - DEBUG - Telegram не настроен — пропуск отправки
+2025-08-27 21:49:55,339 - __main__ - INFO - Используются правила из старой таблицы geo_config
+2025-08-27 21:49:55,350 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-27 21:49:55,350 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D1
+2025-08-27 21:49:55,350 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D2
+2025-08-27 21:49:55,350 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D3
+2025-08-27 21:49:55,350 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D4
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG1
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG5
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG2
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG3
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJG4
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL1
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL2
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL3
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL4
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KL5
+2025-08-27 21:49:55,351 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF1
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF2
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF3
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF4
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JF5
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK1
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK3
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK4
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK5
+2025-08-27 21:49:55,352 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TK2
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK2
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK5
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR1
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR5
+2025-08-27 21:49:55,353 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR4
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR3
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TAR2
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ1
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ2
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ3
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ4
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJJ5
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL1
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL5
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL2
+2025-08-27 21:49:55,354 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL3
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL4
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF1
+2025-08-27 21:49:55,355 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF3
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF4
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF5
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF2
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 1
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 2
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 4
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 5
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5355_TH y-7 yavis2  2507_1(lang1) 3
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 1
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 2
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 3
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 4
+2025-08-27 21:49:55,356 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5362_TH Swype_vitya6 monah 25.07_2(lang1) 5
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 1
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 2
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 3
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 4
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5602_TH  Zаходим V.1  03.08_4(vst2) 5
+2025-08-27 21:49:55,357 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 1
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 3
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 4
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 5
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5649_TH Z-SWIPE-4 otzv 04.08(Vst1) 2
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 1
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 2
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 3
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 4
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5651_TH Z-SWIPE-4 otzv 04.08(Vst3) 5
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 1
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 2
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 3
+2025-08-27 21:49:55,358 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 4
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5655_TH monah 72.2 17.07_1(vst2) 5
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT1
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT5
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT4
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT3
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TT2
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 4
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5
+2025-08-27 21:49:55,359 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 1
+2025-08-27 21:49:55,360 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 2
+2025-08-27 21:49:55,360 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 3
+2025-08-27 21:49:55,360 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 4
+2025-08-27 21:49:55,360 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5731_TH K-69 monah 23.07_2(Vst2) 5
+2025-08-27 21:49:55,360 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
+2025-08-27 21:49:55,360 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
+2025-08-27 21:49:55,360 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 1
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 3
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 4
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 5
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5836_TH Swype_vitya6 monah 25.07_2(pz1) 2
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 1
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 5
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 4
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 3
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5840_K-68 monah vrach 17.07_2(pz1) 2
+2025-08-27 21:49:55,361 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 1
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 5
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 2
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 3
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5874_Y-67 ID  short  muslim(vst12) 4
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 1
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 2
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 3
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 4
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5616_mugshena78 red TH(vst2) 5
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D1
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D2
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D3
+2025-08-27 21:49:55,362 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D4
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT1
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT2
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT3
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT4
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ttT5
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 1
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 2
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 3
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 4
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6020_K-85 TH LimonchellaBorya_3(vst1) 5
+2025-08-27 21:49:55,363 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 1
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 2
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 3
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 4
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6024_K-86 TH GOLD3  15.08_3(vst1) 5
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB1
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB2
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB3
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB4
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BB5
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV1
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV3
+2025-08-27 21:49:55,364 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV4
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV5
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VV2
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS3
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS1
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS2
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS4
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HS5
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:55,365 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks1
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks2
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks3
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks4
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) Ks5
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA1
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA2
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA3
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA4
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KSA5
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM1
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM2
+2025-08-27 21:49:55,366 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM3
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM4
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AM5
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:55,367 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL1
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL3
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL4
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL5
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL2
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 1
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 2
+2025-08-27 21:49:55,368 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 3
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 4
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 5
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 1
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 3
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 4
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 5
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 2
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-27 21:49:55,369 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS1
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS2
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS3
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS4
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KKS5
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR1
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR2
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR3
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR4
+2025-08-27 21:49:55,370 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RR5
+2025-08-27 21:49:55,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU1
+2025-08-27 21:49:55,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU3
+2025-08-27 21:49:55,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU4
+2025-08-27 21:49:55,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU5
+2025-08-27 21:49:55,371 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) UU2
