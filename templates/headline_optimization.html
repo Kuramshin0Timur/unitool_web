@@ -37,9 +37,9 @@
                             <div class="card-body">
                                 <h6 class="card-title">Ручное управление</h6>
                                 <div class="mb-3">
-                                    <label class="form-label">Выберите кампанию:</label>
+                                    <label class="form-label">Выберите компанию:</label>
                                     <select class="form-select" id="campaignSelect">
-                                        <option value="">Загрузка кампаний...</option>
+                                        <option value="">Загрузка компаний...</option>
                                     </select>
                                 </div>
                                 <button class="btn btn-success mb-2" onclick="runOptimization()" id="runOptimizationBtn">
@@ -53,10 +53,10 @@
                     </div>
                 </div>
 
-                <!-- Статистика кампании -->
+                <!-- Статистика компании -->
                 <div class="card mb-4" id="campaignStatsCard" style="display: none;">
                     <div class="card-header">
-                        <h6 class="card-title mb-0">Статистика кампании: <span id="campaignName"></span></h6>
+                        <h6 class="card-title mb-0">Статистика компании: <span id="campaignName"></span></h6>
                     </div>
                     <div class="card-body">
                         <div class="row" id="campaignStats">
@@ -68,7 +68,7 @@
                 <!-- Таблица потоков -->
                 <div class="card">
                     <div class="card-header">
-                        <h6 class="card-title mb-0">Потоки кампании</h6>
+                        <h6 class="card-title mb-0">Потоки компании</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -114,7 +114,7 @@ $(document).ready(function() {
     loadOptimizationSettings();
 });
 
-// Загрузка списка кампаний
+// Загрузка списка компаний
 function loadCampaigns() {
     $.ajax({
         url: '/api/campaigns',
@@ -123,7 +123,7 @@ function loadCampaigns() {
             if (response.success) {
                 const select = $('#campaignSelect');
                 select.empty();
-                select.append('<option value="">Выберите кампанию</option>');
+                select.append('<option value="">Выберите компанию</option>');
                 
                 response.data.forEach(campaign => {
                     select.append(`<option value="${campaign.campaign_id}">${campaign.name}</option>`);
@@ -131,7 +131,7 @@ function loadCampaigns() {
             }
         },
         error: function(error) {
-            console.error('Ошибка загрузки кампаний:', error);
+            console.error('Ошибка загрузки компаний:', error);
         }
     });
 }
@@ -185,7 +185,7 @@ function saveOptimizationSettings() {
 function runOptimization() {
     const campaignId = $('#campaignSelect').val();
     if (!campaignId) {
-        showAlert('Выберите кампанию для оптимизации', 'warning');
+        showAlert('Выберите компанию для оптимизации', 'warning');
         return;
     }
 
@@ -214,15 +214,15 @@ function runOptimization() {
     });
 }
 
-// Загрузка статуса кампании
+// Загрузка статуса компании
 function loadCampaignStatus() {
     const campaignId = $('#campaignSelect').val();
     if (!campaignId) {
-        showAlert('Выберите кампанию', 'warning');
+        showAlert('Выберите компанию', 'warning');
         return;
     }
 
-    // Получаем название кампании для отображения
+    // Получаем название компании для отображения
     const campaignName = $('#campaignSelect option:selected').text();
     $('#campaignName').text(campaignName);
     
@@ -246,13 +246,13 @@ function loadCampaignStatus() {
         },
         error: function(error) {
             $('#refreshStatusBtn').prop('disabled', false).html('<i class="bi bi-arrow-clockwise"></i> Обновить статус');
-            showAlert('Ошибка загрузки статуса кампании', 'error');
+            showAlert('Ошибка загрузки статуса компании', 'error');
             $('#campaignStatsCard').hide();
         }
     });
 }
 
-// Отображение статистики кампании
+// Отображение статистики компании
 function displayCampaignStats(response) {
     const stats = response.streams.reduce((acc, stream) => {
         acc.totalConversions += stream.conversions;
@@ -410,7 +410,7 @@ function showAlert(message, type) {
     }, 5000);
 }
 
-// Обработчик изменения выбора кампании
+// Обработчик изменения выбора компании
 $('#campaignSelect').change(function() {
     if ($(this).val()) {
         loadCampaignStatus();

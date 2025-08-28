@@ -43,3 +43,304 @@
 2025-08-28 03:05:05,430 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
 2025-08-28 03:05:05,432 - __main__ - INFO - Обработано 9 аккаунтов из 9
 2025-08-28 03:05:05,433 - werkzeug - INFO - 91.132.92.141 - - [28/Aug/2025 03:05:05] "GET /api/admin/all_accounts_limits HTTP/1.1" 200 -
+2025-08-28 03:08:13,334 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:08:13,335 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:08:29,961 - werkzeug - INFO - 77.79.173.250 - - [28/Aug/2025 03:08:29] "[32mGET / HTTP/1.1[0m" 302 -
+2025-08-28 03:08:30,052 - werkzeug - INFO - 77.79.173.250 - - [28/Aug/2025 03:08:30] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-08-28 03:08:30,122 - werkzeug - INFO - 77.79.173.250 - - [28/Aug/2025 03:08:30] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:08:30,261 - werkzeug - INFO - 77.79.173.250 - - [28/Aug/2025 03:08:30] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-28 03:08:31,477 - werkzeug - INFO - 77.79.173.250 - - [28/Aug/2025 03:08:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-28 03:08:46,390 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:46] "[32mGET / HTTP/1.1[0m" 302 -
+2025-08-28 03:08:46,430 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:46] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-08-28 03:08:46,529 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:46] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:08:46,973 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:08:52,530 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:52] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:08:52,652 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:08:52,762 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:52] "GET /static/js/campaigns.js HTTP/1.1" 200 -
+2025-08-28 03:08:53,122 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:53] "GET /api/campaigns?_=1756339733940 HTTP/1.1" 200 -
+2025-08-28 03:08:54,937 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:54] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:08:55,061 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:08:55,708 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:55] "GET /adsets HTTP/1.1" 200 -
+2025-08-28 03:08:55,823 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:08:55,873 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:55] "GET /static/js/adsets.js HTTP/1.1" 200 -
+2025-08-28 03:08:56,236 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:56] "GET /api/auto_control/logs?ts=1756339737092 HTTP/1.1" 200 -
+2025-08-28 03:08:56,249 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:08:56] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-28 03:09:14,786 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:14] "GET /api/accounts HTTP/1.1" 200 -
+2025-08-28 03:09:14,865 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
+2025-08-28 03:09:14,867 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-08-28 03:09:15,663 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-08-28 03:09:15,666 - __main__ - INFO - Обработано записей из Keitaro: 110 по имени
+2025-08-28 03:09:15,668 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:16,085 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
+2025-08-28 03:09:16,090 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:16,666 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 1061
+2025-08-28 03:09:16,667 - __main__ - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 24}, Effective Status: {'PAUSED': 24}
+2025-08-28 03:09:16,667 - __main__ - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 1229752641939602
+2025-08-28 03:09:16,735 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:17,884 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 2026
+2025-08-28 03:09:17,886 - __main__ - DEBUG - Получено 116 адсетов. Status: {'ACTIVE': 89, 'PAUSED': 27}, Effective Status: {'CAMPAIGN_PAUSED': 89, 'PAUSED': 27}
+2025-08-28 03:09:17,886 - __main__ - INFO - Получено 116 адсетов, после фильтрации: 116 для аккаунта 1229752641939602
+2025-08-28 03:09:18,146 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:18,523 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-08-28 03:09:18,527 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:18,972 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 658
+2025-08-28 03:09:18,973 - __main__ - DEBUG - Получено 8 кампаний. Status: {'PAUSED': 8}, Effective Status: {'PAUSED': 8}
+2025-08-28 03:09:18,973 - __main__ - INFO - Получено 8 кампаний, после фильтрации: 8 для аккаунта 684941790597261
+2025-08-28 03:09:18,999 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:19,627 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 984
+2025-08-28 03:09:19,628 - __main__ - DEBUG - Получено 40 адсетов. Status: {'ACTIVE': 37, 'PAUSED': 3}, Effective Status: {'CAMPAIGN_PAUSED': 37, 'PAUSED': 3}
+2025-08-28 03:09:19,629 - __main__ - INFO - Получено 40 адсетов, после фильтрации: 40 для аккаунта 684941790597261
+2025-08-28 03:09:19,724 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:20,103 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
+2025-08-28 03:09:20,107 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:20,560 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 933
+2025-08-28 03:09:20,561 - __main__ - DEBUG - Получено 17 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 15}, Effective Status: {'ACTIVE': 2, 'PAUSED': 15}
+2025-08-28 03:09:20,561 - __main__ - INFO - Получено 17 кампаний, после фильтрации: 17 для аккаунта 2094484354409294
+2025-08-28 03:09:20,602 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:21,483 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 1572
+2025-08-28 03:09:21,484 - __main__ - DEBUG - Получено 85 адсетов. Status: {'ACTIVE': 72, 'PAUSED': 13}, Effective Status: {'ACTIVE': 10, 'PAUSED': 13, 'CAMPAIGN_PAUSED': 62}
+2025-08-28 03:09:21,484 - __main__ - INFO - Получено 85 адсетов, после фильтрации: 85 для аккаунта 2094484354409294
+2025-08-28 03:09:21,615 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:21,978 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-08-28 03:09:21,982 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:22,474 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1320
+2025-08-28 03:09:22,475 - __main__ - DEBUG - Получено 31 кампаний. Status: {'PAUSED': 31}, Effective Status: {'PAUSED': 31}
+2025-08-28 03:09:22,476 - __main__ - INFO - Получено 31 кампаний, после фильтрации: 31 для аккаунта 519765377868615
+2025-08-28 03:09:22,541 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:23,730 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 2590
+2025-08-28 03:09:23,736 - __main__ - DEBUG - Получено 155 адсетов. Status: {'ACTIVE': 139, 'PAUSED': 16}, Effective Status: {'CAMPAIGN_PAUSED': 139, 'PAUSED': 16}
+2025-08-28 03:09:23,736 - __main__ - INFO - Получено 155 адсетов, после фильтрации: 155 для аккаунта 519765377868615
+2025-08-28 03:09:23,922 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:23] "POST /api/save_and_sync HTTP/1.1" 200 -
+2025-08-28 03:09:26,043 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:26] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-28 03:09:28,466 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:28] "GET /headline_optimization HTTP/1.1" 200 -
+2025-08-28 03:09:28,588 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:28,955 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:28] "GET /api/settings HTTP/1.1" 200 -
+2025-08-28 03:09:28,957 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:28] "GET /api/campaigns HTTP/1.1" 200 -
+2025-08-28 03:09:30,838 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:30] "GET /auto_control HTTP/1.1" 200 -
+2025-08-28 03:09:30,977 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:31,118 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:31] "GET /static/js/auto_controls.js HTTP/1.1" 200 -
+2025-08-28 03:09:31,138 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:31] "GET /static/js/geo_rules.js HTTP/1.1" 200 -
+2025-08-28 03:09:31,575 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:31] "GET /api/settings HTTP/1.1" 200 -
+2025-08-28 03:09:31,575 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:31] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-08-28 03:09:31,588 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:31] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-28 03:09:31,644 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:31] "GET /api/geo_rules HTTP/1.1" 200 -
+2025-08-28 03:09:38,941 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:38] "GET /adsets HTTP/1.1" 200 -
+2025-08-28 03:09:39,061 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:39,109 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:39] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
+2025-08-28 03:09:39,472 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:39] "GET /api/auto_control/logs?ts=1756339780324 HTTP/1.1" 200 -
+2025-08-28 03:09:39,484 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:39] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-28 03:09:39,558 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:39] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:09:39,746 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:39,798 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:39] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:09:40,087 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:40] "GET /api/campaigns?_=1756339780916 HTTP/1.1" 200 -
+2025-08-28 03:09:43,762 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:43] "GET /manual_data HTTP/1.1" 200 -
+2025-08-28 03:09:43,899 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:43,999 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:43] "GET /static/js/handsontable-init.js HTTP/1.1" 200 -
+2025-08-28 03:09:44,327 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:44] "GET /api/accounts HTTP/1.1" 200 -
+2025-08-28 03:09:53,299 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
+2025-08-28 03:09:53,301 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-08-28 03:09:54,085 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-08-28 03:09:54,089 - __main__ - INFO - Обработано записей из Keitaro: 110 по имени
+2025-08-28 03:09:54,091 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:54,361 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:54] "GET /manual_data HTTP/1.1" 200 -
+2025-08-28 03:09:54,471 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
+2025-08-28 03:09:54,475 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:54,495 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:54,506 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:54] "[36mGET /static/js/handsontable-init.js HTTP/1.1[0m" 304 -
+2025-08-28 03:09:54,891 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:54] "GET /api/accounts HTTP/1.1" 200 -
+2025-08-28 03:09:54,950 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 1061
+2025-08-28 03:09:54,951 - __main__ - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 24}, Effective Status: {'PAUSED': 24}
+2025-08-28 03:09:54,952 - __main__ - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 1229752641939602
+2025-08-28 03:09:54,995 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:55,051 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:55] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:09:55,188 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:56,214 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 2026
+2025-08-28 03:09:56,215 - __main__ - DEBUG - Получено 116 адсетов. Status: {'ACTIVE': 89, 'PAUSED': 27}, Effective Status: {'CAMPAIGN_PAUSED': 89, 'PAUSED': 27}
+2025-08-28 03:09:56,216 - __main__ - INFO - Получено 116 адсетов, после фильтрации: 116 для аккаунта 1229752641939602
+2025-08-28 03:09:56,399 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:56,529 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:56] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:09:56,680 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:09:56,757 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-08-28 03:09:56,760 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:56,780 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:56] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:09:57,079 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:09:57] "GET /api/campaigns?_=1756339797911 HTTP/1.1" 200 -
+2025-08-28 03:09:57,188 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 658
+2025-08-28 03:09:57,189 - __main__ - DEBUG - Получено 8 кампаний. Status: {'PAUSED': 8}, Effective Status: {'PAUSED': 8}
+2025-08-28 03:09:57,189 - __main__ - INFO - Получено 8 кампаний, после фильтрации: 8 для аккаунта 684941790597261
+2025-08-28 03:09:57,205 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:57,868 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 984
+2025-08-28 03:09:57,869 - __main__ - DEBUG - Получено 40 адсетов. Status: {'ACTIVE': 37, 'PAUSED': 3}, Effective Status: {'CAMPAIGN_PAUSED': 37, 'PAUSED': 3}
+2025-08-28 03:09:57,870 - __main__ - INFO - Получено 40 адсетов, после фильтрации: 40 для аккаунта 684941790597261
+2025-08-28 03:09:57,937 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:58,315 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
+2025-08-28 03:09:58,319 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:58,779 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 933
+2025-08-28 03:09:58,780 - __main__ - DEBUG - Получено 17 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 15}, Effective Status: {'ACTIVE': 2, 'PAUSED': 15}
+2025-08-28 03:09:58,780 - __main__ - INFO - Получено 17 кампаний, после фильтрации: 17 для аккаунта 2094484354409294
+2025-08-28 03:09:58,817 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:09:59,705 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 1572
+2025-08-28 03:09:59,706 - __main__ - DEBUG - Получено 85 адсетов. Status: {'ACTIVE': 72, 'PAUSED': 13}, Effective Status: {'ACTIVE': 10, 'PAUSED': 13, 'CAMPAIGN_PAUSED': 62}
+2025-08-28 03:09:59,707 - __main__ - INFO - Получено 85 адсетов, после фильтрации: 85 для аккаунта 2094484354409294
+2025-08-28 03:09:59,816 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:10:00,176 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-08-28 03:10:00,179 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:10:00,647 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1320
+2025-08-28 03:10:00,648 - __main__ - DEBUG - Получено 31 кампаний. Status: {'PAUSED': 31}, Effective Status: {'PAUSED': 31}
+2025-08-28 03:10:00,648 - __main__ - INFO - Получено 31 кампаний, после фильтрации: 31 для аккаунта 519765377868615
+2025-08-28 03:10:00,724 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-28 03:10:01,887 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 2590
+2025-08-28 03:10:01,889 - __main__ - DEBUG - Получено 155 адсетов. Status: {'ACTIVE': 139, 'PAUSED': 16}, Effective Status: {'CAMPAIGN_PAUSED': 139, 'PAUSED': 16}
+2025-08-28 03:10:01,889 - __main__ - INFO - Получено 155 адсетов, после фильтрации: 155 для аккаунта 519765377868615
+2025-08-28 03:10:02,090 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:02] "POST /api/save_and_sync HTTP/1.1" 200 -
+2025-08-28 03:10:09,611 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:09] "GET /adsets HTTP/1.1" 200 -
+2025-08-28 03:10:09,728 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:10:09,778 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:09] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
+2025-08-28 03:10:10,124 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:10] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-28 03:10:10,127 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:10] "GET /api/auto_control/logs?ts=1756339810976 HTTP/1.1" 200 -
+2025-08-28 03:10:21,542 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:21] "GET /api/adset/budget_settings?adset_id=120226346258660139 HTTP/1.1" 200 -
+2025-08-28 03:10:26,208 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:26] "GET /api/adset/budget_settings?adset_id=120226346258660139 HTTP/1.1" 200 -
+2025-08-28 03:10:32,973 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:32] "POST /api/adset/budget_settings HTTP/1.1" 200 -
+2025-08-28 03:10:36,843 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:36] "GET /api/adset/budget_settings?adset_id=120226346258660139 HTTP/1.1" 200 -
+2025-08-28 03:10:41,342 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:41] "POST /api/adset/budget_settings HTTP/1.1" 200 -
+2025-08-28 03:10:44,823 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:44] "GET /api/adset/budget_settings?adset_id=120225618851820139 HTTP/1.1" 200 -
+2025-08-28 03:10:55,579 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:10:55] "GET /api/auto_control/logs HTTP/1.1" 200 -
+2025-08-28 03:11:04,908 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:04] "GET /api/auto_control/logs HTTP/1.1" 200 -
+2025-08-28 03:11:08,309 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:08] "GET /api/auto_control/logs HTTP/1.1" 200 -
+2025-08-28 03:11:14,878 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:14] "GET /api/auto_control/logs HTTP/1.1" 200 -
+2025-08-28 03:11:20,447 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:20] "GET /api/auto_control/logs HTTP/1.1" 200 -
+2025-08-28 03:11:31,836 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:31] "GET /adsets HTTP/1.1" 200 -
+2025-08-28 03:11:31,935 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:11:32,087 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:32] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
+2025-08-28 03:11:32,354 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:32] "GET /api/adsets HTTP/1.1" 200 -
+2025-08-28 03:11:32,356 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:32] "GET /api/auto_control/logs?ts=1756339893207 HTTP/1.1" 200 -
+2025-08-28 03:11:34,702 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:34] "GET /api/auto_control/logs HTTP/1.1" 200 -
+2025-08-28 03:11:42,898 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:42] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:11:43,016 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:11:43,075 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:43] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:11:43,414 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:43] "GET /api/campaigns?_=1756339904248 HTTP/1.1" 200 -
+2025-08-28 03:11:55,601 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:55] "GET /reserve_tokens HTTP/1.1" 200 -
+2025-08-28 03:11:55,719 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:11:55,830 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:55] "GET /static/js/reserve_tokens.js HTTP/1.1" 200 -
+2025-08-28 03:11:56,140 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:11:56] "GET /api/reserve_tokens HTTP/1.1" 200 -
+2025-08-28 03:13:06,590 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:13:06,591 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:13:09,141 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:09] "GET /reserve_tokens HTTP/1.1" 200 -
+2025-08-28 03:13:09,245 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:13:09,276 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:09] "[36mGET /static/js/reserve_tokens.js HTTP/1.1[0m" 304 -
+2025-08-28 03:13:09,632 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:09] "GET /api/reserve_tokens HTTP/1.1" 200 -
+2025-08-28 03:13:12,060 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:12] "GET /reserve_tokens HTTP/1.1" 200 -
+2025-08-28 03:13:12,148 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:13:12,197 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:12] "[36mGET /static/js/reserve_tokens.js HTTP/1.1[0m" 304 -
+2025-08-28 03:13:12,549 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:12] "GET /api/reserve_tokens HTTP/1.1" 200 -
+2025-08-28 03:13:13,467 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:13] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:13:13,572 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:13:14,382 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:14] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:13:14,507 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:13:14,627 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:14] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:13:14,932 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:14] "GET /api/campaigns?_=1756339995773 HTTP/1.1" 200 -
+2025-08-28 03:13:20,189 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:20] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:13:20,290 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:13:20,331 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:20] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:13:20,739 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:13:20] "GET /api/campaigns?_=1756340001578 HTTP/1.1" 200 -
+2025-08-28 03:14:45,209 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:14:45,209 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:14:50,706 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:14:50] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:14:50,821 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:14:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:14:50,857 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:14:50] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:14:51,248 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:14:51] "GET /api/campaigns?_=1756340092081 HTTP/1.1" 200 -
+2025-08-28 03:15:53,449 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:15:53,449 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:15:54,849 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:15:54] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:15:54,933 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:15:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:15:54,987 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:15:54] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:15:55,403 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:15:55] "GET /api/campaigns?_=1756340156238 HTTP/1.1" 200 -
+2025-08-28 03:16:13,664 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:16:13,664 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:16:14,942 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:14] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:16:15,042 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:16:15,080 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:15] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:16:15,443 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:15] "GET /api/campaigns?_=1756340176289 HTTP/1.1" 200 -
+2025-08-28 03:16:21,429 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:21] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:16:21,576 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:16:48,674 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:16:48,675 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:16:50,720 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:50] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:16:50,817 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:16:55,073 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:55] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:16:55,196 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:16:55,305 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:55] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:16:55,589 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:16:55] "GET /api/campaigns?_=1756340216422 HTTP/1.1" 200 -
+2025-08-28 03:17:14,154 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:17:14,155 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:17:15,307 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:15] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:17:15,395 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:17:19,599 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:19] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:17:19,731 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:17:19,786 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:19] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:17:20,142 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:20] "GET /api/campaigns?_=1756340240978 HTTP/1.1" 200 -
+2025-08-28 03:17:31,350 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:31] "GET /headline_optimization HTTP/1.1" 200 -
+2025-08-28 03:17:31,480 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:17:31,890 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:31] "GET /api/campaigns HTTP/1.1" 200 -
+2025-08-28 03:17:31,891 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:17:31] "GET /api/settings HTTP/1.1" 200 -
+2025-08-28 03:19:24,201 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:19:24,201 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:19:25,880 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:19:25] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:19:26,015 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:19:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:19:28,418 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:19:28] "GET /headline_optimization HTTP/1.1" 200 -
+2025-08-28 03:19:28,541 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:19:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:19:28,975 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:19:28] "GET /api/settings HTTP/1.1" 200 -
+2025-08-28 03:19:28,977 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:19:28] "GET /api/campaigns HTTP/1.1" 200 -
+2025-08-28 03:20:05,280 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:20:05,280 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:20:06,975 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:06] "GET /headline_optimization HTTP/1.1" 200 -
+2025-08-28 03:20:07,062 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:20:07,490 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:07] "GET /api/settings HTTP/1.1" 200 -
+2025-08-28 03:20:07,491 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:07] "GET /api/campaigns HTTP/1.1" 200 -
+2025-08-28 03:20:15,837 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8001
+ * Running on http://82.97.251.126:8001
+2025-08-28 03:20:15,837 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-28 03:20:17,203 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:17] "GET /headline_optimization HTTP/1.1" 200 -
+2025-08-28 03:20:17,310 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:20:17,694 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:17] "GET /api/campaigns HTTP/1.1" 200 -
+2025-08-28 03:20:17,696 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:17] "GET /api/settings HTTP/1.1" 200 -
+2025-08-28 03:20:25,262 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:25] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:20:25,421 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:20:25,524 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:25] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:20:25,851 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:25] "GET /api/campaigns?_=1756340426670 HTTP/1.1" 200 -
+2025-08-28 03:20:28,571 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:28] "GET /dashboard HTTP/1.1" 200 -
+2025-08-28 03:20:28,702 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:20:29,854 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:29] "GET /campaigns HTTP/1.1" 200 -
+2025-08-28 03:20:29,992 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-28 03:20:30,096 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:30] "[36mGET /static/js/campaigns.js HTTP/1.1[0m" 304 -
+2025-08-28 03:20:30,425 - werkzeug - INFO - 92.51.30.31 - - [28/Aug/2025 03:20:30] "GET /api/campaigns?_=1756340431256 HTTP/1.1" 200 -
+2025-08-28 03:20:33,323 - werkzeug - ERROR - 87.251.67.45 - - [28/Aug/2025 03:20:33] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+2025-08-28 03:20:33,324 - werkzeug - INFO - 87.251.67.45 - - [28/Aug/2025 03:20:33] "[31m[1m\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie: mstshash=Administr[0m" 400 -
