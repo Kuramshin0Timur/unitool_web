@@ -732,7 +732,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_keitaro_api_key(user_id: int) -> str:\n    \"\"\"Получает API ключ Keitaro из настроек пользователя\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        return settings.get('keitaro_api_key', '')\n    except Exception as e:\n        logger.error(f\"Ошибка получения Keitaro API key: {e}\")\n        return \"\"\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает кампании из Facebook API с расширенными полями\"\"\"",
+        "peekOfCode": "def get_keitaro_api_key(user_id: int) -> str:\n    \"\"\"Получает API ключ Keitaro из настроек пользователя\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        return settings.get('keitaro_api_key', '')\n    except Exception as e:\n        logger.error(f\"Ошибка получения Keitaro API key: {e}\")\n        return \"\"\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -741,7 +741,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает кампании из Facebook API с расширенными полями\"\"\"\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        # Убедимся, что account_id не содержит 'act_' префикс\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,",
+        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        # Убедимся, что account_id не содержит 'act_' префикс\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,",
         "detail": "app",
         "documentation": {}
     },
@@ -750,7 +750,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает адсеты из Facebook API\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
+        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ адсеты из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
         "detail": "app",
         "documentation": {}
     },
@@ -1308,7 +1308,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def save_and_sync():\n    try:\n        logger.info(\"=== НАЧАЛО СИНХРОНИЗАЦИИ ===\")\n        user_id = session['user_id']\n        reset_old_ucpc(user_id, days=7)\n        accounts_data = request.json.get('accounts', [])\n        if not accounts_data:\n            return jsonify({'success': False, 'error': 'Нет данных для сохранения'})\n        # Настройки Keitaro\n        settings = get_user_settings(user_id)",
+        "peekOfCode": "def save_and_sync():\n    try:\n        logger.info(\"=== НАЧАЛО СИНХРОНИЗАЦИИ ===\")\n        user_id = session['user_id']\n        accounts_data = request.json.get('accounts', [])\n        if not accounts_data:\n            return jsonify({'success': False, 'error': 'Нет данных для сохранения'})\n        # Настройки Keitaro\n        settings = get_user_settings(user_id)\n        keitaro_api_key = settings.get('keitaro_api_key')",
         "detail": "app",
         "documentation": {}
     },

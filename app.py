@@ -905,9 +905,8 @@ def get_keitaro_api_key(user_id: int) -> str:
     except Exception as e:
         logger.error(f"Ошибка получения Keitaro API key: {e}")
         return ""
-
 def fetch_facebook_campaigns(account_id, access_token, fields=None):
-    """Получает кампании из Facebook API с расширенными полями"""
+    """Получает ВСЕ кампании из Facebook API (включая неактивные)"""
     if fields is None:
         fields = "id,name,status,effective_status,daily_budget,objective,start_time,stop_time"
     
@@ -919,39 +918,69 @@ def fetch_facebook_campaigns(account_id, access_token, fields=None):
         params = {
             "fields": fields,
             "access_token": access_token,
-            "limit": 100
+            "limit": 1000  # Увеличиваем лимит
         }
         
         all_campaigns = []
+        retry_count = 0
+        max_retries = 3
         
-        while url:
-            response = requests.get(url, params=params, timeout=30)
-            response.raise_for_status()
-            
-            data = response.json()
-            campaigns = data.get('data', [])
-            all_campaigns.extend(campaigns)
-            
-            # Обрабатываем пагинацию
-            next_url = data.get('paging', {}).get('next')
-            url = next_url
-            # Очищаем params для последующих запросов
-            params = {}
+        while url and retry_count < max_retries:
+            try:
+                response = requests.get(url, params=params, timeout=60)
+                response.raise_for_status()
+                
+                data = response.json()
+                campaigns = data.get('data', [])
+                all_campaigns.extend(campaigns)
+                
+                # Логируем статусы для отладки
+                status_count = {}
+                effective_status_count = {}
+                for campaign in campaigns:
+                    status = campaign.get('status', 'UNKNOWN')
+                    effective_status = campaign.get('effective_status', 'UNKNOWN')
+                    status_count[status] = status_count.get(status, 0) + 1
+                    effective_status_count[effective_status] = effective_status_count.get(effective_status, 0) + 1
+                
+                logger.debug(f"Получено {len(campaigns)} кампаний. Status: {status_count}, Effective Status: {effective_status_count}")
+                
+                # Обрабатываем пагинацию
+                next_url = data.get('paging', {}).get('next')
+                if next_url == url:  # Защита от бесконечного цикла
+                    break
+                    
+                url = next_url
+                # Очищаем params для последующих запросов
+                params = {}
+                retry_count = 0
+                
+            except requests.exceptions.RequestException as e:
+                retry_count += 1
+                logger.warning(f"Ошибка запроса кампаний (попытка {retry_count}/{max_retries}): {e}")
+                if retry_count < max_retries:
+                    time.sleep(2 ** retry_count)  # Экспоненциальная задержка
+                else:
+                    raise
         
-        logger.info(f"Получено {len(all_campaigns)} кампаний для аккаунта {clean_account_id}")
-        return all_campaigns
+        # Фильтруем только нужные статусы если нужно (но лучше получить все)
+        filtered_campaigns = [camp for camp in all_campaigns 
+                             if camp.get('effective_status') not in ['DELETED', 'ARCHIVED']]
+        
+        logger.info(f"Получено {len(all_campaigns)} кампаний, после фильтрации: {len(filtered_campaigns)} для аккаунта {clean_account_id}")
+        return filtered_campaigns
         
     except requests.exceptions.RequestException as e:
-        logger.error(f"Ошибка получения кампаний: {e}")
+        logger.error(f"Ошибка получения кампаний для аккаунта {account_id}: {e}")
         return []
     except Exception as e:
         logger.error(f"Неожиданная ошибка при получении кампаний: {e}")
         return []
 
 def fetch_facebook_adsets(account_id, access_token, fields=None):
-    """Получает адсеты из Facebook API"""
+    """Получает ВСЕ адсеты из Facebook API (включая неактивные)"""
     if fields is None:
-        fields = "id,name,campaign_id,daily_budget,status,effective_status"
+        fields = "id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget"
     
     try:
         clean_account_id = account_id.replace('act_', '')
@@ -960,35 +989,64 @@ def fetch_facebook_adsets(account_id, access_token, fields=None):
         params = {
             "fields": fields,
             "access_token": access_token,
-            "limit": 100
+            "limit": 1000  # Увеличиваем лимит
         }
         
         all_adsets = []
+        retry_count = 0
+        max_retries = 3
         
-        while url:
-            response = requests.get(url, params=params, timeout=30)
-            response.raise_for_status()
-            
-            data = response.json()
-            adsets = data.get('data', [])
-            all_adsets.extend(adsets)
-            
-            # Обрабатываем пагинацию
-            next_url = data.get('paging', {}).get('next')
-            url = next_url
-            # Очищаем params для последующих запросов
-            params = {}
+        while url and retry_count < max_retries:
+            try:
+                response = requests.get(url, params=params, timeout=60)
+                response.raise_for_status()
+                
+                data = response.json()
+                adsets = data.get('data', [])
+                all_adsets.extend(adsets)
+                
+                # Логируем статусы для отладки
+                status_count = {}
+                effective_status_count = {}
+                for adset in adsets:
+                    status = adset.get('status', 'UNKNOWN')
+                    effective_status = adset.get('effective_status', 'UNKNOWN')
+                    status_count[status] = status_count.get(status, 0) + 1
+                    effective_status_count[effective_status] = effective_status_count.get(effective_status, 0) + 1
+                
+                logger.debug(f"Получено {len(adsets)} адсетов. Status: {status_count}, Effective Status: {effective_status_count}")
+                
+                # Обрабатываем пагинацию
+                next_url = data.get('paging', {}).get('next')
+                if next_url == url:  # Защита от бесконечного цикла
+                    break
+                    
+                url = next_url
+                # Очищаем params для последующих запросов
+                params = {}
+                retry_count = 0
+                
+            except requests.exceptions.RequestException as e:
+                retry_count += 1
+                logger.warning(f"Ошибка запроса адсетов (попытка {retry_count}/{max_retries}): {e}")
+                if retry_count < max_retries:
+                    time.sleep(2 ** retry_count)  # Экспоненциальная задержка
+                else:
+                    raise
         
-        logger.info(f"Получено {len(all_adsets)} адсетов для аккаунта {clean_account_id}")
-        return all_adsets
+        # Фильтруем только нужные статусы
+        filtered_adsets = [adset for adset in all_adsets 
+                          if adset.get('effective_status') not in ['DELETED', 'ARCHIVED']]
+        
+        logger.info(f"Получено {len(all_adsets)} адсетов, после фильтрации: {len(filtered_adsets)} для аккаунта {clean_account_id}")
+        return filtered_adsets
         
     except requests.exceptions.RequestException as e:
-        logger.error(f"Ошибка получения адсетов: {e}")
+        logger.error(f"Ошибка получения адсетов для аккаунта {account_id}: {e}")
         return []
     except Exception as e:
         logger.error(f"Неожиданная ошибка при получении адсетов: {e}")
         return []
-
 def check_and_pause_campaigns(user_id):
     """Проверяет и отключает кампании, если все их адсеты отключены"""
     try:
@@ -3350,7 +3408,6 @@ def save_and_sync():
     try:
         logger.info("=== НАЧАЛО СИНХРОНИЗАЦИИ ===")
         user_id = session['user_id']
-        reset_old_ucpc(user_id, days=7)
         accounts_data = request.json.get('accounts', [])
         if not accounts_data:
             return jsonify({'success': False, 'error': 'Нет данных для сохранения'})

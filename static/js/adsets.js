@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     let adsetsData = [];
     let selectedAdsets = new Set();
@@ -34,11 +35,13 @@ function initDataTable() {
                 searchable: false,
                 width: '30px'
             },
-            { // 1: Название
+            // В функции render для колонки "Название" замените:
+            {
+                targets: 1, // Название
                 type: 'string',
                 width: '250px',
                 render: function(data, type, row) {
-                    return '<div class="text-truncate" style="max-width: 250px" title="' + data + '">' + data + '</div>';
+                    return '<div class="text-wrap" style="min-width: 250px; white-space: normal;" title="' + data + '">' + data + '</div>';
                 }
             },
             { // 2: Статус
