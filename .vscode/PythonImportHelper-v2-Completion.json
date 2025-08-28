@@ -719,15 +719,6 @@
         "documentation": {}
     },
     {
-        "label": "get_reserve_tokens",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def get_reserve_tokens(user_id, king=None):\n    \"\"\"Получает резервные токены для конкретного KING или все\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            if king:\n                cursor.execute(\n                    \"SELECT token FROM reserve_tokens WHERE user_id = ? AND king = ?\",\n                    (user_id, king)\n                )",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "get_keitaro_api_key",
         "kind": 2,
         "importPath": "app",
@@ -1263,7 +1254,70 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def fetch_facebook_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов включая CPC из Facebook\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc,cost_per_conversion,conversions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
+        "peekOfCode": "def fetch_facebook_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов включая CPC и CPM из Facebook\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc,cpm,cost_per_conversion,conversions,impressions\",  # Добавлен cpm\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_cpm_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def fetch_facebook_cpm_data(account_id, access_token):\n    \"\"\"Получает CPM данные из Facebook Insights\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,cpm,spend,impressions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_daily_budget_requirements",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def calculate_daily_budget_requirements(user_id):\n    \"\"\"Рассчитывает требуемый дневной бюджет для всех активных кампаний\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем сумму дневных бюджетов всех активных адсетов по аккаунтам\n            cursor.execute(\"\"\"\n                SELECT \n                    a.account_id,\n                    a.token,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "debug_balance",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def debug_balance():\n    \"\"\"Отладочная информация о балансе\"\"\"\n    try:\n        user_id = session['user_id']\n        # 1. Проверяем требования по бюджетам\n        budget_req = calculate_daily_budget_requirements(user_id)\n        # 2. Проверяем информацию об аккаунтах\n        accounts_info = []\n        for req in budget_req:\n            account_info = get_account_limits_info(req['account_id'], req['token'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "check_account_balance_sufficiency",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_account_balance_sufficiency(user_id):\n    \"\"\"Проверяет достаточность баланса на аккаунтах\"\"\"\n    try:\n        # Получаем требования по бюджетам\n        budget_requirements = calculate_daily_budget_requirements(user_id)\n        warnings = []\n        for req in budget_requirements:\n            # Проверяем, что есть account_id и token\n            if not req['account_id'] or not req['token']:\n                continue",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "send_balance_warnings",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def send_balance_warnings(user_id):\n    \"\"\"Отправляет уведомления о недостаточном балансе\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        warnings = check_account_balance_sufficiency(user_id)\n        if not warnings:\n            return\n        messages = []\n        for warning in warnings:\n            message = (",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_adset_stats_with_cpm",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_adset_stats_with_cpm(user_id, adset_id, stats):\n    \"\"\"Обновляет статистику адсета с CPM\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            updates = []\n            params = {'user_id': user_id, 'adset_id': adset_id}\n            if 'spend' in stats:\n                updates.append(\"spend = :spend\")\n                params['spend'] = stats['spend']",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "sync_facebook_insights",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def sync_facebook_insights():\n    \"\"\"Синхронизирует данные из Facebook Insights (включая CPM)\"\"\"\n    try:\n        user_id = session['user_id']\n        accounts = get_user_accounts_stats(user_id)\n        updated_count = 0\n        for account in accounts:\n            try:\n                # Получаем insights из Facebook\n                insights = fetch_facebook_adsets_insights(account['account_id'], account['token'])",
         "detail": "app",
         "documentation": {}
     },
@@ -1273,15 +1327,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def fetch_facebook_cpc_data(account_id, access_token):\n    \"\"\"Получает CPC данные из Facebook Insights\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,cpc,spend\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "split_clean",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def split_clean(s: str) -> List[str]:\n    weak_words = {\n    # GEO коды (чтобы они не доминировали в сопоставлении)\n    \"th\", \"id\", \"my\", \"sg\", \"vn\", \"ph\", \"br\", \"us\", \"uk\", \"ca\", \"au\", \"de\", \n    \"fr\", \"es\", \"it\", \"ru\", \"jp\", \"kr\", \"cn\", \"in\", \"mx\", \"ar\", \"co\", \"pe\",\n    \"cl\", \"za\", \"ng\", \"eg\", \"sa\", \"ae\", \"tr\", \"pl\", \"nl\", \"se\", \"no\", \"dk\",\n    \"fi\", \"be\", \"ch\", \"at\",\n    # Общие слова в названиях кампаний\n    \"monah\", \"test\", \"copy\", \"vst\", \"old\", \"archive\", \"arch\", \"backup\", \"bk\",\n    \"final\", \"new\", \"beta\", \"visual\", \"lang\", \"gpt\", \"voltaren\", \"swype\",",
         "detail": "app",
         "documentation": {}
     },
@@ -1457,11 +1502,47 @@
         "documentation": {}
     },
     {
+        "label": "check_balance_api",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_balance_api():\n    \"\"\"Проверка баланса аккаунтов\"\"\"\n    try:\n        user_id = session['user_id']\n        warnings = check_account_balance_sufficiency(user_id)\n        return jsonify({\n            'success': True,\n            'warnings': warnings,\n            'count': len(warnings)\n        })",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "schedule_balance_checks",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def schedule_balance_checks():\n    \"\"\"Планировщик для регулярной проверки баланса\"\"\"\n    try:\n        users = get_all_users()\n        for user in users:\n            user_id = user['id']\n            settings = get_user_settings(user_id)\n            # Проверяем баланс каждые 4 часа\n            if settings.get('balance_check_enabled', True):\n                send_balance_warnings(user_id)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_settings",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_settings():\n    \"\"\"Обновление настроек с новой опцией\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json\n        # Добавляем новую настройку\n        if 'balance_check_enabled' not in data:\n            data['balance_check_enabled'] = True\n        update_user_settings(user_id, data)\n        return jsonify({'success': True, 'message': 'Настройки сохранены'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "handle_auto_refresh",
         "kind": 2,
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def handle_auto_refresh():\n    \"\"\"Управление автообновлением и автоконтролем вместе\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json\n        action = data.get('action')\n        interval = data.get('interval')\n        if action == 'start':\n            # Запускаем и автоконтроль и автообновление\n            if interval and isinstance(interval, int) and interval > 0:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "balance_monitor",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def balance_monitor():\n    \"\"\"Страница мониторинга баланса\"\"\"\n    return render_template('balance_monitor.html')\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        # Создаем новый таймер",
         "detail": "app",
         "documentation": {}
     },
@@ -1547,15 +1628,6 @@
         "documentation": {}
     },
     {
-        "label": "apply_auto_budget_rules",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def apply_auto_budget_rules(user_id, adset):\n    \"\"\"Применяет правила авто-бюджета к адсету\"\"\"\n    try:\n        current_budget = float(adset.get('budget', 0))\n        spend = float(adset.get('spend', 0))\n        leads = int(adset.get('leads', 0))\n        cpa = float(adset.get('cpa', 0))\n        ucpc = float(adset.get('ucpc', 0))\n        # Получаем настройки GEO правил\n        geo_rules = get_user_geo_rules(user_id)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "admin_limits",
         "kind": 2,
         "importPath": "app",
@@ -1597,24 +1669,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def get_reserve_tokens_stats():\n    \"\"\"Возвращает статистику по резервным токенам всех пользователей\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        users = get_all_users()\n        tokens_stats = []\n        for user in users:\n            user_id = user['id']\n            tokens = get_reserve_tokens(user_id)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "apply_auto_budget_rules",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def apply_auto_budget_rules(user_id, adset):\n    \"\"\"Применяет правила авто-бюджета к адсету\"\"\"\n    current_budget = float(adset.get('budget', 0))\n    spend = float(adset.get('spend', 0))\n    leads = int(adset.get('leads', 0))\n    cpa = float(adset.get('cpa', 0))\n    ucpc = float(adset.get('ucpc', 0))\n    # Получаем настройки GEO правил\n    geo_rules = get_user_geo_rules(user_id)\n    geo = adset.get('geo', 'N/A')",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "apply_auto_budget_rules",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def apply_auto_budget_rules(user_id, adset):\n    \"\"\"Применяет правила авто-бюджета к адсету\"\"\"\n    current_budget = float(adset.get('budget', 0))\n    spend = float(adset.get('spend', 0))\n    leads = int(adset.get('leads', 0))\n    cpa = float(adset.get('cpa', 0))\n    # Получаем настройки GEO правил\n    geo_rules = get_user_geo_rules(user_id)\n    geo = adset.get('geo', 'N/A')\n    rule = geo_rules.get(geo, {})",
         "detail": "app",
         "documentation": {}
     },
@@ -1736,29 +1790,11 @@
         "documentation": {}
     },
     {
-        "label": "auto_control_threads",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\ndef run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    while True:\n        # Проверяем, должен ли автоконтроль продолжать работать\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                break\n        try:",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_control_lock",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_control_lock = threading.Lock()\ndef run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    while True:\n        # Проверяем, должен ли автоконтроль продолжать работать\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                break\n        try:\n            auto_control(user_id)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "auto_refresh_timers",
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        # Создаем новый таймер\n        interval_seconds = interval_minutes * 60",
+        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\n@app.route('/balance_monitor')\n@login_required\ndef balance_monitor():\n    \"\"\"Страница мониторинга баланса\"\"\"\n    return render_template('balance_monitor.html')\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:",
         "detail": "app",
         "documentation": {}
     },
@@ -1767,7 +1803,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        # Создаем новый таймер\n        interval_seconds = interval_minutes * 60\n        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval_minutes))",
+        "peekOfCode": "auto_refresh_lock = threading.Lock()\n@app.route('/balance_monitor')\n@login_required\ndef balance_monitor():\n    \"\"\"Страница мониторинга баланса\"\"\"\n    return render_template('balance_monitor.html')\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть",
         "detail": "app",
         "documentation": {}
     },
@@ -1776,7 +1812,7 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Убедимся, что все обязательные поля присутствуют\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:\n                if field not in data:\n                    data[field] = '' if field != 'king' else 'Facebook'",
+        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, \n                leads, manual_pause, king, effective_status, ad_name, budget,\n                campaign_id, account_id, auto_budget_increase, auto_budget_decrease,",
         "detail": "database",
         "documentation": {}
     },
@@ -1902,7 +1938,25 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def get_user_settings(user_id: int) -> Dict[str, Any]:\n    \"\"\"Возвращает настройки пользователя\"\"\"\n    default_settings = {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 15,\n        'telegram_bot_token': '',",
+        "peekOfCode": "def get_user_settings(user_id):\n    \"\"\"Получает настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    sync_api_key, proxy, use_proxy, auto_refresh_campaigns, \n                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, \n                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_default_settings",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_default_settings():\n    \"\"\"Возвращает настройки по умолчанию\"\"\"\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 5,\n        'telegram_bot_token': '',",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_default_settings",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_default_settings():\n    \"\"\"Возвращает настройки по умолчанию\"\"\"\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'telegram_bot_token': '',\n        'telegram_chat_id': '',",
         "detail": "database",
         "documentation": {}
     },
@@ -1911,7 +1965,7 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def update_user_settings(user_id: int, data: Dict[str, Any]):\n    \"\"\"Обновляет настройки пользователя с новыми полями оптимизации\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            query = \"\"\"\n            UPDATE settings SET \n                sync_api_key = :sync_api_key,\n                proxy = :proxy,\n                use_proxy = :use_proxy,",
+        "peekOfCode": "def update_user_settings(user_id, data):\n    \"\"\"Обновляет настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование записи\n            cursor.execute(\"SELECT id FROM settings WHERE user_id = ?\", (user_id,))\n            settings_exists = cursor.fetchone()\n            if settings_exists:\n                # Обновляем существующую запись",
         "detail": "database",
         "documentation": {}
     },
@@ -1947,7 +2001,7 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Убедимся, что все обязательные поля присутствуют\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:\n                if field not in data:\n                    data[field] = '' if field != 'king' else 'Facebook'",
+        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Убедимся, что все обязательные поля присутствуют\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:\n                if field not in data:\n                    data[field] = '' if field != 'king' else 'Facebook'",
         "detail": "database",
         "documentation": {}
     },
@@ -2019,7 +2073,7 @@
         "kind": 5,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "DB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Убедимся, что все обязательные поля присутствуют\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:",
+        "peekOfCode": "DB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, ",
         "detail": "database",
         "documentation": {}
     },
@@ -2028,7 +2082,7 @@
         "kind": 5,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "lock = threading.Lock()\ndef add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Убедимся, что все обязательные поля присутствуют\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:\n                if field not in data:",
+        "peekOfCode": "lock = threading.Lock()\ndef add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, \n                leads, manual_pause, king, effective_status, ad_name, budget,",
         "detail": "database",
         "documentation": {}
     },

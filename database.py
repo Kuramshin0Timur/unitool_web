@@ -9,57 +9,47 @@ from werkzeug.security import check_password_hash, generate_password_hash
 DB_PATH = Path("unitool.db")
 lock = threading.Lock()
 def add_user_adset(user_id: int, data: Dict[str, Any]):
-    """Добавляет новый адсет для пользователя"""
+    """Добавляет новый адсет для пользователя с поддержкой CPM"""
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Убедимся, что все обязательные поля присутствуют
-            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']
-            for field in required_fields:
-                if field not in data:
-                    data[field] = '' if field != 'king' else 'Facebook'
+            cursor.execute("""
+            INSERT OR REPLACE INTO adsets (
+                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, 
+                leads, manual_pause, king, effective_status, ad_name, budget,
+                campaign_id, account_id, auto_budget_increase, auto_budget_decrease,
+                max_budget, min_budget, budget_increase_step, budget_decrease_step
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                user_id,
+                data.get('name', ''),
+                data.get('adset_id', ''),
+                data.get('ucpc', 0),
+                data.get('cpc', 0),
+                data.get('cpm', 0),  # Include CPM here
+                data.get('spend', 0),
+                data.get('cpa', 0),
+                data.get('status', 'PAUSED'),
+                data.get('geo', 'N/A'),
+                data.get('token', ''),
+                data.get('leads', 0),
+                data.get('manual_pause', 0),
+                data.get('king', 'Facebook'),
+                data.get('effective_status', ''),
+                data.get('ad_name', ''),
+                data.get('budget', 0),
+                data.get('campaign_id', ''),
+                data.get('account_id', ''),
+                data.get('auto_budget_increase', 0),
+                data.get('auto_budget_decrease', 0),
+                data.get('max_budget', 0),
+                data.get('min_budget', 0),
+                data.get('budget_increase_step', 1.2),
+                data.get('budget_decrease_step', 0.8)
+            ))
             
-            try:
-                cursor.execute("""
-                INSERT OR REPLACE INTO adsets (
-                    user_id, name, adset_id, ucpc, spend, cpa, status, geo, token, 
-                    leads, manual_pause, king, effective_status, ad_name, budget,
-                    campaign_id, account_id, auto_budget_increase, auto_budget_decrease,
-                    max_budget, min_budget, budget_increase_step, budget_decrease_step
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    data.get('name', ''),
-                    data.get('adset_id', ''),
-                    data.get('ucpc', 0),
-                    data.get('spend', 0),
-                    data.get('cpa', 0),
-                    data.get('status', 'PAUSED'),
-                    data.get('geo', 'N/A'),
-                    data.get('token', ''),
-                    data.get('leads', 0),
-                    data.get('manual_pause', 0),
-                    data.get('king', 'Facebook'),
-                    data.get('effective_status', ''),
-                    data.get('ad_name', ''),
-                    data.get('budget', 0),
-                    data.get('campaign_id', ''),
-                    data.get('account_id', ''),
-                    data.get('auto_budget_increase', 0),
-                    data.get('auto_budget_decrease', 0),
-                    data.get('max_budget', 0),
-                    data.get('min_budget', 0),
-                    data.get('budget_increase_step', 1.2),
-                    data.get('budget_decrease_step', 0.8)
-                ))
-
-                conn.commit()
-                return True
-            except Exception as e:
-                conn.rollback()
-                logger.error(f"Error adding adset: {e}")
-                raise ValueError(f"Database error: {str(e)}")
+            conn.commit()
 def get_db_connection(user_id=None):
     """Создает и возвращает соединение с базой данных"""
     conn = sqlite3.connect(DB_PATH)
@@ -177,8 +167,7 @@ def init_db():
             )
             """)
             
-            # Таблица настроек
-           # В функции init_db() обновите таблицу settings:
+            # Таблица настроек - ОБНОВЛЕННАЯ ВЕРСИЯ
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS settings (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -196,14 +185,17 @@ def init_db():
                 keitaro_range_days INTEGER DEFAULT 1,
                 auto_headline_optimization BOOLEAN DEFAULT FALSE,
                 headline_optimization_interval INTEGER DEFAULT 4,
+                account_timezone TEXT DEFAULT '-7',  -- НОВОЕ ПОЛЕ
+                balance_check_enabled BOOLEAN DEFAULT TRUE,  -- НОВОЕ ПОЛЕ
+                warning_threshold REAL DEFAULT 50.0,  -- НОВОЕ ПОЛЕ
                 FOREIGN KEY (user_id) REFERENCES users (id),
                 UNIQUE(user_id)
             )
             """)
             
-            # Таблица кампаний - УДАЛЯЕМ ВНЕШНИЙ КЛЮЧ НА user_id
+            # Таблица кампаний
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS campaigns (
+            CREATE TABLE IF NOT EXISTS campaigns (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER NOT NULL,
                 king TEXT NOT NULL,
@@ -219,8 +211,10 @@ def init_db():
                 cpc REAL DEFAULT 0,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE(user_id, campaign_id)
-                )
+            )
             """)
+            
+            # Таблица адсетов - ОБНОВЛЕННАЯ ВЕРСИЯ
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS adsets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -234,7 +228,8 @@ def init_db():
                 budget REAL DEFAULT 0,
                 geo TEXT DEFAULT 'N/A',
                 ucpc REAL DEFAULT 0,
-                cpc REAL DEFAULT 0,  -- ADD THIS COLUMN
+                cpc REAL DEFAULT 0,  
+                cpm REAL DEFAULT 0,
                 spend REAL DEFAULT 0,
                 cpa REAL DEFAULT 0,
                 leads INTEGER DEFAULT 0,
@@ -250,10 +245,12 @@ def init_db():
                 budget_decrease_step REAL DEFAULT 0.8,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users (id)
+                FOREIGN KEY (user_id) REFERENCES users (id),
                 UNIQUE(user_id, adset_id)
             )
             """)
+            
+            # Таблица GEO конфигурации
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS geo_config (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -267,6 +264,7 @@ def init_db():
             )
             """)
             
+            # Таблица GEO правил
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS geo_rules (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -284,12 +282,14 @@ def init_db():
                 UNIQUE(user_id, geo_code)
             )
             """)
+            
+            # Таблица маппинга кампаний
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS campaign_mapping (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER NOT NULL,
                 facebook_campaign_id TEXT NOT NULL,
-                keitaro_key TEXT NOT NULL,  -- Изменили keitaro_sub_id на keitaro_key
+                keitaro_key TEXT NOT NULL,
                 campaign_name TEXT,
                 match_type TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -310,41 +310,7 @@ def init_db():
             )
             """)
             
-    # Добавляем новые поля в таблицу adsets
-            cursor.execute("""
-            CREATE TABLE IF NOT EXISTS adsets (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
-                name TEXT NOT NULL,
-                adset_id TEXT NOT NULL,
-                campaign_id TEXT,
-                status TEXT DEFAULT 'PAUSED',
-                account_id TEXT,
-                token TEXT,
-                budget REAL DEFAULT 0,
-                geo TEXT DEFAULT 'N/A',
-                ucpc REAL DEFAULT 0,
-                cpc REAL DEFAULT 0,
-                spend REAL DEFAULT 0,
-                cpa REAL DEFAULT 0,
-                leads INTEGER DEFAULT 0,
-                king TEXT DEFAULT 'Facebook',
-                effective_status TEXT DEFAULT '',
-                ad_name TEXT DEFAULT '',
-                manual_pause INTEGER DEFAULT 0,
-                auto_budget_increase INTEGER DEFAULT 0,
-                auto_budget_decrease INTEGER DEFAULT 0,
-                max_budget REAL DEFAULT 0,
-                min_budget REAL DEFAULT 0,
-                budget_increase_step REAL DEFAULT 1.2,
-                budget_decrease_step REAL DEFAULT 0.8,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users (id)
-            )
-            """)
-            
-         
+            # Таблица правил бюджета
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS budget_rules (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -366,9 +332,47 @@ def init_db():
             )
             """)
             
+            # Создаем индекс для улучшения производительности
+            cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_adsets_user_status ON adsets (user_id, status)
+            """)
+            
+            cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_campaigns_user_account ON campaigns (user_id, account_id)
+            """)
+            
+            cursor.execute("""
+            CREATE INDEX IF NOT EXISTS idx_settings_user ON settings (user_id)
+            """)
+            
             conn.commit()
-# Добавьте эти функции в database.py
-
+            
+            # Создаем тестового пользователя если не существует
+            try:
+                cursor.execute("SELECT id FROM users WHERE username = 'admin'")
+                admin_exists = cursor.fetchone()
+                
+                if not admin_exists:
+                    # Создаем пользователя admin с паролем 'admin'
+                    password_hash = generate_password_hash('admin')
+                    cursor.execute(
+                        "INSERT INTO users (username, password_hash) VALUES (?, ?)",
+                        ('admin', password_hash)
+                    )
+                    
+                    # Создаем настройки для пользователя
+                    cursor.execute(
+                        """INSERT INTO settings (
+                            user_id, account_timezone, balance_check_enabled, warning_threshold
+                        ) VALUES (?, ?, ?, ?)""",
+                        (cursor.lastrowid, '-7', 1, 50.0)
+                    )
+                    
+                    conn.commit()
+                    print("Создан тестовый пользователь: admin/admin")
+                    
+            except Exception as e:
+                print(f"Ошибка создания тестового пользователя: {e}")
 def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:
     """Получает настройки авто-бюджета для адсета"""
     try:
@@ -532,79 +536,165 @@ def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
                 'cpa_green': row['cpa_green'],
                 'cpa_orange': row['cpa_orange']
             } for row in cursor.fetchall()}
+def get_user_settings(user_id):
+    """Получает настройки пользователя"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT 
+                    sync_api_key, proxy, use_proxy, auto_refresh_campaigns, 
+                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, 
+                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,
+                    auto_headline_optimization, headline_optimization_interval,
+                    account_timezone, balance_check_enabled, warning_threshold
+                FROM settings WHERE user_id = ?
+            """, (user_id,))
             
-def get_user_settings(user_id: int) -> Dict[str, Any]:
-    """Возвращает настройки пользователя"""
-    default_settings = {
+            row = cursor.fetchone()
+            if row:
+                # Преобразуем Row в словарь для доступа через .get()
+                row_dict = dict(row)
+                return {
+                    'sync_api_key': row_dict.get('sync_api_key', ''),
+                    'proxy': row_dict.get('proxy', ''),
+                    'use_proxy': bool(row_dict.get('use_proxy', True)),
+                    'auto_refresh_campaigns': bool(row_dict.get('auto_refresh_campaigns', True)),
+                    'auto_refresh_adsets': bool(row_dict.get('auto_refresh_adsets', True)),
+                    'auto_refresh_interval': row_dict.get('auto_refresh_interval', 5),
+                    'telegram_bot_token': row_dict.get('telegram_bot_token', ''),
+                    'telegram_chat_id': row_dict.get('telegram_chat_id', ''),
+                    'keitaro_api_key': row_dict.get('keitaro_api_key', ''),
+                    'keitaro_domain': row_dict.get('keitaro_domain', 'uniaffnu.com'),
+                    'keitaro_range_days': row_dict.get('keitaro_range_days', 1),
+                    'auto_headline_optimization': bool(row_dict.get('auto_headline_optimization', False)),
+                    'headline_optimization_interval': row_dict.get('headline_optimization_interval', 4),
+                    'account_timezone': row_dict.get('account_timezone', '-7'),
+                    'balance_check_enabled': bool(row_dict.get('balance_check_enabled', True)),
+                    'warning_threshold': float(row_dict.get('warning_threshold', 50.0))
+                }
+            else:
+                # Возвращаем настройки по умолчанию
+                return get_default_settings()
+                
+    except Exception as e:
+        logger.error(f"Ошибка получения настроек: {e}")
+        return get_default_settings()
+
+def get_default_settings():
+    """Возвращает настройки по умолчанию"""
+    return {
         'sync_api_key': '',
         'proxy': '',
         'use_proxy': True,
         'auto_refresh_campaigns': True,
         'auto_refresh_adsets': True,
-        'auto_refresh_interval': 15,
+        'auto_refresh_interval': 5,
         'telegram_bot_token': '',
         'telegram_chat_id': '',
         'keitaro_api_key': '',
         'keitaro_domain': 'uniaffnu.com',
-        'keitaro_range_days': 1
+        'keitaro_range_days': 1,
+        'auto_headline_optimization': False,
+        'headline_optimization_interval': 4,
+        'account_timezone': '-7',
+        'balance_check_enabled': True,
+        'warning_threshold': 50.0
     }
-    
+def get_default_settings():
+    """Возвращает настройки по умолчанию"""
+    return {
+        'sync_api_key': '',
+        'proxy': '',
+        'use_proxy': True,
+        'auto_refresh_campaigns': True,
+        'auto_refresh_adsets': True,
+        'telegram_bot_token': '',
+        'telegram_chat_id': '',
+        'keitaro_api_key': '',
+        'keitaro_domain': 'uniaffnu.com',
+        'keitaro_range_days': 1,
+        'account_timezone': '-7',
+        'balance_check_enabled': True,
+        'warning_threshold': 50
+    }
+def update_user_settings(user_id, data):
+    """Обновляет настройки пользователя"""
     try:
-        with get_db_connection() as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM settings WHERE user_id = ?", (user_id,))
-            row = cursor.fetchone()
-            
-            if row:
-                user_settings = dict(row)
-                # Убедимся, что все ключи присутствуют
-                for key in default_settings.keys():
-                    if key not in user_settings:
-                        user_settings[key] = default_settings[key]
-                return user_settings
-            else:
-                # Создаем запись настроек, если ее нет
-                cursor.execute("""
-                INSERT INTO settings (user_id, keitaro_api_key, keitaro_domain, keitaro_range_days)
-                VALUES (?, ?, ?, ?)
-                """, (user_id, '', 'uniaffnu.com', 1))
-                conn.commit()
-                return default_settings
-                
-    except Exception as e:
-        logger.error(f"Ошибка получения настроек: {e}")
-        return default_settings
-def update_user_settings(user_id: int, data: Dict[str, Any]):
-    """Обновляет настройки пользователя с новыми полями оптимизации"""
-    with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            query = """
-            UPDATE settings SET 
-                sync_api_key = :sync_api_key,
-                proxy = :proxy,
-                use_proxy = :use_proxy,
-                auto_refresh_campaigns = :auto_refresh_campaigns,
-                auto_refresh_adsets = :auto_refresh_adsets,
-                auto_refresh_interval = :auto_refresh_interval,
-                telegram_bot_token = :telegram_bot_token,
-                telegram_chat_id = :telegram_chat_id,
-                keitaro_api_key = :keitaro_api_key,
-                keitaro_domain = :keitaro_domain,
-                keitaro_range_days = :keitaro_range_days,
-                auto_headline_optimization = :auto_headline_optimization,
-                headline_optimization_interval = :headline_optimization_interval
-            WHERE user_id = :user_id
-            """
+            # Проверяем существование записи
+            cursor.execute("SELECT id FROM settings WHERE user_id = ?", (user_id,))
+            settings_exists = cursor.fetchone()
             
-            # Добавляем значения по умолчанию для новых полей
-            data.setdefault('auto_headline_optimization', 0)
-            data.setdefault('headline_optimization_interval', 4)
+            if settings_exists:
+                # Обновляем существующую запись
+                cursor.execute("""
+                    UPDATE settings SET
+                        sync_api_key = ?, proxy = ?, use_proxy = ?,
+                        auto_refresh_campaigns = ?, auto_refresh_adsets = ?,
+                        auto_refresh_interval = ?, telegram_bot_token = ?,
+                        telegram_chat_id = ?, keitaro_api_key = ?,
+                        keitaro_domain = ?, keitaro_range_days = ?,
+                        auto_headline_optimization = ?, headline_optimization_interval = ?,
+                        account_timezone = ?, balance_check_enabled = ?, warning_threshold = ?
+                    WHERE user_id = ?
+                """, (
+                    data.get('sync_api_key', ''),
+                    data.get('proxy', ''),
+                    int(data.get('use_proxy', True)),
+                    int(data.get('auto_refresh_campaigns', True)),
+                    int(data.get('auto_refresh_adsets', True)),
+                    int(data.get('auto_refresh_interval', 5)),
+                    data.get('telegram_bot_token', ''),
+                    data.get('telegram_chat_id', ''),
+                    data.get('keitaro_api_key', ''),
+                    data.get('keitaro_domain', 'uniaffnu.com'),
+                    int(data.get('keitaro_range_days', 1)),
+                    int(data.get('auto_headline_optimization', False)),
+                    int(data.get('headline_optimization_interval', 4)),
+                    data.get('account_timezone', '-7'),
+                    int(data.get('balance_check_enabled', True)),
+                    float(data.get('warning_threshold', 50.0)),
+                    user_id
+                ))
+            else:
+                # Создаем новую запись
+                cursor.execute("""
+                    INSERT INTO settings (
+                        user_id, sync_api_key, proxy, use_proxy,
+                        auto_refresh_campaigns, auto_refresh_adsets, auto_refresh_interval,
+                        telegram_bot_token, telegram_chat_id, keitaro_api_key,
+                        keitaro_domain, keitaro_range_days, auto_headline_optimization,
+                        headline_optimization_interval, account_timezone, balance_check_enabled, warning_threshold
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    user_id,
+                    data.get('sync_api_key', ''),
+                    data.get('proxy', ''),
+                    int(data.get('use_proxy', True)),
+                    int(data.get('auto_refresh_campaigns', True)),
+                    int(data.get('auto_refresh_adsets', True)),
+                    int(data.get('auto_refresh_interval', 5)),
+                    data.get('telegram_bot_token', ''),
+                    data.get('telegram_chat_id', ''),
+                    data.get('keitaro_api_key', ''),
+                    data.get('keitaro_domain', 'uniaffnu.com'),
+                    int(data.get('keitaro_range_days', 1)),
+                    int(data.get('auto_headline_optimization', False)),
+                    int(data.get('headline_optimization_interval', 4)),
+                    data.get('account_timezone', '-7'),
+                    int(data.get('balance_check_enabled', True)),
+                    float(data.get('warning_threshold', 50.0))
+                ))
             
-            data['user_id'] = user_id
-            cursor.execute(query, data)
             conn.commit()
+            return True
+            
+    except Exception as e:
+        logger.error(f"Ошибка сохранения настроек: {e}")
+        return False
 def add_user_campaign(user_id: int, data: Dict[str, Any]):
     """Добавляет кампанию с проверкой данных"""
     required_fields = {
@@ -700,7 +790,7 @@ def update_user_campaign_status(user_id: int, campaign_id: str, status: str):
             """, (status, user_id, campaign_id))
             conn.commit()
 def add_user_adset(user_id: int, data: Dict[str, Any]):
-    """Добавляет новый адсет для пользователя"""
+    """Добавляет новый адсет для пользователя с поддержкой CPM"""
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -714,17 +804,18 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
             try:
                 cursor.execute("""
                 INSERT OR REPLACE INTO adsets (
-                    user_id, name, adset_id, ucpc, cpc, spend, cpa, status, geo, token, 
+                    user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, 
                     leads, manual_pause, king, effective_status, ad_name, budget,
                     campaign_id, account_id, auto_budget_increase, auto_budget_decrease,
                     max_budget, min_budget, budget_increase_step, budget_decrease_step
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     user_id,
                     data.get('name', ''),
                     data.get('adset_id', ''),
                     data.get('ucpc', 0),
-                    data.get('cpc', 0),  # ADD CPC VALUE
+                    data.get('cpc', 0),
+                    data.get('cpm', 0),  # ДОБАВЛЯЕМ CPM
                     data.get('spend', 0),
                     data.get('cpa', 0),
                     data.get('status', 'PAUSED'),

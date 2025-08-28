@@ -401,7 +401,7 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         response = requests.get(url, params=params, timeout=10)
         data = response.json()
         
-        # Проверяем наличие ошибок
+        # Проверяем наличие ошибок в ответе
         if 'error' in data:
             error_msg = data['error'].get('message', 'Unknown error')
             error_code = data['error'].get('code', 'Unknown')
@@ -420,14 +420,18 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
                 'error': f"{error_code}: {error_msg}"
             }
         
-        # Успешный ответ
+        # Успешный ответ - конвертируем центы в доллары
+        amount_spent = float(data.get('amount_spent', 0)) / 100
+        balance = float(data.get('balance', 0)) / 100
+        spend_cap = float(data.get('spend_cap', 0)) / 100
+        
         return {
             'account_id': clean_account_id,
             'name': data.get('name', 'N/A'),
             'status': data.get('account_status', 'UNKNOWN'),
-            'spend': float(data.get('amount_spent', 0)) / 100,
-            'balance': float(data.get('balance', 0)) / 100,
-            'spend_cap': float(data.get('spend_cap', 0)) / 100,
+            'spend': amount_spent,
+            'balance': balance,
+            'spend_cap': spend_cap,
             'daily_limit': 0,
             'requests_today': 0,
             'requests_limit': 100,
@@ -862,41 +866,6 @@ def remove_reserve_token(user_id, king, token):
         return False
 
 
-def get_reserve_tokens(user_id, king=None):
-    """Получает резервные токены для конкретного KING или все"""
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            if king:
-                cursor.execute(
-                    "SELECT token FROM reserve_tokens WHERE user_id = ? AND king = ?",
-                    (user_id, king)
-                )
-            else:
-                cursor.execute(
-                    "SELECT king, token FROM reserve_tokens WHERE user_id = ?",
-                    (user_id,)
-                )
-            
-            tokens = {}
-            for row in cursor.fetchall():
-                if 'king' in row:
-                    k = row['king']
-                    token = row['token']
-                else:
-                    k = king
-                    token = row['token']
-                
-                if k not in tokens:
-                    tokens[k] = []
-                tokens[k].append(token)
-            
-            return tokens
-    except Exception as e:
-        logger.error(f"Ошибка получения резервных токенов: {e}")
-        return {}
-
 def get_keitaro_api_key(user_id: int) -> str:
     """Получает API ключ Keitaro из настроек пользователя"""
     try:
@@ -1207,10 +1176,6 @@ def get_auto_control_logs():
     except Exception as e:
         logger.error(f"Ошибка получения логов: {e}")
         return jsonify({'success': False, 'error': str(e)})
-auto_control_threads = {}
-auto_control_lock = threading.Lock()
-
-
 
 def run_auto_control_for_user(user_id):
     """Запускает автоконтроль для конкретного пользователя"""
@@ -3030,12 +2995,12 @@ def split_clean(s: str) -> list[str]:
     # Убираем пустые строки
     return [p for p in parts if p]
 def fetch_facebook_adsets_insights(account_id, access_token):
-    """Получает insights для адсетов включая CPC из Facebook"""
+    """Получает insights для адсетов включая CPC и CPM из Facebook"""
     try:
         url = f"https://graph.facebook.com/v18.0/act_{account_id}/insights"
         params = {
             "level": "adset",
-            "fields": "adset_id,spend,cpc,cost_per_conversion,conversions",
+            "fields": "adset_id,spend,cpc,cpm,cost_per_conversion,conversions,impressions",  # Добавлен cpm
             "date_preset": "today",
             "time_increment": 1,
             "access_token": access_token,
@@ -3056,9 +3021,11 @@ def fetch_facebook_adsets_insights(account_id, access_token):
                 if adset_id:
                     insights_by_adset[adset_id] = {
                         'spend': float(insight.get('spend', 0)),
-                        'cpc': float(insight.get('cpc', 0)),  # CPC из Facebook
+                        'cpc': float(insight.get('cpc', 0)),
+                        'cpm': float(insight.get('cpm', 0)),  # ДОБАВЛЯЕМ CPM
                         'cost_per_conversion': float(insight.get('cost_per_conversion', 0)),
-                        'conversions': int(insight.get('conversions', 0))
+                        'conversions': int(insight.get('conversions', 0)),
+                        'impressions': int(insight.get('impressions', 0))
                     }
             
             # Обрабатываем пагинацию
@@ -3066,12 +3033,289 @@ def fetch_facebook_adsets_insights(account_id, access_token):
             url = next_url
             params = {}
         
-        logger.info(f"Получено insights для {len(insights_by_adset)} адсетов")
+        logger.info(f"Получено insights для {len(insights_by_adset)} адсетов (включая CPM)")
         return insights_by_adset
         
     except Exception as e:
         logger.error(f"Ошибка получения insights: {e}")
         return {}
+def fetch_facebook_cpm_data(account_id, access_token):
+    """Получает CPM данные из Facebook Insights"""
+    try:
+        url = f"https://graph.facebook.com/v18.0/act_{account_id}/insights"
+        params = {
+            "level": "adset",
+            "fields": "adset_id,cpm,spend,impressions",
+            "date_preset": "today",
+            "time_increment": 1,
+            "access_token": access_token,
+            "limit": 100
+        }
+        
+        cpm_data = {}
+        
+        while url:
+            response = requests.get(url, params=params, timeout=30)
+            response.raise_for_status()
+            
+            data = response.json()
+            insights = data.get('data', [])
+            
+            for insight in insights:
+                adset_id = insight.get('adset_id')
+                if adset_id:
+                    cpm_data[adset_id] = {
+                        'cpm': float(insight.get('cpm', 0)),
+                        'spend': float(insight.get('spend', 0)),
+                        'impressions': int(insight.get('impressions', 0))
+                    }
+            
+            # Обрабатываем пагинацию
+            next_url = data.get('paging', {}).get('next')
+            url = next_url
+            params = {}
+        
+        logger.info(f"Получено CPM данных для {len(cpm_data)} адсетов")
+        return cpm_data
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения CPM данных: {e}")
+        return {}
+
+def calculate_daily_budget_requirements(user_id):
+    """Рассчитывает требуемый дневной бюджет для всех активных кампаний"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем сумму дневных бюджетов всех активных адсетов по аккаунтам
+            cursor.execute("""
+                SELECT 
+                    a.account_id,
+                    a.token,
+                    SUM(a.budget) as total_daily_budget,
+                    COUNT(a.adset_id) as active_adsets
+                FROM adsets a
+                WHERE a.user_id = ? 
+                AND a.status = 'ACTIVE'
+                AND a.budget > 0
+                GROUP BY a.account_id, a.token
+            """, (user_id,))
+            
+            requirements = []
+            for row in cursor.fetchall():
+                requirements.append({
+                    'account_id': row['account_id'],
+                    'token': row['token'],
+                    'total_daily_budget': float(row['total_daily_budget']),
+                    'active_adsets': row['active_adsets']
+                })
+            
+            return requirements
+            
+    except Exception as e:
+        logger.error(f"Ошибка расчета дневных бюджетов: {e}")
+        return []
+@app.route('/api/debug/balance', methods=['GET'])
+@login_required
+def debug_balance():
+    """Отладочная информация о балансе"""
+    try:
+        user_id = session['user_id']
+        
+        # 1. Проверяем требования по бюджетам
+        budget_req = calculate_daily_budget_requirements(user_id)
+        
+        # 2. Проверяем информацию об аккаунтах
+        accounts_info = []
+        for req in budget_req:
+            account_info = get_account_limits_info(req['account_id'], req['token'])
+            accounts_info.append({
+                'requirement': req,
+                'account_info': account_info
+            })
+        
+        # 3. Полная проверка баланса
+        warnings = check_account_balance_sufficiency(user_id)
+        
+        return jsonify({
+            'success': True,
+            'budget_requirements': budget_req,
+            'accounts_info': accounts_info,
+            'warnings': warnings,
+            'warnings_count': len(warnings)
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка отладки баланса: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+def check_account_balance_sufficiency(user_id):
+    """Проверяет достаточность баланса на аккаунтах"""
+    try:
+        # Получаем требования по бюджетам
+        budget_requirements = calculate_daily_budget_requirements(user_id)
+        
+        warnings = []
+        
+        for req in budget_requirements:
+            # Проверяем, что есть account_id и token
+            if not req['account_id'] or not req['token']:
+                continue
+                
+            # Получаем информацию об аккаунте
+            account_info = get_account_limits_info(req['account_id'], req['token'])
+            
+            if account_info and 'balance' in account_info:
+                balance = account_info['balance']
+                required = req['total_daily_budget']
+                
+                # Проверяем, хватит ли баланса на сегодня
+                if balance < required:
+                    days_remaining = balance / required if required > 0 else 0
+                    
+                    warning = {
+                        'account_id': req['account_id'],
+                        'account_name': account_info.get('name', 'Unknown'),
+                        'balance': balance,
+                        'required_today': required,
+                        'deficit': required - balance,
+                        'days_remaining': days_remaining,
+                        'active_adsets': req['active_adsets'],
+                        'status': account_info.get('status', 'UNKNOWN')
+                    }
+                    
+                    warnings.append(warning)
+                else:
+                    # Также возвращаем информацию об аккаунтах с достаточным балансом
+                    warning = {
+                        'account_id': req['account_id'],
+                        'account_name': account_info.get('name', 'Unknown'),
+                        'balance': balance,
+                        'required_today': required,
+                        'deficit': 0,
+                        'days_remaining': float('inf'),
+                        'active_adsets': req['active_adsets'],
+                        'status': account_info.get('status', 'UNKNOWN')
+                    }
+                    warnings.append(warning)
+        
+        return warnings
+        
+    except Exception as e:
+        logger.error(f"Ошибка проверки баланса: {e}")
+        return []
+def send_balance_warnings(user_id):
+    """Отправляет уведомления о недостаточном балансе"""
+    try:
+        settings = get_user_settings(user_id)
+        warnings = check_account_balance_sufficiency(user_id)
+        
+        if not warnings:
+            return
+        
+        messages = []
+        
+        for warning in warnings:
+            message = (
+                f"⚠️ <b>НЕДОСТАТОЧНО СРЕДСТВ</b>\n"
+                f"Аккаунт: {warning['account_name']}\n"
+                f"Баланс: ${warning['balance']:.2f}\n"
+                f"Требуется сегодня: ${warning['required_today']:.2f}\n"
+                f"Дефицит: ${warning['deficit']:.2f}\n"
+                f"Активных адсетов: {warning['active_adsets']}\n"
+                f"Статус: {warning['status']}"
+            )
+            messages.append(message)
+        
+        # Отправляем все сообщения
+        for msg in messages:
+            send_telegram_message(msg, user_id=user_id)
+            logger.warning(msg)
+            
+        return len(messages)
+        
+    except Exception as e:
+        logger.error(f"Ошибка отправки уведомлений о балансе: {e}")
+        return 0
+
+def update_adset_stats_with_cpm(user_id, adset_id, stats):
+    """Обновляет статистику адсета с CPM"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            updates = []
+            params = {'user_id': user_id, 'adset_id': adset_id}
+            
+            if 'spend' in stats:
+                updates.append("spend = :spend")
+                params['spend'] = stats['spend']
+            
+            if 'leads' in stats:
+                updates.append("leads = :leads")
+                params['leads'] = stats['leads']
+                
+            if 'cpa' in stats:
+                updates.append("cpa = :cpa")
+                params['cpa'] = stats['cpa']
+                
+            if 'cpc' in stats:
+                updates.append("cpc = :cpc")
+                params['cpc'] = stats['cpc']
+                
+            if 'cpm' in stats:  # ДОБАВЛЯЕМ CPM
+                updates.append("cpm = :cpm")
+                params['cpm'] = stats['cpm']
+                
+            if 'ucpc' in stats:
+                updates.append("ucpc = :ucpc")
+                params['ucpc'] = stats['ucpc']
+            
+            if updates:
+                query = f"""
+                UPDATE adsets SET
+                    {', '.join(updates)},
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE user_id = :user_id AND adset_id = :adset_id
+                """
+                cursor.execute(query, params)
+                conn.commit()
+                logger.info(f"Обновлена статистика адсета {adset_id} с CPM: {stats.get('cpm', 'N/A')}")
+                
+    except Exception as e:
+        logger.error(f"Ошибка обновления статистики адсета {adset_id}: {e}")
+@app.route('/api/sync/facebook_insights', methods=['POST'])
+@login_required
+def sync_facebook_insights():
+    """Синхронизирует данные из Facebook Insights (включая CPM)"""
+    try:
+        user_id = session['user_id']
+        accounts = get_user_accounts_stats(user_id)
+        
+        updated_count = 0
+        for account in accounts:
+            try:
+                # Получаем insights из Facebook
+                insights = fetch_facebook_adsets_insights(account['account_id'], account['token'])
+                
+                for adset_id, stats in insights.items():
+                    # Обновляем статистику адсета
+                    update_adset_stats_with_cpm(user_id, adset_id, stats)
+                    updated_count += 1
+                    
+            except Exception as e:
+                logger.error(f"Ошибка синхронизации insights для аккаунта {account['account_id']}: {e}")
+                continue
+        
+        return jsonify({
+            'success': True,
+            'message': f'Обновлено {updated_count} адсетов с данными Facebook Insights (включая CPM)',
+            'updated_count': updated_count
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка синхронизации Facebook Insights: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 def fetch_facebook_cpc_data(account_id, access_token):
     """Получает CPC данные из Facebook Insights"""
     try:
@@ -3114,57 +3358,6 @@ def fetch_facebook_cpc_data(account_id, access_token):
         logger.error(f"Ошибка получения CPC данных: {e}")
         return {}
 
-
-# ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ПОСТРОЕНИЯ И ПОИСКА В ДЕРЕВЕ ----------
-def split_clean(s: str) -> List[str]:
-    weak_words = {
-    # GEO коды (чтобы они не доминировали в сопоставлении)
-    "th", "id", "my", "sg", "vn", "ph", "br", "us", "uk", "ca", "au", "de", 
-    "fr", "es", "it", "ru", "jp", "kr", "cn", "in", "mx", "ar", "co", "pe",
-    "cl", "za", "ng", "eg", "sa", "ae", "tr", "pl", "nl", "se", "no", "dk",
-    "fi", "be", "ch", "at",
-    
-    # Общие слова в названиях кампаний
-    "monah", "test", "copy", "vst", "old", "archive", "arch", "backup", "bk",
-    "final", "new", "beta", "visual", "lang", "gpt", "voltaren", "swype",
-    "korotish", "yavis", "nepokupay", "olegneizd", "sereg", "podctast",
-    "doposle", "legend", "voda", "duhi", "duh",
-    
-    # Технические термины и аббревиатуры
-    "k", "y", "rr", "kk", "tt", "d", "dd", "sa", "am", "campaign", "adset",
-    "ad", "fb", "facebook", "api",
-    
-    # Слова-модификаторы
-    "ver", "version", "v", "var", "variant", "test", "testing", "temp",
-    "temporary", "demo", "sample", "example",
-    
-    # Даты и числа (общие паттерны)
-    "08", "07", "06", "05", "04", "03", "02", "01", "11", "12", "13", "14",
-    "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
-    "27", "28", "29", "30", "31", "2023", "2024", "2025",
-    
-    # Общие слова
-    "the", "and", "or", "of", "in", "on", "at", "to", "for", "with", "by",
-    "from", "a", "an", "the", "is", "are", "was", "were", "be", "been", "being",
-    
-    # Размеры и позиции
-    "big", "small", "large", "medium", "size", "pos", "position", "place",
-    
-    # Статусы
-    "active", "paused", "deleted", "disabled", "enabled", "running", "stopped"
-}
-    """Нормализация строки с фильтрацией слабых слов"""
-    if not s:
-        return []
-    
-    # Базовая очистка
-    clean_str = re.sub(r'[^a-zA-Z0-9\s]', ' ', str(s))
-    parts = re.split(r'[\s\-_]+', clean_str.lower())
-    
-    # Убираем пустые строки и фильтруем слабые слова
-    filtered_parts = [p for p in parts if p and p not in weak_words and len(p) > 1]
-    
-    return filtered_parts
 def build_keitaro_tree(keitaro_data: Dict[str, Dict]) -> Dict:
     """
     Улучшенное построение индекса Keitaro с дополнительными ключами
@@ -3855,6 +4048,60 @@ def resume_adset_api():
         logger.error(f"Ошибка включения AdSet «{data.get('name', 'unknown')}»: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
+# Добавляем API endpoint для ручной проверки
+@app.route('/api/check_balance', methods=['GET'])
+@login_required
+def check_balance_api():
+    """Проверка баланса аккаунтов"""
+    try:
+        user_id = session['user_id']
+        warnings = check_account_balance_sufficiency(user_id)
+        
+        return jsonify({
+            'success': True,
+            'warnings': warnings,
+            'count': len(warnings)
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка проверки баланса: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+# Добавляем функцию в планировщик для регулярной проверки
+def schedule_balance_checks():
+    """Планировщик для регулярной проверки баланса"""
+    try:
+        users = get_all_users()
+        
+        for user in users:
+            user_id = user['id']
+            settings = get_user_settings(user_id)
+            
+            # Проверяем баланс каждые 4 часа
+            if settings.get('balance_check_enabled', True):
+                send_balance_warnings(user_id)
+                
+    except Exception as e:
+        logger.error(f"Ошибка в планировщике проверки баланса: {e}")
+
+# Добавляем настройку в интерфейс
+@app.route('/api/settings', methods=['POST'])
+@login_required
+def update_settings():
+    """Обновление настроек с новой опцией"""
+    try:
+        user_id = session['user_id']
+        data = request.json
+        
+        # Добавляем новую настройку
+        if 'balance_check_enabled' not in data:
+            data['balance_check_enabled'] = True
+            
+        update_user_settings(user_id, data)
+        return jsonify({'success': True, 'message': 'Настройки сохранены'})
+        
+    except Exception as e:
+        logger.error(f"Ошибка сохранения настроек: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/auto_refresh', methods=['POST'])
 @login_required
@@ -3876,6 +4123,7 @@ def handle_auto_refresh():
                 
                 # Запускаем оба компонента
                 start_auto_control_and_refresh(user_id)
+                send_balance_warnings(user_id)
                 return jsonify({
                     'success': True, 
                     'message': f'Автоконтроль и автообновление запущены (интервал: {interval} мин)'
@@ -3906,7 +4154,11 @@ def handle_auto_refresh():
 # Глобальные переменные для управления автообновлением
 auto_refresh_timers = {}
 auto_refresh_lock = threading.Lock()
-
+@app.route('/balance_monitor')
+@login_required
+def balance_monitor():
+    """Страница мониторинга баланса"""
+    return render_template('balance_monitor.html')
 def start_auto_refresh(user_id, interval_minutes):
     """Запускает автообновление для пользователя"""
     with auto_refresh_lock:
@@ -4196,80 +4448,6 @@ def handle_adset_budget_settings():
             logger.error(f"Ошибка сохранения настроек бюджета: {e}")
             return jsonify({'success': False, 'error': str(e)})
 
-
-def apply_auto_budget_rules(user_id, adset):
-    """Применяет правила авто-бюджета к адсету"""
-    try:
-        current_budget = float(adset.get('budget', 0))
-        spend = float(adset.get('spend', 0))
-        leads = int(adset.get('leads', 0))
-        cpa = float(adset.get('cpa', 0))
-        ucpc = float(adset.get('ucpc', 0))
-        
-        # Получаем настройки GEO правил
-        geo_rules = get_user_geo_rules(user_id)
-        geo = adset.get('geo', 'N/A')
-        rule = geo_rules.get(geo, {})
-        
-        max_cpa = rule.get('max_cpa', 100)
-        min_spend = rule.get('min_spend', 50)
-        
-        new_budget = current_budget
-        action = None
-        
-        # Логика увеличения бюджета
-        if (adset.get('auto_budget_increase') and 
-            leads > 0 and cpa <= max_cpa * 0.7 and 
-            spend >= min_spend / 2):
-            
-            increase_step = float(adset.get('budget_increase_step', 1.2))
-            new_budget = current_budget * increase_step
-            action = 'increase'
-        
-        # Логика уменьшения бюджета
-        elif (adset.get('auto_budget_decrease') and 
-              ((leads == 0 and spend >= min_spend) or 
-               (leads > 0 and cpa > max_cpa * 1.3))):
-            
-            decrease_step = float(adset.get('budget_decrease_step', 0.8))
-            new_budget = current_budget * decrease_step
-            action = 'decrease'
-        
-        # Проверяем лимиты бюджета
-        max_budget = float(adset.get('max_budget', 0))
-        min_budget = float(adset.get('min_budget', 0))
-        
-        if max_budget > 0 and new_budget > max_budget:
-            new_budget = max_budget
-        if min_budget > 0 and new_budget < min_budget:
-            new_budget = min_budget
-        
-        # Если бюджет изменился - применяем
-        if action and abs(new_budget - current_budget) >= 0.01:
-            success = update_adset_budget_facebook(
-                adset['adset_id'], 
-                new_budget, 
-                adset['token']
-            )
-            
-            if success:
-                update_user_adset_budget(user_id, adset['adset_id'], new_budget)
-                
-                msg = (f"💰 Авто-бюджет: {adset['name']} "
-                      f"({action}: ${current_budget:.2f} → ${new_budget:.2f}) "
-                      f"CPA: ${cpa:.2f}, Leads: {leads}")
-                
-                logger.info(msg)
-                send_telegram_message(msg, user_id=user_id)
-                return True
-        
-        return False
-        
-    except Exception as e:
-        logger.error(f"Ошибка применения авто-бюджета: {e}")
-        return False
-# Добавьте эти маршруты в app.py
-
 @app.route('/admin/limits')
 @login_required
 def admin_limits():
@@ -4413,140 +4591,9 @@ def get_reserve_tokens_stats():
     except Exception as e:
         logger.error(f"Ошибка получения статистики резервных токенов: {e}")
         return jsonify({'success': False, 'error': str(e)})
-def apply_auto_budget_rules(user_id, adset):
-    """Применяет правила авто-бюджета к адсету"""
-    current_budget = float(adset.get('budget', 0))
-    spend = float(adset.get('spend', 0))
-    leads = int(adset.get('leads', 0))
-    cpa = float(adset.get('cpa', 0))
-    ucpc = float(adset.get('ucpc', 0))
-    
-    # Получаем настройки GEO правил
-    geo_rules = get_user_geo_rules(user_id)
-    geo = adset.get('geo', 'N/A')
-    rule = geo_rules.get(geo, {})
-    
-    max_cpa = rule.get('max_cpa', 100)
-    min_spend = rule.get('min_spend', 50)
-    
-    new_budget = current_budget
-    action = None
-    
-    # Логика увеличения бюджета
-    if (adset.get('auto_budget_increase') and 
-        leads > 0 and cpa <= max_cpa * 0.7 and 
-        spend >= min_spend / 2):
-        
-        increase_step = float(adset.get('budget_increase_step', 1.2))
-        new_budget = current_budget * increase_step
-        action = 'increase'
-    
-    # Логика уменьшения бюджета
-    elif (adset.get('auto_budget_decrease') and 
-          ((leads == 0 and spend >= min_spend) or 
-           (leads > 0 and cpa > max_cpa * 1.3))):
-        
-        decrease_step = float(adset.get('budget_decrease_step', 0.8))
-        new_budget = current_budget * decrease_step
-        action = 'decrease'
-    
-    # Проверяем лимиты бюджета
-    max_budget = float(adset.get('max_budget', 0))
-    min_budget = float(adset.get('min_budget', 0))
-    
-    if max_budget > 0 and new_budget > max_budget:
-        new_budget = max_budget
-    if min_budget > 0 and new_budget < min_budget:
-        new_budget = min_budget
-    
-    # Если бюджет изменился - применяем
-    if action and abs(new_budget - current_budget) >= 0.01:
-        success = update_adset_budget_facebook(
-            adset['adset_id'], 
-            new_budget, 
-            adset['token']
-        )
-        
-        if success:
-            update_user_adset_budget(user_id, adset['adset_id'], new_budget)
-            
-            msg = (f"💰 Авто-бюджет: {adset['name']} "
-                  f"({action}: ${current_budget:.2f} → ${new_budget:.2f}) "
-                  f"CPA: ${cpa:.2f}, Leads: {leads}")
-            
-            logger.info(msg)
-            send_telegram_message(msg, user_id=user_id)
-            return True
-    
-    return False
-# Добавьте эти функции в app.py
 
 
-def apply_auto_budget_rules(user_id, adset):
-    """Применяет правила авто-бюджета к адсету"""
-    current_budget = float(adset.get('budget', 0))
-    spend = float(adset.get('spend', 0))
-    leads = int(adset.get('leads', 0))
-    cpa = float(adset.get('cpa', 0))
-    
-    # Получаем настройки GEO правил
-    geo_rules = get_user_geo_rules(user_id)
-    geo = adset.get('geo', 'N/A')
-    rule = geo_rules.get(geo, {})
-    
-    max_cpa = rule.get('max_cpa', 100)
-    min_spend = rule.get('min_spend', 50)
-    
-    new_budget = current_budget
-    action = None
-    
-    # Логика увеличения бюджета
-    if (adset.get('auto_budget_increase') and 
-        leads > 0 and cpa <= max_cpa * 0.7 and 
-        spend >= min_spend / 2):
-        
-        increase_step = float(adset.get('budget_increase_step', 1.2))
-        new_budget = current_budget * increase_step
-        action = 'increase'
-    
-    # Логика уменьшения бюджета
-    elif (adset.get('auto_budget_decrease') and 
-          ((leads == 0 and spend >= min_spend) or 
-           (leads > 0 and cpa > max_cpa * 1.3))):
-        
-        decrease_step = float(adset.get('budget_decrease_step', 0.8))
-        new_budget = current_budget * decrease_step
-        action = 'decrease'
-    
-    # Проверяем лимиты бюджета
-    max_budget = float(adset.get('max_budget', 0))
-    min_budget = float(adset.get('min_budget', 0))
-    
-    if max_budget > 0 and new_budget > max_budget:
-        new_budget = max_budget
-    if min_budget > 0 and new_budget < min_budget:
-        new_budget = min_budget
-    
-    # Если бюджет изменился - применяем
-    if action and abs(new_budget - current_budget) >= 0.01:
-        success = update_adset_budget_facebook(
-            adset['adset_id'], 
-            new_budget, 
-            adset['token']
-        )
-        
-        if success:
-            update_user_adset_budget(user_id, adset['adset_id'], new_budget)
-            
-            msg = (f"💰 Авто-бюджет: {adset['name']} "
-                  f"({action}: ${current_budget:.2f} → ${new_budget:.2f}) "
-                  f"CPA: ${cpa:.2f}, Leads: {leads}")
-            
-            logger.info(msg)
-            send_telegram_message(msg, user_id=user_id)
-            return True
-    
-    return False
+
 @app.route('/api/auto_control', methods=['POST'])
 @login_required
 def run_auto_control_api():

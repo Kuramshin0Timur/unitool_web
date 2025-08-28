@@ -23,21 +23,19 @@ function initDataTable() {
         $('#adsetsTable').empty();
     }
 
-    window.adsetsTable = $('#adsetsTable').DataTable({
+        window.adsetsTable = $('#adsetsTable').DataTable({
         fixedHeader: {
             header: true,
             footer: false
         },
-        order: [[5, 'desc']], // Сортировка по Spend по умолчанию
+        order: [[6, 'desc']], // Сортировка по Spend (теперь это колонка 6)
         columns: [
             { // 0: Чекбокс
                 orderable: false,
                 searchable: false,
                 width: '30px'
             },
-            // В функции render для колонки "Название" замените:
-            {
-                targets: 1, // Название
+            { // 1: Название
                 type: 'string',
                 width: '250px',
                 render: function(data, type, row) {
@@ -63,40 +61,47 @@ function initDataTable() {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 5: Spend
+            { // 5: CPM
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 6: CPA
+            { // 6: Spend
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 7: Leads
+            { // 7: CPA
+                type: 'num',
+                width: '80px',
+                render: function(data, type) {
+                    return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
+                }
+            },
+            { // 8: Leads
                 type: 'num',
                 width: '70px'
             },
-            { // 8: GEO
+            { // 9: GEO
                 type: 'string',
                 width: '60px'
             },
-            { // 9: King
+            { // 10: King
                 type: 'string',
                 width: '80px'
             },
-            { // 10: Бюджет
+            { // 11: Бюджет
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 11: Действия
+            { // 12: Действия
                 orderable: false,
                 searchable: false,
                 width: '120px'
@@ -282,41 +287,7 @@ window.syncAllData = syncAllData;
                 hideLoading();
             });
     }
-function renderAdsets(data) {
-    if (!window.adsetsTable) {
-        console.error('DataTable не инициализирован');
-        return;
-    }
-    
-    window.adsetsTable.clear();
-    
-    if (!data || data.length === 0) {
-        window.adsetsTable.draw();
-        return;
-    }
-    
-    data.forEach(adset => {
-        const row = [
-            createCheckboxCell(adset), // 0: Чекбокс
-            adset.name || 'N/A', // 1: Название
-            createStatusCell(adset.status), // 2: Статус
-            adset.ucpc || 0, // 3: uCPC
-            adset.cpc || 0, // 4: CPC из Facebook
-            adset.spend || 0, // 5: Spend
-            adset.cpa || 0, // 6: CPA
-            adset.leads || 0, // 7: Leads
-            adset.geo || 'N/A', // 8: GEO
-            adset.king || 'N/A', // 9: King
-            adset.budget || 0, // 10: Бюджет
-            createActionsCell(adset) // 11: Действия
-        ];
-        
-        window.adsetsTable.row.add(row);
-    });
-    
-    window.adsetsTable.draw();
-    updateSelectedCount();
-}
+
 // Обновим конфигурацию колонок
 columnDefs: [
     {
@@ -1159,15 +1130,16 @@ function renderAdsets(data) {
             createCheckboxCell(adset), // 0: Чекбокс
             adset.name || 'N/A', // 1: Название
             createStatusCell(adset.status), // 2: Статус
-            adset.ucpc ? parseFloat(adset.ucpc).toFixed(2) : '0.00', // 3: uCPC
-            adset.cpc ? parseFloat(adset.cpc).toFixed(2) : '0.00', // 4: CPC из Facebook
-            adset.spend ? parseFloat(adset.spend).toFixed(2) : '0.00', // 5: Spend
-            adset.cpa ? parseFloat(adset.cpa).toFixed(2) : '0.00', // 6: CPA
-            adset.leads || 0, // 7: Leads
-            adset.geo || 'N/A', // 8: GEO
-            adset.king || 'N/A', // 9: King
-            adset.budget ? parseFloat(adset.budget).toFixed(2) : '0.00', // 10: Бюджет
-            createActionsCell(adset) // 11: Действия
+            adset.ucpc || 0, // 3: uCPC
+            adset.cpc || 0, // 4: CPC из Facebook
+            adset.cpm || 0, // 5: CPM
+            adset.spend || 0, // 6: Spend
+            adset.cpa || 0, // 7: CPA
+            adset.leads || 0, // 8: Leads
+            adset.geo || 'N/A', // 9: GEO
+            adset.king || 'N/A', // 10: King
+            adset.budget || 0, // 11: Бюджет
+            createActionsCell(adset) // 12: Действия
         ];
         
         window.adsetsTable.row.add(row);
@@ -1176,29 +1148,18 @@ function renderAdsets(data) {
     window.adsetsTable.draw();
     updateSelectedCount();
 }
-// Добавьте функцию для отображения цен с долларами
 function formatCurrency(value) {
     return `$${parseFloat(value).toFixed(2)}`;
 }
 
-// Обновите колонки с рендерингом для отображения
+// Обновите targets для включения CPM
 columnDefs: [
     {
-        targets: [3, 4, 5, 9], // uCPC, Spend, CPA, Бюджет
+        targets: [3, 4, 5, 6, 7, 11], // uCPC, CPC, CPM, Spend, CPA, Бюджет
         type: 'num',
         render: function(data, type) {
             if (type === 'display') {
                 return formatCurrency(data);
-            }
-            return data;
-        }
-    },
-    {
-        targets: 6, // Leads
-        type: 'num',
-        render: function(data, type) {
-            if (type === 'display') {
-                return data.toString();
             }
             return data;
         }

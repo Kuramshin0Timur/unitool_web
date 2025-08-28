@@ -48,6 +48,12 @@
                             <i class="bi bi-gear"></i> Автоконтроль
                         </a>
                     </li>
+                    <!-- ДОБАВЛЕН ПУНКТ МЕНЮ ДЛЯ МОНИТОРИНГА БАЛАНСА -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('balance_monitor') }}">
+                            <i class="bi bi-wallet2"></i> Баланс аккаунтов
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('headline_optimization') }}">
                             <i class="bi bi-bar-chart"></i> Оптимизация заголовков
@@ -56,6 +62,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('settings') }}">
                             <i class="bi bi-sliders"></i> Настройки
+                        </a>
+                    </li>
+                    <!-- УБРАНА ПРОВЕРКА is_admin_user -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin_limits') }}">
+                            <i class="bi bi-shield"></i> Админ панель
                         </a>
                     </li>
                 </ul>

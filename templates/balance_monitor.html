@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <!-- Заголовок и кнопки -->
+    <div class="row mb-4">
+        <div class="col">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">
+                    <i class="bi bi-wallet2 me-2"></i>Мониторинг баланса
+                </h1>
+                <div>
+                    <button class="btn btn-outline-primary me-2" onclick="checkBalance()">
+                        <i class="bi bi-arrow-repeat me-1"></i>Проверить сейчас
+                    </button>
+                    <button class="btn btn-primary" onclick="openSettings()">
+                        <i class="bi bi-gear me-1"></i>Настройки
+                    </button>
+                </div>
+            </div>
+            <p class="text-muted">Мониторинг баланса и расходов по аккаунтам Facebook</p>
+        </div>
+    </div>
+
+    <!-- Сводная статистика -->
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-white-50">Всего аккаунтов</h6>
+                            <h3 class="card-text text-white" id="total-accounts">0</h3>
+                        </div>
+                        <i class="bi bi-building text-white-50" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-white-50">С предупреждениями</h6>
+                            <h3 class="card-text text-white" id="warning-accounts">0</h3>
+                        </div>
+                        <i class="bi bi-exclamation-triangle text-white-50" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-white-50">Общий баланс</h6>
+                            <h3 class="card-text text-white" id="total-balance">$0</h3>
+                        </div>
+                        <i class="bi bi-currency-dollar text-white-50" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-white-50">Требуется сегодня</h6>
+                            <h3 class="card-text text-white" id="total-required">$0</h3>
+                        </div>
+                        <i class="bi bi-graph-up text-white-50" style="font-size: 2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Список аккаунтов -->
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Аккаунты Facebook</h5>
+                    <div class="d-flex align-items-center">
+                        <span class="text-muted me-3" id="last-update">Последнее обновление: никогда</span>
+                        <i class="bi bi-arrow-repeat refresh-btn" onclick="checkBalance()" title="Обновить"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="accounts-container">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Загрузка...</span>
+                            </div>
+                            <p class="mt-3 text-muted">Загрузка данных аккаунтов...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно настроек -->
+<div class="modal fade" id="settingsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Настройки мониторинга баланса</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="balance-check-enabled">
+                        <label class="form-check-label" for="balance-check-enabled">
+                            Автоматическая проверка баланса
+                        </label>
+                    </div>
+                    <small class="form-text text-muted">
+                        При включении система будет автоматически проверять баланс каждые 4 часа
+                    </small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Порог предупреждения ($)</label>
+                    <input type="number" class="form-control" id="warning-threshold" min="0" step="10" value="50">
+                    <small class="form-text text-muted">
+                        Уведомлять когда баланс опускается ниже этой суммы
+                    </small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="saveSettings()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Глобальные переменные
+    let accountsData = [];
+    let settings = {};
+
+    // Инициализация страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        loadSettings();
+        checkBalance();
+        startAutoRefresh();
+    });
+
+    // Загрузка настроек
+    async function loadSettings() {
+        try {
+            const response = await fetch('/api/settings');
+            const result = await response.json();
+            
+            if (result.success) {
+                settings = result.config;
+                updateSettingsUI();
+            }
+        } catch (error) {
+            console.error('Ошибка загрузки настроек:', error);
+        }
+    }
+
+    // Обновление UI настроек
+    function updateSettingsUI() {
+        document.getElementById('balance-check-enabled').checked = settings.balance_check_enabled || true;
+        document.getElementById('warning-threshold').value = settings.warning_threshold || 50;
+    }
+
+    // Проверка баланса
+    // Проверка баланса
+    // Проверка баланса
+    async function checkBalance() {
+        console.log("Запуск проверки баланса...");
+        showLoading();
+        
+        try {
+            const response = await fetch('/api/check_balance');  // Убрали POST
+            
+            console.log("Ответ получен:", response.status);
+            const result = await response.json();
+            console.log("Данные ответа:", result);
+            
+            if (result.success) {
+                accountsData = result.warnings || [];
+                console.log("Найдено аккаунтов:", accountsData.length);
+                updateAccountsList();
+                updateSummary();
+                updateLastUpdateTime();
+                
+                if (result.count > 0) {
+                    showNotification(`Обнаружено ${result.count} аккаунтов с недостаточным балансом`);
+                }
+            } else {
+                console.error("Ошибка в ответе:", result.error);
+                showError('Ошибка при проверке баланса: ' + (result.error || 'Неизвестная ошибка'));
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            showError('Ошибка соединения с сервером');
+        }
+    }
+
+    // Обновление списка аккаунтов
+    // Обновление списка аккаунтов
+    function updateAccountsList() {
+        const container = document.getElementById('accounts-container');
+        
+        if (!accountsData || accountsData.length === 0) {
+            container.innerHTML = `
+                <div class="text-center py-5">
+                    <i class="bi bi-inbox" style="font-size: 3rem; color: #6c757d;"></i>
+                    <p class="mt-3 text-muted">Аккаунты не найдены или нет данных</p>
+                </div>
+            `;
+            return;
+        }
+        
+        container.innerHTML = accountsData.map(account => `
+            <div class="card mb-3 border-${getCardClass(account)}">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="card-title">
+                                ${account.account_name || 'Unknown'}
+                                <span class="badge bg-${getStatusClass(account)} ms-2">
+                                    ${account.status || 'UNKNOWN'}
+                                </span>
+                            </h6>
+                            <p class="text-muted mb-2">ID: ${account.account_id || 'N/A'}</p>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-wallet2 me-2"></i>
+                                <span class="fw-bold">Баланс: $${account.balance?.toFixed(2) || '0.00'}</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-graph-up me-2"></i>
+                                <span>Требуется сегодня: $${account.required_today?.toFixed(2) || '0.00'}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                <span class="${account.deficit > 0 ? 'text-danger fw-bold' : 'text-success'}">
+                                    ${account.deficit > 0 ? `Дефицит: $${account.deficit?.toFixed(2) || '0.00'}` : 'Баланс достаточен'}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Активных адсетов: ${account.active_adsets || 0}</span>
+                                <span class="badge bg-${getDaysBadgeClass(account.days_remaining)}">
+                                    ${account.days_remaining?.toFixed(1) || '0.0'} дней
+                                </span>
+                            </div>
+                            ${account.deficit > 0 ? `
+                            <div class="alert alert-warning py-2 mb-0">
+                                <small>
+                                    <i class="bi bi-exclamation-triangle me-1"></i>
+                                    Недостаточно средств для сегодняшнего расхода
+                                </small>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Вспомогательные функции для стилей
+    function getCardClass(account) {
+        if (account.deficit > 0) return 'danger';
+        if (account.balance < (account.required_today || 0) * 1.5) return 'warning';
+        return 'success';
+    }
+
+    function getStatusClass(account) {
+        if (account.status === 'ACTIVE') return 'success';
+        if (account.status === 'DISABLED') return 'danger';
+        return 'warning';
+    }
+
+    function getDaysBadgeClass(days) {
+        if (days < 1) return 'danger';
+        if (days < 3) return 'warning';
+        return 'success';
+    }
+
+    // Обновление сводной статистики
+    function updateSummary() {
+        const totalAccounts = accountsData.length;
+        const warningAccounts = accountsData.filter(a => a.deficit > 0).length;
+        const totalBalance = accountsData.reduce((sum, a) => sum + (a.balance || 0), 0);
+        const totalRequired = accountsData.reduce((sum, a) => sum + (a.required_today || 0), 0);
+        
+        document.getElementById('total-accounts').textContent = totalAccounts;
+        document.getElementById('warning-accounts').textContent = warningAccounts;
+        document.getElementById('total-balance').textContent = `$${totalBalance.toFixed(2)}`;
+        document.getElementById('total-required').textContent = `$${totalRequired.toFixed(2)}`;
+    }
+
+    // Автообновление
+    function startAutoRefresh() {
+        // Обновляем каждые 5 минут
+        setInterval(() => {
+            if (settings.balance_check_enabled) {
+                checkBalance();
+            }
+        }, 5 * 60 * 1000);
+    }
+
+    // Обновление времени последнего обновления
+    function updateLastUpdateTime() {
+        const now = new Date();
+        document.getElementById('last-update').textContent = 
+            `Последнее обновление: ${now.toLocaleTimeString()}`;
+    }
+
+    // Показ загрузки
+    function showLoading() {
+        document.getElementById('accounts-container').innerHTML = `
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Загрузка...</span>
+                </div>
+                <p class="mt-3 text-muted">Проверка баланса...</p>
+            </div>
+        `;
+    }
+
+    // Показ ошибки
+    function showError(message) {
+        document.getElementById('accounts-container').innerHTML = `
+            <div class="alert alert-danger">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                ${message}
+            </div>
+        `;
+    }
+
+    // Уведомление
+    function showNotification(message) {
+        // Простое уведомление в консоль
+        console.log('Notification:', message);
+    }
+
+    // Открытие настроек
+    function openSettings() {
+        const modal = new bootstrap.Modal(document.getElementById('settingsModal'));
+        modal.show();
+    }
+
+    // Сохранение настроек
+    async function saveSettings() {
+        try {
+        const newSettings = {
+            balance_check_enabled: document.getElementById('balance-check-enabled').checked,
+            warning_threshold: parseFloat(document.getElementById('warning-threshold').value) || 50,
+            // Добавьте остальные обязательные поля с значениями по умолчанию
+            sync_api_key: settings.sync_api_key || '',
+            proxy: settings.proxy || '',
+            use_proxy: settings.use_proxy !== undefined ? settings.use_proxy : true,
+            auto_refresh_campaigns: settings.auto_refresh_campaigns !== undefined ? settings.auto_refresh_campaigns : true,
+            auto_refresh_adsets: settings.auto_refresh_adsets !== undefined ? settings.auto_refresh_adsets : true,
+            auto_refresh_interval: settings.auto_refresh_interval || 5,
+            telegram_bot_token: settings.telegram_bot_token || '',
+            telegram_chat_id: settings.telegram_chat_id || '',
+            keitaro_api_key: settings.keitaro_api_key || '',
+            keitaro_domain: settings.keitaro_domain || 'uniaffnu.com',
+            keitaro_range_days: settings.keitaro_range_days || 1,
+            auto_headline_optimization: settings.auto_headline_optimization !== undefined ? settings.auto_headline_optimization : false,
+            headline_optimization_interval: settings.headline_optimization_interval || 4,
+            account_timezone: settings.account_timezone || '-7'
+        };
+        
+        const response = await fetch('/api/settings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newSettings)
+        });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                bootstrap.Modal.getInstance(document.getElementById('settingsModal')).hide();
+                showNotification('Настройки сохранены');
+                loadSettings();
+            } else {
+                showError('Ошибка сохранения настроек');
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            showError('Ошибка сохранения настроек');
+        }
+    }
+</script>
+{% endblock %}
