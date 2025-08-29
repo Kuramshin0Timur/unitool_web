@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2><i class="bi bi-key"></i> Управление резервными токенами</h2>
+    <h2><i class="bi bi-key"></i> Управление резервными токенами и лимитами</h2>
     
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
@@ -10,17 +10,24 @@
         </div>
         <div class="card-body">
             <form id="addTokenForm" class="row g-3">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="kingInput" class="form-label">KING</label>
                     <input type="text" class="form-control" id="kingInput" placeholder="Введите KING" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <label for="tokenInput" class="form-label">Токен доступа</label>
                     <input type="text" class="form-control" id="tokenInput" placeholder="Введите токен Facebook" required>
                 </div>
-                <div class="col-md-2 d-flex align-items-end">
-                    <button type="submit" class="btn btn-success w-100">
-                        <i class="bi bi-plus"></i> Добавить
+                <div class="col-md-4">
+                    <label for="accountIdsInput" class="form-label">ID Аккаунтов (через запятую)</label>
+                    <input type="text" class="form-control" id="accountIdsInput" placeholder="act_123, act_456">
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-plus"></i> Добавить токен
+                    </button>
+                    <button type="button" class="btn btn-info ms-2" onclick="checkAllLimits()">
+                        <i class="bi bi-arrow-repeat"></i> Проверить все лимиты
                     </button>
                 </div>
             </form>
@@ -28,30 +35,49 @@
     </div>
 
     <div class="card">
-        <div class="card-header bg-secondary text-white">
-            <h5><i class="bi bi-list"></i> Список резервных токенов</h5>
+        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+            <h5><i class="bi bi-list"></i> Токены и лимиты аккаунтов</h5>
+            <div>
+                <button class="btn btn-sm btn-light" onclick="loadReserveTokens()">
+                    <i class="bi bi-arrow-repeat"></i> Обновить
+                </button>
+            </div>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>KING</th>
-                            <th>Токен</th>
-                            <th>Добавлен</th>
-                            <th>Действия</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tokensTable">
-                        <tr>
-                            <td colspan="4" class="text-center text-muted py-4">
-                                <i class="bi bi-inbox fs-1"></i>
-                                <p class="mt-2">Нет резервных токенов</p>
-                                <small>Добавьте токены через форму выше</small>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div id="tokensAccordion">
+                <div class="text-center py-4">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Загрузка...</span>
+                    </div>
+                    <p class="mt-2">Загрузка токенов...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для добавления аккаунта -->
+<div class="modal fade" id="addAccountModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавить аккаунт к токену</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addAccountForm">
+                    <input type="hidden" id="modalToken">
+                    <input type="hidden" id="modalKing">
+                    <div class="mb-3">
+                        <label for="modalAccountId" class="form-label">ID Аккаунта</label>
+                        <input type="text" class="form-control" id="modalAccountId" required 
+                               placeholder="act_1234567890">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="addAccountToToken()">Добавить</button>
             </div>
         </div>
     </div>

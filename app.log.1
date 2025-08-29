@@ -1,398 +1,602 @@
-2025-08-29 00:31:48,122 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:48,622 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 933
-2025-08-29 00:31:48,623 - __main__ - DEBUG - Получено 17 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 15}, Effective Status: {'ACTIVE': 2, 'PAUSED': 15}
-2025-08-29 00:31:48,623 - __main__ - INFO - Получено 17 кампаний, после фильтрации: 17 для аккаунта 2094484354409294
-2025-08-29 00:31:48,673 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:49,593 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy&limit=1000 HTTP/1.1" 200 1572
-2025-08-29 00:31:49,594 - __main__ - DEBUG - Получено 85 адсетов. Status: {'ACTIVE': 72, 'PAUSED': 13}, Effective Status: {'ACTIVE': 10, 'PAUSED': 13, 'CAMPAIGN_PAUSED': 62}
-2025-08-29 00:31:49,594 - __main__ - INFO - Получено 85 адсетов, после фильтрации: 85 для аккаунта 2094484354409294
-2025-08-29 00:31:49,737 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:50,183 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1290409182557611?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 403 255
-2025-08-29 00:31:50,189 - __main__ - WARNING - Неверный токен для 1290409182557611: (#200) Ad account owner has NOT grant ads_management or ads_read permission, refer to https://developers.facebook.com/docs/marketing-api/get-started/authorization/#permissions-and-features for details.
-2025-08-29 00:31:50,192 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:50,575 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-08-29 00:31:50,583 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:51,015 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 658
-2025-08-29 00:31:51,016 - __main__ - DEBUG - Получено 8 кампаний. Status: {'PAUSED': 8}, Effective Status: {'PAUSED': 8}
-2025-08-29 00:31:51,016 - __main__ - INFO - Получено 8 кампаний, после фильтрации: 8 для аккаунта 684941790597261
-2025-08-29 00:31:51,040 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:51,853 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 984
-2025-08-29 00:31:51,854 - __main__ - DEBUG - Получено 40 адсетов. Status: {'ACTIVE': 37, 'PAUSED': 3}, Effective Status: {'CAMPAIGN_PAUSED': 37, 'PAUSED': 3}
-2025-08-29 00:31:51,854 - __main__ - INFO - Получено 40 адсетов, после фильтрации: 40 для аккаунта 684941790597261
-2025-08-29 00:31:51,947 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:52,337 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-08-29 00:31:52,340 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:52,899 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1320
-2025-08-29 00:31:52,900 - __main__ - DEBUG - Получено 31 кампаний. Status: {'PAUSED': 31}, Effective Status: {'PAUSED': 31}
-2025-08-29 00:31:52,900 - __main__ - INFO - Получено 31 кампаний, после фильтрации: 31 для аккаунта 519765377868615
-2025-08-29 00:31:52,980 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:54,242 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 2590
-2025-08-29 00:31:54,247 - __main__ - DEBUG - Получено 155 адсетов. Status: {'ACTIVE': 139, 'PAUSED': 16}, Effective Status: {'CAMPAIGN_PAUSED': 139, 'PAUSED': 16}
-2025-08-29 00:31:54,247 - __main__ - INFO - Получено 155 адсетов, после фильтрации: 155 для аккаунта 519765377868615
-2025-08-29 00:31:54,482 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:54,843 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-08-29 00:31:54,846 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:55,351 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1120
-2025-08-29 00:31:55,352 - __main__ - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 24}, Effective Status: {'PAUSED': 24}
-2025-08-29 00:31:55,352 - __main__ - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 707254618536242
-2025-08-29 00:31:55,404 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:56,563 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 2114
-2025-08-29 00:31:56,564 - __main__ - DEBUG - Получено 122 адсетов. Status: {'PAUSED': 24, 'ACTIVE': 98}, Effective Status: {'PAUSED': 24, 'CAMPAIGN_PAUSED': 98}
-2025-08-29 00:31:56,564 - __main__ - INFO - Получено 122 адсетов, после фильтрации: 122 для аккаунта 707254618536242
-2025-08-29 00:31:56,767 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:57,158 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 89
-2025-08-29 00:31:57,161 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:57,616 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1107
-2025-08-29 00:31:57,616 - __main__ - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 24}, Effective Status: {'PAUSED': 24}
-2025-08-29 00:31:57,617 - __main__ - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 1034818791841582
-2025-08-29 00:31:57,672 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:58,996 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 2048
-2025-08-29 00:31:58,998 - __main__ - DEBUG - Получено 124 адсетов. Status: {'ACTIVE': 120, 'PAUSED': 4}, Effective Status: {'CAMPAIGN_PAUSED': 120, 'PAUSED': 4}
-2025-08-29 00:31:58,998 - __main__ - INFO - Получено 124 адсетов, после фильтрации: 124 для аккаунта 1034818791841582
-2025-08-29 00:31:59,182 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:31:59,602 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 89
-2025-08-29 00:31:59,606 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:00,161 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1230
-2025-08-29 00:32:00,162 - __main__ - DEBUG - Получено 29 кампаний. Status: {'PAUSED': 29}, Effective Status: {'PAUSED': 29}
-2025-08-29 00:32:00,163 - __main__ - INFO - Получено 29 кампаний, после фильтрации: 29 для аккаунта 9859604834059536
-2025-08-29 00:32:00,236 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:01,725 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 2445
-2025-08-29 00:32:01,727 - __main__ - DEBUG - Получено 149 адсетов. Status: {'ACTIVE': 139, 'PAUSED': 10}, Effective Status: {'CAMPAIGN_PAUSED': 139, 'PAUSED': 10}
-2025-08-29 00:32:01,727 - __main__ - INFO - Получено 149 адсетов, после фильтрации: 149 для аккаунта 9859604834059536
-2025-08-29 00:32:01,938 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:02,292 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 84
-2025-08-29 00:32:02,296 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:02,838 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 644
-2025-08-29 00:32:02,839 - __main__ - DEBUG - Получено 9 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 7}, Effective Status: {'ACTIVE': 2, 'PAUSED': 7}
-2025-08-29 00:32:02,839 - __main__ - INFO - Получено 9 кампаний, после фильтрации: 9 для аккаунта 690058783376774
-2025-08-29 00:32:02,863 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:03,688 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1114
-2025-08-29 00:32:03,690 - __main__ - DEBUG - Получено 45 адсетов. Status: {'PAUSED': 9, 'ACTIVE': 36}, Effective Status: {'PAUSED': 9, 'ACTIVE': 3, 'CAMPAIGN_PAUSED': 33}
-2025-08-29 00:32:03,690 - __main__ - INFO - Получено 45 адсетов, после фильтрации: 45 для аккаунта 690058783376774
-2025-08-29 00:32:03,773 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:04,184 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
-2025-08-29 00:32:04,188 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:04,612 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 777
-2025-08-29 00:32:04,613 - __main__ - DEBUG - Получено 14 кампаний. Status: {'PAUSED': 14}, Effective Status: {'PAUSED': 14}
-2025-08-29 00:32:04,613 - __main__ - INFO - Получено 14 кампаний, после фильтрации: 14 для аккаунта 1229693575829178
-2025-08-29 00:32:04,647 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:05,494 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1410
-2025-08-29 00:32:05,495 - __main__ - DEBUG - Получено 72 адсетов. Status: {'PAUSED': 10, 'ACTIVE': 62}, Effective Status: {'PAUSED': 10, 'CAMPAIGN_PAUSED': 62}
-2025-08-29 00:32:05,495 - __main__ - INFO - Получено 72 адсетов, после фильтрации: 72 для аккаунта 1229693575829178
-2025-08-29 00:32:05,606 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:06,691 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 84
-2025-08-29 00:32:06,694 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:07,162 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 771
-2025-08-29 00:32:07,163 - __main__ - DEBUG - Получено 12 кампаний. Status: {'PAUSED': 11, 'ACTIVE': 1}, Effective Status: {'PAUSED': 11, 'ACTIVE': 1}
-2025-08-29 00:32:07,163 - __main__ - INFO - Получено 12 кампаний, после фильтрации: 12 для аккаунта 618632521162363
-2025-08-29 00:32:07,190 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:07,989 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1351
-2025-08-29 00:32:07,990 - __main__ - DEBUG - Получено 60 адсетов. Status: {'ACTIVE': 58, 'PAUSED': 2}, Effective Status: {'CAMPAIGN_PAUSED': 55, 'ACTIVE': 3, 'PAUSED': 2}
-2025-08-29 00:32:07,990 - __main__ - INFO - Получено 60 адсетов, после фильтрации: 60 для аккаунта 618632521162363
-2025-08-29 00:32:08,115 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:08,498 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
-2025-08-29 00:32:08,502 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:08,972 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 802
-2025-08-29 00:32:08,973 - __main__ - DEBUG - Получено 15 кампаний. Status: {'PAUSED': 15}, Effective Status: {'PAUSED': 15}
-2025-08-29 00:32:08,974 - __main__ - INFO - Получено 15 кампаний, после фильтрации: 15 для аккаунта 1084247417068803
-2025-08-29 00:32:09,003 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:09,820 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1395
-2025-08-29 00:32:09,824 - __main__ - DEBUG - Получено 75 адсетов. Status: {'ACTIVE': 72, 'PAUSED': 3}, Effective Status: {'CAMPAIGN_PAUSED': 72, 'PAUSED': 3}
-2025-08-29 00:32:09,825 - __main__ - INFO - Получено 75 адсетов, после фильтрации: 75 для аккаунта 1084247417068803
-2025-08-29 00:32:09,973 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:10,364 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
-2025-08-29 00:32:10,368 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:10,922 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 879
-2025-08-29 00:32:10,923 - __main__ - DEBUG - Получено 17 кампаний. Status: {'PAUSED': 17}, Effective Status: {'PAUSED': 17}
-2025-08-29 00:32:10,923 - __main__ - INFO - Получено 17 кампаний, после фильтрации: 17 для аккаунта 4130588987263265
-2025-08-29 00:32:10,969 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:11,992 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1681
-2025-08-29 00:32:11,993 - __main__ - DEBUG - Получено 89 адсетов. Status: {'ACTIVE': 76, 'PAUSED': 13}, Effective Status: {'CAMPAIGN_PAUSED': 76, 'PAUSED': 13}
-2025-08-29 00:32:11,993 - __main__ - INFO - Получено 89 адсетов, после фильтрации: 89 для аккаунта 4130588987263265
-2025-08-29 00:32:12,165 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:12,575 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-08-29 00:32:12,579 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:13,043 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 747
-2025-08-29 00:32:13,044 - __main__ - DEBUG - Получено 13 кампаний. Status: {'PAUSED': 13}, Effective Status: {'PAUSED': 13}
-2025-08-29 00:32:13,044 - __main__ - INFO - Получено 13 кампаний, после фильтрации: 13 для аккаунта 1745128389547352
-2025-08-29 00:32:13,082 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:14,289 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1442
-2025-08-29 00:32:14,291 - __main__ - DEBUG - Получено 78 адсетов. Status: {'ACTIVE': 78}, Effective Status: {'CAMPAIGN_PAUSED': 78}
-2025-08-29 00:32:14,291 - __main__ - INFO - Получено 78 адсетов, после фильтрации: 78 для аккаунта 1745128389547352
-2025-08-29 00:32:14,400 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:14,830 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 74
-2025-08-29 00:32:14,833 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:15,327 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 685
-2025-08-29 00:32:15,328 - __main__ - DEBUG - Получено 11 кампаний. Status: {'PAUSED': 11}, Effective Status: {'PAUSED': 11}
-2025-08-29 00:32:15,329 - __main__ - INFO - Получено 11 кампаний, после фильтрации: 11 для аккаунта 735112582263451
-2025-08-29 00:32:15,362 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:16,336 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1405
-2025-08-29 00:32:16,338 - __main__ - DEBUG - Получено 66 адсетов. Status: {'ACTIVE': 66}, Effective Status: {'CAMPAIGN_PAUSED': 66}
-2025-08-29 00:32:16,338 - __main__ - INFO - Получено 66 адсетов, после фильтрации: 66 для аккаунта 735112582263451
-2025-08-29 00:32:16,466 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:16,862 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 74
-2025-08-29 00:32:16,866 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:17,316 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 704
-2025-08-29 00:32:17,317 - __main__ - DEBUG - Получено 10 кампаний. Status: {'ACTIVE': 5, 'PAUSED': 5}, Effective Status: {'ACTIVE': 5, 'PAUSED': 5}
-2025-08-29 00:32:17,317 - __main__ - INFO - Получено 10 кампаний, после фильтрации: 10 для аккаунта 602672996199306
-2025-08-29 00:32:17,344 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:18,248 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 1193
-2025-08-29 00:32:18,249 - __main__ - DEBUG - Получено 55 адсетов. Status: {'ACTIVE': 55}, Effective Status: {'CAMPAIGN_PAUSED': 30, 'ACTIVE': 25}
-2025-08-29 00:32:18,250 - __main__ - INFO - Получено 55 адсетов, после фильтрации: 55 для аккаунта 602672996199306
-2025-08-29 00:32:18,334 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:18,731 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-08-29 00:32:18,735 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:19,201 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 594
-2025-08-29 00:32:19,202 - __main__ - DEBUG - Получено 6 кампаний. Status: {'PAUSED': 5, 'ACTIVE': 1}, Effective Status: {'PAUSED': 5, 'ACTIVE': 1}
-2025-08-29 00:32:19,202 - __main__ - INFO - Получено 6 кампаний, после фильтрации: 6 для аккаунта 1289568592686104
-2025-08-29 00:32:19,221 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:20,000 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 942
-2025-08-29 00:32:20,001 - __main__ - DEBUG - Получено 32 адсетов. Status: {'PAUSED': 24, 'ACTIVE': 8}, Effective Status: {'PAUSED': 24, 'CAMPAIGN_PAUSED': 7, 'ACTIVE': 1}
-2025-08-29 00:32:20,001 - __main__ - INFO - Получено 32 адсетов, после фильтрации: 32 для аккаунта 1289568592686104
-2025-08-29 00:32:20,074 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:20,510 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-08-29 00:32:20,514 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:20,982 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 445
-2025-08-29 00:32:20,983 - __main__ - DEBUG - Получено 2 кампаний. Status: {'PAUSED': 2}, Effective Status: {'PAUSED': 2}
-2025-08-29 00:32:20,983 - __main__ - INFO - Получено 2 кампаний, после фильтрации: 2 для аккаунта 1141439834686694
-2025-08-29 00:32:20,992 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:21,839 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD&limit=1000 HTTP/1.1" 200 502
-2025-08-29 00:32:21,840 - __main__ - DEBUG - Получено 10 адсетов. Status: {'ACTIVE': 10}, Effective Status: {'CAMPAIGN_PAUSED': 10}
-2025-08-29 00:32:21,840 - __main__ - INFO - Получено 10 адсетов, после фильтрации: 10 для аккаунта 1141439834686694
-2025-08-29 00:32:21,866 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:21] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-08-29 00:32:28,221 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:28] "GET /headline_optimization HTTP/1.1" 200 -
-2025-08-29 00:32:28,463 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-29 00:32:29,103 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:29] "GET /api/campaigns HTTP/1.1" 200 -
-2025-08-29 00:32:29,108 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:29] "GET /api/settings HTTP/1.1" 200 -
-2025-08-29 00:32:31,967 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:31] "GET /balance_monitor HTTP/1.1" 200 -
-2025-08-29 00:32:32,191 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-29 00:32:32,792 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:32] "GET /api/settings HTTP/1.1" 200 -
-2025-08-29 00:32:32,833 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:33,218 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:32:33,221 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:33,778 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:32:33,782 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:34,251 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 124
-2025-08-29 00:32:34,255 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:34,355 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:34,862 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1197885948743091?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:32:34,866 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:34,905 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:32:34,908 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:35,353 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:32:35,356 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:35,528 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:32:35,532 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:35,993 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 124
-2025-08-29 00:32:35,997 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:36,025 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:32:36,030 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:36,474 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1197885948743091?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:32:36,478 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:36,661 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1285278756399693?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:32:36,665 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:36,917 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:32:36,922 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:37,083 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
-2025-08-29 00:32:37,087 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:37,537 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:32:37,542 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:37,705 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 139
-2025-08-29 00:32:37,710 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:38,165 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1285278756399693?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:32:38,169 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:38,317 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1975952553212111?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 129
-2025-08-29 00:32:38,322 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:38,783 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
-2025-08-29 00:32:38,789 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:38,925 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:32:38,929 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:39,423 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 139
-2025-08-29 00:32:39,428 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:39,524 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:32:39,528 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:39,824 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1975952553212111?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 129
-2025-08-29 00:32:39,828 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:39,985 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:32:39,991 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:40,249 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:32:40,254 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:40,426 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:32:40,430 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:40,947 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:32:40,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:41,034 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
-2025-08-29 00:32:41,038 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:41,548 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:32:41,552 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:41,614 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_607662318530131?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:32:41,618 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:42,132 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:32:42,136 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:42,241 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_608026278995897?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:32:42,245 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:42,752 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
-2025-08-29 00:32:42,757 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:42,787 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:32:42,792 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:43,444 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 149
-2025-08-29 00:32:43,448 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:43,450 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_607662318530131?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:32:43,453 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:43,885 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:32:43,889 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:43,947 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_608026278995897?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:32:43,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:44,421 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:32:44,425 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:44,509 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:32:44,513 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:44,980 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 149
-2025-08-29 00:32:44,984 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:45,164 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 128
-2025-08-29 00:32:45,169 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:45,558 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:32:45,562 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:45,769 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:32:45,773 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:46,156 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:32:46,160 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:46,495 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_744602524747804?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 128
-2025-08-29 00:32:46,499 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:46,839 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 128
-2025-08-29 00:32:46,843 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:47,079 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:32:47,082 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:47] "POST /api/check_balance HTTP/1.1" 200 -
-2025-08-29 00:32:47,262 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:32:47,266 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:47,895 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_744602524747804?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 128
-2025-08-29 00:32:47,900 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:48,512 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:32:48,516 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:32:48] "POST /api/check_balance HTTP/1.1" 200 -
-2025-08-29 00:32:51,042 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:51,608 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:32:51,612 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:52,055 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:32:52,059 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:52,556 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 124
-2025-08-29 00:32:52,560 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:53,191 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1197885948743091?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:32:53,196 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:53,826 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:32:53,830 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:54,249 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:32:54,253 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:54,894 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1285278756399693?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:32:54,898 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:55,454 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
-2025-08-29 00:32:55,458 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:55,937 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 139
-2025-08-29 00:32:55,941 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:56,370 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1975952553212111?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 129
-2025-08-29 00:32:56,374 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:56,965 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:32:56,969 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:57,400 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:32:57,404 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:57,852 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:32:57,856 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:58,429 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:32:58,434 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:59,057 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
-2025-08-29 00:32:59,062 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:32:59,705 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_607662318530131?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:32:59,709 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:00,343 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_608026278995897?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:33:00,347 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:00,908 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:33:00,912 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:01,342 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 149
-2025-08-29 00:33:01,346 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:01,936 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:33:01,941 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:02,385 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:33:02,390 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:02,830 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 128
-2025-08-29 00:33:02,833 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:03,255 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:33:03,259 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:03,729 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_744602524747804?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 128
-2025-08-29 00:33:03,733 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:33:04,131 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:33:04,135 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:33:04] "POST /api/check_balance HTTP/1.1" 200 -
-2025-08-29 00:35:38,764 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8001
- * Running on http://82.97.251.126:8001
-2025-08-29 00:35:38,764 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-08-29 00:35:43,881 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:35:43] "GET /balance_monitor HTTP/1.1" 200 -
-2025-08-29 00:35:44,138 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:35:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-08-29 00:35:45,008 - werkzeug - INFO - 127.0.0.1 - - [29/Aug/2025 00:35:45] "GET /api/settings HTTP/1.1" 200 -
-2025-08-29 00:35:45,045 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:45,546 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:35:45,550 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:45,966 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:35:45,970 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:46,009 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:46,379 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 124
-2025-08-29 00:35:46,382 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:46,431 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-08-29 00:35:46,434 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:47,012 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:35:47,015 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:47,017 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1197885948743091?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:35:47,023 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:47,473 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 124
-2025-08-29 00:35:47,476 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:47,602 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:35:47,606 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:47,943 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1197885948743091?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:35:47,947 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:48,148 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:35:48,152 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:48,381 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-08-29 00:35:48,385 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:48,618 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1285278756399693?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:35:48,623 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:48,995 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 138
-2025-08-29 00:35:48,999 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:49,219 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
-2025-08-29 00:35:49,224 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:49,487 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1285278756399693?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 129
-2025-08-29 00:35:49,492 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:49,710 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 139
-2025-08-29 00:35:49,714 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:49,935 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
-2025-08-29 00:35:49,940 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:50,308 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1975952553212111?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 129
-2025-08-29 00:35:50,313 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:50,368 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 139
-2025-08-29 00:35:50,373 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:50,780 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:35:50,784 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:50,798 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1975952553212111?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 129
-2025-08-29 00:35:50,802 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:51,251 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:35:51,254 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:51,397 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:35:51,403 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:51,831 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:35:51,836 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:51,867 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-08-29 00:35:51,872 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:52,308 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-08-29 00:35:52,311 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:52,351 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:35:52,354 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:52,834 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
-2025-08-29 00:35:52,838 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:52,939 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-08-29 00:35:52,942 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:53,353 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_607662318530131?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:35:53,357 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:53,425 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
-2025-08-29 00:35:53,430 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:53,817 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_608026278995897?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:35:53,822 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 00:35:53,945 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_607662318530131?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 200 138
-2025-08-29 00:35:53,950 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:37:39,532 - __main__ - DEBUG - Обработка адсета: TH 5685683_TH Y-67.9 bez gaza monah 2(vst2) 1 (ID: 120231655289650503, статус: PAUSED)
+2025-08-29 21:37:39,532 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685683_TH Y-67.9 bez gaza monah 2(vst2) 1
+2025-08-29 21:37:39,532 - __main__ - DEBUG - Обработка адсета: TH 5654_TH monah 72.2 17.07_1(vst1) 5 (ID: 120231604157190503, статус: PAUSED)
+2025-08-29 21:37:39,532 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5654_TH monah 72.2 17.07_1(vst1) 5
+2025-08-29 21:37:39,533 - __main__ - DEBUG - Обработка адсета: TH 5654_TH monah 72.2 17.07_1(vst1) 4 (ID: 120231604157180503, статус: PAUSED)
+2025-08-29 21:37:39,533 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5654_TH monah 72.2 17.07_1(vst1) 4
+2025-08-29 21:37:39,533 - __main__ - DEBUG - Обработка адсета: TH 5654_TH monah 72.2 17.07_1(vst1) 2 (ID: 120231604157150503, статус: PAUSED)
+2025-08-29 21:37:39,533 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5654_TH monah 72.2 17.07_1(vst1) 2
+2025-08-29 21:37:39,533 - __main__ - DEBUG - Обработка адсета: TH 5654_TH monah 72.2 17.07_1(vst1) 1 (ID: 120231604003700503, статус: PAUSED)
+2025-08-29 21:37:39,533 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5654_TH monah 72.2 17.07_1(vst1) 1
+2025-08-29 21:37:39,533 - __main__ - DEBUG - Обработка адсета: TH 5652_TH monah 72.3 21.07_2(vst1) 2 (ID: 120231603719120503, статус: PAUSED)
+2025-08-29 21:37:39,533 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5652_TH monah 72.3 21.07_2(vst1) 2
+2025-08-29 21:37:39,533 - __main__ - DEBUG - Обработка адсета: TH 5652_TH monah 72.3 21.07_2(vst1) 5 (ID: 120231603719090503, статус: PAUSED)
+2025-08-29 21:37:39,533 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5652_TH monah 72.3 21.07_2(vst1) 5
+2025-08-29 21:37:39,533 - __main__ - DEBUG - Обработка адсета: TH 5652_TH monah 72.3 21.07_2(vst1) 4 (ID: 120231603719070503, статус: PAUSED)
+2025-08-29 21:37:39,533 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5652_TH monah 72.3 21.07_2(vst1) 4
+2025-08-29 21:37:39,533 - __main__ - DEBUG - Обработка адсета: TH 5652_TH monah 72.3 21.07_2(vst1) 3 (ID: 120231603719060503, статус: PAUSED)
+2025-08-29 21:37:39,533 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5652_TH monah 72.3 21.07_2(vst1) 3
+2025-08-29 21:37:39,534 - __main__ - DEBUG - Обработка адсета: TH 5652_TH monah 72.3 21.07_2(vst1) 1 (ID: 120231603590440503, статус: PAUSED)
+2025-08-29 21:37:39,534 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5652_TH monah 72.3 21.07_2(vst1) 1
+2025-08-29 21:37:39,534 - __main__ - DEBUG - Обработка адсета: JS4 (ID: 120230236937060503, статус: PAUSED)
+2025-08-29 21:37:39,534 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JS4
+2025-08-29 21:37:39,534 - __main__ - DEBUG - Обработка адсета: FF5 (ID: 120230235609120503, статус: PAUSED)
+2025-08-29 21:37:39,534 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FF5
+2025-08-29 21:37:39,534 - __main__ - DEBUG - Обработка адсета: T3 (ID: 120228757785730503, статус: PAUSED)
+2025-08-29 21:37:39,534 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-29 21:37:39,534 - __main__ - DEBUG - Обработка адсета: T2 (ID: 120228757785710503, статус: PAUSED)
+2025-08-29 21:37:39,534 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T2
+2025-08-29 21:37:39,534 - __main__ - DEBUG - Обработка адсета: T1 (ID: 120228757401610503, статус: PAUSED)
+2025-08-29 21:37:39,534 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-29 21:37:39,534 - __main__ - DEBUG - Обработка адсета: JJ2 (ID: 120228746199710503, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
+2025-08-29 21:37:39,535 - __main__ - DEBUG - Обработка адсета: JJ1 (ID: 120228744342770503, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
+2025-08-29 21:37:39,535 - __main__ - DEBUG - Обработка адсета: TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 4 (ID: 120231635007130229, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 4
+2025-08-29 21:37:39,535 - __main__ - DEBUG - Обработка адсета: TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 3 (ID: 120231635007110229, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 3
+2025-08-29 21:37:39,535 - __main__ - DEBUG - Обработка адсета: TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 2 (ID: 120231635007100229, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 2
+2025-08-29 21:37:39,535 - __main__ - DEBUG - Обработка адсета: TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 5 (ID: 120231635007090229, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 5
+2025-08-29 21:37:39,535 - __main__ - DEBUG - Обработка адсета: TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 1 (ID: 120231634881200229, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5685_Y-68 TH korotish  15.07 monah_4(vst2) 1
+2025-08-29 21:37:39,535 - __main__ - DEBUG - Обработка адсета: TH 5656_TH voltaren1 visual2 16.07(vst1) 2 (ID: 120231587583940229, статус: PAUSED)
+2025-08-29 21:37:39,535 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 2
+2025-08-29 21:37:39,536 - __main__ - DEBUG - Обработка адсета: TH 5656_TH voltaren1 visual2 16.07(vst1) 5 (ID: 120231587583920229, статус: PAUSED)
+2025-08-29 21:37:39,536 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 5
+2025-08-29 21:37:39,536 - __main__ - DEBUG - Обработка адсета: TH 5656_TH voltaren1 visual2 16.07(vst1) 4 (ID: 120231587583910229, статус: PAUSED)
+2025-08-29 21:37:39,536 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 4
+2025-08-29 21:37:39,536 - __main__ - DEBUG - Обработка адсета: TH 5656_TH voltaren1 visual2 16.07(vst1) 1 (ID: 120231587241780229, статус: PAUSED)
+2025-08-29 21:37:39,536 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5656_TH voltaren1 visual2 16.07(vst1) 1
+2025-08-29 21:37:39,536 - __main__ - DEBUG - Обработка адсета: D3 (ID: 120230119454640229, статус: PAUSED)
+2025-08-29 21:37:39,536 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D3
+2025-08-29 21:37:39,536 - __main__ - DEBUG - Обработка адсета: DD4 (ID: 120230118827780229, статус: PAUSED)
+2025-08-29 21:37:39,536 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD4
+2025-08-29 21:37:39,536 - __main__ - DEBUG - Обработка адсета: DD1 (ID: 120230118790670229, статус: PAUSED)
+2025-08-29 21:37:39,536 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD1
+2025-08-29 21:37:39,536 - __main__ - DEBUG - Обработка адсета: SA3 (ID: 120230118734510229, статус: PAUSED)
+2025-08-29 21:37:39,536 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA3
+2025-08-29 21:37:39,537 - __main__ - DEBUG - Обработка адсета: TH 5885_K-68 monah per to ajan  11.08(vst1) 3 (ID: 120230387412720545, статус: PAUSED)
+2025-08-29 21:37:39,537 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5885_K-68 monah per to ajan  11.08(vst1) 3
+2025-08-29 21:37:39,537 - __main__ - DEBUG - Обработка адсета: TH 5885_K-68 monah per to ajan  11.08(vst1) 2 (ID: 120230387412710545, статус: PAUSED)
+2025-08-29 21:37:39,537 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5885_K-68 monah per to ajan  11.08(vst1) 2
+2025-08-29 21:37:39,537 - __main__ - DEBUG - Обработка адсета: TH 5885_K-68 monah per to ajan  11.08(vst1) 5 (ID: 120230387412690545, статус: PAUSED)
+2025-08-29 21:37:39,537 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5885_K-68 monah per to ajan  11.08(vst1) 5
+2025-08-29 21:37:39,537 - __main__ - DEBUG - Обработка адсета: TH 5885_K-68 monah per to ajan  11.08(vst1) 4 (ID: 120230387412670545, статус: PAUSED)
+2025-08-29 21:37:39,537 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5885_K-68 monah per to ajan  11.08(vst1) 4
+2025-08-29 21:37:39,537 - __main__ - DEBUG - Обработка адсета: TH 5885_K-68 monah per to ajan  11.08(vst1) 1 (ID: 120230386038610545, статус: PAUSED)
+2025-08-29 21:37:39,537 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5885_K-68 monah per to ajan  11.08(vst1) 1
+2025-08-29 21:37:39,537 - __main__ - DEBUG - Обработка адсета: TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 3 (ID: 120230041647240545, статус: PAUSED)
+2025-08-29 21:37:39,537 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 3
+2025-08-29 21:37:39,537 - __main__ - DEBUG - Обработка адсета: TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 2 (ID: 120230041647230545, статус: PAUSED)
+2025-08-29 21:37:39,537 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 2
+2025-08-29 21:37:39,538 - __main__ - DEBUG - Обработка адсета: TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 5 (ID: 120230041647190545, статус: PAUSED)
+2025-08-29 21:37:39,538 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 5
+2025-08-29 21:37:39,538 - __main__ - DEBUG - Обработка адсета: TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 4 (ID: 120230041647180545, статус: PAUSED)
+2025-08-29 21:37:39,538 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 4
+2025-08-29 21:37:39,538 - __main__ - DEBUG - Обработка адсета: TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 1 (ID: 120230041385110545, статус: PAUSED)
+2025-08-29 21:37:39,538 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5684_Y-68 TH korotish  15.07 monah_4(vst1) 1
+2025-08-29 21:37:39,538 - __main__ - DEBUG - Обработка адсета: TH 5653_TH monah 72.3 21.07_2(vst2) 5 (ID: 120229974132890545, статус: PAUSED)
+2025-08-29 21:37:39,538 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5653_TH monah 72.3 21.07_2(vst2) 5
+2025-08-29 21:37:39,538 - __main__ - DEBUG - Обработка адсета: TH 5653_TH monah 72.3 21.07_2(vst2) 4 (ID: 120229974132870545, статус: PAUSED)
+2025-08-29 21:37:39,538 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5653_TH monah 72.3 21.07_2(vst2) 4
+2025-08-29 21:37:39,538 - __main__ - DEBUG - Обработка адсета: TH 5653_TH monah 72.3 21.07_2(vst2) 3 (ID: 120229974132860545, статус: PAUSED)
+2025-08-29 21:37:39,538 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5653_TH monah 72.3 21.07_2(vst2) 3
+2025-08-29 21:37:39,538 - __main__ - DEBUG - Обработка адсета: TH 5653_TH monah 72.3 21.07_2(vst2) 2 (ID: 120229974132820545, статус: PAUSED)
+2025-08-29 21:37:39,538 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5653_TH monah 72.3 21.07_2(vst2) 2
+2025-08-29 21:37:39,539 - __main__ - DEBUG - Обработка адсета: TH 5653_TH monah 72.3 21.07_2(vst2) 1 (ID: 120229974052110545, статус: PAUSED)
+2025-08-29 21:37:39,539 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5653_TH monah 72.3 21.07_2(vst2) 1
+2025-08-29 21:37:39,539 - __main__ - DEBUG - Обработка адсета: TH 5601_TH  Zаходим V.1  03.08_4(vst1) 5 (ID: 120229918898190545, статус: PAUSED)
+2025-08-29 21:37:39,539 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5601_TH  Zаходим V.1  03.08_4(vst1) 5
+2025-08-29 21:37:39,539 - __main__ - DEBUG - Обработка адсета: TH 5601_TH  Zаходим V.1  03.08_4(vst1) 4 (ID: 120229918898180545, статус: PAUSED)
+2025-08-29 21:37:39,539 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5601_TH  Zаходим V.1  03.08_4(vst1) 4
+2025-08-29 21:37:39,539 - __main__ - DEBUG - Обработка адсета: TH 5601_TH  Zаходим V.1  03.08_4(vst1) 3 (ID: 120229918898170545, статус: PAUSED)
+2025-08-29 21:37:39,539 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5601_TH  Zаходим V.1  03.08_4(vst1) 3
+2025-08-29 21:37:39,539 - __main__ - DEBUG - Обработка адсета: TH 5601_TH  Zаходим V.1  03.08_4(vst1) 2 (ID: 120229918898160545, статус: PAUSED)
+2025-08-29 21:37:39,539 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5601_TH  Zаходим V.1  03.08_4(vst1) 2
+2025-08-29 21:37:39,539 - __main__ - DEBUG - Обработка адсета: TH 5601_TH  Zаходим V.1  03.08_4(vst1) 1 (ID: 120229918645940545, статус: PAUSED)
+2025-08-29 21:37:39,539 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5601_TH  Zаходим V.1  03.08_4(vst1) 1
+2025-08-29 21:37:39,539 - __main__ - DEBUG - Обработка адсета: AS6 (ID: 120228738619280545, статус: PAUSED)
+2025-08-29 21:37:39,539 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AS6
+2025-08-29 21:37:39,540 - __main__ - DEBUG - Обработка адсета: AS5 (ID: 120228738619270545, статус: PAUSED)
+2025-08-29 21:37:39,540 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AS5
+2025-08-29 21:37:39,540 - __main__ - DEBUG - Обработка адсета: AS4 (ID: 120228738613480545, статус: PAUSED)
+2025-08-29 21:37:39,540 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) AS4
+2025-08-29 21:37:39,540 - __main__ - DEBUG - Обработка адсета: HH3 (ID: 120228738449420545, статус: PAUSED)
+2025-08-29 21:37:39,540 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-29 21:37:39,540 - __main__ - DEBUG - Обработка адсета: T5 (ID: 120227498414280545, статус: PAUSED)
+2025-08-29 21:37:39,540 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T5
+2025-08-29 21:37:39,540 - __main__ - DEBUG - Обработка адсета: T4 (ID: 120227498414270545, статус: PAUSED)
+2025-08-29 21:37:39,540 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T4
+2025-08-29 21:37:39,540 - __main__ - DEBUG - Обработка адсета: T3 (ID: 120227498414260545, статус: PAUSED)
+2025-08-29 21:37:39,540 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T3
+2025-08-29 21:37:39,540 - __main__ - DEBUG - Обработка адсета: T1 (ID: 120227493190140545, статус: PAUSED)
+2025-08-29 21:37:39,540 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-29 21:37:39,541 - __main__ - DEBUG - Обработка адсета: D4 (ID: 120227372533940545, статус: PAUSED)
+2025-08-29 21:37:39,541 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D4
+2025-08-29 21:37:39,541 - __main__ - DEBUG - Обработка адсета: D3 (ID: 120227372533930545, статус: PAUSED)
+2025-08-29 21:37:39,541 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D3
+2025-08-29 21:37:39,541 - __main__ - DEBUG - Обработка адсета: D2 (ID: 120227372533920545, статус: PAUSED)
+2025-08-29 21:37:39,541 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D2
+2025-08-29 21:37:39,541 - __main__ - DEBUG - Обработка адсета: D1 (ID: 120227372480770545, статус: PAUSED)
+2025-08-29 21:37:39,541 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D1
+2025-08-29 21:37:39,541 - __main__ - DEBUG - Обработка адсета: MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 4 (ID: 120231532604560455, статус: PAUSED)
+2025-08-29 21:37:39,541 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 4
+2025-08-29 21:37:39,541 - __main__ - DEBUG - Обработка адсета: MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 3 (ID: 120231532604550455, статус: PAUSED)
+2025-08-29 21:37:39,541 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 3
+2025-08-29 21:37:39,541 - __main__ - DEBUG - Обработка адсета: MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 1 (ID: 120231532185370455, статус: PAUSED)
+2025-08-29 21:37:39,541 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6182_K-99 MY LimonchellaxBorya_1(Vst1) 1
+2025-08-29 21:37:39,542 - __main__ - DEBUG - Обработка адсета: HH22 (ID: 120231080320470455, статус: PAUSED)
+2025-08-29 21:37:39,542 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH22
+2025-08-29 21:37:39,542 - __main__ - DEBUG - Обработка адсета: HH21 (ID: 120231080320450455, статус: PAUSED)
+2025-08-29 21:37:39,542 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH21
+2025-08-29 21:37:39,542 - __main__ - DEBUG - Обработка адсета: 5927_K-68 monah per to ajan  11.08(vvs1) 5 (ID: 120230886491590455, статус: PAUSED)
+2025-08-29 21:37:39,542 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: PE) 5927_K-68 monah per to ajan  11.08(vvs1) 5
+2025-08-29 21:37:39,542 - __main__ - DEBUG - Обработка адсета: 5927_K-68 monah per to ajan  11.08(vvs1) 4 (ID: 120230886491580455, статус: PAUSED)
+2025-08-29 21:37:39,542 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: PE) 5927_K-68 monah per to ajan  11.08(vvs1) 4
+2025-08-29 21:37:39,542 - __main__ - DEBUG - Обработка адсета: 5927_K-68 monah per to ajan  11.08(vvs1) 1 (ID: 120230886029210455, статус: PAUSED)
+2025-08-29 21:37:39,542 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: PE) 5927_K-68 monah per to ajan  11.08(vvs1) 1
+2025-08-29 21:37:39,542 - __main__ - DEBUG - Обработка адсета: HH2 (ID: 120229040030300455, статус: PAUSED)
+2025-08-29 21:37:39,542 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH2
+2025-08-29 21:37:39,542 - __main__ - DEBUG - Обработка адсета: HH5 (ID: 120229040030280455, статус: PAUSED)
+2025-08-29 21:37:39,543 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH5
+2025-08-29 21:37:39,543 - __main__ - DEBUG - Обработка адсета: HH4 (ID: 120229040030270455, статус: PAUSED)
+2025-08-29 21:37:39,543 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-29 21:37:39,543 - __main__ - DEBUG - Обработка адсета: HH3 (ID: 120229040030260455, статус: PAUSED)
+2025-08-29 21:37:39,543 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH3
+2025-08-29 21:37:39,543 - __main__ - DEBUG - Обработка адсета: HH1 (ID: 120229039936440455, статус: PAUSED)
+2025-08-29 21:37:39,543 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH1
+2025-08-29 21:37:39,543 - __main__ - DEBUG - Обработка адсета: TH 6193_K-94 TH y-52 podcast monah(vst2) 5 (ID: 120232567281100073, статус: PAUSED)
+2025-08-29 21:37:39,543 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6193_K-94 TH y-52 podcast monah(vst2) 5
+2025-08-29 21:37:39,543 - __main__ - DEBUG - Обработка адсета: TH 6032_K-84 TH voltaren1 15.08(vst1) 4 (ID: 120232245193530073, статус: PAUSED)
+2025-08-29 21:37:39,543 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 4
+2025-08-29 21:37:39,543 - __main__ - DEBUG - Обработка адсета: TH 6032_K-84 TH voltaren1 15.08(vst1) 3 (ID: 120232245193510073, статус: PAUSED)
+2025-08-29 21:37:39,543 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 3
+2025-08-29 21:37:39,543 - __main__ - DEBUG - Обработка адсета: TH 6032_K-84 TH voltaren1 15.08(vst1) 2 (ID: 120232245193500073, статус: PAUSED)
+2025-08-29 21:37:39,544 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 2
+2025-08-29 21:37:39,544 - __main__ - DEBUG - Обработка адсета: TH 6032_K-84 TH voltaren1 15.08(vst1) 5 (ID: 120232245193490073, статус: PAUSED)
+2025-08-29 21:37:39,544 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6032_K-84 TH voltaren1 15.08(vst1) 5
+2025-08-29 21:37:39,544 - __main__ - DEBUG - Обработка адсета: TH 6030_K-87 TH korotish and voltaren(vst2) 1 (ID: 120232244829110073, статус: PAUSED)
+2025-08-29 21:37:39,544 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6030_K-87 TH korotish and voltaren(vst2) 1
+2025-08-29 21:37:39,544 - __main__ - DEBUG - Обработка адсета: ID 5915_ID Swype_vitya6 monah 12.08(vv1) 5 (ID: 120232038384130073, статус: PAUSED)
+2025-08-29 21:37:39,544 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 5
+2025-08-29 21:37:39,544 - __main__ - DEBUG - Обработка адсета: ID 5915_ID Swype_vitya6 monah 12.08(vv1) 3 (ID: 120232038384100073, статус: PAUSED)
+2025-08-29 21:37:39,544 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 3
+2025-08-29 21:37:39,544 - __main__ - DEBUG - Обработка адсета: ID 5915_ID Swype_vitya6 monah 12.08(vv1) 2 (ID: 120232038384080073, статус: PAUSED)
+2025-08-29 21:37:39,544 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5915_ID Swype_vitya6 monah 12.08(vv1) 2
+2025-08-29 21:37:39,544 - __main__ - DEBUG - Обработка адсета: TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия (ID: 120231986994160073, статус: PAUSED)
+2025-08-29 21:37:39,544 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-29 21:37:39,544 - __main__ - DEBUG - Обработка адсета: TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия (ID: 120231986994150073, статус: PAUSED)
+2025-08-29 21:37:39,545 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-29 21:37:39,545 - __main__ - DEBUG - Обработка адсета: TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия (ID: 120231986994130073, статус: PAUSED)
+2025-08-29 21:37:39,545 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-29 21:37:39,545 - __main__ - DEBUG - Обработка адсета: TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия (ID: 120231986994120073, статус: PAUSED)
+2025-08-29 21:37:39,545 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 — Копия
+2025-08-29 21:37:39,545 - __main__ - DEBUG - Обработка адсета: TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1 (ID: 120231986394630073, статус: PAUSED)
+2025-08-29 21:37:39,545 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5893_K-68 monah per to ajan gpt1  11.08(vst1) 1
+2025-08-29 21:37:39,545 - __main__ - DEBUG - Обработка адсета: TH 5887_k-79 mug zhena 11.08(vst1) 4 (ID: 120231984990220073, статус: PAUSED)
+2025-08-29 21:37:39,545 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5887_k-79 mug zhena 11.08(vst1) 4
+2025-08-29 21:37:39,545 - __main__ - DEBUG - Обработка адсета: TTA4 (ID: 120230100992710073, статус: PAUSED)
+2025-08-29 21:37:39,545 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) TTA4
+2025-08-29 21:37:39,545 - __main__ - DEBUG - Обработка адсета: TH 5937_K-81 TH voltaren1 13.08(Vst1) 5 (ID: 120233175204750514, статус: PAUSED)
+2025-08-29 21:37:39,545 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5937_K-81 TH voltaren1 13.08(Vst1) 5
+2025-08-29 21:37:39,545 - __main__ - DEBUG - Обработка адсета: TH 5937_K-81 TH voltaren1 13.08(Vst1) 3 (ID: 120233175204730514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5937_K-81 TH voltaren1 13.08(Vst1) 3
+2025-08-29 21:37:39,546 - __main__ - DEBUG - Обработка адсета: TH 5937_K-81 TH voltaren1 13.08(Vst1) 1 (ID: 120233175083120514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5937_K-81 TH voltaren1 13.08(Vst1) 1
+2025-08-29 21:37:39,546 - __main__ - DEBUG - Обработка адсета: TH 5742_K-68 monah4  07.08(vst1) 5 (ID: 120232877552790514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5742_K-68 monah4  07.08(vst1) 5
+2025-08-29 21:37:39,546 - __main__ - DEBUG - Обработка адсета: TH 5742_K-68 monah4  07.08(vst1) 4 (ID: 120232877552780514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5742_K-68 monah4  07.08(vst1) 4
+2025-08-29 21:37:39,546 - __main__ - DEBUG - Обработка адсета: TH 5742_K-68 monah4  07.08(vst1) 3 (ID: 120232877552770514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5742_K-68 monah4  07.08(vst1) 3
+2025-08-29 21:37:39,546 - __main__ - DEBUG - Обработка адсета: TH 5742_K-68 monah4  07.08(vst1) 2 (ID: 120232877552760514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5742_K-68 monah4  07.08(vst1) 2
+2025-08-29 21:37:39,546 - __main__ - DEBUG - Обработка адсета: TH 5742_K-68 monah4  07.08(vst1) 1 (ID: 120232877421200514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5742_K-68 monah4  07.08(vst1) 1
+2025-08-29 21:37:39,546 - __main__ - DEBUG - Обработка адсета: TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 5 (ID: 120232839621500514, статус: PAUSED)
+2025-08-29 21:37:39,546 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 5
+2025-08-29 21:37:39,547 - __main__ - DEBUG - Обработка адсета: TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 4 (ID: 120232839621470514, статус: PAUSED)
+2025-08-29 21:37:39,547 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 4
+2025-08-29 21:37:39,547 - __main__ - DEBUG - Обработка адсета: TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 3 (ID: 120232839621460514, статус: PAUSED)
+2025-08-29 21:37:39,547 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 3
+2025-08-29 21:37:39,547 - __main__ - DEBUG - Обработка адсета: TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 2 (ID: 120232839621440514, статус: PAUSED)
+2025-08-29 21:37:39,547 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 2
+2025-08-29 21:37:39,547 - __main__ - DEBUG - Обработка адсета: TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 1 (ID: 120232839576990514, статус: PAUSED)
+2025-08-29 21:37:39,547 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5721_Y-67 TH PZ   monah2 06.07_1(vst1) 1
+2025-08-29 21:37:39,547 - __main__ - DEBUG - Обработка адсета: TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 5 (ID: 120232838636140514, статус: PAUSED)
+2025-08-29 21:37:39,547 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 5
+2025-08-29 21:37:39,547 - __main__ - DEBUG - Обработка адсета: TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 4 (ID: 120232838636130514, статус: PAUSED)
+2025-08-29 21:37:39,547 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 4
+2025-08-29 21:37:39,547 - __main__ - DEBUG - Обработка адсета: TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 3 (ID: 120232838636120514, статус: PAUSED)
+2025-08-29 21:37:39,547 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 3
+2025-08-29 21:37:39,548 - __main__ - DEBUG - Обработка адсета: TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 2 (ID: 120232838636110514, статус: PAUSED)
+2025-08-29 21:37:39,548 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5717_TH k-78 PZ mug zhena 06.07(vst1) 2
+2025-08-29 21:37:39,548 - __main__ - DEBUG - Обработка адсета: TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 5 (ID: 120232705789030514, статус: PAUSED)
+2025-08-29 21:37:39,548 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 5
+2025-08-29 21:37:39,548 - __main__ - DEBUG - Обработка адсета: TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 4 (ID: 120232705789010514, статус: PAUSED)
+2025-08-29 21:37:39,548 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 4
+2025-08-29 21:37:39,548 - __main__ - DEBUG - Обработка адсета: TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 3 (ID: 120232705789000514, статус: PAUSED)
+2025-08-29 21:37:39,548 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 3
+2025-08-29 21:37:39,548 - __main__ - DEBUG - Обработка адсета: TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 2 (ID: 120232705788970514, статус: PAUSED)
+2025-08-29 21:37:39,548 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 2
+2025-08-29 21:37:39,548 - __main__ - DEBUG - Обработка адсета: TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 1 (ID: 120232705712710514, статус: PAUSED)
+2025-08-29 21:37:39,548 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5610_TH Z-SWIPE-1 otzv 03.08(vst2) 1
+2025-08-29 21:37:39,548 - __main__ - DEBUG - Обработка адсета: TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 5 (ID: 120232705441760514, статус: PAUSED)
+2025-08-29 21:37:39,548 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 5
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 4 (ID: 120232705441750514, статус: PAUSED)
+2025-08-29 21:37:39,549 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 4
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 3 (ID: 120232705441740514, статус: PAUSED)
+2025-08-29 21:37:39,549 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 3
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 2 (ID: 120232705441730514, статус: PAUSED)
+2025-08-29 21:37:39,549 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 2
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1 (ID: 120232705213200514, статус: PAUSED)
+2025-08-29 21:37:39,549 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5606_TH voltaren2.2 veo 03.08_3(vst1) 1
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: HH4 (ID: 120231975977540514, статус: PAUSED)
+2025-08-29 21:37:39,549 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) HH4
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: JJ2 (ID: 120231543286940514, статус: PAUSED)
+2025-08-29 21:37:39,549 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: JJ7 (ID: 120231543286920514, статус: PAUSED)
+2025-08-29 21:37:39,549 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ7
+2025-08-29 21:37:39,549 - __main__ - DEBUG - Обработка адсета: JJ6 (ID: 120231543286910514, статус: PAUSED)
+2025-08-29 21:37:39,550 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ6
+2025-08-29 21:37:39,550 - __main__ - DEBUG - Обработка адсета: JJ5 (ID: 120231543286900514, статус: PAUSED)
+2025-08-29 21:37:39,550 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ5
+2025-08-29 21:37:39,550 - __main__ - DEBUG - Обработка адсета: JJ4 (ID: 120231543286870514, статус: PAUSED)
+2025-08-29 21:37:39,550 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ4
+2025-08-29 21:37:39,550 - __main__ - DEBUG - Обработка адсета: JJ3 (ID: 120231543286860514, статус: PAUSED)
+2025-08-29 21:37:39,550 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
+2025-08-29 21:37:39,550 - __main__ - DEBUG - Обработка адсета: JJ1 (ID: 120231542943570514, статус: PAUSED)
+2025-08-29 21:37:39,550 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
+2025-08-29 21:37:39,550 - __main__ - DEBUG - Обработка адсета: SA3 (ID: 120231492350420514, статус: PAUSED)
+2025-08-29 21:37:39,550 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA3
+2025-08-29 21:37:39,550 - __main__ - DEBUG - Обработка адсета: SA1 (ID: 120231492339310514, статус: PAUSED)
+2025-08-29 21:37:39,550 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: SA) SA1
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: LL5 (ID: 120230885803390514, статус: PAUSED)
+2025-08-29 21:37:39,551 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL5
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: LL4 (ID: 120230885803380514, статус: PAUSED)
+2025-08-29 21:37:39,551 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LL4
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: TH 5939_K-81 TH voltaren1 13.08(Vst2) 3 (ID: 120230428316350128, статус: PAUSED)
+2025-08-29 21:37:39,551 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5939_K-81 TH voltaren1 13.08(Vst2) 3
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: TH 5930_K-80 TH voltaren1 13.08(Vst1) 4 (ID: 120230427087290128, статус: PAUSED)
+2025-08-29 21:37:39,551 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5930_K-80 TH voltaren1 13.08(Vst1) 4
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: TH 5930_K-80 TH voltaren1 13.08(Vst1) 1 (ID: 120230424706800128, статус: PAUSED)
+2025-08-29 21:37:39,551 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5930_K-80 TH voltaren1 13.08(Vst1) 1
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: TH 5832_Y-67 TH short  monah_3(vst1) 2 (ID: 120230298811820128, статус: PAUSED)
+2025-08-29 21:37:39,551 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5832_Y-67 TH short  monah_3(vst1) 2
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: TH 5832_Y-67 TH short  monah_3(vst1) 1 (ID: 120230298811810128, статус: PAUSED)
+2025-08-29 21:37:39,551 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5832_Y-67 TH short  monah_3(vst1) 1
+2025-08-29 21:37:39,551 - __main__ - DEBUG - Обработка адсета: TH 5830_TH voltaren2.2 veo 03.08_3(pz1) 3 (ID: 120230298356510128, статус: PAUSED)
+2025-08-29 21:37:39,552 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5830_TH voltaren2.2 veo 03.08_3(pz1) 3
+2025-08-29 21:37:39,552 - __main__ - DEBUG - Обработка адсета: TH 5830_TH voltaren2.2 veo 03.08_3(pz1) 2 (ID: 120230298356500128, статус: PAUSED)
+2025-08-29 21:37:39,552 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5830_TH voltaren2.2 veo 03.08_3(pz1) 2
+2025-08-29 21:37:39,552 - __main__ - DEBUG - Обработка адсета: TH 5830_TH voltaren2.2 veo 03.08_3(pz1) 5 (ID: 120230298356490128, статус: PAUSED)
+2025-08-29 21:37:39,552 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5830_TH voltaren2.2 veo 03.08_3(pz1) 5
+2025-08-29 21:37:39,552 - __main__ - DEBUG - Обработка адсета: TH 5827_mugshena78 red TH(pz1) 5 (ID: 120230296638890128, статус: PAUSED)
+2025-08-29 21:37:39,552 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5827_mugshena78 red TH(pz1) 5
+2025-08-29 21:37:39,552 - __main__ - DEBUG - Обработка адсета: TH 5827_mugshena78 red TH(pz1) 1 (ID: 120230296475220128, статус: PAUSED)
+2025-08-29 21:37:39,552 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5827_mugshena78 red TH(pz1) 1
+2025-08-29 21:37:39,552 - __main__ - DEBUG - Обработка адсета: TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 33 (ID: 120230182344180128, статус: PAUSED)
+2025-08-29 21:37:39,552 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 33
+2025-08-29 21:37:39,552 - __main__ - DEBUG - Обработка адсета: TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 32 (ID: 120230182344170128, статус: PAUSED)
+2025-08-29 21:37:39,552 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 32
+2025-08-29 21:37:39,552 - __main__ - DEBUG - Обработка адсета: TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 3 (ID: 120229886566740128, статус: PAUSED)
+2025-08-29 21:37:39,553 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 3
+2025-08-29 21:37:39,553 - __main__ - DEBUG - Обработка адсета: TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 2 (ID: 120229886566700128, статус: PAUSED)
+2025-08-29 21:37:39,553 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 2
+2025-08-29 21:37:39,553 - __main__ - DEBUG - Обработка адсета: TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 5 (ID: 120229886566690128, статус: PAUSED)
+2025-08-29 21:37:39,553 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 5
+2025-08-29 21:37:39,553 - __main__ - DEBUG - Обработка адсета: TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 4 (ID: 120229886566680128, статус: PAUSED)
+2025-08-29 21:37:39,553 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5608_TH voltaren2.2 veo 03.08_3(vst2) 4
+2025-08-29 21:37:39,553 - __main__ - DEBUG - Обработка адсета: TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 3 (ID: 120229886246430128, статус: PAUSED)
+2025-08-29 21:37:39,553 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 3
+2025-08-29 21:37:39,553 - __main__ - DEBUG - Обработка адсета: TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 2 (ID: 120229886246420128, статус: PAUSED)
+2025-08-29 21:37:39,553 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 2
+2025-08-29 21:37:39,553 - __main__ - DEBUG - Обработка адсета: TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 5 (ID: 120229886246370128, статус: PAUSED)
+2025-08-29 21:37:39,553 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 5
+2025-08-29 21:37:39,553 - __main__ - DEBUG - Обработка адсета: TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 4 (ID: 120229886246360128, статус: PAUSED)
+2025-08-29 21:37:39,554 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 4
+2025-08-29 21:37:39,554 - __main__ - DEBUG - Обработка адсета: TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 1 (ID: 120229886164410128, статус: PAUSED)
+2025-08-29 21:37:39,554 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5604_TH voltaren2.2 veo 03.08_6(vst2) 1
+2025-08-29 21:37:39,554 - __main__ - DEBUG - Обработка адсета: JJ2 (ID: 120228595353070128, статус: PAUSED)
+2025-08-29 21:37:39,554 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ2
+2025-08-29 21:37:39,554 - __main__ - DEBUG - Обработка адсета: JJ3 (ID: 120228595353060128, статус: PAUSED)
+2025-08-29 21:37:39,554 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ3
+2025-08-29 21:37:39,554 - __main__ - DEBUG - Обработка адсета: JJ1 (ID: 120228595032800128, статус: PAUSED)
+2025-08-29 21:37:39,554 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) JJ1
+2025-08-29 21:37:39,554 - __main__ - DEBUG - Обработка адсета: MY 6061_MY  voltaren1 17.08(vst2) 3 (ID: 120229013462520788, статус: PAUSED)
+2025-08-29 21:37:39,554 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6061_MY  voltaren1 17.08(vst2) 3
+2025-08-29 21:37:39,554 - __main__ - DEBUG - Обработка адсета: MY 6061_MY  voltaren1 17.08(vst2) 2 (ID: 120229013462500788, статус: PAUSED)
+2025-08-29 21:37:39,554 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6061_MY  voltaren1 17.08(vst2) 2
+2025-08-29 21:37:39,554 - __main__ - DEBUG - Обработка адсета: TH 6190_K-96 TH sereg-podctast(vst1) 1 (ID: 120229388844700788, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6190_K-96 TH sereg-podctast(vst1) 1
+2025-08-29 21:37:39,555 - __main__ - DEBUG - Обработка адсета: TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 5 (ID: 120229388825590788, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 5
+2025-08-29 21:37:39,555 - __main__ - DEBUG - Обработка адсета: TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 3 (ID: 120229388825570788, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6189_K-90 TH voltaren1 19.08 2monaha(vst2) 3
+2025-08-29 21:37:39,555 - __main__ - DEBUG - Обработка адсета: MY 6058_MY  voltaren1 17.08(vst1) 5 (ID: 120234486128690204, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6058_MY  voltaren1 17.08(vst1) 5
+2025-08-29 21:37:39,555 - __main__ - DEBUG - Обработка адсета: MY 6058_MY  voltaren1 17.08(vst1) 3 (ID: 120234486128650204, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6058_MY  voltaren1 17.08(vst1) 3
+2025-08-29 21:37:39,555 - __main__ - DEBUG - Обработка адсета: MY 6058_MY  voltaren1 17.08(vst1) 2 (ID: 120234486128620204, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6058_MY  voltaren1 17.08(vst1) 2
+2025-08-29 21:37:39,555 - __main__ - DEBUG - Обработка адсета: MY 6057_K-80 MY voltaren1 17.08(vst2) 3 (ID: 120234485915850204, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6057_K-80 MY voltaren1 17.08(vst2) 3
+2025-08-29 21:37:39,555 - __main__ - DEBUG - Обработка адсета: MY 6057_K-80 MY voltaren1 17.08(vst2) 4 (ID: 120234485915810204, статус: PAUSED)
+2025-08-29 21:37:39,555 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6057_K-80 MY voltaren1 17.08(vst2) 4
+2025-08-29 21:37:39,556 - __main__ - DEBUG - Обработка адсета: MY 6057_K-80 MY voltaren1 17.08(vst2) 5 (ID: 120234485915800204, статус: PAUSED)
+2025-08-29 21:37:39,556 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6057_K-80 MY voltaren1 17.08(vst2) 5
+2025-08-29 21:37:39,556 - __main__ - DEBUG - Обработка адсета: MY 6057_K-80 MY voltaren1 17.08(vst2) 1 (ID: 120234485815810204, статус: PAUSED)
+2025-08-29 21:37:39,556 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6057_K-80 MY voltaren1 17.08(vst2) 1
+2025-08-29 21:37:39,556 - __main__ - DEBUG - Обработка адсета: TH 5454_TH ilyak3 monah 28.07_4(lang1) 3 (ID: 120233212067520204, статус: PAUSED)
+2025-08-29 21:37:39,556 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5454_TH ilyak3 monah 28.07_4(lang1) 3
+2025-08-29 21:37:39,556 - __main__ - DEBUG - Обработка адсета: TH 5454_TH ilyak3 monah 28.07_4(lang1) 1 (ID: 120233211874720204, статус: PAUSED)
+2025-08-29 21:37:39,556 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5454_TH ilyak3 monah 28.07_4(lang1) 1
+2025-08-29 21:37:39,556 - __main__ - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 2 (ID: 120232754566730541, статус: PAUSED)
+2025-08-29 21:37:39,556 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 2
+2025-08-29 21:37:39,556 - __main__ - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 3 (ID: 120232754566710541, статус: PAUSED)
+2025-08-29 21:37:39,556 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 3
+2025-08-29 21:37:39,556 - __main__ - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 4 (ID: 120232754566670541, статус: PAUSED)
+2025-08-29 21:37:39,556 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 4
+2025-08-29 21:37:39,557 - __main__ - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 5 (ID: 120232754566660541, статус: PAUSED)
+2025-08-29 21:37:39,557 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 5
+2025-08-29 21:37:39,557 - __main__ - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 1 (ID: 120232754293820541, статус: PAUSED)
+2025-08-29 21:37:39,557 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 1
+2025-08-29 21:37:39,557 - __main__ - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 5 (ID: 120231567336470541, статус: PAUSED)
+2025-08-29 21:37:39,557 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 5
+2025-08-29 21:37:39,557 - __main__ - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 4 (ID: 120231567336460541, статус: PAUSED)
+2025-08-29 21:37:39,557 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 4
+2025-08-29 21:37:39,557 - __main__ - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 3 (ID: 120231567336440541, статус: PAUSED)
+2025-08-29 21:37:39,557 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 3
+2025-08-29 21:37:39,557 - __main__ - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 2 (ID: 120231567336410541, статус: PAUSED)
+2025-08-29 21:37:39,557 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 2
+2025-08-29 21:37:39,557 - __main__ - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 1 (ID: 120231567081860541, статус: PAUSED)
+2025-08-29 21:37:39,557 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 1
+2025-08-29 21:37:39,558 - __main__ - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 5 (ID: 120231565406000541, статус: PAUSED)
+2025-08-29 21:37:39,558 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 5
+2025-08-29 21:37:39,558 - __main__ - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 4 (ID: 120231565405960541, статус: PAUSED)
+2025-08-29 21:37:39,558 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 4
+2025-08-29 21:37:39,558 - __main__ - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 3 (ID: 120231565405950541, статус: PAUSED)
+2025-08-29 21:37:39,558 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 3
+2025-08-29 21:37:39,558 - __main__ - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 2 (ID: 120231565405940541, статус: PAUSED)
+2025-08-29 21:37:39,558 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 2
+2025-08-29 21:37:39,558 - __main__ - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 1 (ID: 120231564646970541, статус: PAUSED)
+2025-08-29 21:37:39,558 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 1
+2025-08-29 21:37:39,558 - __main__ - DEBUG - Обработка адсета: L3 (ID: 120230460539350541, статус: PAUSED)
+2025-08-29 21:37:39,558 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) L3
+2025-08-29 21:37:39,558 - __main__ - DEBUG - Обработка адсета: L5 (ID: 120230460539260541, статус: PAUSED)
+2025-08-29 21:37:39,558 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) L5
+2025-08-29 21:37:39,559 - __main__ - DEBUG - Обработка адсета: L4 (ID: 120230460462950541, статус: PAUSED)
+2025-08-29 21:37:39,559 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) L4
+2025-08-29 21:37:39,559 - __main__ - DEBUG - Обработка адсета: DD2 (ID: 120230077892420541, статус: PAUSED)
+2025-08-29 21:37:39,559 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD2
+2025-08-29 21:37:39,559 - __main__ - DEBUG - Обработка адсета: DD4 (ID: 120230077892390541, статус: PAUSED)
+2025-08-29 21:37:39,559 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD4
+2025-08-29 21:37:39,559 - __main__ - DEBUG - Обработка адсета: DD3 (ID: 120230077892380541, статус: PAUSED)
+2025-08-29 21:37:39,559 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD3
+2025-08-29 21:37:39,559 - __main__ - DEBUG - Обработка адсета: DD1 (ID: 120230076922410541, статус: PAUSED)
+2025-08-29 21:37:39,559 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DD1
+2025-08-29 21:37:39,559 - __main__ - DEBUG - Обработка адсета: PP4 (ID: 120230075670610541, статус: PAUSED)
+2025-08-29 21:37:39,559 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PP4
+2025-08-29 21:37:39,559 - __main__ - DEBUG - Обработка адсета: PP1 (ID: 120230075561420541, статус: PAUSED)
+2025-08-29 21:37:39,559 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PP1
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 5 (ID: 120230051400440610, статус: PAUSED)
+2025-08-29 21:37:39,560 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 5
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 4 (ID: 120230051400430610, статус: PAUSED)
+2025-08-29 21:37:39,560 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 4
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 3 (ID: 120230051400420610, статус: PAUSED)
+2025-08-29 21:37:39,560 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 3
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 2 (ID: 120230051400410610, статус: PAUSED)
+2025-08-29 21:37:39,560 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 2
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 1 (ID: 120230051361300610, статус: PAUSED)
+2025-08-29 21:37:39,560 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 1
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 2 (ID: 120230050506200610, статус: PAUSED)
+2025-08-29 21:37:39,560 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 2
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 5 (ID: 120230050506190610, статус: PAUSED)
+2025-08-29 21:37:39,560 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 5
+2025-08-29 21:37:39,560 - __main__ - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 3 (ID: 120230050506160610, статус: PAUSED)
+2025-08-29 21:37:39,561 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 3
+2025-08-29 21:37:39,561 - __main__ - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 1 (ID: 120230050307300610, статус: PAUSED)
+2025-08-29 21:37:39,561 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 1
+2025-08-29 21:37:39,561 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 4 (ID: 120230050100230610, статус: PAUSED)
+2025-08-29 21:37:39,561 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 4
+2025-08-29 21:37:39,561 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3 (ID: 120230050100220610, статус: PAUSED)
+2025-08-29 21:37:39,561 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3
+2025-08-29 21:37:39,561 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2 (ID: 120230050100200610, статус: PAUSED)
+2025-08-29 21:37:39,561 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2
+2025-08-29 21:37:39,561 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5 (ID: 120230050100190610, статус: PAUSED)
+2025-08-29 21:37:39,561 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5
+2025-08-29 21:37:39,561 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1 (ID: 120230050018900610, статус: PAUSED)
+2025-08-29 21:37:39,561 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1
+2025-08-29 21:37:39,561 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 3 (ID: 120229952748210610, статус: PAUSED)
+2025-08-29 21:37:39,562 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 3
+2025-08-29 21:37:39,562 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 2 (ID: 120229952748200610, статус: PAUSED)
+2025-08-29 21:37:39,562 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 2
+2025-08-29 21:37:39,562 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 5 (ID: 120229952748170610, статус: PAUSED)
+2025-08-29 21:37:39,562 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 5
+2025-08-29 21:37:39,562 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 4 (ID: 120229952748160610, статус: PAUSED)
+2025-08-29 21:37:39,562 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 4
+2025-08-29 21:37:39,562 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 1 (ID: 120229952482500610, статус: PAUSED)
+2025-08-29 21:37:39,562 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 1
+2025-08-29 21:37:39,562 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 3 (ID: 120229951264520610, статус: PAUSED)
+2025-08-29 21:37:39,562 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 3
+2025-08-29 21:37:39,562 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 2 (ID: 120229951264510610, статус: PAUSED)
+2025-08-29 21:37:39,562 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 2
+2025-08-29 21:37:39,562 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 5 (ID: 120229951264480610, статус: PAUSED)
+2025-08-29 21:37:39,563 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 5
+2025-08-29 21:37:39,563 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 4 (ID: 120229951264470610, статус: PAUSED)
+2025-08-29 21:37:39,563 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 4
+2025-08-29 21:37:39,563 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 1 (ID: 120229950945890610, статус: PAUSED)
+2025-08-29 21:37:39,563 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 1
+2025-08-29 21:37:39,563 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 5 (ID: 120229903596170610, статус: PAUSED)
+2025-08-29 21:37:39,563 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 5
+2025-08-29 21:37:39,563 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 4 (ID: 120229903596160610, статус: PAUSED)
+2025-08-29 21:37:39,563 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 4
+2025-08-29 21:37:39,563 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 3 (ID: 120229903596140610, статус: PAUSED)
+2025-08-29 21:37:39,563 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 3
+2025-08-29 21:37:39,563 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 2 (ID: 120229903596110610, статус: PAUSED)
+2025-08-29 21:37:39,563 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 2
+2025-08-29 21:37:39,563 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 1 (ID: 120229903551980610, статус: PAUSED)
+2025-08-29 21:37:39,564 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 1
+2025-08-29 21:37:39,564 - __main__ - DEBUG - Обработка адсета: D5 (ID: 120226915257380610, статус: PAUSED)
+2025-08-29 21:37:39,564 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
+2025-08-29 21:37:39,564 - __main__ - DEBUG - Обработка адсета: TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 3 (ID: 120230362346320056, статус: PAUSED)
+2025-08-29 21:37:39,564 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 3
+2025-08-29 21:37:39,564 - __main__ - DEBUG - Обработка адсета: TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 1 (ID: 120230362323880056, статус: PAUSED)
+2025-08-29 21:37:39,564 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 1
+2025-08-29 21:37:39,564 - __main__ - DEBUG - Обработка адсета: TH 5829_mugshena78 red TH(pz2) 3 (ID: 120230361572470056, статус: PAUSED)
+2025-08-29 21:37:39,564 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5829_mugshena78 red TH(pz2) 3
+2025-08-29 21:37:39,564 - __main__ - DEBUG - Обработка адсета: TH 5829_mugshena78 red TH(pz2) 1 (ID: 120230361572440056, статус: PAUSED)
+2025-08-29 21:37:39,564 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5829_mugshena78 red TH(pz2) 1
+2025-08-29 21:37:39,564 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 2 (ID: 120230138086510056, статус: PAUSED)
+2025-08-29 21:37:39,564 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 2
+2025-08-29 21:37:39,564 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 5 (ID: 120230138086490056, статус: PAUSED)
+2025-08-29 21:37:39,565 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 5
+2025-08-29 21:37:39,565 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 4 (ID: 120230138086480056, статус: PAUSED)
+2025-08-29 21:37:39,565 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 4
+2025-08-29 21:37:39,565 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 3 (ID: 120230138086460056, статус: PAUSED)
+2025-08-29 21:37:39,565 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 3
+2025-08-29 21:37:39,565 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 1 (ID: 120230138063520056, статус: PAUSED)
+2025-08-29 21:37:39,565 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 1
+2025-08-29 21:37:39,565 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 3 (ID: 120230137860060056, статус: PAUSED)
+2025-08-29 21:37:39,565 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 3
+2025-08-29 21:37:39,565 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 2 (ID: 120230137860050056, статус: PAUSED)
+2025-08-29 21:37:39,565 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 2
+2025-08-29 21:37:39,565 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 5 (ID: 120230137860000056, статус: PAUSED)
+2025-08-29 21:37:39,565 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 5
+2025-08-29 21:37:39,565 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 4 (ID: 120230137859990056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 4
+2025-08-29 21:37:39,566 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 1 (ID: 120230137741440056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 1
+2025-08-29 21:37:39,566 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 3 (ID: 120230137694710056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 3
+2025-08-29 21:37:39,566 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 2 (ID: 120230137694690056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 2
+2025-08-29 21:37:39,566 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 5 (ID: 120230137694670056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 5
+2025-08-29 21:37:39,566 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 4 (ID: 120230137694650056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 4
+2025-08-29 21:37:39,566 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 1 (ID: 120230135715480056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 1
+2025-08-29 21:37:39,566 - __main__ - DEBUG - Обработка адсета: TH  5743_K-68 monah4  07.08(vst2) 1 (ID: 120230135422980056, статус: PAUSED)
+2025-08-29 21:37:39,566 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH  5743_K-68 monah4  07.08(vst2) 1
+2025-08-29 21:37:39,567 - __main__ - DEBUG - Обработка адсета: GG4 (ID: 120229037288050056, статус: PAUSED)
+2025-08-29 21:37:39,567 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) GG4
+2025-08-29 21:37:39,567 - __main__ - DEBUG - Обработка адсета: T1 (ID: 120227572089510056, статус: PAUSED)
+2025-08-29 21:37:39,567 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-29 21:37:39,567 - __main__ - DEBUG - Обработка адсета: KK4 (ID: 120227571066060056, статус: PAUSED)
+2025-08-29 21:37:39,567 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
+2025-08-29 21:37:39,567 - __main__ - DEBUG - Обработка адсета: KK3 (ID: 120227571066040056, статус: PAUSED)
+2025-08-29 21:37:39,567 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
+2025-08-29 21:37:39,567 - __main__ - DEBUG - Обработка адсета: KK1 (ID: 120227570322680056, статус: PAUSED)
+2025-08-29 21:37:39,567 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-29 21:37:39,567 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 4 (ID: 120233779298360312, статус: PAUSED)
+2025-08-29 21:37:39,567 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 4
+2025-08-29 21:37:39,567 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 2 (ID: 120233779298340312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 2
+2025-08-29 21:37:39,568 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 5 (ID: 120233779298330312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 5
+2025-08-29 21:37:39,568 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 1 (ID: 120233777901980312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 1
+2025-08-29 21:37:39,568 - __main__ - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 3 (ID: 120233677258970312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 3
+2025-08-29 21:37:39,568 - __main__ - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 4 (ID: 120233677258960312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 4
+2025-08-29 21:37:39,568 - __main__ - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 5 (ID: 120233677258940312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 5
+2025-08-29 21:37:39,568 - __main__ - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 3 (ID: 120233173975760312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 3
+2025-08-29 21:37:39,568 - __main__ - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 2 (ID: 120233173975740312, статус: PAUSED)
+2025-08-29 21:37:39,568 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 2
+2025-08-29 21:37:39,569 - __main__ - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 1 (ID: 120233173975730312, статус: PAUSED)
+2025-08-29 21:37:39,569 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 1
+2025-08-29 21:37:39,569 - __main__ - INFO - === ЗАВЕРШЕНИЕ АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ 1 ===
+2025-08-29 21:37:39,570 - __main__ - INFO - Автоконтроль завершен для пользователя 1
+2025-08-29 21:38:18,616 - __main__ - INFO - Найдено 0 аккаунтов у пользователя 2
+2025-08-29 21:38:18,618 - __main__ - INFO - Найдено 25 аккаунтов у пользователя 1
+2025-08-29 21:38:18,618 - __main__ - INFO - Найдено 25 аккаунтов у 2 пользователей
+2025-08-29 21:38:18,619 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:19,177 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:19,180 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:19,819 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:19,823 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:20,384 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:20,388 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:21,119 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1197885948743091?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
+2025-08-29 21:38:21,124 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:21,663 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:21,667 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:22,203 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:22,207 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:22,802 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1285278756399693?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
+2025-08-29 21:38:22,807 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:23,454 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:23,458 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:24,084 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:24,089 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:24,687 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1975952553212111?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:24,692 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:25,292 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:25,297 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:25,946 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:25,950 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:26,573 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:26,578 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:27,166 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:27,171 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:27,859 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:27,863 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:28,480 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_607662318530131?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
+2025-08-29 21:38:28,484 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:29,221 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_608026278995897?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
+2025-08-29 21:38:29,225 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:29,896 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:29,901 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:30,470 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:30,474 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:31,103 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:31,107 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:31,716 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:31,720 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:32,361 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:32,366 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:32,960 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:32,964 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:33,685 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_744602524747804?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
+2025-08-29 21:38:33,690 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:34,379 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:34,382 - werkzeug - INFO - 77.79.173.250 - - [29/Aug/2025 21:38:34] "GET /api/admin/debug_accounts HTTP/1.1" 200 -
+2025-08-29 21:38:39,152 - __main__ - INFO - Найдено 0 аккаунтов у пользователя 2
+2025-08-29 21:38:39,154 - __main__ - INFO - Найдено 25 аккаунтов у пользователя 1
+2025-08-29 21:38:39,154 - __main__ - INFO - Найдено 25 аккаунтов у 2 пользователей
+2025-08-29 21:38:39,155 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:39,676 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:39,680 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:40,275 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:40,279 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:40,807 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1141439834686694?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:40,811 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:41,447 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1197885948743091?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
+2025-08-29 21:38:41,452 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:42,092 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:42,097 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:42,744 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:42,749 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:43,401 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1285278756399693?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
+2025-08-29 21:38:43,406 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:43,989 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:43,994 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:44,630 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1745128389547352?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:44,635 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:45,091 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1975952553212111?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:45,095 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:45,711 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:45,715 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:46,329 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-08-29 21:38:46,333 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:46,907 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:46,911 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-08-29 21:38:47,518 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-08-29 21:38:47,523 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443

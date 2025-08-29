@@ -158,6 +158,14 @@
         "documentation": {}
     },
     {
+        "label": "add_account_to_reserve_token",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "add_user_adset",
         "importPath": "database",
         "description": "database",
@@ -199,6 +207,14 @@
     },
     {
         "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_token_accounts",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -262,6 +278,14 @@
         "documentation": {}
     },
     {
+        "label": "update_reserve_token_account_info",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "update_user_adset_budget",
         "importPath": "database",
         "description": "database",
@@ -310,6 +334,14 @@
         "documentation": {}
     },
     {
+        "label": "get_user_settings",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -344,7 +376,23 @@
         "documentation": {}
     },
     {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -400,6 +448,38 @@
         "documentation": {}
     },
     {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -441,6 +521,14 @@
     },
     {
         "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -647,11 +735,74 @@
         "documentation": {}
     },
     {
+        "label": "handle_reserve_token_accounts",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def handle_reserve_token_accounts():\n    \"\"\"Управление аккаунтами резервных токенов\"\"\"\n    user_id = session['user_id']\n    if request.method == 'POST':\n        data = request.json\n        king = data.get('king')\n        token = data.get('token')\n        account_id = data.get('account_id')\n        if not all([king, token, account_id]):\n            return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "check_reserve_token_limits",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_reserve_token_limits():\n    \"\"\"Проверяет лимиты для конкретного токена\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    if not king or not token:\n        return jsonify({'success': False, 'error': 'Не указан KING или токен'})\n    try:\n        # Получаем аккаунты для этого токена",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "handle_reserve_tokens_post",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def handle_reserve_tokens_post():\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    account_ids = data.get('account_ids', [])\n    if not king or not token:\n        return jsonify({'success': False, 'error': 'Не указан KING или токен'})\n    if add_reserve_token(user_id, king, token):\n        # Добавляем аккаунты если они указаны",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "check_all_reserve_token_limits",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_all_reserve_token_limits():\n    \"\"\"Проверяет лимиты для всех токенов\"\"\"\n    user_id = session['user_id']\n    try:\n        reserve_tokens = get_reserve_tokens(user_id)\n        total_checked = 0\n        for king, tokens in reserve_tokens.items():\n            for token_info in tokens:\n                token = token_info['token']\n                accounts = token_info['accounts']  # Теперь accounts уже в структуре",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "handle_reserve_tokens_get",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def handle_reserve_tokens_get():\n    \"\"\"Получает резервные токены с аккаунтами\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все токены\n            cursor.execute(\"\"\"\n                SELECT king, token \n                FROM reserve_tokens ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "account_limits",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def account_limits():\n    \"\"\"Страница отображения лимитов аккаунтов\"\"\"\n    return render_template('account_limits.html')\ndef get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены для конкретного KING или все\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT king, token ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "get_reserve_tokens",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_reserve_tokens(user_id: int, king: str = None) -> Dict[str, List[str]]:\n    \"\"\"Получает резервные токены для конкретного KING или все\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            if king:\n                cursor.execute(\n                    \"SELECT token FROM reserve_tokens WHERE user_id = ? AND king = ?\",\n                    (user_id, king)\n                )",
+        "peekOfCode": "def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены для конкретного KING или все\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT king, token \n                FROM reserve_tokens \n                WHERE user_id = ?\n            \"\"\", (user_id,))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "process_adset_control",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    \"\"\"Обрабатывает контроль одного адсета\"\"\"\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')",
         "detail": "app",
         "documentation": {}
     },
@@ -660,7 +811,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def auto_control(user_id):\n    \"\"\"Функция автоконтроля для работы с базой данных и резервными токенами\"\"\"\n    try:\n        # Получаем настройки пользователя\n        settings = get_user_settings(user_id)\n        # Создаем сессию с прокси если нужно\n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),",
+        "peekOfCode": "def auto_control(user_id):\n    \"\"\"Функция автоконтроля для работы с базой данных и резервными токенами\"\"\"\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        # Получаем настройки пользователя\n        settings = get_user_settings(user_id)\n        # Создаем сессию с прокси если нужно\n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {",
         "detail": "app",
         "documentation": {}
     },
@@ -705,7 +856,16 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def add_reserve_token(user_id, king, token):\n    \"\"\"Добавляет резервный токен в базу данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\n                \"INSERT OR IGNORE INTO reserve_tokens (user_id, king, token) VALUES (?, ?, ?)\",\n                (user_id, king, token)\n            )\n            conn.commit()",
+        "peekOfCode": "def add_reserve_token(user_id, king, token):\n    \"\"\"Добавляет резервный токен в базу данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_tokens (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "handle_reserve_token_accounts_delete",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def handle_reserve_token_accounts_delete():\n    \"\"\"Удаляет аккаунт из резервного токена\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    account_id = data.get('account_id')\n    if not all([king, token, account_id]):\n        return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})\n    try:",
         "detail": "app",
         "documentation": {}
     },
@@ -777,7 +937,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    while True:\n        # Проверяем, должен ли автоконтроль продолжать работать\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                break\n        try:\n            auto_control(user_id)\n        except Exception as e:",
+        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    logger.info(f\"Запуск автоконтроля для пользователя {user_id}\")\n    while True:\n        # Проверяем, должен ли автоконтроль продолжать работать\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n                break\n        try:",
         "detail": "app",
         "documentation": {}
     },
@@ -795,7 +955,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def check_admin_access():\n    \"\"\"Проверяет права доступа к админ панели\"\"\"\n    return jsonify({\n        'success': True,\n        'is_admin': is_admin_user(session['user_id'])\n    })\n@app.route('/api/admin/account_limits')\n@login_required\ndef get_account_limits():\n    \"\"\"Возвращает информацию о лимитах всех аккаунтов\"\"\"",
+        "peekOfCode": "def check_admin_access():\n    \"\"\"Проверяет права доступа к админ панели\"\"\"\n    return jsonify({\n        'success': True,\n        'is_admin': is_admin_user(session['user_id'])\n    })\n@app.route('/api/account_limits', methods=['GET'])\n@login_required\ndef get_account_limits():\n    \"\"\"Возвращает информацию о лимитах всех аккаунтов пользователя\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -804,7 +964,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_account_limits():\n    \"\"\"Возвращает информацию о лимитах всех аккаунтов\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        user_id = session['user_id']\n        accounts = []\n        total_spend = 0\n        total_limit = 0\n        # Получаем все аккаунты",
+        "peekOfCode": "def get_account_limits():\n    \"\"\"Возвращает информацию о лимитах всех аккаунтов пользователя\"\"\"\n    try:\n        user_id = session['user_id']\n        accounts = []\n        total_spend = 0\n        total_limit = 0\n        # Получаем все аккаунты пользователя\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()",
         "detail": "app",
         "documentation": {}
     },
@@ -1506,7 +1666,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def check_balance_api():\n    \"\"\"Проверка баланса аккаунтов\"\"\"\n    try:\n        user_id = session['user_id']\n        warnings = check_account_balance_sufficiency(user_id)\n        return jsonify({\n            'success': True,\n            'warnings': warnings,\n            'count': len(warnings)\n        })",
+        "peekOfCode": "def check_balance_api():\n    \"\"\"Проверка баланса аккаунтов\"\"\"\n    try:\n        user_id = session['user_id']\n        warnings = check_account_balance_sufficiency(user_id)\n        # Убедитесь, что возвращаете правильный JSON\n        return jsonify({\n            'success': True,\n            'warnings': warnings,\n            'count': len(warnings)",
         "detail": "app",
         "documentation": {}
     },
@@ -1731,7 +1891,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional, Set, Tuple\nauto_control_threads = {}",
+        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\nauto_control_threads = {}",
         "detail": "app",
         "documentation": {}
     },
@@ -1740,7 +1900,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()",
+        "peekOfCode": "app.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()",
         "detail": "app",
         "documentation": {}
     },
@@ -1749,7 +1909,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Dict, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):",
         "detail": "app",
         "documentation": {}
     },
@@ -2024,11 +2184,38 @@
         "documentation": {}
     },
     {
+        "label": "add_account_to_reserve_token",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def add_account_to_reserve_token(user_id, king, token, account_id):\n    \"\"\"Добавляет аккаунт к резервному токену\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_token_accounts (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_token_accounts",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def get_reserve_token_accounts(user_id, king, token):\n    \"\"\"Получает аккаунты для резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT account_id, spend_cap, amount_spent, remaining, status \n                FROM reserve_token_accounts \n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "update_reserve_token_account_info",
+        "kind": 2,
+        "importPath": "database",
+        "description": "database",
+        "peekOfCode": "def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):\n    \"\"\"Обновляет информацию об аккаунте токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET spend_cap = ?, amount_spent = ?, remaining = ?, \n                    status = ?, last_checked = CURRENT_TIMESTAMP\n                WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?",
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "get_user_accounts_stats",
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def get_user_accounts_stats(user_id):\n    \"\"\"Получает статистику по аккаунтам пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем уникальные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL",
+        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем ВСЕ аккаунты, включая невалидные\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
         "detail": "database",
         "documentation": {}
     },
@@ -2105,12 +2292,147 @@
         "documentation": {}
     },
     {
+        "label": "get_session",
+        "kind": 2,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "def get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_campaigns",
+        "kind": 2,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        # Убедимся, что account_id не содержит 'act_' префикс\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_adsets",
+        "kind": 2,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ адсеты из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_adsets_insights",
+        "kind": 2,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "def fetch_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов (spend, CPC, CPA, conversions)\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc,cost_per_conversion,conversions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_cpm_data",
+        "kind": 2,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "def fetch_facebook_cpm_data(account_id, access_token):\n    \"\"\"Получает CPM данные из Facebook Insights\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,cpm,spend,impressions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_cpc_data",
+        "kind": 2,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "def fetch_facebook_cpc_data(account_id, access_token):\n    \"\"\"Получает CPC данные из Facebook Insights\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,cpc,spend\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
+        "label": "get_account_limits_info",
+        "kind": 2,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "facebook_api",
+        "description": "facebook_api",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"",
+        "detail": "facebook_api",
+        "documentation": {}
+    },
+    {
         "label": "generate_test_data",
         "kind": 2,
         "importPath": "init_db",
         "description": "init_db",
         "peekOfCode": "def generate_test_data():\n    \"\"\"Генерирует тестовые данные для базы данных\"\"\"\n    conn = get_db_connection()\n    cursor = conn.cursor()\n    # Очищаем таблицы\n    cursor.execute(\"DELETE FROM campaigns\")\n    cursor.execute(\"DELETE FROM adsets\")\n    cursor.execute(\"DELETE FROM geo_config\")\n    cursor.execute(\"DELETE FROM settings\")\n    # Добавляем настройки",
         "detail": "init_db",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_keitaro_report",
+        "kind": 2,
+        "importPath": "keitaro_api",
+        "description": "keitaro_api",
+        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.\n    Считает лиды по формуле Spend / CPA.\n    Берёт CPC и UCPC из Keitaro.\n    Группировка только по sub_id_9 (название адсета).\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}",
+        "detail": "keitaro_api",
+        "documentation": {}
+    },
+    {
+        "label": "get_keitaro_streams",
+        "kind": 2,
+        "importPath": "keitaro_api",
+        "description": "keitaro_api",
+        "peekOfCode": "def get_keitaro_streams(base_url, api_key, campaign_id):\n    \"\"\"\n    Получение потоков Keitaro с автоподстановкой схемы и пути API.\n    base_url: домен трекера (с https:// или без), например:\n              \"tracker.mydomain.com\" или \"https://tracker.mydomain.com/admin_api/v1\"\n    api_key: API key\n    campaign_id: ID кампании или \"all\"\n    \"\"\"\n    # Убираем пробелы и лишние слэши\n    base_url = base_url.strip().rstrip(\"/\")",
+        "detail": "keitaro_api",
+        "documentation": {}
+    },
+    {
+        "label": "update_keitaro_stream_weight",
+        "kind": 2,
+        "importPath": "keitaro_api",
+        "description": "keitaro_api",
+        "peekOfCode": "def update_keitaro_stream_weight(api_key, domain, stream_id, new_weight):\n    \"\"\"Обновляет вес потока в Keitaro - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/streams/{stream_id}\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        payload = {\"weight\": int(new_weight)}\n        response = requests.put(url, headers=headers, json=payload, timeout=30)\n        response.raise_for_status()\n        result = response.json()\n        return result",
+        "detail": "keitaro_api",
+        "documentation": {}
+    },
+    {
+        "label": "analyze_stream_performance",
+        "kind": 2,
+        "importPath": "keitaro_api",
+        "description": "keitaro_api",
+        "peekOfCode": "def analyze_stream_performance(api_key, domain, campaign_id=None, interval=\"today\"):\n    \"\"\"Анализирует производительность потоков кампании - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/report/build\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        # Базовый payload для анализа потоков\n        payload = {\n            \"range\": {\"interval\": interval, \"timezone\": \"Europe/Moscow\"},\n            \"metrics\": [\"conversions\", \"revenue\", \"cost\", \"roi\", \"epc\", \"clicks\"],\n            \"grouping\": [\"stream_id\", \"campaign_id\"],",
+        "detail": "keitaro_api",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "keitaro_api",
+        "description": "keitaro_api",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.\n    Считает лиды по формуле Spend / CPA.\n    Берёт CPC и UCPC из Keitaro.\n    Группировка только по sub_id_9 (название адсета).\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"",
+        "detail": "keitaro_api",
+        "documentation": {}
+    },
+    {
+        "label": "send_telegram_message",
+        "kind": 2,
+        "importPath": "telegram_bot",
+        "description": "telegram_bot",
+        "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        # Если нет chat_id или bot_token — пробуем получить из настроек\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")",
+        "detail": "telegram_bot",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "telegram_bot",
+        "description": "telegram_bot",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        # Если нет chat_id или bot_token — пробуем получить из настроек\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:",
+        "detail": "telegram_bot",
         "documentation": {}
     }
 ]

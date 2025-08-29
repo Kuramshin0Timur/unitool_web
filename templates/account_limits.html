@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2><i class="bi bi-graph-up"></i> Лимиты аккаунтов Facebook</h2>
+    
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5><i class="bi bi-info-circle"></i> Общая статистика</h5>
+        </div>
+        <div class="card-body">
+            <div class="row" id="statsContainer">
+                <div class="col-md-12 text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Загрузка...</span>
+                    </div>
+                    <p>Загрузка статистики...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+            <h5><i class="bi bi-table"></i> Детальная информация по аккаунтам</h5>
+            <button class="btn btn-sm btn-light" onclick="refreshLimits()">
+                <i class="bi bi-arrow-repeat"></i> Обновить
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID Аккаунта</th>
+                            <th>Название</th>
+                            <th>Статус</th>
+                            <th>Потрачено</th>
+                            <th>Баланс</th>
+                            <th>Лимит</th>
+                            <th>Остаток</th>
+                            <th>Запросы</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody id="limitsTable">
+                        <tr>
+                            <td colspan="9" class="text-center text-muted py-4">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Загрузка...</span>
+                                </div>
+                                <p class="mt-2">Загрузка данных...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    loadAccountLimits();
+});
+
+function loadAccountLimits() {
+    fetch('/api/account_limits')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                renderStats(data.stats);
+                renderLimitsTable(data.accounts);
+            } else {
+                showError(data.error || 'Ошибка загрузки лимитов');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки лимитов:', error);
+            showError('Ошибка сети при загрузке данных');
+        });
+}
+
+function renderStats(stats) {
+    const statsContainer = document.getElementById('statsContainer');
+    const usagePercent = stats.limit_usage || 0;
+    const usageClass = usagePercent > 90 ? 'danger' : usagePercent > 70 ? 'warning' : 'success';
+    
+    statsContainer.innerHTML = `
+        <div class="col-md-3">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Аккаунтов</h6>
+                    <h3 class="text-primary">${stats.total_accounts}</h3>
+                    <small class="text-muted">Всего / Активных: ${stats.active_accounts}</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Потрачено</h6>
+                    <h3 class="text-info">$${stats.total_spend.toFixed(2)}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Общий лимит</h6>
+                    <h3 class="text-success">$${stats.total_limit.toFixed(2)}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Использование</h6>
+                    <h3 class="text-${usageClass}">${usagePercent.toFixed(1)}%</h3>
+                    <div class="progress mt-2" style="height: 5px;">
+                        <div class="progress-bar bg-${usageClass}" 
+                             style="width: ${usagePercent}%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function renderLimitsTable(accounts) {
+    const tbody = document.getElementById('limitsTable');
+    
+    if (!accounts || accounts.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" class="text-center text-muted py-4">
+                    <i class="bi bi-inbox fs-1"></i>
+                    <p class="mt-2">Нет данных об аккаунтах</p>
+                    <small>Добавьте кампании с аккаунтами в систему</small>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    let html = '';
+    
+    accounts.forEach(account => {
+        const statusClass = account.status === 'ACTIVE' ? 'success' : 
+                          account.status === 'DISABLED' ? 'danger' : 'warning';
+        
+        const remaining = account.remaining_limit !== undefined ? 
+                         `$${account.remaining_limit.toFixed(2)}` : 'N/A';
+        
+        const requestsPercent = account.requests_usage_percent || 0;
+        const requestsClass = requestsPercent > 90 ? 'danger' : 
+                            requestsPercent > 70 ? 'warning' : 'success';
+        
+        html += `
+            <tr>
+                <td><code>${account.account_id}</code></td>
+                <td>${account.name}</td>
+                <td>
+                    <span class="badge bg-${statusClass}">${account.status}</span>
+                    ${account.error ? `<br><small class="text-danger">${account.error}</small>` : ''}
+                </td>
+                <td>$${account.spend.toFixed(2)}</td>
+                <td>$${account.balance.toFixed(2)}</td>
+                <td>$${account.spend_cap.toFixed(2)}</td>
+                <td><strong>${remaining}</strong></td>
+                <td>
+                    <small>${account.requests_today}/${account.requests_limit}</small>
+                    <div class="progress mt-1" style="height: 3px;">
+                        <div class="progress-bar bg-${requestsClass}" 
+                             style="width: ${requestsPercent}%"></div>
+                    </div>
+                    <small>${requestsPercent.toFixed(1)}%</small>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary" 
+                            onclick="testAccount('${account.account_id}')"
+                            title="Тестировать аккаунт">
+                        <i class="bi bi-play-circle"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+    });
+    
+    tbody.innerHTML = html;
+}
+
+function refreshLimits() {
+    const tbody = document.getElementById('limitsTable');
+    tbody.innerHTML = `
+        <tr>
+            <td colspan="9" class="text-center text-muted py-4">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Загрузка...</span>
+                </div>
+                <p class="mt-2">Обновление данных...</p>
+            </td>
+        </tr>
+    `;
+    
+    loadAccountLimits();
+}
+
+function testAccount(accountId) {
+    // Функция для тестирования конкретного аккаунта
+    alert(`Тестирование аккаунта: ${accountId}`);
+}
+
+function showError(message) {
+    const tbody = document.getElementById('limitsTable');
+    tbody.innerHTML = `
+        <tr>
+            <td colspan="9" class="text-center text-danger py-4">
+                <i class="bi bi-exclamation-triangle fs-1"></i>
+                <p class="mt-2">${message}</p>
+                <button class="btn btn-sm btn-outline-secondary mt-2" 
+                        onclick="refreshLimits()">
+                    Попробовать снова
+                </button>
+            </td>
+        </tr>
+    `;
+}
+</script>
+{% endblock %}

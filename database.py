@@ -1,3 +1,4 @@
+import json
 import sqlite3
 import threading
 from pathlib import Path
@@ -306,10 +307,26 @@ def init_db():
                 king TEXT NOT NULL,
                 token TEXT NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users (id),
                 UNIQUE(user_id, king, token)
             )
             """)
-            
+            cursor.execute("""
+            CREATE TABLE IF NOT EXISTS reserve_token_accounts (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                king TEXT NOT NULL,
+                token TEXT NOT NULL,
+                account_id TEXT NOT NULL,
+                spend_cap REAL DEFAULT 0,
+                amount_spent REAL DEFAULT 0,
+                remaining REAL DEFAULT 0,
+                status TEXT DEFAULT 'pending',
+                last_checked TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users (id),
+                UNIQUE(user_id, king, token, account_id)
+            )
+            """)
             # Таблица правил бюджета
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS budget_rules (
@@ -865,32 +882,114 @@ def get_all_users():
     except Exception as e:
         logger.error(f"Ошибка получения списка пользователей: {e}")
         return []
-
-def get_user_accounts_stats(user_id):
-    """Получает статистику по аккаунтам пользователя"""
+def add_account_to_reserve_token(user_id, king, token, account_id):
+    """Добавляет аккаунт к резервному токену"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Получаем уникальные аккаунты
+            # Создаем таблицу если не существует
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS reserve_token_accounts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL,
+                    king TEXT NOT NULL,
+                    token TEXT NOT NULL,
+                    account_id TEXT NOT NULL,
+                    spend_cap REAL DEFAULT 0,
+                    amount_spent REAL DEFAULT 0,
+                    remaining REAL DEFAULT 0,
+                    status TEXT DEFAULT 'pending',
+                    last_checked TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users (id),
+                    UNIQUE(user_id, king, token, account_id)
+                )
+            """)
+            
+            cursor.execute("""
+                INSERT OR IGNORE INTO reserve_token_accounts 
+                (user_id, king, token, account_id) 
+                VALUES (?, ?, ?, ?)
+            """, (user_id, king, token, account_id))
+            
+            conn.commit()
+            return True
+    except Exception as e:
+        logger.error(f"Ошибка добавления аккаунта к токену: {e}")
+        return False
+
+def get_reserve_token_accounts(user_id, king, token):
+    """Получает аккаунты для резервного токена"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT account_id, spend_cap, amount_spent, remaining, status 
+                FROM reserve_token_accounts 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            return [dict(row) for row in cursor.fetchall()]
+    except Exception as e:
+        logger.error(f"Ошибка получения аккаунтов токена: {e}")
+        return []
+
+def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):
+    """Обновляет информацию об аккаунте токена"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                UPDATE reserve_token_accounts 
+                SET spend_cap = ?, amount_spent = ?, remaining = ?, 
+                    status = ?, last_checked = CURRENT_TIMESTAMP
+                WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?
+            """, (
+                limits_info.get('spend_cap', 0),
+                limits_info.get('spend', 0),
+                limits_info.get('remaining_limit', 0),
+                'success' if not limits_info.get('error') else 'error',
+                user_id, king, token, account_id
+            ))
+            
+            conn.commit()
+            return True
+    except Exception as e:
+        logger.error(f"Ошибка обновления информации аккаунта: {e}")
+        return False
+def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
+    """Получает статистику по аккаунтам пользователя с проверкой валидности"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем ВСЕ аккаунты, включая невалидные
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
-                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
+                WHERE user_id = ? 
+                AND account_id IS NOT NULL
             """, (user_id,))
             
             accounts = []
             for row in cursor.fetchall():
+                account_id = row['account_id']
+                token = row['token']
+                
+                # Добавляем даже невалидные аккаунты для отображения
                 accounts.append({
-                    'account_id': row['account_id'],
-                    'token': row['token']
+                    'account_id': account_id or 'N/A',
+                    'token': token or 'N/A'
                 })
             
+            logger.info(f"Найдено {len(accounts)} аккаунтов у пользователя {user_id}")
             return accounts
+            
     except Exception as e:
-        logger.error(f"Ошибка получения статистики аккаунтов: {e}")
+        logger.error(f"Ошибка получения статистики аккаунтов пользователя {user_id}: {e}")
         return []
-
 def get_all_accounts_stats():
     """Получает статистику по всем аккаунтам всех пользователей"""
     users = get_all_users()
@@ -958,6 +1057,7 @@ def get_account_limits_info(account_id, access_token):
     except Exception as e:
         logger.error(f"Ошибка получения лимитов для аккаунта {account_id}: {e}")
         return None
+
 def update_user_adset_budget(user_id: int, adset_id: str, budget: float):
     """Обновляет бюджет адсета пользователя в базе данных"""
     with lock:

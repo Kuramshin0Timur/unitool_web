@@ -12,11 +12,13 @@ from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    session, url_for)
 from fuzzywuzzy import fuzz, process
 
-from database import (add_user_adset, add_user_campaign, authenticate_user,
-                      create_user, get_adset_budget_settings,
-                      get_db_connection, get_user_adsets, get_user_campaigns,
-                      get_user_geo_config, get_user_geo_rules,
-                      get_user_settings, init_db, update_campaign_stats,
+from database import (add_account_to_reserve_token, add_user_adset,
+                      add_user_campaign, authenticate_user, create_user,
+                      get_adset_budget_settings, get_db_connection,
+                      get_reserve_token_accounts, get_user_adsets,
+                      get_user_campaigns, get_user_geo_config,
+                      get_user_geo_rules, get_user_settings, init_db,
+                      update_campaign_stats, update_reserve_token_account_info,
                       update_user_adset_budget, update_user_adset_status,
                       update_user_campaign_status, update_user_settings)
 
@@ -40,7 +42,7 @@ logger = logging.getLogger(__name__)
 import datetime
 import json
 import time
-from typing import Dict, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 auto_control_threads = {}
 auto_control_lock = threading.Lock()
@@ -217,11 +219,6 @@ def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
     except Exception as e:
         logger.warning(f"Telegram сообщение не отправлено: {e}")
         return False
-import json
-from typing import Any, Dict, List
-
-# Добавьте в начало файла с другими импортами
-import requests
 
 
 def get_all_users() -> List[Dict[str, Any]]:
@@ -392,9 +389,9 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         
         url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}"
         
-        # Упрощенные поля
+        # Поля для получения информации о лимитах
         params = {
-            'fields': 'id,name,account_status,amount_spent,balance,spend_cap',
+            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit',
             'access_token': access_token
         }
         
@@ -424,6 +421,21 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         amount_spent = float(data.get('amount_spent', 0)) / 100
         balance = float(data.get('balance', 0)) / 100
         spend_cap = float(data.get('spend_cap', 0)) / 100
+        daily_limit = float(data.get('daily_spend_limit', 0)) / 100
+        
+        # Получаем информацию о лимитах запросов из заголовков
+        usage_info = response.headers.get('x-business-use-case-usage', '{}')
+        calls_usage = 0
+        calls_limit = 100
+        
+        try:
+            usage_data = json.loads(usage_info)
+            if usage_data and isinstance(usage_data, dict):
+                for key in usage_data.keys():
+                    call_count = usage_data[key][0].get('call_count', 0)
+                    calls_usage = max(calls_usage, call_count)
+        except:
+            pass
         
         return {
             'account_id': clean_account_id,
@@ -432,10 +444,11 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
             'spend': amount_spent,
             'balance': balance,
             'spend_cap': spend_cap,
-            'daily_limit': 0,
-            'requests_today': 0,
-            'requests_limit': 100,
-            'requests_usage_percent': 0
+            'daily_limit': daily_limit,
+            'requests_today': calls_usage,
+            'requests_limit': calls_limit,
+            'requests_usage_percent': round((calls_usage / calls_limit) * 100, 1) if calls_limit > 0 else 0,
+            'remaining_limit': spend_cap - amount_spent if spend_cap > 0 else 0
         }
         
     except requests.exceptions.RequestException as e:
@@ -466,43 +479,378 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
             'requests_usage_percent': 0,
             'error': f"Неизвестная ошибка: {str(e)}"
         }
-def get_reserve_tokens(user_id: int, king: str = None) -> Dict[str, List[str]]:
+@app.route('/api/reserve_tokens/accounts', methods=['POST', 'DELETE'])
+@login_required
+def handle_reserve_token_accounts():
+    """Управление аккаунтами резервных токенов"""
+    user_id = session['user_id']
+    
+    if request.method == 'POST':
+        data = request.json
+        king = data.get('king')
+        token = data.get('token')
+        account_id = data.get('account_id')
+        
+        if not all([king, token, account_id]):
+            return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})
+        
+        if add_account_to_reserve_token(user_id, king, token, account_id):
+            return jsonify({'success': True, 'message': 'Аккаунт добавлен'})
+        else:
+            return jsonify({'success': False, 'error': 'Ошибка добавления аккаунта'})
+    
+    elif request.method == 'DELETE':
+        data = request.json
+        account_id = data.get('account_id')
+        
+        if not account_id:
+            return jsonify({'success': False, 'error': 'Не указан account_id'})
+        
+        if remove_account_from_reserve_token(user_id, account_id):
+            return jsonify({'success': True, 'message': 'Аккаунт удален'})
+        else:
+            return jsonify({'success': False, 'error': 'Ошибка удаления аккаунта'})
+@app.route('/api/reserve_tokens/check_limits', methods=['POST'])
+@login_required
+def check_reserve_token_limits():
+    """Проверяет лимиты для конкретного токена"""
+    user_id = session['user_id']
+    data = request.json
+    
+    king = data.get('king')
+    token = data.get('token')
+    
+    if not king or not token:
+        return jsonify({'success': False, 'error': 'Не указан KING или токен'})
+    
+    try:
+        # Получаем аккаунты для этого токена
+        accounts = get_reserve_token_accounts(user_id, king, token)
+        checked_count = 0
+        
+        for account in accounts:
+            account_id = account['account_id']
+            # Проверяем лимиты через Facebook API
+            limits_info = get_account_limits_info(account_id, token)
+            
+            if limits_info:
+                # Обновляем информацию об аккаунте
+                update_reserve_token_account_info(user_id, king, token, account_id, limits_info)
+                checked_count += 1
+        
+        return jsonify({
+            'success': True,
+            'message': f'Проверено {checked_count} аккаунтов',
+            'checked_accounts': checked_count
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка проверки лимитов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/reserve_tokens', methods=['POST'])
+@login_required
+def handle_reserve_tokens_post():
+    user_id = session['user_id']
+    data = request.json
+    king = data.get('king')
+    token = data.get('token')
+    account_ids = data.get('account_ids', [])
+    
+    if not king or not token:
+        return jsonify({'success': False, 'error': 'Не указан KING или токен'})
+    
+    if add_reserve_token(user_id, king, token):
+        # Добавляем аккаунты если они указаны
+        for account_id in account_ids:
+            if account_id:
+                add_account_to_reserve_token(user_id, king, token, account_id)
+        
+        return jsonify({'success': True, 'message': 'Токен добавлен'})
+    else:
+        return jsonify({'success': False, 'error': 'Ошибка добавления токена'})
+@app.route('/api/reserve_tokens/check_all_limits', methods=['POST'])
+@login_required
+def check_all_reserve_token_limits():
+    """Проверяет лимиты для всех токенов"""
+    user_id = session['user_id']
+    
+    try:
+        reserve_tokens = get_reserve_tokens(user_id)
+        total_checked = 0
+        
+        for king, tokens in reserve_tokens.items():
+            for token_info in tokens:
+                token = token_info['token']
+                accounts = token_info['accounts']  # Теперь accounts уже в структуре
+                
+                for account in accounts:
+                    account_id = account['account_id']
+                    limits_info = get_account_limits_info(account_id, token)
+                    
+                    if limits_info:
+                        update_reserve_token_account_info(user_id, king, token, account_id, limits_info)
+                        total_checked += 1
+        
+        return jsonify({
+            'success': True,
+            'message': f'Проверено {total_checked} аккаунтов',
+            'total_checked': total_checked
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка проверки всех лимитов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/reserve_tokens', methods=['GET'])
+@login_required
+def handle_reserve_tokens_get():
+    """Получает резервные токены с аккаунтами"""
+    user_id = session['user_id']
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем все токены
+            cursor.execute("""
+                SELECT king, token 
+                FROM reserve_tokens 
+                WHERE user_id = ?
+            """, (user_id,))
+            
+            tokens_by_king = {}
+            for row in cursor.fetchall():
+                king = row['king']
+                token = row['token']
+                
+                if king not in tokens_by_king:
+                    tokens_by_king[king] = []
+                
+                # Получаем аккаунты для этого токена
+                cursor.execute("""
+                    SELECT account_id, spend_cap, amount_spent, remaining, status 
+                    FROM reserve_token_accounts 
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (user_id, king, token))
+                
+                accounts = []
+                for account_row in cursor.fetchall():
+                    accounts.append({
+                        'account_id': account_row['account_id'],
+                        'spend_cap': account_row['spend_cap'],
+                        'amount_spent': account_row['amount_spent'],
+                        'remaining': account_row['remaining'],
+                        'status': account_row['status']
+                    })
+                
+                tokens_by_king[king].append({
+                    'token': token,
+                    'accounts': accounts
+                })
+            
+            return jsonify({'success': True, 'tokens': tokens_by_king})
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения резервных токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/account_limits')
+@login_required
+def account_limits():
+    """Страница отображения лимитов аккаунтов"""
+    return render_template('account_limits.html')
+def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
     """Получает резервные токены для конкретного KING или все"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            if king:
-                cursor.execute(
-                    "SELECT token FROM reserve_tokens WHERE user_id = ? AND king = ?",
-                    (user_id, king)
-                )
-            else:
-                cursor.execute(
-                    "SELECT king, token FROM reserve_tokens WHERE user_id = ?",
-                    (user_id,)
-                )
+            cursor.execute("""
+                SELECT king, token 
+                FROM reserve_tokens 
+                WHERE user_id = ?
+            """, (user_id,))
             
             tokens = {}
             for row in cursor.fetchall():
-                if 'king' in row:
-                    k = row['king']
-                    token = row['token']
-                else:
-                    k = king
-                    token = row['token']
+                king = row['king']
+                token = row['token']
                 
-                if k not in tokens:
-                    tokens[k] = []
-                tokens[k].append(token)
+                if king not in tokens:
+                    tokens[king] = []
+                
+                tokens[king].append({
+                    'token': token,
+                    'accounts': get_reserve_token_accounts(user_id, king, token)
+                })
             
             return tokens
     except Exception as e:
         logger.error(f"Ошибка получения резервных токенов: {e}")
         return {}
+def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):
+    """Обрабатывает контроль одного адсета"""
+    adset_name = adset.get('name', '')
+    adset_id = adset.get('adset_id', '')
+    ucpc = float(adset.get('ucpc', 0))
+    spend = float(adset.get('spend', 0))
+    cpa = float(adset.get('cpa', 0))
+    status = adset.get('status', '').strip().upper()
+    account_id = adset.get('account_id', '')
+    token = adset.get('token', '')
+    leads = int(adset.get('leads', 0))
+    manual_pause = bool(adset.get('manual_pause', 0))
+    king = adset.get('king', '').strip()
+    
+    logger.debug(f"Обработка адсета: {adset_name} (ID: {adset_id}, статус: {status})")
+    
+    # Извлекаем GEO с улучшенной логикой
+    geo = extract_geo_from_name(adset_name, known_geos)
+    
+    # Пропускаем если нет GEO или неизвестное GEO
+    if geo == 'N/A' or geo not in geo_rules:
+        msg = f"⏭️ Пропускаем (неизвестное GEO: {geo}) {adset_name}"
+        logger.info(msg)
+        return
+    
+    rule = geo_rules[geo]
+    should_pause = False
+    should_resume = False
+    pause_reason = ""
+
+    # Логика автоконтроля
+    if status == "ACTIVE" and not manual_pause:
+        max_cpa = rule.get("max_cpa", rule.get("cpa_red", 100))
+        min_spend = rule.get("min_spend", rule.get("spend_zero_leads", 50))
+        
+        logger.debug(f"Правила для GEO {geo}: max_cpa={max_cpa}, min_spend={min_spend}")
+        logger.debug(f"Показатели адсета: leads={leads}, ucpc={ucpc}, spend={spend}, cpa={cpa}")
+        
+        if leads == 0 and ucpc > max_cpa and spend >= min_spend:
+            should_pause = True
+            pause_reason = "uCPC"
+            logger.info(f"Условие паузы 1: leads=0, ucpc={ucpc} > {max_cpa}, spend={spend} >= {min_spend}")
+        elif leads > 0 and cpa > max_cpa and spend >= min_spend:
+            should_pause = True
+            pause_reason = "CPA"
+            logger.info(f"Условие паузы 2: leads={leads}, cpa={cpa} > {max_cpa}, spend={spend} >= {min_spend}")
+        elif spend >= min_spend and leads == 0:
+            should_pause = True
+            pause_reason = "Zero Leads"
+            logger.info(f"Условие паузы 3: spend={spend} >= {min_spend}, leads=0")
+
+    elif status == "PAUSED" and not manual_pause:
+        cpa_green = rule.get("cpa_green", 20)
+        cpa_orange = rule.get("cpa_orange", 50)
+        min_spend_half = rule.get("min_spend", rule.get("spend_zero_leads", 50)) / 2
+        
+        logger.debug(f"Правила возобновления: cpa_green={cpa_green}, cpa_orange={cpa_orange}, min_spend_half={min_spend_half}")
+        
+        if (leads > 0 and cpa <= cpa_green and ucpc <= cpa_orange and spend >= min_spend_half):
+            should_resume = True
+            logger.info(f"Условие возобновления: leads={leads}, cpa={cpa} <= {cpa_green}, ucpc={ucpc} <= {cpa_orange}, spend={spend} >= {min_spend_half}")
+
+    # Получаем токены: основной + резервные
+    token_list = reserve_tokens.get(king, [])
+    if token and token not in token_list:
+        token_list = [token] + token_list  # основной токен первым
+    
+    if not token_list:
+        logger.warning(f"Нет доступных токенов для KING={king}, адсет {adset_name}")
+        return
+
+    # --- Отключение ---
+    if should_pause:
+        logger.info(f"Попытка отключения адсета {adset_name} по причине: {pause_reason}")
+        for idx, current_token in enumerate(token_list):
+            try:
+                url = f"https://graph.facebook.com/v18.0/{adset_id}"
+                data = {"status": "PAUSED"}
+                
+                logger.debug(f"Отправка запроса к Facebook API: {url} с токеном {idx+1}")
+                
+                resp = session_obj.post(
+                    url,
+                    params={"access_token": current_token},
+                    data=data,
+                    timeout=10
+                ).json()
+
+                logger.debug(f"Ответ Facebook API: {resp}")
+
+                if resp.get("success") or resp.get("id") == adset_id:
+                    # Обновляем статус в базе
+                    update_user_adset_status(user_id, adset_id, "PAUSED")
+                    
+                    msg = (f"🔴 Отключен: {adset_name} "
+                           f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f}) — причина: {pause_reason}")
+                    logger.info(msg)
+                    send_telegram_message(msg, user_id=user_id)
+                    break
+
+                if ("error" in resp and "Application request limit" in resp["error"].get("message", "")):
+                    if idx + 1 < len(token_list):
+                        logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
+                        continue
+                    else:
+                        raise Exception(f"❌ Все токены исчерпаны для KING={king}")
+                else:
+                    raise Exception(f"Ошибка Facebook: {resp}")
+
+            except Exception as e:
+                msg = f"❌ Ошибка отключения {adset_name} (токен {idx+1}): {e}"
+                logger.error(msg)
+                if idx == len(token_list) - 1:  # Если это последний токен
+                    send_telegram_message(msg, user_id=user_id)
+                continue
+
+    # --- Включение ---
+    elif should_resume:
+        logger.info(f"Попытка включения адсета {adset_name}")
+        for idx, current_token in enumerate(token_list):
+            try:
+                url = f"https://graph.facebook.com/v18.0/{adset_id}"
+                data = {"status": "ACTIVE"}
+                
+                logger.debug(f"Отправка запроса к Facebook API: {url} с токеном {idx+1}")
+                
+                resp = session_obj.post(
+                    url,
+                    params={"access_token": current_token},
+                    data=data,
+                    timeout=10
+                ).json()
+
+                logger.debug(f"Ответ Facebook API: {resp}")
+
+                if resp.get("success") or resp.get("id") == adset_id:
+                    # Обновляем статус в базе
+                    update_user_adset_status(user_id, adset_id, "ACTIVE")
+                    
+                    msg = (f"🟢 Включен: {adset_name} "
+                           f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
+                    logger.info(msg)
+                    send_telegram_message(msg, user_id=user_id)
+                    break
+
+                if ("error" in resp and "Application request limit" in resp["error"].get("message", "")):
+                    if idx + 1 < len(token_list):
+                        logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
+                        continue
+                    else:
+                        raise Exception(f"❌ Все токены исчерпаны для KING={king}")
+                else:
+                    raise Exception(f"Ошибка Facebook: {resp}")
+
+            except Exception as e:
+                msg = f"❌ Ошибка включения {adset_name} (токен {idx+1}): {e}"
+                logger.error(msg)
+                if idx == len(token_list) - 1:  # Если это последний токен
+                    send_telegram_message(msg, user_id=user_id)
+                continue
 def auto_control(user_id):
     """Функция автоконтроля для работы с базой данных и резервными токенами"""
     try:
+        logger.info(f"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")
+        
         # Получаем настройки пользователя
         settings = get_user_settings(user_id)
         
@@ -513,17 +861,10 @@ def auto_control(user_id):
                 'http': settings.get('proxy'),
                 'https': settings.get('proxy')
             }
+        
+        # Проверяем и отключаем кампании без активных адсетов
         check_and_pause_campaigns(user_id)
-    except Exception as e:
-        msg = f"🚫 Сессия не создана: {e}"
-        logger.error(msg)
-    try:
-        send_telegram_message("🔴 AdSet отключён", user_id=user_id)
-    except Exception as e:
-        logger.warning(f"Telegram сообщение не отправлено: {e}")
-        return
-
-    try:
+        
         # Получаем правила GEO из новой таблицы geo_rules
         geo_rules = get_user_geo_rules(user_id)
         
@@ -538,159 +879,23 @@ def auto_control(user_id):
         # Получаем резервные токены из отдельной таблицы
         reserve_tokens = load_reserve_tokens(user_id)
         
-    except Exception as e:
-        logger.error(f"Ошибка чтения конфигов: {e}")
-        send_telegram_message(settings.get('telegram_chat_id'), f"Ошибка чтения конфигов: {e}", settings.get('telegram_bot_token'))
-        return
-
-    try:
         # Получаем все адсеты пользователя из базы данных
         adsets = get_user_adsets(user_id)
+        logger.info(f"Найдено {len(adsets)} адсетов для обработки")
         
-    except Exception as e:
-        logger.error(f"Ошибка чтения адсетов: {e}")
-        send_telegram_message(settings.get('telegram_chat_id'), f"Ошибка чтения адсетов: {e}", settings.get('telegram_bot_token'))
-        return
-
-    for adset in adsets:
-        try:
-            adset_name = adset.get('name', '')
-            adset_id = adset.get('adset_id', '')
-            ucpc = float(adset.get('ucpc', 0))
-            spend = float(adset.get('spend', 0))
-            cpa = float(adset.get('cpa', 0))
-            status = adset.get('status', '').strip().upper()
-            account_id = adset.get('account_id', '')
-            token = adset.get('token', '')
-            leads = int(adset.get('leads', 0))
-            manual_pause = bool(adset.get('manual_pause', 0))
-            king = adset.get('king', '').strip()
-            
-            # Извлекаем GEO с улучшенной логикой
-            geo = extract_geo_from_name(adset_name, known_geos)
-            
-            # Пропускаем если нет GEO
-            if geo == 'N/A' or geo not in geo_rules:
-                msg = f"⏭️ Пропускаем (неизвестное GEO: {geo}) {adset_name}"
-                logger.info(msg)
+        for adset in adsets:
+            try:
+                process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings)
+                
+            except Exception as e:
+                logger.error(f"Ошибка обработки адсета {adset.get('name', 'unknown')}: {e}")
                 continue
-
-            rule = geo_rules[geo]
-            should_pause = False
-            should_resume = False
-            pause_reason = ""
-
-            # Логика автоконтроля (адаптированная для новой структуры правил)
-            if status == "ACTIVE" and not manual_pause:
-                # Используем max_cpa вместо cpa_red
-                max_cpa = rule.get("max_cpa", rule.get("cpa_red", 100))
-                min_spend = rule.get("min_spend", rule.get("spend_zero_leads", 50))
                 
-                if leads == 0 and ucpc > max_cpa and spend >= min_spend:
-                    should_pause = True
-                    pause_reason = "uCPC"
-                elif leads > 0 and cpa > max_cpa and spend >= min_spend:
-                    should_pause = True
-                    pause_reason = "CPA"
-                elif spend >= min_spend and leads == 0:
-                    should_pause = True
-                    pause_reason = "Zero Leads"
-
-            if status == "PAUSED" and not manual_pause:
-                cpa_green = rule.get("cpa_green", 20)
-                cpa_orange = rule.get("cpa_orange", 50)
-                min_spend_half = rule.get("min_spend", rule.get("spend_zero_leads", 50)) / 2
+        logger.info(f"=== ЗАВЕРШЕНИЕ АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")
                 
-                if (leads > 0 and cpa <= cpa_green
-                    and ucpc <= cpa_orange
-                    and spend >= min_spend_half):
-                    should_resume = True
-
-            url = f"https://graph.facebook.com/v18.0/{adset_id}"
-
-            # --- Получаем токены: основной + резервные ---
-            token_list = reserve_tokens.get(king, [])
-            if token and token not in token_list:
-                token_list = [token] + token_list  # основной токен первым
-
-            # --- Отключение ---
-            if should_pause:
-                for idx, current_token in enumerate(token_list):
-                    try:
-                        resp = session_obj.post(
-                            url,
-                            params={"access_token": current_token},
-                            data={"status": "PAUSED"},
-                            timeout=10
-                        ).json()
-
-                        if resp.get("success") or resp.get("id") == adset_id:
-                            # Обновляем статус в базе
-                            update_user_adset_status(user_id, adset_id, "PAUSED")
-                            
-                            msg = (f"🔴 Отключен: {adset_name} "
-                                   f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f}) — причина: {pause_reason}")
-                            logger.info(msg)
-                            send_telegram_message(settings.get('telegram_chat_id'), msg, settings.get('telegram_bot_token'))
-                            break
-
-                        if ("error" in resp and
-                            "Application request limit" in resp["error"].get("message", "")):
-                            if idx + 1 < len(token_list):
-                                logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
-                                continue
-                            else:
-                                raise Exception(f"❌ Все токены исчерпаны для KING={king}")
-                        else:
-                            raise Exception(resp)
-
-                    except Exception as e:
-                        msg = f"❌ Ошибка отключения {adset_name} (токен {idx+1}): {e}"
-                        logger.error(msg)
-                        send_telegram_message(settings.get('telegram_chat_id'), msg, settings.get('telegram_bot_token'))
-                        break
-
-            # --- Включение ---
-            elif should_resume:
-                for idx, current_token in enumerate(token_list):
-                    try:
-                        resp = session_obj.post(
-                            url,
-                            params={"access_token": current_token},
-                            data={"status": "ACTIVE"},
-                            timeout=10
-                        ).json()
-
-                        if resp.get("success") or resp.get("id") == adset_id:
-                            # Обновляем статус в базе
-                            update_user_adset_status(user_id, adset_id, "ACTIVE")
-                            
-                            msg = (f"🟢 Включен: {adset_name} "
-                                   f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
-                            logger.info(msg)
-                            send_telegram_message(settings.get('telegram_chat_id'), msg, settings.get('telegram_bot_token'))
-                            break
-
-                        if ("error" in resp and
-                            "Application request limit" in resp["error"].get("message", "")):
-                            if idx + 1 < len(token_list):
-                                logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
-                                continue
-                            else:
-                                raise Exception(f"❌ Все токены исчерпаны для KING={king}")
-                        else:
-                            raise Exception(resp)
-
-                    except Exception as e:
-                        msg = f"❌ Ошибка включения {adset_name} (токен {idx+1}): {e}"
-                        logger.error(msg)
-                        send_telegram_message(settings.get('telegram_chat_id'), msg, settings.get('telegram_bot_token'))
-                        break
-
-        except Exception as e:
-            logger.error(f"Ошибка обработки адсета {adset.get('name', 'unknown')}: {e}")
-            continue
-
+    except Exception as e:
+        logger.error(f"Критическая ошибка автоконтроля для пользователя {user_id}: {e}")
+        send_telegram_message(f"🚫 Ошибка автоконтроля: {e}", user_id=user_id)
 def is_admin_user(user_id):
     """Проверяет, является ли пользователь администратором"""
     try:
@@ -833,12 +1038,25 @@ def load_reserve_tokens(user_id):
     
     return reserve_tokens
 
-
 def add_reserve_token(user_id, king, token):
     """Добавляет резервный токен в базу данных"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
+            
+            # Создаем таблицу если не существует
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS reserve_tokens (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL,
+                    king TEXT NOT NULL,
+                    token TEXT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users (id),
+                    UNIQUE(user_id, king, token)
+                )
+            """)
+            
             cursor.execute(
                 "INSERT OR IGNORE INTO reserve_tokens (user_id, king, token) VALUES (?, ?, ?)",
                 (user_id, king, token)
@@ -848,8 +1066,35 @@ def add_reserve_token(user_id, king, token):
     except Exception as e:
         logger.error(f"Ошибка добавления резервного токена: {e}")
         return False
-
-
+@app.route('/api/reserve_tokens/accounts', methods=['DELETE'])
+@login_required
+def handle_reserve_token_accounts_delete():
+    """Удаляет аккаунт из резервного токена"""
+    user_id = session['user_id']
+    data = request.json
+    
+    king = data.get('king')
+    token = data.get('token')
+    account_id = data.get('account_id')
+    
+    if not all([king, token, account_id]):
+        return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                DELETE FROM reserve_token_accounts 
+                WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?
+            """, (user_id, king, token, account_id))
+            
+            conn.commit()
+            return jsonify({'success': True, 'message': 'Аккаунт удален'})
+            
+    except Exception as e:
+        logger.error(f"Ошибка удаления аккаунта: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 def remove_reserve_token(user_id, king, token):
     """Удаляет резервный токен из базы данных"""
     try:
@@ -1179,20 +1424,24 @@ def get_auto_control_logs():
 
 def run_auto_control_for_user(user_id):
     """Запускает автоконтроль для конкретного пользователя"""
+    logger.info(f"Запуск автоконтроля для пользователя {user_id}")
+    
     while True:
         # Проверяем, должен ли автоконтроль продолжать работать
         with auto_control_lock:
             if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):
+                logger.info(f"Автоконтроль остановлен для пользователя {user_id}")
                 break
         
         try:
+            logger.info(f"Выполнение автоконтроля для пользователя {user_id}")
             auto_control(user_id)
+            logger.info(f"Автоконтроль завершен для пользователя {user_id}")
         except Exception as e:
             logger.error(f"Ошибка автоконтроля для пользователя {user_id}: {e}")
         
         # Пауза между запусками (5 минут)
         threading.Event().wait(300)
-
 @app.route('/api/manual_campaigns', methods=['POST'])
 @login_required
 def save_manual_campaigns():
@@ -1236,20 +1485,17 @@ def check_admin_access():
         'is_admin': is_admin_user(session['user_id'])
     })
 
-@app.route('/api/admin/account_limits')
+@app.route('/api/account_limits', methods=['GET'])
 @login_required
 def get_account_limits():
-    """Возвращает информацию о лимитах всех аккаунтов"""
-    if not is_admin_user(session['user_id']):
-        return jsonify({'success': False, 'error': 'Доступ запрещен'})
-    
+    """Возвращает информацию о лимитах всех аккаунтов пользователя"""
     try:
         user_id = session['user_id']
         accounts = []
         total_spend = 0
         total_limit = 0
         
-        # Получаем все аккаунты
+        # Получаем все аккаунты пользователя
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
@@ -1257,7 +1503,7 @@ def get_account_limits():
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
-                WHERE user_id = ? AND account_id IS NOT NULL
+                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
             """, (user_id,))
             
             account_data = cursor.fetchall()
@@ -1267,12 +1513,12 @@ def get_account_limits():
                 token = account['token']
                 
                 # Получаем информацию о лимитах из Facebook API
-                account_info = get_facebook_account_limits(account_id, token)
+                account_info = get_account_limits_info(account_id, token)
                 
                 if account_info:
                     accounts.append(account_info)
                     total_spend += account_info.get('spend', 0)
-                    total_limit += account_info.get('limit', 0)
+                    total_limit += account_info.get('spend_cap', 0)
         
         # Рассчитываем статистику
         limit_usage = (total_spend / total_limit * 100) if total_limit > 0 else 0
@@ -2534,6 +2780,7 @@ def update_keitaro_stream_weight(api_key, domain, stream_id, new_weight):
     except Exception as e:
         logger.error(f"Ошибка обновления веса потока {stream_id}: {e}")
         return None
+
 def analyze_stream_performance(api_key, domain, campaign_id=None, interval="today"):
     """Анализирует производительность потоков кампании - исправленная версия"""
     try:
@@ -3169,35 +3416,46 @@ def check_account_balance_sufficiency(user_id):
                 balance = account_info['balance']
                 required = req['total_daily_budget']
                 
+                # Определяем deficit ДО его использования
+                deficit = max(0, required - balance) if balance < required else 0
+                
                 # Проверяем, хватит ли баланса на сегодня
                 if balance < required:
                     days_remaining = balance / required if required > 0 else 0
-                    
-                    warning = {
-                        'account_id': req['account_id'],
-                        'account_name': account_info.get('name', 'Unknown'),
-                        'balance': balance,
-                        'required_today': required,
-                        'deficit': required - balance,
-                        'days_remaining': days_remaining,
-                        'active_adsets': req['active_adsets'],
-                        'status': account_info.get('status', 'UNKNOWN')
-                    }
-                    
-                    warnings.append(warning)
                 else:
-                    # Также возвращаем информацию об аккаунтах с достаточным балансом
-                    warning = {
-                        'account_id': req['account_id'],
-                        'account_name': account_info.get('name', 'Unknown'),
-                        'balance': balance,
-                        'required_today': required,
-                        'deficit': 0,
-                        'days_remaining': float('inf'),
-                        'active_adsets': req['active_adsets'],
-                        'status': account_info.get('status', 'UNKNOWN')
-                    }
-                    warnings.append(warning)
+                    # Используем большое число вместо Infinity
+                    days_remaining = 999999  # вместо float('inf')
+                
+                warning = {
+                    'account_id': req['account_id'],
+                    'account_name': account_info.get('name', 'Unknown'),
+                    'balance': balance,
+                    'required_today': required,
+                    'deficit': deficit,  # Теперь переменная определена
+                    'days_remaining': days_remaining,
+                    'active_adsets': req['active_adsets'],
+                    'status': account_info.get('status', 'UNKNOWN')
+                }
+                
+                warnings.append(warning)
+            else:
+                # Также возвращаем информацию об аккаунтах с достаточным балансом
+                balance = account_info.get('balance', 0) if account_info else 0
+                required = req['total_daily_budget']
+                deficit = 0
+                days_remaining = 999999  # вместо Infinity
+                
+                warning = {
+                    'account_id': req['account_id'],
+                    'account_name': account_info.get('name', 'Unknown') if account_info else 'Unknown',
+                    'balance': balance,
+                    'required_today': required,
+                    'deficit': deficit,
+                    'days_remaining': days_remaining,
+                    'active_adsets': req['active_adsets'],
+                    'status': account_info.get('status', 'UNKNOWN') if account_info else 'ERROR'
+                }
+                warnings.append(warning)
         
         return warnings
         
@@ -4057,6 +4315,7 @@ def check_balance_api():
         user_id = session['user_id']
         warnings = check_account_balance_sufficiency(user_id)
         
+        # Убедитесь, что возвращаете правильный JSON
         return jsonify({
             'success': True,
             'warnings': warnings,
@@ -4065,8 +4324,13 @@ def check_balance_api():
         
     except Exception as e:
         logger.error(f"Ошибка проверки баланса: {e}")
-        return jsonify({'success': False, 'error': str(e)})
-# Добавляем функцию в планировщик для регулярной проверки
+        # Возвращайте JSON даже при ошибках
+        return jsonify({
+            'success': False, 
+            'error': str(e),
+            'warnings': [],
+            'count': 0
+        })
 def schedule_balance_checks():
     """Планировщик для регулярной проверки баланса"""
     try:
