@@ -1310,29 +1310,29 @@ def check_and_pause_campaigns(user_id):
                     
     except Exception as e:
         logger.error(f"Ошибка проверки кампаний: {e}")
+        
 def extract_geo_from_name(name, known_geos=None):
     """Извлекает GEO код из названия с улучшенной логикой"""
     if not name:
         return 'N/A'
     
-    # Нормализуем название
-    clean_name = re.sub(r'[^A-Za-z\s]', ' ', name.upper())
+    # Нормализуем название - приводим к верхнему регистру и удаляем лишние символы
+    clean_name = re.sub(r'[^A-Za-z0-9\s]', ' ', str(name).upper())
     words = clean_name.split()
     
-    # Если есть список известных GEO — ищем по нему
+    # Если есть список известных GEO — ищем по нему в первую очередь
     if known_geos:
         # Сначала ищем точные совпадения
         for word in words:
             if word in known_geos:
                 return word
         
-        # Затем ищем частичные совпадения (для случаев типа "TH" в "THAI")
-        for word in words:
-            for known_geo in known_geos:
-                if known_geo in word:
-                    return known_geo
+        # Затем ищем частичные совпадения (для случаев типа "MY" в "MY Campaign")
+        for known_geo in known_geos:
+            if known_geo in clean_name:
+                return known_geo
     
-    # Ищем стандартные двухбуквенные коды стран
+    # Ищем стандартные двухбуквенные коды стран в любом месте названия
     country_codes = {
         'PH', 'TH', 'ID', 'MY', 'SG', 'VN', 'BR', 'US', 'UK', 'CA', 
         'AU', 'DE', 'FR', 'ES', 'IT', 'RU', 'JP', 'KR', 'CN', 'IN',
@@ -1340,44 +1340,16 @@ def extract_geo_from_name(name, known_geos=None):
         'TR', 'PL', 'NL', 'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT'
     }
     
+    # Ищем коды в отдельных словах
     for word in words:
         if len(word) == 2 and word.isalpha() and word in country_codes:
             return word
     
-    # Дополнительные проверки для распространенных случаев
-    geo_mappings = {
-        'PHILIPPINES': 'PH', 'PHIL': 'PH', 'PHL': 'PH', 'PHILLIPINES': 'PH',
-        'THAILAND': 'TH', 'THAI': 'TH', 'THA': 'TH',
-        'INDONESIA': 'ID', 'INDO': 'ID', 'IDN': 'ID', 'INDON': 'ID',
-        'MALAYSIA': 'MY', 'MALAY': 'MY', 'MYS': 'MY', 'MAL': 'MY',
-        'SINGAPORE': 'SG', 'SGP': 'SG', 'SING': 'SG',
-        'VIETNAM': 'VN', 'VIET': 'VN', 'VNM': 'VN', 'VIETNAMESE': 'VN',
-        'BRAZIL': 'BR', 'BRA': 'BR', 'BRZ': 'BR', 'BRAZILIAN': 'BR',
-        'USA': 'US', 'UNITED STATES': 'US', 'US': 'US', 'AMERICA': 'US',
-        'UNITED KINGDOM': 'UK', 'UK': 'UK', 'GBR': 'UK', 'BRITAIN': 'UK',
-        'CANADA': 'CA', 'CAN': 'CA', 'CAD': 'CA', 'CANADIAN': 'CA',
-        'AUSTRALIA': 'AU', 'AUS': 'AU', 'AUST': 'AU', 'AUSTRALIAN': 'AU',
-        'GERMANY': 'DE', 'DEU': 'DE', 'GER': 'DE', 'GERMAN': 'DE',
-        'FRANCE': 'FR', 'FRA': 'FR', 'FRENCH': 'FR',
-        'SPAIN': 'ES', 'ESP': 'ES', 'SPANISH': 'ES',
-        'ITALY': 'IT', 'ITA': 'IT', 'ITALIAN': 'IT',
-        'RUSSIA': 'RU', 'RUS': 'RU', 'RUSSIAN': 'RU',
-        'JAPAN': 'JP', 'JPN': 'JP', 'JAPANESE': 'JP',
-        'KOREA': 'KR', 'KOR': 'KR', 'KRN': 'KR', 'KOREAN': 'KR',
-        'CHINA': 'CN', 'CHN': 'CN', 'CHINESE': 'CN',
-        'INDIA': 'IN', 'IND': 'IN', 'INDIAN': 'IN',
-        'MEXICO': 'MX', 'MEX': 'MX', 'MEXICAN': 'MX',
-        'ARGENTINA': 'AR', 'ARG': 'AR', 'ARGENTINIAN': 'AR'
-    }
-    
+    # Ищем коды как часть слов (например, "MY" в "MY_Campaign")
     for word in words:
-        if word in geo_mappings:
-            return geo_mappings[word]
-    
-    # Ищем по первым буквам слов (например: "US Traffic" -> "US")
-    for word in words:
-        if len(word) > 2 and word[:2].isalpha() and word[:2] in country_codes:
-            return word[:2]
+        for code in country_codes:
+            if code in word and len(word) > 2:
+                return code
     
     return 'N/A'
 @app.route('/api/auto_control/logs', methods=['GET'])

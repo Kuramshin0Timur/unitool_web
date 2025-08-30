@@ -919,7 +919,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"Извлекает GEO код из названия с улучшенной логикой\"\"\"\n    if not name:\n        return 'N/A'\n    # Нормализуем название\n    clean_name = re.sub(r'[^A-Za-z\\s]', ' ', name.upper())\n    words = clean_name.split()\n    # Если есть список известных GEO — ищем по нему\n    if known_geos:\n        # Сначала ищем точные совпадения",
+        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"Извлекает GEO код из названия с улучшенной логикой\"\"\"\n    if not name:\n        return 'N/A'\n    # Нормализуем название - приводим к верхнему регистру и удаляем лишние символы\n    clean_name = re.sub(r'[^A-Za-z0-9\\s]', ' ', str(name).upper())\n    words = clean_name.split()\n    # Если есть список известных GEO — ищем по нему в первую очередь\n    if known_geos:\n        # Сначала ищем точные совпадения",
         "detail": "app",
         "documentation": {}
     },

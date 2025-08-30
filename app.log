@@ -1,37 +1,118 @@
-2025-08-29 21:38:48,125 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
-2025-08-29 21:38:48,130 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:48,878 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_607662318530131?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
-2025-08-29 21:38:48,882 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:49,492 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_608026278995897?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
-2025-08-29 21:38:49,496 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:49,933 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
-2025-08-29 21:38:49,938 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:50,633 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
-2025-08-29 21:38:50,638 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:51,212 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
-2025-08-29 21:38:51,217 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:51,815 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
-2025-08-29 21:38:51,820 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:52,445 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735112582263451?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
-2025-08-29 21:38:52,450 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:53,047 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
-2025-08-29 21:38:53,051 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:53,696 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_744602524747804?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAAR9Xz1X2hsBO8hhSyQmBVFvaZANBohQVQxEDd3rL3duMghCvZBbyWF9k7b54CHUulbxIVIqdMTSk1dKdDZBYbLyplr9zaf9NE3KU07JuCMlFAZAhzd9yl8wU3ZAmudbJdOtZBs3NbJZC2w5g9nSKhLZBun2Vu3Uk8sa0SBnaoSfNYCnXDWBGPZBJaSNJymEiFY05EcZAxO3DP HTTP/1.1" 400 183
-2025-08-29 21:38:53,700 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-08-29 21:38:54,263 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap%2Cdaily_spend_limit&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
-2025-08-29 21:38:54,265 - __main__ - INFO - Обработано 25 аккаунтов из 25
-2025-08-29 21:38:54,267 - werkzeug - INFO - 77.79.173.250 - - [29/Aug/2025 21:38:54] "GET /api/admin/all_accounts_limits HTTP/1.1" 200 -
-2025-08-29 21:39:34,985 - __main__ - INFO - Автообновление данных для пользователя 2
-2025-08-29 21:39:34,992 - __main__ - INFO - Обновлено 0 адсетов с определением GEO
-2025-08-29 21:39:34,993 - __main__ - INFO - Автообновление завершено для пользователя 2
-2025-08-29 21:39:34,993 - __main__ - INFO - === НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ 2 ===
-2025-08-29 21:39:35,001 - __main__ - INFO - Используются правила из старой таблицы geo_config
-2025-08-29 21:39:35,005 - __main__ - INFO - Найдено 0 адсетов для обработки
-2025-08-29 21:39:35,005 - __main__ - INFO - === ЗАВЕРШЕНИЕ АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ 2 ===
-2025-08-29 21:39:35,005 - __main__ - INFO - Автообновление запущено для пользователя 2, интервал: 5 мин
-2025-08-29 21:39:35,096 - __main__ - INFO - Выполнение автоконтроля для пользователя 2
-2025-08-29 21:39:35,097 - __main__ - INFO - === НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ 2 ===
-2025-08-29 21:39:35,105 - __main__ - INFO - Используются правила из старой таблицы geo_config
-2025-08-29 21:39:35,109 - __main__ - INFO - Найдено 0 адсетов для обработки
-2025-08-29 21:39:35,109 - __main__ - INFO - === ЗАВЕРШЕНИЕ АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ 2 ===
-2025-08-29 21:39:35,110 - __main__ - INFO - Автоконтроль завершен для пользователя 2
+2025-08-30 03:16:24,048 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3 (ID: 120230050100220610, статус: PAUSED)
+2025-08-30 03:16:24,048 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3
+2025-08-30 03:16:24,048 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2 (ID: 120230050100200610, статус: PAUSED)
+2025-08-30 03:16:24,048 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2
+2025-08-30 03:16:24,049 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5 (ID: 120230050100190610, статус: PAUSED)
+2025-08-30 03:16:24,049 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5
+2025-08-30 03:16:24,049 - __main__ - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1 (ID: 120230050018900610, статус: PAUSED)
+2025-08-30 03:16:24,049 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1
+2025-08-30 03:16:24,049 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 3 (ID: 120229952748210610, статус: PAUSED)
+2025-08-30 03:16:24,049 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 3
+2025-08-30 03:16:24,049 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 2 (ID: 120229952748200610, статус: PAUSED)
+2025-08-30 03:16:24,049 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 2
+2025-08-30 03:16:24,049 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 5 (ID: 120229952748170610, статус: PAUSED)
+2025-08-30 03:16:24,049 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 5
+2025-08-30 03:16:24,049 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 4 (ID: 120229952748160610, статус: PAUSED)
+2025-08-30 03:16:24,049 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 4
+2025-08-30 03:16:24,049 - __main__ - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 1 (ID: 120229952482500610, статус: PAUSED)
+2025-08-30 03:16:24,049 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 1
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 3 (ID: 120229951264520610, статус: PAUSED)
+2025-08-30 03:16:24,050 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 3
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 2 (ID: 120229951264510610, статус: PAUSED)
+2025-08-30 03:16:24,050 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 2
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 5 (ID: 120229951264480610, статус: PAUSED)
+2025-08-30 03:16:24,050 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 5
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 4 (ID: 120229951264470610, статус: PAUSED)
+2025-08-30 03:16:24,050 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 4
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 1 (ID: 120229950945890610, статус: PAUSED)
+2025-08-30 03:16:24,050 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 1
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 5 (ID: 120229903596170610, статус: PAUSED)
+2025-08-30 03:16:24,050 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 5
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 4 (ID: 120229903596160610, статус: PAUSED)
+2025-08-30 03:16:24,050 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 4
+2025-08-30 03:16:24,050 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 3 (ID: 120229903596140610, статус: PAUSED)
+2025-08-30 03:16:24,051 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 3
+2025-08-30 03:16:24,051 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 2 (ID: 120229903596110610, статус: PAUSED)
+2025-08-30 03:16:24,051 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 2
+2025-08-30 03:16:24,051 - __main__ - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 1 (ID: 120229903551980610, статус: PAUSED)
+2025-08-30 03:16:24,051 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 1
+2025-08-30 03:16:24,051 - __main__ - DEBUG - Обработка адсета: D5 (ID: 120226915257380610, статус: PAUSED)
+2025-08-30 03:16:24,051 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
+2025-08-30 03:16:24,051 - __main__ - DEBUG - Обработка адсета: TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 3 (ID: 120230362346320056, статус: PAUSED)
+2025-08-30 03:16:24,051 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 3
+2025-08-30 03:16:24,051 - __main__ - DEBUG - Обработка адсета: TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 1 (ID: 120230362323880056, статус: PAUSED)
+2025-08-30 03:16:24,051 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 1
+2025-08-30 03:16:24,051 - __main__ - DEBUG - Обработка адсета: TH 5829_mugshena78 red TH(pz2) 3 (ID: 120230361572470056, статус: PAUSED)
+2025-08-30 03:16:24,051 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5829_mugshena78 red TH(pz2) 3
+2025-08-30 03:16:24,051 - __main__ - DEBUG - Обработка адсета: TH 5829_mugshena78 red TH(pz2) 1 (ID: 120230361572440056, статус: PAUSED)
+2025-08-30 03:16:24,052 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5829_mugshena78 red TH(pz2) 1
+2025-08-30 03:16:24,091 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 2 (ID: 120230138086510056, статус: PAUSED)
+2025-08-30 03:16:24,091 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 2
+2025-08-30 03:16:24,091 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 5 (ID: 120230138086490056, статус: PAUSED)
+2025-08-30 03:16:24,091 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 5
+2025-08-30 03:16:24,091 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 4 (ID: 120230138086480056, статус: PAUSED)
+2025-08-30 03:16:24,091 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 4
+2025-08-30 03:16:24,092 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 3 (ID: 120230138086460056, статус: PAUSED)
+2025-08-30 03:16:24,092 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 3
+2025-08-30 03:16:24,092 - __main__ - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 1 (ID: 120230138063520056, статус: PAUSED)
+2025-08-30 03:16:24,092 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 1
+2025-08-30 03:16:24,092 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 3 (ID: 120230137860060056, статус: PAUSED)
+2025-08-30 03:16:24,092 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 3
+2025-08-30 03:16:24,092 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 2 (ID: 120230137860050056, статус: PAUSED)
+2025-08-30 03:16:24,092 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 2
+2025-08-30 03:16:24,092 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 5 (ID: 120230137860000056, статус: PAUSED)
+2025-08-30 03:16:24,092 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 5
+2025-08-30 03:16:24,092 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 4 (ID: 120230137859990056, статус: PAUSED)
+2025-08-30 03:16:24,092 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 4
+2025-08-30 03:16:24,092 - __main__ - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 1 (ID: 120230137741440056, статус: PAUSED)
+2025-08-30 03:16:24,092 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 1
+2025-08-30 03:16:24,093 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 3 (ID: 120230137694710056, статус: PAUSED)
+2025-08-30 03:16:24,093 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 3
+2025-08-30 03:16:24,093 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 2 (ID: 120230137694690056, статус: PAUSED)
+2025-08-30 03:16:24,093 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 2
+2025-08-30 03:16:24,093 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 5 (ID: 120230137694670056, статус: PAUSED)
+2025-08-30 03:16:24,093 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 5
+2025-08-30 03:16:24,093 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 4 (ID: 120230137694650056, статус: PAUSED)
+2025-08-30 03:16:24,093 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 4
+2025-08-30 03:16:24,093 - __main__ - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 1 (ID: 120230135715480056, статус: PAUSED)
+2025-08-30 03:16:24,093 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 1
+2025-08-30 03:16:24,093 - __main__ - DEBUG - Обработка адсета: TH  5743_K-68 monah4  07.08(vst2) 1 (ID: 120230135422980056, статус: PAUSED)
+2025-08-30 03:16:24,093 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH  5743_K-68 monah4  07.08(vst2) 1
+2025-08-30 03:16:24,093 - __main__ - DEBUG - Обработка адсета: GG4 (ID: 120229037288050056, статус: PAUSED)
+2025-08-30 03:16:24,093 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) GG4
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: T1 (ID: 120227572089510056, статус: PAUSED)
+2025-08-30 03:16:24,094 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) T1
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: KK4 (ID: 120227571066060056, статус: PAUSED)
+2025-08-30 03:16:24,094 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK4
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: KK3 (ID: 120227571066040056, статус: PAUSED)
+2025-08-30 03:16:24,094 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK3
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: KK1 (ID: 120227570322680056, статус: PAUSED)
+2025-08-30 03:16:24,094 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KK1
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 4 (ID: 120233779298360312, статус: PAUSED)
+2025-08-30 03:16:24,094 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 4
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 2 (ID: 120233779298340312, статус: PAUSED)
+2025-08-30 03:16:24,094 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 2
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 5 (ID: 120233779298330312, статус: PAUSED)
+2025-08-30 03:16:24,094 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 5
+2025-08-30 03:16:24,094 - __main__ - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 1 (ID: 120233777901980312, статус: PAUSED)
+2025-08-30 03:16:24,095 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 1
+2025-08-30 03:16:24,095 - __main__ - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 3 (ID: 120233677258970312, статус: PAUSED)
+2025-08-30 03:16:24,095 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 3
+2025-08-30 03:16:24,095 - __main__ - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 4 (ID: 120233677258960312, статус: PAUSED)
+2025-08-30 03:16:24,095 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 4
+2025-08-30 03:16:24,095 - __main__ - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 5 (ID: 120233677258940312, статус: PAUSED)
+2025-08-30 03:16:24,095 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 5
+2025-08-30 03:16:24,095 - __main__ - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 3 (ID: 120233173975760312, статус: PAUSED)
+2025-08-30 03:16:24,095 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 3
+2025-08-30 03:16:24,095 - __main__ - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 2 (ID: 120233173975740312, статус: PAUSED)
+2025-08-30 03:16:24,095 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 2
+2025-08-30 03:16:24,095 - __main__ - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 1 (ID: 120233173975730312, статус: PAUSED)
+2025-08-30 03:16:24,095 - __main__ - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 1
+2025-08-30 03:16:24,095 - __main__ - INFO - === ЗАВЕРШЕНИЕ АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ 1 ===
+2025-08-30 03:16:24,097 - __main__ - INFO - Автоконтроль завершен для пользователя 1
+2025-08-30 03:16:30,184 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2025 03:16:30] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-08-30 03:16:48,377 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-08-30 03:16:49,498 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/campaigns HTTP/1.1" 200 None
+2025-08-30 03:16:49,642 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2025 03:16:49] "GET /api/headline_optimization/status?campaign_id=all HTTP/1.1" 200 -
+2025-08-30 03:16:51,965 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2025 03:16:51] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-08-30 03:16:53,584 - werkzeug - INFO - 127.0.0.1 - - [30/Aug/2025 03:16:53] "POST /api/auto_refresh HTTP/1.1" 200 -
