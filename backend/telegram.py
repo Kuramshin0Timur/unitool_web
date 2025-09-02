@@ -1,15 +1,13 @@
-import logging
-from typing import Optional
 
+from venv import logger
 import requests
 
-from database import get_user_settings
+from backend.setting import get_user_settings
 
-logger = logging.getLogger(__name__)
+
 def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
     """Безопасная отправка сообщения в Telegram"""
     try:
-        # Если нет chat_id или bot_token — пробуем получить из настроек
         if user_id and (not chat_id or not bot_token):
             settings = get_user_settings(user_id)
             chat_id = chat_id or settings.get('telegram_chat_id')
@@ -33,3 +31,4 @@ def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
     except Exception as e:
         logger.warning(f"Telegram сообщение не отправлено: {e}")
         return False
+

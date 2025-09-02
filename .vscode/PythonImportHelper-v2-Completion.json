@@ -1,394 +1,122 @@
 [
     {
-        "label": "json",
-        "kind": 6,
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "logging",
-        "kind": 6,
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "re",
-        "kind": 6,
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "threading",
-        "kind": 6,
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "threading",
-        "description": "threading",
-        "detail": "threading",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "wraps",
-        "importPath": "functools",
-        "description": "functools",
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "functools",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "RotatingFileHandler",
-        "importPath": "logging.handlers",
-        "description": "logging.handlers",
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "logging.handlers",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "requests",
-        "kind": 6,
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "BackgroundScheduler",
-        "importPath": "apscheduler.schedulers.background",
-        "description": "apscheduler.schedulers.background",
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "apscheduler.schedulers.background",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "Flask",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "flash",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "jsonify",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "redirect",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "render_template",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "flask",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "session",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "url_for",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "fuzz",
-        "importPath": "fuzzywuzzy",
-        "description": "fuzzywuzzy",
-        "isExtraImport": true,
-        "detail": "fuzzywuzzy",
-        "documentation": {}
-    },
-    {
-        "label": "process",
-        "importPath": "fuzzywuzzy",
-        "description": "fuzzywuzzy",
-        "isExtraImport": true,
-        "detail": "fuzzywuzzy",
-        "documentation": {}
-    },
-    {
-        "label": "start_auto_control_and_refresh",
-        "importPath": "backend.autocontrol",
-        "description": "backend.autocontrol",
-        "isExtraImport": true,
-        "detail": "backend.autocontrol",
-        "documentation": {}
-    },
-    {
-        "label": "start_auto_control_and_refresh",
-        "importPath": "backend.autocontrol",
-        "description": "backend.autocontrol",
-        "isExtraImport": true,
-        "detail": "backend.autocontrol",
-        "documentation": {}
-    },
-    {
-        "label": "add_account_to_reserve_token",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "add_user_adset",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "add_user_campaign",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "authenticate_user",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "create_user",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_adset_budget_settings",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db_connection",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_reserve_token_accounts",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_adsets",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_campaigns",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_geo_config",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_geo_rules",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_settings",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "init_db",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_campaign_stats",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_reserve_token_account_info",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_adset_budget",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_adset_status",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_campaign_status",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_settings",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db_connection",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "init_db",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_settings",
-        "importPath": "database",
-        "description": "database",
-        "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -496,67 +224,796 @@
         "documentation": {}
     },
     {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
         "documentation": {}
     },
     {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
         "documentation": {}
     },
     {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
         "documentation": {}
     },
     {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
         "documentation": {}
     },
     {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
         "documentation": {}
     },
     {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
         "documentation": {}
     },
     {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
         "documentation": {}
     },
     {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "detail": "typing",
+        "detail": "venv",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
+        "isExtraImport": true,
+        "detail": "venv",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
+        "isExtraImport": true,
+        "detail": "venv",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
+        "isExtraImport": true,
+        "detail": "venv",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate_user",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "init_db",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "init_db",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "fcntl",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fcntl",
+        "description": "fcntl",
+        "detail": "fcntl",
+        "documentation": {}
+    },
+    {
+        "label": "flock",
+        "importPath": "fcntl",
+        "description": "fcntl",
+        "isExtraImport": true,
+        "detail": "fcntl",
+        "documentation": {}
+    },
+    {
+        "label": "flock",
+        "importPath": "fcntl",
+        "description": "fcntl",
+        "isExtraImport": true,
+        "detail": "fcntl",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_campaigns",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "check_and_pause_campaigns",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "refresh_campaigns_internal",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "add_user_campaign",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_campaigns",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_campaigns",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "update_campaign_stats",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_campaign_status",
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "isExtraImport": true,
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "extract_geo_from_name",
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "isExtraImport": true,
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_geo_rules",
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "isExtraImport": true,
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "extract_geo_from_name",
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "isExtraImport": true,
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_geo_config",
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "isExtraImport": true,
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_geo_rules",
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "isExtraImport": true,
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "extract_geo_from_name",
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "isExtraImport": true,
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_geo_rules",
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "isExtraImport": true,
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_adsets",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "refresh_adsets_internal",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_adset_status",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "add_user_adset",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_adsets",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_adsets",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_adset_status",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "load_reserve_tokens",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_token_accounts",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_settings",
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "isExtraImport": true,
+        "detail": "backend.setting",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_settings",
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "isExtraImport": true,
+        "detail": "backend.setting",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_settings",
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "isExtraImport": true,
+        "detail": "backend.setting",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_settings",
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "isExtraImport": true,
+        "detail": "backend.setting",
+        "documentation": {}
+    },
+    {
+        "label": "send_telegram_message",
+        "importPath": "backend.telegram",
+        "description": "backend.telegram",
+        "isExtraImport": true,
+        "detail": "backend.telegram",
+        "documentation": {}
+    },
+    {
+        "label": "send_telegram_message",
+        "importPath": "backend.telegram",
+        "description": "backend.telegram",
+        "isExtraImport": true,
+        "detail": "backend.telegram",
+        "documentation": {}
+    },
+    {
+        "label": "send_telegram_message",
+        "importPath": "backend.telegram",
+        "description": "backend.telegram",
+        "isExtraImport": true,
+        "detail": "backend.telegram",
+        "documentation": {}
+    },
+    {
+        "label": "contextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "RotatingFileHandler",
+        "importPath": "logging.handlers",
+        "description": "logging.handlers",
+        "isExtraImport": true,
+        "detail": "logging.handlers",
+        "documentation": {}
+    },
+    {
+        "label": "BackgroundScheduler",
+        "importPath": "apscheduler.schedulers.background",
+        "description": "apscheduler.schedulers.background",
+        "isExtraImport": true,
+        "detail": "apscheduler.schedulers.background",
+        "documentation": {}
+    },
+    {
+        "label": "fuzz",
+        "importPath": "fuzzywuzzy",
+        "description": "fuzzywuzzy",
+        "isExtraImport": true,
+        "detail": "fuzzywuzzy",
+        "documentation": {}
+    },
+    {
+        "label": "process",
+        "importPath": "fuzzywuzzy",
+        "description": "fuzzywuzzy",
+        "isExtraImport": true,
+        "detail": "fuzzywuzzy",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users",
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "isExtraImport": true,
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_accounts_stats",
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "isExtraImport": true,
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
+        "label": "auto_control",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "auto_refresh_lock",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "auto_refresh_timers",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "get_combined_auto_status",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "start_auto_control_and_refresh",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "stop_auto_control_and_refresh",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "start_auto_control_and_refresh",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "get_adset_budget_settings",
+        "importPath": "backend.budget",
+        "description": "backend.budget",
+        "isExtraImport": true,
+        "detail": "backend.budget",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_keitaro_report",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "isExtraImport": true,
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -582,14 +1039,6 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
         "documentation": {}
     },
     {
@@ -634,6 +1083,177 @@
         "documentation": {}
     },
     {
+        "label": "get_user_accounts_stats",
+        "kind": 2,
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем ВСЕ аккаунты, включая невалидные\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users",
+        "kind": 2,
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "peekOfCode": "def get_all_users() -> List[Dict[str, Any]]:\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_accounts_stats",
+        "kind": 2,
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем только валидные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_users",
+        "kind": 2,
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "peekOfCode": "def get_all_users():\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_accounts_stats",
+        "kind": 2,
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "peekOfCode": "def get_all_accounts_stats():\n    \"\"\"Получает статистику по всем аккаунтам всех пользователей\"\"\"\n    users = get_all_users()\n    all_accounts = []\n    for user in users:\n        user_id = user['id']\n        accounts = get_user_accounts_stats(user_id)\n        for account in accounts:\n            account['user_id'] = user_id\n            account['username'] = user['username']",
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_adsets",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя с гарантированным наличием поля status\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, ",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "add_user_adset",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, \n                leads, manual_pause, king, effective_status, ad_name, budget,\n                campaign_id, account_id, auto_budget_increase, auto_budget_decrease,",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_adset_status",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def update_user_adset_status(user_id: int, adset_id: str, status: str):\n    \"\"\"Обновляет статус адсета пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE adsets SET status = ? \n            WHERE user_id = ? AND adset_id = ?\n            \"\"\", (status, user_id, adset_id))\n            conn.commit()",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "add_user_adset",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with flock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:\n                if field not in data:\n                    data[field] = '' if field != 'king' else 'Facebook'\n            try:",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_adsets",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ адсеты из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "refresh_adsets_internal",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def refresh_adsets_internal(user_id):\n    \"\"\"Внутренняя функция обновления адсетов\"\"\"\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "get_combined_auto_status",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n    # Считаем, что система работает, если работает хотя бы один компонент\n    running = auto_control_running or auto_refresh_running",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "stop_auto_control_and_refresh",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def stop_auto_control_and_refresh(user_id):\n    \"\"\"Останавливает и автоконтроль и автообновление вместе\"\"\"\n    # Останавливаем автоконтроль\n    with auto_control_lock:\n        if user_id in auto_control_threads:\n            auto_control_threads[user_id]['running'] = False\n            del auto_control_threads[user_id]\n            logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n    # Останавливаем автообновление\n    with auto_refresh_lock:",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "get_session",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "start_auto_refresh",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        # Создаем новый таймер\n        interval_seconds = interval_minutes * 60\n        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval_minutes))\n        timer.daemon = True",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "auto_refresh_user_data",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    \"\"\"Функция автообновления данных пользователя\"\"\"\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            # Получаем настройки пользователя\n            settings = get_user_settings(user_id)\n            # Обновляем кампании, если включено\n            if settings.get('auto_refresh_campaigns', True):\n                refresh_campaigns_internal(user_id)",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "process_adset_control",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    \"\"\"Обрабатывает контроль одного адсета\"\"\"\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "auto_control",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def auto_control(user_id):\n    \"\"\"Функция автоконтроля для работы с базой данных и резервными токенами\"\"\"\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        settings = get_user_settings(user_id)        \n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),\n                'https': settings.get('proxy')",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "run_auto_control_for_user",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    logger.info(f\"Запуск автоконтроля для пользователя {user_id}\")\n    while True:\n        # Проверяем, должен ли автоконтроль продолжать работать\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n                break\n        try:",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
         "label": "start_auto_control_and_refresh",
         "kind": 2,
         "importPath": "backend.autocontrol",
@@ -643,74 +1263,308 @@
         "documentation": {}
     },
     {
-        "label": "login_required",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\ndef stop_auto_control_and_refresh(user_id):\n    \"\"\"Останавливает и автоконтроль и автообновление вместе\"\"\"",
-        "detail": "app",
+        "label": "auto_control_threads",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads",
+        "detail": "backend.autocontrol",
         "documentation": {}
     },
     {
-        "label": "stop_auto_control_and_refresh",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def stop_auto_control_and_refresh(user_id):\n    \"\"\"Останавливает и автоконтроль и автообновление вместе\"\"\"\n    # Останавливаем автоконтроль\n    with auto_control_lock:\n        if user_id in auto_control_threads:\n            auto_control_threads[user_id]['running'] = False\n            del auto_control_threads[user_id]\n            logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n    # Останавливаем автообновление\n    with auto_refresh_lock:",
-        "detail": "app",
+        "label": "auto_control_lock",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:",
+        "detail": "backend.autocontrol",
         "documentation": {}
     },
     {
-        "label": "get_combined_auto_status",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n    # Считаем, что система работает, если работает хотя бы один компонент\n    running = auto_control_running or auto_refresh_running",
-        "detail": "app",
+        "label": "auto_refresh_timers",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers",
+        "detail": "backend.autocontrol",
         "documentation": {}
     },
     {
-        "label": "get_session",
+        "label": "auto_refresh_lock",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "auto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "auto_refresh_timers",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "auto_refresh_lock",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n    # Считаем, что система работает, если работает хотя бы один компонент",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_adset_budget",
         "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.",
-        "detail": "app",
+        "importPath": "backend.budget",
+        "description": "backend.budget",
+        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    \"\"\"Обновляет бюджет адсета пользователя в базе данных\"\"\"\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))",
+        "detail": "backend.budget",
+        "documentation": {}
+    },
+    {
+        "label": "get_adset_budget_settings",
+        "kind": 2,
+        "importPath": "backend.budget",
+        "description": "backend.budget",
+        "peekOfCode": "def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:\n    \"\"\"Получает настройки авто-бюджета для адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT auto_budget_increase, auto_budget_decrease, \n                       max_budget, min_budget, budget_increase_step, \n                       budget_decrease_step\n                FROM adsets ",
+        "detail": "backend.budget",
+        "documentation": {}
+    },
+    {
+        "label": "update_adset_budget_settings",
+        "kind": 2,
+        "importPath": "backend.budget",
+        "description": "backend.budget",
+        "peekOfCode": "def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:\n    \"\"\"Обновляет настройки авто-бюджета для адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE adsets \n                SET auto_budget_increase = ?, auto_budget_decrease = ?,\n                    max_budget = ?, min_budget = ?, budget_increase_step = ?,\n                    budget_decrease_step = ?, updated_at = CURRENT_TIMESTAMP",
+        "detail": "backend.budget",
+        "documentation": {}
+    },
+    {
+        "label": "get_adsets_for_auto_budget",
+        "kind": 2,
+        "importPath": "backend.budget",
+        "description": "backend.budget",
+        "peekOfCode": "def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает адсеты для авто-бюджета с токенами\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT a.*, c.token \n                FROM adsets a\n                LEFT JOIN campaigns c ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id\n                WHERE a.user_id = ? AND a.status = 'ACTIVE'",
+        "detail": "backend.budget",
+        "documentation": {}
+    },
+    {
+        "label": "add_campaign_mapping",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    \"\"\"Добавляет соответствие между Facebook и Keitaro\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)\n            VALUES (?, ?, ?, ?, ?)",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "update_campaign_stats",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def update_campaign_stats(user_id, campaign_id, spend=None, leads=None, cpa=None, cpc=None, ucpc=None):\n    \"\"\"Обновляет статистику кампании с CPC из Facebook\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            updates = []\n            params = {'user_id': user_id, 'campaign_id': campaign_id}\n            if spend is not None:\n                updates.append(\"spend = :spend\")\n                params['spend'] = spend",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "add_user_campaign",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def add_user_campaign(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет кампанию с проверкой данных\"\"\"\n    required_fields = {\n        'king': str,\n        'name': str,\n        'status': str,\n        'campaign_id': str,\n        'account_id': str\n    }\n    # Проверяем обязательные поля",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_campaigns",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список кампаний пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM campaigns WHERE user_id = ?\", (user_id,))\n            return [dict(row) for row in cursor.fetchall()]\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_campaigns",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "refresh_campaigns_internal",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def refresh_campaigns_internal(user_id):\n    \"\"\"Внутренняя функция обновления кампаний\"\"\"\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']\n        for account_id, token in accounts.items():\n            fb_campaigns = fetch_facebook_campaigns(account_id, token)",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_campaign_status",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def update_user_campaign_status(user_id: int, campaign_id: str, status: str):\n    \"\"\"Обновляет статус кампании пользователя\"\"\"\n    with fcntl.flock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE campaigns SET status = ? \n            WHERE user_id = ? AND campaign_id = ?\n            \"\"\", (status, user_id, campaign_id))\n            conn.commit()",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "check_and_pause_campaigns",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def check_and_pause_campaigns(user_id):\n    \"\"\"Проверяет и отключает кампании, если все их адсеты отключены\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Находим кампании, где все адсеты отключены\n            cursor.execute(\"\"\"\n            SELECT c.campaign_id, c.name, c.token, c.account_id\n            FROM campaigns c\n            WHERE c.user_id = ? AND c.status = 'ACTIVE'",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "kind": 5,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "lock = threading.Lock()\ndef add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    \"\"\"Добавляет соответствие между Facebook и Keitaro\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
+        "label": "add_user_geo_config",
+        "kind": 2,
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "peekOfCode": "def add_user_geo_config(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет или обновляет конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            data['user_id'] = user_id\n            cursor.execute(\"\"\"\n            SELECT id FROM geo_config \n            WHERE user_id = ? AND geo_code = ?\n            \"\"\", (user_id, data['geo_code']))",
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "extract_geo_from_name",
+        "kind": 2,
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"Извлекает GEO код из названия с улучшенной логикой\"\"\"\n    if not name:\n        return 'N/A'\n    clean_name = re.sub(r'[^A-Za-z0-9\\s]', ' ', str(name).upper())\n    words = clean_name.split()\n    if known_geos:\n        for word in words:\n            if word in known_geos:\n                return word",
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_geo_config",
+        "kind": 2,
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    \"\"\"Возвращает конфигурацию GEO пользователя\"\"\"\n    with flock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],",
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_geo_rules",
+        "kind": 2,
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "peekOfCode": "def get_user_geo_rules(user_id):\n    \"\"\"Получает GEO правила из новой таблицы geo_rules\"\"\"\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='geo_rules'",
+        "detail": "backend.geo_config",
         "documentation": {}
     },
     {
         "label": "fetch_keitaro_report",
         "kind": 2,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
         "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.\n    Считает лиды по формуле Spend / CPA.\n    Берёт CPC и UCPC из Keitaro.\n    Группировка только по sub_id_9 (название адсета).\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}",
-        "detail": "app",
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
+        "label": "get_account_limits_info",
+        "kind": 2,
+        "importPath": "backend.limits",
+        "description": "backend.limits",
+        "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }",
+        "detail": "backend.limits",
+        "documentation": {}
+    },
+    {
+        "label": "add_account_to_reserve_token",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def add_account_to_reserve_token(user_id, king, token, account_id):\n    \"\"\"Добавляет аккаунт к резервному токену\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_token_accounts (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "load_reserve_tokens",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def load_reserve_tokens(user_id):\n    \"\"\"Загружает резервные токены из отдельной таблицы базы данных\"\"\"\n    reserve_tokens = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу для резервных токенов если ее нет\n            cursor.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS reserve_tokens (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_token_accounts",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def get_reserve_token_accounts(user_id, king, token):\n    \"\"\"Получает аккаунты для резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT account_id, spend_cap, amount_spent, remaining, status \n                FROM reserve_token_accounts \n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "update_reserve_token_account_info",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):\n    \"\"\"Обновляет информацию об аккаунте резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, \n                    balance = ?, daily_limit = ?, remaining = ?,\n                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "update_user_settings",
+        "kind": 2,
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "peekOfCode": "def update_user_settings(user_id, data):\n    \"\"\"Обновляет настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование записи\n            cursor.execute(\"SELECT id FROM settings WHERE user_id = ?\", (user_id,))\n            settings_exists = cursor.fetchone()\n            if settings_exists:\n                # Обновляем существующую запись",
+        "detail": "backend.setting",
+        "documentation": {}
+    },
+    {
+        "label": "get_default_settings",
+        "kind": 2,
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "peekOfCode": "def get_default_settings():\n    \"\"\"Возвращает настройки по умолчанию\"\"\"\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 5,\n        'telegram_bot_token': '',",
+        "detail": "backend.setting",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_settings",
+        "kind": 2,
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "peekOfCode": "def get_user_settings(user_id):\n    \"\"\"Получает настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    sync_api_key, proxy, use_proxy, auto_refresh_campaigns, \n                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, \n                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,",
+        "detail": "backend.setting",
         "documentation": {}
     },
     {
         "label": "send_telegram_message",
         "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        # Если нет chat_id или bot_token — пробуем получить из настроек\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")",
-        "detail": "app",
+        "importPath": "backend.telegram",
+        "description": "backend.telegram",
+        "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")\n            return False",
+        "detail": "backend.telegram",
         "documentation": {}
     },
     {
-        "label": "get_all_users",
+        "label": "login_required",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_all_users() -> List[Dict[str, Any]]:\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_accounts_stats",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем только валидные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
+        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\n@app.route('/api/admin/test_tokens')\n@login_required",
         "detail": "app",
         "documentation": {}
     },
@@ -868,24 +1722,6 @@
         "documentation": {}
     },
     {
-        "label": "process_adset_control",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    \"\"\"Обрабатывает контроль одного адсета\"\"\"\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_control",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def auto_control(user_id):\n    \"\"\"Функция автоконтроля для работы с базой данных и резервными токенами\"\"\"\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        # Получаем настройки пользователя\n        settings = get_user_settings(user_id)\n        # Создаем сессию с прокси если нужно\n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "is_admin_user",
         "kind": 2,
         "importPath": "app",
@@ -909,15 +1745,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def get_account_details(account_id):\n    \"\"\"Возвращает детальную информацию об аккаунте\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        user_id = session['user_id']\n        # Находим токен аккаунта\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "load_reserve_tokens",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def load_reserve_tokens(user_id):\n    \"\"\"Загружает резервные токены из отдельной таблицы базы данных\"\"\"\n    reserve_tokens = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу для резервных токенов если ее нет\n            cursor.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS reserve_tokens (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,",
         "detail": "app",
         "documentation": {}
     },
@@ -953,43 +1780,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_keitaro_api_key(user_id: int) -> str:\n    \"\"\"Получает API ключ Keitaro из настроек пользователя\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        return settings.get('keitaro_api_key', '')\n    except Exception as e:\n        logger.error(f\"Ошибка получения Keitaro API key: {e}\")\n        return \"\"\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_facebook_campaigns",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        # Убедимся, что account_id не содержит 'act_' префикс\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_facebook_adsets",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ адсеты из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "check_and_pause_campaigns",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def check_and_pause_campaigns(user_id):\n    \"\"\"Проверяет и отключает кампании, если все их адсеты отключены\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Находим кампании, где все адсеты отключены\n            cursor.execute(\"\"\"\n            SELECT c.campaign_id, c.name, c.token, c.account_id\n            FROM campaigns c\n            WHERE c.user_id = ? AND c.status = 'ACTIVE'",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "extract_geo_from_name",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"Извлекает GEO код из названия с улучшенной логикой\"\"\"\n    if not name:\n        return 'N/A'\n    # Нормализуем название - приводим к верхнему регистру и удаляем лишние символы\n    clean_name = re.sub(r'[^A-Za-z0-9\\s]', ' ', str(name).upper())\n    words = clean_name.split()\n    # Если есть список известных GEO — ищем по нему в первую очередь\n    if known_geos:\n        # Сначала ищем точные совпадения",
+        "peekOfCode": "def get_keitaro_api_key(user_id: int) -> str:\n    \"\"\"Получает API ключ Keitaro из настроек пользователя\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        return settings.get('keitaro_api_key', '')\n    except Exception as e:\n        logger.error(f\"Ошибка получения Keitaro API key: {e}\")\n        return \"\"\n@app.route('/api/auto_control/logs', methods=['GET'])\n@login_required",
         "detail": "app",
         "documentation": {}
     },
@@ -999,15 +1790,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def get_auto_control_logs():\n    \"\"\"Возвращает логи автоконтроля\"\"\"\n    try:\n        user_id = session['user_id']\n        # Читаем лог файл\n        log_file = 'app.log'\n        logs = []\n        if os.path.exists(log_file):\n            with open(log_file, 'r', encoding='utf-8') as f:\n                lines = f.readlines()[-100:]  # Последние 100 строк",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "run_auto_control_for_user",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    logger.info(f\"Запуск автоконтроля для пользователя {user_id}\")\n    while True:\n        # Проверяем, должен ли автоконтроль продолжать работать\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n                break\n        try:",
         "detail": "app",
         "documentation": {}
     },
@@ -1772,16 +2554,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def balance_monitor():\n    \"\"\"Страница мониторинга баланса\"\"\"\n    return render_template('balance_monitor.html')\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        # Создаем новый таймер",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "start_auto_refresh",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        # Создаем новый таймер\n        interval_seconds = interval_minutes * 60\n        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval_minutes))\n        timer.daemon = True",
+        "peekOfCode": "def balance_monitor():\n    \"\"\"Страница мониторинга баланса\"\"\"\n    return render_template('balance_monitor.html')\ndef stop_auto_refresh(user_id):\n    \"\"\"Останавливает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n            del auto_refresh_timers[user_id]\n            logger.info(f\"Автообновление остановлено для пользователя {user_id}\")",
         "detail": "app",
         "documentation": {}
     },
@@ -1790,34 +2563,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def stop_auto_refresh(user_id):\n    \"\"\"Останавливает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n            del auto_refresh_timers[user_id]\n            logger.info(f\"Автообновление остановлено для пользователя {user_id}\")\ndef auto_refresh_user_data(user_id, interval_minutes):\n    \"\"\"Функция автообновления данных пользователя\"\"\"\n    try:",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_refresh_user_data",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    \"\"\"Функция автообновления данных пользователя\"\"\"\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            # Получаем настройки пользователя\n            settings = get_user_settings(user_id)\n            # Обновляем кампании, если включено\n            if settings.get('auto_refresh_campaigns', True):\n                refresh_campaigns_internal(user_id)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "refresh_campaigns_internal",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def refresh_campaigns_internal(user_id):\n    \"\"\"Внутренняя функция обновления кампаний\"\"\"\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']\n        for account_id, token in accounts.items():\n            fb_campaigns = fetch_facebook_campaigns(account_id, token)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "refresh_adsets_internal",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def refresh_adsets_internal(user_id):\n    \"\"\"Внутренняя функция обновления адсетов\"\"\"\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        # Получаем известные GEO коды для улучшенного распознавания\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:",
+        "peekOfCode": "def stop_auto_refresh(user_id):\n    \"\"\"Останавливает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n            del auto_refresh_timers[user_id]\n            logger.info(f\"Автообновление остановлено для пользователя {user_id}\")\ndef get_auto_refresh_status(user_id):\n    \"\"\"Возвращает статус автообновления\"\"\"\n    with auto_refresh_lock:",
         "detail": "app",
         "documentation": {}
     },
@@ -1948,20 +2694,11 @@
         "documentation": {}
     },
     {
-        "label": "lock",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "lock = threading.Lock()\n# Настройка логирования\nlogging.basicConfig(\n    level=logging.DEBUG,\n    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',\n    handlers=[\n        RotatingFileHandler('app.log', maxBytes=100000, backupCount=3),\n        logging.StreamHandler()\n    ]\n)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "app",
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\nauto_control_threads = {}",
+        "peekOfCode": "app = Flask(__name__)\napp.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\ndef login_required(f):",
         "detail": "app",
         "documentation": {}
     },
@@ -1970,7 +2707,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()",
+        "peekOfCode": "app.secret_key = 'your_very_secret_key_here'\n# Настройка логироваcния\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -1979,98 +2716,8 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nimport datetime\nimport json\nimport time\nfrom typing import Any, Dict, List, Optional, Set, Tuple\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:",
         "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_control_threads",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_control_lock",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_refresh_timers",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_refresh_lock",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\ndef stop_auto_control_and_refresh(user_id):",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_refresh_timers",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\n@app.route('/balance_monitor')\n@login_required\ndef balance_monitor():\n    \"\"\"Страница мониторинга баланса\"\"\"\n    return render_template('balance_monitor.html')\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "auto_refresh_lock",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\n@app.route('/balance_monitor')\n@login_required\ndef balance_monitor():\n    \"\"\"Страница мониторинга баланса\"\"\"\n    return render_template('balance_monitor.html')\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "add_user_adset",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, \n                leads, manual_pause, king, effective_status, ad_name, budget,\n                campaign_id, account_id, auto_budget_increase, auto_budget_decrease,",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_db_connection",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_db_connection(user_id=None):\n    \"\"\"Создает и возвращает соединение с базой данных\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    conn.row_factory = sqlite3.Row\n    # Устанавливаем user_id для соединения (если нужно)\n    if user_id:\n        # PRAGMA не поддерживает параметризованные запросы, поэтому форматируем строку\n        conn.execute(f\"PRAGMA application_id = {user_id}\")\n    return conn\nimport sqlite3",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "add_campaign_mapping",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    \"\"\"Добавляет соответствие между Facebook и Keitaro\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)\n            VALUES (?, ?, ?, ?, ?)",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_geo_rules",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_user_geo_rules(user_id):\n    \"\"\"Получает GEO правила из новой таблицы geo_rules\"\"\"\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='geo_rules'",
-        "detail": "database",
         "documentation": {}
     },
     {
@@ -2088,33 +2735,6 @@
         "importPath": "database",
         "description": "database",
         "peekOfCode": "def init_db():\n    \"\"\"Инициализирует базу данных с нужными таблицами\"\"\"\n    with lock:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            # Сначала создаем таблицу users если не существует\n            cursor.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS users (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,\n                username TEXT UNIQUE NOT NULL,",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_adset_budget_settings",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:\n    \"\"\"Получает настройки авто-бюджета для адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT auto_budget_increase, auto_budget_decrease, \n                       max_budget, min_budget, budget_increase_step, \n                       budget_decrease_step\n                FROM adsets ",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_adset_budget_settings",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:\n    \"\"\"Обновляет настройки авто-бюджета для адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE adsets \n                SET auto_budget_increase = ?, auto_budget_decrease = ?,\n                    max_budget = ?, min_budget = ?, budget_increase_step = ?,\n                    budget_decrease_step = ?, updated_at = CURRENT_TIMESTAMP",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_adsets_for_auto_budget",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает адсеты для авто-бюджета с токенами\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT a.*, c.token \n                FROM adsets a\n                LEFT JOIN campaigns c ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id\n                WHERE a.user_id = ? AND a.status = 'ACTIVE'",
         "detail": "database",
         "documentation": {}
     },
@@ -2137,191 +2757,11 @@
         "documentation": {}
     },
     {
-        "label": "get_user_campaigns",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список кампаний пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM campaigns WHERE user_id = ?\", (user_id,))\n            return [dict(row) for row in cursor.fetchall()]\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя с гарантированным наличием поля status\"\"\"\n    with lock:",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_adsets",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя с гарантированным наличием поля status\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, ",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_geo_config",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    \"\"\"Возвращает конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_default_settings",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_default_settings():\n    \"\"\"Возвращает настройки по умолчанию\"\"\"\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 5,\n        'telegram_bot_token': '',",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_default_settings",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_default_settings():\n    \"\"\"Возвращает настройки по умолчанию\"\"\"\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'telegram_bot_token': '',\n        'telegram_chat_id': '',",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_settings",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def update_user_settings(user_id, data):\n    \"\"\"Обновляет настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование записи\n            cursor.execute(\"SELECT id FROM settings WHERE user_id = ?\", (user_id,))\n            settings_exists = cursor.fetchone()\n            if settings_exists:\n                # Обновляем существующую запись",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "add_user_campaign",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def add_user_campaign(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет кампанию с проверкой данных\"\"\"\n    required_fields = {\n        'king': str,\n        'name': str,\n        'status': str,\n        'campaign_id': str,\n        'account_id': str\n    }\n    # Проверяем обязательные поля",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_campaign_stats",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def update_campaign_stats(user_id, campaign_id, spend=None, leads=None, cpa=None, cpc=None, ucpc=None):\n    \"\"\"Обновляет статистику кампании с CPC из Facebook\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            updates = []\n            params = {'user_id': user_id, 'campaign_id': campaign_id}\n            if spend is not None:\n                updates.append(\"spend = :spend\")\n                params['spend'] = spend",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_campaign_status",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def update_user_campaign_status(user_id: int, campaign_id: str, status: str):\n    \"\"\"Обновляет статус кампании пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE campaigns SET status = ? \n            WHERE user_id = ? AND campaign_id = ?\n            \"\"\", (status, user_id, campaign_id))\n            conn.commit()",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "add_user_adset",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Убедимся, что все обязательные поля присутствуют\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:\n                if field not in data:\n                    data[field] = '' if field != 'king' else 'Facebook'",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_adset_status",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def update_user_adset_status(user_id: int, adset_id: str, status: str):\n    \"\"\"Обновляет статус адсета пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE adsets SET status = ? \n            WHERE user_id = ? AND adset_id = ?\n            \"\"\", (status, user_id, adset_id))\n            conn.commit()",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_all_users",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_all_users():\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "add_account_to_reserve_token",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def add_account_to_reserve_token(user_id, king, token, account_id):\n    \"\"\"Добавляет аккаунт к резервному токену\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_token_accounts (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_reserve_token_accounts",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_reserve_token_accounts(user_id, king, token):\n    \"\"\"Получает аккаунты для резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT account_id, spend_cap, amount_spent, remaining, status \n                FROM reserve_token_accounts \n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_reserve_token_account_info",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):\n    \"\"\"Обновляет информацию об аккаунте резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, \n                    balance = ?, daily_limit = ?, remaining = ?,\n                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_user_accounts_stats",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем ВСЕ аккаунты, включая невалидные\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_all_accounts_stats",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_all_accounts_stats():\n    \"\"\"Получает статистику по всем аккаунтам всех пользователей\"\"\"\n    users = get_all_users()\n    all_accounts = []\n    for user in users:\n        user_id = user['id']\n        accounts = get_user_accounts_stats(user_id)\n        for account in accounts:\n            account['user_id'] = user_id\n            account['username'] = user['username']",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_account_limits_info",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "update_user_adset_budget",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    \"\"\"Обновляет бюджет адсета пользователя в базе данных\"\"\"\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "add_user_geo_config",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def add_user_geo_config(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет или обновляет конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            data['user_id'] = user_id\n            cursor.execute(\"\"\"\n            SELECT id FROM geo_config \n            WHERE user_id = ? AND geo_code = ?\n            \"\"\", (user_id, data['geo_code']))",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
         "label": "DB_PATH",
         "kind": 5,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "DB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, ",
+        "peekOfCode": "DB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\nimport sqlite3\nimport threading\nfrom pathlib import Path\nfrom typing import Any, Dict, Optional\nfrom werkzeug.security import check_password_hash, generate_password_hash\nDB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:",
         "detail": "database",
         "documentation": {}
     },
@@ -2330,7 +2770,7 @@
         "kind": 5,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "lock = threading.Lock()\ndef add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, \n                leads, manual_pause, king, effective_status, ad_name, budget,",
+        "peekOfCode": "lock = threading.Lock()\nimport sqlite3\nimport threading\nfrom pathlib import Path\nfrom typing import Any, Dict, Optional\nfrom werkzeug.security import check_password_hash, generate_password_hash\nDB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:\n    \"\"\"",
         "detail": "database",
         "documentation": {}
     },
@@ -2339,7 +2779,7 @@
         "kind": 5,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "DB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    \"\"\"Добавляет соответствие между Facebook и Keitaro\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping ",
+        "peekOfCode": "DB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:\n    \"\"\"\n    Создает и возвращает соединение с базой данных с обработкой ошибок\n    Args:\n        user_id: ID пользователя для установки application_id\n    Returns:\n        sqlite3.Connection: соединение с базой данных\n    Raises:",
         "detail": "database",
         "documentation": {}
     },
@@ -2348,80 +2788,8 @@
         "kind": 5,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "lock = threading.Lock()\ndef add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    \"\"\"Добавляет соответствие между Facebook и Keitaro\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)",
+        "peekOfCode": "lock = threading.Lock()\ndef get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:\n    \"\"\"\n    Создает и возвращает соединение с базой данных с обработкой ошибок\n    Args:\n        user_id: ID пользователя для установки application_id\n    Returns:\n        sqlite3.Connection: соединение с базой данных\n    Raises:\n        sqlite3.Error: если не удалось установить соединение",
         "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "get_session",
-        "kind": 2,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "def get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:",
-        "detail": "facebook_api",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_facebook_campaigns",
-        "kind": 2,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        # Убедимся, что account_id не содержит 'act_' префикс\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,",
-        "detail": "facebook_api",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_facebook_adsets",
-        "kind": 2,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ адсеты из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
-        "detail": "facebook_api",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_adsets_insights",
-        "kind": 2,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "def fetch_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов (spend, CPC, CPA, conversions)\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc,cost_per_conversion,conversions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
-        "detail": "facebook_api",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_facebook_cpm_data",
-        "kind": 2,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "def fetch_facebook_cpm_data(account_id, access_token):\n    \"\"\"Получает CPM данные из Facebook Insights\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,cpm,spend,impressions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
-        "detail": "facebook_api",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_facebook_cpc_data",
-        "kind": 2,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "def fetch_facebook_cpc_data(account_id, access_token):\n    \"\"\"Получает CPC данные из Facebook Insights\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,cpc,spend\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
-        "detail": "facebook_api",
-        "documentation": {}
-    },
-    {
-        "label": "get_account_limits_info",
-        "kind": 2,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }",
-        "detail": "facebook_api",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "facebook_api",
-        "description": "facebook_api",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"",
-        "detail": "facebook_api",
         "documentation": {}
     },
     {
@@ -2431,69 +2799,6 @@
         "description": "init_db",
         "peekOfCode": "def generate_test_data():\n    \"\"\"Генерирует тестовые данные для базы данных\"\"\"\n    conn = get_db_connection()\n    cursor = conn.cursor()\n    # Очищаем таблицы\n    cursor.execute(\"DELETE FROM campaigns\")\n    cursor.execute(\"DELETE FROM adsets\")\n    cursor.execute(\"DELETE FROM geo_config\")\n    cursor.execute(\"DELETE FROM settings\")\n    # Добавляем настройки",
         "detail": "init_db",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_keitaro_report",
-        "kind": 2,
-        "importPath": "keitaro_api",
-        "description": "keitaro_api",
-        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.\n    Считает лиды по формуле Spend / CPA.\n    Берёт CPC и UCPC из Keitaro.\n    Группировка только по sub_id_9 (название адсета).\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}",
-        "detail": "keitaro_api",
-        "documentation": {}
-    },
-    {
-        "label": "get_keitaro_streams",
-        "kind": 2,
-        "importPath": "keitaro_api",
-        "description": "keitaro_api",
-        "peekOfCode": "def get_keitaro_streams(base_url, api_key, campaign_id):\n    \"\"\"\n    Получение потоков Keitaro с автоподстановкой схемы и пути API.\n    base_url: домен трекера (с https:// или без), например:\n              \"tracker.mydomain.com\" или \"https://tracker.mydomain.com/admin_api/v1\"\n    api_key: API key\n    campaign_id: ID кампании или \"all\"\n    \"\"\"\n    # Убираем пробелы и лишние слэши\n    base_url = base_url.strip().rstrip(\"/\")",
-        "detail": "keitaro_api",
-        "documentation": {}
-    },
-    {
-        "label": "update_keitaro_stream_weight",
-        "kind": 2,
-        "importPath": "keitaro_api",
-        "description": "keitaro_api",
-        "peekOfCode": "def update_keitaro_stream_weight(api_key, domain, stream_id, new_weight):\n    \"\"\"Обновляет вес потока в Keitaro - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/streams/{stream_id}\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        payload = {\"weight\": int(new_weight)}\n        response = requests.put(url, headers=headers, json=payload, timeout=30)\n        response.raise_for_status()\n        result = response.json()\n        return result",
-        "detail": "keitaro_api",
-        "documentation": {}
-    },
-    {
-        "label": "analyze_stream_performance",
-        "kind": 2,
-        "importPath": "keitaro_api",
-        "description": "keitaro_api",
-        "peekOfCode": "def analyze_stream_performance(api_key, domain, campaign_id=None, interval=\"today\"):\n    \"\"\"Анализирует производительность потоков кампании - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/report/build\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        # Базовый payload для анализа потоков\n        payload = {\n            \"range\": {\"interval\": interval, \"timezone\": \"Europe/Moscow\"},\n            \"metrics\": [\"conversions\", \"revenue\", \"cost\", \"roi\", \"epc\", \"clicks\"],\n            \"grouping\": [\"stream_id\", \"campaign_id\"],",
-        "detail": "keitaro_api",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "keitaro_api",
-        "description": "keitaro_api",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.\n    Считает лиды по формуле Spend / CPA.\n    Берёт CPC и UCPC из Keitaro.\n    Группировка только по sub_id_9 (название адсета).\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"",
-        "detail": "keitaro_api",
-        "documentation": {}
-    },
-    {
-        "label": "send_telegram_message",
-        "kind": 2,
-        "importPath": "telegram_bot",
-        "description": "telegram_bot",
-        "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        # Если нет chat_id или bot_token — пробуем получить из настроек\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")",
-        "detail": "telegram_bot",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "kind": 5,
-        "importPath": "telegram_bot",
-        "description": "telegram_bot",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        # Если нет chat_id или bot_token — пробуем получить из настроек\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:",
-        "detail": "telegram_bot",
         "documentation": {}
     }
 ]

@@ -11,18 +11,24 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    session, url_for)
 from fuzzywuzzy import fuzz, process
-from backend.autocontrol import  start_auto_control_and_refresh
-from database import (add_account_to_reserve_token, add_user_adset,
-                      add_user_campaign, authenticate_user, create_user,
-                      get_adset_budget_settings, get_db_connection,
-                      get_reserve_token_accounts, get_user_adsets,
-                      get_user_campaigns, get_user_geo_config,
-                      get_user_geo_rules, get_user_settings, init_db,
-                      update_campaign_stats, update_reserve_token_account_info,
-                      update_user_adset_budget, update_user_adset_status,
-                      update_user_campaign_status, update_user_settings)
 
-lock = threading.Lock()
+from backend.account import get_all_users, get_user_accounts_stats
+from backend.adsets import add_user_adset, fetch_facebook_adsets, get_user_adsets, update_user_adset_status
+from backend.autocontrol import (auto_control, auto_refresh_lock,
+                                 auto_refresh_timers, get_combined_auto_status,
+                                 start_auto_control_and_refresh,
+                                 stop_auto_control_and_refresh)
+from backend.budget import get_adset_budget_settings
+from backend.campaign import (add_user_campaign, fetch_facebook_campaigns,
+                              get_user_campaigns, lock, update_campaign_stats,
+                              update_user_campaign_status)
+from backend.geo_config import extract_geo_from_name, get_user_geo_rules
+from backend.keitaro import fetch_keitaro_report
+from backend.reserve_tokens import get_reserve_token_accounts
+from backend.setting import get_user_settings, update_user_settings
+from backend.telegram import send_telegram_message
+from database import (authenticate_user, create_user, get_db_connection,
+                      init_db)
 
 # Настройка логирования
 logging.basicConfig(
@@ -44,10 +50,6 @@ import json
 import time
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-auto_control_threads = {}
-auto_control_lock = threading.Lock()
-auto_refresh_timers = {}
-auto_refresh_lock = threading.Lock()
 
 def login_required(f):
     """Декоратор для проверки аутентификации пользователя"""
@@ -59,175 +61,10 @@ def login_required(f):
     return decorated_function
 
 
-def stop_auto_control_and_refresh(user_id):
-    """Останавливает и автоконтроль и автообновление вместе"""
-    # Останавливаем автоконтроль
-    with auto_control_lock:
-        if user_id in auto_control_threads:
-            auto_control_threads[user_id]['running'] = False
-            del auto_control_threads[user_id]
-            logger.info(f"Автоконтроль остановлен для пользователя {user_id}")
-    
-    # Останавливаем автообновление
-    with auto_refresh_lock:
-        if user_id in auto_refresh_timers:
-            auto_refresh_timers[user_id].cancel()
-            del auto_refresh_timers[user_id]
-            logger.info(f"Автообновление остановлено для пользователя {user_id}")
-
-def get_combined_auto_status(user_id):
-    """Возвращает комбинированный статус автоконтроля и автообновления"""
-    with auto_control_lock:
-        auto_control_running = user_id in auto_control_threads
-        
-    with auto_refresh_lock:
-        auto_refresh_running = user_id in auto_refresh_timers
-        settings = get_user_settings(user_id)
-        interval = settings.get('auto_refresh_interval', 5)
-    
-    # Считаем, что система работает, если работает хотя бы один компонент
-    running = auto_control_running or auto_refresh_running
-    
-    return {
-        'running': running,
-        'auto_control_running': auto_control_running,
-        'auto_refresh_running': auto_refresh_running,
-        'interval': interval
-    }
-
-def get_session():
-    """Создает и возвращает сессию requests с настройками"""
-    session = requests.Session()
-    session.headers.update({
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    })
-    return session
-def fetch_keitaro_report(api_key, domain, interval="today"):
-    """
-    Получает отчет из Keitaro.
-    Считает лиды по формуле Spend / CPA.
-    Берёт CPC и UCPC из Keitaro.
-    Группировка только по sub_id_9 (название адсета).
-    """
-    logger = logging.getLogger(__name__)
-    url = f"https://{domain}/admin_api/v1/report/build"
-    headers = {"Api-Key": api_key, "Content-Type": "application/json"}
-
-    metrics = ["ucpc", "cpc", "conversions", "cost", "cpa"]
-    limit = 250
-    offset = 0
-    all_rows = []
-
-    try:
-        while True:
-            payload = {
-                "range": {"interval": interval, "timezone": "Europe/Moscow"},
-                "metrics": metrics,
-                "grouping": ["sub_id_9"],   # 🚨 только имя адсета
-                "filters": [],
-                "sort": [{"name": "ucpc", "order": "desc"}],
-                "limit": limit,
-                "offset": offset
-            }
-
-            response = requests.post(url, headers=headers, json=payload, timeout=30)
-            response.raise_for_status()
-            report = response.json()
-
-            rows = report.get("rows", [])
-            if not rows:
-                break
-
-            for row in rows:
-                cost = float(row.get("cost", 0) or 0)
-                cpa = float(row.get("cpa", 0) or 0)
-                cpc = float(row.get("cpc", 0) or 0)
-
-                leads = round(cost / cpa) if cpa > 0 and cost > 0 else 0
-                row["leads"] = leads
-                row["cpc"] = cpc
-
-            all_rows.extend(rows)
-
-            if len(rows) < limit:
-                break
-            offset += limit
-
-        return {"rows": all_rows}
-
-    except Exception as e:
-        logger.error(f"Ошибка при запросе отчета Keitaro: {e}")
-        return {"rows": []}
-
-def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
-    """Безопасная отправка сообщения в Telegram"""
-    try:
-        # Если нет chat_id или bot_token — пробуем получить из настроек
-        if user_id and (not chat_id or not bot_token):
-            settings = get_user_settings(user_id)
-            chat_id = chat_id or settings.get('telegram_chat_id')
-            bot_token = bot_token or settings.get('telegram_bot_token')
-
-        if not chat_id or not bot_token:
-            logger.debug("Telegram не настроен — пропуск отправки")
-            return False
-
-        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-        payload = {
-            'chat_id': chat_id,
-            'text': message,
-            'parse_mode': 'HTML'
-        }
-
-        response = requests.post(url, json=payload, timeout=10)
-        response.raise_for_status()
-        return True
-
-    except Exception as e:
-        logger.warning(f"Telegram сообщение не отправлено: {e}")
-        return False
 
 
-def get_all_users() -> List[Dict[str, Any]]:
-    """Получает список всех пользователей"""
-    try:
-        with get_db_connection() as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT id, username, created_at FROM users ORDER BY created_at DESC")
-            return [dict(row) for row in cursor.fetchall()]
-    except Exception as e:
-        logger.error(f"Ошибка получения списка пользователей: {e}")
-        return []
-def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
-    """Получает статистику по аккаунтам пользователя с проверкой валидности - исправленная версия"""
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            # Получаем только валидные аккаунты
-            cursor.execute("""
-                SELECT DISTINCT account_id, token 
-                FROM campaigns 
-                WHERE user_id = ? 
-                AND account_id IS NOT NULL 
-                AND account_id != 'N/A'
-                AND token IS NOT NULL
-                AND token != 'N/A'
-            """, (user_id,))
-            
-            accounts = []
-            for row in cursor.fetchall():
-                accounts.append({
-                    'account_id': row['account_id'],
-                    'token': row['token']
-                })
-            
-            logger.info(f"Найдено {len(accounts)} валидных аккаунтов у пользователя {user_id}")
-            return accounts
-            
-    except Exception as e:
-        logger.error(f"Ошибка получения статистики аккаунтов пользователя {user_id}: {e}")
-        return []
+
+
 @app.route('/api/admin/test_tokens')
 @login_required
 def test_tokens():
@@ -301,6 +138,7 @@ def debug_accounts():
     except Exception as e:
         logger.error(f"Ошибка отладки аккаунтов: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/api/reserve_tokens/check_account_limits', methods=['POST'])
 @login_required
 def check_reserve_token_account_limits():
@@ -890,216 +728,7 @@ def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
     except Exception as e:
         logger.error(f"Ошибка получения резервных токенов: {e}")
         return {}
-def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):
-    """Обрабатывает контроль одного адсета"""
-    adset_name = adset.get('name', '')
-    adset_id = adset.get('adset_id', '')
-    ucpc = float(adset.get('ucpc', 0))
-    spend = float(adset.get('spend', 0))
-    cpa = float(adset.get('cpa', 0))
-    status = adset.get('status', '').strip().upper()
-    account_id = adset.get('account_id', '')
-    token = adset.get('token', '')
-    leads = int(adset.get('leads', 0))
-    manual_pause = bool(adset.get('manual_pause', 0))
-    king = adset.get('king', '').strip()
-    
-    logger.debug(f"Обработка адсета: {adset_name} (ID: {adset_id}, статус: {status})")
-    
-    # Извлекаем GEO с улучшенной логикой
-    geo = extract_geo_from_name(adset_name, known_geos)
-    
-    # Пропускаем если нет GEO или неизвестное GEO
-    if geo == 'N/A' or geo not in geo_rules:
-        msg = f"⏭️ Пропускаем (неизвестное GEO: {geo}) {adset_name}"
-        logger.info(msg)
-        return
-    
-    rule = geo_rules[geo]
-    should_pause = False
-    should_resume = False
-    pause_reason = ""
 
-    # Логика автоконтроля
-    if status == "ACTIVE" and not manual_pause:
-        max_cpa = rule.get("max_cpa", rule.get("cpa_red", 100))
-        min_spend = rule.get("min_spend", rule.get("spend_zero_leads", 50))
-        
-        logger.debug(f"Правила для GEO {geo}: max_cpa={max_cpa}, min_spend={min_spend}")
-        logger.debug(f"Показатели адсета: leads={leads}, ucpc={ucpc}, spend={spend}, cpa={cpa}")
-        
-        if leads == 0 and ucpc > max_cpa and spend >= min_spend:
-            should_pause = True
-            pause_reason = "uCPC"
-            logger.info(f"Условие паузы 1: leads=0, ucpc={ucpc} > {max_cpa}, spend={spend} >= {min_spend}")
-        elif leads > 0 and cpa > max_cpa and spend >= min_spend:
-            should_pause = True
-            pause_reason = "CPA"
-            logger.info(f"Условие паузы 2: leads={leads}, cpa={cpa} > {max_cpa}, spend={spend} >= {min_spend}")
-        elif spend >= min_spend and leads == 0:
-            should_pause = True
-            pause_reason = "Zero Leads"
-            logger.info(f"Условие паузы 3: spend={spend} >= {min_spend}, leads=0")
-
-    elif status == "PAUSED" and not manual_pause:
-        cpa_green = rule.get("cpa_green", 20)
-        cpa_orange = rule.get("cpa_orange", 50)
-        min_spend_half = rule.get("min_spend", rule.get("spend_zero_leads", 50)) / 2
-        
-        logger.debug(f"Правила возобновления: cpa_green={cpa_green}, cpa_orange={cpa_orange}, min_spend_half={min_spend_half}")
-        
-        if (leads > 0 and cpa <= cpa_green and ucpc <= cpa_orange and spend >= min_spend_half):
-            should_resume = True
-            logger.info(f"Условие возобновления: leads={leads}, cpa={cpa} <= {cpa_green}, ucpc={ucpc} <= {cpa_orange}, spend={spend} >= {min_spend_half}")
-
-    # Получаем токены: основной + резервные
-    token_list = reserve_tokens.get(king, [])
-    if token and token not in token_list:
-        token_list = [token] + token_list  # основной токен первым
-    
-    if not token_list:
-        logger.warning(f"Нет доступных токенов для KING={king}, адсет {adset_name}")
-        return
-
-    # --- Отключение ---
-    if should_pause:
-        logger.info(f"Попытка отключения адсета {adset_name} по причине: {pause_reason}")
-        for idx, current_token in enumerate(token_list):
-            try:
-                url = f"https://graph.facebook.com/v18.0/{adset_id}"
-                data = {"status": "PAUSED"}
-                
-                logger.debug(f"Отправка запроса к Facebook API: {url} с токеном {idx+1}")
-                
-                resp = session_obj.post(
-                    url,
-                    params={"access_token": current_token},
-                    data=data,
-                    timeout=10
-                ).json()
-
-                logger.debug(f"Ответ Facebook API: {resp}")
-
-                if resp.get("success") or resp.get("id") == adset_id:
-                    # Обновляем статус в базе
-                    update_user_adset_status(user_id, adset_id, "PAUSED")
-                    
-                    msg = (f"🔴 Отключен: {adset_name} "
-                           f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f}) — причина: {pause_reason}")
-                    logger.info(msg)
-                    send_telegram_message(msg, user_id=user_id)
-                    break
-
-                if ("error" in resp and "Application request limit" in resp["error"].get("message", "")):
-                    if idx + 1 < len(token_list):
-                        logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
-                        continue
-                    else:
-                        raise Exception(f"❌ Все токены исчерпаны для KING={king}")
-                else:
-                    raise Exception(f"Ошибка Facebook: {resp}")
-
-            except Exception as e:
-                msg = f"❌ Ошибка отключения {adset_name} (токен {idx+1}): {e}"
-                logger.error(msg)
-                if idx == len(token_list) - 1:  # Если это последний токен
-                    send_telegram_message(msg, user_id=user_id)
-                continue
-
-    # --- Включение ---
-    elif should_resume:
-        logger.info(f"Попытка включения адсета {adset_name}")
-        for idx, current_token in enumerate(token_list):
-            try:
-                url = f"https://graph.facebook.com/v18.0/{adset_id}"
-                data = {"status": "ACTIVE"}
-                
-                logger.debug(f"Отправка запроса к Facebook API: {url} с токеном {idx+1}")
-                
-                resp = session_obj.post(
-                    url,
-                    params={"access_token": current_token},
-                    data=data,
-                    timeout=10
-                ).json()
-
-                logger.debug(f"Ответ Facebook API: {resp}")
-
-                if resp.get("success") or resp.get("id") == adset_id:
-                    # Обновляем статус в базе
-                    update_user_adset_status(user_id, adset_id, "ACTIVE")
-                    
-                    msg = (f"🟢 Включен: {adset_name} "
-                           f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
-                    logger.info(msg)
-                    send_telegram_message(msg, user_id=user_id)
-                    break
-
-                if ("error" in resp and "Application request limit" in resp["error"].get("message", "")):
-                    if idx + 1 < len(token_list):
-                        logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
-                        continue
-                    else:
-                        raise Exception(f"❌ Все токены исчерпаны для KING={king}")
-                else:
-                    raise Exception(f"Ошибка Facebook: {resp}")
-
-            except Exception as e:
-                msg = f"❌ Ошибка включения {adset_name} (токен {idx+1}): {e}"
-                logger.error(msg)
-                if idx == len(token_list) - 1:  # Если это последний токен
-                    send_telegram_message(msg, user_id=user_id)
-                continue
-def auto_control(user_id):
-    """Функция автоконтроля для работы с базой данных и резервными токенами"""
-    try:
-        logger.info(f"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")
-        
-        # Получаем настройки пользователя
-        settings = get_user_settings(user_id)
-        
-        # Создаем сессию с прокси если нужно
-        session_obj = get_session()
-        if settings.get('use_proxy') and settings.get('proxy'):
-            session_obj.proxies = {
-                'http': settings.get('proxy'),
-                'https': settings.get('proxy')
-            }
-        
-        # Проверяем и отключаем кампании без активных адсетов
-        check_and_pause_campaigns(user_id)
-        
-        # Получаем правила GEO из новой таблицы geo_rules
-        geo_rules = get_user_geo_rules(user_id)
-        
-        # Если нет правил в новой таблице, используем старую geo_config
-        if not geo_rules:
-            geo_rules = get_user_geo_config(user_id)
-            logger.info("Используются правила из старой таблицы geo_config")
-        
-        # Получаем список известных GEO кодов для улучшенного распознавания
-        known_geos = list(geo_rules.keys()) if geo_rules else []
-        
-        # Получаем резервные токены из отдельной таблицы
-        reserve_tokens = load_reserve_tokens(user_id)
-        
-        # Получаем все адсеты пользователя из базы данных
-        adsets = get_user_adsets(user_id)
-        logger.info(f"Найдено {len(adsets)} адсетов для обработки")
-        
-        for adset in adsets:
-            try:
-                process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings)
-                
-            except Exception as e:
-                logger.error(f"Ошибка обработки адсета {adset.get('name', 'unknown')}: {e}")
-                continue
-                
-        logger.info(f"=== ЗАВЕРШЕНИЕ АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")
-                
-    except Exception as e:
-        logger.error(f"Критическая ошибка автоконтроля для пользователя {user_id}: {e}")
-        send_telegram_message(f"🚫 Ошибка автоконтроля: {e}", user_id=user_id)
 def is_admin_user(user_id):
     """Проверяет, является ли пользователь администратором"""
     try:
@@ -1204,43 +833,6 @@ def get_account_details(account_id):
     except Exception as e:
         logger.error(f"Ошибка получения деталей аккаунта {account_id}: {e}")
         return jsonify({'success': False, 'error': str(e)})
-def load_reserve_tokens(user_id):
-    """Загружает резервные токены из отдельной таблицы базы данных"""
-    reserve_tokens = {}
-    
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            # Создаем таблицу для резервных токенов если ее нет
-            cursor.execute("""
-            CREATE TABLE IF NOT EXISTS reserve_tokens (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
-                king TEXT NOT NULL,
-                token TEXT NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users (id),
-                UNIQUE(user_id, king, token)
-            )
-            """)
-            
-            # Получаем все резервные токены
-            cursor.execute("SELECT king, token FROM reserve_tokens WHERE user_id = ?", (user_id,))
-            
-            for row in cursor.fetchall():
-                king = row['king']
-                token = row['token']
-                
-                if king not in reserve_tokens:
-                    reserve_tokens[king] = []
-                
-                reserve_tokens[king].append(token)
-                
-    except Exception as e:
-        logger.error(f"Ошибка загрузки резервных токенов: {e}")
-    
-    return reserve_tokens
 
 def add_reserve_token(user_id, king, token):
     """Добавляет резервный токен в базу данных"""
@@ -1323,239 +915,9 @@ def get_keitaro_api_key(user_id: int) -> str:
     except Exception as e:
         logger.error(f"Ошибка получения Keitaro API key: {e}")
         return ""
-def fetch_facebook_campaigns(account_id, access_token, fields=None):
-    """Получает ВСЕ кампании из Facebook API (включая неактивные)"""
-    if fields is None:
-        fields = "id,name,status,effective_status,daily_budget,objective,start_time,stop_time"
-    
-    try:
-        # Убедимся, что account_id не содержит 'act_' префикс
-        clean_account_id = account_id.replace('act_', '')
-        url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns"
-        
-        params = {
-            "fields": fields,
-            "access_token": access_token,
-            "limit": 1000  # Увеличиваем лимит
-        }
-        
-        all_campaigns = []
-        retry_count = 0
-        max_retries = 3
-        
-        while url and retry_count < max_retries:
-            try:
-                response = requests.get(url, params=params, timeout=60)
-                response.raise_for_status()
-                
-                data = response.json()
-                campaigns = data.get('data', [])
-                all_campaigns.extend(campaigns)
-                
-                # Логируем статусы для отладки
-                status_count = {}
-                effective_status_count = {}
-                for campaign in campaigns:
-                    status = campaign.get('status', 'UNKNOWN')
-                    effective_status = campaign.get('effective_status', 'UNKNOWN')
-                    status_count[status] = status_count.get(status, 0) + 1
-                    effective_status_count[effective_status] = effective_status_count.get(effective_status, 0) + 1
-                
-                logger.debug(f"Получено {len(campaigns)} кампаний. Status: {status_count}, Effective Status: {effective_status_count}")
-                
-                # Обрабатываем пагинацию
-                next_url = data.get('paging', {}).get('next')
-                if next_url == url:  # Защита от бесконечного цикла
-                    break
-                    
-                url = next_url
-                # Очищаем params для последующих запросов
-                params = {}
-                retry_count = 0
-                
-            except requests.exceptions.RequestException as e:
-                retry_count += 1
-                logger.warning(f"Ошибка запроса кампаний (попытка {retry_count}/{max_retries}): {e}")
-                if retry_count < max_retries:
-                    time.sleep(2 ** retry_count)  # Экспоненциальная задержка
-                else:
-                    raise
-        
-        # Фильтруем только нужные статусы если нужно (но лучше получить все)
-        filtered_campaigns = [camp for camp in all_campaigns 
-                             if camp.get('effective_status') not in ['DELETED', 'ARCHIVED']]
-        
-        logger.info(f"Получено {len(all_campaigns)} кампаний, после фильтрации: {len(filtered_campaigns)} для аккаунта {clean_account_id}")
-        return filtered_campaigns
-        
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Ошибка получения кампаний для аккаунта {account_id}: {e}")
-        return []
-    except Exception as e:
-        logger.error(f"Неожиданная ошибка при получении кампаний: {e}")
-        return []
 
-def fetch_facebook_adsets(account_id, access_token, fields=None):
-    """Получает ВСЕ адсеты из Facebook API (включая неактивные)"""
-    if fields is None:
-        fields = "id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget"
-    
-    try:
-        clean_account_id = account_id.replace('act_', '')
-        url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets"
-        
-        params = {
-            "fields": fields,
-            "access_token": access_token,
-            "limit": 1000  # Увеличиваем лимит
-        }
-        
-        all_adsets = []
-        retry_count = 0
-        max_retries = 3
-        
-        while url and retry_count < max_retries:
-            try:
-                response = requests.get(url, params=params, timeout=60)
-                response.raise_for_status()
-                
-                data = response.json()
-                adsets = data.get('data', [])
-                all_adsets.extend(adsets)
-                
-                # Логируем статусы для отладки
-                status_count = {}
-                effective_status_count = {}
-                for adset in adsets:
-                    status = adset.get('status', 'UNKNOWN')
-                    effective_status = adset.get('effective_status', 'UNKNOWN')
-                    status_count[status] = status_count.get(status, 0) + 1
-                    effective_status_count[effective_status] = effective_status_count.get(effective_status, 0) + 1
-                
-                logger.debug(f"Получено {len(adsets)} адсетов. Status: {status_count}, Effective Status: {effective_status_count}")
-                
-                # Обрабатываем пагинацию
-                next_url = data.get('paging', {}).get('next')
-                if next_url == url:  # Защита от бесконечного цикла
-                    break
-                    
-                url = next_url
-                # Очищаем params для последующих запросов
-                params = {}
-                retry_count = 0
-                
-            except requests.exceptions.RequestException as e:
-                retry_count += 1
-                logger.warning(f"Ошибка запроса адсетов (попытка {retry_count}/{max_retries}): {e}")
-                if retry_count < max_retries:
-                    time.sleep(2 ** retry_count)  # Экспоненциальная задержка
-                else:
-                    raise
-        
-        # Фильтруем только нужные статусы
-        filtered_adsets = [adset for adset in all_adsets 
-                          if adset.get('effective_status') not in ['DELETED', 'ARCHIVED']]
-        
-        logger.info(f"Получено {len(all_adsets)} адсетов, после фильтрации: {len(filtered_adsets)} для аккаунта {clean_account_id}")
-        return filtered_adsets
-        
-    except requests.exceptions.RequestException as e:
-        logger.error(f"Ошибка получения адсетов для аккаунта {account_id}: {e}")
-        return []
-    except Exception as e:
-        logger.error(f"Неожиданная ошибка при получении адсетов: {e}")
-        return []
-def check_and_pause_campaigns(user_id):
-    """Проверяет и отключает кампании, если все их адсеты отключены"""
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            # Находим кампании, где все адсеты отключены
-            cursor.execute("""
-            SELECT c.campaign_id, c.name, c.token, c.account_id
-            FROM campaigns c
-            WHERE c.user_id = ? AND c.status = 'ACTIVE'
-            AND NOT EXISTS (
-                SELECT 1 FROM adsets a 
-                WHERE a.campaign_id = c.campaign_id 
-                AND a.user_id = c.user_id 
-                AND a.status = 'ACTIVE'
-            )
-            """, (user_id,))
-            
-            campaigns_to_pause = cursor.fetchall()
-            
-            for campaign in campaigns_to_pause:
-                campaign_id = campaign['campaign_id']
-                name = campaign['name']
-                token = campaign['token']
-                account_id = campaign['account_id']
-                
-                # Отключаем кампанию
-                update_user_campaign_status(user_id, campaign_id, 'PAUSED')
-                
-                # Также отключаем через Facebook API
-                try:
-                    url = f"https://graph.facebook.com/v18.0/{campaign_id}"
-                    response = requests.post(
-                        url,
-                        params={"access_token": token},
-                        data={"status": "PAUSED"},
-                        timeout=10
-                    )
-                    response.raise_for_status()
-                    
-                    logger.info(f"🔴 Кампания «{name}» отключена (все адсеты неактивны)")
-                    send_telegram_message(f"🔴 Кампания «{name}» отключена (все адсеты неактивны)")
-                    
-                except Exception as e:
-                    logger.error(f"Ошибка отключения кампании {campaign_id}: {e}")
-                    
-    except Exception as e:
-        logger.error(f"Ошибка проверки кампаний: {e}")
-        
-def extract_geo_from_name(name, known_geos=None):
-    """Извлекает GEO код из названия с улучшенной логикой"""
-    if not name:
-        return 'N/A'
-    
-    # Нормализуем название - приводим к верхнему регистру и удаляем лишние символы
-    clean_name = re.sub(r'[^A-Za-z0-9\s]', ' ', str(name).upper())
-    words = clean_name.split()
-    
-    # Если есть список известных GEO — ищем по нему в первую очередь
-    if known_geos:
-        # Сначала ищем точные совпадения
-        for word in words:
-            if word in known_geos:
-                return word
-        
-        # Затем ищем частичные совпадения (для случаев типа "MY" в "MY Campaign")
-        for known_geo in known_geos:
-            if known_geo in clean_name:
-                return known_geo
-    
-    # Ищем стандартные двухбуквенные коды стран в любом месте названия
-    country_codes = {
-        'PH', 'TH', 'ID', 'MY', 'SG', 'VN', 'BR', 'US', 'UK', 'CA', 
-        'AU', 'DE', 'FR', 'ES', 'IT', 'RU', 'JP', 'KR', 'CN', 'IN',
-        'MX', 'AR', 'CO', 'PE', 'CL', 'ZA', 'NG', 'EG', 'SA', 'AE',
-        'TR', 'PL', 'NL', 'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT'
-    }
-    
-    # Ищем коды в отдельных словах
-    for word in words:
-        if len(word) == 2 and word.isalpha() and word in country_codes:
-            return word
-    
-    # Ищем коды как часть слов (например, "MY" в "MY_Campaign")
-    for word in words:
-        for code in country_codes:
-            if code in word and len(word) > 2:
-                return code
-    
-    return 'N/A'
+  
+
 @app.route('/api/auto_control/logs', methods=['GET'])
 @login_required
 def get_auto_control_logs():
@@ -1598,26 +960,7 @@ def get_auto_control_logs():
         logger.error(f"Ошибка получения логов: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
-def run_auto_control_for_user(user_id):
-    """Запускает автоконтроль для конкретного пользователя"""
-    logger.info(f"Запуск автоконтроля для пользователя {user_id}")
-    
-    while True:
-        # Проверяем, должен ли автоконтроль продолжать работать
-        with auto_control_lock:
-            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):
-                logger.info(f"Автоконтроль остановлен для пользователя {user_id}")
-                break
-        
-        try:
-            logger.info(f"Выполнение автоконтроля для пользователя {user_id}")
-            auto_control(user_id)
-            logger.info(f"Автоконтроль завершен для пользователя {user_id}")
-        except Exception as e:
-            logger.error(f"Ошибка автоконтроля для пользователя {user_id}: {e}")
-        
-        # Пауза между запусками (5 минут)
-        threading.Event().wait(300)
+
 @app.route('/api/manual_campaigns', methods=['POST'])
 @login_required
 def save_manual_campaigns():
@@ -2885,6 +2228,7 @@ def get_campaign_name(api_key, domain, campaign_id):
     
     return 'Unknown'
 import requests
+
 from backend.autocontrol import start_auto_control_and_refresh
 
 
@@ -4593,29 +3937,12 @@ def handle_auto_refresh():
         return jsonify({'success': False, 'error': str(e)})
 
 # Глобальные переменные для управления автообновлением
-auto_refresh_timers = {}
-auto_refresh_lock = threading.Lock()
+
 @app.route('/balance_monitor')
 @login_required
 def balance_monitor():
     """Страница мониторинга баланса"""
     return render_template('balance_monitor.html')
-def start_auto_refresh(user_id, interval_minutes):
-    """Запускает автообновление для пользователя"""
-    with auto_refresh_lock:
-        # Останавливаем предыдущий таймер, если есть
-        if user_id in auto_refresh_timers:
-            auto_refresh_timers[user_id].cancel()
-        
-        # Создаем новый таймер
-        interval_seconds = interval_minutes * 60
-        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval_minutes))
-        timer.daemon = True
-        timer.start()
-        
-        auto_refresh_timers[user_id] = timer
-        auto_control(user_id)
-        logger.info(f"Автообновление запущено для пользователя {user_id}, интервал: {interval_minutes} мин")
 
 def stop_auto_refresh(user_id):
     """Останавливает автообновление для пользователя"""
@@ -4625,111 +3952,9 @@ def stop_auto_refresh(user_id):
             del auto_refresh_timers[user_id]
             logger.info(f"Автообновление остановлено для пользователя {user_id}")
 
-def auto_refresh_user_data(user_id, interval_minutes):
-    """Функция автообновления данных пользователя"""
-    try:
-        with app.app_context():
-            logger.info(f"Автообновление данных для пользователя {user_id}")
-            
-            # Получаем настройки пользователя
-            settings = get_user_settings(user_id)
-            
-            # Обновляем кампании, если включено
-            if settings.get('auto_refresh_campaigns', True):
-                refresh_campaigns_internal(user_id)
-            
-            # Обновляем адсеты, если включено
-            if settings.get('auto_refresh_adsets', True):
-                refresh_adsets_internal(user_id)
-            
-            # Синхронизируем с Keitaro, если настроено
-            if settings.get('keitaro_api_key'):
-                sync_keitaro_only_internal(user_id)
-            
-            logger.info(f"Автообновление завершено для пользователя {user_id}")
-            
-    except Exception as e:
-        logger.error(f"Ошибка автообновления для пользователя {user_id}: {e}")
-    
-    finally:
-        # Перезапускаем таймер
-        start_auto_refresh(user_id, interval_minutes)
 
-def refresh_campaigns_internal(user_id):
-    """Внутренняя функция обновления кампаний"""
-    try:
-        campaigns = get_user_campaigns(user_id)
-        accounts = {}
-        
-        for campaign in campaigns:
-            if campaign['account_id'] and campaign['token']:
-                accounts[campaign['account_id']] = campaign['token']
-        
-        for account_id, token in accounts.items():
-            fb_campaigns = fetch_facebook_campaigns(account_id, token)
-            for campaign in fb_campaigns:
-                add_user_campaign(user_id, {
-                    'king': 'Facebook',
-                    'name': campaign.get('name', ''),
-                    'status': campaign.get('status', 'PAUSED'),
-                    'campaign_id': campaign.get('id', ''),
-                    'account_id': account_id,
-                    'token': token
-                })
-                
-    except Exception as e:
-        logger.error(f"Ошибка обновления кампаний: {e}")
-def refresh_adsets_internal(user_id):
-    """Внутренняя функция обновления адсетов"""
-    try:
-        campaigns = get_user_campaigns(user_id)
-        accounts = {}
-        
-        # Получаем известные GEO коды для улучшенного распознавания
-        geo_rules = get_user_geo_rules(user_id)
-        known_geos = list(geo_rules.keys()) if geo_rules else []
-        
-        for campaign in campaigns:
-            if campaign['account_id'] and campaign['token']:
-                accounts[campaign['account_id']] = campaign['token']
-        
-        updated_count = 0
-        for account_id, token in accounts.items():
-            fb_adsets = fetch_facebook_adsets(account_id, token)
-            for adset in fb_adsets:
-                daily_budget = adset.get('daily_budget')
-                budget = float(daily_budget) / 100 if daily_budget else 0
-                
-                # Определяем GEO из названия адсета
-                adset_name = adset.get('name', '')
-                geo = extract_geo_from_name(adset_name, known_geos)
-                
-                add_user_adset(user_id, {
-                    'name': adset_name,
-                    'adset_id': adset.get('id', ''),
-                    'campaign_id': adset.get('campaign_id', ''),
-                    'status': adset.get('status', 'PAUSED'),
-                    'account_id': account_id,
-                    'token': token,
-                    'budget': budget,
-                    'geo': geo,  # Сохраняем определенный GEO
-                    'ucpc': 0,
-                    'spend': 0,
-                    'cpa': 0,
-                    'leads': 0,
-                    'king': 'Facebook',
-                    'effective_status': adset.get('effective_status', ''),
-                    'ad_name': adset.get('name', ''),
-                    'manual_pause': 0
-                })
-                updated_count += 1
-                
-        logger.info(f"Обновлено {updated_count} адсетов с определением GEO")
-        return updated_count
-                
-    except Exception as e:
-        logger.error(f"Ошибка обновления адсетов: {e}")
-        return 0
+
+
 def get_auto_refresh_status(user_id):
     """Возвращает статус автообновления"""
     with auto_refresh_lock:
@@ -4957,6 +4182,7 @@ def get_all_accounts_limits():
     except Exception as e:
         logger.error(f"Ошибка получения лимитов всех аккаунтов: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/api/admin/users')
 @login_required
 def get_all_users_api():
