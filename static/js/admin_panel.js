@@ -3,10 +3,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализация админ панели
     initAdminPanel();
 });
+function loadInitialData() {
+    console.log('Loading initial data...');
+    
+    // Загружаем основные данные
+    loadData();
+    
+    // Загружаем пользователей для фильтра
+    loadUsers();
+    
+    // Загружаем статистику токенов
+    loadTokensStats();
+    
+    // Инициализируем тултипы
+    initTooltips();
+    
+    // Загружаем отладочную информацию
+    loadDebugInfo();
+}
 function initAdminPanel() {
     console.log('Initializing admin panel...');
     
     try {
+        // Проверяем, что все необходимые функции определены
+        if (typeof loadData === 'undefined' || 
+            typeof loadUsers === 'undefined' || 
+            typeof loadTokensStats === 'undefined') {
+            throw new Error('Не все функции загружены');
+        }
+        
         // Проверяем права доступа
         checkAdminAccess();
         
@@ -20,6 +45,9 @@ function initAdminPanel() {
     } catch (error) {
         console.error('Error initializing admin panel:', error);
         showError('Ошибка инициализации панели: ' + error.message);
+        
+        // Запускаем базовый функционал
+        initBasicFunctionality();
     }
 }
 
@@ -62,6 +90,88 @@ function loadUsers() {
             console.error('Ошибка загрузки пользователей:', error);
         });
 }
+
+function loadTokensStats() {
+    fetch('/api/admin/reserve_tokens_stats')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                tokensStats = data.stats;
+                renderTokensTable();
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки статистики токенов:', error);
+        });
+}
+
+function initTooltips() {
+    // Инициализация Bootstrap tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+}
+
+function loadDebugInfo() {
+    const debugInfo = document.getElementById('debugInfo');
+    if (!debugInfo) return;
+    
+    debugInfo.style.display = 'block';
+    debugInfo.innerHTML = '<div class="spinner-border spinner-border-sm"></div> Загрузка отладочной информации...';
+
+    fetch('/api/admin/debug_accounts')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                let html = `
+                    <h6>Статистика системы:</h6>
+                    <ul class="list-group">
+                        <li class="list-group-item">Пользователей: ${data.users_count}</li>
+                        <li class="list-group-item">Всего аккаунтов в БД: ${data.raw_accounts_count}</li>
+                        <li class="list-group-item">Валидных аккаунтов: ${data.valid_accounts_count}</li>
+                    </ul>
+                    
+                    <h6 class="mt-3">Первые 10 аккаунтов из БД:</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Username</th>
+                                    <th>Account ID</th>
+                                    <th>Token</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+
+                (data.raw_accounts || []).slice(0, 10).forEach(acc => {
+                    html += `
+                        <tr>
+                            <td>${acc.user_id}</td>
+                            <td>${escapeHtml(acc.username)}</td>
+                            <td>${escapeHtml(acc.account_id)}</td>
+                            <td class="text-truncate" style="max-width: 100px;">${escapeHtml(acc.token || '')}</td>
+                        </tr>
+                    `;
+                });
+
+                html += `
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                debugInfo.innerHTML = html;
+            } else {
+                debugInfo.innerHTML = `<div class="alert alert-danger">Ошибка: ${data.error}</div>`;
+            }
+        })
+        .catch(error => {
+            debugInfo.innerHTML = `<div class="alert alert-danger">Ошибка сети: ${error.message}</div>`;
+        });
+}
 function loadData() {
     console.log('Loading data...');
     
@@ -69,14 +179,6 @@ function loadData() {
     const tbody = document.getElementById('accountsTableBody');
     if (tbody) {
         tbody.innerHTML = '<tr><td colspan="8" class="text-center"><div class="spinner-border"></div> Загрузка данных...</td></tr>';
-    }
-
-    // Показать индикатор на кнопке
-    const refreshBtn = document.getElementById('refreshButton');
-    if (refreshBtn) {
-        const originalHtml = refreshBtn.innerHTML;
-        refreshBtn.innerHTML = '<div class="spinner-border spinner-border-sm"></div>';
-        refreshBtn.disabled = true;
     }
 
     fetch('/api/admin/all_accounts_limits')
@@ -89,20 +191,34 @@ function loadData() {
         .then(data => {
             if (data.success) {
                 console.log('Data loaded successfully:', data);
-                allAccounts = data.accounts || [];
+                allAccounts = normalizeAccountData(data.accounts || []);
                 
-                // Проверяем, есть ли данные для отображения
-                if (allAccounts.length === 0) {
-                    showInfo('Нет данных об аккаунтах для отображения');
-                }
+                // Проверяем и нормализуем данные
+                allAccounts = allAccounts.map(account => {
+                    // Убедимся, что все строковые поля имеют значения
+                    ['status', 'name', 'account_id', 'username'].forEach(field => {
+                        if (account[field] === undefined || account[field] === null) {
+                            account[field] = 'UNKNOWN';
+                        } else if (typeof account[field] !== 'string') {
+                            account[field] = String(account[field]);
+                        }
+                    });
+                    
+                    // Убедимся, что все числовые поля имеют значения
+                    ['spend', 'balance', 'spend_cap', 'daily_limit', 'requests_today', 'requests_limit', 'requests_usage_percent'].forEach(field => {
+                        if (account[field] === undefined || account[field] === null) {
+                            account[field] = 0;
+                        } else if (typeof account[field] !== 'number') {
+                            account[field] = parseFloat(account[field]) || 0;
+                        }
+                    });
+                    
+                    return account;
+                });
                 
                 updateStats(data.stats || {});
                 renderAccountsTable(allAccounts);
                 
-                // Показываем отладочную информацию
-                if (data.debug) {
-                    console.log('Debug info:', data.debug);
-                }
             } else {
                 showError('Ошибка загрузки данных: ' + (data.error || 'Неизвестная ошибка'));
             }
@@ -128,14 +244,42 @@ function loadData() {
                     </tr>
                 `;
             }
-        })
-        .finally(() => {
-            // Восстанавливаем кнопку
-            if (refreshBtn) {
-                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Обновить';
-                refreshBtn.disabled = false;
+        });
+}
+function normalizeAccountData(accounts) {
+    if (!accounts || !Array.isArray(accounts)) return [];
+    
+    return accounts.map(account => {
+        // Создаем копию объекта чтобы не мутировать оригинал
+        const normalized = {...account};
+        
+        // Нормализуем статус
+        if (normalized.status === undefined || normalized.status === null) {
+            normalized.status = 'UNKNOWN';
+        } else if (typeof normalized.status !== 'string') {
+            normalized.status = String(normalized.status);
+        }
+        
+        // Нормализуем другие строковые поля
+        ['name', 'account_id', 'username', 'error'].forEach(field => {
+            if (normalized[field] === undefined || normalized[field] === null) {
+                normalized[field] = '';
+            } else if (typeof normalized[field] !== 'string') {
+                normalized[field] = String(normalized[field]);
             }
         });
+        
+        // Нормализуем числовые поля
+        ['spend', 'balance', 'spend_cap', 'daily_limit', 'requests_today', 'requests_limit', 'requests_usage_percent'].forEach(field => {
+            if (normalized[field] === undefined || normalized[field] === null) {
+                normalized[field] = 0;
+            } else if (typeof normalized[field] !== 'number') {
+                normalized[field] = parseFloat(normalized[field]) || 0;
+            }
+        });
+        
+        return normalized;
+    });
 }
 function showInfo(message) {
     const alertDiv = document.createElement('div');
@@ -196,17 +340,21 @@ function updateStats(stats) {
 
     // Обновляем только существующие элементы
     for (const [key, element] of Object.entries(elements)) {
-        if (element && stats[key] !== undefined) {
+        if (element && stats[key] !== undefined && stats[key] !== null) {
             if (key.includes('Spend') || key.includes('Balance') || key.includes('Limit')) {
                 element.textContent = formatCurrency(stats[key]);
             } else {
                 element.textContent = stats[key].toLocaleString();
             }
+        } else if (element) {
+            // Устанавливаем значения по умолчанию для отсутствующих данных
+            if (key.includes('Spend') || key.includes('Balance') || key.includes('Limit')) {
+                element.textContent = formatCurrency(0);
+            } else {
+                element.textContent = '0';
+            }
         }
     }
-
-    // Создаем недостающие элементы статистики
-    createMissingStatsElements(stats);
 }
 
 function createMissingStatsElements(stats) {
@@ -244,7 +392,7 @@ function updateUserFilter() {
     
     userFilter.innerHTML = '<option value="">Все пользователи</option>';
     
-    allUsers.forEach(user => {
+    (allUsers || []).forEach(user => {
         const option = document.createElement('option');
         option.value = user.id;
         option.textContent = `${user.username} (ID: ${user.id})`;
@@ -274,10 +422,22 @@ function renderAccountsTable(accounts) {
 
     let html = '';
     accounts.forEach(account => {
-        const statusClass = getStatusClass(account.status);
+        // Безопасное получение статуса
+        const status = account.status || 'UNKNOWN';
+        const statusClass = getStatusClass(status);
         const requestsPercent = account.requests_usage_percent || 0;
         const requestsColor = getUsageColor(requestsPercent);
-        const hasError = account.error || account.status === 'ERROR' || account.status === 'NETWORK_ERROR';
+        const hasError = account.error || 
+                        status === 'ERROR' || 
+                        status === 'NETWORK_ERROR' || 
+                        status === 'API_ERROR' ||
+                        status === 'INVALID_DATA';
+        
+        // Безопасное отображение лимитов
+        const spend = account.spend !== undefined ? account.spend : 0;
+        const balance = account.balance !== undefined ? account.balance : 0;
+        const spendCap = account.spend_cap !== undefined ? account.spend_cap : 0;
+        const dailyLimit = account.daily_limit !== undefined ? account.daily_limit : 0;
         
         html += `
             <tr class="${statusClass}">
@@ -293,20 +453,23 @@ function renderAccountsTable(accounts) {
                         ${hasError ? `
                         <small class="text-danger mt-1">
                             <i class="fas fa-exclamation-triangle"></i>
-                            ${escapeHtml(account.error || account.status)}
+                            ${escapeHtml(account.error || status)}
                         </small>
                         ` : ''}
                     </div>
                 </td>
                 <td>
-                    <span class="badge ${getStatusBadgeClass(account.status)}">
-                        <i class="${getStatusIcon(account.status)}"></i>
-                        ${account.status}
+                    <span class="badge ${getStatusBadgeClass(status)}">
+                        <i class="${getStatusIcon(status)}"></i>
+                        ${status}
                     </span>
                 </td>
-                <td class="text-nowrap">${formatCurrency(account.balance)}</td>
-                <td class="text-nowrap">${formatCurrency(account.spend)}</td>
-                <td class="text-nowrap">${formatCurrency(account.spend_cap)}</td>
+                <td class="text-nowrap">${formatCurrency(balance)}</td>
+                <td class="text-nowrap">${formatCurrency(spend)}</td>
+                <td class="text-nowrap">
+                    ${formatCurrency(spendCap)}
+                    ${dailyLimit > 0 ? `<br><small class="text-muted">Дневной: ${formatCurrency(dailyLimit)}</small>` : ''}
+                </td>
                 <td>
                     <div class="d-flex align-items-center">
                         <div class="progress flex-grow-1 me-2" style="height: 8px;">
@@ -448,10 +611,10 @@ function renderTokensTable() {
                 </td>
                 <td>
                     <div class="d-flex flex-wrap gap-1">
-                        ${stat.kings.map(king => `
+                        ${(stat.kings || []).map(king => `
                             <span class="badge bg-secondary">${escapeHtml(king)}</span>
                         `).join('')}
-                        ${stat.kings.length === 0 ? '<span class="text-muted">Нет данных</span>' : ''}
+                        ${!stat.kings || stat.kings.length === 0 ? '<span class="text-muted">Нет данных</span>' : ''}
                     </div>
                 </td>
             </tr>
@@ -460,7 +623,6 @@ function renderTokensTable() {
 
     tbody.innerHTML = html;
 }
-
 function applyFilters() {
     const searchText = document.getElementById('searchInput').value.toLowerCase();
     const statusFilter = document.getElementById('statusFilter').value;
@@ -658,7 +820,7 @@ function setupEventListeners() {
     }
 
     // Кнопка обновления
-    const refreshBtn = document.querySelector('[onclick="loadData()"]');
+    const refreshBtn = document.getElementById('refreshButton');
     if (refreshBtn) {
         refreshBtn.addEventListener('click', function() {
             this.innerHTML = '<div class="spinner-border spinner-border-sm"></div> Обновление...';
@@ -666,6 +828,7 @@ function setupEventListeners() {
             
             loadData();
             loadTokensStats();
+            loadDebugInfo();
             
             setTimeout(() => {
                 this.innerHTML = '<i class="fas fa-sync-alt"></i> Обновить';
@@ -673,6 +836,17 @@ function setupEventListeners() {
             }, 2000);
         });
     }
+
+    // Вкладки
+    const tabLinks = document.querySelectorAll('[data-bs-toggle="tab"]');
+    tabLinks.forEach(tab => {
+        tab.addEventListener('shown.bs.tab', function(e) {
+            const target = e.target.getAttribute('data-bs-target');
+            if (target === '#tokens-tab' && (!tokensStats || tokensStats.length === 0)) {
+                loadTokensStats();
+            }
+        });
+    });
 }
 
 function initTooltips() {
@@ -685,39 +859,71 @@ function initTooltips() {
 
 // Вспомогательные функции
 function getStatusClass(status) {
-    switch(status) {
-        case 'ACTIVE': return 'table-success';
-        case 'DISABLED': return 'table-danger';
-        case 'PENDING_REVIEW': return 'table-warning';
-        case 'ERROR': return 'table-danger';
-        case 'NETWORK_ERROR': return 'table-warning';
-        default: return '';
+    if (!status || typeof status !== 'string') return '';
+    
+    const statusStr = String(status).toUpperCase();
+    switch(statusStr) {
+        case 'ACTIVE': 
+            return 'table-success';
+        case 'DISABLED': 
+            return 'table-danger';
+        case 'PENDING_REVIEW': 
+        case 'PENDING':
+            return 'table-warning';
+        case 'ERROR': 
+        case 'NETWORK_ERROR': 
+        case 'API_ERROR':
+        case 'INVALID_DATA':
+            return 'table-danger';
+        default: 
+            return '';
     }
 }
 
 function getStatusBadgeClass(status) {
-    switch(status) {
-        case 'ACTIVE': return 'bg-success';
-        case 'DISABLED': return 'bg-danger';
-        case 'PENDING_REVIEW': return 'bg-warning';
-        case 'ERROR': return 'bg-danger';
-        case 'NETWORK_ERROR': return 'bg-warning';
-        default: return 'bg-secondary';
+    if (!status || typeof status !== 'string') return 'bg-secondary';
+    
+    const statusStr = String(status).toUpperCase();
+    switch(statusStr) {
+        case 'ACTIVE': 
+            return 'bg-success';
+        case 'DISABLED': 
+        case 'ERROR':
+        case 'NETWORK_ERROR':
+        case 'API_ERROR':
+        case 'INVALID_DATA':
+            return 'bg-danger';
+        case 'PENDING_REVIEW': 
+        case 'PENDING':
+            return 'bg-warning';
+        default: 
+            return 'bg-secondary';
     }
 }
 
 function getStatusIcon(status) {
-    switch(status) {
-        case 'ACTIVE': return 'fas fa-check-circle';
-        case 'DISABLED': return 'fas fa-ban';
-        case 'PENDING_REVIEW': return 'fas fa-clock';
-        case 'ERROR': return 'fas fa-exclamation-triangle';
-        case 'NETWORK_ERROR': return 'fas fa-wifi';
-        default: return 'fas fa-question-circle';
+    if (!status || typeof status !== 'string') return 'fas fa-question-circle';
+    
+    const statusStr = String(status).toUpperCase();
+    switch(statusStr) {
+        case 'ACTIVE': 
+            return 'fas fa-check-circle';
+        case 'DISABLED': 
+            return 'fas fa-ban';
+        case 'PENDING_REVIEW': 
+        case 'PENDING':
+            return 'fas fa-clock';
+        case 'ERROR': 
+        case 'NETWORK_ERROR': 
+        case 'API_ERROR':
+        case 'INVALID_DATA':
+            return 'fas fa-exclamation-triangle';
+        default: 
+            return 'fas fa-question-circle';
     }
 }
-
 function getUsageColor(percent) {
+    if (percent === undefined || percent === null) return 'secondary';
     if (percent > 80) return 'danger';
     if (percent > 60) return 'warning';
     return 'success';
@@ -731,7 +937,47 @@ function formatCurrency(amount) {
         maximumFractionDigits: 2
     }).format(amount);
 }
+function initBasicFunctionality() {
+    console.log('Основной JS не загружен, инициализируем базовый функционал');
+    
+    // Минимальная функциональность
+    const refreshBtn = document.getElementById('refreshButton');
+    if (refreshBtn) {
+        refreshBtn.onclick = function() {
+            location.reload();
+        };
+    }
+    
+    // Простые фильтры
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.oninput = function() {
+            const searchText = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#accountsTableBody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchText) ? '' : 'none';
+            });
+        };
+    }
+    
+    console.log('Базовый функционал инициализирован');
+}
 
+// Проверяем, загрузились ли основные функции
+setTimeout(() => {
+    if (typeof loadData === 'undefined') {
+        initBasicFunctionality();
+    }
+}, 1000);
+
+// Инициализация при загрузке документа
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAdminPanel);
+} else {
+    initAdminPanel();
+}
 function escapeHtml(text) {
     if (!text) return '';
     const div = document.createElement('div');

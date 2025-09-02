@@ -11,7 +11,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    session, url_for)
 from fuzzywuzzy import fuzz, process
-
+from backend.autocontrol import  start_auto_control_and_refresh
 from database import (add_account_to_reserve_token, add_user_adset,
                       add_user_campaign, authenticate_user, create_user,
                       get_adset_budget_settings, get_db_connection,
@@ -58,39 +58,6 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-def start_auto_control_and_refresh(user_id):
-    """Запускает и автоконтроль и автообновление вместе"""
-    settings = get_user_settings(user_id)
-    interval = settings.get('auto_refresh_interval', 5)
-    
-    # Запускаем автоконтроль
-    with auto_control_lock:
-        if user_id not in auto_control_threads:
-            auto_control_threads[user_id] = {
-                'running': True,
-                'thread': threading.Thread(
-                    target=run_auto_control_for_user,
-                    args=(user_id,),
-                    daemon=True
-                )
-            }
-            auto_control_threads[user_id]['thread'].start()
-            logger.info(f"Автоконтроль запущен для пользователя {user_id}")
-    
-    # Запускаем автообновление
-    with auto_refresh_lock:
-        # Останавливаем предыдущий таймер, если есть
-        if user_id in auto_refresh_timers:
-            auto_refresh_timers[user_id].cancel()
-        
-        # Создаем новый таймер
-        interval_seconds = interval * 60
-        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval))
-        timer.daemon = True
-        timer.start()
-        
-        auto_refresh_timers[user_id] = timer
-        logger.info(f"Автообновление запущено для пользователя {user_id}, интервал: {interval} мин")
 
 def stop_auto_control_and_refresh(user_id):
     """Останавливает и автоконтроль и автообновление вместе"""
@@ -232,31 +199,30 @@ def get_all_users() -> List[Dict[str, Any]]:
         logger.error(f"Ошибка получения списка пользователей: {e}")
         return []
 def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
-    """Получает статистику по аккаунтам пользователя с проверкой валидности"""
+    """Получает статистику по аккаунтам пользователя с проверкой валидности - исправленная версия"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Получаем ВСЕ аккаунты, включая невалидные
+            # Получаем только валидные аккаунты
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
                 WHERE user_id = ? 
-                AND account_id IS NOT NULL
+                AND account_id IS NOT NULL 
+                AND account_id != 'N/A'
+                AND token IS NOT NULL
+                AND token != 'N/A'
             """, (user_id,))
             
             accounts = []
             for row in cursor.fetchall():
-                account_id = row['account_id']
-                token = row['token']
-                
-                # Добавляем даже невалидные аккаунты для отображения
                 accounts.append({
-                    'account_id': account_id or 'N/A',
-                    'token': token or 'N/A'
+                    'account_id': row['account_id'],
+                    'token': row['token']
                 })
             
-            logger.info(f"Найдено {len(accounts)} аккаунтов у пользователя {user_id}")
+            logger.info(f"Найдено {len(accounts)} валидных аккаунтов у пользователя {user_id}")
             return accounts
             
     except Exception as e:
@@ -335,8 +301,41 @@ def debug_accounts():
     except Exception as e:
         logger.error(f"Ошибка отладки аккаунтов: {e}")
         return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/reserve_tokens/check_account_limits', methods=['POST'])
+@login_required
+def check_reserve_token_account_limits():
+    """Проверяет лимиты для конкретного аккаунта резервного токена"""
+    user_id = session['user_id']
+    data = request.json
+    
+    king = data.get('king')
+    token = data.get('token')
+    account_id = data.get('account_id')
+    
+    if not all([king, token, account_id]):
+        return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})
+    
+    try:
+        # Проверяем лимиты через Facebook API
+        limits_info = get_account_limits_info(account_id, token)
+        
+        if limits_info:
+            # Обновляем информацию об аккаунте
+            update_reserve_token_account_info(user_id, king, token, account_id, limits_info)
+            
+            return jsonify({
+                'success': True,
+                'message': f'Лимиты аккаунта {account_id} обновлены',
+                'account_info': limits_info
+            })
+        else:
+            return jsonify({'success': False, 'error': 'Не удалось получить информацию об аккаунте'})
+        
+    except Exception as e:
+        logger.error(f"Ошибка проверки лимитов аккаунта: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 def get_all_accounts_stats() -> List[Dict[str, Any]]:
-    """Получает статистику по всем аккаунтам всех пользователей"""
+    """Получает статистику по всем аккаунтам всех пользователей - исправленная версия"""
     try:
         users = get_all_users()
         all_accounts = []
@@ -344,18 +343,37 @@ def get_all_accounts_stats() -> List[Dict[str, Any]]:
         for user in users:
             user_id = user['id']
             try:
-                # Получаем аккаунты пользователя
-                accounts = get_user_accounts_stats(user_id)
-                
-                for account in accounts:
-                    account_info = {
-                        'user_id': user_id,
-                        'username': user['username'],
-                        'account_id': account['account_id'],
-                        'token': account['token']
-                    }
-                    all_accounts.append(account_info)
+                # Получаем аккаунты пользователя из campaigns таблицы
+                with get_db_connection(user_id) as conn:
+                    cursor = conn.cursor()
+                    cursor.execute("""
+                        SELECT DISTINCT account_id, token 
+                        FROM campaigns 
+                        WHERE user_id = ? 
+                        AND account_id IS NOT NULL 
+                        AND account_id != 'N/A'
+                        AND account_id != ''
+                        AND token IS NOT NULL
+                        AND token != 'N/A'
+                        AND token != ''
+                    """, (user_id,))
                     
+                    accounts = cursor.fetchall()
+                    
+                    for account in accounts:
+                        # Проверяем, что account_id начинается с 'act_' или состоит из цифр
+                        account_id = account['account_id']
+                        if not account_id.startswith('act_') and account_id.isdigit():
+                            account_id = f"act_{account_id}"
+                        
+                        account_info = {
+                            'user_id': user_id,
+                            'username': user['username'],
+                            'account_id': account_id,
+                            'token': account['token']
+                        }
+                        all_accounts.append(account_info)
+                        
             except Exception as e:
                 logger.error(f"Ошибка получения аккаунтов пользователя {user_id}: {e}")
                 continue
@@ -367,7 +385,7 @@ def get_all_accounts_stats() -> List[Dict[str, Any]]:
         logger.error(f"Ошибка получения статистики всех аккаунтов: {e}")
         return []
 def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any]:
-    """Получает информацию о лимитах аккаунта из Facebook API"""
+    """Получает информацию о лимитах аккаунта из Facebook API - исправленная версия"""
     try:
         # Проверяем валидность входных данных
         if not account_id or account_id == 'N/A' or not access_token or access_token == 'N/A':
@@ -389,9 +407,9 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         
         url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}"
         
-        # Поля для получения информации о лимитах
+        # Сначала пробуем базовые поля, которые должны работать всегда
         params = {
-            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit',
+            'fields': 'id,name,account_status,amount_spent,balance,spend_cap',
             'access_token': access_token
         }
         
@@ -421,7 +439,26 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         amount_spent = float(data.get('amount_spent', 0)) / 100
         balance = float(data.get('balance', 0)) / 100
         spend_cap = float(data.get('spend_cap', 0)) / 100
-        daily_limit = float(data.get('daily_spend_limit', 0)) / 100
+        
+        # Пробуем получить daily limit отдельным запросом с обработкой ошибок
+        daily_limit = 0
+        try:
+            # Пробуем разные поля для daily limit
+            daily_limit_params = {
+                'fields': 'daily_spend_limit,adtrust_dsl',
+                'access_token': access_token
+            }
+            daily_response = requests.get(url, params=daily_limit_params, timeout=5)
+            daily_data = daily_response.json()
+            
+            if 'error' not in daily_data:
+                daily_spend_limit = float(daily_data.get('daily_spend_limit', 0)) / 100
+                adtrust_dsl = float(daily_data.get('adtrust_dsl', 0)) / 100
+                daily_limit = daily_spend_limit or adtrust_dsl or 0
+                
+        except (requests.exceptions.RequestException, KeyError, ValueError):
+            # Игнорируем ошибки получения daily limit - это не критично
+            pass
         
         # Получаем информацию о лимитах запросов из заголовков
         usage_info = response.headers.get('x-business-use-case-usage', '{}')
@@ -433,7 +470,9 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
             if usage_data and isinstance(usage_data, dict):
                 for key in usage_data.keys():
                     call_count = usage_data[key][0].get('call_count', 0)
+                    total_calls = usage_data[key][0].get('total_calls', 100)
                     calls_usage = max(calls_usage, call_count)
+                    calls_limit = max(calls_limit, total_calls)
         except:
             pass
         
@@ -600,21 +639,212 @@ def check_all_reserve_token_limits():
     except Exception as e:
         logger.error(f"Ошибка проверки всех лимитов: {e}")
         return jsonify({'success': False, 'error': str(e)})
-@app.route('/api/reserve_tokens', methods=['GET'])
+@app.route('/api/reserve_tokens/check_account_limits_direct', methods=['POST'])
 @login_required
-def handle_reserve_tokens_get():
-    """Получает резервные токены с аккаунтами"""
+def check_reserve_token_account_limits_direct():
+    """Проверяет лимиты для аккаунта напрямую (без сохранения в БД)"""
+    user_id = session['user_id']
+    data = request.json
+    
+    account_id = data.get('account_id')
+    token = data.get('token')
+    
+    if not all([account_id, token]):
+        return jsonify({'success': False, 'error': 'Не указан account_id или token'})
+    
+    try:
+        # Проверяем лимиты через Facebook API
+        limits_info = get_account_limits_info(account_id, token)
+        
+        if limits_info:
+            return jsonify({
+                'success': True,
+                'account_info': limits_info,
+                'token': token
+            })
+        else:
+            return jsonify({'success': False, 'error': 'Не удалось получить информацию об аккаунте'})
+        
+    except Exception as e:
+        logger.error(f"Ошибка проверки лимитов аккаунта: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/reserve_tokens/table', methods=['GET'])
+@login_required
+def get_reserve_tokens_table():
+    """Возвращает резервные токены в формате для таблицы"""
     user_id = session['user_id']
     
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Получаем все токены
+            # Получаем все токены с информацией о лимитах
             cursor.execute("""
-                SELECT king, token 
-                FROM reserve_tokens 
-                WHERE user_id = ?
+                SELECT rt.king, rt.token, rta.account_id, rta.requests_limit, 
+                       rta.requests_today, rta.requests_usage_percent
+                FROM reserve_tokens rt
+                LEFT JOIN reserve_token_accounts rta ON rt.user_id = rta.user_id 
+                    AND rt.king = rta.king AND rt.token = rta.token
+                WHERE rt.user_id = ?
+                ORDER BY rt.king, rt.token
+            """, (user_id,))
+            
+            tokens_data = {}
+            for row in cursor.fetchall():
+                king = row['king']
+                token = row['token']
+                
+                if king not in tokens_data:
+                    tokens_data[king] = {}
+                
+                if token not in tokens_data[king]:
+                    tokens_data[king][token] = {
+                        'token': token,
+                        'accounts': [],
+                        'requests_limit': row['requests_limit'] or 100,
+                        'requests_today': row['requests_today'] or 0,
+                        'requests_usage_percent': row['requests_usage_percent'] or 0
+                    }
+                
+                if row['account_id']:
+                    tokens_data[king][token]['accounts'].append({
+                        'account_id': row['account_id'],
+                        'requests_limit': row['requests_limit'] or 100,
+                        'requests_today': row['requests_today'] or 0,
+                        'requests_usage_percent': row['requests_usage_percent'] or 0
+                    })
+            
+            # Преобразуем в нужный формат
+            result = {}
+            for king, tokens in tokens_data.items():
+                result[king] = list(tokens.values())
+            
+            return jsonify({'success': True, 'tokens': result})
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения токенов для таблицы: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+def add_account_to_reserve_token(user_id, king, token, account_id):
+    """Добавляет аккаунт к резервному токену"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Создаем таблицу если не существует
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS reserve_token_accounts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL,
+                    king TEXT NOT NULL,
+                    token TEXT NOT NULL,
+                    account_id TEXT NOT NULL,
+                    name TEXT,
+                    status TEXT,
+                    spend_cap REAL DEFAULT 0,
+                    amount_spent REAL DEFAULT 0,
+                    balance REAL DEFAULT 0,
+                    daily_limit REAL DEFAULT 0,
+                    remaining REAL DEFAULT 0,
+                    requests_today INTEGER DEFAULT 0,
+                    requests_limit INTEGER DEFAULT 100,
+                    requests_usage_percent REAL DEFAULT 0,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users (id),
+                    UNIQUE(user_id, king, token, account_id)
+                )
+            """)
+            
+            cursor.execute(
+                "INSERT OR IGNORE INTO reserve_token_accounts (user_id, king, token, account_id) VALUES (?, ?, ?, ?)",
+                (user_id, king, token, account_id)
+            )
+            conn.commit()
+            return True
+    except Exception as e:
+        logger.error(f"Ошибка добавления аккаунта к токену: {e}")
+        return False
+def update_reserve_token_account_info(user_id, king, token, account_id, account_info):
+    """Обновляет информацию об аккаунте резервного токена"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                UPDATE reserve_token_accounts 
+                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, 
+                    balance = ?, daily_limit = ?, remaining = ?,
+                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?
+            """, (
+                account_info.get('name'),
+                account_info.get('status'),
+                account_info.get('spend_cap', 0),
+                account_info.get('spend', 0),  # amount_spent = spend
+                account_info.get('balance', 0),
+                account_info.get('daily_limit', 0),
+                account_info.get('remaining_limit', 0),
+                account_info.get('requests_today', 0),
+                account_info.get('requests_limit', 100),
+                account_info.get('requests_usage_percent', 0),
+                user_id, king, token, account_id
+            ))
+            
+            conn.commit()
+            return True
+    except Exception as e:
+        logger.error(f"Ошибка обновления информации аккаунта: {e}")
+        return False
+def remove_account_from_reserve_token(user_id, account_id):
+    """Удаляет аккаунт из резервного токена"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "DELETE FROM reserve_token_accounts WHERE user_id = ? AND account_id = ?",
+                (user_id, account_id)
+            )
+            conn.commit()
+            return True
+    except Exception as e:
+        logger.error(f"Ошибка удаления аккаунта: {e}")
+        return False
+@app.route('/api/reserve_tokens', methods=['GET'])
+@login_required
+def handle_reserve_tokens_get():
+    """Получает резервные токены с аккаунтами - исправленная версия"""
+    user_id = session['user_id']
+    
+    try:
+        tokens = get_reserve_tokens(user_id)
+        return jsonify({'success': True, 'tokens': tokens})
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения резервных токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/account_limits')
+@login_required
+def account_limits():
+    """Страница отображения лимитов аккаунтов"""
+    return render_template('account_limits.html')
+
+def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
+    """Получает резервные токены с аккаунтами - исправленная версия"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT rt.king, rt.token, 
+                       rta.account_id, rta.name, rta.status, rta.spend_cap, 
+                       rta.amount_spent, rta.balance, rta.daily_limit, rta.remaining,
+                       rta.requests_today, rta.requests_limit, rta.requests_usage_percent
+                FROM reserve_tokens rt
+                LEFT JOIN reserve_token_accounts rta ON rt.user_id = rta.user_id 
+                    AND rt.king = rta.king AND rt.token = rta.token
+                WHERE rt.user_id = ?
+                ORDER BY rt.king, rt.token
             """, (user_id,))
             
             tokens_by_king = {}
@@ -625,64 +855,38 @@ def handle_reserve_tokens_get():
                 if king not in tokens_by_king:
                     tokens_by_king[king] = []
                 
-                # Получаем аккаунты для этого токена
-                cursor.execute("""
-                    SELECT account_id, spend_cap, amount_spent, remaining, status 
-                    FROM reserve_token_accounts 
-                    WHERE user_id = ? AND king = ? AND token = ?
-                """, (user_id, king, token))
+                # Находим токен в списке или создаем новый
+                token_entry = None
+                for entry in tokens_by_king[king]:
+                    if entry['token'] == token:
+                        token_entry = entry
+                        break
                 
-                accounts = []
-                for account_row in cursor.fetchall():
-                    accounts.append({
-                        'account_id': account_row['account_id'],
-                        'spend_cap': account_row['spend_cap'],
-                        'amount_spent': account_row['amount_spent'],
-                        'remaining': account_row['remaining'],
-                        'status': account_row['status']
+                if not token_entry:
+                    token_entry = {
+                        'token': token,
+                        'accounts': []
+                    }
+                    tokens_by_king[king].append(token_entry)
+                
+                # Добавляем аккаунт, если он есть
+                if row['account_id']:
+                    token_entry['accounts'].append({
+                        'account_id': row['account_id'],
+                        'name': row['name'],
+                        'status': row['status'],
+                        'spend_cap': row['spend_cap'],
+                        'amount_spent': row['amount_spent'],
+                        'balance': row['balance'],
+                        'daily_limit': row['daily_limit'],
+                        'remaining': row['remaining'],
+                        'requests_today': row['requests_today'],
+                        'requests_limit': row['requests_limit'],
+                        'requests_usage_percent': row['requests_usage_percent']
                     })
-                
-                tokens_by_king[king].append({
-                    'token': token,
-                    'accounts': accounts
-                })
             
-            return jsonify({'success': True, 'tokens': tokens_by_king})
+            return tokens_by_king
             
-    except Exception as e:
-        logger.error(f"Ошибка получения резервных токенов: {e}")
-        return jsonify({'success': False, 'error': str(e)})
-@app.route('/account_limits')
-@login_required
-def account_limits():
-    """Страница отображения лимитов аккаунтов"""
-    return render_template('account_limits.html')
-def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
-    """Получает резервные токены для конкретного KING или все"""
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            cursor.execute("""
-                SELECT king, token 
-                FROM reserve_tokens 
-                WHERE user_id = ?
-            """, (user_id,))
-            
-            tokens = {}
-            for row in cursor.fetchall():
-                king = row['king']
-                token = row['token']
-                
-                if king not in tokens:
-                    tokens[king] = []
-                
-                tokens[king].append({
-                    'token': token,
-                    'accounts': get_reserve_token_accounts(user_id, king, token)
-                })
-            
-            return tokens
     except Exception as e:
         logger.error(f"Ошибка получения резервных токенов: {e}")
         return {}
@@ -2681,6 +2885,7 @@ def get_campaign_name(api_key, domain, campaign_id):
     
     return 'Unknown'
 import requests
+from backend.autocontrol import start_auto_control_and_refresh
 
 
 def get_keitaro_streams(base_url, api_key, campaign_id):
@@ -4936,4 +5141,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port=8001, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=8000, debug=False, threaded=True)

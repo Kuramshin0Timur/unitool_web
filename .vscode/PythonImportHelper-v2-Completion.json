@@ -158,6 +158,22 @@
         "documentation": {}
     },
     {
+        "label": "start_auto_control_and_refresh",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "start_auto_control_and_refresh",
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "isExtraImport": true,
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
         "label": "add_account_to_reserve_token",
         "importPath": "database",
         "description": "database",
@@ -618,20 +634,20 @@
         "documentation": {}
     },
     {
+        "label": "start_auto_control_and_refresh",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"\n    settings = get_user_settings(user_id)\n    interval = settings.get('auto_refresh_interval', 5)\n    # Запускаем автоконтроль\n    with auto_control_lock:\n        if user_id not in auto_control_threads:\n            auto_control_threads[user_id] = {\n                'running': True,\n                'thread': threading.Thread(",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
         "label": "login_required",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\ndef start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "start_auto_control_and_refresh",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"\n    settings = get_user_settings(user_id)\n    interval = settings.get('auto_refresh_interval', 5)\n    # Запускаем автоконтроль\n    with auto_control_lock:\n        if user_id not in auto_control_threads:\n            auto_control_threads[user_id] = {\n                'running': True,\n                'thread': threading.Thread(",
+        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\ndef stop_auto_control_and_refresh(user_id):\n    \"\"\"Останавливает и автоконтроль и автообновление вместе\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -694,7 +710,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем ВСЕ аккаунты, включая невалидные\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
+        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем только валидные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
         "detail": "app",
         "documentation": {}
     },
@@ -717,11 +733,20 @@
         "documentation": {}
     },
     {
+        "label": "check_reserve_token_account_limits",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_reserve_token_account_limits():\n    \"\"\"Проверяет лимиты для конкретного аккаунта резервного токена\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    account_id = data.get('account_id')\n    if not all([king, token, account_id]):\n        return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})\n    try:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "get_all_accounts_stats",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_all_accounts_stats() -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по всем аккаунтам всех пользователей\"\"\"\n    try:\n        users = get_all_users()\n        all_accounts = []\n        for user in users:\n            user_id = user['id']\n            try:\n                # Получаем аккаунты пользователя\n                accounts = get_user_accounts_stats(user_id)",
+        "peekOfCode": "def get_all_accounts_stats() -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по всем аккаунтам всех пользователей - исправленная версия\"\"\"\n    try:\n        users = get_all_users()\n        all_accounts = []\n        for user in users:\n            user_id = user['id']\n            try:\n                # Получаем аккаунты пользователя из campaigns таблицы\n                with get_db_connection(user_id) as conn:",
         "detail": "app",
         "documentation": {}
     },
@@ -730,7 +755,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any]:\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        # Проверяем валидность входных данных\n        if not account_id or account_id == 'N/A' or not access_token or access_token == 'N/A':\n            return {\n                'account_id': account_id or 'unknown',\n                'name': 'Невалидные данные',\n                'status': 'INVALID_DATA',\n                'spend': 0,",
+        "peekOfCode": "def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any]:\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API - исправленная версия\"\"\"\n    try:\n        # Проверяем валидность входных данных\n        if not account_id or account_id == 'N/A' or not access_token or access_token == 'N/A':\n            return {\n                'account_id': account_id or 'unknown',\n                'name': 'Невалидные данные',\n                'status': 'INVALID_DATA',\n                'spend': 0,",
         "detail": "app",
         "documentation": {}
     },
@@ -771,11 +796,56 @@
         "documentation": {}
     },
     {
+        "label": "check_reserve_token_account_limits_direct",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_reserve_token_account_limits_direct():\n    \"\"\"Проверяет лимиты для аккаунта напрямую (без сохранения в БД)\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    account_id = data.get('account_id')\n    token = data.get('token')\n    if not all([account_id, token]):\n        return jsonify({'success': False, 'error': 'Не указан account_id или token'})\n    try:\n        # Проверяем лимиты через Facebook API",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens_table",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_reserve_tokens_table():\n    \"\"\"Возвращает резервные токены в формате для таблицы\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все токены с информацией о лимитах\n            cursor.execute(\"\"\"\n                SELECT rt.king, rt.token, rta.account_id, rta.requests_limit, \n                       rta.requests_today, rta.requests_usage_percent",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_account_to_reserve_token",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_account_to_reserve_token(user_id, king, token, account_id):\n    \"\"\"Добавляет аккаунт к резервному токену\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_token_accounts (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_reserve_token_account_info",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_reserve_token_account_info(user_id, king, token, account_id, account_info):\n    \"\"\"Обновляет информацию об аккаунте резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, \n                    balance = ?, daily_limit = ?, remaining = ?,\n                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "remove_account_from_reserve_token",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def remove_account_from_reserve_token(user_id, account_id):\n    \"\"\"Удаляет аккаунт из резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\n                \"DELETE FROM reserve_token_accounts WHERE user_id = ? AND account_id = ?\",\n                (user_id, account_id)\n            )\n            conn.commit()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "handle_reserve_tokens_get",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def handle_reserve_tokens_get():\n    \"\"\"Получает резервные токены с аккаунтами\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все токены\n            cursor.execute(\"\"\"\n                SELECT king, token \n                FROM reserve_tokens ",
+        "peekOfCode": "def handle_reserve_tokens_get():\n    \"\"\"Получает резервные токены с аккаунтами - исправленная версия\"\"\"\n    user_id = session['user_id']\n    try:\n        tokens = get_reserve_tokens(user_id)\n        return jsonify({'success': True, 'tokens': tokens})\n    except Exception as e:\n        logger.error(f\"Ошибка получения резервных токенов: {e}\")\n        return jsonify({'success': False, 'error': str(e)})\n@app.route('/account_limits')",
         "detail": "app",
         "documentation": {}
     },
@@ -784,7 +854,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def account_limits():\n    \"\"\"Страница отображения лимитов аккаунтов\"\"\"\n    return render_template('account_limits.html')\ndef get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены для конкретного KING или все\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT king, token ",
+        "peekOfCode": "def account_limits():\n    \"\"\"Страница отображения лимитов аккаунтов\"\"\"\n    return render_template('account_limits.html')\ndef get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены с аккаунтами - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT rt.king, rt.token, ",
         "detail": "app",
         "documentation": {}
     },
@@ -793,7 +863,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены для конкретного KING или все\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT king, token \n                FROM reserve_tokens \n                WHERE user_id = ?\n            \"\"\", (user_id,))",
+        "peekOfCode": "def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены с аккаунтами - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT rt.king, rt.token, \n                       rta.account_id, rta.name, rta.status, rta.spend_cap, \n                       rta.amount_spent, rta.balance, rta.daily_limit, rta.remaining,\n                       rta.requests_today, rta.requests_limit, rta.requests_usage_percent",
         "detail": "app",
         "documentation": {}
     },
@@ -1945,7 +2015,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\ndef start_auto_control_and_refresh(user_id):",
+        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\ndef stop_auto_control_and_refresh(user_id):",
         "detail": "app",
         "documentation": {}
     },
@@ -2094,15 +2164,6 @@
         "documentation": {}
     },
     {
-        "label": "get_user_settings",
-        "kind": 2,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "def get_user_settings(user_id):\n    \"\"\"Получает настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    sync_api_key, proxy, use_proxy, auto_refresh_campaigns, \n                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, \n                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
         "label": "get_default_settings",
         "kind": 2,
         "importPath": "database",
@@ -2206,7 +2267,7 @@
         "kind": 2,
         "importPath": "database",
         "description": "database",
-        "peekOfCode": "def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):\n    \"\"\"Обновляет информацию об аккаунте токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET spend_cap = ?, amount_spent = ?, remaining = ?, \n                    status = ?, last_checked = CURRENT_TIMESTAMP\n                WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?",
+        "peekOfCode": "def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):\n    \"\"\"Обновляет информацию об аккаунте резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, \n                    balance = ?, daily_limit = ?, remaining = ?,\n                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,",
         "detail": "database",
         "documentation": {}
     },

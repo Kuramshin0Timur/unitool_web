@@ -312,20 +312,27 @@ def init_db():
             )
             """)
             cursor.execute("""
-            CREATE TABLE IF NOT EXISTS reserve_token_accounts (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
-                king TEXT NOT NULL,
-                token TEXT NOT NULL,
-                account_id TEXT NOT NULL,
-                spend_cap REAL DEFAULT 0,
-                amount_spent REAL DEFAULT 0,
-                remaining REAL DEFAULT 0,
-                status TEXT DEFAULT 'pending',
-                last_checked TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users (id),
-                UNIQUE(user_id, king, token, account_id)
-            )
+                CREATE TABLE IF NOT EXISTS reserve_token_accounts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL,
+                    king TEXT NOT NULL,
+                    token TEXT NOT NULL,
+                    account_id TEXT NOT NULL,
+                    name TEXT,
+                    status TEXT,
+                    spend_cap REAL DEFAULT 0,
+                    amount_spent REAL DEFAULT 0,
+                    balance REAL DEFAULT 0,
+                    daily_limit REAL DEFAULT 0,
+                    remaining REAL DEFAULT 0,
+                    requests_today INTEGER DEFAULT 0,
+                    requests_limit INTEGER DEFAULT 100,
+                    requests_usage_percent REAL DEFAULT 0,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users (id),
+                    UNIQUE(user_id, king, token, account_id)
+                )
             """)
             # Таблица правил бюджета
             cursor.execute("""
@@ -553,50 +560,6 @@ def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
                 'cpa_green': row['cpa_green'],
                 'cpa_orange': row['cpa_orange']
             } for row in cursor.fetchall()}
-def get_user_settings(user_id):
-    """Получает настройки пользователя"""
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                SELECT 
-                    sync_api_key, proxy, use_proxy, auto_refresh_campaigns, 
-                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, 
-                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,
-                    auto_headline_optimization, headline_optimization_interval,
-                    account_timezone, balance_check_enabled, warning_threshold
-                FROM settings WHERE user_id = ?
-            """, (user_id,))
-            
-            row = cursor.fetchone()
-            if row:
-                # Преобразуем Row в словарь для доступа через .get()
-                row_dict = dict(row)
-                return {
-                    'sync_api_key': row_dict.get('sync_api_key', ''),
-                    'proxy': row_dict.get('proxy', ''),
-                    'use_proxy': bool(row_dict.get('use_proxy', True)),
-                    'auto_refresh_campaigns': bool(row_dict.get('auto_refresh_campaigns', True)),
-                    'auto_refresh_adsets': bool(row_dict.get('auto_refresh_adsets', True)),
-                    'auto_refresh_interval': row_dict.get('auto_refresh_interval', 5),
-                    'telegram_bot_token': row_dict.get('telegram_bot_token', ''),
-                    'telegram_chat_id': row_dict.get('telegram_chat_id', ''),
-                    'keitaro_api_key': row_dict.get('keitaro_api_key', ''),
-                    'keitaro_domain': row_dict.get('keitaro_domain', 'uniaffnu.com'),
-                    'keitaro_range_days': row_dict.get('keitaro_range_days', 1),
-                    'auto_headline_optimization': bool(row_dict.get('auto_headline_optimization', False)),
-                    'headline_optimization_interval': row_dict.get('headline_optimization_interval', 4),
-                    'account_timezone': row_dict.get('account_timezone', '-7'),
-                    'balance_check_enabled': bool(row_dict.get('balance_check_enabled', True)),
-                    'warning_threshold': float(row_dict.get('warning_threshold', 50.0))
-                }
-            else:
-                # Возвращаем настройки по умолчанию
-                return get_default_settings()
-                
-    except Exception as e:
-        logger.error(f"Ошибка получения настроек: {e}")
-        return get_default_settings()
 
 def get_default_settings():
     """Возвращает настройки по умолчанию"""
@@ -934,30 +897,37 @@ def get_reserve_token_accounts(user_id, king, token):
     except Exception as e:
         logger.error(f"Ошибка получения аккаунтов токена: {e}")
         return []
-
 def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):
-    """Обновляет информацию об аккаунте токена"""
+    """Обновляет информацию об аккаунте резервного токена"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
             cursor.execute("""
                 UPDATE reserve_token_accounts 
-                SET spend_cap = ?, amount_spent = ?, remaining = ?, 
-                    status = ?, last_checked = CURRENT_TIMESTAMP
+                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, 
+                    balance = ?, daily_limit = ?, remaining = ?,
+                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,
+                    updated_at = CURRENT_TIMESTAMP
                 WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?
             """, (
+                limits_info.get('name'),
+                limits_info.get('status'),
                 limits_info.get('spend_cap', 0),
                 limits_info.get('spend', 0),
+                limits_info.get('balance', 0),
+                limits_info.get('daily_limit', 0),
                 limits_info.get('remaining_limit', 0),
-                'success' if not limits_info.get('error') else 'error',
+                limits_info.get('requests_today', 0),
+                limits_info.get('requests_limit', 100),
+                limits_info.get('requests_usage_percent', 0),
                 user_id, king, token, account_id
             ))
             
             conn.commit()
             return True
     except Exception as e:
-        logger.error(f"Ошибка обновления информации аккаунта: {e}")
+        logger.error(f"Ошибка обновления информации об аккаунте: {e}")
         return False
 def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
     """Получает статистику по аккаунтам пользователя с проверкой валидности"""
