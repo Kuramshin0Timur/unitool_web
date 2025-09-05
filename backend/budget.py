@@ -2,8 +2,7 @@
 from typing import Any, Dict, List, Optional
 from venv import logger
 
-from backend.adsets import lock
-from database import get_db_connection
+from database import get_db_connection, lock
 
 
 def update_user_adset_budget(user_id: int, adset_id: str, budget: float):

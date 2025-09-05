@@ -1,4 +1,5 @@
 import threading
+from typing import Dict, List
 from venv import logger
 
 import requests
@@ -10,16 +11,87 @@ from backend.campaign import (check_and_pause_campaigns,
                               refresh_campaigns_internal)
 from backend.geo_config import (extract_geo_from_name, get_user_geo_config,
                                 get_user_geo_rules)
-from backend.reserve_tokens import load_reserve_tokens
 from backend.setting import get_user_settings
 from backend.telegram import send_telegram_message
+from database import get_db_connection  # Добавляем импорт
 
 auto_control_threads = {}
 auto_control_lock = threading.Lock()
 auto_refresh_timers = {}
 auto_refresh_lock = threading.Lock()
-auto_refresh_timers = {}
-auto_refresh_lock = threading.Lock()
+
+def auto_populate_reserve_tokens(user_id: int):
+    """Автоматически заполняет резервные токены из основных аккаунтов"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем все уникальные комбинации account_id + token из campaigns
+            cursor.execute("""
+                SELECT DISTINCT account_id, token 
+                FROM campaigns 
+                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
+                AND account_id != '' AND token != ''
+            """, (user_id,))
+            
+            accounts = cursor.fetchall()
+            
+            added_count = 0
+            for account in accounts:
+                account_id = account['account_id']
+                token = account['token']
+                
+                # Автоматически определяем KING на основе токена
+                king = auto_determine_king(token)
+                
+                # Добавляем в резервные токены (если еще нет)
+                cursor.execute("""
+                    INSERT OR IGNORE INTO reserve_tokens (user_id, king, token)
+                    VALUES (?, ?, ?)
+                """, (user_id, king, token))
+                
+                # Добавляем аккаунт к токену (если еще нет)
+                cursor.execute("""
+                    INSERT OR IGNORE INTO reserve_token_accounts 
+                    (user_id, king, token, account_id)
+                    VALUES (?, ?, ?, ?)
+                """, (user_id, king, token, account_id))
+                
+                if cursor.rowcount > 0:
+                    added_count += 1
+            
+            conn.commit()
+            if added_count > 0:
+                logger.info(f"Автоматически добавлено {added_count} токенов в резерв для user_id {user_id}")
+            
+    except Exception as e:
+        logger.error(f"Ошибка автоматического заполнения резервных токенов: {e}")
+
+def auto_determine_king(token: str) -> str:
+    """Автоматически определяет KING на основе токена"""
+    if not token:
+        return "Facebook_Default"
+    
+    token_lower = token.lower()
+    
+    # Определяем платформу по характерным признакам токена
+    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):
+        return "Facebook"
+    elif any(x in token_lower for x in ['ig', 'instagram']):
+        return "Instagram" 
+    elif any(x in token_lower for x in ['tt', 'tiktok']):
+        return "TikTok"
+    elif any(x in token_lower for x in ['gg', 'google', 'ga']):
+        return "Google"
+    elif any(x in token_lower for x in ['tw', 'twitter', 'x.com']):
+        return "Twitter"
+    elif len(token) > 100:  # Длинные токены обычно Facebook
+        return "Facebook_Long"
+    elif len(token) > 50:   # Средние токены
+        return "Facebook_Medium"
+    else:
+        return "Facebook_Default"
+
 def get_combined_auto_status(user_id):
     """Возвращает комбинированный статус автоконтроля и автообновления"""
     with auto_control_lock:
@@ -87,6 +159,9 @@ def auto_refresh_user_data(user_id, interval_minutes):
         with app.app_context():
             logger.info(f"Автообновление данных для пользователя {user_id}")
             
+            # Автоматически заполняем резервные токены
+            auto_populate_reserve_tokens(user_id)
+            
             # Получаем настройки пользователя
             settings = get_user_settings(user_id)
             
@@ -111,7 +186,43 @@ def auto_refresh_user_data(user_id, interval_minutes):
         # Перезапускаем таймер
         start_auto_refresh(user_id, interval_minutes)
 
-
+def load_all_tokens(user_id: int) -> Dict[str, List[str]]:
+    """Загружает все токены: основные + резервные"""
+    all_tokens = {}
+    
+    try:
+        # Основные токены из campaigns
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Основные аккаунты
+            cursor.execute("""
+                SELECT DISTINCT account_id, token 
+                FROM campaigns 
+                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
+                AND account_id != '' AND token != ''
+            """, (user_id,))
+            
+            for row in cursor.fetchall():
+                king = auto_determine_king(row['token'])
+                if king not in all_tokens:
+                    all_tokens[king] = []
+                if row['token'] not in all_tokens[king]:
+                    all_tokens[king].append(row['token'])
+        
+        # Резервные токены
+        reserve_tokens = get_reserve_tokens(user_id)
+        for king, tokens in reserve_tokens.items():
+            if king not in all_tokens:
+                all_tokens[king] = []
+            for token_info in tokens:
+                if token_info['token'] not in all_tokens[king]:
+                    all_tokens[king].append(token_info['token'])
+                    
+    except Exception as e:
+        logger.error(f"Ошибка загрузки всех токенов: {e}")
+    
+    return all_tokens
 def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):
     """Обрабатывает контроль одного адсета"""
     adset_name = adset.get('name', '')
@@ -183,94 +294,87 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
         logger.warning(f"Нет доступных токенов для KING={king}, адсет {adset_name}")
         return
 
+    # Функция для выполнения запроса с ротацией токенов
+    def execute_with_token_rotation(api_call_func):
+        for idx, current_token in enumerate(token_list):
+            try:
+                result = api_call_func(current_token)
+                if result:
+                    return result
+                
+            except Exception as e:
+                error_msg = str(e).lower()
+                
+                # Проверяем, является ли ошибка лимитом запросов
+                if any(limit_error in error_msg for limit_error in [
+                    'request limit', 'rate limit', 'too many requests', 
+                    'application request limit', 'quota'
+                ]):
+                    logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
+                    if idx + 1 < len(token_list):
+                        continue
+                    else:
+                        raise Exception(f"❌ Все токены исчерпаны для KING={king}")
+                else:
+                    raise e
+        
+        return None
+
     # --- Отключение ---
     if should_pause:
         logger.info(f"Попытка отключения адсета {adset_name} по причине: {pause_reason}")
-        for idx, current_token in enumerate(token_list):
-            try:
-                url = f"https://graph.facebook.com/v18.0/{adset_id}"
-                data = {"status": "PAUSED"}
+        
+        def pause_adset(token):
+            url = f"https://graph.facebook.com/v18.0/{adset_id}"
+            data = {"status": "PAUSED"}
+            
+            resp = session_obj.post(
+                url,
+                params={"access_token": token},
+                data=data,
+                timeout=10
+            ).json()
+
+            if resp.get("success") or resp.get("id") == adset_id:
+                update_user_adset_status(user_id, adset_id, "PAUSED")
                 
-                logger.debug(f"Отправка запроса к Facebook API: {url} с токеном {idx+1}")
-                
-                resp = session_obj.post(
-                    url,
-                    params={"access_token": current_token},
-                    data=data,
-                    timeout=10
-                ).json()
+                msg = (f"🔴 Отключен: {adset_name} "
+                       f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f}) — причина: {pause_reason}")
+                logger.info(msg)
+                send_telegram_message(msg, user_id=user_id)
+                return True
+            
+            return False
+        
+        execute_with_token_rotation(pause_adset)
 
-                logger.debug(f"Ответ Facebook API: {resp}")
-
-                if resp.get("success") or resp.get("id") == adset_id:
-                    # Обновляем статус в базе
-                    update_user_adset_status(user_id, adset_id, "PAUSED")
-                    
-                    msg = (f"🔴 Отключен: {adset_name} "
-                           f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f}) — причина: {pause_reason}")
-                    logger.info(msg)
-                    send_telegram_message(msg, user_id=user_id)
-                    break
-
-                if ("error" in resp and "Application request limit" in resp["error"].get("message", "")):
-                    if idx + 1 < len(token_list):
-                        logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
-                        continue
-                    else:
-                        raise Exception(f"❌ Все токены исчерпаны для KING={king}")
-                else:
-                    raise Exception(f"Ошибка Facebook: {resp}")
-
-            except Exception as e:
-                msg = f"❌ Ошибка отключения {adset_name} (токен {idx+1}): {e}"
-                logger.error(msg)
-                if idx == len(token_list) - 1:  # Если это последний токен
-                    send_telegram_message(msg, user_id=user_id)
-                continue
-
+    # --- Включение ---
     elif should_resume:
         logger.info(f"Попытка включения адсета {adset_name}")
-        for idx, current_token in enumerate(token_list):
-            try:
-                url = f"https://graph.facebook.com/v18.0/{adset_id}"
-                data = {"status": "ACTIVE"}
+        
+        def resume_adset(token):
+            url = f"https://graph.facebook.com/v18.0/{adset_id}"
+            data = {"status": "ACTIVE"}
+            
+            resp = session_obj.post(
+                url,
+                params={"access_token": token},
+                data=data,
+                timeout=10
+            ).json()
+
+            if resp.get("success") or resp.get("id") == adset_id:
+                update_user_adset_status(user_id, adset_id, "ACTIVE")
                 
-                logger.debug(f"Отправка запроса к Facebook API: {url} с токеном {idx+1}")
-                
-                resp = session_obj.post(
-                    url,
-                    params={"access_token": current_token},
-                    data=data,
-                    timeout=10
-                ).json()
-
-                logger.debug(f"Ответ Facebook API: {resp}")
-
-                if resp.get("success") or resp.get("id") == adset_id:
-                    update_user_adset_status(user_id, adset_id, "ACTIVE")
-                    
-                    msg = (f"🟢 Включен: {adset_name} "
-                           f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
-                    logger.info(msg)
-                    send_telegram_message(msg, user_id=user_id)
-                    break
-
-                if ("error" in resp and "Application request limit" in resp["error"].get("message", "")):
-                    if idx + 1 < len(token_list):
-                        logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
-                        continue
-                    else:
-                        raise Exception(f"❌ Все токены исчерпаны для KING={king}")
-                else:
-                    raise Exception(f"Ошибка Facebook: {resp}")
-
-            except Exception as e:
-                msg = f"❌ Ошибка включения {adset_name} (токен {idx+1}): {e}"
-                logger.error(msg)
-                if idx == len(token_list) - 1: 
-                    send_telegram_message(msg, user_id=user_id)
-                continue
-
+                msg = (f"🟢 Включен: {adset_name} "
+                       f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
+                logger.info(msg)
+                send_telegram_message(msg, user_id=user_id)
+                return True
+            
+            return False
+        
+        execute_with_token_rotation(resume_adset)
 def auto_control(user_id):
     """Функция автоконтроля для работы с базой данных и резервными токенами"""
     try:

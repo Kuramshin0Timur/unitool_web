@@ -1,26 +1,14 @@
-import json
-import sqlite3
-import threading
-from pathlib import Path
-from typing import Any, Dict, List, Optional
-from venv import logger
-
-import requests
-from werkzeug.security import check_password_hash, generate_password_hash
-
-DB_PATH = Path("unitool.db")
-lock = threading.Lock()
-
 import sqlite3
 import threading
 from pathlib import Path
 from typing import Any, Dict, Optional
+from venv import logger
 
 from werkzeug.security import check_password_hash, generate_password_hash
 
 DB_PATH = Path("unitool.db")
-lock = threading.Lock()
 
+lock = threading.Lock()
 
 def get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:
     """

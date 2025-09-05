@@ -13,14 +13,15 @@ from flask import (Flask, flash, jsonify, redirect, render_template, request,
 from fuzzywuzzy import fuzz, process
 
 from backend.account import get_all_users, get_user_accounts_stats
-from backend.adsets import add_user_adset, fetch_facebook_adsets, get_user_adsets, update_user_adset_status
+from backend.adsets import (add_user_adset, fetch_facebook_adsets,
+                            get_user_adsets, update_user_adset_status)
 from backend.autocontrol import (auto_control, auto_refresh_lock,
                                  auto_refresh_timers, get_combined_auto_status,
                                  start_auto_control_and_refresh,
                                  stop_auto_control_and_refresh)
 from backend.budget import get_adset_budget_settings
 from backend.campaign import (add_user_campaign, fetch_facebook_campaigns,
-                              get_user_campaigns, lock, update_campaign_stats,
+                              get_user_campaigns, update_campaign_stats,
                               update_user_campaign_status)
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
 from backend.keitaro import fetch_keitaro_report
@@ -28,7 +29,7 @@ from backend.reserve_tokens import get_reserve_token_accounts
 from backend.setting import get_user_settings, update_user_settings
 from backend.telegram import send_telegram_message
 from database import (authenticate_user, create_user, get_db_connection,
-                      init_db)
+                      init_db, lock)
 
 # Настройка логирования
 logging.basicConfig(
@@ -64,7 +65,527 @@ def login_required(f):
 
 
 
+# app.py - добавьте этот endpoint
 
+@app.route('/api/auto_populate_reserve_tokens', methods=['POST'])
+@login_required
+def auto_populate_reserve_tokens():
+    """Автоматически создает резервные токены из основных аккаунтов"""
+    user_id = session['user_id']
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем все уникальные комбинации account_id + token из campaigns
+            cursor.execute("""
+                SELECT DISTINCT account_id, token 
+                FROM campaigns 
+                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
+                AND account_id != '' AND token != ''
+            """, (user_id,))
+            
+            accounts = cursor.fetchall()
+            
+            added_count = 0
+            for account in accounts:
+                account_id = account['account_id']
+                token = account['token']
+                
+                # Автоматически определяем KING на основе токена
+                king = auto_determine_king(token)
+                
+                # Добавляем в резервные токены (если еще нет)
+                cursor.execute("""
+                    INSERT OR IGNORE INTO reserve_tokens (user_id, king, token)
+                    VALUES (?, ?, ?)
+                """, (user_id, king, token))
+                
+                # Добавляем аккаунт к токену (если еще нет)
+                cursor.execute("""
+                    INSERT OR IGNORE INTO reserve_token_accounts 
+                    (user_id, king, token, account_id)
+                    VALUES (?, ?, ?, ?)
+                """, (user_id, king, token, account_id))
+                
+                if cursor.rowcount > 0:
+                    added_count += 1
+            
+            conn.commit()
+            
+            return jsonify({
+                'success': True,
+                'message': f'Добавлено {added_count} резервных токенов',
+                'added_count': added_count
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка автоматического заполнения резервных токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+# app.py - обновите endpoint get_combined_tokens_table
+
+@app.route('/api/combined_tokens_table', methods=['GET'])
+@login_required
+def get_combined_tokens_data():
+    """Возвращает совмещенные данные: основные аккаунты + резервные токены"""
+    user_id = session['user_id']
+    
+    try:
+        # Получаем основные аккаунты из campaigns
+        main_accounts = []
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Основные аккаунты из campaigns
+            cursor.execute("""
+                SELECT DISTINCT account_id, token 
+                FROM campaigns 
+                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
+                AND account_id != '' AND token != ''
+            """, (user_id,))
+            
+            for row in cursor.fetchall():
+                king = auto_determine_king(row['token'])
+                # Проверяем лимиты для основного аккаунта
+                limits_info = get_account_limits_info(row['account_id'], row['token'])
+                
+                main_accounts.append({
+                    'king': king,
+                    'token': row['token'],
+                    'account_id': row['account_id'],
+                    'type': 'main',
+                    'source': 'campaigns',
+                    'limits_info': limits_info
+                })
+        
+        # Получаем резервные токены
+        reserve_tokens = get_reserve_tokens_table(user_id)
+        
+        # Формируем совмещенную структуру
+        combined_data = {}
+        
+        # Добавляем основные аккаунты
+        for account in main_accounts:
+            king = account['king']
+            if king not in combined_data:
+                combined_data[king] = {}
+            
+            token = account['token']
+            if token not in combined_data[king]:
+                combined_data[king][token] = {
+                    'token': token,
+                    'accounts': [],
+                    'type': 'main',
+                    'requests_limit': account['limits_info'].get('requests_limit', 100),
+                    'requests_today': account['limits_info'].get('requests_today', 0),
+                    'requests_usage_percent': account['limits_info'].get('requests_usage_percent', 0)
+                }
+            
+            combined_data[king][token]['accounts'].append({
+                'account_id': account['account_id'],
+                'type': 'main',
+                'name': account['limits_info'].get('name', 'N/A'),
+                'status': account['limits_info'].get('status', 'UNKNOWN'),
+                'spend_cap': account['limits_info'].get('spend_cap', 0),
+                'amount_spent': account['limits_info'].get('spend', 0),
+                'balance': account['limits_info'].get('balance', 0),
+                'requests_limit': account['limits_info'].get('requests_limit', 100),
+                'requests_today': account['limits_info'].get('requests_today', 0),
+                'requests_usage_percent': account['limits_info'].get('requests_usage_percent', 0)
+            })
+        
+        # Добавляем резервные токены
+        for king, tokens in reserve_tokens.items():
+            if king not in combined_data:
+                combined_data[king] = {}
+            
+            for token_info in tokens:
+                token = token_info['token']
+                if token not in combined_data[king]:
+                    combined_data[king][token] = {
+                        'token': token,
+                        'accounts': [],
+                        'type': 'reserve',
+                        'requests_limit': token_info.get('requests_limit', 100),
+                        'requests_today': token_info.get('requests_today', 0),
+                        'requests_usage_percent': token_info.get('requests_usage_percent', 0)
+                    }
+                
+                # Добавляем аккаунты резервных токенов
+                for account in token_info.get('accounts', []):
+                    combined_data[king][token]['accounts'].append({
+                        'account_id': account['account_id'],
+                        'type': 'reserve',
+                        'name': account.get('name', 'N/A'),
+                        'status': account.get('status', 'UNKNOWN'),
+                        'spend_cap': account.get('spend_cap', 0),
+                        'amount_spent': account.get('amount_spent', 0),
+                        'balance': account.get('balance', 0),
+                        'requests_limit': account.get('requests_limit', 100),
+                        'requests_today': account.get('requests_today', 0),
+                        'requests_usage_percent': account.get('requests_usage_percent', 0)
+                    })
+        
+        # Преобразуем в нужный формат
+        result = {}
+        for king, tokens in combined_data.items():
+            result[king] = list(tokens.values())
+        
+        return jsonify({
+            'success': True,
+            'tokens': result
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения совмещенных токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+# app.py - добавьте endpoint для замены токена
+
+# app.py - обновленный endpoint для замены токена
+@app.route('/api/replace_token', methods=['POST'])
+@login_required
+def replace_token():
+    """Заменяет токен в кампаниях, адсетах и резервных токенах"""
+    user_id = session['user_id']
+    data = request.json
+    
+    old_token = data.get('old_token')
+    new_token = data.get('new_token')
+    king = data.get('king')
+    account_ids = data.get('account_ids', [])
+    
+    if not all([old_token, king]):
+        return jsonify({'success': False, 'error': 'Не указаны старый токен или KING'})
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            campaigns_updated = 0
+            adsets_updated = 0
+            reserve_updated = False
+            
+            # Обновляем токен в кампаниях, если указан новый токен
+            if new_token and new_token != old_token:
+                cursor.execute("""
+                    UPDATE campaigns 
+                    SET token = ?
+                    WHERE user_id = ? AND token = ? AND king = ?
+                """, (new_token, user_id, old_token, king))
+                campaigns_updated = cursor.rowcount
+            
+            # Обновляем токен в адсетах, если указан новый токен
+            if new_token and new_token != old_token:
+                cursor.execute("""
+                    UPDATE adsets 
+                    SET token = ?
+                    WHERE user_id = ? AND token = ? AND king = ?
+                """, (new_token, user_id, old_token, king))
+                adsets_updated = cursor.rowcount
+            
+            # Обновляем аккаунты в резервных токенах, если указаны
+            if account_ids:
+                # Удаляем старые аккаунты
+                cursor.execute("""
+                    DELETE FROM reserve_token_accounts 
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (user_id, king, old_token))
+                
+                # Добавляем новые аккаунты
+                for account_id in account_ids:
+                    cursor.execute("""
+                        INSERT INTO reserve_token_accounts (user_id, king, token, account_id)
+                        VALUES (?, ?, ?, ?)
+                    """, (user_id, king, old_token, account_id))
+                
+                reserve_updated = True
+            
+            conn.commit()
+            
+            message_parts = []
+            if campaigns_updated > 0:
+                message_parts.append(f'{campaigns_updated} кампаний')
+            if adsets_updated > 0:
+                message_parts.append(f'{adsets_updated} адсетов')
+            if reserve_updated:
+                message_parts.append('резервные аккаунты')
+            
+            return jsonify({
+                'success': True,
+                'message': f'Обновлено: {", ".join(message_parts)}',
+                'campaigns_updated': campaigns_updated,
+                'adsets_updated': adsets_updated,
+                'reserve_updated': reserve_updated
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка замены токена: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/update_king', methods=['POST'])
+@login_required
+def update_king():
+    """Обновляет KING для токена"""
+    user_id = session['user_id']
+    data = request.json
+    
+    current_king = data.get('currentKing')
+    new_king = data.get('newKing')
+    token = data.get('token')
+    
+    if not all([current_king, new_king, token]):
+        return jsonify({'success': False, 'error': 'Не указаны все параметры'})
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Обновляем KING в reserve_tokens
+            cursor.execute("""
+                UPDATE reserve_tokens 
+                SET king = ?
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (new_king, user_id, current_king, token))
+            
+            # Обновляем KING в reserve_token_accounts
+            cursor.execute("""
+                UPDATE reserve_token_accounts 
+                SET king = ?
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (new_king, user_id, current_king, token))
+            
+            conn.commit()
+            
+            return jsonify({
+                'success': True,
+                'message': f'KING обновлен с "{current_king}" на "{new_king}"'
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка обновления KING: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/update_token', methods=['POST'])
+@login_required
+def update_token():
+    """Обновляет токен"""
+    user_id = session['user_id']
+    data = request.json
+    
+    king = data.get('king')
+    current_token = data.get('currentToken')
+    new_token = data.get('newToken')
+    
+    if not all([king, current_token, new_token]):
+        return jsonify({'success': False, 'error': 'Не указаны все параметры'})
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Обновляем токен в reserve_tokens
+            cursor.execute("""
+                UPDATE reserve_tokens 
+                SET token = ?
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (new_token, user_id, king, current_token))
+            
+            # Обновляем токен в reserve_token_accounts
+            cursor.execute("""
+                UPDATE reserve_token_accounts 
+                SET token = ?
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (new_token, user_id, king, current_token))
+            
+            conn.commit()
+            
+            return jsonify({
+                'success': True,
+                'message': 'Токен успешно обновлен'
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка обновления токена: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/update_token_complete', methods=['POST'])
+@login_required
+def update_token_complete():
+    """Полное обновление токена с возможностью изменения KING и аккаунтов"""
+    user_id = session['user_id']
+    data = request.json
+    
+    old_king = data.get('oldKing')
+    new_king = data.get('newKing')
+    old_token = data.get('oldToken')
+    new_token = data.get('newToken')
+    account_ids = data.get('account_ids', [])
+    
+    if not all([old_king, old_token]):
+        return jsonify({'success': False, 'error': 'Не указаны обязательные параметры'})
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            changes = []
+            final_king = old_king
+            final_token = old_token
+            
+            # Если изменился KING - обновляем
+            if new_king and new_king != old_king:
+                # Обновляем KING в reserve_tokens
+                cursor.execute("""
+                    UPDATE reserve_tokens 
+                    SET king = ?
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (new_king, user_id, old_king, old_token))
+                
+                # Обновляем KING в reserve_token_accounts
+                cursor.execute("""
+                    UPDATE reserve_token_accounts 
+                    SET king = ?
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (new_king, user_id, old_king, old_token))
+                
+                changes.append(f'KING изменен на "{new_king}"')
+                final_king = new_king
+            
+            # Если изменился токен - обновляем
+            if new_token and new_token != old_token:
+                # Проверяем, нет ли уже токена с таким значением
+                cursor.execute("""
+                    SELECT id FROM reserve_tokens 
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (user_id, final_king, new_token))
+                
+                if cursor.fetchone():
+                    return jsonify({
+                        'success': False, 
+                        'error': f'Токен уже существует в группе {final_king}'
+                    })
+                
+                # Обновляем токен в reserve_tokens
+                cursor.execute("""
+                    UPDATE reserve_tokens 
+                    SET token = ?
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (new_token, user_id, final_king, old_token))
+                
+                # Обновляем токен в reserve_token_accounts
+                cursor.execute("""
+                    UPDATE reserve_token_accounts 
+                    SET token = ?
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (new_token, user_id, final_king, old_token))
+                
+                changes.append('токен обновлен')
+                final_token = new_token
+            
+            # Обрабатываем аккаунты
+            if account_ids is not None:
+                # Получаем текущие аккаунты
+                cursor.execute("""
+                    SELECT account_id FROM reserve_token_accounts 
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (user_id, final_king, final_token))
+                
+                current_accounts = {row['account_id'] for row in cursor.fetchall()}
+                new_accounts = set(account_ids)
+                
+                # Удаляем аккаунты, которых нет в новом списке
+                accounts_to_remove = current_accounts - new_accounts
+                if accounts_to_remove:
+                    placeholders = ','.join(['?' for _ in accounts_to_remove])
+                    cursor.execute(f"""
+                        DELETE FROM reserve_token_accounts 
+                        WHERE user_id = ? AND king = ? AND token = ? 
+                        AND account_id IN ({placeholders})
+                    """, [user_id, final_king, final_token] + list(accounts_to_remove))
+                
+                # Добавляем новые аккаунты
+                accounts_to_add = new_accounts - current_accounts
+                added_count = 0
+                for account_id in accounts_to_add:
+                    if account_id and account_id.startswith('act_'):
+                        try:
+                            cursor.execute("""
+                                INSERT INTO reserve_token_accounts 
+                                (user_id, king, token, account_id) 
+                                VALUES (?, ?, ?, ?)
+                            """, (user_id, final_king, final_token, account_id))
+                            added_count += 1
+                        except Exception as e:
+                            logger.warning(f"Аккаунт {account_id} уже существует: {e}")
+                            continue
+                
+                changes.append(f'аккаунтов: {added_count} добавлено, {len(accounts_to_remove)} удалено')
+            
+            conn.commit()
+            
+            message = 'Данные сохранены' + (f' ({", ".join(changes)})' if changes else '')
+            
+            return jsonify({
+                'success': True,
+                'message': message
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка полного обновления токена: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/user/reserve_tokens/bulk', methods=['POST'])
+@login_required
+def add_bulk_reserve_tokens():
+    """Добавляет несколько токенов с одним KING"""
+    user_id = session['user_id']
+    data = request.json
+    
+    king = data.get('king')
+    tokens = data.get('tokens', [])
+    account_ids = data.get('account_ids', [])
+    
+    if not king or not tokens:
+        return jsonify({'success': False, 'error': 'Не указан KING или токены'})
+    
+    try:
+        added_count = 0
+        error_count = 0
+        error_messages = []
+        
+        for token in tokens:
+            token = token.strip()
+            if not token:
+                continue
+                
+            # Проверяем, не существует ли уже токен
+            if check_reserve_token_exists(user_id, king, token):
+                error_count += 1
+                error_messages.append(f'Токен уже существует: {token[:20]}...')
+                continue
+            
+            if add_reserve_token(user_id, king, token):
+                # Добавляем аккаунты если они указаны
+                for account_id in account_ids:
+                    if account_id:
+                        add_account_to_reserve_token(user_id, king, token, account_id)
+                added_count += 1
+            else:
+                error_count += 1
+        
+        message = f'Добавлено {added_count} токенов'
+        if error_count > 0:
+            message += f', ошибок: {error_count}'
+        
+        return jsonify({
+            'success': True,
+            'message': message,
+            'added_count': added_count,
+            'error_count': error_count,
+            'errors': error_messages[:5]  # Первые 5 ошибок
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка массового добавления токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 @app.route('/api/admin/test_tokens')
 @login_required
 def test_tokens():
@@ -222,6 +743,183 @@ def get_all_accounts_stats() -> List[Dict[str, Any]]:
     except Exception as e:
         logger.error(f"Ошибка получения статистики всех аккаунтов: {e}")
         return []
+def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
+    """Получает резервные токены с аккаунтами - исправленная версия"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Проверяем существование таблицы reserve_tokens
+            cursor.execute("""
+                SELECT name FROM sqlite_master 
+                WHERE type='table' AND name='reserve_tokens'
+            """)
+            table_exists = cursor.fetchone()
+            
+            if not table_exists:
+                return {}
+            
+            # Получаем все токены с информацией о лимитах
+            cursor.execute("""
+                SELECT rt.king, rt.token, 
+                       rta.account_id, rta.name, rta.status, rta.spend_cap, 
+                       rta.amount_spent, rta.balance, rta.daily_limit, rta.remaining,
+                       rta.requests_today, rta.requests_limit, rta.requests_usage_percent
+                FROM reserve_tokens rt
+                LEFT JOIN reserve_token_accounts rta ON rt.user_id = rta.user_id 
+                    AND rt.king = rta.king AND rt.token = rta.token
+                WHERE rt.user_id = ?
+                ORDER BY rt.king, rt.token
+            """, (user_id,))
+            
+            tokens_by_king = {}
+            for row in cursor.fetchall():
+                king = row['king']
+                token = row['token']
+                
+                if king not in tokens_by_king:
+                    tokens_by_king[king] = []
+                
+                # Находим токен в списке или создаем новый
+                token_entry = None
+                for entry in tokens_by_king[king]:
+                    if entry['token'] == token:
+                        token_entry = entry
+                        break
+                
+                if not token_entry:
+                    token_entry = {
+                        'token': token,
+                        'accounts': []
+                    }
+                    tokens_by_king[king].append(token_entry)
+                
+                # Добавляем аккаунт, если он есть
+                if row['account_id']:
+                    token_entry['accounts'].append({
+                        'account_id': row['account_id'],
+                        'name': row['name'],
+                        'status': row['status'],
+                        'spend_cap': row['spend_cap'],
+                        'amount_spent': row['amount_spent'],
+                        'balance': row['balance'],
+                        'daily_limit': row['daily_limit'],
+                        'remaining': row['remaining'],
+                        'requests_today': row['requests_today'],
+                        'requests_limit': row['requests_limit'],
+                        'requests_usage_percent': row['requests_usage_percent']
+                    })
+            
+            return tokens_by_king
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения резервных токенов: {e}")
+        return {}
+def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
+    """Возвращает резервные токены в формате для таблицы - исправленная версия"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # ДЕБАГ 1: Проверяем данные в reserve_tokens
+            cursor.execute("SELECT king, token, user_id FROM reserve_tokens")
+            all_tokens = cursor.fetchall()
+            logger.info(f"Все токены в таблице reserve_tokens: {[dict(t) for t in all_tokens]}")
+            
+            # ДЕБАГ 2: Токены текущего пользователя
+            cursor.execute("SELECT king, token FROM reserve_tokens WHERE user_id = ?", (user_id,))
+            user_tokens = cursor.fetchall()
+            logger.info(f"Токены для user_id {user_id}: {[dict(t) for t in user_tokens]}")
+            
+            if not user_tokens:
+                logger.info(f"Не найдено токенов для пользователя {user_id}")
+                return {}
+            
+            # ДЕБАГ 3: Проверяем данные в reserve_token_accounts
+            cursor.execute("SELECT king, token, account_id, user_id FROM reserve_token_accounts")
+            all_accounts = cursor.fetchall()
+            logger.info(f"Все аккаунты в таблице reserve_token_accounts: {[dict(a) for a in all_accounts]}")
+            
+            # ДЕБАГ 4: Выполняем JOIN запрос и проверяем результаты
+            cursor.execute("""
+                SELECT rt.king, rt.token, 
+                       rta.account_id, rta.requests_limit, 
+                       rta.requests_today, rta.requests_usage_percent
+                FROM reserve_tokens rt
+                LEFT JOIN reserve_token_accounts rta ON rt.user_id = rta.user_id 
+                    AND rt.king = rta.king AND rt.token = rta.token
+                WHERE rt.user_id = ?
+                ORDER BY rt.king, rt.token
+            """, (user_id,))
+            
+            rows = cursor.fetchall()
+            logger.info(f"Результаты JOIN запроса для user_id {user_id}:")
+            for row in rows:
+                logger.info(f"  {dict(row)}")
+            
+            tokens_data = {}
+            for row in rows:
+                king = row['king']
+                token = row['token']
+                
+                if king not in tokens_data:
+                    tokens_data[king] = {}
+                
+                if token not in tokens_data[king]:
+                    tokens_data[king][token] = {
+                        'token': token,
+                        'accounts': [],
+                        'requests_limit': row['requests_limit'] or 100,
+                        'requests_today': row['requests_today'] or 0,
+                        'requests_usage_percent': row['requests_usage_percent'] or 0
+                    }
+                
+                if row['account_id']:
+                    tokens_data[king][token]['accounts'].append({
+                        'account_id': row['account_id'],
+                        'requests_limit': row['requests_limit'] or 100,
+                        'requests_today': row['requests_today'] or 0,
+                        'requests_usage_percent': row['requests_usage_percent'] or 0
+                    })
+            
+            # Преобразуем в нужный формат
+            result = {}
+            for king, tokens in tokens_data.items():
+                result[king] = list(tokens.values())
+            
+            logger.info(f"Финальный результат: {result}")
+            return result
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения токенов для таблицы: {e}")
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        return {}
+def auto_determine_king(token: str) -> str:
+    """Автоматически определяет KING на основе токена"""
+    if not token or not isinstance(token, str):
+        return "Facebook_Default"
+    
+    token_lower = token.lower()
+    
+    # Определяем платформу по характерным признакам токена
+    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):
+        return "Facebook"
+    elif any(x in token_lower for x in ['ig', 'instagram']):
+        return "Instagram" 
+    elif any(x in token_lower for x in ['tt', 'tiktok']):
+        return "TikTok"
+    elif any(x in token_lower for x in ['gg', 'google', 'ga']):
+        return "Google"
+    elif any(x in token_lower for x in ['tw', 'twitter', 'x.com']):
+        return "Twitter"
+    elif len(token) > 100:  # Длинные токены обычно Facebook
+        return "Facebook_Long"
+    elif len(token) > 50:   # Средние токены
+        return "Facebook_Medium"
+    else:
+        return "Facebook_Default"
+    
 def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any]:
     """Получает информацию о лимитах аккаунта из Facebook API - исправленная версия"""
     try:
@@ -356,6 +1054,7 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
             'requests_usage_percent': 0,
             'error': f"Неизвестная ошибка: {str(e)}"
         }
+
 @app.route('/api/reserve_tokens/accounts', methods=['POST', 'DELETE'])
 @login_required
 def handle_reserve_token_accounts():
@@ -387,6 +1086,135 @@ def handle_reserve_token_accounts():
             return jsonify({'success': True, 'message': 'Аккаунт удален'})
         else:
             return jsonify({'success': False, 'error': 'Ошибка удаления аккаунта'})
+# app.py - добавьте этот endpoint
+
+@app.route('/api/reserve_tokens/<king>', methods=['GET'])
+@login_required
+def get_reserve_tokens_by_king(king):
+    """Получает все токены для конкретного king"""
+    user_id = session['user_id']
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT token 
+                FROM reserve_tokens 
+                WHERE user_id = ? AND king = ?
+                ORDER BY created_at DESC
+            """, (user_id, king))
+            
+            tokens = [row['token'] for row in cursor.fetchall()]
+            
+            return jsonify({
+                'success': True,
+                'tokens': tokens,
+                'king': king
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения токенов для king {king}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/combined_tokens_table', methods=['GET'])
+@login_required
+def get_combined_tokens_table():
+    """Возвращает совмещенные данные: основные аккаунты + резервные токены"""
+    user_id = session['user_id']
+    
+    try:
+        # Получаем основные аккаунты из campaigns
+        main_accounts = []
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Основные аккаунты из campaigns
+            cursor.execute("""
+                SELECT DISTINCT account_id, token 
+                FROM campaigns 
+                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
+                AND account_id != '' AND token != ''
+            """, (user_id,))
+            
+            for row in cursor.fetchall():
+                king = auto_determine_king(row['token'])
+                main_accounts.append({
+                    'king': king,
+                    'token': row['token'],
+                    'account_id': row['account_id'],
+                    'type': 'main',
+                    'source': 'campaigns'
+                })
+        
+        # Получаем резервные токены
+        reserve_tokens = get_reserve_tokens_table(user_id)
+        
+        # Формируем совмещенную структуру
+        combined_data = {}
+        
+        # Добавляем основные аккаунты
+        for account in main_accounts:
+            king = account['king']
+            if king not in combined_data:
+                combined_data[king] = {}
+            
+            token = account['token']
+            if token not in combined_data[king]:
+                combined_data[king][token] = {
+                    'token': token,
+                    'accounts': [],
+                    'type': 'main',
+                    'requests_limit': 100,
+                    'requests_today': 0,
+                    'requests_usage_percent': 0
+                }
+            
+            combined_data[king][token]['accounts'].append({
+                'account_id': account['account_id'],
+                'type': 'main'
+            })
+        
+        # Добавляем резервные токены
+        for king, tokens in reserve_tokens.items():
+            if king not in combined_data:
+                combined_data[king] = {}
+            
+            for token_info in tokens:
+                token = token_info['token']
+                if token not in combined_data[king]:
+                    combined_data[king][token] = {
+                        'token': token,
+                        'accounts': [],
+                        'type': 'reserve',
+                        'requests_limit': token_info.get('requests_limit', 100),
+                        'requests_today': token_info.get('requests_today', 0),
+                        'requests_usage_percent': token_info.get('requests_usage_percent', 0)
+                    }
+                
+                # Добавляем аккаунты резервных токенов
+                for account in token_info.get('accounts', []):
+                    combined_data[king][token]['accounts'].append({
+                        'account_id': account['account_id'],
+                        'type': 'reserve',
+                        'requests_limit': account.get('requests_limit', 100),
+                        'requests_today': account.get('requests_today', 0),
+                        'requests_usage_percent': account.get('requests_usage_percent', 0)
+                    })
+        
+        # Преобразуем в нужный формат
+        result = {}
+        for king, tokens in combined_data.items():
+            result[king] = list(tokens.values())
+        
+        return jsonify({
+            'success': True,
+            'tokens': result
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения совмещенных токенов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 @app.route('/api/reserve_tokens/check_limits', methods=['POST'])
 @login_required
 def check_reserve_token_limits():
@@ -424,17 +1252,42 @@ def check_reserve_token_limits():
     except Exception as e:
         logger.error(f"Ошибка проверки лимитов: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/reserve_tokens/table', methods=['GET'])
+@login_required
+def get_reserve_tokens_table_route():
+    """Возвращает резервные токены в формате для таблицы"""
+    user_id = session['user_id']
+    logger.info(f"Запрос токенов для user_id: {user_id}, username: {session.get('username')}")
+    
+    try:
+        tokens = get_reserve_tokens_table(user_id)
+        return jsonify({'success': True, 'tokens': tokens})
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения токенов для таблицы: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 @app.route('/api/reserve_tokens', methods=['POST'])
 @login_required
 def handle_reserve_tokens_post():
     user_id = session['user_id']
     data = request.json
+    
+    # Получаем параметры из data
     king = data.get('king')
     token = data.get('token')
     account_ids = data.get('account_ids', [])
     
-    if not king or not token:
-        return jsonify({'success': False, 'error': 'Не указан KING или токен'})
+    # Если king - это объект (из старого формата), извлекаем значение
+    if isinstance(king, dict):
+        king = king.get('king') or king.get('value') or ''
+    
+    if not token:
+        return jsonify({'success': False, 'error': 'Не указан токен'})
+    
+    # Автоматически определяем KING если не указан или пустой
+    if not king or str(king).strip() == '':
+        king = auto_determine_king(token)
     
     if add_reserve_token(user_id, king, token):
         # Добавляем аккаунты если они указаны
@@ -442,7 +1295,11 @@ def handle_reserve_tokens_post():
             if account_id:
                 add_account_to_reserve_token(user_id, king, token, account_id)
         
-        return jsonify({'success': True, 'message': 'Токен добавлен'})
+        return jsonify({
+            'success': True, 
+            'message': 'Токен добавлен', 
+            'auto_determined_king': king
+        })
     else:
         return jsonify({'success': False, 'error': 'Ошибка добавления токена'})
 @app.route('/api/reserve_tokens/check_all_limits', methods=['POST'])
@@ -506,62 +1363,7 @@ def check_reserve_token_account_limits_direct():
     except Exception as e:
         logger.error(f"Ошибка проверки лимитов аккаунта: {e}")
         return jsonify({'success': False, 'error': str(e)})
-@app.route('/api/reserve_tokens/table', methods=['GET'])
-@login_required
-def get_reserve_tokens_table():
-    """Возвращает резервные токены в формате для таблицы"""
-    user_id = session['user_id']
-    
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            # Получаем все токены с информацией о лимитах
-            cursor.execute("""
-                SELECT rt.king, rt.token, rta.account_id, rta.requests_limit, 
-                       rta.requests_today, rta.requests_usage_percent
-                FROM reserve_tokens rt
-                LEFT JOIN reserve_token_accounts rta ON rt.user_id = rta.user_id 
-                    AND rt.king = rta.king AND rt.token = rta.token
-                WHERE rt.user_id = ?
-                ORDER BY rt.king, rt.token
-            """, (user_id,))
-            
-            tokens_data = {}
-            for row in cursor.fetchall():
-                king = row['king']
-                token = row['token']
-                
-                if king not in tokens_data:
-                    tokens_data[king] = {}
-                
-                if token not in tokens_data[king]:
-                    tokens_data[king][token] = {
-                        'token': token,
-                        'accounts': [],
-                        'requests_limit': row['requests_limit'] or 100,
-                        'requests_today': row['requests_today'] or 0,
-                        'requests_usage_percent': row['requests_usage_percent'] or 0
-                    }
-                
-                if row['account_id']:
-                    tokens_data[king][token]['accounts'].append({
-                        'account_id': row['account_id'],
-                        'requests_limit': row['requests_limit'] or 100,
-                        'requests_today': row['requests_today'] or 0,
-                        'requests_usage_percent': row['requests_usage_percent'] or 0
-                    })
-            
-            # Преобразуем в нужный формат
-            result = {}
-            for king, tokens in tokens_data.items():
-                result[king] = list(tokens.values())
-            
-            return jsonify({'success': True, 'tokens': result})
-            
-    except Exception as e:
-        logger.error(f"Ошибка получения токенов для таблицы: {e}")
-        return jsonify({'success': False, 'error': str(e)})
+
 def add_account_to_reserve_token(user_id, king, token, account_id):
     """Добавляет аккаунт к резервному токену"""
     try:
@@ -1213,7 +2015,7 @@ def fetch_adsets_insights(account_id, access_token):
         url = f"https://graph.facebook.com/v18.0/act_{account_id}/insights"
         params = {
             "level": "adset",
-            "fields": "adset_id,spend,cpc,cost_per_conversion,conversions",
+            "fields": "adset_id,spend,cpc, cpm, cost_per_conversion,conversions",
             "date_preset": "today",
             "time_increment": 1,
             "access_token": access_token,
@@ -1235,6 +2037,7 @@ def fetch_adsets_insights(account_id, access_token):
                     insights_by_adset[adset_id] = {
                         'spend': float(insight.get('spend', 0)),
                         'cpc': float(insight.get('cpc', 0)),
+                        'cpm': float(insight.get('cpm', 0)),
                         'cost_per_conversion': float(insight.get('cost_per_conversion', 0)),
                         'conversions': int(insight.get('conversions', 0))
                     }
@@ -2301,43 +3104,101 @@ def update_keitaro_stream_weight(api_key, domain, stream_id, new_weight):
     except Exception as e:
         logger.error(f"Ошибка обновления веса потока {stream_id}: {e}")
         return None
-
-def analyze_stream_performance(api_key, domain, campaign_id=None, interval="today"):
-    """Анализирует производительность потоков кампании - исправленная версия"""
+def get_keitaro_performance_data(api_key, domain, campaign_id=None, interval="today"):
+    """Альтернативный метод получения данных из Keitaro"""
     try:
         url = f"https://{domain}/admin_api/v1/report/build"
-        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        headers = {
+            "Api-Key": api_key, 
+            "Content-Type": "application/json"
+        }
         
-        # Базовый payload для анализа потоков
+        # Упрощенный payload с правильными метриками
         payload = {
-            "range": {"interval": interval, "timezone": "Europe/Moscow"},
-            "metrics": ["conversions", "revenue", "cost", "roi", "epc", "clicks"],
+            "range": {
+                "interval": interval,
+                "timezone": "Europe/Moscow"
+            },
+            "metrics": ["conversions", "cost", "revenue", "clicks"],
             "grouping": ["stream_id", "campaign_id"],
+            "limit": 1000
+        }
+        
+        response = requests.post(url, headers=headers, json=payload, timeout=30)
+        
+        if response.status_code == 200:
+            data = response.json()
+            all_rows = data.get('rows', [])
+            
+            # Фильтруем по campaign_id локально
+            if campaign_id:
+                filtered_rows = []
+                for row in all_rows:
+                    row_campaign_id = str(row.get('campaign_id') or row.get('sub_id_1') or '')
+                    if row_campaign_id == str(campaign_id):
+                        filtered_rows.append(row)
+                return filtered_rows
+            
+            return all_rows
+        
+        return []
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения данных из Keitaro: {e}")
+        return []
+def analyze_stream_performance(api_key, domain, campaign_id=None, interval="today"):
+    """Анализирует производительность потоков - исправленная версия"""
+    try:
+        url = f"https://{domain}/admin_api/v1/report/build"
+        headers = {
+            "Api-Key": api_key, 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+        
+        # Используем только доступные метрики из ошибки
+        payload = {
+            "range": {
+                "interval": interval,
+                "timezone": "Europe/Moscow"
+            },
+            "metrics": ["conversions", "revenue", "cost", "roi", "epc", "clicks"],
+            "grouping": ["stream_id"],
             "limit": 1000
         }
         
         # Добавляем фильтр по кампании если указана
         if campaign_id and campaign_id != 'all':
-            try:
-                campaign_id_int = int(campaign_id)
-                payload["filters"] = [{
+            payload["filters"] = [
+                {
                     "name": "campaign_id", 
                     "operator": "EQUALS", 
-                    "expression": str(campaign_id_int)
-                }]
-            except ValueError:
-                logger.error(f"Неверный ID кампании для фильтра: {campaign_id}")
+                    "expression": str(campaign_id)
+                }
+            ]
+        
+        logger.info(f"Отправка запроса к Keitaro с правильными метриками")
         
         response = requests.post(url, headers=headers, json=payload, timeout=30)
-        response.raise_for_status()
         
-        report = response.json()
-        return report.get('rows', [])
+        if response.status_code != 200:
+            logger.error(f"Keitaro API error: {response.status_code} - {response.text}")
+            return []
+        
+        data = response.json()
+        rows = data.get('rows', [])
+        
+        logger.info(f"Получено {len(rows)} записей из Keitaro")
+        
+        # Логируем первую запись для отладки
+        if rows:
+            logger.info(f"Пример данных: {json.dumps(rows[0], ensure_ascii=False)}")
+        
+        return rows
         
     except Exception as e:
         logger.error(f"Ошибка анализа производительности потоков: {e}")
         return []
-
 def optimize_headlines_automation(user_id):
     """Автоматическая оптимизация заголовков на основе производительности - исправленная версия"""
     try:
@@ -2469,12 +3330,14 @@ def optimize_campaign_streams(api_key, domain, streams, stats, user_id):
 @app.route('/api/keitaro/campaigns', methods=['GET'])
 @login_required
 def get_keitaro_campaigns():
-    """Возвращает список всех кампаний из Keitaro"""
+    """Возвращает список кампаний из Keitaro с поиском и пагинацией"""
     try:
         user_id = session['user_id']
         settings = get_user_settings(user_id)
         api_key = settings.get('keitaro_api_key')
         domain = settings.get('keitaro_domain')
+        search_query = request.args.get('search', '')
+        limit = int(request.args.get('limit', 50))
         
         if not api_key:
             return jsonify({'success': False, 'error': 'Keitaro API key not configured'})
@@ -2497,6 +3360,16 @@ def get_keitaro_campaigns():
         else:
             campaigns = []
         
+        # Фильтрация по поисковому запросу
+        if search_query:
+            search_lower = search_query.lower()
+            campaigns = [camp for camp in campaigns 
+                        if (search_lower in str(camp.get('name', '')).lower() 
+                            or search_lower in str(camp.get('id', '')).lower())]
+        
+        # Ограничение количества
+        campaigns = campaigns[:limit]
+        
         # Форматируем ответ
         formatted_campaigns = []
         for campaign in campaigns:
@@ -2504,27 +3377,130 @@ def get_keitaro_campaigns():
                 'id': campaign.get('id'),
                 'name': campaign.get('name', 'Unknown'),
                 'status': campaign.get('status', 'active'),
-                'group_id': campaign.get('group_id'),
-                'cost': campaign.get('cost', 0),
-                'revenue': campaign.get('revenue', 0)
+                'cost': float(campaign.get('cost', 0)),
+                'revenue': float(campaign.get('revenue', 0)),
+                'traffic_source': campaign.get('traffic_source', ''),
+                'group_id': campaign.get('group_id', '')
             })
         
         return jsonify({
             'success': True,
             'campaigns': formatted_campaigns,
-            'total': len(formatted_campaigns)
+            'total': len(formatted_campaigns),
+            'search_query': search_query,
+            'limit': limit
         })
         
     except Exception as e:
         logger.error(f"Ошибка получения кампаний Keitaro: {e}")
         return jsonify({'success': False, 'error': str(e)})
+def get_keitaro_stream_info(api_key, domain, stream_id):
+    """Получает информацию о конкретном потоке"""
+    try:
+        url = f"https://{domain}/admin_api/v1/streams/{stream_id}"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        
+        data = response.json()
+        return {
+            'id': data.get('id'),
+            'name': data.get('name', 'Unknown'),
+            'weight': data.get('weight', 0),
+            'is_active': data.get('is_active', False),
+            'campaign_id': data.get('campaign_id'),
+            'url': data.get('url', '')
+        }
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения информации о потоке {stream_id}: {e}")
+        return {'id': stream_id, 'name': f'Stream {stream_id}', 'weight': 0, 'is_active': False}
+
+def get_keitaro_campaign_info(api_key, domain, campaign_id):
+    """Получает информацию о кампании"""
+    try:
+        url = f"https://{domain}/admin_api/v1/campaigns/{campaign_id}"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        
+        data = response.json()
+        return {
+            'id': data.get('id'),
+            'name': data.get('name', 'Unknown'),
+            'status': data.get('status', 'active'),
+            'cost': data.get('cost', 0),
+            'revenue': data.get('revenue', 0)
+        }
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения информации о кампании {campaign_id}: {e}")
+        return {'id': campaign_id, 'name': f'Campaign {campaign_id}', 'status': 'unknown'}
+@app.route('/api/debug/keitaro', methods=['GET'])
+@login_required
+def debug_keitaro():
+    """Отладочная информация о подключении к Keitaro"""
+    try:
+        user_id = session['user_id']
+        settings = get_user_settings(user_id)
+        api_key = settings.get('keitaro_api_key')
+        domain = settings.get('keitaro_domain')
+        
+        if not api_key:
+            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})
+        
+        # Тестовый запрос
+        url = f"https://{domain}/admin_api/v1/campaigns"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        
+        return jsonify({
+            'success': True,
+            'api_key_exists': bool(api_key),
+            'domain': domain,
+            'status_code': response.status_code,
+            'response_sample': response.json()[:2] if response.status_code == 200 else None
+        })
+        
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+def get_keitaro_campaign_streams(api_key, domain, campaign_id):
+    """Получает все потоки конкретной кампании"""
+    try:
+        url = f"https://{domain}/admin_api/v1/campaigns/{campaign_id}/streams"
+        headers = {"Api-Key": api_key, "Content-Type": "application/json"}
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        
+        data = response.json()
+        streams = []
+        
+        if isinstance(data, list):
+            streams = data
+        elif isinstance(data, dict) and 'streams' in data:
+            streams = data.get('streams', [])
+        elif isinstance(data, dict) and 'data' in data:
+            streams = data.get('data', [])
+        
+        return streams
+        
+    except Exception as e:
+        logger.error(f"Ошибка получения потоков кампании {campaign_id}: {e}")
+        return []
 @app.route('/api/headline_optimization/status', methods=['GET'])
 @login_required
 def get_headline_optimization_status():
-    """Возвращает статус оптимизации заголовков для кампании - исправленная версия"""
+    """Возвращает статус оптимизации заголовков для кампании"""
     try:
         user_id = session['user_id']
         campaign_id = request.args.get('campaign_id')
+        
+        if not campaign_id:
+            return jsonify({'success': False, 'error': 'Не указан campaign_id'})
         
         settings = get_user_settings(user_id)
         api_key = settings.get('keitaro_api_key')
@@ -2533,34 +3509,66 @@ def get_headline_optimization_status():
         if not api_key:
             return jsonify({'success': False, 'error': 'Keitaro API key not configured'})
         
-        # Получаем текущие потоки
-        streams = get_keitaro_streams(domain, api_key, campaign_id)
-        if not streams:
-            return jsonify({
-                'success': True,
-                'campaign_id': campaign_id,
-                'streams': [],
-                'message': 'No streams found'
-            })
+        logger.info(f"Запрос статистики для кампании {campaign_id}")
         
-        # Получаем статистику потоков
+        # Пробуем разные методы получения данных
         stream_stats = analyze_stream_performance(api_key, domain, campaign_id, "today")
         
-        # Создаем словарь для быстрого поиска статистики по stream_id
-        stats_by_stream = {}
+        # Если не получилось, пробуем альтернативный метод
+        if not stream_stats:
+            logger.warning("Первый метод не дал результатов, пробуем альтернативный...")
+            stream_stats = get_keitaro_performance_data(api_key, domain, campaign_id, "today")
+        
+        logger.info(f"Получено {len(stream_stats)} записей статистики")
+        
+        # Если все еще нет данных, пробуем получить потоки кампании
+        if not stream_stats:
+            logger.warning("Нет статистики, пробуем получить потоки кампании...")
+            campaign_streams = get_keitaro_campaign_streams(api_key, domain, campaign_id)
+            
+            # Создаем пустые записи для каждого потока
+            for stream in campaign_streams:
+                stream_stats.append({
+                    'stream_id': stream.get('id'),
+                    'conversions': 0,
+                    'cost': 0,
+                    'revenue': 0,
+                    'clicks': 0,
+                    'campaign_id': campaign_id
+                })
+        
+        stream_data = []
+        total_conversions = 0
+        total_cost = 0
+        total_revenue = 0
+        total_clicks = 0
+        
         for stat in stream_stats:
-            stream_id = stat.get('stream_id')
-            if stream_id:
-                cost = float(stat.get('cost', 0))
-                conversions = int(stat.get('conversions', 0))
-                revenue = float(stat.get('revenue', 0))
-                clicks = int(stat.get('clicks', 0))
+            try:
+                # Пробуем разные поля для stream_id
+                stream_id = str(stat.get('stream_id') or stat.get('id') or 'unknown')
+                if stream_id == 'unknown':
+                    continue
                 
+                # Безопасное извлечение значений
+                cost = float(stat.get('cost', 0)) if stat.get('cost') not in [None, ''] else 0
+                conversions = int(stat.get('conversions', 0)) if stat.get('conversions') not in [None, ''] else 0
+                revenue = float(stat.get('revenue', 0)) if stat.get('revenue') not in [None, ''] else 0
+                clicks = int(stat.get('clicks', 0)) if stat.get('clicks') not in [None, ''] else 0
+                
+                # Рассчитываем метрики
                 cpa = cost / conversions if conversions > 0 else 0
                 roi = ((revenue - cost) / cost * 100) if cost > 0 else 0
                 ctr = (conversions / clicks * 100) if clicks > 0 else 0
                 
-                stats_by_stream[stream_id] = {
+                # Получаем информацию о потоке
+                stream_info = get_keitaro_stream_info(api_key, domain, stream_id)
+                
+                stream_data.append({
+                    'id': stream_id,
+                    'name': stream_info.get('name', f'Stream {stream_id}'),
+                    'weight': stream_info.get('weight', 0),
+                    'is_active': stream_info.get('is_active', False),
                     'conversions': conversions,
                     'cost': cost,
                     'revenue': revenue,
@@ -2568,44 +3576,44 @@ def get_headline_optimization_status():
                     'cpa': cpa,
                     'roi': roi,
                     'ctr': ctr
-                }
+                })
+                
+                total_conversions += conversions
+                total_cost += cost
+                total_revenue += revenue
+                total_clicks += clicks
+                
+            except Exception as e:
+                logger.error(f"Ошибка обработки статистики потока: {e}")
+                continue
         
-        # Формируем ответ с детальной информацией
-        stream_data = []
-        for stream in streams:
-            stream_id = stream.get('id')
-            stat = stats_by_stream.get(stream_id, {})
-            
-            stream_data.append({
-                'id': stream_id,
-                'name': stream.get('name', 'Unknown'),
-                'campaign_id': stream.get('campaign_id'),
-                'campaign_name': stream.get('campaign_name', 'Unknown'),
-                'weight': stream.get('weight', 0),
-                'is_active': stream.get('is_active', False),
-                'url': stream.get('url', ''),
-                'source': stream.get('source', ''),
-                'conversions': stat.get('conversions', 0),
-                'cost': stat.get('cost', 0),
-                'revenue': stat.get('revenue', 0),
-                'clicks': stat.get('clicks', 0),
-                'cpa': stat.get('cpa', 0),
-                'roi': stat.get('roi', 0),
-                'ctr': stat.get('ctr', 0)
-            })
+        # Получаем информацию о кампании
+        campaign_info = get_keitaro_campaign_info(api_key, domain, campaign_id)
         
-        return jsonify({
+        response_data = {
             'success': True,
             'campaign_id': campaign_id,
+            'campaign_name': campaign_info.get('name', f'Campaign {campaign_id}'),
             'streams': stream_data,
+            'total_stats': {
+                'conversions': total_conversions,
+                'cost': total_cost,
+                'revenue': total_revenue,
+                'clicks': total_clicks,
+                'cpa': total_cost / total_conversions if total_conversions > 0 else 0,
+                'roi': ((total_revenue - total_cost) / total_cost * 100) if total_cost > 0 else 0,
+                'ctr': (total_conversions / total_clicks * 100) if total_clicks > 0 else 0
+            },
             'total_streams': len(stream_data),
             'active_streams': len([s for s in stream_data if s['is_active']])
-        })
+        }
+        
+        logger.info(f"Отправка данных: {len(stream_data)} потоков")
+        return jsonify(response_data)
         
     except Exception as e:
         logger.error(f"Ошибка получения статуса оптимизации: {e}")
         return jsonify({'success': False, 'error': str(e)})
-
 @app.route('/api/headline_optimization/run', methods=['POST'])
 @login_required
 def run_headline_optimization():
@@ -2851,12 +3859,13 @@ def fetch_facebook_cpm_data(account_id, access_token):
         return {}
 
 def calculate_daily_budget_requirements(user_id):
-    """Рассчитывает требуемый дневной бюджет для всех активных кампаний"""
+    """Рассчитывает требуемый дневной бюджет для всех активных кампаний - ИСПРАВЛЕННАЯ ВЕРСИЯ"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
             # Получаем сумму дневных бюджетов всех активных адсетов по аккаунтам
+            # Убеждаемся, что считаем только ACTIVE адсеты с положительным бюджетом
             cursor.execute("""
                 SELECT 
                     a.account_id,
@@ -2867,6 +3876,8 @@ def calculate_daily_budget_requirements(user_id):
                 WHERE a.user_id = ? 
                 AND a.status = 'ACTIVE'
                 AND a.budget > 0
+                AND a.account_id IS NOT NULL
+                AND a.account_id != ''
                 GROUP BY a.account_id, a.token
             """, (user_id,))
             
@@ -2918,9 +3929,9 @@ def debug_balance():
         logger.error(f"Ошибка отладки баланса: {e}")
         return jsonify({'success': False, 'error': str(e)})
 def check_account_balance_sufficiency(user_id):
-    """Проверяет достаточность баланса на аккаунтах"""
+    """Проверяет достаточность баланса на аккаунтах - ИСПРАВЛЕННАЯ ВЕРСИЯ"""
     try:
-        # Получаем требования по бюджетам
+        # Получаем требования по бюджетам с правильным подсчетом активных адсетов
         budget_requirements = calculate_daily_budget_requirements(user_id)
         
         warnings = []
@@ -2933,49 +3944,30 @@ def check_account_balance_sufficiency(user_id):
             # Получаем информацию об аккаунте
             account_info = get_account_limits_info(req['account_id'], req['token'])
             
-            if account_info and 'balance' in account_info:
-                balance = account_info['balance']
+            if account_info:
+                balance = account_info.get('balance', 0)
                 required = req['total_daily_budget']
                 
-                # Определяем deficit ДО его использования
+                # Определяем deficit
                 deficit = max(0, required - balance) if balance < required else 0
                 
-                # Проверяем, хватит ли баланса на сегодня
-                if balance < required:
-                    days_remaining = balance / required if required > 0 else 0
+                # Рассчитываем дни оставшиеся
+                if required > 0:
+                    days_remaining = balance / required
                 else:
-                    # Используем большое число вместо Infinity
-                    days_remaining = 999999  # вместо float('inf')
+                    days_remaining = 999999  # большое число вместо infinity
                 
                 warning = {
                     'account_id': req['account_id'],
                     'account_name': account_info.get('name', 'Unknown'),
                     'balance': balance,
                     'required_today': required,
-                    'deficit': deficit,  # Теперь переменная определена
+                    'deficit': deficit,
                     'days_remaining': days_remaining,
                     'active_adsets': req['active_adsets'],
                     'status': account_info.get('status', 'UNKNOWN')
                 }
                 
-                warnings.append(warning)
-            else:
-                # Также возвращаем информацию об аккаунтах с достаточным балансом
-                balance = account_info.get('balance', 0) if account_info else 0
-                required = req['total_daily_budget']
-                deficit = 0
-                days_remaining = 999999  # вместо Infinity
-                
-                warning = {
-                    'account_id': req['account_id'],
-                    'account_name': account_info.get('name', 'Unknown') if account_info else 'Unknown',
-                    'balance': balance,
-                    'required_today': required,
-                    'deficit': deficit,
-                    'days_remaining': days_remaining,
-                    'active_adsets': req['active_adsets'],
-                    'status': account_info.get('status', 'UNKNOWN') if account_info else 'ERROR'
-                }
                 warnings.append(warning)
         
         return warnings
@@ -3467,6 +4459,7 @@ def save_and_sync():
                         "leads": stats.get("leads", 0),
                         "cpa": stats.get("cpa", 0),
                         "ucpc": stats.get("ucpc", 0),
+                        "cpm": stats.get("cpm", 0),
                         "cpc": stats.get("cpc", 0),
                         "king": "Facebook",
                         "effective_status": ad.get("effective_status", ""),
@@ -4351,11 +5344,200 @@ def init_settings():
     except Exception as e:
         logger.error(f"Ошибка инициализации настроек: {e}")
         return jsonify({'success': False, 'error': str(e)})
+# app.py - добавьте этот endpoint
+@app.route('/api/replace_account_token', methods=['POST'])
+@login_required
+def replace_account_token():
+    """Заменяет токен для конкретного аккаунта"""
+    user_id = session['user_id']
+    data = request.json
+    
+    account_id = data.get('account_id')
+    old_token = data.get('old_token')
+    new_token = data.get('new_token')
+    new_king = data.get('new_king')
+    
+    if not all([account_id, old_token, new_token, new_king]):
+        return jsonify({'success': False, 'error': 'Не указаны все необходимые параметры'})
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Обновляем токен в кампаниях
+            cursor.execute("""
+                UPDATE campaigns 
+                SET token = ?, king = ?
+                WHERE user_id = ? AND account_id = ? AND token = ?
+            """, (new_token, new_king, user_id, account_id, old_token))
+            
+            campaigns_updated = cursor.rowcount
+            
+            # Обновляем токен в адсетах
+            cursor.execute("""
+                UPDATE adsets 
+                SET token = ?, king = ?
+                WHERE user_id = ? AND account_id = ? AND token = ?
+            """, (new_token, new_king, user_id, account_id, old_token))
+            
+            adsets_updated = cursor.rowcount
+            
+            conn.commit()
+            
+            return jsonify({
+                'success': True,
+                'message': f'Токен заменен в {campaigns_updated} кампаниях и {adsets_updated} адсетах',
+                'campaigns_updated': campaigns_updated,
+                'adsets_updated': adsets_updated
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка замены токена аккаунта: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/user/reserve_tokens', methods=['GET'])
+@login_required
+def get_user_reserve_tokens():
+    """Получает резервные токены текущего пользователя"""
+    user_id = session['user_id']
+    
+    try:
+        tokens = get_reserve_tokens(user_id)
+        return jsonify({'success': True, 'tokens': tokens})
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения резервных токенов пользователя {user_id}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/user/reserve_tokens_table', methods=['GET'])
+@login_required
+def get_user_reserve_tokens_table():
+    """Возвращает резервные токены в формате для таблицы для текущего пользователя"""
+    user_id = session['user_id']
+    
+    try:
+        tokens = get_reserve_tokens_table(user_id)
+        return jsonify({'success': True, 'tokens': tokens})
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения токенов для таблицы пользователя {user_id}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/user/reserve_tokens', methods=['POST'])
+@login_required
+def add_user_reserve_token():
+    """Добавляет резервный токен для текущего пользователя"""
+    user_id = session['user_id']
+    data = request.json
+    
+    # Получаем параметры из data
+    king = data.get('king')
+    token = data.get('token')
+    account_ids = data.get('account_ids', [])
+    
+    # Если king - это объект (из старого формата), извлекаем значение
+    if isinstance(king, dict):
+        king = king.get('king') or king.get('value') or ''
+    
+    if not token:
+        return jsonify({'success': False, 'error': 'Не указан токен'})
+    
+    # Автоматически определяем KING если не указан или пустой
+    if not king or str(king).strip() == '':
+        king = auto_determine_king(token)
+    
+    # Проверяем, не существует ли уже такой токен
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT id FROM reserve_tokens 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            if cursor.fetchone():
+                return jsonify({
+                    'success': False, 
+                    'error': f'Токен уже существует в группе {king}'
+                })
+    except Exception as e:
+        logger.error(f"Ошибка проверки существования токена: {e}")
+    
+    if add_reserve_token(user_id, king, token):
+        # Добавляем аккаунты если они указаны
+        added_accounts = 0
+        for account_id in account_ids:
+            if account_id:
+                if add_account_to_reserve_token(user_id, king, token, account_id):
+                    added_accounts += 1
+        
+        return jsonify({
+            'success': True, 
+            'message': f'Токен добавлен ({added_accounts} аккаунтов)', 
+            'auto_determined_king': king
+        })
+    else:
+        return jsonify({'success': False, 'error': 'Ошибка добавления токена'})
+def check_reserve_token_exists(user_id, king, token):
+    """Проверяет, существует ли уже такой токен"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT id FROM reserve_tokens 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            return cursor.fetchone() is not None
+    except Exception as e:
+        logger.error(f"Ошибка проверки существования токена: {e}")
+        return False
+@app.route('/api/user/reserve_tokens', methods=['DELETE'])
+@login_required
+def delete_user_reserve_token():
+    """Удаляет резервный токен для текущего пользователя"""
+    user_id = session['user_id']
+    data = request.json
+    
+    king = data.get('king')
+    token = data.get('token')
+    
+    if not king or not token:
+        return jsonify({'success': False, 'error': 'Не указан KING или токен'})
+    
+    if remove_reserve_token(user_id, king, token):
+        return jsonify({'success': True, 'message': 'Токен удален'})
+    else:
+        return jsonify({'success': False, 'error': 'Ошибка удаления токена'})
+@app.route('/api/user/reserve_tokens/<king>', methods=['GET'])
+@login_required
+def get_user_reserve_tokens_by_king(king):
+    """Получает все токены для конкретного king текущего пользователя"""
+    user_id = session['user_id']
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            cursor.execute("""
+                SELECT token 
+                FROM reserve_tokens 
+                WHERE user_id = ? AND king = ?
+                ORDER BY created_at DESC
+            """, (user_id, king))
+            
+            tokens = [row['token'] for row in cursor.fetchall()]
+            
+            return jsonify({
+                'success': True,
+                'tokens': tokens,
+                'king': king
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения токенов для king {king} пользователя {user_id}: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 if __name__ == '__main__':
-    # Инициализируем базу данных
     init_db()
     
-    # Создаем тестового пользователя, если его нет
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -4367,4 +5549,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port=8000, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)

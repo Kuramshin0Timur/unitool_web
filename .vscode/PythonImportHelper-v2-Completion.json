@@ -48,6 +48,22 @@
         "documentation": {}
     },
     {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -113,6 +129,30 @@
     },
     {
         "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -184,38 +224,6 @@
         "documentation": {}
     },
     {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -328,7 +336,7 @@
         "documentation": {}
     },
     {
-        "label": "get_db_connection",
+        "label": "lock",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -345,6 +353,46 @@
     },
     {
         "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "lock",
         "importPath": "database",
         "description": "database",
         "isExtraImport": true,
@@ -400,6 +448,14 @@
         "documentation": {}
     },
     {
+        "label": "lock",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "get_db_connection",
         "importPath": "database",
         "description": "database",
@@ -422,23 +478,6 @@
         "importPath": "time",
         "description": "time",
         "detail": "time",
-        "documentation": {}
-    },
-    {
-        "label": "fcntl",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "fcntl",
-        "description": "fcntl",
-        "detail": "fcntl",
-        "documentation": {}
-    },
-    {
-        "label": "flock",
-        "importPath": "fcntl",
-        "description": "fcntl",
-        "isExtraImport": true,
-        "detail": "fcntl",
         "documentation": {}
     },
     {
@@ -467,14 +506,6 @@
         "documentation": {}
     },
     {
-        "label": "lock",
-        "importPath": "backend.campaign",
-        "description": "backend.campaign",
-        "isExtraImport": true,
-        "detail": "backend.campaign",
-        "documentation": {}
-    },
-    {
         "label": "check_and_pause_campaigns",
         "importPath": "backend.campaign",
         "description": "backend.campaign",
@@ -484,14 +515,6 @@
     },
     {
         "label": "refresh_campaigns_internal",
-        "importPath": "backend.campaign",
-        "description": "backend.campaign",
-        "isExtraImport": true,
-        "detail": "backend.campaign",
-        "documentation": {}
-    },
-    {
-        "label": "lock",
         "importPath": "backend.campaign",
         "description": "backend.campaign",
         "isExtraImport": true,
@@ -516,14 +539,6 @@
     },
     {
         "label": "get_user_campaigns",
-        "importPath": "backend.campaign",
-        "description": "backend.campaign",
-        "isExtraImport": true,
-        "detail": "backend.campaign",
-        "documentation": {}
-    },
-    {
-        "label": "lock",
         "importPath": "backend.campaign",
         "description": "backend.campaign",
         "isExtraImport": true,
@@ -708,14 +723,6 @@
         "documentation": {}
     },
     {
-        "label": "lock",
-        "importPath": "backend.adsets",
-        "description": "backend.adsets",
-        "isExtraImport": true,
-        "detail": "backend.adsets",
-        "documentation": {}
-    },
-    {
         "label": "add_user_adset",
         "importPath": "backend.adsets",
         "description": "backend.adsets",
@@ -745,22 +752,6 @@
         "description": "backend.adsets",
         "isExtraImport": true,
         "detail": "backend.adsets",
-        "documentation": {}
-    },
-    {
-        "label": "load_reserve_tokens",
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "isExtraImport": true,
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "get_reserve_token_accounts",
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "isExtraImport": true,
-        "detail": "backend.reserve_tokens",
         "documentation": {}
     },
     {
@@ -817,14 +808,6 @@
         "description": "backend.telegram",
         "isExtraImport": true,
         "detail": "backend.telegram",
-        "documentation": {}
-    },
-    {
-        "label": "contextmanager",
-        "importPath": "contextlib",
-        "description": "contextlib",
-        "isExtraImport": true,
-        "detail": "contextlib",
         "documentation": {}
     },
     {
@@ -992,27 +975,19 @@
         "documentation": {}
     },
     {
+        "label": "get_reserve_token_accounts",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "datetime",
         "description": "datetime",
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
         "detail": "datetime",
         "documentation": {}
     },
@@ -1031,30 +1006,6 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "check_password_hash",
-        "importPath": "werkzeug.security",
-        "description": "werkzeug.security",
-        "isExtraImport": true,
-        "detail": "werkzeug.security",
-        "documentation": {}
-    },
-    {
-        "label": "generate_password_hash",
-        "importPath": "werkzeug.security",
-        "description": "werkzeug.security",
-        "isExtraImport": true,
-        "detail": "werkzeug.security",
         "documentation": {}
     },
     {
@@ -1155,15 +1106,6 @@
         "documentation": {}
     },
     {
-        "label": "add_user_adset",
-        "kind": 2,
-        "importPath": "backend.adsets",
-        "description": "backend.adsets",
-        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with flock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']\n            for field in required_fields:\n                if field not in data:\n                    data[field] = '' if field != 'king' else 'Facebook'\n            try:",
-        "detail": "backend.adsets",
-        "documentation": {}
-    },
-    {
         "label": "fetch_facebook_adsets",
         "kind": 2,
         "importPath": "backend.adsets",
@@ -1179,6 +1121,24 @@
         "description": "backend.adsets",
         "peekOfCode": "def refresh_adsets_internal(user_id):\n    \"\"\"Внутренняя функция обновления адсетов\"\"\"\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']",
         "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "auto_populate_reserve_tokens",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "auto_determine_king",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def auto_determine_king(token: str) -> str:\n    \"\"\"Автоматически определяет KING на основе токена\"\"\"\n    if not token:\n        return \"Facebook_Default\"\n    token_lower = token.lower()\n    # Определяем платформу по характерным признакам токена\n    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):\n        return \"Facebook\"\n    elif any(x in token_lower for x in ['ig', 'instagram']):\n        return \"Instagram\" ",
+        "detail": "backend.autocontrol",
         "documentation": {}
     },
     {
@@ -1222,7 +1182,16 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    \"\"\"Функция автообновления данных пользователя\"\"\"\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            # Получаем настройки пользователя\n            settings = get_user_settings(user_id)\n            # Обновляем кампании, если включено\n            if settings.get('auto_refresh_campaigns', True):\n                refresh_campaigns_internal(user_id)",
+        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    \"\"\"Функция автообновления данных пользователя\"\"\"\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            # Автоматически заполняем резервные токены\n            auto_populate_reserve_tokens(user_id)\n            # Получаем настройки пользователя\n            settings = get_user_settings(user_id)\n            # Обновляем кампании, если включено",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "load_all_tokens",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def load_all_tokens(user_id: int) -> Dict[str, List[str]]:\n    \"\"\"Загружает все токены: основные + резервные\"\"\"\n    all_tokens = {}\n    try:\n        # Основные токены из campaigns\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Основные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token ",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1267,7 +1236,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads",
+        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1276,7 +1245,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:",
+        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1285,7 +1254,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers",
+        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token ",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1294,25 +1263,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)",
-        "detail": "backend.autocontrol",
-        "documentation": {}
-    },
-    {
-        "label": "auto_refresh_timers",
-        "kind": 5,
-        "importPath": "backend.autocontrol",
-        "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)",
-        "detail": "backend.autocontrol",
-        "documentation": {}
-    },
-    {
-        "label": "auto_refresh_lock",
-        "kind": 5,
-        "importPath": "backend.autocontrol",
-        "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n    # Считаем, что система работает, если работает хотя бы один компонент",
+        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1425,15 +1376,6 @@
         "documentation": {}
     },
     {
-        "label": "lock",
-        "kind": 5,
-        "importPath": "backend.campaign",
-        "description": "backend.campaign",
-        "peekOfCode": "lock = threading.Lock()\ndef add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    \"\"\"Добавляет соответствие между Facebook и Keitaro\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)",
-        "detail": "backend.campaign",
-        "documentation": {}
-    },
-    {
         "label": "add_user_geo_config",
         "kind": 2,
         "importPath": "backend.geo_config",
@@ -1447,7 +1389,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"Извлекает GEO код из названия с улучшенной логикой\"\"\"\n    if not name:\n        return 'N/A'\n    clean_name = re.sub(r'[^A-Za-z0-9\\s]', ' ', str(name).upper())\n    words = clean_name.split()\n    if known_geos:\n        for word in words:\n            if word in known_geos:\n                return word",
+        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"\n    Извлекает GEO код из названия адсета.\n    Всегда пытается определить страну, даже если её нет в known_geos.\n    \"\"\"\n    if not name:\n        return 'N/A'\n    # Словарь для сопоставления названий стран с кодами\n    country_mapping = {\n        # Азия",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1456,7 +1398,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    \"\"\"Возвращает конфигурацию GEO пользователя\"\"\"\n    with flock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],",
+        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    \"\"\"Возвращает конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1488,20 +1430,38 @@
         "documentation": {}
     },
     {
-        "label": "add_account_to_reserve_token",
+        "label": "add_reserve_token",
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def add_account_to_reserve_token(user_id, king, token, account_id):\n    \"\"\"Добавляет аккаунт к резервному токену\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_token_accounts (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
+        "peekOfCode": "def add_reserve_token(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Добавляет резервный токен в базу данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_tokens (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
     {
-        "label": "load_reserve_tokens",
+        "label": "remove_reserve_token",
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def load_reserve_tokens(user_id):\n    \"\"\"Загружает резервные токены из отдельной таблицы базы данных\"\"\"\n    reserve_tokens = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу для резервных токенов если ее нет\n            cursor.execute(\"\"\"\n            CREATE TABLE IF NOT EXISTS reserve_tokens (\n                id INTEGER PRIMARY KEY AUTOINCREMENT,",
+        "peekOfCode": "def remove_reserve_token(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Удаляет резервный токен из базы данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\n                \"DELETE FROM reserve_tokens WHERE user_id = ? AND king = ? AND token = ?\",\n                (user_id, king, token)\n            )\n            conn.commit()",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_all_reserve_tokens",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def get_all_reserve_tokens(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает все резервные токены пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "add_account_to_reserve_token",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def add_account_to_reserve_token(user_id, king, token, account_id):\n    \"\"\"Добавляет аккаунт к резервному токену (с проверкой на существование)\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_token_accounts (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1510,7 +1470,7 @@
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def get_reserve_token_accounts(user_id, king, token):\n    \"\"\"Получает аккаунты для резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT account_id, spend_cap, amount_spent, remaining, status \n                FROM reserve_token_accounts \n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))",
+        "peekOfCode": "def get_reserve_token_accounts(user_id: int, king: str, token: str) -> List[Dict[str, Any]]:\n    \"\"\"Получает аккаунты для резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT account_id, name, status, spend_cap, amount_spent, \n                       balance, daily_limit, remaining, requests_today, \n                       requests_limit, requests_usage_percent\n                FROM reserve_token_accounts ",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1519,7 +1479,25 @@
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def update_reserve_token_account_info(user_id, king, token, account_id, limits_info):\n    \"\"\"Обновляет информацию об аккаунте резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, \n                    balance = ?, daily_limit = ?, remaining = ?,\n                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,",
+        "peekOfCode": "def update_reserve_token_account_info(user_id: int, king: str, token: str, account_id: str, limits_info: Dict[str, Any]) -> bool:\n    \"\"\"Обновляет информацию об аккаунте резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, \n                    balance = ?, daily_limit = ?, remaining = ?,\n                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены с аккаунтами для конкретного пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы reserve_tokens\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens_table",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Возвращает резервные токены в формате для таблицы для конкретного пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы reserve_tokens\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1564,7 +1542,70 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\n@app.route('/api/admin/test_tokens')\n@login_required",
+        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\n# app.py - добавьте этот endpoint\n@app.route('/api/auto_populate_reserve_tokens', methods=['POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "auto_populate_reserve_tokens",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def auto_populate_reserve_tokens():\n    \"\"\"Автоматически создает резервные токены из основных аккаунтов\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_combined_tokens_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_combined_tokens_data():\n    \"\"\"Возвращает совмещенные данные: основные аккаунты + резервные токены\"\"\"\n    user_id = session['user_id']\n    try:\n        # Получаем основные аккаунты из campaigns\n        main_accounts = []\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Основные аккаунты из campaigns\n            cursor.execute(\"\"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "replace_token",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def replace_token():\n    \"\"\"Заменяет токен в кампаниях, адсетах и резервных токенах\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    old_token = data.get('old_token')\n    new_token = data.get('new_token')\n    king = data.get('king')\n    account_ids = data.get('account_ids', [])\n    if not all([old_token, king]):\n        return jsonify({'success': False, 'error': 'Не указаны старый токен или KING'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_king",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_king():\n    \"\"\"Обновляет KING для токена\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    current_king = data.get('currentKing')\n    new_king = data.get('newKing')\n    token = data.get('token')\n    if not all([current_king, new_king, token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_token",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_token():\n    \"\"\"Обновляет токен\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    current_token = data.get('currentToken')\n    new_token = data.get('newToken')\n    if not all([king, current_token, new_token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_token_complete",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_token_complete():\n    \"\"\"Полное обновление токена с возможностью изменения KING и аккаунтов\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    old_king = data.get('oldKing')\n    new_king = data.get('newKing')\n    old_token = data.get('oldToken')\n    new_token = data.get('newToken')\n    account_ids = data.get('account_ids', [])\n    if not all([old_king, old_token]):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_bulk_reserve_tokens",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_bulk_reserve_tokens():\n    \"\"\"Добавляет несколько токенов с одним KING\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    tokens = data.get('tokens', [])\n    account_ids = data.get('account_ids', [])\n    if not king or not tokens:\n        return jsonify({'success': False, 'error': 'Не указан KING или токены'})\n    try:",
         "detail": "app",
         "documentation": {}
     },
@@ -1605,6 +1646,33 @@
         "documentation": {}
     },
     {
+        "label": "get_reserve_tokens",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены с аккаунтами - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы reserve_tokens\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens_table",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Возвращает резервные токены в формате для таблицы - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # ДЕБАГ 1: Проверяем данные в reserve_tokens\n            cursor.execute(\"SELECT king, token, user_id FROM reserve_tokens\")\n            all_tokens = cursor.fetchall()\n            logger.info(f\"Все токены в таблице reserve_tokens: {[dict(t) for t in all_tokens]}\")\n            # ДЕБАГ 2: Токены текущего пользователя",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "auto_determine_king",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def auto_determine_king(token: str) -> str:\n    \"\"\"Автоматически определяет KING на основе токена\"\"\"\n    if not token or not isinstance(token, str):\n        return \"Facebook_Default\"\n    token_lower = token.lower()\n    # Определяем платформу по характерным признакам токена\n    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):\n        return \"Facebook\"\n    elif any(x in token_lower for x in ['ig', 'instagram']):\n        return \"Instagram\" ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "get_account_limits_info",
         "kind": 2,
         "importPath": "app",
@@ -1623,6 +1691,24 @@
         "documentation": {}
     },
     {
+        "label": "get_reserve_tokens_by_king",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_reserve_tokens_by_king(king):\n    \"\"\"Получает все токены для конкретного king\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT token \n                FROM reserve_tokens \n                WHERE user_id = ? AND king = ?",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_combined_tokens_table",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_combined_tokens_table():\n    \"\"\"Возвращает совмещенные данные: основные аккаунты + резервные токены\"\"\"\n    user_id = session['user_id']\n    try:\n        # Получаем основные аккаунты из campaigns\n        main_accounts = []\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Основные аккаунты из campaigns\n            cursor.execute(\"\"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "check_reserve_token_limits",
         "kind": 2,
         "importPath": "app",
@@ -1632,11 +1718,20 @@
         "documentation": {}
     },
     {
+        "label": "get_reserve_tokens_table_route",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_reserve_tokens_table_route():\n    \"\"\"Возвращает резервные токены в формате для таблицы\"\"\"\n    user_id = session['user_id']\n    logger.info(f\"Запрос токенов для user_id: {user_id}, username: {session.get('username')}\")\n    try:\n        tokens = get_reserve_tokens_table(user_id)\n        return jsonify({'success': True, 'tokens': tokens})\n    except Exception as e:\n        logger.error(f\"Ошибка получения токенов для таблицы: {e}\")\n        return jsonify({'success': False, 'error': str(e)})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "handle_reserve_tokens_post",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def handle_reserve_tokens_post():\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    account_ids = data.get('account_ids', [])\n    if not king or not token:\n        return jsonify({'success': False, 'error': 'Не указан KING или токен'})\n    if add_reserve_token(user_id, king, token):\n        # Добавляем аккаунты если они указаны",
+        "peekOfCode": "def handle_reserve_tokens_post():\n    user_id = session['user_id']\n    data = request.json\n    # Получаем параметры из data\n    king = data.get('king')\n    token = data.get('token')\n    account_ids = data.get('account_ids', [])\n    # Если king - это объект (из старого формата), извлекаем значение\n    if isinstance(king, dict):\n        king = king.get('king') or king.get('value') or ''",
         "detail": "app",
         "documentation": {}
     },
@@ -1655,15 +1750,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def check_reserve_token_account_limits_direct():\n    \"\"\"Проверяет лимиты для аккаунта напрямую (без сохранения в БД)\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    account_id = data.get('account_id')\n    token = data.get('token')\n    if not all([account_id, token]):\n        return jsonify({'success': False, 'error': 'Не указан account_id или token'})\n    try:\n        # Проверяем лимиты через Facebook API",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "get_reserve_tokens_table",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def get_reserve_tokens_table():\n    \"\"\"Возвращает резервные токены в формате для таблицы\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все токены с информацией о лимитах\n            cursor.execute(\"\"\"\n                SELECT rt.king, rt.token, rta.account_id, rta.requests_limit, \n                       rta.requests_today, rta.requests_usage_percent",
         "detail": "app",
         "documentation": {}
     },
@@ -1852,7 +1938,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def reserve_tokens():\n    \"\"\"Страница управления резервными токенами\"\"\"\n    return render_template('reserve_tokens.html')\ndef fetch_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов (spend, CPC, CPA, conversions)\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc,cost_per_conversion,conversions\",",
+        "peekOfCode": "def reserve_tokens():\n    \"\"\"Страница управления резервными токенами\"\"\"\n    return render_template('reserve_tokens.html')\ndef fetch_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов (spend, CPC, CPA, conversions)\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc, cpm, cost_per_conversion,conversions\",",
         "detail": "app",
         "documentation": {}
     },
@@ -1861,7 +1947,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def fetch_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов (spend, CPC, CPA, conversions)\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc,cost_per_conversion,conversions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
+        "peekOfCode": "def fetch_adsets_insights(account_id, access_token):\n    \"\"\"Получает insights для адсетов (spend, CPC, CPA, conversions)\"\"\"\n    try:\n        url = f\"https://graph.facebook.com/v18.0/act_{account_id}/insights\"\n        params = {\n            \"level\": \"adset\",\n            \"fields\": \"adset_id,spend,cpc, cpm, cost_per_conversion,conversions\",\n            \"date_preset\": \"today\",\n            \"time_increment\": 1,\n            \"access_token\": access_token,",
         "detail": "app",
         "documentation": {}
     },
@@ -2127,11 +2213,20 @@
         "documentation": {}
     },
     {
+        "label": "get_keitaro_performance_data",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_keitaro_performance_data(api_key, domain, campaign_id=None, interval=\"today\"):\n    \"\"\"Альтернативный метод получения данных из Keitaro\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/report/build\"\n        headers = {\n            \"Api-Key\": api_key, \n            \"Content-Type\": \"application/json\"\n        }\n        # Упрощенный payload с правильными метриками\n        payload = {",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "analyze_stream_performance",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def analyze_stream_performance(api_key, domain, campaign_id=None, interval=\"today\"):\n    \"\"\"Анализирует производительность потоков кампании - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/report/build\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        # Базовый payload для анализа потоков\n        payload = {\n            \"range\": {\"interval\": interval, \"timezone\": \"Europe/Moscow\"},\n            \"metrics\": [\"conversions\", \"revenue\", \"cost\", \"roi\", \"epc\", \"clicks\"],\n            \"grouping\": [\"stream_id\", \"campaign_id\"],",
+        "peekOfCode": "def analyze_stream_performance(api_key, domain, campaign_id=None, interval=\"today\"):\n    \"\"\"Анализирует производительность потоков - исправленная версия\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/report/build\"\n        headers = {\n            \"Api-Key\": api_key, \n            \"Content-Type\": \"application/json\",\n            \"Accept\": \"application/json\"\n        }\n        # Используем только доступные метрики из ошибки",
         "detail": "app",
         "documentation": {}
     },
@@ -2158,7 +2253,43 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_keitaro_campaigns():\n    \"\"\"Возвращает список всех кампаний из Keitaro\"\"\"\n    try:\n        user_id = session['user_id']\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')\n        if not api_key:\n            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})\n        url = f\"https://{domain}/admin_api/v1/campaigns\"",
+        "peekOfCode": "def get_keitaro_campaigns():\n    \"\"\"Возвращает список кампаний из Keitaro с поиском и пагинацией\"\"\"\n    try:\n        user_id = session['user_id']\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')\n        search_query = request.args.get('search', '')\n        limit = int(request.args.get('limit', 50))\n        if not api_key:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_keitaro_stream_info",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_keitaro_stream_info(api_key, domain, stream_id):\n    \"\"\"Получает информацию о конкретном потоке\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/streams/{stream_id}\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        response = requests.get(url, headers=headers, timeout=30)\n        response.raise_for_status()\n        data = response.json()\n        return {\n            'id': data.get('id'),",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_keitaro_campaign_info",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_keitaro_campaign_info(api_key, domain, campaign_id):\n    \"\"\"Получает информацию о кампании\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/campaigns/{campaign_id}\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        response = requests.get(url, headers=headers, timeout=30)\n        response.raise_for_status()\n        data = response.json()\n        return {\n            'id': data.get('id'),",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "debug_keitaro",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def debug_keitaro():\n    \"\"\"Отладочная информация о подключении к Keitaro\"\"\"\n    try:\n        user_id = session['user_id']\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')\n        if not api_key:\n            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})\n        # Тестовый запрос",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_keitaro_campaign_streams",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_keitaro_campaign_streams(api_key, domain, campaign_id):\n    \"\"\"Получает все потоки конкретной кампании\"\"\"\n    try:\n        url = f\"https://{domain}/admin_api/v1/campaigns/{campaign_id}/streams\"\n        headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n        response = requests.get(url, headers=headers, timeout=30)\n        response.raise_for_status()\n        data = response.json()\n        streams = []\n        if isinstance(data, list):",
         "detail": "app",
         "documentation": {}
     },
@@ -2167,7 +2298,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_headline_optimization_status():\n    \"\"\"Возвращает статус оптимизации заголовков для кампании - исправленная версия\"\"\"\n    try:\n        user_id = session['user_id']\n        campaign_id = request.args.get('campaign_id')\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')\n        if not api_key:\n            return jsonify({'success': False, 'error': 'Keitaro API key not configured'})",
+        "peekOfCode": "def get_headline_optimization_status():\n    \"\"\"Возвращает статус оптимизации заголовков для кампании\"\"\"\n    try:\n        user_id = session['user_id']\n        campaign_id = request.args.get('campaign_id')\n        if not campaign_id:\n            return jsonify({'success': False, 'error': 'Не указан campaign_id'})\n        settings = get_user_settings(user_id)\n        api_key = settings.get('keitaro_api_key')\n        domain = settings.get('keitaro_domain')",
         "detail": "app",
         "documentation": {}
     },
@@ -2284,7 +2415,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def calculate_daily_budget_requirements(user_id):\n    \"\"\"Рассчитывает требуемый дневной бюджет для всех активных кампаний\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем сумму дневных бюджетов всех активных адсетов по аккаунтам\n            cursor.execute(\"\"\"\n                SELECT \n                    a.account_id,\n                    a.token,",
+        "peekOfCode": "def calculate_daily_budget_requirements(user_id):\n    \"\"\"Рассчитывает требуемый дневной бюджет для всех активных кампаний - ИСПРАВЛЕННАЯ ВЕРСИЯ\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем сумму дневных бюджетов всех активных адсетов по аккаунтам\n            # Убеждаемся, что считаем только ACTIVE адсеты с положительным бюджетом\n            cursor.execute(\"\"\"\n                SELECT \n                    a.account_id,",
         "detail": "app",
         "documentation": {}
     },
@@ -2302,7 +2433,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def check_account_balance_sufficiency(user_id):\n    \"\"\"Проверяет достаточность баланса на аккаунтах\"\"\"\n    try:\n        # Получаем требования по бюджетам\n        budget_requirements = calculate_daily_budget_requirements(user_id)\n        warnings = []\n        for req in budget_requirements:\n            # Проверяем, что есть account_id и token\n            if not req['account_id'] or not req['token']:\n                continue",
+        "peekOfCode": "def check_account_balance_sufficiency(user_id):\n    \"\"\"Проверяет достаточность баланса на аккаунтах - ИСПРАВЛЕННАЯ ВЕРСИЯ\"\"\"\n    try:\n        # Получаем требования по бюджетам с правильным подсчетом активных адсетов\n        budget_requirements = calculate_daily_budget_requirements(user_id)\n        warnings = []\n        for req in budget_requirements:\n            # Проверяем, что есть account_id и token\n            if not req['account_id'] or not req['token']:\n                continue",
         "detail": "app",
         "documentation": {}
     },
@@ -2694,6 +2825,69 @@
         "documentation": {}
     },
     {
+        "label": "replace_account_token",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def replace_account_token():\n    \"\"\"Заменяет токен для конкретного аккаунта\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    account_id = data.get('account_id')\n    old_token = data.get('old_token')\n    new_token = data.get('new_token')\n    new_king = data.get('new_king')\n    if not all([account_id, old_token, new_token, new_king]):\n        return jsonify({'success': False, 'error': 'Не указаны все необходимые параметры'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_reserve_tokens",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_user_reserve_tokens():\n    \"\"\"Получает резервные токены текущего пользователя\"\"\"\n    user_id = session['user_id']\n    try:\n        tokens = get_reserve_tokens(user_id)\n        return jsonify({'success': True, 'tokens': tokens})\n    except Exception as e:\n        logger.error(f\"Ошибка получения резервных токенов пользователя {user_id}: {e}\")\n        return jsonify({'success': False, 'error': str(e)})\n@app.route('/api/user/reserve_tokens_table', methods=['GET'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_reserve_tokens_table",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_user_reserve_tokens_table():\n    \"\"\"Возвращает резервные токены в формате для таблицы для текущего пользователя\"\"\"\n    user_id = session['user_id']\n    try:\n        tokens = get_reserve_tokens_table(user_id)\n        return jsonify({'success': True, 'tokens': tokens})\n    except Exception as e:\n        logger.error(f\"Ошибка получения токенов для таблицы пользователя {user_id}: {e}\")\n        return jsonify({'success': False, 'error': str(e)})\n@app.route('/api/user/reserve_tokens', methods=['POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "add_user_reserve_token",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def add_user_reserve_token():\n    \"\"\"Добавляет резервный токен для текущего пользователя\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    # Получаем параметры из data\n    king = data.get('king')\n    token = data.get('token')\n    account_ids = data.get('account_ids', [])\n    # Если king - это объект (из старого формата), извлекаем значение\n    if isinstance(king, dict):",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "check_reserve_token_exists",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def check_reserve_token_exists(user_id, king, token):\n    \"\"\"Проверяет, существует ли уже такой токен\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT id FROM reserve_tokens \n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))\n            return cursor.fetchone() is not None",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "delete_user_reserve_token",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def delete_user_reserve_token():\n    \"\"\"Удаляет резервный токен для текущего пользователя\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    if not king or not token:\n        return jsonify({'success': False, 'error': 'Не указан KING или токен'})\n    if remove_reserve_token(user_id, king, token):\n        return jsonify({'success': True, 'message': 'Токен удален'})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_reserve_tokens_by_king",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_user_reserve_tokens_by_king(king):\n    \"\"\"Получает все токены для конкретного king текущего пользователя\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT token \n                FROM reserve_tokens \n                WHERE user_id = ? AND king = ?",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 5,
         "importPath": "app",
@@ -2753,24 +2947,6 @@
         "importPath": "database",
         "description": "database",
         "peekOfCode": "def authenticate_user(username: str, password: str) -> Optional[Dict[str, Any]]:\n    \"\"\"Аутентифицирует пользователя и возвращает его данные\"\"\"\n    with lock:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM users WHERE username = ?\", (username,))\n            user = cursor.fetchone()\n            if user and check_password_hash(user['password_hash'], password):\n                return dict(user)\n            return None",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "DB_PATH",
-        "kind": 5,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "DB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\nimport sqlite3\nimport threading\nfrom pathlib import Path\nfrom typing import Any, Dict, Optional\nfrom werkzeug.security import check_password_hash, generate_password_hash\nDB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:",
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "lock",
-        "kind": 5,
-        "importPath": "database",
-        "description": "database",
-        "peekOfCode": "lock = threading.Lock()\nimport sqlite3\nimport threading\nfrom pathlib import Path\nfrom typing import Any, Dict, Optional\nfrom werkzeug.security import check_password_hash, generate_password_hash\nDB_PATH = Path(\"unitool.db\")\nlock = threading.Lock()\ndef get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:\n    \"\"\"",
         "detail": "database",
         "documentation": {}
     },

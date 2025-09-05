@@ -5,9 +5,9 @@ from venv import logger
 
 import requests
 
-from backend.campaign import get_user_campaigns, lock
+from backend.campaign import get_user_campaigns
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
-from database import get_db_connection
+from database import get_db_connection, lock
 
 
 def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
@@ -93,60 +93,6 @@ def update_user_adset_status(user_id: int, adset_id: str, status: str):
             conn.commit()
 
 
-
-def add_user_adset(user_id: int, data: Dict[str, Any]):
-    """Добавляет новый адсет для пользователя с поддержкой CPM"""
-    with flock:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            required_fields = ['name', 'adset_id', 'campaign_id', 'account_id', 'token', 'king']
-            for field in required_fields:
-                if field not in data:
-                    data[field] = '' if field != 'king' else 'Facebook'
-            
-            try:
-                cursor.execute("""
-                INSERT OR REPLACE INTO adsets (
-                    user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, 
-                    leads, manual_pause, king, effective_status, ad_name, budget,
-                    campaign_id, account_id, auto_budget_increase, auto_budget_decrease,
-                    max_budget, min_budget, budget_increase_step, budget_decrease_step
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    data.get('name', ''),
-                    data.get('adset_id', ''),
-                    data.get('ucpc', 0),
-                    data.get('cpc', 0),
-                    data.get('cpm', 0),  
-                    data.get('spend', 0),
-                    data.get('cpa', 0),
-                    data.get('status', 'PAUSED'),
-                    data.get('geo', 'N/A'),
-                    data.get('token', ''),
-                    data.get('leads', 0),
-                    data.get('manual_pause', 0),
-                    data.get('king', 'Facebook'),
-                    data.get('effective_status', ''),
-                    data.get('ad_name', ''),
-                    data.get('budget', 0),
-                    data.get('campaign_id', ''),
-                    data.get('account_id', ''),
-                    data.get('auto_budget_increase', 0),
-                    data.get('auto_budget_decrease', 0),
-                    data.get('max_budget', 0),
-                    data.get('min_budget', 0),
-                    data.get('budget_increase_step', 1.2),
-                    data.get('budget_decrease_step', 0.8)
-                ))
-
-                conn.commit()
-                return True
-            except Exception as e:
-                conn.rollback()
-                logger.error(f"Error adding adset: {e}")
-                raise ValueError(f"Database error: {str(e)}")
 
 def fetch_facebook_adsets(account_id, access_token, fields=None):
     """Получает ВСЕ адсеты из Facebook API (включая неактивные)"""

@@ -45,7 +45,7 @@ function initDataTable() {
             { // 2: Статус
                 orderable: true,
                 searchable: true,
-                width: '80px'
+                width: '120px'
             },
             { // 3: uCPC
                 type: 'num',

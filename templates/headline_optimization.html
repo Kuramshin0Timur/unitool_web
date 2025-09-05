@@ -10,89 +10,135 @@
                 </h5>
             </div>
             <div class="card-body">
-                <!-- Статус и управление -->
+                <!-- Комбинированный выбор компании -->
                 <div class="row mb-4">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="card-title">Автоматическая оптимизация</h6>
-                                <div class="form-check form-switch mb-3">
-                                    <input class="form-check-input" type="checkbox" id="autoOptimizationSwitch">
-                                    <label class="form-check-label" for="autoOptimizationSwitch">
-                                        Автоматическая оптимизация
-                                    </label>
+                                <h6 class="card-title">Выбор компании</h6>
+                                
+                                <!-- Быстрый выбор из списка -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Быстрый выбор:</label>
+                                        <select class="form-select" id="quickCampaignSelect" onchange="onQuickCampaignSelected()">
+                                            <option value="">Выберите из списка...</option>
+                                            {% for campaign in recent_campaigns %}
+                                            <option value="{{ campaign.id }}">{{ campaign.name }} (ID: {{ campaign.id }})</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Или поиск:</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="campaignSearch" 
+                                                   placeholder="Поиск по названию или ID...">
+                                            <button class="btn btn-outline-primary" type="button" 
+                                                    onclick="searchCampaigns()">
+                                                <i class="bi bi-search"></i> Поиск
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!-- Результаты поиска -->
                                 <div class="mb-3">
-                                    <label class="form-label">Интервал (часы):</label>
-                                    <input type="number" class="form-control" id="optimizationInterval" value="4" min="1" max="24">
-                                </div>
-                                <button class="btn btn-primary" onclick="saveOptimizationSettings()">
-                                    <i class="bi bi-save"></i> Сохранить настройки
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Ручное управление</h6>
-                                <div class="mb-3">
-                                    <label class="form-label">Выберите компанию:</label>
-                                    <select class="form-select" id="campaignSelect">
-                                        <option value="">Загрузка компаний...</option>
+                                    <label class="form-label">Результаты поиска:</label>
+                                    <select class="form-select" id="campaignSelect" onchange="onCampaignSelected()" size="5">
+                                        <option value="">Введите поисковый запрос...</option>
                                     </select>
                                 </div>
-                                <button class="btn btn-success mb-2" onclick="runOptimization()" id="runOptimizationBtn">
+                                
+                                <div id="searchResultsInfo" class="text-muted small"></div>
+                                
+                                <!-- Выбранная компания -->
+                                <div class="alert alert-info mt-3" id="selectedCampaignInfo" style="display: none;">
+                                    <strong>Выбрана компания:</strong> 
+                                    <span id="selectedCampaignName"></span>
+                                    <span class="badge bg-secondary ms-2" id="selectedCampaignId"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- В разделе статистики компании -->
+        <div class="card mb-4" id="campaignStatsCard" style="display: none;">
+            <div class="card-header">
+                <h6 class="card-title mb-0">
+                    Статистика компании: <span id="campaignName"></span>
+                    <span class="badge bg-secondary ms-2" id="campaignIdBadge"></span>
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row" id="campaignStats">
+                    <!-- Статистика будет загружена здесь -->
+                </div>
+            </div>
+        </div>
+
+            <!-- В разделе потоков -->
+            <div class="card" id="streamsCard" style="display: none;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="card-title mb-0">Потоки компании</h6>
+                    <div>
+                        <span class="badge bg-info me-2" id="streamsCountBadge">0 потоков</span>
+                        <span class="badge bg-success" id="activeStreamsBadge">0 активных</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover" id="streamsTable">
+                            <thead>
+                                <tr>
+                                    <th>Название потока</th>
+                                    <th>Статус</th>
+                                    <th>Вес</th>
+                                    <th>Конверсии</th>
+                                    <th>Затраты</th>
+                                    <th>Доход</th>
+                                    <th>CPA</th>
+                                    <th>ROI</th>
+                                    <th>CTR</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Данные будут загружены здесь -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+    </div>
+                <!-- Управление -->
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <button class="btn btn-success btn-lg me-3" onclick="loadCampaignStatus()" 
+                                        id="loadStatusBtn" disabled>
+                                    <i class="bi bi-arrow-clockwise"></i> Загрузить метрики
+                                </button>
+                                <button class="btn btn-primary btn-lg" onclick="runOptimization()" 
+                                        id="runOptimizationBtn" disabled>
                                     <i class="bi bi-play-circle"></i> Запустить оптимизацию
                                 </button>
-                                <button class="btn btn-info" onclick="loadCampaignStatus()" id="refreshStatusBtn">
-                                    <i class="bi bi-arrow-clockwise"></i> Обновить статус
-                                </button>
+                                
+                                <div class="mt-3">
+                                    <button class="btn btn-outline-secondary btn-sm" onclick="loadAllCampaigns()">
+                                        <i class="bi bi-list-ul"></i> Показать все компании
+                                    </button>
+                                    <button class="btn btn-outline-info btn-sm ms-2" onclick="debugKeitaro()">
+                                        <i class="bi bi-bug"></i> Отладка
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Статистика компании -->
-                <div class="card mb-4" id="campaignStatsCard" style="display: none;">
-                    <div class="card-header">
-                        <h6 class="card-title mb-0">Статистика компании: <span id="campaignName"></span></h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="row" id="campaignStats">
-                            <!-- Статистика будет загружена здесь -->
-                        </div>
-                    </div>
-                </div>
+                <!-- Статистика и потоки (остается без изменений) -->
+                <!-- ... -->
 
-                <!-- Таблица потоков -->
-                <div class="card">
-                    <div class="card-header">
-                        <h6 class="card-title mb-0">Потоки компании</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="streamsTable">
-                                <thead>
-                                    <tr>
-                                        <th>Название потока</th>
-                                        <th>Текущий вес</th>
-                                        <th>Конверсии</th>
-                                        <th>Затраты</th>
-                                        <th>Доход</th>
-                                        <th>CPA</th>
-                                        <th>ROI</th>
-                                        <th>Рекомендуемый вес</th>
-                                        <th>Действия</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Данные будут загружены здесь -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -103,204 +149,342 @@
 <script>
 // Глобальные переменные
 let currentCampaignId = '';
-let optimizationSettings = {
-    auto: false,
-    interval: 4
-};
+let currentCampaignName = '';
+let allCampaigns = [];
 
 // Загрузка при старте
 $(document).ready(function() {
-    loadCampaigns();
-    loadOptimizationSettings();
+    // Автопоиск при вводе
+    $('#campaignSearch').on('keyup', function(e) {
+        if (e.key === 'Enter') {
+            searchCampaigns();
+        } else if ($(this).val().length > 1) {
+            debouncedSearch();
+        }
+    });
+    
+    // Загружаем несколько популярных компаний при старте
+    loadRecentCampaigns();
 });
 
-// Загрузка списка компаний
-function loadCampaigns() {
+// Дебаунс для поиска
+let debounceTimer;
+function debouncedSearch() {
+    clearTimeout(debounceTimer);
+    debouncedTimer = setTimeout(searchCampaigns, 500);
+}
+
+// Загрузка недавних компаний
+function loadRecentCampaigns() {
     $.ajax({
-        url: '/api/campaigns',
+        url: '/api/keitaro/campaigns?limit=10',
         type: 'GET',
         success: function(response) {
-            if (response.success) {
-                const select = $('#campaignSelect');
-                select.empty();
-                select.append('<option value="">Выберите компанию</option>');
+            if (response.success && response.campaigns.length > 0) {
+                // Обновляем quick select
+                const quickSelect = $('#quickCampaignSelect');
+                quickSelect.empty();
+                quickSelect.append('<option value="">Выберите из списка...</option>');
                 
-                response.data.forEach(campaign => {
-                    select.append(`<option value="${campaign.campaign_id}">${campaign.name}</option>`);
+                response.campaigns.forEach(campaign => {
+                    quickSelect.append(`<option value="${campaign.id}">${campaign.name} (ID: ${campaign.id})</option>`);
                 });
             }
-        },
-        error: function(error) {
-            console.error('Ошибка загрузки компаний:', error);
         }
     });
 }
 
-// Загрузка настроек оптимизации
-function loadOptimizationSettings() {
-    $.ajax({
-        url: '/api/settings',
-        type: 'GET',
-        success: function(response) {
-            if (response.success) {
-                optimizationSettings = {
-                    auto: response.config.auto_headline_optimization || false,
-                    interval: response.config.headline_optimization_interval || 4
-                };
-                
-                $('#autoOptimizationSwitch').prop('checked', optimizationSettings.auto);
-                $('#optimizationInterval').val(optimizationSettings.interval);
-            }
-        }
-    });
+// Загрузка всех компаний
+function loadAllCampaigns() {
+    $('#campaignSearch').val('');
+    searchCampaigns();
 }
 
-// Сохранение настроек оптимизации
-function saveOptimizationSettings() {
-    const settings = {
-        auto_headline_optimization: $('#autoOptimizationSwitch').is(':checked'),
-        headline_optimization_interval: parseInt($('#optimizationInterval').val())
-    };
-
-    $.ajax({
-        url: '/api/settings',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(settings),
-        success: function(response) {
-            if (response.success) {
-                showAlert('Настройки сохранены успешно!', 'success');
-                loadOptimizationSettings();
-            } else {
-                showAlert('Ошибка сохранения настроек: ' + response.error, 'error');
-            }
-        },
-        error: function(error) {
-            showAlert('Ошибка сохранения настроек', 'error');
-        }
-    });
-}
-
-// Запуск оптимизации
-function runOptimization() {
-    const campaignId = $('#campaignSelect').val();
-    if (!campaignId) {
-        showAlert('Выберите компанию для оптимизации', 'warning');
-        return;
-    }
-
-    $('#runOptimizationBtn').prop('disabled', true).html('<i class="bi bi-hourglass-split"></i> Оптимизация...');
-
-    $.ajax({
-        url: '/api/headline_optimization/run',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ campaign_id: campaignId }),
-        success: function(response) {
-            $('#runOptimizationBtn').prop('disabled', false).html('<i class="bi bi-play-circle"></i> Запустить оптимизацию');
-            
-            if (response.success) {
-                showAlert(response.message, 'success');
-                // Загружаем обновленный статус
-                loadCampaignStatus();
-            } else {
-                showAlert('Ошибка оптимизации: ' + response.error, 'error');
-            }
-        },
-        error: function(error) {
-            $('#runOptimizationBtn').prop('disabled', false).html('<i class="bi bi-play-circle"></i> Запустить оптимизацию');
-            showAlert('Ошибка запуска оптимизации', 'error');
-        }
-    });
-}
-
-// Загрузка статуса компании
-function loadCampaignStatus() {
-    const campaignId = $('#campaignSelect').val();
-    if (!campaignId) {
-        showAlert('Выберите компанию', 'warning');
-        return;
-    }
-
-    // Получаем название компании для отображения
-    const campaignName = $('#campaignSelect option:selected').text();
-    $('#campaignName').text(campaignName);
+// Быстрый выбор компании
+function onQuickCampaignSelected() {
+    const quickSelect = $('#quickCampaignSelect');
+    const campaignId = quickSelect.val();
+    const campaignName = quickSelect.find('option:selected').text();
     
-    currentCampaignId = campaignId;
-    $('#refreshStatusBtn').prop('disabled', true).html('<i class="bi bi-hourglass-split"></i> Загрузка...');
+    if (campaignId) {
+        currentCampaignId = campaignId;
+        currentCampaignName = campaignName;
+        
+        updateSelectedCampaignInfo();
+        enableActionButtons();
+        
+        // Автоматически загружаем метрики
+        loadCampaignStatus();
+    }
+}
+
+// Поиск компаний
+function searchCampaigns() {
+    const searchQuery = $('#campaignSearch').val().trim();
+    
+    $('#searchResultsInfo').html('<i class="bi bi-hourglass-split"></i> Поиск...');
+
+    const url = searchQuery ? 
+        `/api/keitaro/campaigns?search=${encodeURIComponent(searchQuery)}` :
+        '/api/keitaro/campaigns';
 
     $.ajax({
-        url: `/api/headline_optimization/status?campaign_id=${campaignId}`,
+        url: url,
         type: 'GET',
         success: function(response) {
-            $('#refreshStatusBtn').prop('disabled', false).html('<i class="bi bi-arrow-clockwise"></i> Обновить статус');
-            
             if (response.success) {
-                displayCampaignStats(response);
-                displayStreamsTable(response.streams);
-                $('#campaignStatsCard').show();
+                allCampaigns = response.campaigns;
+                updateCampaignSelect(allCampaigns);
+                
+                const resultText = searchQuery ?
+                    `Найдено ${response.total} компаний по запросу "${searchQuery}"` :
+                    `Загружено ${response.total} компаний`;
+                
+                $('#searchResultsInfo').html(resultText);
             } else {
-                showAlert('Ошибка загрузки статуса: ' + response.error, 'error');
-                $('#campaignStatsCard').hide();
+                showAlert('Ошибка поиска: ' + response.error, 'error');
+                $('#searchResultsInfo').html('Ошибка поиска');
             }
         },
         error: function(error) {
-            $('#refreshStatusBtn').prop('disabled', false).html('<i class="bi bi-arrow-clockwise"></i> Обновить статус');
-            showAlert('Ошибка загрузки статуса компании', 'error');
-            $('#campaignStatsCard').hide();
+            showAlert('Ошибка поиска компаний', 'error');
+            $('#searchResultsInfo').html('Ошибка поиска');
         }
     });
 }
 
+// Обновление выпадающего списка
+function updateCampaignSelect(campaigns) {
+    const select = $('#campaignSelect');
+    select.empty();
+    
+    if (campaigns.length === 0) {
+        select.append('<option value="">Компании не найдены</option>');
+    } else {
+        campaigns.forEach(campaign => {
+            const displayText = `${campaign.name} (ID: ${campaign.id}) - $${campaign.cost.toFixed(2)} / $${campaign.revenue.toFixed(2)}`;
+            select.append(`<option value="${campaign.id}" data-name="${campaign.name}">${displayText}</option>`);
+        });
+    }
+}
+
+// При выборе компании показываем блоки
+function onCampaignSelected() {
+    const selectedOption = $('#campaignSelect option:selected');
+    currentCampaignId = selectedOption.val();
+    currentCampaignName = selectedOption.data('name') || selectedOption.text();
+    
+    if (currentCampaignId) {
+        updateSelectedCampaignInfo();
+        enableActionButtons();
+        
+        // Принудительно показываем блоки
+        $('#campaignStatsCard').show();
+        $('#streamsCard').show();
+        
+        // Показываем placeholder
+        displayEmptyState();
+    }
+}
+// Обновление информации о выбранной компании
+function updateSelectedCampaignInfo() {
+    $('#selectedCampaignName').text(currentCampaignName);
+    $('#selectedCampaignId').text(`ID: ${currentCampaignId}`);
+    $('#selectedCampaignInfo').show();
+}
+
+// Включение кнопок действий
+function enableActionButtons() {
+    $('#loadStatusBtn').prop('disabled', false);
+    $('#runOptimizationBtn').prop('disabled', false);
+}
+
+// Отладка Keitaro
+function debugKeitaro() {
+    $.ajax({
+        url: '/api/debug/keitaro',
+        type: 'GET',
+        success: function(response) {
+            if (response.success) {
+                const debugInfo = `
+API Key: ${response.api_key_exists ? 'Настроен' : 'Отсутствует'}
+Domain: ${response.domain}
+Status: ${response.status_code}
+Response: ${JSON.stringify(response.response_sample)}
+                `;
+                showAlert(`Отладка Keitaro:\n${debugInfo}`, 'info');
+            } else {
+                showAlert('Ошибка отладки: ' + response.error, 'error');
+            }
+        }
+    });
+}
+// Функция для проверки данных в реальном времени
+function debugData() {
+    console.log('Current campaign ID:', currentCampaignId);
+    console.log('Current campaign name:', currentCampaignName);
+    
+    $.ajax({
+        url: `/api/headline_optimization/status?campaign_id=${currentCampaignId}`,
+        type: 'GET',
+        success: function(response) {
+            console.log('API Response:', response);
+            
+            if (response.success) {
+                console.log('Streams data:', response.streams);
+                console.log('Total stats:', response.total_stats);
+                console.log('Debug info:', response.debug_info);
+                
+                if (response.streams.length === 0) {
+                    console.warn('No streams found. Possible issues:');
+                    console.warn('- Campaign ID might be incorrect');
+                    console.warn('- No data available for selected period');
+                    console.warn('- API key permissions issue');
+                }
+            }
+        },
+        error: function(error) {
+            console.error('API Error:', error);
+        }
+    });
+}
+
+// Добавляем кнопку отладки в интерфейс
+function addDebugButton() {
+    const debugBtn = `
+        <button class="btn btn-outline-warning btn-sm ms-2" onclick="debugData()" 
+                title="Отладка данных">
+            <i class="bi bi-bug"></i> Debug
+        </button>
+    `;
+    $('#loadStatusBtn').after(debugBtn);
+}
+
+// Инициализируем отладку при загрузке
+$(document).ready(function() {
+    addDebugButton();
+});
 // Отображение статистики компании
 function displayCampaignStats(response) {
-    const stats = response.streams.reduce((acc, stream) => {
-        acc.totalConversions += stream.conversions;
-        acc.totalCost += stream.cost;
-        acc.totalRevenue += stream.revenue;
-        return acc;
-    }, { totalConversions: 0, totalCost: 0, totalRevenue: 0 });
+    const stats = response.total_stats;
+    const campaignName = response.campaign_name || currentCampaignName;
 
-    const totalCPA = stats.totalCost / (stats.totalConversions || 1);
-    const totalROI = ((stats.totalRevenue - stats.totalCost) / (stats.totalCost || 1)) * 100;
-
-    const campaignName = $('#campaignSelect option:selected').text();
     $('#campaignName').text(campaignName);
+    $('#campaignIdBadge').text(`ID: ${response.campaign_id}`);
 
     $('#campaignStats').html(`
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card bg-light">
                 <div class="card-body text-center">
                     <h6 class="card-title">Конверсии</h6>
-                    <h3 class="text-primary">${stats.totalConversions}</h3>
+                    <h3 class="text-primary">${stats.conversions}</h3>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Клики</h6>
+                    <h3 class="text-info">${stats.clicks}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
             <div class="card bg-light">
                 <div class="card-body text-center">
                     <h6 class="card-title">Затраты</h6>
-                    <h3 class="text-danger">$${stats.totalCost.toFixed(2)}</h3>
+                    <h3 class="text-danger">$${stats.cost.toFixed(2)}</h3>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card bg-light">
                 <div class="card-body text-center">
                     <h6 class="card-title">Доход</h6>
-                    <h3 class="text-success">$${stats.totalRevenue.toFixed(2)}</h3>
+                    <h3 class="text-success">$${stats.revenue.toFixed(2)}</h3>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="card bg-light">
+                <div class="card-body text-center">
+                    <h6 class="card-title">CPA</h6>
+                    <h3 class="${stats.cpa > 0 ? 'text-warning' : 'text-secondary'}">$${stats.cpa.toFixed(2)}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
             <div class="card bg-light">
                 <div class="card-body text-center">
                     <h6 class="card-title">ROI</h6>
-                    <h3 class="${totalROI >= 0 ? 'text-success' : 'text-danger'}">${totalROI.toFixed(1)}%</h3>
+                    <h3 class="${stats.roi >= 0 ? 'text-success' : 'text-danger'}">${stats.roi.toFixed(1)}%</h3>
                 </div>
             </div>
         </div>
     `);
+}
+function calculateRecommendedWeight(index, totalStreams) {
+    if (totalStreams === 0) return 0;
+    
+    const baseWeight = 100 / totalStreams;
+    
+    if (index === 0 && totalStreams > 1) { // Лучший поток
+        return Math.min(Math.round(baseWeight * 2), 70);
+    } else if (index === totalStreams - 1 && totalStreams > 1) { // Худший поток
+        return Math.max(Math.round(baseWeight / 2), 5);
+    } else {
+        return Math.round(baseWeight);
+    }
+}
+function updateStreamWeight(streamId, newWeight) {
+    if (!currentCampaignId) {
+        showAlert('Сначала выберите компанию', 'warning');
+        return;
+    }
+
+    $.ajax({
+        url: '/api/headline_optimization/update_weight',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            stream_id: streamId,
+            new_weight: newWeight,
+            campaign_id: currentCampaignId
+        }),
+        success: function(response) {
+            if (response.success) {
+                showAlert(`Вес потока обновлен до ${newWeight}%!`, 'success');
+                // Перезагружаем статус
+                loadCampaignStatus();
+            } else {
+                showAlert('Ошибка обновления веса: ' + response.error, 'error');
+            }
+        },
+        error: function(error) {
+            showAlert('Ошибка обновления веса потока', 'error');
+            console.error('Error updating stream weight:', error);
+        }
+    });
+}
+
+// Инициализация DataTable
+function initDataTable() {
+    if ($.fn.DataTable.isDataTable('#streamsTable')) {
+        $('#streamsTable').DataTable().destroy();
+    }
+    
+    $('#streamsTable').DataTable({
+        ordering: true,
+        pageLength: 10,
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/ru.json'
+        },
+        columnDefs: [
+            { orderable: true, targets: [3, 4, 5, 6, 7] }, // Сортировка по числам
+            { orderable: false, targets: [0, 1, 2, 8, 9] } // Без сортировки
+        ],
+        order: [[7, 'desc']] // Сортировка по ROI по убыванию
+    });
 }
 
 // Отображение таблицы потоков
@@ -308,30 +492,54 @@ function displayStreamsTable(streams) {
     const tbody = $('#streamsTable tbody');
     tbody.empty();
 
+    $('#streamsCountBadge').text(`${streams.length} потоков`);
+
+    if (streams.length === 0) {
+        tbody.append(`
+            <tr>
+                <td colspan="10" class="text-center text-muted py-4">
+                    <i class="bi bi-inbox"></i> Нет данных о потоках
+                </td>
+            </tr>
+        `);
+        return;
+    }
+
     // Сортируем потоки по ROI (лучшие сначала)
-    streams.sort((a, b) => b.roi - a.roi);
+    streams.sort((a, b) => (b.roi || 0) - (a.roi || 0));
 
     streams.forEach((stream, index) => {
         const recommendedWeight = calculateRecommendedWeight(index, streams.length);
+        const statusBadge = stream.is_active ? 
+            '<span class="badge bg-success">Активен</span>' : 
+            '<span class="badge bg-secondary">Неактивен</span>';
+        
         const row = `
             <tr>
-                <td>${stream.name}</td>
-                <td><span class="badge bg-primary">${stream.weight}%</span></td>
-                <td>${stream.conversions}</td>
-                <td>$${stream.cost.toFixed(2)}</td>
-                <td>$${stream.revenue.toFixed(2)}</td>
-                <td>$${stream.cpa.toFixed(2)}</td>
                 <td>
-                    <span class="badge ${stream.roi >= 0 ? 'bg-success' : 'bg-danger'}">
-                        ${stream.roi.toFixed(1)}%
+                    <div class="d-flex align-items-center">
+                        <span class="me-2">${stream.name || 'Без названия'}</span>
+                        <small class="text-muted">(${stream.id})</small>
+                    </div>
+                </td>
+                <td>${statusBadge}</td>
+                <td><span class="badge bg-primary">${stream.weight || 0}%</span></td>
+                <td><strong>${stream.conversions || 0}</strong></td>
+                <td class="text-danger">$${(stream.cost || 0).toFixed(2)}</td>
+                <td class="text-success">$${(stream.revenue || 0).toFixed(2)}</td>
+                <td class="text-warning">$${(stream.cpa || 0).toFixed(2)}</td>
+                <td>
+                    <span class="badge ${(stream.roi || 0) >= 0 ? 'bg-success' : 'bg-danger'}">
+                        ${(stream.roi || 0).toFixed(1)}%
                     </span>
                 </td>
+                <td>${(stream.ctr || 0).toFixed(1)}%</td>
                 <td>
-                    <span class="badge bg-info">${recommendedWeight}%</span>
-                </td>
-                <td>
-                    <button class="btn btn-sm btn-outline-primary" onclick="updateStreamWeight('${stream.id}', ${recommendedWeight})">
-                        <i class="bi bi-arrow-up-circle"></i> Применить
+                    <button class="btn btn-sm btn-outline-primary" 
+                            onclick="updateStreamWeight('${stream.id}', ${recommendedWeight})"
+                            ${!stream.is_active ? 'disabled' : ''}
+                            title="Установить вес ${recommendedWeight}%">
+                        <i class="bi bi-arrow-up-circle"></i> ${recommendedWeight}%
                     </button>
                 </td>
             </tr>
@@ -339,18 +547,9 @@ function displayStreamsTable(streams) {
         tbody.append(row);
     });
 
-    // Инициализируем DataTables если еще не инициализирована
-    if (!$.fn.DataTable.isDataTable('#streamsTable')) {
-        $('#streamsTable').DataTable({
-            ordering: true,
-            pageLength: 10,
-            language: {
-                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/ru.json'
-            }
-        });
-    }
+    // Инициализируем DataTables
+    initDataTable();
 }
-
 // Расчет рекомендуемого веса
 function calculateRecommendedWeight(index, totalStreams) {
     const baseWeight = 100 / totalStreams;
@@ -364,6 +563,32 @@ function calculateRecommendedWeight(index, totalStreams) {
     }
 }
 
+// Вспомогательная функция для показа уведомлений
+function showAlert(message, type) {
+    const alertClass = type === 'success' ? 'alert-success' : 
+                      type === 'error' ? 'alert-danger' : 
+                      type === 'warning' ? 'alert-warning' : 'alert-info';
+    
+    // Удаляем старые уведомления
+    $('.alert-dismissible').alert('close');
+    
+    const alert = `
+        <div class="alert ${alertClass} alert-dismissible fade show">
+            <i class="bi ${type === 'success' ? 'bi-check-circle' : 
+                         type === 'error' ? 'bi-exclamation-circle' : 
+                         type === 'warning' ? 'bi-exclamation-triangle' : 'bi-info-circle'} me-2"></i>
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `;
+    
+    $('.container-fluid').prepend(alert);
+    
+    // Автоматическое закрытие через 5 секунд
+    setTimeout(() => {
+        $('.alert').alert('close');
+    }, 5000);
+}
 // Обновление веса потока
 function updateStreamWeight(streamId, newWeight) {
     $.ajax({
@@ -412,12 +637,247 @@ function showAlert(message, type) {
 
 // Обработчик изменения выбора компании
 $('#campaignSelect').change(function() {
-    if ($(this).val()) {
-        loadCampaignStatus();
+    const campaignId = $(this).val();
+    if (campaignId) {
+        loadCampaignStatus(campaignId);
     } else {
         $('#campaignStatsCard').hide();
         $('#streamsTable tbody').empty();
     }
 });
+function displayEmptyState() {
+    $('#campaignStatsCard').hide();
+    $('#streamsCard').show();
+    
+    const tbody = $('#streamsTable tbody');
+    tbody.empty();
+    tbody.append(`
+        <tr>
+            <td colspan="10" class="text-center text-muted py-4">
+                <i class="bi bi-inbox" style="font-size: 2rem;"></i>
+                <div class="mt-2">Нет данных о потоках</div>
+                <small>Попробуйте выбрать другую компанию или проверьте настройки Keitaro</small>
+            </td>
+        </tr>
+    `);
+}
+// Загрузка статуса компании
+function loadCampaignStatus() {
+    if (!currentCampaignId) {
+        showAlert('Выберите компанию', 'warning');
+        return;
+    }
+
+    $('#loadStatusBtn').prop('disabled', true).html('<i class="bi bi-hourglass-split"></i> Загрузка...');
+    
+    // Показываем индикатор загрузки
+    $('#campaignStats').html(`
+        <div class="col-12 text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Загрузка...</span>
+            </div>
+            <div class="mt-2">Загрузка метрик...</div>
+        </div>
+    `);
+    $('#campaignStatsCard').show();
+
+    $.ajax({
+        url: `/api/headline_optimization/status?campaign_id=${currentCampaignId}`,
+        type: 'GET',
+        success: function(response) {
+            $('#loadStatusBtn').prop('disabled', false).html('<i class="bi bi-arrow-clockwise"></i> Загрузить метрики');
+            
+            console.log('Получен ответ от сервера:', response);
+            
+            if (response.success) {
+                if (response.streams && response.streams.length > 0) {
+                    displayCampaignStats(response);
+                    displayStreamsTable(response.streams);
+                    $('#campaignStatsCard').show();
+                    $('#streamsCard').show();
+                    
+                    showAlert(`Успешно загружено: ${response.streams.length} потоков`, 'success');
+                } else {
+                    showAlert('Нет данных о потоках для выбранной компании', 'warning');
+                    displayEmptyState();
+                }
+            } else {
+                showAlert('Ошибка загрузки метрик: ' + response.error, 'error');
+                displayEmptyState();
+            }
+        },
+        error: function(error) {
+            $('#loadStatusBtn').prop('disabled', false).html('<i class="bi bi-arrow-clockwise"></i> Загрузить метрики');
+            showAlert('Ошибка загрузки метрик компании', 'error');
+            console.error('Ошибка загрузки статуса:', error);
+            displayEmptyState();
+        }
+    });
+}
+
+// Отображение статистики компании
+function displayCampaignStats(response) {
+    const stats = response.total_stats || {
+        conversions: response.streams.reduce((sum, s) => sum + (s.conversions || 0), 0),
+        cost: response.streams.reduce((sum, s) => sum + (s.cost || 0), 0),
+        revenue: response.streams.reduce((sum, s) => sum + (s.revenue || 0), 0),
+        clicks: response.streams.reduce((sum, s) => sum + (s.clicks || 0), 0)
+    };
+    
+    const totalCPA = stats.conversions > 0 ? stats.cost / stats.conversions : 0;
+    const totalROI = stats.cost > 0 ? ((stats.revenue - stats.cost) / stats.cost * 100) : 0;
+    const totalCTR = stats.clicks > 0 ? (stats.conversions / stats.clicks * 100) : 0;
+
+    $('#campaignName').text(response.campaign_name || currentCampaignName);
+    $('#campaignIdBadge').text(`ID: ${response.campaign_id || currentCampaignId}`);
+
+    $('#campaignStats').html(`
+        <div class="col-md-2">
+            <div class="card bg-light h-100">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Конверсии</h6>
+                    <h3 class="text-primary">${stats.conversions}</h3>
+                    <small class="text-muted">Всего</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-light h-100">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Клики</h6>
+                    <h3 class="text-info">${stats.clicks}</h3>
+                    <small class="text-muted">Всего</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-light h-100">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Затраты</h6>
+                    <h3 class="text-danger">$${stats.cost.toFixed(2)}</h3>
+                    <small class="text-muted">Всего</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-light h-100">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Доход</h6>
+                    <h3 class="text-success">$${stats.revenue.toFixed(2)}</h3>
+                    <small class="text-muted">Всего</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-light h-100">
+                <div class="card-body text-center">
+                    <h6 class="card-title">CPA</h6>
+                    <h3 class="${totalCPA > 0 ? 'text-warning' : 'text-secondary'}">$${totalCPA.toFixed(2)}</h3>
+                    <small class="text-muted">Среднее</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-light h-100">
+                <div class="card-body text-center">
+                    <h6 class="card-title">ROI</h6>
+                    <h3 class="${totalROI >= 0 ? 'text-success' : 'text-danger'}">${totalROI.toFixed(1)}%</h3>
+                    <small class="text-muted">Всего</small>
+                </div>
+            </div>
+        </div>
+    `);
+}
+
+// Отображение таблицы потоков
+function displayStreamsTable(streams) {
+    const tbody = $('#streamsTable tbody');
+    tbody.empty();
+
+    $('#streamsCountBadge').text(`${streams.length} потоков`);
+    $('#activeStreamsBadge').text(`${streams.filter(s => s.is_active).length} активных`);
+
+    if (streams.length === 0) {
+        tbody.append(`
+            <tr>
+                <td colspan="10" class="text-center text-muted py-4">
+                    <i class="bi bi-inbox"></i> Нет данных о потоках
+                </td>
+            </tr>
+        `);
+        return;
+    }
+
+    // Сортируем потоки по ROI (лучшие сначала)
+    streams.sort((a, b) => (b.roi || 0) - (a.roi || 0));
+
+    streams.forEach((stream, index) => {
+        const recommendedWeight = calculateRecommendedWeight(index, streams.length);
+        const statusBadge = stream.is_active ? 
+            '<span class="badge bg-success">Активен</span>' : 
+            '<span class="badge bg-secondary">Неактивен</span>';
+        
+        const row = `
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="me-2">${stream.name || 'Без названия'}</span>
+                        <small class="text-muted">(${stream.id})</small>
+                    </div>
+                </td>
+                <td>${statusBadge}</td>
+                <td><span class="badge bg-primary">${stream.weight || 0}%</span></td>
+                <td><strong>${stream.conversions || 0}</strong></td>
+                <td class="text-danger">$${(stream.cost || 0).toFixed(2)}</td>
+                <td class="text-success">$${(stream.revenue || 0).toFixed(2)}</td>
+                <td class="text-warning">$${(stream.cpa || 0).toFixed(2)}</td>
+                <td>
+                    <span class="badge ${(stream.roi || 0) >= 0 ? 'bg-success' : 'bg-danger'}">
+                        ${(stream.roi || 0).toFixed(1)}%
+                    </span>
+                </td>
+                <td>${(stream.ctr || 0).toFixed(1)}%</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary" 
+                            onclick="updateStreamWeight('${stream.id}', ${recommendedWeight})"
+                            ${!stream.is_active ? 'disabled' : ''}
+                            title="Установить вес ${recommendedWeight}%">
+                        <i class="bi bi-arrow-up-circle"></i> ${recommendedWeight}%
+                    </button>
+                </td>
+            </tr>
+        `;
+        tbody.append(row);
+    });
+
+    // Инициализируем DataTables
+    initDataTable();
+}
+
+// Показ пустого состояния
+function displayEmptyState() {
+    $('#campaignStatsCard').show();
+    $('#streamsCard').show();
+    
+    $('#campaignStats').html(`
+        <div class="col-12 text-center py-4">
+            <i class="bi bi-exclamation-triangle text-warning" style="font-size: 2rem;"></i>
+            <div class="mt-2">Нет данных для отображения</div>
+            <small class="text-muted">Попробуйте выбрать другую компанию или период</small>
+        </div>
+    `);
+    
+    const tbody = $('#streamsTable tbody');
+    tbody.empty();
+    tbody.append(`
+        <tr>
+            <td colspan="10" class="text-center text-muted py-4">
+                <i class="bi bi-inbox"></i> Нет данных о потоках
+            </td>
+        </tr>
+    `);
+}
+
+
 </script>
 {% endblock %}

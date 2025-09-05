@@ -1,16 +1,13 @@
-import fcntl
-import threading
 import time
-from contextlib import contextmanager
 from typing import Any, Dict, List
 from venv import logger
 
 import requests
 
 from backend.telegram import send_telegram_message
-from database import get_db_connection
+from database import get_db_connection, lock
 
-lock = threading.Lock()
+
 def add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, 
                         campaign_name: str = "", match_type: str = ""):
     """Добавляет соответствие между Facebook и Keitaro"""

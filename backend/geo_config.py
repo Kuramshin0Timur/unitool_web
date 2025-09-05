@@ -1,10 +1,8 @@
 import re
-from fcntl import flock
 from typing import Any, Dict
 from venv import logger
 
-from backend.campaign import lock
-from database import get_db_connection
+from database import get_db_connection, lock
 
 
 def add_user_geo_config(user_id: int, data: Dict[str, Any]):
@@ -212,44 +210,115 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
             
             conn.commit()
 def extract_geo_from_name(name, known_geos=None):
-    """Извлекает GEO код из названия с улучшенной логикой"""
+    """
+    Извлекает GEO код из названия адсета.
+    Всегда пытается определить страну, даже если её нет в known_geos.
+    """
     if not name:
         return 'N/A'
     
-    clean_name = re.sub(r'[^A-Za-z0-9\s]', ' ', str(name).upper())
-    words = clean_name.split()
-    
-    if known_geos:
-        for word in words:
-            if word in known_geos:
-                return word
+    # Словарь для сопоставления названий стран с кодами
+    country_mapping = {
+        # Азия
+        'thailand': 'TH', 'thai': 'TH', 'тайланд': 'TH', 'тай': 'TH',
+        'indonesia': 'ID', 'indo': 'ID', 'индонезия': 'ID', 'индо': 'ID',
+        'malaysia': 'MY', 'malay': 'MY', 'малайзия': 'MY', 'малай': 'MY',
+        'singapore': 'SG', 'sing': 'SG', 'сингапур': 'SG', 'синг': 'SG',
+        'vietnam': 'VN', 'viet': 'VN', 'вьетнам': 'VN', 'вьет': 'VN',
+        'philippines': 'PH', 'phil': 'PH', 'филиппины': 'PH', 'фил': 'PH',
+        'taiwan': 'TW', 'тайвань': 'TW',
+        'hong kong': 'HK', 'гонконг': 'HK',
+        'japan': 'JP', 'japanese': 'JP', 'япония': 'JP', 'япон': 'JP',
+        'korea': 'KR', 'korean': 'KR', 'корея': 'KR', 'корей': 'KR',
+        'china': 'CN', 'chinese': 'CN', 'китай': 'CN', 'китайск': 'CN',
+        'india': 'IN', 'indian': 'IN', 'индия': 'IN', 'индийск': 'IN',
         
-        for known_geo in known_geos:
-            if known_geo in clean_name:
-                return known_geo
-    
-    country_codes = {
-        'PH', 'TH', 'ID', 'MY', 'SG', 'VN', 'BR', 'US', 'UK', 'CA', 
-        'AU', 'DE', 'FR', 'ES', 'IT', 'RU', 'JP', 'KR', 'CN', 'IN',
-        'MX', 'AR', 'CO', 'PE', 'CL', 'ZA', 'NG', 'EG', 'SA', 'AE',
-        'TR', 'PL', 'NL', 'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT'
+        # Европа
+        'germany': 'DE', 'german': 'DE', 'германия': 'DE', 'немец': 'DE',
+        'france': 'FR', 'french': 'FR', 'франция': 'FR', 'франц': 'FR',
+        'italy': 'IT', 'italian': 'IT', 'италия': 'IT', 'итальян': 'IT',
+        'spain': 'ES', 'spanish': 'ES', 'испания': 'ES', 'испан': 'ES',
+        'ukraine': 'UA', 'ukrainian': 'UA', 'украина': 'UA', 'украин': 'UA',
+        'russia': 'RU', 'russian': 'RU', 'россия': 'RU', 'русск': 'RU',
+        'poland': 'PL', 'polish': 'PL', 'польша': 'PL', 'польск': 'PL',
+        'united kingdom': 'UK', 'uk': 'UK', 'британия': 'UK', 'англия': 'UK',
+        'turkey': 'TR', 'turkish': 'TR', 'турция': 'TR', 'турецк': 'TR',
+        'netherlands': 'NL', 'dutch': 'NL', 'нидерланды': 'NL', 'голландия': 'NL',
+        
+        # Америка
+        'usa': 'US', 'united states': 'US', 'америка': 'US', 'сша': 'US',
+        'canada': 'CA', 'canadian': 'CA', 'канада': 'CA', 'канад': 'CA',
+        'brazil': 'BR', 'brazilian': 'BR', 'бразилия': 'BR', 'бразил': 'BR',
+        'mexico': 'MX', 'mexican': 'MX', 'мексика': 'MX', 'мексик': 'MX',
+        'argentina': 'AR', 'argentinian': 'AR', 'аргентина': 'AR', 'аргентин': 'AR',
+        
+        # Другие регионы
+        'australia': 'AU', 'australian': 'AU', 'австралия': 'AU', 'австрал': 'AU',
+        'new zealand': 'NZ', 'nz': 'NZ', 'новая зеландия': 'NZ',
+        'south africa': 'ZA', 'sa': 'ZA', 'южная африка': 'ZA',
+        'egypt': 'EG', 'egyptian': 'EG', 'египет': 'EG', 'египетск': 'EG',
+        'nigeria': 'NG', 'nigerian': 'NG', 'нигерия': 'NG', 'нигерий': 'NG',
+        'saudi arabia': 'SA', 'saudi': 'SA', 'саудовская аравия': 'SA',
+        'uae': 'AE', 'united arab emirates': 'AE', 'оаэ': 'AE',
+        
+        # Дополнительные часто используемые коды
+        'world': 'WW', 'global': 'WW', 'мир': 'WW', 'глобал': 'WW',
+        'europe': 'EU', 'европа': 'EU',
+        'asia': 'AS', 'азия': 'AS',
+        'america': 'AM', 'америка': 'AM',
+        'africa': 'AF', 'африка': 'AF',
     }
     
-    for word in words:
-        if len(word) == 2 and word.isalpha() and word in country_codes:
-            return word
+    # Приводим название к нижнему регистру для поиска
+    name_lower = name.lower()
     
-    for word in words:
-        for code in country_codes:
-            if code in word and len(word) > 2:
-                return code
+    # Сначала ищем совпадения по названиям стран
+    for country_name, country_code in country_mapping.items():
+        if country_name in name_lower:
+            return country_code
     
+    # Ищем паттерны с двухбуквенными кодами
+    geo_patterns = [
+        r'^([A-Z]{2})\b',       # код в начале названия
+        r'\b([A-Z]{2})[-\s_]',  # код с разделителями
+        r'[-\s_]([A-Z]{2})\b',  # код в конце
+        r'\b([A-Z]{2})\d',      # код перед цифрами
+    ]
+    
+    for pattern in geo_patterns:
+        match = re.search(pattern, name.upper())
+        if match:
+            geo_code = match.group(1)
+            if len(geo_code) == 2 and geo_code.isalpha():
+                return geo_code
+    
+    # Ищем числовые коды стран (телефонные префиксы)
+    phone_code_patterns = {
+        '66': 'TH',  # Таиланд
+        '62': 'ID',  # Индонезия
+        '60': 'MY',  # Малайзия
+        '65': 'SG',  # Сингапур
+        '84': 'VN',  # Вьетнам
+        '63': 'PH',  # Филиппины
+        '1': 'US',   # США/Канада
+        '7': 'RU',   # Россия/Казахстан
+    }
+    
+    for code, country in phone_code_patterns.items():
+        if code in name:
+            return country
+    
+    # Потом проверяем known_geos (как fallback)
+    if known_geos:
+        for geo in known_geos:
+            if geo.upper() in name.upper():
+                return geo.upper()
+    
+    # Если ничего не найдено
     return 'N/A'
-
-
 def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
     """Возвращает конфигурацию GEO пользователя"""
-    with flock:
+    with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM geo_config WHERE user_id = ?", (user_id,))
