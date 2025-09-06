@@ -11,7 +11,7 @@ from database import get_db_connection, lock
 
 
 def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
-    """Возвращает список адсетов пользователя с гарантированным наличием поля status"""
+   
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -31,14 +31,14 @@ def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
             adsets = []
             for row in cursor.fetchall():
                 adset = dict(row)
-                # Гарантируем, что статус всегда есть и является строкой
+               
                 adset['status'] = str(adset.get('status', 'UNKNOWN')).strip()
                 adsets.append(adset)
             
             return adsets
 
 def add_user_adset(user_id: int, data: Dict[str, Any]):
-    """Добавляет новый адсет для пользователя с поддержкой CPM"""
+   
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -82,7 +82,7 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
 
 
 def update_user_adset_status(user_id: int, adset_id: str, status: str):
-    """Обновляет статус адсета пользователя"""
+   
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -95,7 +95,7 @@ def update_user_adset_status(user_id: int, adset_id: str, status: str):
 
 
 def fetch_facebook_adsets(account_id, access_token, fields=None):
-    """Получает ВСЕ адсеты из Facebook API (включая неактивные)"""
+    
     if fields is None:
         fields = "id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget"
     
@@ -106,7 +106,7 @@ def fetch_facebook_adsets(account_id, access_token, fields=None):
         params = {
             "fields": fields,
             "access_token": access_token,
-            "limit": 1000  # Увеличиваем лимит
+            "limit": 1000  
         }
         
         all_adsets = []
@@ -162,7 +162,7 @@ def fetch_facebook_adsets(account_id, access_token, fields=None):
         return []
     
 def refresh_adsets_internal(user_id):
-    """Внутренняя функция обновления адсетов"""
+  
     try:
         campaigns = get_user_campaigns(user_id)
         accounts = {}
@@ -181,7 +181,7 @@ def refresh_adsets_internal(user_id):
                 daily_budget = adset.get('daily_budget')
                 budget = float(daily_budget) / 100 if daily_budget else 0
                 
-                # Определяем GEO из названия адсета
+         
                 adset_name = adset.get('name', '')
                 geo = extract_geo_from_name(adset_name, known_geos)
                 

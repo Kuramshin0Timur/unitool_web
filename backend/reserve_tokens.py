@@ -259,7 +259,6 @@ def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Проверяем существование таблицы reserve_tokens
             cursor.execute("""
                 SELECT name FROM sqlite_master 
                 WHERE type='table' AND name='reserve_tokens'

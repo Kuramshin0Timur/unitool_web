@@ -1,6 +1,4 @@
-// manual_data.js
 $(document).ready(function() {
-    // Импорт данных из Facebook через ручной ввод (одиночный)
     $('#importFacebookBtn').click(function() {
         const accountId = $('#facebookAccountId').val();
         const accessToken = $('#facebookAccessToken').val();
@@ -45,7 +43,6 @@ $(document).ready(function() {
         });
     });
 
-    // Тестирование соединения с Facebook
     $('#testFacebookBtn').click(function() {
         const accountId = $('#facebookAccountId').val();
         const accessToken = $('#facebookAccessToken').val();
@@ -84,7 +81,6 @@ $(document).ready(function() {
         });
     });
 
-    // Вспомогательные функции
     function showLoading(button, text) {
         button.prop('disabled', true);
         button.html(`<span class="spinner-border spinner-border-sm" role="status"></span> ${text}`);
@@ -105,7 +101,6 @@ $(document).ready(function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Инициализация таблицы
     const container = document.getElementById('hot');
     if (!container) {
         console.error('Контейнер для таблицы не найден');
@@ -113,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const hot = new Handsontable(container, {
-        data: [['', '']], // Начальная строка (ID аккаунта, Токен)
+        data: [['', '']], 
         colHeaders: ['ID аккаунта', 'Токен'],
         columns: [
             { type: 'text' }, // ID аккаунта
@@ -132,22 +127,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 2. Кнопка добавления строки
     document.getElementById('addRowBtn')?.addEventListener('click', function() {
         hot.alter('insert_row');
     });
 
-    // 3. Кнопка сохранения
     document.getElementById('saveData')?.addEventListener('click', function() {
-        // 🔹 Фиксируем редактирование
         hot.validateCells(() => {});
         hot.render();
 
-        // Берём именно исходные данные
         const data = hot.getSourceData();
         console.log('Данные для сохранения:', data);
         
-        // Фильтруем: только строки, где обе ячейки заполнены (не null и не пустые строки)
         const filteredData = data.filter(row => 
             row && row[0] !== null && row[0] !== "" &&
             row[1] !== null && row[1] !== ""
@@ -164,8 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         saveBtn.disabled = true;
         saveBtn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Импорт...';
 
-        // ⚡ Отправляем массив аккаунтов на сервер для импорта
-        // ⚡ Отправляем массив аккаунтов на сервер для импорта
         const payload = filteredData.map(row => ({
             account_id: row[0],
             token: row[1]
@@ -197,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
-    // 4. Стиль для анимации загрузки
     const style = document.createElement('style');
     style.textContent = `
         .spin { animation: spin 1s linear infinite; }

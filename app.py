@@ -63,7 +63,60 @@ def login_required(f):
 
 
 
-
+@app.route('/api/adsets/update_geo', methods=['POST'])
+@login_required
+def update_adsets_geo():
+    """Принудительно обновляет GEO для всех адсетов"""
+    try:
+        user_id = session['user_id']
+        
+        # Получаем правила GEO
+        geo_rules = get_user_geo_rules(user_id)
+        known_geos = list(geo_rules.keys()) if geo_rules else []
+        
+        # Добавляем стандартные GEO коды
+        standard_geos = ['US', 'UK', 'CA', 'AU', 'DE', 'FR', 'ES', 'IT', 'RU', 
+                        'JP', 'KR', 'CN', 'IN', 'MX', 'BR', 'AR', 'CO', 'PE',
+                        'CL', 'ZA', 'NG', 'EG', 'SA', 'AE', 'TR', 'PL', 'NL',
+                        'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT', 'MY', 'SG',
+                        'VN', 'TH', 'PH', 'ID']
+        
+        known_geos = list(set(known_geos + standard_geos))
+        
+        # Получаем все адсеты
+        adsets = get_user_adsets(user_id)
+        updated_count = 0
+        
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            for adset in adsets:
+                adset_name = adset.get('name', '')
+                adset_id = adset.get('adset_id', '')
+                
+                # Определяем GEO
+                geo = extract_geo_from_name(adset_name, known_geos)
+                
+                # Обновляем в базе
+                cursor.execute("""
+                    UPDATE adsets SET geo = ? 
+                    WHERE user_id = ? AND adset_id = ?
+                """, (geo, user_id, adset_id))
+                
+                if cursor.rowcount > 0:
+                    updated_count += 1
+            
+            conn.commit()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Обновлено GEO для {updated_count} адсетов',
+            'updated_count': updated_count
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка обновления GEO адсетов: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 
 # app.py - добавьте этот endpoint
 
@@ -3550,7 +3603,6 @@ def get_headline_optimization_status():
                 if stream_id == 'unknown':
                     continue
                 
-                # Безопасное извлечение значений
                 cost = float(stat.get('cost', 0)) if stat.get('cost') not in [None, ''] else 0
                 conversions = int(stat.get('conversions', 0)) if stat.get('conversions') not in [None, ''] else 0
                 revenue = float(stat.get('revenue', 0)) if stat.get('revenue') not in [None, ''] else 0
@@ -3587,7 +3639,6 @@ def get_headline_optimization_status():
                 logger.error(f"Ошибка обработки статистики потока: {e}")
                 continue
         
-        # Получаем информацию о кампании
         campaign_info = get_keitaro_campaign_info(api_key, domain, campaign_id)
         
         response_data = {
@@ -5549,4 +5600,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=8000, debug=False, threaded=True)

@@ -5,12 +5,12 @@ from database import get_db_connection
 
 
 def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
-    """Получает статистику по аккаунтам пользователя с проверкой валидности"""
+    
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Получаем ВСЕ аккаунты, включая невалидные
+            
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
@@ -23,7 +23,7 @@ def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
                 account_id = row['account_id']
                 token = row['token']
                 
-                # Добавляем даже невалидные аккаунты для отображения
+          
                 accounts.append({
                     'account_id': account_id or 'N/A',
                     'token': token or 'N/A'
@@ -38,7 +38,7 @@ def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
 
 
 def get_all_users() -> List[Dict[str, Any]]:
-    """Получает список всех пользователей"""
+    
     try:
         with get_db_connection() as conn:
             cursor = conn.cursor()
@@ -48,12 +48,12 @@ def get_all_users() -> List[Dict[str, Any]]:
         logger.error(f"Ошибка получения списка пользователей: {e}")
         return []
 def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
-    """Получает статистику по аккаунтам пользователя с проверкой валидности - исправленная версия"""
+    
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Получаем только валидные аккаунты
+        
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
@@ -78,7 +78,7 @@ def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:
         logger.error(f"Ошибка получения статистики аккаунтов пользователя {user_id}: {e}")
         return []
 def get_all_users():
-    """Получает список всех пользователей"""
+    
     try:
         with get_db_connection() as conn:
             cursor = conn.cursor()
@@ -88,7 +88,7 @@ def get_all_users():
         logger.error(f"Ошибка получения списка пользователей: {e}")
         return []
 def get_all_accounts_stats():
-    """Получает статистику по всем аккаунтам всех пользователей"""
+    
     users = get_all_users()
     all_accounts = []
     

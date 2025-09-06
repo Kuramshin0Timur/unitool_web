@@ -5,17 +5,17 @@ from database import get_db_connection
 
 
 def update_user_settings(user_id, data):
-    """Обновляет настройки пользователя"""
+    
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Проверяем существование записи
+           
             cursor.execute("SELECT id FROM settings WHERE user_id = ?", (user_id,))
             settings_exists = cursor.fetchone()
             
             if settings_exists:
-                # Обновляем существующую запись
+            
                 cursor.execute("""
                     UPDATE settings SET
                         sync_api_key = ?, proxy = ?, use_proxy = ?,
@@ -46,7 +46,7 @@ def update_user_settings(user_id, data):
                     user_id
                 ))
             else:
-                # Создаем новую запись
+              
                 cursor.execute("""
                     INSERT INTO settings (
                         user_id, sync_api_key, proxy, use_proxy,
@@ -83,7 +83,7 @@ def update_user_settings(user_id, data):
         return False
 
 def get_default_settings():
-    """Возвращает настройки по умолчанию"""
+    
     return {
         'sync_api_key': '',
         'proxy': '',
@@ -104,7 +104,7 @@ def get_default_settings():
     }
 
 def get_user_settings(user_id):
-    """Получает настройки пользователя"""
+    
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -120,7 +120,7 @@ def get_user_settings(user_id):
             
             row = cursor.fetchone()
             if row:
-                # Преобразуем Row в словарь для доступа через .get()
+              
                 row_dict = dict(row)
                 return {
                     'sync_api_key': row_dict.get('sync_api_key', ''),
@@ -141,7 +141,7 @@ def get_user_settings(user_id):
                     'warning_threshold': float(row_dict.get('warning_threshold', 50.0))
                 }
             else:
-                # Возвращаем настройки по умолчанию
+              
                 return get_default_settings()
                 
     except Exception as e:

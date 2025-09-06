@@ -1,3 +1,4 @@
+import fcntl
 import time
 from typing import Any, Dict, List
 from venv import logger
@@ -10,7 +11,7 @@ from database import get_db_connection, lock
 
 def add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, 
                         campaign_name: str = "", match_type: str = ""):
-    """Добавляет соответствие между Facebook и Keitaro"""
+    
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -22,7 +23,7 @@ def add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str,
             conn.commit()
 
 def update_campaign_stats(user_id, campaign_id, spend=None, leads=None, cpa=None, cpc=None, ucpc=None):
-    """Обновляет статистику кампании с CPC из Facebook"""
+  
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -60,7 +61,7 @@ def update_campaign_stats(user_id, campaign_id, spend=None, leads=None, cpa=None
                 logger.info(f"Обновлена статистика кампании {campaign_id} с CPC из Facebook: {cpc}")
 
 def add_user_campaign(user_id: int, data: Dict[str, Any]):
-    """Добавляет кампанию с проверкой данных"""
+    
     required_fields = {
         'king': str,
         'name': str,
@@ -69,7 +70,7 @@ def add_user_campaign(user_id: int, data: Dict[str, Any]):
         'account_id': str
     }
     
-    # Проверяем обязательные поля
+   
     for field, field_type in required_fields.items():
         if field not in data:
             raise ValueError(f"Missing required field: {field}")
@@ -80,7 +81,7 @@ def add_user_campaign(user_id: int, data: Dict[str, Any]):
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             try:
-                # Сначала проверяем существование пользователя
+                
                 cursor.execute("SELECT id FROM users WHERE id = ?", (user_id,))
                 if not cursor.fetchone():
                     raise ValueError(f"User with ID {user_id} does not exist")
@@ -107,7 +108,7 @@ def add_user_campaign(user_id: int, data: Dict[str, Any]):
 
 
 def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:
-    """Возвращает список кампаний пользователя"""
+    
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -115,7 +116,7 @@ def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:
             return [dict(row) for row in cursor.fetchall()]
 
 def fetch_facebook_campaigns(account_id, access_token, fields=None):
-    """Получает ВСЕ кампании из Facebook API (включая неактивные)"""
+    
     if fields is None:
         fields = "id,name,status,effective_status,daily_budget,objective,start_time,stop_time"
     
@@ -164,7 +165,7 @@ def fetch_facebook_campaigns(account_id, access_token, fields=None):
                 retry_count += 1
                 logger.warning(f"Ошибка запроса кампаний (попытка {retry_count}/{max_retries}): {e}")
                 if retry_count < max_retries:
-                    time.sleep(2 ** retry_count)  # Экспоненциальная задержка
+                    time.sleep(2 ** retry_count)  
                 else:
                     raise
         
@@ -183,7 +184,7 @@ def fetch_facebook_campaigns(account_id, access_token, fields=None):
 
 
 def refresh_campaigns_internal(user_id):
-    """Внутренняя функция обновления кампаний"""
+   
     try:
         campaigns = get_user_campaigns(user_id)
         accounts = {}
@@ -208,7 +209,7 @@ def refresh_campaigns_internal(user_id):
         logger.error(f"Ошибка обновления кампаний: {e}")
 
 def update_user_campaign_status(user_id: int, campaign_id: str, status: str):
-    """Обновляет статус кампании пользователя"""
+  
     with fcntl.flock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -219,12 +220,12 @@ def update_user_campaign_status(user_id: int, campaign_id: str, status: str):
             conn.commit()
 
 def check_and_pause_campaigns(user_id):
-    """Проверяет и отключает кампании, если все их адсеты отключены"""
+    
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Находим кампании, где все адсеты отключены
+           
             cursor.execute("""
             SELECT c.campaign_id, c.name, c.token, c.account_id
             FROM campaigns c

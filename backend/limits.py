@@ -5,7 +5,7 @@ import requests
 
 
 def get_account_limits_info(account_id, access_token):
-    """Получает информацию о лимитах аккаунта из Facebook API"""
+  
     try:
         clean_account_id = account_id.replace('act_', '')
         url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}"
@@ -23,7 +23,7 @@ def get_account_limits_info(account_id, access_token):
         if 'error' in data:
             return None
         
-        # Получаем информацию о лимитах запросов из заголовков
+     
         usage_info = response.headers.get('x-business-use-case-usage', '{}')
         calls_usage = 0
         calls_limit = 100

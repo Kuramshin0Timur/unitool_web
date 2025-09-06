@@ -7,7 +7,7 @@ from database import get_db_connection, lock
 
 def update_user_adset_budget(user_id: int, adset_id: str, budget: float):
     
-    """Обновляет бюджет адсета пользователя в базе данных"""
+  
     with lock:
         try:
             with get_db_connection(user_id) as conn:
@@ -23,7 +23,7 @@ def update_user_adset_budget(user_id: int, adset_id: str, budget: float):
             logger.error(f"Ошибка обновления бюджета в БД: {e}")
             return False
 def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:
-    """Получает настройки авто-бюджета для адсета"""
+  
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -51,7 +51,7 @@ def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str,
         return None
 
 def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:
-    """Обновляет настройки авто-бюджета для адсета"""
+   
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -77,7 +77,7 @@ def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str
         return False
 
 def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:
-    """Получает адсеты для авто-бюджета с токенами"""
+    
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()

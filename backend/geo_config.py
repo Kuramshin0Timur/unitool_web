@@ -1,12 +1,12 @@
 import re
-from typing import Any, Dict
+from typing import Any, Dict, List
 from venv import logger
 
 from database import get_db_connection, lock
 
 
 def add_user_geo_config(user_id: int, data: Dict[str, Any]):
-    """Добавляет или обновляет конфигурацию GEO пользователя"""
+
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -38,7 +38,7 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
             
             conn.commit()
 
-    """Генерирует тестовые данные для указанного пользователя"""
+    
     import random
     
     with lock:
@@ -46,12 +46,12 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
         try:
             cursor = conn.cursor()
             
-            # Очищаем данные пользователя
+           
             cursor.execute("DELETE FROM campaigns WHERE user_id = ?", (user_id,))
             cursor.execute("DELETE FROM adsets WHERE user_id = ?", (user_id,))
             cursor.execute("DELETE FROM geo_config WHERE user_id = ?", (user_id,))
             
-            # Добавляем GEO конфигурации
+            
             geo_codes = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
             for geo in geo_codes:
                 cursor.execute("""
@@ -67,7 +67,7 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
                     round(random.uniform(15, 50), 2)
                 ))
             
-            # Добавляем кампании
+           
             kings = ['KING1', 'KING2', 'KING3', 'KING4', 'KING5']
             statuses = ['ACTIVE', 'PAUSED']
             
@@ -88,7 +88,7 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
                     f"token_{random.randint(1, 10)}"
                 ))
             
-            # Добавляем адсеты
+          
             geos = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
             ad_names = ["Ad 1", "Ad 2", "Ad 3", "Ad 4", "Ad 5"]
             
@@ -126,19 +126,19 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
             conn.commit()
         finally:
             conn.close()
-    """Генерирует тестовые данные для указанного пользователя"""
+    
     import random
     
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Очищаем данные пользователя
+           
             cursor.execute("DELETE FROM campaigns WHERE user_id = ?", (user_id,))
             cursor.execute("DELETE FROM adsets WHERE user_id = ?", (user_id,))
             cursor.execute("DELETE FROM geo_config WHERE user_id = ?", (user_id,))
             
-            # Добавляем GEO конфигурации
+          
             geo_codes = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
             for geo in geo_codes:
                 cursor.execute("""
@@ -154,7 +154,7 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
                     random.uniform(15, 50)
                 ))
             
-            # Добавляем кампании
+           
             kings = ['KING1', 'KING2', 'KING3', 'KING4', 'KING5']
             statuses = ['ACTIVE', 'PAUSED']
             
@@ -175,7 +175,7 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
                     f"token_{random.randint(1, 10)}"
                 ))
             
-            # Добавляем адсеты
+          
             geos = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
             ad_names = ["Ad 1", "Ad 2", "Ad 3", "Ad 4", "Ad 5"]
             
@@ -209,115 +209,45 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
                 ))
             
             conn.commit()
-def extract_geo_from_name(name, known_geos=None):
-    """
-    Извлекает GEO код из названия адсета.
-    Всегда пытается определить страну, даже если её нет в known_geos.
-    """
+def extract_geo_from_name(name: str, known_geos: List[str] = None) -> str:
+   
     if not name:
         return 'N/A'
     
-    # Словарь для сопоставления названий стран с кодами
-    country_mapping = {
-        # Азия
-        'thailand': 'TH', 'thai': 'TH', 'тайланд': 'TH', 'тай': 'TH',
-        'indonesia': 'ID', 'indo': 'ID', 'индонезия': 'ID', 'индо': 'ID',
-        'malaysia': 'MY', 'malay': 'MY', 'малайзия': 'MY', 'малай': 'MY',
-        'singapore': 'SG', 'sing': 'SG', 'сингапур': 'SG', 'синг': 'SG',
-        'vietnam': 'VN', 'viet': 'VN', 'вьетнам': 'VN', 'вьет': 'VN',
-        'philippines': 'PH', 'phil': 'PH', 'филиппины': 'PH', 'фил': 'PH',
-        'taiwan': 'TW', 'тайвань': 'TW',
-        'hong kong': 'HK', 'гонконг': 'HK',
-        'japan': 'JP', 'japanese': 'JP', 'япония': 'JP', 'япон': 'JP',
-        'korea': 'KR', 'korean': 'KR', 'корея': 'KR', 'корей': 'KR',
-        'china': 'CN', 'chinese': 'CN', 'китай': 'CN', 'китайск': 'CN',
-        'india': 'IN', 'indian': 'IN', 'индия': 'IN', 'индийск': 'IN',
+    
+    if known_geos is None:
+        known_geos = []
+    
+  
+    standard_geos = ['US', 'UK', 'CA', 'AU', 'DE', 'FR', 'ES', 'IT', 'RU', 
+                    'JP', 'KR', 'CN', 'IN', 'MX', 'BR', 'AR', 'CO', 'PE',
+                    'CL', 'ZA', 'NG', 'EG', 'SA', 'AE', 'TR', 'PL', 'NL',
+                    'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT', 'MY', 'SG',
+                    'VN', 'TH', 'PH', 'ID']
+    
+    
+    all_geos = list(set(standard_geos + known_geos))
+    
+   
+    name_upper = name.upper()
+    
+    
+    for geo in all_geos:
         
-        # Европа
-        'germany': 'DE', 'german': 'DE', 'германия': 'DE', 'немец': 'DE',
-        'france': 'FR', 'french': 'FR', 'франция': 'FR', 'франц': 'FR',
-        'italy': 'IT', 'italian': 'IT', 'италия': 'IT', 'итальян': 'IT',
-        'spain': 'ES', 'spanish': 'ES', 'испания': 'ES', 'испан': 'ES',
-        'ukraine': 'UA', 'ukrainian': 'UA', 'украина': 'UA', 'украин': 'UA',
-        'russia': 'RU', 'russian': 'RU', 'россия': 'RU', 'русск': 'RU',
-        'poland': 'PL', 'polish': 'PL', 'польша': 'PL', 'польск': 'PL',
-        'united kingdom': 'UK', 'uk': 'UK', 'британия': 'UK', 'англия': 'UK',
-        'turkey': 'TR', 'turkish': 'TR', 'турция': 'TR', 'турецк': 'TR',
-        'netherlands': 'NL', 'dutch': 'NL', 'нидерланды': 'NL', 'голландия': 'NL',
-        
-        # Америка
-        'usa': 'US', 'united states': 'US', 'америка': 'US', 'сша': 'US',
-        'canada': 'CA', 'canadian': 'CA', 'канада': 'CA', 'канад': 'CA',
-        'brazil': 'BR', 'brazilian': 'BR', 'бразилия': 'BR', 'бразил': 'BR',
-        'mexico': 'MX', 'mexican': 'MX', 'мексика': 'MX', 'мексик': 'MX',
-        'argentina': 'AR', 'argentinian': 'AR', 'аргентина': 'AR', 'аргентин': 'AR',
-        
-        # Другие регионы
-        'australia': 'AU', 'australian': 'AU', 'австралия': 'AU', 'австрал': 'AU',
-        'new zealand': 'NZ', 'nz': 'NZ', 'новая зеландия': 'NZ',
-        'south africa': 'ZA', 'sa': 'ZA', 'южная африка': 'ZA',
-        'egypt': 'EG', 'egyptian': 'EG', 'египет': 'EG', 'египетск': 'EG',
-        'nigeria': 'NG', 'nigerian': 'NG', 'нигерия': 'NG', 'нигерий': 'NG',
-        'saudi arabia': 'SA', 'saudi': 'SA', 'саудовская аравия': 'SA',
-        'uae': 'AE', 'united arab emirates': 'AE', 'оаэ': 'AE',
-        
-        # Дополнительные часто используемые коды
-        'world': 'WW', 'global': 'WW', 'мир': 'WW', 'глобал': 'WW',
-        'europe': 'EU', 'европа': 'EU',
-        'asia': 'AS', 'азия': 'AS',
-        'america': 'AM', 'америка': 'AM',
-        'africa': 'AF', 'африка': 'AF',
-    }
+        if re.search(r'\b' + re.escape(geo) + r'\b', name_upper):
+            return geo
     
-    # Приводим название к нижнему регистру для поиска
-    name_lower = name.lower()
     
-    # Сначала ищем совпадения по названиям стран
-    for country_name, country_code in country_mapping.items():
-        if country_name in name_lower:
-            return country_code
+    for geo in all_geos:
+        if geo in name_upper:
+            
+            geo_pattern = re.compile(r'(^|[^A-Z])' + re.escape(geo) + r'($|[^A-Z])')
+            if geo_pattern.search(name_upper):
+                return geo
     
-    # Ищем паттерны с двухбуквенными кодами
-    geo_patterns = [
-        r'^([A-Z]{2})\b',       # код в начале названия
-        r'\b([A-Z]{2})[-\s_]',  # код с разделителями
-        r'[-\s_]([A-Z]{2})\b',  # код в конце
-        r'\b([A-Z]{2})\d',      # код перед цифрами
-    ]
-    
-    for pattern in geo_patterns:
-        match = re.search(pattern, name.upper())
-        if match:
-            geo_code = match.group(1)
-            if len(geo_code) == 2 and geo_code.isalpha():
-                return geo_code
-    
-    # Ищем числовые коды стран (телефонные префиксы)
-    phone_code_patterns = {
-        '66': 'TH',  # Таиланд
-        '62': 'ID',  # Индонезия
-        '60': 'MY',  # Малайзия
-        '65': 'SG',  # Сингапур
-        '84': 'VN',  # Вьетнам
-        '63': 'PH',  # Филиппины
-        '1': 'US',   # США/Канада
-        '7': 'RU',   # Россия/Казахстан
-    }
-    
-    for code, country in phone_code_patterns.items():
-        if code in name:
-            return country
-    
-    # Потом проверяем known_geos (как fallback)
-    if known_geos:
-        for geo in known_geos:
-            if geo.upper() in name.upper():
-                return geo.upper()
-    
-    # Если ничего не найдено
     return 'N/A'
 def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
-    """Возвращает конфигурацию GEO пользователя"""
+   
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -330,13 +260,12 @@ def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
             } for row in cursor.fetchall()}
 
 def get_user_geo_rules(user_id):
-    """Получает GEO правила из новой таблицы geo_rules"""
+  
     geo_rules = {}
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Проверяем существование таблицы
             cursor.execute("""
                 SELECT name FROM sqlite_master 
                 WHERE type='table' AND name='geo_rules'

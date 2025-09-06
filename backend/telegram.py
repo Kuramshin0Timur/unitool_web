@@ -6,7 +6,6 @@ from backend.setting import get_user_settings
 
 
 def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
-    """Безопасная отправка сообщения в Telegram"""
     try:
         if user_id and (not chat_id or not bot_token):
             settings = get_user_settings(user_id)

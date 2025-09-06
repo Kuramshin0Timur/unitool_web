@@ -136,6 +136,14 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -478,6 +486,15 @@
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "fcntl",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fcntl",
+        "description": "fcntl",
+        "detail": "fcntl",
         "documentation": {}
     },
     {
@@ -1038,7 +1055,7 @@
         "kind": 2,
         "importPath": "backend.account",
         "description": "backend.account",
-        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем ВСЕ аккаунты, включая невалидные\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
+        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? \n                AND account_id IS NOT NULL\n            \"\"\", (user_id,))",
         "detail": "backend.account",
         "documentation": {}
     },
@@ -1047,7 +1064,7 @@
         "kind": 2,
         "importPath": "backend.account",
         "description": "backend.account",
-        "peekOfCode": "def get_all_users() -> List[Dict[str, Any]]:\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
+        "peekOfCode": "def get_all_users() -> List[Dict[str, Any]]:\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []\ndef get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:",
         "detail": "backend.account",
         "documentation": {}
     },
@@ -1056,7 +1073,7 @@
         "kind": 2,
         "importPath": "backend.account",
         "description": "backend.account",
-        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает статистику по аккаунтам пользователя с проверкой валидности - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем только валидные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? ",
+        "peekOfCode": "def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? \n                AND account_id IS NOT NULL \n                AND account_id != 'N/A'",
         "detail": "backend.account",
         "documentation": {}
     },
@@ -1065,7 +1082,7 @@
         "kind": 2,
         "importPath": "backend.account",
         "description": "backend.account",
-        "peekOfCode": "def get_all_users():\n    \"\"\"Получает список всех пользователей\"\"\"\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []",
+        "peekOfCode": "def get_all_users():\n    try:\n        with get_db_connection() as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id, username, created_at FROM users ORDER BY created_at DESC\")\n            return [dict(row) for row in cursor.fetchall()]\n    except Exception as e:\n        logger.error(f\"Ошибка получения списка пользователей: {e}\")\n        return []\ndef get_all_accounts_stats():",
         "detail": "backend.account",
         "documentation": {}
     },
@@ -1074,7 +1091,7 @@
         "kind": 2,
         "importPath": "backend.account",
         "description": "backend.account",
-        "peekOfCode": "def get_all_accounts_stats():\n    \"\"\"Получает статистику по всем аккаунтам всех пользователей\"\"\"\n    users = get_all_users()\n    all_accounts = []\n    for user in users:\n        user_id = user['id']\n        accounts = get_user_accounts_stats(user_id)\n        for account in accounts:\n            account['user_id'] = user_id\n            account['username'] = user['username']",
+        "peekOfCode": "def get_all_accounts_stats():\n    users = get_all_users()\n    all_accounts = []\n    for user in users:\n        user_id = user['id']\n        accounts = get_user_accounts_stats(user_id)\n        for account in accounts:\n            account['user_id'] = user_id\n            account['username'] = user['username']\n            all_accounts.append(account)",
         "detail": "backend.account",
         "documentation": {}
     },
@@ -1083,7 +1100,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список адсетов пользователя с гарантированным наличием поля status\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, ",
+        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, \n                    king, effective_status, ad_name, manual_pause,",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1092,7 +1109,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет новый адсет для пользователя с поддержкой CPM\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, \n                leads, manual_pause, king, effective_status, ad_name, budget,\n                campaign_id, account_id, auto_budget_increase, auto_budget_decrease,",
+        "peekOfCode": "def add_user_adset(user_id: int, data: Dict[str, Any]):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO adsets (\n                user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, \n                leads, manual_pause, king, effective_status, ad_name, budget,\n                campaign_id, account_id, auto_budget_increase, auto_budget_decrease,\n                max_budget, min_budget, budget_increase_step, budget_decrease_step",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1101,7 +1118,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def update_user_adset_status(user_id: int, adset_id: str, status: str):\n    \"\"\"Обновляет статус адсета пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE adsets SET status = ? \n            WHERE user_id = ? AND adset_id = ?\n            \"\"\", (status, user_id, adset_id))\n            conn.commit()",
+        "peekOfCode": "def update_user_adset_status(user_id: int, adset_id: str, status: str):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE adsets SET status = ? \n            WHERE user_id = ? AND adset_id = ?\n            \"\"\", (status, user_id, adset_id))\n            conn.commit()\ndef fetch_facebook_adsets(account_id, access_token, fields=None):",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1110,7 +1127,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ адсеты из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
+        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,\n            \"limit\": 1000  ",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1119,7 +1136,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def refresh_adsets_internal(user_id):\n    \"\"\"Внутренняя функция обновления адсетов\"\"\"\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']",
+        "peekOfCode": "def refresh_adsets_internal(user_id):\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']\n        updated_count = 0",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1128,7 +1145,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL",
+        "peekOfCode": "def auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''\n            \"\"\", (user_id,))",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1137,7 +1154,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_determine_king(token: str) -> str:\n    \"\"\"Автоматически определяет KING на основе токена\"\"\"\n    if not token:\n        return \"Facebook_Default\"\n    token_lower = token.lower()\n    # Определяем платформу по характерным признакам токена\n    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):\n        return \"Facebook\"\n    elif any(x in token_lower for x in ['ig', 'instagram']):\n        return \"Instagram\" ",
+        "peekOfCode": "def auto_determine_king(token: str) -> str:\n    if not token:\n        return \"Facebook_Default\"\n    token_lower = token.lower()\n    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):\n        return \"Facebook\"\n    elif any(x in token_lower for x in ['ig', 'instagram']):\n        return \"Instagram\" \n    elif any(x in token_lower for x in ['tt', 'tiktok']):\n        return \"TikTok\"",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1146,7 +1163,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def get_combined_auto_status(user_id):\n    \"\"\"Возвращает комбинированный статус автоконтроля и автообновления\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n    # Считаем, что система работает, если работает хотя бы один компонент\n    running = auto_control_running or auto_refresh_running",
+        "peekOfCode": "def get_combined_auto_status(user_id):\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n    running = auto_control_running or auto_refresh_running\n    return {\n        'running': running,",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1155,7 +1172,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def stop_auto_control_and_refresh(user_id):\n    \"\"\"Останавливает и автоконтроль и автообновление вместе\"\"\"\n    # Останавливаем автоконтроль\n    with auto_control_lock:\n        if user_id in auto_control_threads:\n            auto_control_threads[user_id]['running'] = False\n            del auto_control_threads[user_id]\n            logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n    # Останавливаем автообновление\n    with auto_refresh_lock:",
+        "peekOfCode": "def stop_auto_control_and_refresh(user_id):\n    with auto_control_lock:\n        if user_id in auto_control_threads:\n            auto_control_threads[user_id]['running'] = False\n            del auto_control_threads[user_id]\n            logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n            del auto_refresh_timers[user_id]",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1164,7 +1181,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def get_session():\n    \"\"\"Создает и возвращает сессию requests с настройками\"\"\"\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:",
+        "peekOfCode": "def get_session():\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef start_auto_refresh(user_id, interval_minutes):\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1173,7 +1190,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запускает автообновление для пользователя\"\"\"\n    with auto_refresh_lock:\n        # Останавливаем предыдущий таймер, если есть\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        # Создаем новый таймер\n        interval_seconds = interval_minutes * 60\n        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval_minutes))\n        timer.daemon = True",
+        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        interval_seconds = interval_minutes * 60\n        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval_minutes))\n        timer.daemon = True\n        timer.start()\n        auto_refresh_timers[user_id] = timer\n        auto_control(user_id)",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1182,7 +1199,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    \"\"\"Функция автообновления данных пользователя\"\"\"\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            # Автоматически заполняем резервные токены\n            auto_populate_reserve_tokens(user_id)\n            # Получаем настройки пользователя\n            settings = get_user_settings(user_id)\n            # Обновляем кампании, если включено",
+        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            auto_populate_reserve_tokens(user_id)\n            settings = get_user_settings(user_id)\n            if settings.get('auto_refresh_campaigns', True):\n                refresh_campaigns_internal(user_id)\n            if settings.get('auto_refresh_adsets', True):\n                refresh_adsets_internal(user_id)",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1191,7 +1208,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def load_all_tokens(user_id: int) -> Dict[str, List[str]]:\n    \"\"\"Загружает все токены: основные + резервные\"\"\"\n    all_tokens = {}\n    try:\n        # Основные токены из campaigns\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Основные аккаунты\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token ",
+        "peekOfCode": "def load_all_tokens(user_id: int) -> Dict[str, List[str]]:\n    all_tokens = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1200,7 +1217,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    \"\"\"Обрабатывает контроль одного адсета\"\"\"\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')",
+        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')\n    leads = int(adset.get('leads', 0))",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1209,7 +1226,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_control(user_id):\n    \"\"\"Функция автоконтроля для работы с базой данных и резервными токенами\"\"\"\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        settings = get_user_settings(user_id)        \n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),\n                'https': settings.get('proxy')",
+        "peekOfCode": "def auto_control(user_id):\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        settings = get_user_settings(user_id)        \n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),\n                'https': settings.get('proxy')\n            }",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1218,7 +1235,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    logger.info(f\"Запуск автоконтроля для пользователя {user_id}\")\n    while True:\n        # Проверяем, должен ли автоконтроль продолжать работать\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n                break\n        try:",
+        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    logger.info(f\"Запуск автоконтроля для пользователя {user_id}\")\n    while True:\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n                break\n        try:\n            logger.info(f\"Выполнение автоконтроля для пользователя {user_id}\")",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1227,7 +1244,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"\n    settings = get_user_settings(user_id)\n    interval = settings.get('auto_refresh_interval', 5)\n    # Запускаем автоконтроль\n    with auto_control_lock:\n        if user_id not in auto_control_threads:\n            auto_control_threads[user_id] = {\n                'running': True,\n                'thread': threading.Thread(",
+        "peekOfCode": "def start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"\n    settings = get_user_settings(user_id)\n    interval = settings.get('auto_refresh_interval', 5)\n    with auto_control_lock:\n        if user_id not in auto_control_threads:\n            auto_control_threads[user_id] = {\n                'running': True,\n                'thread': threading.Thread(\n                    target=run_auto_control_for_user,",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1236,7 +1253,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns",
+        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token ",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1245,7 +1262,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"",
+        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1254,7 +1271,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token ",
+        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1263,7 +1280,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автоматически заполняет резервные токены из основных аккаунтов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
+        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1272,7 +1289,7 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    \"\"\"Обновляет бюджет адсета пользователя в базе данных\"\"\"\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))",
+        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))\n                conn.commit()",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1281,7 +1298,7 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:\n    \"\"\"Получает настройки авто-бюджета для адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT auto_budget_increase, auto_budget_decrease, \n                       max_budget, min_budget, budget_increase_step, \n                       budget_decrease_step\n                FROM adsets ",
+        "peekOfCode": "def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT auto_budget_increase, auto_budget_decrease, \n                       max_budget, min_budget, budget_increase_step, \n                       budget_decrease_step\n                FROM adsets \n                WHERE user_id = ? AND adset_id = ?",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1290,7 +1307,7 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:\n    \"\"\"Обновляет настройки авто-бюджета для адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE adsets \n                SET auto_budget_increase = ?, auto_budget_decrease = ?,\n                    max_budget = ?, min_budget = ?, budget_increase_step = ?,\n                    budget_decrease_step = ?, updated_at = CURRENT_TIMESTAMP",
+        "peekOfCode": "def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE adsets \n                SET auto_budget_increase = ?, auto_budget_decrease = ?,\n                    max_budget = ?, min_budget = ?, budget_increase_step = ?,\n                    budget_decrease_step = ?, updated_at = CURRENT_TIMESTAMP\n                WHERE user_id = ? AND adset_id = ?",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1299,7 +1316,7 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает адсеты для авто-бюджета с токенами\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT a.*, c.token \n                FROM adsets a\n                LEFT JOIN campaigns c ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id\n                WHERE a.user_id = ? AND a.status = 'ACTIVE'",
+        "peekOfCode": "def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT a.*, c.token \n                FROM adsets a\n                LEFT JOIN campaigns c ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id\n                WHERE a.user_id = ? AND a.status = 'ACTIVE'\n                AND (a.auto_budget_increase = 1 OR a.auto_budget_decrease = 1)",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1308,7 +1325,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    \"\"\"Добавляет соответствие между Facebook и Keitaro\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)\n            VALUES (?, ?, ?, ?, ?)",
+        "peekOfCode": "def add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)\n            VALUES (?, ?, ?, ?, ?)\n            \"\"\", (user_id, fb_campaign_id, keitaro_key, campaign_name, match_type))",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1317,7 +1334,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def update_campaign_stats(user_id, campaign_id, spend=None, leads=None, cpa=None, cpc=None, ucpc=None):\n    \"\"\"Обновляет статистику кампании с CPC из Facebook\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            updates = []\n            params = {'user_id': user_id, 'campaign_id': campaign_id}\n            if spend is not None:\n                updates.append(\"spend = :spend\")\n                params['spend'] = spend",
+        "peekOfCode": "def update_campaign_stats(user_id, campaign_id, spend=None, leads=None, cpa=None, cpc=None, ucpc=None):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            updates = []\n            params = {'user_id': user_id, 'campaign_id': campaign_id}\n            if spend is not None:\n                updates.append(\"spend = :spend\")\n                params['spend'] = spend\n            if leads is not None:",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1326,7 +1343,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def add_user_campaign(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет кампанию с проверкой данных\"\"\"\n    required_fields = {\n        'king': str,\n        'name': str,\n        'status': str,\n        'campaign_id': str,\n        'account_id': str\n    }\n    # Проверяем обязательные поля",
+        "peekOfCode": "def add_user_campaign(user_id: int, data: Dict[str, Any]):\n    required_fields = {\n        'king': str,\n        'name': str,\n        'status': str,\n        'campaign_id': str,\n        'account_id': str\n    }\n    for field, field_type in required_fields.items():\n        if field not in data:",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1335,7 +1352,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает список кампаний пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM campaigns WHERE user_id = ?\", (user_id,))\n            return [dict(row) for row in cursor.fetchall()]\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:",
+        "peekOfCode": "def get_user_campaigns(user_id: int) -> List[Dict[str, Any]]:\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM campaigns WHERE user_id = ?\", (user_id,))\n            return [dict(row) for row in cursor.fetchall()]\ndef fetch_facebook_campaigns(account_id, access_token, fields=None):\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1344,7 +1361,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    \"\"\"Получает ВСЕ кампании из Facebook API (включая неактивные)\"\"\"\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,",
+        "peekOfCode": "def fetch_facebook_campaigns(account_id, access_token, fields=None):\n    if fields is None:\n        fields = \"id,name,status,effective_status,daily_budget,objective,start_time,stop_time\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/campaigns\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,\n            \"limit\": 1000  ",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1353,7 +1370,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def refresh_campaigns_internal(user_id):\n    \"\"\"Внутренняя функция обновления кампаний\"\"\"\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']\n        for account_id, token in accounts.items():\n            fb_campaigns = fetch_facebook_campaigns(account_id, token)",
+        "peekOfCode": "def refresh_campaigns_internal(user_id):\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']\n        for account_id, token in accounts.items():\n            fb_campaigns = fetch_facebook_campaigns(account_id, token)\n            for campaign in fb_campaigns:",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1362,7 +1379,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def update_user_campaign_status(user_id: int, campaign_id: str, status: str):\n    \"\"\"Обновляет статус кампании пользователя\"\"\"\n    with fcntl.flock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE campaigns SET status = ? \n            WHERE user_id = ? AND campaign_id = ?\n            \"\"\", (status, user_id, campaign_id))\n            conn.commit()",
+        "peekOfCode": "def update_user_campaign_status(user_id: int, campaign_id: str, status: str):\n    with fcntl.flock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE campaigns SET status = ? \n            WHERE user_id = ? AND campaign_id = ?\n            \"\"\", (status, user_id, campaign_id))\n            conn.commit()\ndef check_and_pause_campaigns(user_id):",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1371,7 +1388,7 @@
         "kind": 2,
         "importPath": "backend.campaign",
         "description": "backend.campaign",
-        "peekOfCode": "def check_and_pause_campaigns(user_id):\n    \"\"\"Проверяет и отключает кампании, если все их адсеты отключены\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Находим кампании, где все адсеты отключены\n            cursor.execute(\"\"\"\n            SELECT c.campaign_id, c.name, c.token, c.account_id\n            FROM campaigns c\n            WHERE c.user_id = ? AND c.status = 'ACTIVE'",
+        "peekOfCode": "def check_and_pause_campaigns(user_id):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            SELECT c.campaign_id, c.name, c.token, c.account_id\n            FROM campaigns c\n            WHERE c.user_id = ? AND c.status = 'ACTIVE'\n            AND NOT EXISTS (\n                SELECT 1 FROM adsets a ",
         "detail": "backend.campaign",
         "documentation": {}
     },
@@ -1380,7 +1397,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def add_user_geo_config(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет или обновляет конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            data['user_id'] = user_id\n            cursor.execute(\"\"\"\n            SELECT id FROM geo_config \n            WHERE user_id = ? AND geo_code = ?\n            \"\"\", (user_id, data['geo_code']))",
+        "peekOfCode": "def add_user_geo_config(user_id: int, data: Dict[str, Any]):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            data['user_id'] = user_id\n            cursor.execute(\"\"\"\n            SELECT id FROM geo_config \n            WHERE user_id = ? AND geo_code = ?\n            \"\"\", (user_id, data['geo_code']))\n            exists = cursor.fetchone()",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1389,7 +1406,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"\n    Извлекает GEO код из названия адсета.\n    Всегда пытается определить страну, даже если её нет в known_geos.\n    \"\"\"\n    if not name:\n        return 'N/A'\n    # Словарь для сопоставления названий стран с кодами\n    country_mapping = {\n        # Азия",
+        "peekOfCode": "def extract_geo_from_name(name: str, known_geos: List[str] = None) -> str:\n    if not name:\n        return 'N/A'\n    if known_geos is None:\n        known_geos = []\n    standard_geos = ['US', 'UK', 'CA', 'AU', 'DE', 'FR', 'ES', 'IT', 'RU', \n                    'JP', 'KR', 'CN', 'IN', 'MX', 'BR', 'AR', 'CO', 'PE',\n                    'CL', 'ZA', 'NG', 'EG', 'SA', 'AE', 'TR', 'PL', 'NL',\n                    'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT', 'MY', 'SG',\n                    'VN', 'TH', 'PH', 'ID']",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1398,7 +1415,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    \"\"\"Возвращает конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],",
+        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],\n                'cpa_orange': row['cpa_orange']",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1407,7 +1424,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def get_user_geo_rules(user_id):\n    \"\"\"Получает GEO правила из новой таблицы geo_rules\"\"\"\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='geo_rules'",
+        "peekOfCode": "def get_user_geo_rules(user_id):\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='geo_rules'\n            \"\"\")\n            table_exists = cursor.fetchone()",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1416,7 +1433,7 @@
         "kind": 2,
         "importPath": "backend.keitaro",
         "description": "backend.keitaro",
-        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro.\n    Считает лиды по формуле Spend / CPA.\n    Берёт CPC и UCPC из Keitaro.\n    Группировка только по sub_id_9 (название адсета).\n    \"\"\"\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}",
+        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n    metrics = [\"ucpc\", \"cpc\", \"conversions\", \"cost\", \"cpa\"]\n    limit = 250\n    offset = 0\n    all_rows = []\n    try:\n        while True:",
         "detail": "backend.keitaro",
         "documentation": {}
     },
@@ -1425,7 +1442,7 @@
         "kind": 2,
         "importPath": "backend.limits",
         "description": "backend.limits",
-        "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    \"\"\"Получает информацию о лимитах аккаунта из Facebook API\"\"\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }",
+        "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }\n        response = requests.get(url, params=params, timeout=30)",
         "detail": "backend.limits",
         "documentation": {}
     },
@@ -1497,7 +1514,7 @@
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Возвращает резервные токены в формате для таблицы для конкретного пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы reserve_tokens\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")",
+        "peekOfCode": "def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Возвращает резервные токены в формате для таблицы для конкретного пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")\n            table_exists = cursor.fetchone()",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1506,7 +1523,7 @@
         "kind": 2,
         "importPath": "backend.setting",
         "description": "backend.setting",
-        "peekOfCode": "def update_user_settings(user_id, data):\n    \"\"\"Обновляет настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование записи\n            cursor.execute(\"SELECT id FROM settings WHERE user_id = ?\", (user_id,))\n            settings_exists = cursor.fetchone()\n            if settings_exists:\n                # Обновляем существующую запись",
+        "peekOfCode": "def update_user_settings(user_id, data):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id FROM settings WHERE user_id = ?\", (user_id,))\n            settings_exists = cursor.fetchone()\n            if settings_exists:\n                cursor.execute(\"\"\"\n                    UPDATE settings SET\n                        sync_api_key = ?, proxy = ?, use_proxy = ?,",
         "detail": "backend.setting",
         "documentation": {}
     },
@@ -1515,7 +1532,7 @@
         "kind": 2,
         "importPath": "backend.setting",
         "description": "backend.setting",
-        "peekOfCode": "def get_default_settings():\n    \"\"\"Возвращает настройки по умолчанию\"\"\"\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 5,\n        'telegram_bot_token': '',",
+        "peekOfCode": "def get_default_settings():\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 5,\n        'telegram_bot_token': '',\n        'telegram_chat_id': '',",
         "detail": "backend.setting",
         "documentation": {}
     },
@@ -1524,7 +1541,7 @@
         "kind": 2,
         "importPath": "backend.setting",
         "description": "backend.setting",
-        "peekOfCode": "def get_user_settings(user_id):\n    \"\"\"Получает настройки пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    sync_api_key, proxy, use_proxy, auto_refresh_campaigns, \n                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, \n                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,",
+        "peekOfCode": "def get_user_settings(user_id):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    sync_api_key, proxy, use_proxy, auto_refresh_campaigns, \n                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, \n                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,\n                    auto_headline_optimization, headline_optimization_interval,",
         "detail": "backend.setting",
         "documentation": {}
     },
@@ -1533,7 +1550,7 @@
         "kind": 2,
         "importPath": "backend.telegram",
         "description": "backend.telegram",
-        "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    \"\"\"Безопасная отправка сообщения в Telegram\"\"\"\n    try:\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")\n            return False",
+        "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    try:\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")\n            return False\n        url = f\"https://api.telegram.org/bot{bot_token}/sendMessage\"",
         "detail": "backend.telegram",
         "documentation": {}
     },
@@ -1542,7 +1559,16 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\n# app.py - добавьте этот endpoint\n@app.route('/api/auto_populate_reserve_tokens', methods=['POST'])",
+        "peekOfCode": "def login_required(f):\n    \"\"\"Декоратор для проверки аутентификации пользователя\"\"\"\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user_id' not in session:\n            return redirect(url_for('login', next=request.url))\n        return f(*args, **kwargs)\n    return decorated_function\n@app.route('/api/adsets/update_geo', methods=['POST'])\n@login_required",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "update_adsets_geo",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_adsets_geo():\n    \"\"\"Принудительно обновляет GEO для всех адсетов\"\"\"\n    try:\n        user_id = session['user_id']\n        # Получаем правила GEO\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        # Добавляем стандартные GEO коды\n        standard_geos = ['US', 'UK', 'CA', 'AU', 'DE', 'FR', 'ES', 'IT', 'RU', \n                        'JP', 'KR', 'CN', 'IN', 'MX', 'BR', 'AR', 'CO', 'PE',",
         "detail": "app",
         "documentation": {}
     },

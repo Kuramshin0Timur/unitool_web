@@ -1,8 +1,6 @@
-// handsontable-init.js
 document.addEventListener('DOMContentLoaded', function() {
     let hot;
     
-    // 1. Загрузка существующих данных из БД
     loadExistingAccounts();
     
     function loadExistingAccounts() {
@@ -10,18 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.success && data.accounts && data.accounts.length > 0) {
-                    // Преобразуем данные из БД в формат для таблицы
                     const tableData = data.accounts.map(account => [
                         account.account_id || '',
                         account.token || ''
                     ]);
                     
-                    // Добавляем пустую строку для новых записей
                     tableData.push(['', '']);
                     
                     initHandsontable(tableData);
                 } else {
-                    // Если данных нет, инициализируем с пустой таблицей
                     initHandsontable([['', '']]);
                 }
             })
@@ -48,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (!value || value.toString().trim() === '') {
                             callback(true);
                         } else {
-                            // Разрешаем как с act_, так и без
                             const cleanValue = value.toString().replace('act_', '');
                             const isValid = /^\d+$/.test(cleanValue);
                             callback(isValid);
@@ -92,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data[row] && data[row][col]) {
                     const value = data[row][col].toString();
                     
-                    // Подсветка ID аккаунта
                     if (col === 0 && value && value !== '') {
                         const cleanValue = value.replace('act_', '');
                         if (!/^\d+$/.test(cleanValue)) {
@@ -100,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                     
-                    // Подсветка токена
                     if (col === 1 && value && value !== '') {
                         if (!value.includes('EAAG') && !value.includes('EAAN')) {
                             cellProperties.className = 'invalid-cell';
@@ -112,13 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 2. Кнопка добавления строки
         document.getElementById('addRowBtn')?.addEventListener('click', function() {
             hot.alter('insert_row');
             validateAndHighlightRows();
         });
 
-        // 3. Кнопка очистки
         document.getElementById('clearBtn')?.addEventListener('click', function() {
             if (confirm('Очистить всю таблицу? Все данные будут удалены.')) {
                 hot.loadData([['', '']]);
@@ -126,11 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 4. Кнопка сохранения
         document.getElementById('saveData')?.addEventListener('click', function() {
             const data = hot.getData();
             
-            // Фильтруем пустые строки - только те, где оба поля заполнены
             const filteredData = data.filter(row => 
                 row[0] && row[0].toString().trim() !== '' && 
                 row[1] && row[1].toString().trim() !== ''
@@ -141,13 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Показываем индикатор загрузки
             const saveBtn = document.getElementById('saveData');
             const originalText = saveBtn.innerHTML;
             saveBtn.disabled = true;
             saveBtn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Сохранение...';
 
-            // Подготавливаем данные для отправки в правильном формате
             const accountsToSave = filteredData.map(row => ({
                 account_id: row[0].toString().trim().replace('act_', ''),
                 token: row[1].toString().trim()
@@ -180,11 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         showConfirmButton: true
                     });
                     
-                    // Очищаем таблицу и оставляем одну пустую строку
                     hot.loadData([['', '']]);
                     validateAndHighlightRows();
                     
-                    // Обновляем другие таблицы на странице, если они есть
                     if (typeof window.campaignsTable !== 'undefined') {
                         setTimeout(() => window.campaignsTable.ajax.reload(null, false), 2000);
                     }
@@ -214,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // 5. Кнопка тестирования соединения
         document.getElementById('testConnection')?.addEventListener('click', function() {
             const data = hot.getData();
             const filteredData = data.filter(row => 
@@ -273,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // 6. Стили для валидации и анимации
         const style = document.createElement('style');
         style.textContent = `
             .invalid-cell {
@@ -303,7 +285,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.head.appendChild(style);
 
-        // 7. Инициализация валидации
         validateAndHighlightRows();
     }
 
@@ -318,7 +299,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data[row] && data[row][col]) {
                     const value = data[row][col].toString();
                     
-                    // Подсветка ID аккаунта
                     if (col === 0 && value && value !== '') {
                         const cleanValue = value.replace('act_', '');
                         if (!/^\d+$/.test(cleanValue)) {
@@ -326,7 +306,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                     
-                    // Подсветка токена
                     if (col === 1 && value && value !== '') {
                         if (!value.includes('EAAG') && !value.includes('EAAN')) {
                             cellProperties.className = 'invalid-cell';
@@ -339,7 +318,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 8. Кнопка обновления данных из БД
     document.getElementById('refreshBtn')?.addEventListener('click', function() {
         const btn = document.getElementById('refreshBtn');
         const originalText = btn.innerHTML;

@@ -4,12 +4,8 @@ import requests
 
 
 def fetch_keitaro_report(api_key, domain, interval="today"):
-    """
-    Получает отчет из Keitaro.
-    Считает лиды по формуле Spend / CPA.
-    Берёт CPC и UCPC из Keitaro.
-    Группировка только по sub_id_9 (название адсета).
-    """
+    
+  
     logger = logging.getLogger(__name__)
     url = f"https://{domain}/admin_api/v1/report/build"
     headers = {"Api-Key": api_key, "Content-Type": "application/json"}
