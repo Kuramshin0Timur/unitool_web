@@ -1,3 +1,4 @@
+import logging
 import time
 from typing import Any, Dict, List
 
@@ -7,7 +8,6 @@ from backend.campaign import get_user_campaigns
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
 from database import get_db_connection, lock
 
-import logging
 logger = logging.getLogger(__name__)
 
 def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:

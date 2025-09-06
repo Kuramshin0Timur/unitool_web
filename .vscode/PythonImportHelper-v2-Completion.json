@@ -329,6 +329,22 @@
         "documentation": {}
     },
     {
+        "label": "lock",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "get_db_connection",
         "importPath": "database",
         "description": "database",
@@ -676,6 +692,22 @@
         "documentation": {}
     },
     {
+        "label": "sync_keitaro",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "isExtraImport": true,
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_keitaro_report",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "isExtraImport": true,
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
         "label": "get_reserve_tokens",
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
@@ -689,6 +721,14 @@
         "description": "backend.reserve_tokens",
         "isExtraImport": true,
         "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_settings",
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "isExtraImport": true,
+        "detail": "backend.setting",
         "documentation": {}
     },
     {
@@ -917,14 +957,6 @@
         "description": "backend.budget",
         "isExtraImport": true,
         "detail": "backend.budget",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_keitaro_report",
-        "importPath": "backend.keitaro",
-        "description": "backend.keitaro",
-        "isExtraImport": true,
-        "detail": "backend.keitaro",
         "documentation": {}
     },
     {
@@ -1402,11 +1434,20 @@
         "documentation": {}
     },
     {
+        "label": "sync_keitaro",
+        "kind": 2,
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "peekOfCode": "def sync_keitaro(user_id: int):\n    \"\"\"Обновляет метрики адсетов из Keitaro\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        api_key = settings.get(\"keitaro_api_key\")\n        domain = settings.get(\"keitaro_domain\")\n        if not api_key or not domain:\n            return 0\n        report = fetch_keitaro_report(api_key, domain, interval=\"today\")\n        rows = report.get(\"rows\", [])",
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
         "label": "fetch_keitaro_report",
         "kind": 2,
         "importPath": "backend.keitaro",
         "description": "backend.keitaro",
-        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n    metrics = [\"ucpc\", \"cpc\", \"conversions\", \"cost\", \"cpa\"]\n    limit = 250\n    offset = 0\n    all_rows = []\n    try:\n        while True:",
+        "peekOfCode": "def fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    \"\"\"\n    Получает отчет из Keitaro для адсетов.\n    Возвращает метрики: uCPC, CPC, CPA, Leads, Spend.\n    \"\"\"\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n    metrics = [\"ucpc\", \"cpc\", \"conversions\", \"cost\"]  # ⚠️ CPA убрал, считаем сами\n    limit = 250\n    offset = 0",
         "detail": "backend.keitaro",
         "documentation": {}
     },
@@ -1415,7 +1456,7 @@
         "kind": 5,
         "importPath": "backend.keitaro",
         "description": "backend.keitaro",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n    metrics = [\"ucpc\", \"cpc\", \"conversions\", \"cost\", \"cpa\"]\n    limit = 250\n    offset = 0\n    all_rows = []\n    try:",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nfrom backend.setting import get_user_settings\nfrom database import get_db_connection, lock\ndef sync_keitaro(user_id: int):\n    \"\"\"Обновляет метрики адсетов из Keitaro\"\"\"\n    try:\n        settings = get_user_settings(user_id)\n        api_key = settings.get(\"keitaro_api_key\")\n        domain = settings.get(\"keitaro_domain\")\n        if not api_key or not domain:",
         "detail": "backend.keitaro",
         "documentation": {}
     },

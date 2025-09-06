@@ -11,6 +11,7 @@ from backend.campaign import (check_and_pause_campaigns,
                               refresh_campaigns_internal)
 from backend.geo_config import (extract_geo_from_name, get_user_geo_config,
                                 get_user_geo_rules)
+from backend.keitaro import sync_keitaro
 from backend.reserve_tokens import get_reserve_tokens
 from backend.setting import get_user_settings
 from backend.telegram import send_telegram_message
@@ -404,7 +405,7 @@ def auto_control(user_id):
     
         known_geos = list(geo_rules.keys()) if geo_rules else []
 
-        reserve_tokens = load_reserve_tokens(user_id)
+        reserve_tokens = load_all_tokens(user_id)
         
        
         adsets = get_user_adsets(user_id)
