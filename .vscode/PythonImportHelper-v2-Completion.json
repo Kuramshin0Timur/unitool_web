@@ -1,5 +1,14 @@
 [
     {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -129,14 +138,6 @@
     },
     {
         "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -237,94 +238,6 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "venv",
-        "description": "venv",
-        "isExtraImport": true,
-        "detail": "venv",
         "documentation": {}
     },
     {
@@ -486,23 +399,6 @@
         "importPath": "time",
         "description": "time",
         "detail": "time",
-        "documentation": {}
-    },
-    {
-        "label": "fcntl",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "fcntl",
-        "description": "fcntl",
-        "detail": "fcntl",
-        "documentation": {}
-    },
-    {
-        "label": "flock",
-        "importPath": "fcntl",
-        "description": "fcntl",
-        "isExtraImport": true,
-        "detail": "fcntl",
         "documentation": {}
     },
     {
@@ -764,11 +660,35 @@
         "documentation": {}
     },
     {
+        "label": "refresh_adsets_internal",
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "isExtraImport": true,
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
         "label": "update_user_adset_status",
         "importPath": "backend.adsets",
         "description": "backend.adsets",
         "isExtraImport": true,
         "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_token_accounts",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
         "documentation": {}
     },
     {
@@ -828,6 +748,15 @@
         "documentation": {}
     },
     {
+        "label": "fcntl",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fcntl",
+        "description": "fcntl",
+        "detail": "fcntl",
+        "documentation": {}
+    },
+    {
         "label": "re",
         "kind": 6,
         "isExtraImport": true,
@@ -837,12 +766,19 @@
         "documentation": {}
     },
     {
-        "label": "logging",
-        "kind": 6,
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
         "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
+        "detail": "venv",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "venv",
+        "description": "venv",
+        "isExtraImport": true,
+        "detail": "venv",
         "documentation": {}
     },
     {
@@ -992,14 +928,6 @@
         "documentation": {}
     },
     {
-        "label": "get_reserve_token_accounts",
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "isExtraImport": true,
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
         "label": "datetime",
         "kind": 6,
         "isExtraImport": true,
@@ -1096,6 +1024,15 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.account",
+        "description": "backend.account",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? \n                AND account_id IS NOT NULL",
+        "detail": "backend.account",
+        "documentation": {}
+    },
+    {
         "label": "get_user_adsets",
         "kind": 2,
         "importPath": "backend.adsets",
@@ -1137,6 +1074,15 @@
         "importPath": "backend.adsets",
         "description": "backend.adsets",
         "peekOfCode": "def refresh_adsets_internal(user_id):\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']\n        updated_count = 0",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, ",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1249,6 +1195,15 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
         "label": "auto_control_threads",
         "kind": 5,
         "importPath": "backend.autocontrol",
@@ -1317,6 +1272,15 @@
         "importPath": "backend.budget",
         "description": "backend.budget",
         "peekOfCode": "def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT a.*, c.token \n                FROM adsets a\n                LEFT JOIN campaigns c ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id\n                WHERE a.user_id = ? AND a.status = 'ACTIVE'\n                AND (a.auto_budget_increase = 1 OR a.auto_budget_decrease = 1)",
+        "detail": "backend.budget",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.budget",
+        "description": "backend.budget",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1393,11 +1357,20 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef add_campaign_mapping(user_id: int, fb_campaign_id: str, keitaro_key: str, \n                        campaign_name: str = \"\", match_type: str = \"\"):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            INSERT OR REPLACE INTO campaign_mapping \n            (user_id, facebook_campaign_id, keitaro_key, campaign_name, match_type)\n            VALUES (?, ?, ?, ?, ?)",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
         "label": "add_user_geo_config",
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def add_user_geo_config(user_id: int, data: Dict[str, Any]):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            data['user_id'] = user_id\n            cursor.execute(\"\"\"\n            SELECT id FROM geo_config \n            WHERE user_id = ? AND geo_code = ?\n            \"\"\", (user_id, data['geo_code']))\n            exists = cursor.fetchone()",
+        "peekOfCode": "def add_user_geo_config(user_id: int, data: Dict[str, Any]):\n    \"\"\"Добавляет или обновляет конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            data['user_id'] = user_id\n            cursor.execute(\"\"\"\n            SELECT id FROM geo_config \n            WHERE user_id = ? AND geo_code = ?\n            \"\"\", (user_id, data['geo_code']))",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1406,7 +1379,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def extract_geo_from_name(name: str, known_geos: List[str] = None) -> str:\n    if not name:\n        return 'N/A'\n    if known_geos is None:\n        known_geos = []\n    standard_geos = ['US', 'UK', 'CA', 'AU', 'DE', 'FR', 'ES', 'IT', 'RU', \n                    'JP', 'KR', 'CN', 'IN', 'MX', 'BR', 'AR', 'CO', 'PE',\n                    'CL', 'ZA', 'NG', 'EG', 'SA', 'AE', 'TR', 'PL', 'NL',\n                    'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT', 'MY', 'SG',\n                    'VN', 'TH', 'PH', 'ID']",
+        "peekOfCode": "def extract_geo_from_name(name, known_geos=None):\n    \"\"\"\n    Извлекает GEO код из названия адсета.\n    Всегда пытается определить страну, даже если её нет в known_geos.\n    \"\"\"\n    if not name:\n        return 'N/A'\n    country_mapping = {\n        # Азия\n        'thailand': 'TH', 'thai': 'TH', 'тайланд': 'TH', 'тай': 'TH',",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1415,7 +1388,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],\n                'cpa_orange': row['cpa_orange']",
+        "peekOfCode": "def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:\n    \"\"\"Возвращает конфигурацию GEO пользователя\"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT * FROM geo_config WHERE user_id = ?\", (user_id,))\n            return {row['geo_code']: {\n                'spend_zero_leads': row['spend_zero_leads'],\n                'cpa_red': row['cpa_red'],\n                'cpa_green': row['cpa_green'],",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1424,7 +1397,7 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def get_user_geo_rules(user_id):\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='geo_rules'\n            \"\"\")\n            table_exists = cursor.fetchone()",
+        "peekOfCode": "def get_user_geo_rules(user_id):\n    \"\"\"Получает GEO правила из новой таблицы geo_rules\"\"\"\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='geo_rules'\n            \"\"\")",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -1438,11 +1411,29 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef fetch_keitaro_report(api_key, domain, interval=\"today\"):\n    logger = logging.getLogger(__name__)\n    url = f\"https://{domain}/admin_api/v1/report/build\"\n    headers = {\"Api-Key\": api_key, \"Content-Type\": \"application/json\"}\n    metrics = [\"ucpc\", \"cpc\", \"conversions\", \"cost\", \"cpa\"]\n    limit = 250\n    offset = 0\n    all_rows = []\n    try:",
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
         "label": "get_account_limits_info",
         "kind": 2,
         "importPath": "backend.limits",
         "description": "backend.limits",
         "peekOfCode": "def get_account_limits_info(account_id, access_token):\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }\n        response = requests.get(url, params=params, timeout=30)",
+        "detail": "backend.limits",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.limits",
+        "description": "backend.limits",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_account_limits_info(account_id, access_token):\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}\"\n        params = {\n            'fields': 'id,name,account_status,amount_spent,balance,spend_cap,daily_spend_limit,'\n                     'adtrust_dsl,min_daily_budget,min_campaign_group_spend_cap',\n            'access_token': access_token\n        }",
         "detail": "backend.limits",
         "documentation": {}
     },
@@ -1519,6 +1510,15 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef add_reserve_token(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Добавляет резервный токен в базу данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_tokens (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
         "label": "update_user_settings",
         "kind": 2,
         "importPath": "backend.setting",
@@ -1546,11 +1546,29 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.setting",
+        "description": "backend.setting",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef update_user_settings(user_id, data):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"SELECT id FROM settings WHERE user_id = ?\", (user_id,))\n            settings_exists = cursor.fetchone()\n            if settings_exists:\n                cursor.execute(\"\"\"\n                    UPDATE settings SET",
+        "detail": "backend.setting",
+        "documentation": {}
+    },
+    {
         "label": "send_telegram_message",
         "kind": 2,
         "importPath": "backend.telegram",
         "description": "backend.telegram",
         "peekOfCode": "def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    try:\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")\n            return False\n        url = f\"https://api.telegram.org/bot{bot_token}/sendMessage\"",
+        "detail": "backend.telegram",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.telegram",
+        "description": "backend.telegram",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):\n    try:\n        if user_id and (not chat_id or not bot_token):\n            settings = get_user_settings(user_id)\n            chat_id = chat_id or settings.get('telegram_chat_id')\n            bot_token = bot_token or settings.get('telegram_bot_token')\n        if not chat_id or not bot_token:\n            logger.debug(\"Telegram не настроен — пропуск отправки\")\n            return False",
         "detail": "backend.telegram",
         "documentation": {}
     },
@@ -2675,7 +2693,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def check_balance_api():\n    \"\"\"Проверка баланса аккаунтов\"\"\"\n    try:\n        user_id = session['user_id']\n        warnings = check_account_balance_sufficiency(user_id)\n        # Убедитесь, что возвращаете правильный JSON\n        return jsonify({\n            'success': True,\n            'warnings': warnings,\n            'count': len(warnings)",
+        "peekOfCode": "def check_balance_api():\n    \"\"\"Проверка баланса аккаунтов\"\"\"\n    try:\n        user_id = session['user_id']\n        warnings = check_account_balance_sufficiency(user_id)\n        return jsonify({\n            'success': True,\n            'warnings': warnings,\n            'count': len(warnings)\n        })",
         "detail": "app",
         "documentation": {}
     },
@@ -2729,7 +2747,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_auto_refresh_status(user_id):\n    \"\"\"Возвращает статус автообновления\"\"\"\n    with auto_refresh_lock:\n        is_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n        return {\n            'running': is_running,\n            'interval': interval,\n            'next_refresh': None  # Можно добавить расчет времени следующего обновления",
+        "peekOfCode": "def get_auto_refresh_status(user_id):\n    \"\"\"Возвращает статус автообновления\"\"\"\n    with auto_refresh_lock:\n        is_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n        return {\n            'running': is_running,\n            'interval': interval,\n            'next_refresh': None  #",
         "detail": "app",
         "documentation": {}
     },

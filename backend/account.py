@@ -1,7 +1,9 @@
+import logging
 from typing import Any, Dict, List
-from venv import logger
 
 from database import get_db_connection
+
+logger = logging.getLogger(__name__)
 
 
 def get_user_accounts_stats(user_id: int) -> List[Dict[str, Any]]:

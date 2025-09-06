@@ -14,7 +14,8 @@ from fuzzywuzzy import fuzz, process
 
 from backend.account import get_all_users, get_user_accounts_stats
 from backend.adsets import (add_user_adset, fetch_facebook_adsets,
-                            get_user_adsets, update_user_adset_status)
+                            get_user_adsets, refresh_adsets_internal,
+                            update_user_adset_status)
 from backend.autocontrol import (auto_control, auto_refresh_lock,
                                  auto_refresh_timers, get_combined_auto_status,
                                  start_auto_control_and_refresh,
@@ -4493,11 +4494,13 @@ def save_and_sync():
                     ad_name = ad.get("name", "")
                     adset_id = ad.get("id", "")
                     camp_id = ad.get("campaign_id", "")
+                    from backend.geo_config import (extract_geo_from_name,
+                                                    get_user_geo_rules)
 
                     stats = keitaro_data_by_name.get(ad_name, {})
 
                     budget = float(ad.get("daily_budget", 0)) / 100 if ad.get("daily_budget") else 0
-
+                    geo = extract_geo_from_name(ad_name)
                     add_user_adset(user_id, {
                         "name": ad_name,
                         "adset_id": adset_id,
@@ -4515,7 +4518,8 @@ def save_and_sync():
                         "king": "Facebook",
                         "effective_status": ad.get("effective_status", ""),
                         "ad_name": ad_name,
-                        "manual_pause": 0
+                        "manual_pause": 0,
+                        "geo": geo 
                     })
 
                     if stats:
@@ -4524,11 +4528,10 @@ def save_and_sync():
                     total_adsets += 1
 
                 saved_accounts += 1
-
+            
             except requests.exceptions.RequestException as e:
                 logger.warning(f"Ошибка сети для аккаунта {account_id}: {e}")
                 continue
-
         return jsonify({
             "success": True,
             "saved_accounts": saved_accounts,
@@ -4830,7 +4833,7 @@ def pause_adset_api():
         else:
             error_msg = result.get('error', {}).get('message', 'Unknown error')
             raise Exception(f"Facebook API error: {error_msg}")
-            
+
     except Exception as e:
         logger.error(f"Ошибка отключения AdSet «{data.get('name', 'unknown')}»: {e}")
         return jsonify({'success': False, 'error': str(e)})
@@ -4880,7 +4883,6 @@ def check_balance_api():
         user_id = session['user_id']
         warnings = check_account_balance_sufficiency(user_id)
         
-        # Убедитесь, что возвращаете правильный JSON
         return jsonify({
             'success': True,
             'warnings': warnings,
@@ -5009,11 +5011,8 @@ def get_auto_refresh_status(user_id):
         return {
             'running': is_running,
             'interval': interval,
-            'next_refresh': None  # Можно добавить расчет времени следующего обновления
+            'next_refresh': None  #
         }
-
-# Добавьте эти функции в app.py
-
 @app.route('/api/auto_budget/run', methods=['POST'])
 @login_required
 def run_auto_budget():

@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let adsetsData = [];
     let selectedAdsets = new Set();
     
-    // Инициализация DataTable с фиксированными заголовками
+   
     initDataTable();
     
-    // Загрузка данных
+  
     loadAdsets();
     setupEventListeners();
     
@@ -17,7 +17,7 @@ function initDataTable() {
         return;
     }
     
-    // Убедимся, что таблица уничтожена перед созданием новой
+    
     if ($.fn.DataTable.isDataTable('#adsetsTable')) {
         window.adsetsTable.destroy();
         $('#adsetsTable').empty();
@@ -28,80 +28,80 @@ function initDataTable() {
             header: true,
             footer: false
         },
-        order: [[6, 'desc']], // Сортировка по Spend (теперь это колонка 6)
+        order: [[6, 'desc']], 
         columns: [
-            { // 0: Чекбокс
+            { 
                 orderable: false,
                 searchable: false,
                 width: '30px'
             },
-            { // 1: Название
+            { 
                 type: 'string',
                 width: '250px',
                 render: function(data, type, row) {
                     return '<div class="text-wrap" style="min-width: 250px; white-space: normal;" title="' + data + '">' + data + '</div>';
                 }
             },
-            { // 2: Статус
+            { 
                 orderable: true,
                 searchable: true,
                 width: '120px'
             },
-            { // 3: uCPC
+            { 
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 4: CPC
+            { 
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 5: CPM
+            { 
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 6: Spend
+            { 
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 7: CPA
+            { 
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 8: Leads
+            { 
                 type: 'num',
                 width: '70px'
             },
-            { // 9: GEO
+            { 
                 type: 'string',
                 width: '60px'
             },
-            { // 10: King
+            { 
                 type: 'string',
                 width: '80px'
             },
-            { // 11: Бюджет
+            { 
                 type: 'num',
                 width: '80px',
                 render: function(data, type) {
                     return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
                 }
             },
-            { // 12: Действия
+            { 
                 orderable: false,
                 searchable: false,
                 width: '120px'
@@ -133,14 +133,14 @@ function initDataTable() {
     document.getElementById('pauseBtn')?.addEventListener('click', pauseSelectedAdsets);
     document.getElementById('resumeBtn')?.addEventListener('click', resumeSelectedAdsets);
     document.getElementById('setBudgetBtn')?.addEventListener('click', setBudgetForSelected);
-    document.getElementById('autoBudgetBtn')?.addEventListener('click', runAutoBudget); // НОВАЯ КНОПКА
+    document.getElementById('autoBudgetBtn')?.addEventListener('click', runAutoBudget); 
     document.getElementById('statusFilter')?.addEventListener('change', filterAdsets);
     document.getElementById('nameSearch')?.addEventListener('input', filterAdsets);
     document.getElementById('autoControlBtn')?.addEventListener('click', runAutoControl);
     document.getElementById('syncAllBtn')?.addEventListener('click', syncAllData);
     document.getElementById('refreshBtn')?.addEventListener('click', loadAdsets);
     
-    // Выделить все
+ 
     document.getElementById('selectAll')?.addEventListener('change', function() {
         const checkboxes = document.querySelectorAll('#adsetsTable tbody input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
@@ -155,7 +155,7 @@ function initDataTable() {
         updateSelectedCount();
     });
 }
-    // В adsets.js обновите функцию syncAllData
+    
 function syncAllData() {
     Swal.fire({
         title: 'Обновить все данные?',
@@ -173,7 +173,7 @@ function syncAllData() {
             syncBtn.disabled = true;
             syncBtn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Синхронизация...';
             
-            // Получаем все аккаунты из базы
+          
             fetch('/api/accounts')
                 .then(response => {
                     if (!response.ok) {
@@ -183,7 +183,7 @@ function syncAllData() {
                 })
                 .then(accountsResponse => {
                     if (accountsResponse.success && accountsResponse.accounts && accountsResponse.accounts.length > 0) {
-                        // Отправляем все аккаунты на синхронизацию
+                      
                         return fetch('/api/save_and_sync', {
                             method: 'POST',
                             headers: {
@@ -220,10 +220,10 @@ function syncAllData() {
                             showConfirmButton: true
                         });
                         
-                        // Обновляем таблицу адсетов после небольшой задержки
+                    
                         setTimeout(() => {
                             loadAdsets();
-                            // Также обновляем таблицу кампаний если она есть
+                         
                             if (typeof window.campaignsTable !== 'undefined') {
                                 window.campaignsTable.ajax.reload();
                             }
@@ -253,7 +253,7 @@ function syncAllData() {
         }
     });
 }
-// Также добавьте глобальную функцию для доступа из HTML
+
 window.syncAllData = syncAllData;
     function loadAdsets() {
         console.log('Загрузка адсетов...');
@@ -288,16 +288,16 @@ window.syncAllData = syncAllData;
             });
     }
 
-// Обновим конфигурацию колонок
+
 columnDefs: [
     {
-        targets: 0, // Колонка с checkbox
+        targets: 0, 
         orderable: false,
         searchable: false,
         width: '30px'
     },
     {
-        targets: 1, // Название
+        targets: 1, 
         type: 'string',
         width: '250px',
         render: function(data, type, row) {
@@ -305,13 +305,13 @@ columnDefs: [
         }
     },
     {
-        targets: 2, // Статус
+        targets: 2, 
         orderable: true,
         searchable: true,
         width: '80px'
     },
     {
-        targets: [3, 4, 5, 6, 10], // Числовые колонки (uCPC, CPC, Spend, CPA, Budget)
+        targets: [3, 4, 5, 6, 10], 
         type: 'num',
         render: function(data, type) {
             if (type === 'display') {
@@ -321,22 +321,22 @@ columnDefs: [
         }
     },
     {
-        targets: 7, // Leads
+        targets: 7, 
         type: 'num',
         width: '70px'
     },
     {
-        targets: 8, // GEO
+        targets: 8, 
         type: 'string',
         width: '60px'
     },
     {
-        targets: 9, // King
+        targets: 9, 
         type: 'string',
         width: '80px'
     },
     {
-        targets: 11, // Колонка действий
+        targets: 11, 
         orderable: false,
         searchable: false,
         width: '120px'
@@ -383,7 +383,7 @@ function createAutoBudgetCell(value) {
     `;
 }
     
-    // Глобальные функции для обработки событий
+   
     window.toggleAdsetSelection = function(adsetId, isChecked) {
         if (isChecked) {
             selectedAdsets.add(adsetId);
@@ -392,7 +392,7 @@ function createAutoBudgetCell(value) {
         }
         updateSelectedCount();
         
-        // Обновляем checkbox "Выбрать все"
+        
         const allCheckboxes = document.querySelectorAll('.adset-checkbox');
         const selectAll = document.getElementById('selectAll');
         if (selectAll) {
@@ -400,7 +400,7 @@ function createAutoBudgetCell(value) {
         }
     };
     
-// В adsets.js обновите функции
+
 window.pauseAdset = function(adsetId, token, name) {
     showLoading();
     fetch('/api/adset/pause', {
@@ -472,11 +472,11 @@ window.resumeAdset = function(adsetId, token, name) {
         hideLoading();
     });
 };
-// В adsets.js добавьте функцию установки бюджета
 
 
 
-// В adsets.js добавьте функцию загрузки логов
+
+
 function loadAutoControlLogs() {
     const logContent = document.getElementById('logContent');
     if (!logContent) return;
@@ -501,13 +501,13 @@ function loadAutoControlLogs() {
     });
 }
 
-// Обновите функцию addLogEntry для поддержки разных уровней
 
-// Загружаем логи при загрузке страницы
+
+
 document.addEventListener('DOMContentLoaded', function() {
     loadAutoControlLogs();
     
-    // Обновляем логи каждые 30 секунд
+
     setInterval(loadAutoControlLogs, 30000);
 });
     function updateSelectedCount() {
@@ -521,18 +521,18 @@ function filterAdsets() {
     const nameSearch = document.getElementById('nameSearch')?.value.toLowerCase() || '';
     
     if (window.adsetsTable) {
-        // Фильтр по статусу (колонка 2)
+     
         if (statusFilter !== 'all') {
             window.adsetsTable.column(2).search(statusFilter).draw();
         } else {
             window.adsetsTable.column(2).search('').draw();
         }
         
-        // Фильтр по названию (колонка 1)
+      
         window.adsetsTable.column(1).search(nameSearch).draw();
     }
 }
-    // Пауза для выбранных адсетов
+  
     function pauseSelectedAdsets() {
         if (selectedAdsets.size === 0) {
             showWarning('Не выбрано ни одного AdSet');
@@ -600,7 +600,7 @@ function filterAdsets() {
         });
     }
     
-    // Включение выбранных адсетов
+  
     function resumeSelectedAdsets() {
         if (selectedAdsets.size === 0) {
             showWarning('Не выбрано ни одного AdSet');
@@ -668,7 +668,7 @@ function filterAdsets() {
         });
     }
     
-    // Установка бюджета для выбранных адсетов
+  
     function setBudgetForSelected() {
     if (selectedAdsets.size === 0) {
         showWarning('Не выбрано ни одного AdSet');
@@ -760,7 +760,7 @@ function filterAdsets() {
     });
 }
     
-    // Пауза для одного адсета
+
     function pauseAdset(adsetId, token, name) {
         showLoading();
         fetch('/api/adset/pause', {
@@ -791,7 +791,7 @@ function filterAdsets() {
         });
     }
     
-    // Включение одного адсета
+   
     function resumeAdset(adsetId, token, name) {
         showLoading();
         fetch('/api/adset/resume', {
@@ -830,7 +830,7 @@ function filterAdsets() {
         runBtn.disabled = true;
         runBtn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Выполнение...';
         
-        // Запускаем и автоконтроль и автообновление вместе
+        
         fetch('/api/auto_refresh', {
             method: 'POST',
             headers: {
@@ -838,14 +838,14 @@ function filterAdsets() {
             },
             body: JSON.stringify({
                 action: 'start',
-                interval: 5  // Интервал по умолчанию
+                interval: 5  
             })
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 addLog('✅ Автоконтроль и автообновление запущены', 'success');
-                // Обновляем UI чтобы показать, что система запущена
+              
                 updateAutoControlUI(true);
             } else {
                 addLog('❌ Ошибка запуска: ' + (data.error || 'Неизвестная ошибка'), 'error');
@@ -906,7 +906,7 @@ document.getElementById('applyColumnSettings').addEventListener('click', () => {
   bootstrap.Modal.getInstance(document.getElementById('columnManagerModal')).hide();
 });
 
-    // Добавьте функцию для обновления UI автоконтроля
+   
     function updateAutoControlUI(isRunning) {
         const autoControlBtn = document.getElementById('autoControlBtn');
         if (autoControlBtn) {
@@ -922,9 +922,9 @@ document.getElementById('applyColumnSettings').addEventListener('click', () => {
         }
     }
 
-    // Добавьте проверку статуса при загрузке страницы
+    
     document.addEventListener('DOMContentLoaded', function() {
-        // Проверяем статус системы при загрузке
+       
         checkAutoSystemStatus();
     });
 
@@ -949,7 +949,7 @@ document.getElementById('applyColumnSettings').addEventListener('click', () => {
             console.error('Ошибка проверки статуса системы:', error);
         });
     }
-    // Добавление записи в лог
+
 function addLogEntry(message, level = 'info') {
     const now = new Date();
     const timeString = now.toLocaleTimeString();
@@ -957,7 +957,7 @@ function addLogEntry(message, level = 'info') {
     const logEntry = document.createElement('div');
     logEntry.className = `log-entry log-${level}`;
     
-    // Добавляем иконки для разных уровней
+  
     let icon = '';
     switch(level) {
         case 'error':
@@ -979,7 +979,7 @@ function addLogEntry(message, level = 'info') {
     if (logContent) {
         logContent.prepend(logEntry);
         
-        // Ограничиваем количество записей
+ 
         if (logContent.children.length > 100) {
             logContent.removeChild(logContent.lastChild);
         }
@@ -991,7 +991,7 @@ function addLogEntry(message, level = 'info') {
 fetch(`/api/auto_control/logs?ts=${Date.now()}`)
 
     
-    // Вспомогательные функции
+    
     function showLoading() {
         const refreshBtn = document.getElementById('refreshBtn');
         if (refreshBtn) {
@@ -1127,19 +1127,19 @@ function renderAdsets(data) {
     
     data.forEach(adset => {
         const row = [
-            createCheckboxCell(adset), // 0: Чекбокс
-            adset.name || 'N/A', // 1: Название
-            createStatusCell(adset.status), // 2: Статус
-            adset.ucpc || 0, // 3: uCPC
-            adset.cpc || 0, // 4: CPC из Facebook
-            adset.cpm || 0, // 5: CPM
-            adset.spend || 0, // 6: Spend
-            adset.cpa || 0, // 7: CPA
-            adset.leads || 0, // 8: Leads
-            adset.geo || 'N/A', // 9: GEO
-            adset.king || 'N/A', // 10: King
-            adset.budget || 0, // 11: Бюджет
-            createActionsCell(adset) // 12: Действия
+            createCheckboxCell(adset), 
+            adset.name || 'N/A', 
+            createStatusCell(adset.status), 
+            adset.ucpc || 0, 
+            adset.cpc || 0, 
+            adset.cpm || 0, 
+            adset.spend || 0, 
+            adset.cpa || 0, 
+            adset.leads || 0, 
+            adset.geo || 'N/A', 
+            adset.king || 'N/A', 
+            adset.budget || 0, 
+            createActionsCell(adset) 
         ];
         
         window.adsetsTable.row.add(row);
@@ -1152,10 +1152,10 @@ function formatCurrency(value) {
     return `$${parseFloat(value).toFixed(2)}`;
 }
 
-// Обновите targets для включения CPM
+
 columnDefs: [
     {
-        targets: [3, 4, 5, 6, 7, 11], // uCPC, CPC, CPM, Spend, CPA, Бюджет
+        targets: [3, 4, 5, 6, 7, 11], 
         type: 'num',
         render: function(data, type) {
             if (type === 'display') {
@@ -1168,12 +1168,12 @@ columnDefs: [
 });
 
 function openBudgetSettings(adsetId, adsetName) {
-    // Показываем загрузку
+
     $('#budgetSettingsModal').modal('show');
     $('#budgetSettingsTitle').text(`Настройки бюджета: ${adsetName}`);
     $('#budgetAdsetId').val(adsetId);
     
-    // Загружаем текущие настройки
+    
     fetch(`/api/adset/budget_settings?adset_id=${adsetId}`)
         .then(response => response.json())
         .then(data => {
@@ -1247,7 +1247,7 @@ function runAutoBudget() {
         if (data.success) {
             Swal.fire('Успех!', data.message, 'success');
             addLogEntry(data.message);
-            setTimeout(loadAdsets, 2000); // Обновляем таблицу
+            setTimeout(loadAdsets, 2000); 
         } else {
             showError('Ошибка авто-бюджета', data.error);
         }
@@ -1262,7 +1262,7 @@ function runAutoBudget() {
 }
 
 
-// Добавляем кнопку авто-бюджета в UI
+
 function addAutoBudgetButton() {
     const buttonHtml = `
         <button id="autoBudgetBtn" class="btn btn-warning" onclick="runAutoBudget()">
@@ -1270,14 +1270,14 @@ function addAutoBudgetButton() {
         </button>
     `;
     
-    // Добавляем кнопку рядом с другими кнопками действий
+    
     const actionButtons = document.querySelector('.action-buttons');
     if (actionButtons) {
         actionButtons.insertAdjacentHTML('beforeend', buttonHtml);
     }
 }
 
-// Обновляем функцию createActionsCell для добавления кнопки настроек бюджета
+
 function createActionsCell(adset) {
     return `
         <div class="btn-group-sm">
@@ -1300,7 +1300,7 @@ function createActionsCell(adset) {
     `;
 }
 
-// Добавляем модальное окно для настроек бюджета в HTML
+
 function addBudgetSettingsModal() {
     const modalHtml = `
     <div class="modal fade" id="budgetSettingsModal" tabindex="-1">
@@ -1365,22 +1365,22 @@ function addBudgetSettingsModal() {
     document.body.insertAdjacentHTML('beforeend', modalHtml);
 }
 
-// Инициализация при загрузке страницы
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Добавляем модальное окно
+
     addBudgetSettingsModal();
     
-    // Добавляем кнопку авто-бюджета
+
     addAutoBudgetButton();
     
-    // Добавляем обработчик для клавиши Enter в модальном окне
+   
     $('#budgetSettingsModal').on('keypress', function(e) {
         if (e.which === 13) {
             saveBudgetSettings();
         }
     });
 });
-// Стили для логов
+
 const logStyles = document.createElement('style');
 logStyles.textContent = `
     .log-container {

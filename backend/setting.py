@@ -1,8 +1,9 @@
 
-from venv import logger
 
 from database import get_db_connection
 
+import logging
+logger = logging.getLogger(__name__)
 
 def update_user_settings(user_id, data):
     

@@ -1,11 +1,11 @@
-// campaigns.js - исправленная версия
+
 $(document).ready(function() {
     window.campaignsTable = $('#campaignsTable').DataTable({
         ajax: {
             url: '/api/campaigns',
             dataSrc: function(json) {
                 console.log('Campaigns API response:', json);
-                // Преобразуем данные из формата БД в формат для таблицы
+               
                 if (json.data && Array.isArray(json.data)) {
                     return json.data.map(campaign => ({
                         id: campaign.id,
@@ -65,12 +65,12 @@ $(document).ready(function() {
                 previous: "←"
             }
         },
-        order: [[1, 'asc']], // Сортировка по названию
+        order: [[1, 'asc']], 
         pageLength: 25,
         responsive: true
     });
 
-    // Обработчик для кнопки синхронизации
+   
     $('#campaignsTable').on('click', '.sync-btn', function() {
         const account_id = $(this).data('account');
         const token = $(this).data('token');
@@ -98,7 +98,7 @@ $(document).ready(function() {
         });
     });
 
-    // Обработчик для кнопки удаления
+    
     $('#campaignsTable').on('click', '.delete-btn', function() {
         const campaignId = $(this).data('id');
         const row = $(this).closest('tr');
@@ -132,19 +132,19 @@ $(document).ready(function() {
         });
     });
 
-    // Кнопка принудительного обновления
+  
     $('#refreshCampaigns').click(function() {
         window.campaignsTable.ajax.reload();
         Swal.fire('Обновление', 'Данные кампаний обновляются', 'info');
     });
 
-    // Автоматическое обновление каждые 5 минут
+ 
     setInterval(function() {
         window.campaignsTable.ajax.reload(null, false);
     }, 300000);
 });
-// Добавьте этот код в конец файла campaigns.js
-// Глобальный поиск
+
+
 $('#globalSearch').on('keyup', function() {
     window.campaignsTable.search(this.value).draw();
 });

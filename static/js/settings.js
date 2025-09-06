@@ -1,23 +1,23 @@
-// settings.js - полная версия с автообновлением
+
 document.addEventListener('DOMContentLoaded', function() {
     loadKeitaroCampaigns()
-    // Загрузка текущих настроек
+
     loadSettings();
     
-    // Обработка формы
+
     document.getElementById('settingsForm').addEventListener('submit', function(e) {
         e.preventDefault();
         saveSettings();
     });
 
-    // Обработчики для автообновления
+
     document.getElementById('startAutoRefresh')?.addEventListener('click', startAutoRefresh);
     document.getElementById('stopAutoRefresh')?.addEventListener('click', stopAutoRefresh);
     document.getElementById('refreshStatus')?.addEventListener('click', checkAutoRefreshStatus);
     document.getElementById('testKeitaroBtn')?.addEventListener('click', testKeitaroConnection);
     document.getElementById('syncKeitaroBtn')?.addEventListener('click', syncKeitaroOnly);
 
-    // Проверяем статус автообновления при загрузке страницы
+ 
     setTimeout(checkAutoRefreshStatus, 1000);
 });
 
@@ -28,7 +28,7 @@ function loadSettings() {
             if (data.success) {
                 const config = data.config;
                 
-                // Основные настройки
+         
                 document.getElementById('syncApiKey').value = config.sync_api_key || '';
                 document.getElementById('proxy').value = config.proxy || '';
                 document.getElementById('useProxy').checked = config.use_proxy || false;
@@ -36,11 +36,11 @@ function loadSettings() {
                 document.getElementById('autoRefreshAdsets').checked = config.auto_refresh_adsets || false;
                 document.getElementById('autoRefreshInterval').value = config.auto_refresh_interval || 15;
                 
-                // Настройки Telegram
+          
                 document.getElementById('telegramBotToken').value = config.telegram_bot_token || '';
                 document.getElementById('telegramChatId').value = config.telegram_chat_id || '';
                 
-                // Настройки Keitaro
+              
                 document.getElementById('keitaroApiKey').value = config.keitaro_api_key || '';
                 document.getElementById('keitaroDomain').value = config.keitaro_domain || 'uniaffnu.com';
                 document.getElementById('keitaroRangeDays').value = config.keitaro_range_days || 1;
@@ -79,7 +79,7 @@ function saveSettings() {
     
     console.log('Сохранение настроек:', settings);
     
-    // Показываем индикатор загрузки
+
     const saveBtn = document.querySelector('#settingsForm button[type="submit"]');
     const originalText = saveBtn.innerHTML;
     saveBtn.disabled = true;
@@ -103,7 +103,7 @@ function saveSettings() {
                 showConfirmButton: false
             });
             
-            // Обновляем статус автообновления если интервал изменился
+          
             setTimeout(checkAutoRefreshStatus, 500);
             
         } else {
@@ -127,7 +127,7 @@ function startAutoRefresh() {
         return;
     }
     
-    // Показываем индикатор загрузки
+   
     const btn = document.getElementById('startAutoRefresh');
     const originalText = btn.innerHTML;
     btn.disabled = true;
@@ -168,7 +168,7 @@ function startAutoRefresh() {
 }
 
 function stopAutoRefresh() {
-    // Показываем индикатор загрузки
+
     const btn = document.getElementById('stopAutoRefresh');
     const originalText = btn.innerHTML;
     btn.disabled = true;
@@ -206,7 +206,7 @@ function stopAutoRefresh() {
         btn.innerHTML = '<i class="bi bi-stop-fill"></i> Остановить автообновление';
     });
 }
-// В settings.js обновите функции для работы с объединенной системой
+
 
 function checkAutoRefreshStatus() {
     const btn = document.getElementById('refreshStatus');
@@ -360,7 +360,7 @@ function syncKeitaroOnly() {
     });
 }
 
-// Вспомогательная функция для показа уведомлений
+
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `alert alert-${type} alert-dismissible fade show`;
@@ -373,7 +373,7 @@ function showNotification(message, type = 'info') {
     if (container) {
         container.appendChild(notification);
         
-        // Автоматическое скрытие через 5 секунд
+      
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.remove();
@@ -382,7 +382,7 @@ function showNotification(message, type = 'info') {
     }
 }
 
-// Стиль для анимации спиннера
+
 const style = document.createElement('style');
 style.textContent = `
     .spin { 
@@ -447,21 +447,21 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Глобальные переменные для управления состоянием
+
 let autoRefreshState = {
     running: false,
     interval: 5,
     nextRefresh: null
 };
 
-// Функция для расчета времени следующего обновления
+
 function calculateNextRefreshTime(intervalMinutes) {
     const now = new Date();
     const nextRefresh = new Date(now.getTime() + intervalMinutes * 60000);
     return nextRefresh.toLocaleTimeString();
 }
 
-// Обновление информации о следующем обновлении
+
 function updateNextRefreshInfo() {
     if (autoRefreshState.running) {
         const nextRefreshElement = document.getElementById('nextRefreshTime');
@@ -471,9 +471,9 @@ function updateNextRefreshInfo() {
     }
 }
 
-// Запускаем обновление информации каждую минуту
+
 setInterval(updateNextRefreshInfo, 60000);
-// Добавить в конец файла
+
 document.getElementById('runHeadlineOptimization')?.addEventListener('click', runHeadlineOptimization);
 document.getElementById('headlineOptimizationStatus')?.addEventListener('click', checkHeadlineOptimizationStatus);
 
@@ -490,7 +490,7 @@ function runHeadlineOptimization() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            campaign_id: 'all' // или можно выбрать конкретную кампанию
+            campaign_id: 'all' 
         })
     })
     .then(response => response.json())
@@ -503,7 +503,7 @@ function runHeadlineOptimization() {
                 timer: 3000,
                 showConfirmButton: false
             });
-            // Обновляем статус после оптимизации
+      
             setTimeout(checkHeadlineOptimizationStatus, 1000);
         } else {
             Swal.fire({
@@ -533,12 +533,12 @@ function loadKeitaroCampaigns() {
     .then(data => {
         if (data.success) {
             const select = document.getElementById('campaignSelect');
-            // Очищаем существующие options, кроме первого
+         
             while (select.options.length > 1) {
                 select.remove(1);
             }
             
-            // Добавляем кампании
+         
             data.campaigns.forEach(campaign => {
                 const option = document.createElement('option');
                 option.value = campaign.id;
@@ -552,7 +552,7 @@ function loadKeitaroCampaigns() {
     });
 }
 
-// Обновите функцию checkHeadlineOptimizationStatus
+
 function checkHeadlineOptimizationStatus() {
     const btn = document.getElementById('headlineOptimizationStatus');
     const originalText = btn.innerHTML;
@@ -560,7 +560,7 @@ function checkHeadlineOptimizationStatus() {
     btn.disabled = true;
     btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Проверка...';
     
-    // Получаем выбранную кампанию
+    
     const campaignSelect = document.getElementById('campaignSelect');
     const campaignId = campaignSelect ? campaignSelect.value : 'all';
     
@@ -626,7 +626,7 @@ function checkHeadlineOptimizationStatus() {
     btn.disabled = true;
     btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Проверка...';
     
-    // Получаем выбранную кампанию (или 'all' для всех)
+
     const campaignSelect = document.getElementById('campaignSelect');
     const campaignId = campaignSelect ? campaignSelect.value : 'all';
     
@@ -681,7 +681,7 @@ function checkHeadlineOptimizationStatus() {
     });
 }
 
-// Функция для обновления веса потока вручную
+
 function updateStreamWeight(streamId, newWeight) {
     fetch('/api/headline_optimization/update_weight', {
         method: 'POST',
@@ -697,7 +697,7 @@ function updateStreamWeight(streamId, newWeight) {
     .then(data => {
         if (data.success) {
             Swal.fire('Успех!', data.message, 'success');
-            checkHeadlineOptimizationStatus(); // Обновляем статус
+            checkHeadlineOptimizationStatus(); 
         } else {
             Swal.fire('Ошибка!', data.error, 'error');
         }
@@ -707,5 +707,5 @@ function updateStreamWeight(streamId, newWeight) {
     });
 }
 
-// Автоматическая проверка статуса каждые 30 секунд
+
 setInterval(checkHeadlineOptimizationStatus, 30000);

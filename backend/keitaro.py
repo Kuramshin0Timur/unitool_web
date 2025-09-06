@@ -2,6 +2,8 @@ import logging
 
 import requests
 
+import logging
+logger = logging.getLogger(__name__)
 
 def fetch_keitaro_report(api_key, domain, interval="today"):
     

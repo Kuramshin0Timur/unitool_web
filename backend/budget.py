@@ -1,9 +1,10 @@
     
 from typing import Any, Dict, List, Optional
-from venv import logger
 
 from database import get_db_connection, lock
 
+import logging
+logger = logging.getLogger(__name__)
 
 def update_user_adset_budget(user_id: int, adset_id: str, budget: float):
     

@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Проверяем формат account_id
+       
         if (!accountId.startsWith('act_')) {
             Swal.fire('Ошибка', 'Account ID должен начинаться с "act_"', 'error');
             return;
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             data.message,
                             'success'
                         ).then(() => {
-                            // Обновляем таблицы
+                           
                             if (typeof window.campaignsTable !== 'undefined') {
                                 window.campaignsTable.ajax.reload();
                             }

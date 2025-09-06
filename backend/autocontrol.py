@@ -1,6 +1,6 @@
+import logging
 import threading
 from typing import Dict, List
-from venv import logger
 
 import requests
 from flask import app
@@ -11,9 +11,12 @@ from backend.campaign import (check_and_pause_campaigns,
                               refresh_campaigns_internal)
 from backend.geo_config import (extract_geo_from_name, get_user_geo_config,
                                 get_user_geo_rules)
+from backend.reserve_tokens import get_reserve_tokens
 from backend.setting import get_user_settings
 from backend.telegram import send_telegram_message
 from database import get_db_connection
+
+logger = logging.getLogger(__name__)
 
 auto_control_threads = {}
 auto_control_lock = threading.Lock()
@@ -400,17 +403,7 @@ def auto_control(user_id):
         
     
         known_geos = list(geo_rules.keys()) if geo_rules else []
-        
-        
-        standard_geos = ['US', 'UK', 'CA', 'AU', 'DE', 'FR', 'ES', 'IT', 'RU', 
-                        'JP', 'KR', 'CN', 'IN', 'MX', 'BR', 'AR', 'CO', 'PE',
-                        'CL', 'ZA', 'NG', 'EG', 'SA', 'AE', 'TR', 'PL', 'NL',
-                        'SE', 'NO', 'DK', 'FI', 'BE', 'CH', 'AT', 'MY', 'SG',
-                        'VN', 'TH', 'PH', 'ID']
-        
-        known_geos = list(set(known_geos + standard_geos))
-        
-        
+
         reserve_tokens = load_reserve_tokens(user_id)
         
        
@@ -430,6 +423,7 @@ def auto_control(user_id):
     except Exception as e:
         logger.error(f"Критическая ошибка автоконтроля для пользователя {user_id}: {e}")
         send_telegram_message(f"🚫 Ошибка автоконтроля: {e}", user_id=user_id)
+
 def run_auto_control_for_user(user_id):
     """Запускает автоконтроль для конкретного пользователя"""
     logger.info(f"Запуск автоконтроля для пользователя {user_id}")

@@ -1,9 +1,10 @@
 
-from venv import logger
 import requests
 
 from backend.setting import get_user_settings
 
+import logging
+logger = logging.getLogger(__name__)
 
 def send_telegram_message(message, chat_id=None, bot_token=None, user_id=None):
     try:

@@ -86,10 +86,10 @@ function loadCombinedTokensTable() {
         });
 }
 
-// reserve_tokens.js - обновите renderCombinedTokensTable
 
 
-// Обновленная функция saveNewToken
+
+
 function saveNewToken(king, oldToken, inputId, accountsInputId) {
     const newToken = document.getElementById(inputId).value.trim();
     const accountsInput = document.getElementById(accountsInputId).value.trim();
@@ -128,7 +128,7 @@ function saveNewToken(king, oldToken, inputId, accountsInputId) {
         Swal.fire('Ошибка', 'Ошибка сети', 'error');
     });
 }
-// Функция для редактирования KING
+
 function editKing(button) {
     const container = button.closest('.editable-king');
     const currentKing = container.getAttribute('data-king');
@@ -164,7 +164,7 @@ function editKing(button) {
     });
 }
 
-// Функция для редактирования токена
+
 function editToken(button) {
     const container = button.closest('.editable-token');
     const king = container.getAttribute('data-king');
@@ -204,7 +204,7 @@ function editToken(button) {
     });
 }
 
-// Функция для обновления KING
+
 function updateKing(data) {
     fetch('/api/update_king', {
         method: 'POST',
@@ -227,7 +227,7 @@ function updateKing(data) {
     });
 }
 
-// Функция для обновления токена
+
 function updateToken(data) {
     fetch('/api/update_token', {
         method: 'POST',
@@ -250,7 +250,7 @@ function updateToken(data) {
     });
 }
 
-// Функция для сохранения изменений из шторки
+
 function saveTokenChanges(king, oldToken, kingInputId, tokenInputId, accountsInputId) {
     const newKing = document.getElementById(kingInputId).value.trim();
     const newToken = document.getElementById(tokenInputId).value.trim();
@@ -293,9 +293,6 @@ function saveTokenChanges(king, oldToken, kingInputId, tokenInputId, accountsInp
         Swal.fire('Ошибка', 'Ошибка сети', 'error');
     });
 }
-// Показать модальное окно для создания новой группы
-// Показать модальное окно для создания новой группы
-// Показать модальное окно для создания новой группы
 function showAddGroupModal() {
     Swal.fire({
         title: '<i class="bi bi-plus-circle text-primary"></i> Создать новую группу токенов',
@@ -454,7 +451,7 @@ function showAddGroupModal() {
                 return false;
             }
             
-            // Нормализуем аккаунты
+         
             const normalizedAccounts = accounts.map(account => normalizeAccountId(account));
             
             return { king, tokens, accounts: normalizedAccounts };
@@ -465,30 +462,30 @@ function showAddGroupModal() {
         }
     });
 }
-// Нормализация ID аккаунта (только цифры)
+
 function normalizeAccountId(accountId) {
     if (!accountId) return '';
     
     let cleanId = accountId.trim().toString();
     
-    // Убираем act_ если есть
+
     if (cleanId.toLowerCase().startsWith('act_')) {
         cleanId = cleanId.substring(4);
     }
     
-    // Убираем ВСЕ нецифровые символы
+   
     cleanId = cleanId.replace(/\D/g, '');
     
-    // Проверяем что остались только цифры
+ 
     if (!cleanId || !/^\d+$/.test(cleanId)) {
         return '';
     }
     
-    // Добавляем act_ обратно
+
     return `act_${cleanId}`;
 }
 
-// Добавить пример аккаунтов
+
 function addSampleAccounts() {
     const sampleAccounts = [
         '123456789',
@@ -500,11 +497,11 @@ function addSampleAccounts() {
     
     document.getElementById('groupAccounts').value = sampleAccounts.join('\n');
     
-    // Trigger update
+
     const event = new Event('input', { bubbles: true });
     document.getElementById('groupAccounts').dispatchEvent(event);
 }
-// Добавить пример аккаунтов в редактирование
+
 function addSampleAccountsToEdit() {
     const sampleAccounts = [
         '123456789',
@@ -519,12 +516,12 @@ function addSampleAccountsToEdit() {
     
     document.getElementById('editTokenAccounts').value = sampleAccounts.join('\n');
     
-    // Trigger update
+
     const event = new Event('input', { bubbles: true });
     document.getElementById('editTokenAccounts').dispatchEvent(event);
 }
 
-// Добавить пример аккаунтов в новое добавление
+
 function addSampleAccountsToNew() {
     const sampleAccounts = [
         '123456789',
@@ -538,11 +535,9 @@ function addSampleAccountsToNew() {
     const event = new Event('input', { bubbles: true });
     document.getElementById('newTokenAccounts').dispatchEvent(event);
 }
-// Показать модальное окно редактирования токена (такое же как при добавлении)
-// Показать модальное окно редактирования токена с возможностью изменения KING
-// Показать модальное окно редактирования токена
+
 function showEditTokenModal(king, oldToken, currentAccounts = []) {
-    // Преобразуем аккаунты в формат без act_ для удобства редактирования
+  
     const accountIdsWithoutAct = currentAccounts.map(acc => {
         return acc.account_id.replace('act_', '');
     }).join('\n');
@@ -632,7 +627,7 @@ function showEditTokenModal(king, oldToken, currentAccounts = []) {
             const accountCount = document.getElementById('editAccountCount');
             const preview = document.getElementById('editTokenPreview');
             
-            // Обновляем предпросмотр при изменении полей
+           
             kingInput.addEventListener('input', updatePreview);
             tokenInput.addEventListener('input', updatePreview);
             accountsTextarea.addEventListener('input', updatePreview);
@@ -681,24 +676,24 @@ function showEditTokenModal(king, oldToken, currentAccounts = []) {
                 return false;
             }
             
-            // Обрабатываем аккаунты - каждая новая строка это отдельный аккаунт
+  
             const accounts = accountsText.split('\n')
                 .map(line => line.trim())
                 .filter(line => line.length > 0);
             
-            // Нормализуем аккаунты (добавляем act_)
+    
             const normalizedAccounts = accounts.map(account => {
                 let cleanId = account.trim();
                 
-                // Убираем act_ если есть
+            
                 if (cleanId.toLowerCase().startsWith('act_')) {
                     cleanId = cleanId.substring(4);
                 }
                 
-                // Убираем все нецифровые символы
+           
                 cleanId = cleanId.replace(/\D/g, '');
                 
-                // Возвращаем в формате act_123456789
+              
                 return cleanId ? `act_${cleanId}` : '';
             }).filter(a => a);
             
@@ -717,25 +712,25 @@ function showEditTokenModal(king, oldToken, currentAccounts = []) {
     });
 }
 
-// Очистить поле аккаунтов в редактировании
+
 function clearEditAccounts() {
     document.getElementById('editTokenAccounts').value = '';
     
-    // Trigger update
+   
     const event = new Event('input', { bubbles: true });
     document.getElementById('editTokenAccounts').dispatchEvent(event);
 }
 
-// Очистить поле аккаунтов
+
 function clearAccounts() {
     document.getElementById('editTokenAccounts').value = '';
     
-    // Trigger update
+   
     const event = new Event('input', { bubbles: true });
     document.getElementById('editTokenAccounts').dispatchEvent(event);
 }
 
-// Добавить пример аккаунтов в редактирование
+
 function addSampleAccountsToEdit() {
     const sampleAccounts = [
         '123456789',
@@ -745,11 +740,11 @@ function addSampleAccountsToEdit() {
     
     document.getElementById('editTokenAccounts').value = sampleAccounts.join('\n');
     
-    // Trigger update
+  
     const event = new Event('input', { bubbles: true });
     document.getElementById('editTokenAccounts').dispatchEvent(event);
 }
-// Добавьте глобальный обработчик ошибок
+
 function handleApiError(error, defaultMessage = 'Ошибка сервера') {
     console.error('API Error:', error);
     
@@ -764,7 +759,7 @@ function handleApiError(error, defaultMessage = 'Ошибка сервера') {
     return defaultMessage;
 }
 
-// Обновите все fetch запросы с обработкой ошибок
+
 fetch('/api/user/reserve_tokens', {
     method: 'POST',
     headers: {
@@ -794,7 +789,7 @@ fetch('/api/user/reserve_tokens', {
     const errorMessage = handleApiError(error, 'Ошибка сети');
     Swal.fire('Ошибка', errorMessage, 'error');
 });
-// Сохранить изменения из модального окна редактирования
+
 function saveTokenChangesFromModal(data) {
     fetch('/api/update_token_complete', {
         method: 'POST',
@@ -822,7 +817,7 @@ function saveTokenChangesFromModal(data) {
         Swal.fire('Ошибка', 'Ошибка сети', 'error');
     });
 }
-// Добавить пример токенов
+
 function addSampleTokens() {
     const sampleTokens = [
         'EAACEdEose0cBA1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -834,14 +829,14 @@ function addSampleTokens() {
     document.getElementById('groupKing').value = 'Facebook';
     document.getElementById('groupAccounts').value = 'act_123456789, act_987654321';
     
-    // Trigger update
+   
     const event = new Event('input', { bubbles: true });
     document.getElementById('groupTokens').dispatchEvent(event);
     document.getElementById('groupKing').dispatchEvent(event);
     document.getElementById('groupAccounts').dispatchEvent(event);
 }
 
-// Модальное окно для добавления токена в группу
+
 function showAddTokenToGroupModal(king) {
     Swal.fire({
         title: `<i class="bi bi-plus-circle text-success"></i> Добавить токен в группу "${king}"`,
@@ -911,7 +906,7 @@ function showAddTokenToGroupModal(king) {
                 return false;
             }
             
-            // Нормализуем аккаунты
+          
             const normalizedAccounts = accounts.map(account => normalizeAccountId(account)).filter(a => a);
             
             return { king, token, accounts: normalizedAccounts };
@@ -922,7 +917,7 @@ function showAddTokenToGroupModal(king) {
         }
     });
 }
-// Удалить всю группу
+
 function deleteGroup(king) {
     Swal.fire({
         title: 'Удалить группу?',
@@ -1041,7 +1036,7 @@ function addTokenToGroup(data) {
 }
 
 
-// Проверить лимиты всей группы
+
 function checkGroupLimits(king) {
     Swal.fire({
         title: 'Проверить лимиты группы?',
@@ -1052,7 +1047,7 @@ function checkGroupLimits(king) {
         cancelButtonText: 'Отмена'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Получаем все токены группы и проверяем их по одному
+           
             fetch('/api/user/reserve_tokens')
             .then(response => response.json())
             .then(data => {
@@ -1098,7 +1093,7 @@ function checkGroupLimits(king) {
     });
 }
 
-// Сохранить изменения токена
+
 function saveTokenChanges(king, oldToken, tokenInputId, accountsInputId) {
     const newToken = document.getElementById(tokenInputId).value.trim();
     const accountsInput = document.getElementById(accountsInputId).value.trim();
@@ -1138,7 +1133,7 @@ function saveTokenChanges(king, oldToken, tokenInputId, accountsInputId) {
         Swal.fire('Ошибка', 'Ошибка сети', 'error');
     });
 }
-// Сохранить изменения из выпадающей плашки
+
 function saveTokenFromCollapse(oldKing, oldToken, kingInputId, tokenInputId, accountsInputId) {
     console.log('Сохранение изменений:', { oldKing, oldToken, kingInputId, tokenInputId, accountsInputId });
     
@@ -1157,32 +1152,32 @@ function saveTokenFromCollapse(oldKing, oldToken, kingInputId, tokenInputId, acc
         return;
     }
     
-    // Обрабатываем аккаунты - каждая новая строка это отдельный аккаунт
+
     const accounts = accountsText.split('\n')
         .map(line => line.trim())
         .filter(line => line.length > 0);
     
     console.log('Обработанные аккаунты:', accounts);
     
-    // Нормализуем аккаунты (добавляем act_)
+ 
     const normalizedAccounts = accounts.map(account => {
         let cleanId = account.trim();
         
-        // Убираем act_ если есть
+   
         if (cleanId.toLowerCase().startsWith('act_')) {
             cleanId = cleanId.substring(4);
         }
         
-        // Убираем все нецифровые символы
+       
         cleanId = cleanId.replace(/\D/g, '');
         
-        // Возвращаем в формате act_123456789
+      
         return cleanId ? `act_${cleanId}` : '';
     }).filter(a => a);
     
     console.log('Нормализованные аккаунты:', normalizedAccounts);
     
-    // Показываем лоадер
+   
     Swal.fire({
         title: 'Сохранение...',
         text: 'Пожалуйста, подождите',
@@ -1192,7 +1187,7 @@ function saveTokenFromCollapse(oldKing, oldToken, kingInputId, tokenInputId, acc
         }
     });
     
-    // Отправляем запрос на сервер
+   
     fetch('/api/update_token_complete', {
         method: 'POST',
         headers: {
@@ -1226,13 +1221,13 @@ function saveTokenFromCollapse(oldKing, oldToken, kingInputId, tokenInputId, acc
                 timer: 2000,
                 showConfirmButton: false
             }).then(() => {
-                // Закрываем выпадающую плашку
+              
                 const collapseElement = document.querySelector('.collapse.show');
                 if (collapseElement) {
                     const bsCollapse = new bootstrap.Collapse(collapseElement);
                     bsCollapse.hide();
                 }
-                // Перезагружаем таблицу
+           
                 loadCombinedTokensTable();
             });
         } else {
@@ -1245,7 +1240,7 @@ function saveTokenFromCollapse(oldKing, oldToken, kingInputId, tokenInputId, acc
         Swal.fire('Ошибка', 'Ошибка сети: ' + error.message, 'error');
     });
 }
-// Функция для отладки - выводит все элементы на странице
+
 function debugElements() {
     console.log('=== ДЕБАГ ЭЛЕМЕНТОВ ===');
     console.log('Все элементы с ID:');
@@ -1263,7 +1258,7 @@ function debugElements() {
         console.log(`Input ${index}:`, input.id, input.value);
     });
 }
-// Обновить счетчик аккаунтов
+
 function updateAccountCount(accountsInputId, countElementId) {
     const accountsText = document.getElementById(accountsInputId).value;
     const accounts = accountsText.split('\n')
@@ -1290,7 +1285,7 @@ function updateAccountCount(accountsInputId, countElementId) {
     });
 }
 
-// Добавить пример аккаунтов в выпадающую плашку
+
 function addSampleAccountsToEdit(accountsInputId) {
     const sampleAccounts = [
         '123456789',
@@ -1302,7 +1297,7 @@ function addSampleAccountsToEdit(accountsInputId) {
     
     document.getElementById(accountsInputId).value = sampleAccounts.join('\n');
     
-    // Показываем уведомление
+
     Swal.fire({
         title: 'Добавлены примеры',
         text: '5 примеров аккаунтов добавлено',
@@ -1312,7 +1307,7 @@ function addSampleAccountsToEdit(accountsInputId) {
     });
 }
 
-// Очистить аккаунты в выпадающей плашке
+
 function clearEditAccounts(accountsInputId) {
     document.getElementById(accountsInputId).value = '';
     
@@ -1342,7 +1337,7 @@ function renderCombinedTokensTable(tokens) {
         
         hasData = true;
 
-        // Создаем заголовок группы
+   
         const groupHeader = document.createElement('tr');
         groupHeader.className = 'group-header';
         groupHeader.innerHTML = `
@@ -1365,7 +1360,7 @@ function renderCombinedTokensTable(tokens) {
         `;
         tbody.appendChild(groupHeader);
 
-        // Добавляем токены этой группы
+      
         tokenList.forEach((tokenObj, index) => {
             if (!tokenObj || !tokenObj.token) return;
 
@@ -1430,7 +1425,7 @@ function renderCombinedTokensTable(tokens) {
             `;
             tbody.appendChild(tr);
 
-            // ВЫПАДАЮЩАЯ ПЛАШКА ДЛЯ РЕДАКТИРОВАНИЯ
+         
             const collapseTr = document.createElement('tr');
             collapseTr.className = 'collapse-row';
             collapseTr.innerHTML = `
@@ -1505,7 +1500,7 @@ function renderCombinedTokensTable(tokens) {
         });
     }
 
-    // Добавляем кнопку для создания новой группы
+  
     const addGroupRow = document.createElement('tr');
     addGroupRow.innerHTML = `
         <td colspan="7" class="text-center py-4">
@@ -1535,7 +1530,7 @@ function getProgressBarClass(percent) {
     return 'bg-success';
 }
 
-// Добавьте кнопку для автоматического заполнения
+
 function addAutoPopulateButton() {
     const header = document.querySelector('.d-flex.justify-content-between');
     if (header) {
@@ -1577,7 +1572,7 @@ function autoPopulateReserveTokens() {
     });
 }
 
-// Добавьте вызов при загрузке
+
 
 function deleteReserveToken(king, token) {
     Swal.fire({
@@ -1695,7 +1690,7 @@ function loadTokensTable() {
 }
 
 
-// reserve_tokens.js - исправленная функция renderTokensTable
+
 
 
 function renderTokensTable(tokens) {
@@ -1727,7 +1722,7 @@ function renderTokensTable(tokens) {
             const accounts = tokenObj.accounts || [];
             const accountIds = accounts.map(acc => acc.account_id).join(', ');
             
-            // Получаем все токены для этого king для выпадающего списка
+      
             const allTokensForKing = tokenList.map(t => t.token);
             
             console.log('Token:', tokenObj.token, 'King:', king, 'Accounts:', accounts.length);
@@ -1830,10 +1825,10 @@ function updateTokenDropdowns() {
             
             if (select) {
                 loadTokensForKing(king, (tokens) => {
-                    // Сохраняем текущее значение
+                 
                     const currentValue = select.value;
                     
-                    // Обновляем options
+              
                     select.innerHTML = tokens.map(token => `
                         <option value="${token}" ${token === currentValue ? 'selected' : ''}>${token}</option>
                     `).join('') + '<option value="add_new">+ Добавить новый токен</option>';
@@ -1843,7 +1838,6 @@ function updateTokenDropdowns() {
     });
 }
 
-// Обновляем выпадающие списки при изменении king
 document.addEventListener('DOMContentLoaded', function() {
     const observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
@@ -1859,7 +1853,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const config = { characterData: true, childList: true, subtree: true };
     observer.observe(document.getElementById('tokensTable'), config);
 });
-// Обновляем функцию addNewRow для поддержки выпадающего списка
+
 function addNewRow() {
     const tbody = document.querySelector('#tokensTable tbody');
     const newRow = document.createElement('tr');
@@ -1892,7 +1886,7 @@ function addTokenFromRow(button) {
         return;
     }
     
-    // Автоматическое определение KING если не указан
+    
     const finalKing = determineKingAutomatically(king, token);
     
     const account_ids = accountIds ? accountIds.split(',').map(id => id.trim()).filter(id => id) : [];
@@ -1993,9 +1987,9 @@ function showAddTokenModal(king) {
 
 function updateTokenSelection(select, king) {
     if (select.value === 'add_new') {
-        // Показываем модальное окно для добавления нового токена
+      
         showAddTokenModal(king);
-        // Восстанавливаем предыдущее значение
+     
         setTimeout(() => {
             select.value = select.dataset.prevValue || '';
         }, 100);
@@ -2038,7 +2032,7 @@ function deleteTokenFromRow(button, king, token) {
 }
 
 
-// Остальные функции остаются без изменений
+
 function loadReserveTokens() {
     const accordion = document.getElementById('tokensAccordion');
     accordion.innerHTML = `
@@ -2358,13 +2352,12 @@ function copyToClipboard(text) {
 }
 
 function determineKingAutomatically(kingInput, token) {
-    // Если пользователь ввел KING, используем его
+ 
     if (kingInput && kingInput.trim() !== '') {
         return kingInput.trim();
     }
     
-    // Автоматическое определение KING на основе токена
-    // Можно добавить логику определения по префиксу токена или другим признакам
+   
     if (token.includes('EA') || token.length > 100) {
         return 'Facebook_Long';
     } else if (token.includes('IG') || token.length > 50) {

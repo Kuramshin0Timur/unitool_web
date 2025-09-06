@@ -1,8 +1,9 @@
 from typing import Any, Dict, List
-from venv import logger
 
 from database import get_db_connection
 
+import logging
+logger = logging.getLogger(__name__)
 
 def add_reserve_token(user_id: int, king: str, token: str) -> bool:
     """Добавляет резервный токен в базу данных"""
@@ -267,8 +268,6 @@ def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
             
             if not table_exists:
                 return {}
-            
-            # Получаем все токены с информацией о лимитах для конкретного пользователя
             cursor.execute("""
                 SELECT rt.king, rt.token, 
                        rta.account_id, rta.requests_limit, 

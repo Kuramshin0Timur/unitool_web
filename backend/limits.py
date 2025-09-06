@@ -1,7 +1,8 @@
 
 import json
-from venv import logger
 import requests
+import logging
+logger = logging.getLogger(__name__)
 
 
 def get_account_limits_info(account_id, access_token):

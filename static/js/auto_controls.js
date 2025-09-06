@@ -1,4 +1,4 @@
-// auto_controls.js - полная исправленная версия с интегрированной системой
+
 document.addEventListener('DOMContentLoaded', function() {
     const runBtn = document.getElementById('runAutoControl');
     const stopBtn = document.getElementById('stopAutoControl');
@@ -14,27 +14,27 @@ document.addEventListener('DOMContentLoaded', function() {
         interval: 5
     };
     
-    // Инициализация
+  
     initializeSystem();
     
-    // Обработчики событий
+  
     runBtn?.addEventListener('click', startAutoSystem);
     stopBtn?.addEventListener('click', stopAutoSystem);
     intervalInput?.addEventListener('change', updateInterval);
     
-    // Функция инициализации системы
+  
     function initializeSystem() {
-        // Загрузка статистики
+    
         loadStats();
         
-        // Проверка статуса системы
+       
         checkSystemStatus();
         
-        // Загрузка текущего интервала из настроек
+     
         loadCurrentInterval();
     }
     
-    // Запуск системы автоконтроля и автообновления
+    
     function startAutoSystem() {
         const interval = parseInt(intervalInput?.value) || 5;
         
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Остановка системы
+    
     function stopAutoSystem() {
         showLoading(stopBtn, 'Остановка...');
         
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Проверка статуса системы
+
     function checkSystemStatus() {
         fetch('/api/auto_refresh', {
             method: 'POST',
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Загрузка текущего интервала из настроек
+    
     function loadCurrentInterval() {
         fetch('/api/settings')
             .then(response => response.json())
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // Обновление интервала
+   
     function updateInterval() {
         const newInterval = parseInt(intervalInput.value) || 5;
         
@@ -201,8 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Обновление интервала системы
-    function updateSystemInterval(interval) {
+      function updateSystemInterval(interval) {
         fetch('/api/auto_refresh', {
             method: 'POST',
             headers: {
@@ -239,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Обновление UI системы
+   
     function updateSystemUI(isRunning) {
         if (runBtn) runBtn.disabled = isRunning;
         if (stopBtn) stopBtn.disabled = !isRunning;
@@ -271,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Обновляем кнопки
+      
         if (runBtn) {
             runBtn.innerHTML = isRunning 
                 ? '<i class="bi bi-check-circle"></i> Система запущена' 
@@ -286,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Загрузка статистики
+
     function loadStats() {
         fetch('/api/adsets')
             .then(response => response.json())
@@ -301,13 +300,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // Обновление статистики
+    
     function updateStats(adsets) {
         const total = adsets.length;
         const active = adsets.filter(a => a.status === 'ACTIVE').length;
         const paused = adsets.filter(a => a.status === 'PAUSED').length;
         
-        // Обновляем элементы статистики
+ 
         const updateStatElement = (id, value) => {
             const element = document.getElementById(id);
             if (element) element.textContent = value;
@@ -317,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateStatElement('activeAdsets', active);
         updateStatElement('pausedAdsets', paused);
         
-        // Обновляем прогресс-бар
+      
         const progressBar = document.getElementById('activeProgress');
         if (progressBar && total > 0) {
             const percentage = (active / total) * 100;
@@ -327,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Добавление записи в лог
+
     function addLog(message, type = 'info') {
         if (!logContainer) return;
         
@@ -343,7 +342,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         logContainer.prepend(logEntry);
         
-        // Ограничиваем количество записей в логе
         if (logContainer.children.length > 100) {
             logContainer.removeChild(logContainer.lastChild);
         }
@@ -351,7 +349,6 @@ document.addEventListener('DOMContentLoaded', function() {
         logContainer.scrollTop = 0;
     }
     
-    // Получение класса для лога
     function getLogClass(type) {
         const classes = {
             'info': 'text-info',
@@ -362,24 +359,24 @@ document.addEventListener('DOMContentLoaded', function() {
         return classes[type] || 'text-info';
     }
     
-    // Показать индикатор загрузки
+
     function showLoading(button, text) {
         if (!button) return;
         button.disabled = true;
         button.innerHTML = `<i class="bi bi-arrow-repeat spin"></i> ${text}`;
     }
     
-    // Скрыть индикатор загрузки
+
     function hideLoading(button, text) {
         if (!button) return;
         button.disabled = false;
         button.innerHTML = text;
     }
     
-    // Автоматическая проверка статуса каждые 30 секунд
+   
     setInterval(checkSystemStatus, 30000);
     
-    // Стили для лога и элементов
+
     const style = document.createElement('style');
     style.textContent = `
         .spin { 
@@ -472,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 });
 
-// Глобальные функции для доступа из других скриптов
+
 window.AutoControlSystem = {
     start: function() {
         const runBtn = document.getElementById('runAutoControl');

@@ -1,7 +1,5 @@
 import time
-from fcntl import flock
 from typing import Any, Dict, List
-from venv import logger
 
 import requests
 
@@ -9,6 +7,8 @@ from backend.campaign import get_user_campaigns
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
 from database import get_db_connection, lock
 
+import logging
+logger = logging.getLogger(__name__)
 
 def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
    
@@ -56,7 +56,7 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
                 data.get('adset_id', ''),
                 data.get('ucpc', 0),
                 data.get('cpc', 0),
-                data.get('cpm', 0),  # Include CPM here
+                data.get('cpm', 0), 
                 data.get('spend', 0),
                 data.get('cpa', 0),
                 data.get('status', 'PAUSED'),

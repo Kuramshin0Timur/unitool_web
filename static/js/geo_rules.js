@@ -1,15 +1,15 @@
-// geo_rules.js
+
 document.addEventListener('DOMContentLoaded', function() {
     let hot;
     let geoRulesData = [];
     
-    // Инициализация таблицы GEO правил
+ 
     initGeoRulesTable();
     
-    // Загрузка данных
+  
     loadGeoRules();
     
-    // Обработчики событий
+ 
     document.getElementById('saveGeoRules')?.addEventListener('click', saveGeoRules);
     document.getElementById('addGeoRule')?.addEventListener('click', addGeoRule);
     
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdownMenu: true,
             cells: function(row, col, prop) {
                 const cellProperties = {};
-                if (col === 0) { // GEO column
+                if (col === 0) { 
                     cellProperties.renderer = geoCodeRenderer;
                 }
                 return cellProperties;
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Стили для анимации
+   
     const style = document.createElement('style');
     style.textContent = `
         .spin { animation: spin 1s linear infinite; }

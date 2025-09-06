@@ -170,8 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.success) {
                 alert(`Импортировано: ${data.total_campaigns} кампаний, ${data.total_adsets} адсетов`);
-                hot.loadData([...filteredData, ['', '']]); // Обновляем таблицу
-            } else {
+                hot.loadData([...filteredData, ['', '']]); 
                 alert('Ошибка: ' + (data.error || 'Неизвестная ошибка'));
             }
         })
