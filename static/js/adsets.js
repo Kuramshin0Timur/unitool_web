@@ -30,83 +30,101 @@ function initDataTable() {
         },
         order: [[6, 'desc']], 
         columns: [
-            { 
-                orderable: false,
-                searchable: false,
-                width: '30px'
-            },
-            { 
-                type: 'string',
-                width: '250px',
-                render: function(data, type, row) {
-                    return '<div class="text-wrap" style="min-width: 250px; white-space: normal;" title="' + data + '">' + data + '</div>';
-                }
-            },
-            { 
-                orderable: true,
-                searchable: true,
-                width: '120px'
-            },
-            { 
-                type: 'num',
-                width: '80px',
-                render: function(data, type) {
-                    return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
-                }
-            },
-            { 
-                type: 'num',
-                width: '80px',
-                render: function(data, type) {
-                    return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
-                }
-            },
-            { 
-                type: 'num',
-                width: '80px',
-                render: function(data, type) {
-                    return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
-                }
-            },
-            { 
-                type: 'num',
-                width: '80px',
-                render: function(data, type) {
-                    return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
-                }
-            },
-            { 
-                type: 'num',
-                width: '80px',
-                render: function(data, type) {
-                    return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
-                }
-            },
-            { 
-                type: 'num',
-                width: '70px'
-            },
-            { 
-                type: 'string',
-                width: '60px'
-            },
-            { 
-                type: 'string',
-                width: '80px'
-            },
-            { 
-                type: 'num',
-                width: '80px',
-                render: function(data, type) {
-                    return type === 'display' ? parseFloat(data || 0).toFixed(2) : data;
-                }
-            },
-            { 
-                orderable: false,
-                searchable: false,
-                width: '120px'
+        { 
+            orderable: false,
+            searchable: false,
+            width: '30px'
+        },
+        { 
+            type: 'string',
+            width: '250px',
+            render: function(data, type) {
+                if (type !== 'display') return data;
+                return data; // Просто возвращаем строку как есть
             }
-        ],
+        },
+        { 
+            orderable: true,
+            searchable: true,
+            width: '80px'
+        },
+        { 
+            type: 'num',
+            width: '80px',
+            render: function(data, type) {
+                if (type !== 'display') return data;
+                let num = parseFloat(data);
+                return isNaN(num) ? "-" : num.toFixed(3);
+            }
+        },
+        { 
+            type: 'num',
+            width: '80px',
+            render: function(data, type) {
+                if (type !== 'display') return data;
+                let num = parseFloat(data);
+                return isNaN(num) ? "-" : num.toFixed(3);
+            }
+        },
+        { 
+            type: 'num',
+            width: '80px',
+            render: function(data, type) {
+                if (type !== 'display') return data;
+                let num = parseFloat(data);
+                return isNaN(num) ? "-" : num.toFixed(3);
+            }
+        },
+        { 
+            type: 'num',
+            width: '80px',
+            render: function(data, type) {
+                if (type !== 'display') return data;
+                let num = parseFloat(data);
+                return isNaN(num) ? "-" : num.toFixed(3);
+            }
+        },
+        { 
+            type: 'num',
+            width: '80px',
+            render: function(data, type) {
+                if (type !== 'display') return data;
+                let num = parseFloat(data);
+                return isNaN(num) ? "-" : num.toFixed(3);
+            }
+        },
+        { 
+            type: 'num',
+            width: '70px',
+            render: function(data, type) {
+                if (type !== 'display') return data;
+                let num = parseFloat(data);
+                return isNaN(num) ? "-" : num.toFixed(0); // Leads - целые числа
+            }
+        },
+        { 
+            type: 'string',
+            width: '60px'
+        },
+        { 
+            type: 'string',
+            width: '80px'
+        },
+        { 
+        type: 'num',
+        width: '80px',
+        render: function(data, type) {
+            if (type !== 'display') return data;
+            let num = parseFloat(data);
+            return isNaN(num) ? "-" : num.toFixed(2); // Бюджет - 2 знака
+        }
+    },
+    { 
+        orderable: false,
+        searchable: false,
+        width: '120px'
+    }
+],
         language: {
             emptyTable: "Нет данных об адсетах",
             loadingRecords: "Загрузка...",
@@ -288,7 +306,6 @@ window.syncAllData = syncAllData;
             });
     }
 
-
 columnDefs: [
     {
         targets: 0, 
@@ -311,32 +328,46 @@ columnDefs: [
         width: '80px'
     },
     {
-        targets: [3, 4, 5, 6, 10], 
+        targets: [3, 4, 5, 6, 7], // uCPC, CPC, CPM, Spend, CPA
         type: 'num',
         render: function(data, type) {
-            if (type === 'display') {
-                return typeof data === 'number' ? data.toFixed(2) : data;
-            }
-            return data;
+            if (type !== 'display') return data;
+            let num = parseFloat(data);
+            return isNaN(num) ? "-" : num.toFixed(3);
         }
     },
     {
-        targets: 7, 
+        targets: 8, // Leads
         type: 'num',
-        width: '70px'
+        width: '70px',
+        render: function(data, type) {
+            if (type !== 'display') return data;
+            let num = parseFloat(data);
+            return isNaN(num) ? "-" : num.toFixed(0);
+        }
     },
     {
-        targets: 8, 
+        targets: 9, // GEO
         type: 'string',
         width: '60px'
     },
     {
-        targets: 9, 
+        targets: 10, // KING
         type: 'string',
         width: '80px'
     },
     {
-        targets: 11, 
+        targets: 11, // Бюджет
+        type: 'num',
+        width: '80px',
+        render: function(data, type) {
+            if (type !== 'display') return data;
+            let num = parseFloat(data);
+            return isNaN(num) ? "-" : num.toFixed(2);
+        }
+    },
+    {
+        targets: 12, // Действия
         orderable: false,
         searchable: false,
         width: '120px'
@@ -1149,7 +1180,9 @@ function renderAdsets(data) {
     updateSelectedCount();
 }
 function formatCurrency(value) {
-    return `$${parseFloat(value).toFixed(2)}`;
+    const num = parseFloat(value);
+    if (isNaN(num)) return "$0.000";
+    return `$${num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 })}`;
 }
 
 

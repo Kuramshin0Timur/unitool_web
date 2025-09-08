@@ -25,7 +25,7 @@ from backend.campaign import (add_user_campaign, fetch_facebook_campaigns,
                               get_user_campaigns, update_campaign_stats,
                               update_user_campaign_status)
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
-from backend.keitaro import fetch_keitaro_report
+from backend.keitaro import fetch_keitaro_report, sync_keitaro
 from backend.reserve_tokens import get_reserve_token_accounts
 from backend.setting import get_user_settings, update_user_settings
 from backend.telegram import send_telegram_message
@@ -980,19 +980,19 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         # Проверяем валидность входных данных
         if not account_id or account_id == 'N/A' or not access_token or access_token == 'N/A':
             return {
-                'account_id': account_id or 'unknown',
-                'name': 'Невалидные данные',
-                'status': 'INVALID_DATA',
-                'spend': 0,
-                'balance': 0,
-                'spend_cap': 0,
-                'daily_limit': 0,
-                'requests_today': 0,
-                'requests_limit': 100,
-                'requests_usage_percent': 0,
-                'error': 'Невалидный account_id или token'
+                'account_id': clean_account_id,
+                'name': data.get('name', 'N/A'),
+                'status': data.get('account_status', 'UNKNOWN'),
+                'spend': amount_spent,
+                'balance': spend_cap - amount_spent if spend_cap > 0 else 0,   # ✅ теперь тут remaining amount
+                'spend_cap': spend_cap,
+                'daily_limit': daily_limit,
+                'requests_today': calls_usage,
+                'requests_limit': calls_limit,
+                'requests_usage_percent': round((calls_usage / calls_limit) * 100, 1) if calls_limit > 0 else 0,
+                'remaining_limit': spend_cap - amount_spent if spend_cap > 0 else 0
             }
-        
+
         clean_account_id = account_id.replace('act_', '')
         
         url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}"
@@ -3911,26 +3911,28 @@ def fetch_facebook_cpm_data(account_id, access_token):
         return {}
 
 def calculate_daily_budget_requirements(user_id):
-    """Рассчитывает требуемый дневной бюджет для всех активных кампаний - ИСПРАВЛЕННАЯ ВЕРСИЯ"""
+    """Рассчитывает требуемый дневной бюджет для всех активных кампаний - исправленная версия"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Получаем сумму дневных бюджетов всех активных адсетов по аккаунтам
-            # Убеждаемся, что считаем только ACTIVE адсеты с положительным бюджетом
+            # Берём только реально активные адсеты (оба статуса ACTIVE)
             cursor.execute("""
                 SELECT 
                     a.account_id,
-                    a.token,
+                    c.token,
                     SUM(a.budget) as total_daily_budget,
                     COUNT(a.adset_id) as active_adsets
                 FROM adsets a
+                LEFT JOIN campaigns c 
+                    ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id
                 WHERE a.user_id = ? 
-                AND a.status = 'ACTIVE'
-                AND a.budget > 0
-                AND a.account_id IS NOT NULL
-                AND a.account_id != ''
-                GROUP BY a.account_id, a.token
+                  AND UPPER(a.status) = 'ACTIVE'
+                  AND UPPER(a.effective_status) = 'ACTIVE'
+                  AND a.budget > 0
+                  AND a.account_id IS NOT NULL
+                  AND a.account_id != ''
+                GROUP BY a.account_id, c.token
             """, (user_id,))
             
             requirements = []
@@ -3938,7 +3940,7 @@ def calculate_daily_budget_requirements(user_id):
                 requirements.append({
                     'account_id': row['account_id'],
                     'token': row['token'],
-                    'total_daily_budget': float(row['total_daily_budget']),
+                    'total_daily_budget': float(row['total_daily_budget'] or 0.0),
                     'active_adsets': row['active_adsets']
                 })
             
@@ -3947,6 +3949,7 @@ def calculate_daily_budget_requirements(user_id):
     except Exception as e:
         logger.error(f"Ошибка расчета дневных бюджетов: {e}")
         return []
+
 @app.route('/api/debug/balance', methods=['GET'])
 @login_required
 def debug_balance():
@@ -4027,6 +4030,7 @@ def check_account_balance_sufficiency(user_id):
     except Exception as e:
         logger.error(f"Ошибка проверки баланса: {e}")
         return []
+
 def send_balance_warnings(user_id):
     """Отправляет уведомления о недостаточном балансе"""
     try:
@@ -4532,6 +4536,12 @@ def save_and_sync():
             except requests.exceptions.RequestException as e:
                 logger.warning(f"Ошибка сети для аккаунта {account_id}: {e}")
                 continue
+        try:
+            updated = sync_keitaro(user_id)
+            logger.info(f"[save_and_sync] Keitaro обновил {updated} адсетов для пользователя {user_id}")
+        except Exception as e:
+            logger.error(f"[save_and_sync] Ошибка обновления Keitaro: {e}")
+
         return jsonify({
             "success": True,
             "saved_accounts": saved_accounts,
@@ -4898,6 +4908,7 @@ def check_balance_api():
             'warnings': [],
             'count': 0
         })
+
 def schedule_balance_checks():
     """Планировщик для регулярной проверки баланса"""
     try:
@@ -5599,4 +5610,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port=8000, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)

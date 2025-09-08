@@ -1,52 +1,325 @@
-2025-09-07 02:26:48,114 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-09-07 02:26:48,819 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
-2025-09-07 02:26:48,822 - __main__ - INFO - Обработано записей из Keitaro: 44 по имени
-2025-09-07 02:26:48,824 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:26:49,296 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-09-07 02:26:49,300 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:26:49,772 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 1112
-2025-09-07 02:26:49,773 - backend.campaign - DEBUG - Получено 25 кампаний. Status: {'ACTIVE': 1, 'PAUSED': 24}, Effective Status: {'ACTIVE': 1, 'PAUSED': 24}
-2025-09-07 02:26:49,773 - backend.campaign - INFO - Получено 25 кампаний, после фильтрации: 25 для аккаунта 1229752641939602
-2025-09-07 02:26:49,861 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:26:50,788 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 2120
-2025-09-07 02:26:50,789 - backend.adsets - DEBUG - Получено 121 адсетов. Status: {'ACTIVE': 92, 'PAUSED': 29}, Effective Status: {'ACTIVE': 3, 'PAUSED': 29, 'CAMPAIGN_PAUSED': 89}
-2025-09-07 02:26:50,790 - backend.adsets - INFO - Получено 121 адсетов, после фильтрации: 121 для аккаунта 1229752641939602
-2025-09-07 02:26:51,085 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:26:51,479 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630?access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 74
-2025-09-07 02:26:51,483 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:26:51,963 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 974
-2025-09-07 02:26:51,964 - backend.campaign - DEBUG - Получено 19 кампаний. Status: {'ACTIVE': 1, 'PAUSED': 18}, Effective Status: {'ACTIVE': 1, 'PAUSED': 18}
-2025-09-07 02:26:51,964 - backend.campaign - INFO - Получено 19 кампаний, после фильтрации: 19 для аккаунта 735209789000630
-2025-09-07 02:26:52,017 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:26:52,847 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 1727
-2025-09-07 02:26:52,848 - backend.adsets - DEBUG - Получено 95 адсетов. Status: {'PAUSED': 31, 'ACTIVE': 64}, Effective Status: {'PAUSED': 31, 'ACTIVE': 4, 'CAMPAIGN_PAUSED': 60}
-2025-09-07 02:26:52,848 - backend.adsets - INFO - Получено 95 адсетов, после фильтрации: 95 для аккаунта 735209789000630
-2025-09-07 02:26:53,030 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2025 02:26:53] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-09-07 02:26:55,203 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2025 02:26:55] "GET /api/adsets HTTP/1.1" 200 -
-2025-09-07 02:35:01,719 - werkzeug - INFO - 141.95.124.104 - - [07/Sep/2025 02:35:01] "GET /api/accounts HTTP/1.1" 200 -
-2025-09-07 02:35:01,961 - __main__ - INFO - === НАЧАЛО СИНХРОНИЗАЦИИ ===
-2025-09-07 02:35:01,964 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-09-07 02:35:02,667 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
-2025-09-07 02:35:02,670 - __main__ - INFO - Обработано записей из Keitaro: 44 по имени
-2025-09-07 02:35:02,672 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:35:03,090 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602?access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 75
-2025-09-07 02:35:03,095 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:35:03,638 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 1112
-2025-09-07 02:35:03,639 - backend.campaign - DEBUG - Получено 25 кампаний. Status: {'ACTIVE': 1, 'PAUSED': 24}, Effective Status: {'ACTIVE': 1, 'PAUSED': 24}
-2025-09-07 02:35:03,639 - backend.campaign - INFO - Получено 25 кампаний, после фильтрации: 25 для аккаунта 1229752641939602
-2025-09-07 02:35:03,704 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:35:04,537 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229752641939602/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 2120
-2025-09-07 02:35:04,538 - backend.adsets - DEBUG - Получено 121 адсетов. Status: {'ACTIVE': 92, 'PAUSED': 29}, Effective Status: {'ACTIVE': 3, 'PAUSED': 29, 'CAMPAIGN_PAUSED': 89}
-2025-09-07 02:35:04,539 - backend.adsets - INFO - Получено 121 адсетов, после фильтрации: 121 для аккаунта 1229752641939602
-2025-09-07 02:35:04,766 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:35:05,192 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630?access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 74
-2025-09-07 02:35:05,195 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:35:05,666 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 974
-2025-09-07 02:35:05,667 - backend.campaign - DEBUG - Получено 19 кампаний. Status: {'ACTIVE': 1, 'PAUSED': 18}, Effective Status: {'ACTIVE': 1, 'PAUSED': 18}
-2025-09-07 02:35:05,667 - backend.campaign - INFO - Получено 19 кампаний, после фильтрации: 19 для аккаунта 735209789000630
-2025-09-07 02:35:05,722 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-07 02:35:06,606 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_735209789000630/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAPTAYDlTdwBPRP7OtROacUXM0K0kIi8r1ZAbme7TO0nPb18vfqt0lcH7uZCaISMSPBUGgznBeWhcXBEk4MLrUOap1H3DgtSlVIFZC66mnKY5evgCyWZB3O0CPCrfLh4DsEhnHft5ZAqDk4eVglddcQg08ZALSZABXOlelhPL6phXmttnXDJovZAnSkJwYYPlJPhRQlA&limit=1000 HTTP/1.1" 200 1729
-2025-09-07 02:35:06,608 - backend.adsets - DEBUG - Получено 95 адсетов. Status: {'PAUSED': 31, 'ACTIVE': 64}, Effective Status: {'PAUSED': 31, 'ACTIVE': 4, 'CAMPAIGN_PAUSED': 60}
-2025-09-07 02:35:06,608 - backend.adsets - INFO - Получено 95 адсетов, после фильтрации: 95 для аккаунта 735209789000630
-2025-09-07 02:35:06,784 - werkzeug - INFO - 141.95.124.104 - - [07/Sep/2025 02:35:06] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-09-07 02:35:09,055 - werkzeug - INFO - 141.95.124.104 - - [07/Sep/2025 02:35:09] "GET /api/adsets HTTP/1.1" 200 -
+2025-09-08 18:56:28,569 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RANGER5
+2025-09-08 18:56:28,570 - backend.autocontrol - DEBUG - Обработка адсета: RANGER3 (ID: 120233405601960529, статус: PAUSED)
+2025-09-08 18:56:28,570 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RANGER3
+2025-09-08 18:56:28,570 - backend.autocontrol - DEBUG - Обработка адсета: RANGER1 (ID: 120233404314800529, статус: PAUSED)
+2025-09-08 18:56:28,570 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) RANGER1
+2025-09-08 18:56:28,570 - backend.autocontrol - DEBUG - Обработка адсета: MISTER5 (ID: 120233216047320529, статус: PAUSED)
+2025-09-08 18:56:28,570 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MISTER5
+2025-09-08 18:56:28,570 - backend.autocontrol - DEBUG - Обработка адсета: MISTER2 (ID: 120233216047310529, статус: PAUSED)
+2025-09-08 18:56:28,570 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MISTER2
+2025-09-08 18:56:28,570 - backend.autocontrol - DEBUG - Обработка адсета: MISTER1 (ID: 120233215956800529, статус: PAUSED)
+2025-09-08 18:56:28,570 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) MISTER1
+2025-09-08 18:56:28,570 - backend.autocontrol - DEBUG - Обработка адсета: KING3 (ID: 120233215941510529, статус: PAUSED)
+2025-09-08 18:56:28,570 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KING3
+2025-09-08 18:56:28,571 - backend.autocontrol - DEBUG - Обработка адсета: KING2 (ID: 120233215941500529, статус: PAUSED)
+2025-09-08 18:56:28,571 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KING2
+2025-09-08 18:56:28,571 - backend.autocontrol - DEBUG - Обработка адсета: KING5 (ID: 120233215941490529, статус: PAUSED)
+2025-09-08 18:56:28,571 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) KING5
+2025-09-08 18:56:28,571 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL1V4 (ID: 120233208560930529, статус: PAUSED)
+2025-09-08 18:56:28,571 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) LEVEL1V4
+2025-09-08 18:56:28,571 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL1V3 (ID: 120233208546360529, статус: PAUSED)
+2025-09-08 18:56:28,571 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) LEVEL1V3
+2025-09-08 18:56:28,571 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL1V2 (ID: 120233208540970529, статус: PAUSED)
+2025-09-08 18:56:28,571 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) LEVEL1V2
+2025-09-08 18:56:28,571 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL1V1 (ID: 120233208536000529, статус: PAUSED)
+2025-09-08 18:56:28,571 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) LEVEL1V1
+2025-09-08 18:56:28,571 - backend.autocontrol - DEBUG - Обработка адсета: RAZGON3 (ID: 120232871383820529, статус: PAUSED)
+2025-09-08 18:56:28,572 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RAZGON3
+2025-09-08 18:56:28,572 - backend.autocontrol - DEBUG - Обработка адсета: RAZGON2 (ID: 120232871383810529, статус: PAUSED)
+2025-09-08 18:56:28,572 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RAZGON2
+2025-09-08 18:56:28,572 - backend.autocontrol - DEBUG - Обработка адсета: RAZGON5 (ID: 120232871383770529, статус: PAUSED)
+2025-09-08 18:56:28,572 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RAZGON5
+2025-09-08 18:56:28,572 - backend.autocontrol - DEBUG - Обработка адсета: RAZGON4 (ID: 120232871383760529, статус: PAUSED)
+2025-09-08 18:56:28,572 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) RAZGON4
+2025-09-08 18:56:28,572 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL5 (ID: 120232870836680529, статус: PAUSED)
+2025-09-08 18:56:28,572 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEVEL5
+2025-09-08 18:56:28,572 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL4 (ID: 120232870836650529, статус: PAUSED)
+2025-09-08 18:56:28,572 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEVEL4
+2025-09-08 18:56:28,572 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL3 (ID: 120232870836640529, статус: PAUSED)
+2025-09-08 18:56:28,573 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEVEL3
+2025-09-08 18:56:28,573 - backend.autocontrol - DEBUG - Обработка адсета: LEVEL2 (ID: 120232870836610529, статус: PAUSED)
+2025-09-08 18:56:28,573 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEVEL2
+2025-09-08 18:56:28,573 - backend.autocontrol - DEBUG - Обработка адсета: CODA2 (ID: 120232870313950529, статус: PAUSED)
+2025-09-08 18:56:28,573 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) CODA2
+2025-09-08 18:56:28,573 - backend.autocontrol - DEBUG - Обработка адсета: CODA5 (ID: 120232870313940529, статус: PAUSED)
+2025-09-08 18:56:28,573 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) CODA5
+2025-09-08 18:56:28,573 - backend.autocontrol - DEBUG - Обработка адсета: CODA4 (ID: 120232870313930529, статус: PAUSED)
+2025-09-08 18:56:28,573 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) CODA4
+2025-09-08 18:56:28,573 - backend.autocontrol - DEBUG - Обработка адсета: CODA1 (ID: 120232870059170529, статус: PAUSED)
+2025-09-08 18:56:28,573 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) CODA1
+2025-09-08 18:56:28,573 - backend.autocontrol - DEBUG - Обработка адсета: BAKER4 (ID: 120232870022360529, статус: PAUSED)
+2025-09-08 18:56:28,574 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BAKER4
+2025-09-08 18:56:28,574 - backend.autocontrol - DEBUG - Обработка адсета: BAKER3 (ID: 120232870022330529, статус: PAUSED)
+2025-09-08 18:56:28,574 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BAKER3
+2025-09-08 18:56:28,574 - backend.autocontrol - DEBUG - Обработка адсета: DVAPUVA5 (ID: 120232387958150529, статус: PAUSED)
+2025-09-08 18:56:28,574 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DVAPUVA5
+2025-09-08 18:56:28,574 - backend.autocontrol - DEBUG - Обработка адсета: DVAPUVA4 (ID: 120232387958130529, статус: PAUSED)
+2025-09-08 18:56:28,574 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DVAPUVA4
+2025-09-08 18:56:28,574 - backend.autocontrol - DEBUG - Обработка адсета: DVAPUVA3 (ID: 120232387958120529, статус: PAUSED)
+2025-09-08 18:56:28,574 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DVAPUVA3
+2025-09-08 18:56:28,574 - backend.autocontrol - DEBUG - Обработка адсета: DVAPUVA1 (ID: 120232386944320529, статус: PAUSED)
+2025-09-08 18:56:28,574 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) DVAPUVA1
+2025-09-08 18:56:28,574 - backend.autocontrol - DEBUG - Обработка адсета: VSTABKI2 (ID: 120232386645930529, статус: PAUSED)
+2025-09-08 18:56:28,575 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) VSTABKI2
+2025-09-08 18:56:28,575 - backend.autocontrol - DEBUG - Обработка адсета: VSTABKI1 - Copy (ID: 120232386645920529, статус: PAUSED)
+2025-09-08 18:56:28,575 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) VSTABKI1 - Copy
+2025-09-08 18:56:28,575 - backend.autocontrol - DEBUG - Обработка адсета: VSTABKI1 (ID: 120232385609740529, статус: PAUSED)
+2025-09-08 18:56:28,575 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) VSTABKI1
+2025-09-08 18:56:28,575 - backend.autocontrol - DEBUG - Обработка адсета: REAL3 (ID: 120232385235440529, статус: PAUSED)
+2025-09-08 18:56:28,575 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) REAL3
+2025-09-08 18:56:28,575 - backend.autocontrol - DEBUG - Обработка адсета: REAL5 (ID: 120232385235390529, статус: PAUSED)
+2025-09-08 18:56:28,575 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) REAL5
+2025-09-08 18:56:28,575 - backend.autocontrol - DEBUG - Обработка адсета: REAL4 (ID: 120232385235380529, статус: PAUSED)
+2025-09-08 18:56:28,575 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) REAL4
+2025-09-08 18:56:28,575 - backend.autocontrol - DEBUG - Обработка адсета: REAL1 (ID: 120232384467340529, статус: PAUSED)
+2025-09-08 18:56:28,575 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) REAL1
+2025-09-08 18:56:28,576 - backend.autocontrol - DEBUG - Обработка адсета: EBUWEE4 (ID: 120231973613750529, статус: PAUSED)
+2025-09-08 18:56:28,576 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) EBUWEE4
+2025-09-08 18:56:28,576 - backend.autocontrol - DEBUG - Обработка адсета: EBUWEE3 (ID: 120231973613720529, статус: PAUSED)
+2025-09-08 18:56:28,576 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) EBUWEE3
+2025-09-08 18:56:28,576 - backend.autocontrol - DEBUG - Обработка адсета: EBUWEE2 (ID: 120231973613710529, статус: PAUSED)
+2025-09-08 18:56:28,576 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) EBUWEE2
+2025-09-08 18:56:28,576 - backend.autocontrol - DEBUG - Обработка адсета: EBUWEE1 (ID: 120231973419670529, статус: PAUSED)
+2025-09-08 18:56:28,576 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) EBUWEE1
+2025-09-08 18:56:28,576 - backend.autocontrol - DEBUG - Обработка адсета: BIG5 (ID: 120231971417480529, статус: PAUSED)
+2025-09-08 18:56:28,576 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BIG5
+2025-09-08 18:56:28,576 - backend.autocontrol - DEBUG - Обработка адсета: BIG4 (ID: 120231971417470529, статус: PAUSED)
+2025-09-08 18:56:28,576 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BIG4
+2025-09-08 18:56:28,577 - backend.autocontrol - DEBUG - Обработка адсета: BIG3 (ID: 120231971417460529, статус: PAUSED)
+2025-09-08 18:56:28,577 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BIG3
+2025-09-08 18:56:28,577 - backend.autocontrol - DEBUG - Обработка адсета: BIG2 (ID: 120231971417440529, статус: PAUSED)
+2025-09-08 18:56:28,577 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BIG2
+2025-09-08 18:56:28,577 - backend.autocontrol - DEBUG - Обработка адсета: BARAKUDA3 (ID: 120231967518720529, статус: PAUSED)
+2025-09-08 18:56:28,577 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BARAKUDA3
+2025-09-08 18:56:28,577 - backend.autocontrol - DEBUG - Обработка адсета: BARAKUDA2 (ID: 120231967518710529, статус: PAUSED)
+2025-09-08 18:56:28,577 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BARAKUDA2
+2025-09-08 18:56:28,577 - backend.autocontrol - DEBUG - Обработка адсета: BARAKUDA5 (ID: 120231967518680529, статус: PAUSED)
+2025-09-08 18:56:28,577 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BARAKUDA5
+2025-09-08 18:56:28,577 - backend.autocontrol - DEBUG - Обработка адсета: BARAKUDA4 (ID: 120231967518670529, статус: PAUSED)
+2025-09-08 18:56:28,577 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BARAKUDA4
+2025-09-08 18:56:28,577 - backend.autocontrol - DEBUG - Обработка адсета: BYTER3 (ID: 120231966575210529, статус: PAUSED)
+2025-09-08 18:56:28,578 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BYTER3
+2025-09-08 18:56:28,578 - backend.autocontrol - DEBUG - Обработка адсета: BYTER2 (ID: 120231966575200529, статус: PAUSED)
+2025-09-08 18:56:28,578 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BYTER2
+2025-09-08 18:56:28,578 - backend.autocontrol - DEBUG - Обработка адсета: BYTER4 (ID: 120231966575170529, статус: PAUSED)
+2025-09-08 18:56:28,578 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BYTER4
+2025-09-08 18:56:28,578 - backend.autocontrol - DEBUG - Обработка адсета: BYTER1 (ID: 120231965855920529, статус: PAUSED)
+2025-09-08 18:56:28,578 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) BYTER1
+2025-09-08 18:56:28,578 - backend.autocontrol - DEBUG - Обработка адсета: GRATZ4 (ID: 120234126715250093, статус: PAUSED)
+2025-09-08 18:56:28,578 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) GRATZ4
+2025-09-08 18:56:28,578 - backend.autocontrol - DEBUG - Обработка адсета: GRATZ3 (ID: 120234126715240093, статус: PAUSED)
+2025-09-08 18:56:28,578 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) GRATZ3
+2025-09-08 18:56:28,578 - backend.autocontrol - DEBUG - Обработка адсета: GRATZ5 (ID: 120234126715190093, статус: PAUSED)
+2025-09-08 18:56:28,579 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) GRATZ5
+2025-09-08 18:56:28,579 - backend.autocontrol - DEBUG - Обработка адсета: GRATZ1 (ID: 120234126392760093, статус: PAUSED)
+2025-09-08 18:56:28,579 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) GRATZ1
+2025-09-08 18:56:28,579 - backend.autocontrol - DEBUG - Обработка адсета: SPORT3 (ID: 120233707154290093, статус: PAUSED)
+2025-09-08 18:56:28,579 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SPORT3
+2025-09-08 18:56:28,579 - backend.autocontrol - DEBUG - Обработка адсета: SPORT5 (ID: 120233707154260093, статус: PAUSED)
+2025-09-08 18:56:28,579 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SPORT5
+2025-09-08 18:56:28,579 - backend.autocontrol - DEBUG - Обработка адсета: SPORT4 (ID: 120233707154250093, статус: PAUSED)
+2025-09-08 18:56:28,579 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SPORT4
+2025-09-08 18:56:28,579 - backend.autocontrol - DEBUG - Обработка адсета: SPORT1 (ID: 120233706445140093, статус: PAUSED)
+2025-09-08 18:56:28,579 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) SPORT1
+2025-09-08 18:56:28,579 - backend.autocontrol - DEBUG - Обработка адсета: ZAKOLOCHKA3 (ID: 120233706390670093, статус: PAUSED)
+2025-09-08 18:56:28,580 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) ZAKOLOCHKA3
+2025-09-08 18:56:28,580 - backend.autocontrol - DEBUG - Обработка адсета: ZAKOLOCHKA1 (ID: 120233706173420093, статус: PAUSED)
+2025-09-08 18:56:28,580 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) ZAKOLOCHKA1
+2025-09-08 18:56:28,580 - backend.autocontrol - DEBUG - Обработка адсета: FAMILY2 (ID: 120233706059770093, статус: PAUSED)
+2025-09-08 18:56:28,580 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FAMILY2
+2025-09-08 18:56:28,580 - backend.autocontrol - DEBUG - Обработка адсета: FAMILY4 (ID: 120233706059720093, статус: PAUSED)
+2025-09-08 18:56:28,580 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) FAMILY4
+2025-09-08 18:56:28,580 - backend.autocontrol - DEBUG - Обработка адсета: LUBOV5 (ID: 120233705755070093, статус: PAUSED)
+2025-09-08 18:56:28,580 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LUBOV5
+2025-09-08 18:56:28,580 - backend.autocontrol - DEBUG - Обработка адсета: LUBOV4 (ID: 120233705755030093, статус: PAUSED)
+2025-09-08 18:56:28,580 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LUBOV4
+2025-09-08 18:56:28,580 - backend.autocontrol - DEBUG - Обработка адсета: LEGEND5 (ID: 120233391103980093, статус: PAUSED)
+2025-09-08 18:56:28,580 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEGEND5
+2025-09-08 18:56:28,581 - backend.autocontrol - DEBUG - Обработка адсета: LEGEND4 (ID: 120233391103960093, статус: PAUSED)
+2025-09-08 18:56:28,581 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEGEND4
+2025-09-08 18:56:28,581 - backend.autocontrol - DEBUG - Обработка адсета: LEGEND3 (ID: 120233391103950093, статус: PAUSED)
+2025-09-08 18:56:28,581 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEGEND3
+2025-09-08 18:56:28,581 - backend.autocontrol - DEBUG - Обработка адсета: LEGEND2 (ID: 120233391103940093, статус: PAUSED)
+2025-09-08 18:56:28,581 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) LEGEND2
+2025-09-08 18:56:28,581 - backend.autocontrol - DEBUG - Обработка адсета: PAPA5 (ID: 120233278964830093, статус: PAUSED)
+2025-09-08 18:56:28,581 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PAPA5
+2025-09-08 18:56:28,581 - backend.autocontrol - DEBUG - Обработка адсета: PAPA4 (ID: 120233278964820093, статус: PAUSED)
+2025-09-08 18:56:28,581 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PAPA4
+2025-09-08 18:56:28,581 - backend.autocontrol - DEBUG - Обработка адсета: PAPA2 (ID: 120233278964790093, статус: PAUSED)
+2025-09-08 18:56:28,581 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PAPA2
+2025-09-08 18:56:28,582 - backend.autocontrol - DEBUG - Обработка адсета: PAPA1 (ID: 120233278818180093, статус: PAUSED)
+2025-09-08 18:56:28,582 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) PAPA1
+2025-09-08 18:56:28,582 - backend.autocontrol - DEBUG - Обработка адсета: CHURKA5 (ID: 120233278787780093, статус: PAUSED)
+2025-09-08 18:56:28,582 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) CHURKA5
+2025-09-08 18:56:28,582 - backend.autocontrol - DEBUG - Обработка адсета: CHURKA4 (ID: 120233278787750093, статус: PAUSED)
+2025-09-08 18:56:28,582 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) CHURKA4
+2025-09-08 18:56:28,582 - backend.autocontrol - DEBUG - Обработка адсета: CHURKA2 (ID: 120233278787740093, статус: PAUSED)
+2025-09-08 18:56:28,582 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) CHURKA2
+2025-09-08 18:56:28,582 - backend.autocontrol - DEBUG - Обработка адсета: CHURKA1 (ID: 120233278539850093, статус: PAUSED)
+2025-09-08 18:56:28,582 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) CHURKA1
+2025-09-08 18:56:28,582 - backend.autocontrol - DEBUG - Обработка адсета: SMAK2C (ID: 120233278204550093, статус: PAUSED)
+2025-09-08 18:56:28,582 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SMAK2C
+2025-09-08 18:56:28,583 - backend.autocontrol - DEBUG - Обработка адсета: SMAK2A (ID: 120233278132430093, статус: PAUSED)
+2025-09-08 18:56:28,583 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SMAK2A
+2025-09-08 18:56:28,583 - backend.autocontrol - DEBUG - Обработка адсета: PIZDEC3Q (ID: 120233278112880093, статус: PAUSED)
+2025-09-08 18:56:28,583 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PIZDEC3Q
+2025-09-08 18:56:28,583 - backend.autocontrol - DEBUG - Обработка адсета: PIZDEC3Z (ID: 120233278101310093, статус: PAUSED)
+2025-09-08 18:56:28,583 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PIZDEC3Z
+2025-09-08 18:56:28,583 - backend.autocontrol - DEBUG - Обработка адсета: PIZDEC3W (ID: 120233278090110093, статус: PAUSED)
+2025-09-08 18:56:28,583 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PIZDEC3W
+2025-09-08 18:56:28,583 - backend.autocontrol - DEBUG - Обработка адсета: SMAK2 (ID: 120233072870120093, статус: PAUSED)
+2025-09-08 18:56:28,583 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SMAK2
+2025-09-08 18:56:28,583 - backend.autocontrol - DEBUG - Обработка адсета: SMAK5 (ID: 120233072870090093, статус: PAUSED)
+2025-09-08 18:56:28,583 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SMAK5
+2025-09-08 18:56:28,584 - backend.autocontrol - DEBUG - Обработка адсета: SMAK4 (ID: 120233072870080093, статус: PAUSED)
+2025-09-08 18:56:28,584 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SMAK4
+2025-09-08 18:56:28,584 - backend.autocontrol - DEBUG - Обработка адсета: SMAK3 (ID: 120233072870070093, статус: PAUSED)
+2025-09-08 18:56:28,584 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) SMAK3
+2025-09-08 18:56:28,584 - backend.autocontrol - DEBUG - Обработка адсета: SMAK1 (ID: 120233072628000093, статус: PAUSED)
+2025-09-08 18:56:28,584 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) SMAK1
+2025-09-08 18:56:28,584 - backend.autocontrol - DEBUG - Обработка адсета: PIZDEC2 (ID: 120233072070520093, статус: PAUSED)
+2025-09-08 18:56:28,584 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PIZDEC2
+2025-09-08 18:56:28,584 - backend.autocontrol - DEBUG - Обработка адсета: PIZDEC5 (ID: 120233072070470093, статус: PAUSED)
+2025-09-08 18:56:28,584 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PIZDEC5
+2025-09-08 18:56:28,584 - backend.autocontrol - DEBUG - Обработка адсета: PIZDEC3 (ID: 120233072070450093, статус: PAUSED)
+2025-09-08 18:56:28,584 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PIZDEC3
+2025-09-08 18:56:28,584 - backend.autocontrol - DEBUG - Обработка адсета: PIZDEC1 (ID: 120233071870420093, статус: PAUSED)
+2025-09-08 18:56:28,585 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) PIZDEC1
+2025-09-08 18:56:28,585 - backend.autocontrol - DEBUG - Обработка адсета: CHILL3 (ID: 120232919733690093, статус: PAUSED)
+2025-09-08 18:56:28,585 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) CHILL3
+2025-09-08 18:56:28,585 - backend.autocontrol - DEBUG - Обработка адсета: CHILL1 (ID: 120232918940400093, статус: PAUSED)
+2025-09-08 18:56:28,585 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) CHILL1
+2025-09-08 18:56:28,585 - backend.autocontrol - DEBUG - Обработка адсета: STOL2 (ID: 120232918795500093, статус: PAUSED)
+2025-09-08 18:56:28,585 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) STOL2
+2025-09-08 18:56:28,585 - backend.autocontrol - DEBUG - Обработка адсета: STOL3 (ID: 120232918795470093, статус: PAUSED)
+2025-09-08 18:56:28,585 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) STOL3
+2025-09-08 18:56:28,585 - backend.autocontrol - DEBUG - Обработка адсета: STOL1 (ID: 120232918414580093, статус: PAUSED)
+2025-09-08 18:56:28,585 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) STOL1
+2025-09-08 18:56:28,585 - backend.autocontrol - DEBUG - Обработка адсета: PIZDABALL2 (ID: 120232917064930093, статус: PAUSED)
+2025-09-08 18:56:28,586 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) PIZDABALL2
+2025-09-08 18:56:28,586 - backend.autocontrol - DEBUG - Обработка адсета: PIZDABALL1 (ID: 120232916532970093, статус: PAUSED)
+2025-09-08 18:56:28,586 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) PIZDABALL1
+2025-09-08 18:56:28,586 - backend.autocontrol - DEBUG - Обработка адсета: MYATIY3 (ID: 120232583430770093, статус: PAUSED)
+2025-09-08 18:56:28,586 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MYATIY3
+2025-09-08 18:56:28,586 - backend.autocontrol - DEBUG - Обработка адсета: MYATIY2 (ID: 120232583430700093, статус: PAUSED)
+2025-09-08 18:56:28,586 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MYATIY2
+2025-09-08 18:56:28,586 - backend.autocontrol - DEBUG - Обработка адсета: MYATIY1 (ID: 120232583007120093, статус: PAUSED)
+2025-09-08 18:56:28,586 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) MYATIY1
+2025-09-08 18:56:28,586 - backend.autocontrol - DEBUG - Обработка адсета: BATYA2 (ID: 120232582871890093, статус: PAUSED)
+2025-09-08 18:56:28,586 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BATYA2
+2025-09-08 18:56:28,586 - backend.autocontrol - DEBUG - Обработка адсета: BATYA5 (ID: 120232582871870093, статус: PAUSED)
+2025-09-08 18:56:28,587 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BATYA5
+2025-09-08 18:56:28,587 - backend.autocontrol - DEBUG - Обработка адсета: BATYA4 (ID: 120232582871860093, статус: PAUSED)
+2025-09-08 18:56:28,587 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) BATYA4
+2025-09-08 18:56:28,587 - backend.autocontrol - DEBUG - Обработка адсета: BATYA1 (ID: 120232582538400093, статус: PAUSED)
+2025-09-08 18:56:28,587 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) BATYA1
+2025-09-08 18:56:28,587 - backend.autocontrol - DEBUG - Обработка адсета: MALENKIY2 (ID: 120232582482710093, статус: PAUSED)
+2025-09-08 18:56:28,587 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MALENKIY2
+2025-09-08 18:56:28,587 - backend.autocontrol - DEBUG - Обработка адсета: MALENKIY4 (ID: 120232582482660093, статус: PAUSED)
+2025-09-08 18:56:28,587 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MALENKIY4
+2025-09-08 18:56:28,587 - backend.autocontrol - DEBUG - Обработка адсета: MALENKIY3 (ID: 120232582482650093, статус: PAUSED)
+2025-09-08 18:56:28,587 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) MALENKIY3
+2025-09-08 18:56:28,587 - backend.autocontrol - DEBUG - Обработка адсета: MALENKIY1 (ID: 120232581977570093, статус: PAUSED)
+2025-09-08 18:56:28,587 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) MALENKIY1
+2025-09-08 18:56:28,588 - backend.autocontrol - DEBUG - Обработка адсета: REAl5 (ID: 120232581637360093, статус: PAUSED)
+2025-09-08 18:56:28,588 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) REAl5
+2025-09-08 18:56:28,588 - backend.autocontrol - DEBUG - Обработка адсета: REAl4 (ID: 120232581637350093, статус: PAUSED)
+2025-09-08 18:56:28,588 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) REAl4
+2025-09-08 18:56:28,588 - backend.autocontrol - DEBUG - Обработка адсета: REAl3 (ID: 120232581637330093, статус: PAUSED)
+2025-09-08 18:56:28,588 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) REAl3
+2025-09-08 18:56:28,588 - backend.autocontrol - DEBUG - Обработка адсета: REAl1 (ID: 120232581209070093, статус: PAUSED)
+2025-09-08 18:56:28,588 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) REAl1
+2025-09-08 18:56:28,588 - backend.autocontrol - DEBUG - Обработка адсета: DISCO4 (ID: 120232579979150093, статус: PAUSED)
+2025-09-08 18:56:28,588 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DISCO4
+2025-09-08 18:56:28,588 - backend.autocontrol - DEBUG - Обработка адсета: DISCO3 (ID: 120232579979140093, статус: PAUSED)
+2025-09-08 18:56:28,588 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DISCO3
+2025-09-08 18:56:28,589 - backend.autocontrol - DEBUG - Обработка адсета: DISCO2 (ID: 120232579979130093, статус: PAUSED)
+2025-09-08 18:56:28,589 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) DISCO2
+2025-09-08 18:56:28,591 - backend.autocontrol - INFO - Автообновление запущено для пользователя 5, интервал: 5 мин
+2025-09-08 18:56:41,235 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://82.97.251.126:5000
+2025-09-08 18:56:41,235 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-08 18:56:43,042 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:43] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-08 18:56:43,192 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:43] "[32mGET /login HTTP/1.1[0m" 302 -
+2025-09-08 18:56:43,345 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:43] "GET /dashboard HTTP/1.1" 200 -
+2025-09-08 18:56:43,555 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:43] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-09-08 18:56:47,973 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:47] "GET /balance_monitor HTTP/1.1" 200 -
+2025-09-08 18:56:48,186 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-08 18:56:48,998 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:49,008 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:49] "GET /api/settings HTTP/1.1" 200 -
+2025-09-08 18:56:49,702 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
+2025-09-08 18:56:49,705 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:50,152 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 18:56:50,159 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:50,782 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
+2025-09-08 18:56:50,784 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:51,229 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-09-08 18:56:51,236 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:51,981 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
+2025-09-08 18:56:51,983 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:52,537 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-09-08 18:56:52,544 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:53,194 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
+2025-09-08 18:56:53,196 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:53,665 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 18:56:53,672 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:54,406 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
+2025-09-08 18:56:54,408 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:54,849 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 18:56:54,855 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:55,482 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 150
+2025-09-08 18:56:55,484 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 18:56:55,965 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 18:56:55,970 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 18:56:55] "GET /api/check_balance HTTP/1.1" 200 -
+2025-09-08 19:01:49,572 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:50,198 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
+2025-09-08 19:01:50,200 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:50,648 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:01:50,655 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:51,131 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
+2025-09-08 19:01:51,133 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:51,630 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-09-08 19:01:51,637 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:52,137 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
+2025-09-08 19:01:52,139 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:52,566 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-09-08 19:01:52,572 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:53,202 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
+2025-09-08 19:01:53,205 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:53,701 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:01:53,708 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:54,348 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
+2025-09-08 19:01:54,350 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:54,832 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:01:54,839 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:55,297 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 150
+2025-09-08 19:01:55,299 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:01:55,731 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:01:55,737 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 19:01:55] "GET /api/check_balance HTTP/1.1" 200 -
+2025-09-08 19:06:50,266 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:50,715 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 129
+2025-09-08 19:06:50,716 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:51,160 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1289568592686104?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:06:51,166 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:51,577 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
+2025-09-08 19:06:51,579 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:51,965 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-09-08 19:06:51,972 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:52,413 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
+2025-09-08 19:06:52,415 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:52,831 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 400 183
+2025-09-08 19:06:52,838 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:53,309 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
+2025-09-08 19:06:53,311 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:53,708 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:06:53,714 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:54,366 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
+2025-09-08 19:06:54,368 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:54,752 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:06:54,758 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:55,227 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 150
+2025-09-08 19:06:55,229 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-08 19:06:55,658 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=daily_spend_limit%2Cadtrust_dsl&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 400 183
+2025-09-08 19:06:55,663 - werkzeug - INFO - 127.0.0.1 - - [08/Sep/2025 19:06:55] "GET /api/check_balance HTTP/1.1" 200 -

@@ -547,6 +547,38 @@
         "documentation": {}
     },
     {
+        "label": "sync_keitaro",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "isExtraImport": true,
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
+        "label": "sync_keitaro",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "isExtraImport": true,
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_keitaro_report",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "isExtraImport": true,
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
+        "label": "sync_keitaro",
+        "importPath": "backend.keitaro",
+        "description": "backend.keitaro",
+        "isExtraImport": true,
+        "detail": "backend.keitaro",
+        "documentation": {}
+    },
+    {
         "label": "threading",
         "kind": 6,
         "isExtraImport": true,
@@ -689,22 +721,6 @@
         "description": "backend.adsets",
         "isExtraImport": true,
         "detail": "backend.adsets",
-        "documentation": {}
-    },
-    {
-        "label": "sync_keitaro",
-        "importPath": "backend.keitaro",
-        "description": "backend.keitaro",
-        "isExtraImport": true,
-        "detail": "backend.keitaro",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_keitaro_report",
-        "importPath": "backend.keitaro",
-        "description": "backend.keitaro",
-        "isExtraImport": true,
-        "detail": "backend.keitaro",
         "documentation": {}
     },
     {
@@ -1087,7 +1103,16 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def update_user_adset_status(user_id: int, adset_id: str, status: str):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE adsets SET status = ? \n            WHERE user_id = ? AND adset_id = ?\n            \"\"\", (status, user_id, adset_id))\n            conn.commit()\ndef fetch_facebook_adsets(account_id, access_token, fields=None):",
+        "peekOfCode": "def update_user_adset_status(user_id: int, adset_id: str, status: str):\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n            UPDATE adsets SET status = ? \n            WHERE user_id = ? AND adset_id = ?\n            \"\"\", (status, user_id, adset_id))\n            conn.commit()\ndef fetch_facebook_adset_insights(adset_id, access_token, date_preset=\"today\"):",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_facebook_adset_insights",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def fetch_facebook_adset_insights(adset_id, access_token, date_preset=\"today\"):\n    \"\"\"\n    Получает метрики для конкретного адсета: CPM, CPC, Spend, Impressions\n    \"\"\"\n    url = f\"https://graph.facebook.com/v18.0/{adset_id}/insights\"\n    params = {\n        \"fields\": \"impressions,spend,cpm,cpc\",\n        \"date_preset\": date_preset,\n        \"access_token\": access_token,\n    }",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1096,7 +1121,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    try:\n        clean_account_id = account_id.replace('act_', '')\n        url = f\"https://graph.facebook.com/v18.0/act_{clean_account_id}/adsets\"\n        params = {\n            \"fields\": fields,\n            \"access_token\": access_token,\n            \"limit\": 1000  ",
+        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"\n    Получает список адсетов (только метаданные, без метрик).\n    \"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    url = f\"https://graph.facebook.com/v18.0/act_{account_id}/adsets\"\n    params = {\n        \"fields\": fields,\n        \"access_token\": access_token,",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1105,7 +1130,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def refresh_adsets_internal(user_id):\n    try:\n        campaigns = get_user_campaigns(user_id)\n        accounts = {}\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        for campaign in campaigns:\n            if campaign['account_id'] and campaign['token']:\n                accounts[campaign['account_id']] = campaign['token']\n        updated_count = 0",
+        "peekOfCode": "def refresh_adsets_internal(user_id, account_id, token):\n    \"\"\"\n    Обновляет список адсетов и метрики из Facebook (CPM, Spend, CPC).\n    После этого подтягивает CPA и Leads из Keitaro.\n    \"\"\"\n    logger.info(f\"Обновление адсетов для аккаунта {account_id}\")\n    adsets = fetch_facebook_adsets(account_id, token)\n    logger.info(f\"Получено {len(adsets)} адсетов для аккаунта {account_id}\")\n    for adset in adsets:\n        adset_id = adset.get(\"id\")",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1276,7 +1301,7 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))\n                conn.commit()",
+        "peekOfCode": "def update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    \"\"\"Обновляет бюджет конкретного адсета\"\"\"\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets \n                SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1285,7 +1310,7 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT auto_budget_increase, auto_budget_decrease, \n                       max_budget, min_budget, budget_increase_step, \n                       budget_decrease_step\n                FROM adsets \n                WHERE user_id = ? AND adset_id = ?",
+        "peekOfCode": "def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:\n    \"\"\"Возвращает настройки бюджета конкретного адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT auto_budget_increase, auto_budget_decrease, \n                       max_budget, min_budget, budget_increase_step, \n                       budget_decrease_step\n                FROM adsets ",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1294,7 +1319,7 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE adsets \n                SET auto_budget_increase = ?, auto_budget_decrease = ?,\n                    max_budget = ?, min_budget = ?, budget_increase_step = ?,\n                    budget_decrease_step = ?, updated_at = CURRENT_TIMESTAMP\n                WHERE user_id = ? AND adset_id = ?",
+        "peekOfCode": "def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:\n    \"\"\"Обновляет настройки бюджета конкретного адсета\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE adsets \n                SET auto_budget_increase = ?, auto_budget_decrease = ?,\n                    max_budget = ?, min_budget = ?, budget_increase_step = ?,\n                    budget_decrease_step = ?, updated_at = CURRENT_TIMESTAMP",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1303,7 +1328,16 @@
         "kind": 2,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT a.*, c.token \n                FROM adsets a\n                LEFT JOIN campaigns c ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id\n                WHERE a.user_id = ? AND a.status = 'ACTIVE'\n                AND (a.auto_budget_increase = 1 OR a.auto_budget_decrease = 1)",
+        "peekOfCode": "def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Возвращает адсеты, участвующие в авто-бюджете (только активные)\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT a.*, c.token \n                FROM adsets a\n                LEFT JOIN campaigns c \n                    ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id",
+        "detail": "backend.budget",
+        "documentation": {}
+    },
+    {
+        "label": "get_account_total_budget",
+        "kind": 2,
+        "importPath": "backend.budget",
+        "description": "backend.budget",
+        "peekOfCode": "def get_account_total_budget(user_id: int, account_id: str) -> float:\n    \"\"\"Возвращает суммарный дневной бюджет только реально активных адсетов аккаунта\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT SUM(budget) as total_budget\n                FROM adsets\n                WHERE user_id = ? \n                  AND account_id = ?",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -1312,7 +1346,7 @@
         "kind": 5,
         "importPath": "backend.budget",
         "description": "backend.budget",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP \n                WHERE user_id = ? AND adset_id = ?\n                \"\"\", (budget, user_id, adset_id))",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef update_user_adset_budget(user_id: int, adset_id: str, budget: float):\n    \"\"\"Обновляет бюджет конкретного адсета\"\"\"\n    with lock:\n        try:\n            with get_db_connection(user_id) as conn:\n                cursor = conn.cursor()\n                cursor.execute(\"\"\"\n                UPDATE adsets \n                SET budget = ?, updated_at = CURRENT_TIMESTAMP ",
         "detail": "backend.budget",
         "documentation": {}
     },
@@ -2500,7 +2534,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def calculate_daily_budget_requirements(user_id):\n    \"\"\"Рассчитывает требуемый дневной бюджет для всех активных кампаний - ИСПРАВЛЕННАЯ ВЕРСИЯ\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем сумму дневных бюджетов всех активных адсетов по аккаунтам\n            # Убеждаемся, что считаем только ACTIVE адсеты с положительным бюджетом\n            cursor.execute(\"\"\"\n                SELECT \n                    a.account_id,",
+        "peekOfCode": "def calculate_daily_budget_requirements(user_id):\n    \"\"\"Рассчитывает требуемый дневной бюджет для всех активных кампаний - исправленная версия\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Берём только реально активные адсеты (оба статуса ACTIVE)\n            cursor.execute(\"\"\"\n                SELECT \n                    a.account_id,\n                    c.token,",
         "detail": "app",
         "documentation": {}
     },

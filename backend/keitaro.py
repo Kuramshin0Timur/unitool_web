@@ -98,10 +98,10 @@ def fetch_keitaro_report(api_key, domain, interval="today"):
                 cpa = (cost / conversions) if conversions > 0 else 0
 
                 row["leads"] = leads
-                row["cpa"] = round(cpa, 2)
-                row["cpc"] = round(cpc, 2)
-                row["ucpc"] = round(ucpc, 2)
-                row["cost"] = round(cost, 2)
+                row["cpa"] = round(cpa, 3)
+                row["cpc"] = round(cpc, 3)
+                row["ucpc"] = round(ucpc, 3)
+                row["cost"] = round(cost, 3)
 
             all_rows.extend(rows)
 

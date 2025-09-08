@@ -1,20 +1,20 @@
-    
+import logging
 from typing import Any, Dict, List, Optional
 
 from database import get_db_connection, lock
 
-import logging
 logger = logging.getLogger(__name__)
 
+
 def update_user_adset_budget(user_id: int, adset_id: str, budget: float):
-    
-  
+    """Обновляет бюджет конкретного адсета"""
     with lock:
         try:
             with get_db_connection(user_id) as conn:
                 cursor = conn.cursor()
                 cursor.execute("""
-                UPDATE adsets SET budget = ?, updated_at = CURRENT_TIMESTAMP 
+                UPDATE adsets 
+                SET budget = ?, updated_at = CURRENT_TIMESTAMP 
                 WHERE user_id = ? AND adset_id = ?
                 """, (budget, user_id, adset_id))
                 conn.commit()
@@ -23,8 +23,10 @@ def update_user_adset_budget(user_id: int, adset_id: str, budget: float):
         except Exception as e:
             logger.error(f"Ошибка обновления бюджета в БД: {e}")
             return False
+
+
 def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str, Any]]:
-  
+    """Возвращает настройки бюджета конкретного адсета"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -51,8 +53,9 @@ def get_adset_budget_settings(user_id: int, adset_id: str) -> Optional[Dict[str,
         logger.error(f"Ошибка получения настроек бюджета: {e}")
         return None
 
+
 def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str, Any]) -> bool:
-   
+    """Обновляет настройки бюджета конкретного адсета"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -77,20 +80,45 @@ def update_adset_budget_settings(user_id: int, adset_id: str, settings: Dict[str
         logger.error(f"Ошибка обновления настроек бюджета: {e}")
         return False
 
+
 def get_adsets_for_auto_budget(user_id: int) -> List[Dict[str, Any]]:
-    
+    """Возвращает адсеты, участвующие в авто-бюджете (только активные)"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             cursor.execute("""
                 SELECT a.*, c.token 
                 FROM adsets a
-                LEFT JOIN campaigns c ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id
-                WHERE a.user_id = ? AND a.status = 'ACTIVE'
-                AND (a.auto_budget_increase = 1 OR a.auto_budget_decrease = 1)
+                LEFT JOIN campaigns c 
+                    ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id
+                WHERE a.user_id = ? 
+                  AND UPPER(a.status) = 'ACTIVE'
+                  AND UPPER(a.effective_status) = 'ACTIVE'
+                  AND (a.auto_budget_increase = 1 OR a.auto_budget_decrease = 1)
             """, (user_id,))
             
             return [dict(row) for row in cursor.fetchall()]
     except Exception as e:
         logger.error(f"Ошибка получения адсетов для авто-бюджета: {e}")
         return []
+
+
+def get_account_total_budget(user_id: int, account_id: str) -> float:
+    """Возвращает суммарный дневной бюджет только реально активных адсетов аккаунта"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT SUM(budget) as total_budget
+                FROM adsets
+                WHERE user_id = ? 
+                  AND account_id = ?
+                  AND UPPER(status) = 'ACTIVE'
+                  AND UPPER(effective_status) = 'ACTIVE'
+            """, (user_id, account_id))
+            
+            row = cursor.fetchone()
+            return float(row['total_budget'] or 0.0)
+    except Exception as e:
+        logger.error(f"Ошибка получения суммарного бюджета для аккаунта {account_id}: {e}")
+        return 0.0

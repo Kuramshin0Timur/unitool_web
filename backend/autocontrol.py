@@ -418,9 +418,7 @@ def auto_control(user_id):
             except Exception as e:
                 logger.error(f"Ошибка обработки адсета {adset.get('name', 'unknown')}: {e}")
                 continue
-                
-        logger.info(f"=== ЗАВЕРШЕНИЕ АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")
-                
+        check_and_pause_campaigns(user_id)
     except Exception as e:
         logger.error(f"Критическая ошибка автоконтроля для пользователя {user_id}: {e}")
         send_telegram_message(f"🚫 Ошибка автоконтроля: {e}", user_id=user_id)
