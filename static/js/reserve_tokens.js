@@ -2199,7 +2199,7 @@ function removeAccount(king, token, accountId, tokenIndex) {
         cancelButtonText: 'Отмена'
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch('/api/reserve_tokens/accounts', {
+            fetch('/api/reserve_tokens/delete', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

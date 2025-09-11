@@ -130,6 +130,83 @@ def add_account_to_reserve_token(user_id, king, token, account_id):
     except Exception as e:
         logger.error(f"Ошибка добавления аккаунта к токену: {e}")
         return False
+def update_reserve_token_king(user_id: int, old_king: str, new_king: str, token: str) -> bool:
+    """Обновляет KING для резервного токена и связанных данных"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Обновляем KING в reserve_tokens
+            cursor.execute("""
+                UPDATE reserve_tokens 
+                SET king = ?
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (new_king, user_id, old_king, token))
+            
+            # Обновляем KING в reserve_token_accounts
+            cursor.execute("""
+                UPDATE reserve_token_accounts 
+                SET king = ?
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (new_king, user_id, old_king, token))
+            
+            # Обновляем KING в основных таблицах (campaigns и adsets)
+            cursor.execute("""
+                UPDATE campaigns 
+                SET king = ?
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (new_king, user_id, token, old_king))
+            
+            cursor.execute("""
+                UPDATE adsets 
+                SET king = ?
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (new_king, user_id, token, old_king))
+            
+            conn.commit()
+            return True
+            
+    except Exception as e:
+        logger.error(f"Ошибка обновления KING токена: {e}")
+        return False
+
+def delete_reserve_token_complete(user_id: int, king: str, token: str) -> bool:
+    """Полностью удаляет резервный токен и связанные данные"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Удаляем из reserve_token_accounts
+            cursor.execute("""
+                DELETE FROM reserve_token_accounts 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            # Удаляем из reserve_tokens
+            cursor.execute("""
+                DELETE FROM reserve_tokens 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            # Очищаем KING в основных таблицах для этого токена
+            cursor.execute("""
+                UPDATE campaigns 
+                SET king = 'Facebook_Default'
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (user_id, token, king))
+            
+            cursor.execute("""
+                UPDATE adsets 
+                SET king = 'Facebook_Default'
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (user_id, token, king))
+            
+            conn.commit()
+            return True
+            
+    except Exception as e:
+        logger.error(f"Ошибка удаления токена: {e}")
+        return False
 def get_reserve_token_accounts(user_id: int, king: str, token: str) -> List[Dict[str, Any]]:
     """Получает аккаунты для резервного токена"""
     try:
@@ -253,65 +330,53 @@ def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
     except Exception as e:
         logger.error(f"Ошибка получения резервных токенов для пользователя {user_id}: {e}")
         return {}
+def get_reserve_tokens_table(user_id):
+    """Возвращает объединённые данные о токенах и аккаунтах (только KING из reserve_tokens)"""
+    with get_db_connection(user_id) as conn:
+        cursor = conn.cursor()
 
-def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
-    """Возвращает резервные токены в формате для таблицы для конкретного пользователя"""
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            cursor.execute("""
-                SELECT name FROM sqlite_master 
-                WHERE type='table' AND name='reserve_tokens'
-            """)
-            table_exists = cursor.fetchone()
-            
-            if not table_exists:
-                return {}
-            cursor.execute("""
-                SELECT rt.king, rt.token, 
-                       rta.account_id, rta.requests_limit, 
-                       rta.requests_today, rta.requests_usage_percent
-                FROM reserve_tokens rt
-                LEFT JOIN reserve_token_accounts rta ON rt.user_id = rta.user_id 
-                    AND rt.king = rta.king AND rt.token = rta.token
-                WHERE rt.user_id = ?
-                ORDER BY rt.king, rt.token
-            """, (user_id,))
-            
-            tokens_data = {}
-            for row in cursor.fetchall():
-                king = row['king']
-                token = row['token']
-                
-                if king not in tokens_data:
-                    tokens_data[king] = {}
-                
-                if token not in tokens_data[king]:
-                    tokens_data[king][token] = {
-                        'token': token,
-                        'accounts': [],
-                        'requests_limit': row['requests_limit'] or 100,
-                        'requests_today': row['requests_today'] or 0,
-                        'requests_usage_percent': row['requests_usage_percent'] or 0
-                    }
-                
-                if row['account_id']:
-                    tokens_data[king][token]['accounts'].append({
-                        'account_id': row['account_id'],
-                        'requests_limit': row['requests_limit'] or 100,
-                        'requests_today': row['requests_today'] or 0,
-                        'requests_usage_percent': row['requests_usage_percent'] or 0
-                    })
-            
-            # Преобразуем в нужный формат
-            result = {}
-            for king, tokens in tokens_data.items():
-                result[king] = list(tokens.values())
-            
-            return result
-            
-    except Exception as e:
-        logger.error(f"Ошибка получения токенов для таблицы пользователя {user_id}: {e}")
-        return {}
-   
+        # ИСПРАВЛЕННЫЙ ЗАПРОС - добавлено условие по king
+        cursor.execute("""
+            SELECT rt.king, rt.token, 
+                   rta.account_id, rta.requests_limit, 
+                   rta.requests_today, rta.requests_usage_percent
+            FROM reserve_tokens rt
+            LEFT JOIN reserve_token_accounts rta 
+                ON rt.user_id = rta.user_id 
+                AND rt.king = rta.king  -- ДОБАВЛЕНО ЭТО УСЛОВИЕ
+                AND rt.token = rta.token
+            WHERE rt.user_id = ?
+            ORDER BY rt.king, rt.token
+        """, (user_id,))
+
+        rows = cursor.fetchall()
+
+        tokens_data = {}
+        for row in rows:
+            king, token, account_id, req_limit, req_today, req_percent = row
+
+            if king not in tokens_data:
+                tokens_data[king] = []
+
+            # ищем токен в массиве
+            token_entry = next((t for t in tokens_data[king] if t['token'] == token), None)
+
+            if not token_entry:
+                token_entry = {
+                    'token': token,
+                    'accounts': [],
+                    'requests_limit': req_limit or 100,
+                    'requests_today': req_today or 0,
+                    'requests_usage_percent': req_percent or 0
+                }
+                tokens_data[king].append(token_entry)
+
+            if account_id:
+                token_entry['accounts'].append({
+                    'account_id': account_id,
+                    'requests_limit': req_limit or 100,
+                    'requests_today': req_today or 0,
+                    'requests_usage_percent': req_percent or 0
+                })
+
+        return tokens_data

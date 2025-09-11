@@ -176,8 +176,6 @@ def auto_populate_reserve_tokens():
     except Exception as e:
         logger.error(f"Ошибка автоматического заполнения резервных токенов: {e}")
         return jsonify({'success': False, 'error': str(e)})
-# app.py - обновите endpoint get_combined_tokens_table
-
 @app.route('/api/combined_tokens_table', methods=['GET'])
 @login_required
 def get_combined_tokens_data():
@@ -190,16 +188,21 @@ def get_combined_tokens_data():
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Основные аккаунты из campaigns
+            # Основные аккаунты из campaigns с актуальным king
             cursor.execute("""
-                SELECT DISTINCT account_id, token 
-                FROM campaigns 
-                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
-                AND account_id != '' AND token != ''
+                SELECT DISTINCT c.account_id, c.token, c.king 
+                FROM campaigns c
+                WHERE c.user_id = ? AND c.account_id IS NOT NULL AND c.token IS NOT NULL
+                AND c.account_id != '' AND c.token != ''
+                AND c.king IS NOT NULL AND c.king != ''
             """, (user_id,))
             
             for row in cursor.fetchall():
-                king = auto_determine_king(row['token'])
+                king = row['king']
+                # Если king пустой, используем автоматическое определение
+                if not king or king == 'N/A':
+                    king = auto_determine_king(row['token'])
+                
                 # Проверяем лимиты для основного аккаунта
                 limits_info = get_account_limits_info(row['account_id'], row['token'])
                 
@@ -221,6 +224,9 @@ def get_combined_tokens_data():
         # Добавляем основные аккаунты
         for account in main_accounts:
             king = account['king']
+            if not king:  # Защита от пустого king
+                king = 'Facebook_Default'
+                
             if king not in combined_data:
                 combined_data[king] = {}
             
@@ -250,6 +256,9 @@ def get_combined_tokens_data():
         
         # Добавляем резервные токены
         for king, tokens in reserve_tokens.items():
+            if not king:  # Защита от пустого king
+                king = 'Facebook_Default'
+                
             if king not in combined_data:
                 combined_data[king] = {}
             
@@ -293,9 +302,6 @@ def get_combined_tokens_data():
     except Exception as e:
         logger.error(f"Ошибка получения совмещенных токенов: {e}")
         return jsonify({'success': False, 'error': str(e)})
-# app.py - добавьте endpoint для замены токена
-
-# app.py - обновленный endpoint для замены токена
 @app.route('/api/replace_token', methods=['POST'])
 @login_required
 def replace_token():
@@ -378,42 +384,55 @@ def replace_token():
 @app.route('/api/update_king', methods=['POST'])
 @login_required
 def update_king():
-    """Обновляет KING для токена"""
+    """Обновляет KING для токена во всех таблицах"""
     user_id = session['user_id']
     data = request.json
-    
+
     current_king = data.get('currentKing')
     new_king = data.get('newKing')
     token = data.get('token')
-    
+
     if not all([current_king, new_king, token]):
         return jsonify({'success': False, 'error': 'Не указаны все параметры'})
-    
+
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
-            
-            # Обновляем KING в reserve_tokens
+
+            # --- 1. Обновляем KING у токена в reserve_tokens ---
             cursor.execute("""
-                UPDATE reserve_tokens 
+                UPDATE reserve_tokens
                 SET king = ?
                 WHERE user_id = ? AND king = ? AND token = ?
             """, (new_king, user_id, current_king, token))
-            
-            # Обновляем KING в reserve_token_accounts
+
+            # --- 2. Обновляем KING в reserve_token_accounts ---
             cursor.execute("""
-                UPDATE reserve_token_accounts 
+                UPDATE reserve_token_accounts
                 SET king = ?
                 WHERE user_id = ? AND king = ? AND token = ?
             """, (new_king, user_id, current_king, token))
+
+            # --- 3. Обновляем KING в основных таблицах (campaigns и adsets) ---
+            cursor.execute("""
+                UPDATE campaigns 
+                SET king = ?
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (new_king, user_id, token, current_king))
             
+            cursor.execute("""
+                UPDATE adsets 
+                SET king = ?
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (new_king, user_id, token, current_king))
+
             conn.commit()
-            
+
             return jsonify({
                 'success': True,
-                'message': f'KING обновлен с "{current_king}" на "{new_king}"'
+                'message': f'KING обновлен с "{current_king}" на "{new_king}" во всех таблицах'
             })
-            
+
     except Exception as e:
         logger.error(f"Ошибка обновления KING: {e}")
         return jsonify({'success': False, 'error': str(e)})
@@ -460,129 +479,104 @@ def update_token():
     except Exception as e:
         logger.error(f"Ошибка обновления токена: {e}")
         return jsonify({'success': False, 'error': str(e)})
-
 @app.route('/api/update_token_complete', methods=['POST'])
 @login_required
 def update_token_complete():
-    """Полное обновление токена с возможностью изменения KING и аккаунтов"""
+    """Полное обновление токена с изменением KING и обновлением основных таблиц"""
     user_id = session['user_id']
     data = request.json
-    
-    old_king = data.get('oldKing')
-    new_king = data.get('newKing')
-    old_token = data.get('oldToken')
-    new_token = data.get('newToken')
+
+    # Приводим все значения к строке
+    old_king = str(data.get('oldKing')) if data.get('oldKing') is not None else None
+    new_king = str(data.get('newKing')) if data.get('newKing') else None
+    old_token = str(data.get('oldToken')) if data.get('oldToken') else None
+    new_token = str(data.get('newToken')) if data.get('newToken') else None
     account_ids = data.get('account_ids', [])
-    
+
     if not all([old_king, old_token]):
         return jsonify({'success': False, 'error': 'Не указаны обязательные параметры'})
-    
+
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
-            
+
             changes = []
             final_king = old_king
             final_token = old_token
-            
-            # Если изменился KING - обновляем
+
+            # --- 1. Смена KING ---
             if new_king and new_king != old_king:
-                # Обновляем KING в reserve_tokens
-                cursor.execute("""
-                    UPDATE reserve_tokens 
-                    SET king = ?
-                    WHERE user_id = ? AND king = ? AND token = ?
-                """, (new_king, user_id, old_king, old_token))
-                
-                # Обновляем KING в reserve_token_accounts
-                cursor.execute("""
-                    UPDATE reserve_token_accounts 
-                    SET king = ?
-                    WHERE user_id = ? AND king = ? AND token = ?
-                """, (new_king, user_id, old_king, old_token))
-                
-                changes.append(f'KING изменен на "{new_king}"')
+                # Обновляем во всех таблицах
+                tables_to_update = ["reserve_tokens", "reserve_token_accounts", "campaigns", "adsets"]
+                for table in tables_to_update:
+                    try:
+                        cursor.execute(f"""
+                            UPDATE {table}
+                            SET king = ?
+                            WHERE user_id = ? AND king = ? AND token = ?
+                        """, (new_king, user_id, old_king, old_token))
+                        updated_rows = cursor.rowcount
+                        logger.info(f"Обновлено {updated_rows} строк в таблице {table}")
+                    except Exception as e:
+                        logger.error(f"Ошибка обновления таблицы {table}: {e}")
+                        # Продолжаем выполнение для других таблиц
+
+                changes.append(f'KING изменён на "{new_king}"')
                 final_king = new_king
-            
-            # Если изменился токен - обновляем
+
+            # --- 2. Смена токена ---
             if new_token and new_token != old_token:
-                # Проверяем, нет ли уже токена с таким значением
-                cursor.execute("""
-                    SELECT id FROM reserve_tokens 
-                    WHERE user_id = ? AND king = ? AND token = ?
-                """, (user_id, final_king, new_token))
-                
-                if cursor.fetchone():
-                    return jsonify({
-                        'success': False, 
-                        'error': f'Токен уже существует в группе {final_king}'
-                    })
-                
-                # Обновляем токен в reserve_tokens
-                cursor.execute("""
-                    UPDATE reserve_tokens 
-                    SET token = ?
-                    WHERE user_id = ? AND king = ? AND token = ?
-                """, (new_token, user_id, final_king, old_token))
-                
-                # Обновляем токен в reserve_token_accounts
-                cursor.execute("""
-                    UPDATE reserve_token_accounts 
-                    SET token = ?
-                    WHERE user_id = ? AND king = ? AND token = ?
-                """, (new_token, user_id, final_king, old_token))
-                
-                changes.append('токен обновлен')
+                # Обновляем во всех таблицах
+                tables_to_update = ["reserve_tokens", "reserve_token_accounts", "campaigns", "adsets"]
+                for table in tables_to_update:
+                    try:
+                        cursor.execute(f"""
+                            UPDATE {table}
+                            SET token = ?
+                            WHERE user_id = ? AND king = ? AND token = ?
+                        """, (new_token, user_id, final_king, old_token))
+                        updated_rows = cursor.rowcount
+                        logger.info(f"Обновлено {updated_rows} строк в таблице {table}")
+                    except Exception as e:
+                        logger.error(f"Ошибка обновления таблицы {table}: {e}")
+                        # Продолжаем выполнение для других таблиц
+
+                changes.append('токен изменён')
                 final_token = new_token
-            
-            # Обрабатываем аккаунты
+
+            # --- 3. Смена аккаунтов ---
             if account_ids is not None:
-                # Получаем текущие аккаунты
+                # Удаляем старые аккаунты для этого токена
                 cursor.execute("""
-                    SELECT account_id FROM reserve_token_accounts 
+                    DELETE FROM reserve_token_accounts 
                     WHERE user_id = ? AND king = ? AND token = ?
                 """, (user_id, final_king, final_token))
-                
-                current_accounts = {row['account_id'] for row in cursor.fetchall()}
-                new_accounts = set(account_ids)
-                
-                # Удаляем аккаунты, которых нет в новом списке
-                accounts_to_remove = current_accounts - new_accounts
-                if accounts_to_remove:
-                    placeholders = ','.join(['?' for _ in accounts_to_remove])
-                    cursor.execute(f"""
-                        DELETE FROM reserve_token_accounts 
-                        WHERE user_id = ? AND king = ? AND token = ? 
-                        AND account_id IN ({placeholders})
-                    """, [user_id, final_king, final_token] + list(accounts_to_remove))
-                
+
                 # Добавляем новые аккаунты
-                accounts_to_add = new_accounts - current_accounts
                 added_count = 0
-                for account_id in accounts_to_add:
-                    if account_id and account_id.startswith('act_'):
-                        try:
-                            cursor.execute("""
-                                INSERT INTO reserve_token_accounts 
-                                (user_id, king, token, account_id) 
-                                VALUES (?, ?, ?, ?)
-                            """, (user_id, final_king, final_token, account_id))
-                            added_count += 1
-                        except Exception as e:
-                            logger.warning(f"Аккаунт {account_id} уже существует: {e}")
-                            continue
-                
-                changes.append(f'аккаунтов: {added_count} добавлено, {len(accounts_to_remove)} удалено')
-            
+                for account_id in account_ids:
+                    if account_id and account_id.strip():
+                        clean_account_id = account_id.strip().replace('act_', '')
+                        if clean_account_id:  # Проверяем, что не пустая строка
+                            try:
+                                cursor.execute("""
+                                    INSERT OR IGNORE INTO reserve_token_accounts 
+                                    (user_id, king, token, account_id) 
+                                    VALUES (?, ?, ?, ?)
+                                """, (user_id, final_king, final_token, clean_account_id))
+                                if cursor.rowcount > 0:
+                                    added_count += 1
+                            except Exception as e:
+                                logger.warning(f"Пропущен аккаунт {account_id}: {e}")
+                                continue
+
+                changes.append(f'аккаунтов: {added_count} добавлено')
+
             conn.commit()
-            
+
             message = 'Данные сохранены' + (f' ({", ".join(changes)})' if changes else '')
-            
-            return jsonify({
-                'success': True,
-                'message': message
-            })
-            
+            return jsonify({'success': True, 'message': message})
+
     except Exception as e:
         logger.error(f"Ошибка полного обновления токена: {e}")
         return jsonify({'success': False, 'error': str(e)})
@@ -980,19 +974,19 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         # Проверяем валидность входных данных
         if not account_id or account_id == 'N/A' or not access_token or access_token == 'N/A':
             return {
-                'account_id': clean_account_id,
-                'name': data.get('name', 'N/A'),
-                'status': data.get('account_status', 'UNKNOWN'),
-                'spend': amount_spent,
-                'balance': spend_cap - amount_spent if spend_cap > 0 else 0,   # ✅ теперь тут remaining amount
-                'spend_cap': spend_cap,
-                'daily_limit': daily_limit,
-                'requests_today': calls_usage,
-                'requests_limit': calls_limit,
-                'requests_usage_percent': round((calls_usage / calls_limit) * 100, 1) if calls_limit > 0 else 0,
-                'remaining_limit': spend_cap - amount_spent if spend_cap > 0 else 0
+                'account_id': account_id or 'unknown',
+                'name': 'Невалидные данные',
+                'status': 'INVALID_DATA',
+                'spend': 0,
+                'balance': 0,
+                'spend_cap': 0,
+                'daily_limit': 0,
+                'requests_today': 0,
+                'requests_limit': 100,
+                'requests_usage_percent': 0,
+                'error': 'Невалидный account_id или token'
             }
-
+        
         clean_account_id = account_id.replace('act_', '')
         
         url = f"https://graph.facebook.com/v18.0/act_{clean_account_id}"
@@ -1035,7 +1029,7 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         try:
             # Пробуем разные поля для daily limit
             daily_limit_params = {
-                'fields': 'daily_spend_limit,adtrust_dsl',
+                'fields': '',
                 'access_token': access_token
             }
             daily_response = requests.get(url, params=daily_limit_params, timeout=5)
@@ -1066,6 +1060,13 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
         except:
             pass
         
+        amount_spent = float(data.get('amount_spent', 0)) / 100
+        balance = float(data.get('balance', 0)) / 100
+        spend_cap = float(data.get('spend_cap', 0)) / 100
+        
+        # Рассчитываем remaining amount (оставшийся лимит)
+        remaining_amount = spend_cap - amount_spent if spend_cap > 0 else 0
+        
         return {
             'account_id': clean_account_id,
             'name': data.get('name', 'N/A'),
@@ -1073,13 +1074,12 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
             'spend': amount_spent,
             'balance': balance,
             'spend_cap': spend_cap,
+            'remaining_amount': remaining_amount,  # Добавляем remaining amount
             'daily_limit': daily_limit,
             'requests_today': calls_usage,
             'requests_limit': calls_limit,
-            'requests_usage_percent': round((calls_usage / calls_limit) * 100, 1) if calls_limit > 0 else 0,
-            'remaining_limit': spend_cap - amount_spent if spend_cap > 0 else 0
+            'requests_usage_percent': round((calls_usage / calls_limit) * 100, 1) if calls_limit > 0 else 0
         }
-        
     except requests.exceptions.RequestException as e:
         return {
             'account_id': account_id.replace('act_', ''),
@@ -1088,6 +1088,7 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
             'spend': 0,
             'balance': 0,
             'spend_cap': 0,
+            'remaining_amount': 0,
             'daily_limit': 0,
             'requests_today': 0,
             'requests_limit': 100,
@@ -1109,10 +1110,84 @@ def get_account_limits_info(account_id: str, access_token: str) -> Dict[str, Any
             'error': f"Неизвестная ошибка: {str(e)}"
         }
 
-@app.route('/api/reserve_tokens/accounts', methods=['POST', 'DELETE'])
+@app.route('/api/reserve_tokens/delete', methods=['DELETE'])
+@login_required
+def delete_reserve_token_complete():
+    """Полное удаление резервного токена и связанных данных"""
+    user_id = session['user_id']
+    data = request.json
+    
+    king = data.get('king')
+    token = data.get('token')
+    
+    if not king or not token:
+        return jsonify({'success': False, 'error': 'Не указан KING или токен'})
+    
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # 1. Сначала получаем все account_id для этого токена
+            cursor.execute("""
+                SELECT account_id FROM reserve_token_accounts 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            account_ids = [row['account_id'] for row in cursor.fetchall()]
+            
+            # 2. Удаляем аккаунты токена
+            cursor.execute("""
+                DELETE FROM reserve_token_accounts 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            accounts_deleted = cursor.rowcount
+            
+            # 3. Удаляем сам токен
+            cursor.execute("""
+                DELETE FROM reserve_tokens 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            token_deleted = cursor.rowcount
+            
+            # 4. Обновляем KING в основных таблицах для этого токена
+            cursor.execute("""
+                UPDATE campaigns 
+                SET king = 'Facebook_Default'
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (user_id, token, king))
+            
+            campaigns_updated = cursor.rowcount
+            
+            cursor.execute("""
+                UPDATE adsets 
+                SET king = 'Facebook_Default'
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (user_id, token, king))
+            
+            adsets_updated = cursor.rowcount
+            
+            conn.commit()
+            
+            return jsonify({
+                'success': True,
+                'message': f'Токен удален: {token_deleted} токенов, {accounts_deleted} аккаунтов',
+                'details': {
+                    'token_deleted': token_deleted,
+                    'accounts_deleted': accounts_deleted,
+                    'campaigns_updated': campaigns_updated,
+                    'adsets_updated': adsets_updated
+                }
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка удаления токена: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/reserve_tokens/accounts/manage', methods=['POST', 'DELETE'])
 @login_required
 def handle_reserve_token_accounts():
-    """Управление аккаунтами резервных токенов"""
+    """Управление аккаунтами резервных токенов (добавление/удаление отдельных аккаунтов)"""
     user_id = session['user_id']
     
     if request.method == 'POST':
@@ -1131,16 +1206,17 @@ def handle_reserve_token_accounts():
     
     elif request.method == 'DELETE':
         data = request.json
+        king = data.get('king')
+        token = data.get('token')
         account_id = data.get('account_id')
         
-        if not account_id:
-            return jsonify({'success': False, 'error': 'Не указан account_id'})
+        if not all([king, token, account_id]):
+            return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})
         
-        if remove_account_from_reserve_token(user_id, account_id):
+        if remove_account_from_reserve_token(user_id, king, token, account_id):
             return jsonify({'success': True, 'message': 'Аккаунт удален'})
         else:
             return jsonify({'success': False, 'error': 'Ошибка удаления аккаунта'})
-# app.py - добавьте этот endpoint
 
 @app.route('/api/reserve_tokens/<king>', methods=['GET'])
 @login_required
@@ -1504,19 +1580,7 @@ def remove_account_from_reserve_token(user_id, account_id):
     except Exception as e:
         logger.error(f"Ошибка удаления аккаунта: {e}")
         return False
-@app.route('/api/reserve_tokens', methods=['GET'])
-@login_required
-def handle_reserve_tokens_get():
-    """Получает резервные токены с аккаунтами - исправленная версия"""
-    user_id = session['user_id']
-    
-    try:
-        tokens = get_reserve_tokens(user_id)
-        return jsonify({'success': True, 'tokens': tokens})
-            
-    except Exception as e:
-        logger.error(f"Ошибка получения резервных токенов: {e}")
-        return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/account_limits')
 @login_required
 def account_limits():
@@ -1720,32 +1784,78 @@ def add_reserve_token(user_id, king, token):
         return False
 @app.route('/api/reserve_tokens/accounts', methods=['DELETE'])
 @login_required
-def handle_reserve_token_accounts_delete():
-    """Удаляет аккаунт из резервного токена"""
+def handle_reserve_tokens_delete():
+    """Удаляет резервный токен и обновляет основные таблицы"""
     user_id = session['user_id']
     data = request.json
     
     king = data.get('king')
     token = data.get('token')
-    account_id = data.get('account_id')
     
-    if not all([king, token, account_id]):
-        return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})
+    if not king or not token:
+        return jsonify({'success': False, 'error': 'Не указан KING или токен'})
     
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
+            # 1. Сначала получаем все account_id для этого токена
+            cursor.execute("""
+                SELECT account_id FROM reserve_token_accounts 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            account_ids = [row['account_id'] for row in cursor.fetchall()]
+            
+            # 2. Удаляем аккаунты токена
             cursor.execute("""
                 DELETE FROM reserve_token_accounts 
-                WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?
-            """, (user_id, king, token, account_id))
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            accounts_deleted = cursor.rowcount
+            
+            # 3. Удаляем сам токен
+            cursor.execute("""
+                DELETE FROM reserve_tokens 
+                WHERE user_id = ? AND king = ? AND token = ?
+            """, (user_id, king, token))
+            
+            token_deleted = cursor.rowcount
+            
+            # 4. Обновляем KING в основных таблицах для этого токена
+            # Только если есть соответствующие записи
+            cursor.execute("""
+                UPDATE campaigns 
+                SET king = 'Facebook_Default'
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (user_id, token, king))
+            
+            campaigns_updated = cursor.rowcount
+            
+            cursor.execute("""
+                UPDATE adsets 
+                SET king = 'Facebook_Default'
+                WHERE user_id = ? AND token = ? AND king = ?
+            """, (user_id, token, king))
+            
+            adsets_updated = cursor.rowcount
             
             conn.commit()
-            return jsonify({'success': True, 'message': 'Аккаунт удален'})
+            
+            return jsonify({
+                'success': True,
+                'message': f'Токен удален: {token_deleted} токенов, {accounts_deleted} аккаунтов',
+                'details': {
+                    'token_deleted': token_deleted,
+                    'accounts_deleted': accounts_deleted,
+                    'campaigns_updated': campaigns_updated,
+                    'adsets_updated': adsets_updated
+                }
+            })
             
     except Exception as e:
-        logger.error(f"Ошибка удаления аккаунта: {e}")
+        logger.error(f"Ошибка удаления токена: {e}")
         return jsonify({'success': False, 'error': str(e)})
 def remove_reserve_token(user_id, king, token):
     """Удаляет резервный токен из базы данных"""
@@ -3984,7 +4094,7 @@ def debug_balance():
         logger.error(f"Ошибка отладки баланса: {e}")
         return jsonify({'success': False, 'error': str(e)})
 def check_account_balance_sufficiency(user_id):
-    """Проверяет достаточность баланса на аккаунтах - ИСПРАВЛЕННАЯ ВЕРСИЯ"""
+    """Проверяет достаточность лимита на аккаунтах - ИСПРАВЛЕННАЯ ВЕРСИЯ"""
     try:
         # Получаем требования по бюджетам с правильным подсчетом активных адсетов
         budget_requirements = calculate_daily_budget_requirements(user_id)
@@ -4000,22 +4110,25 @@ def check_account_balance_sufficiency(user_id):
             account_info = get_account_limits_info(req['account_id'], req['token'])
             
             if account_info:
-                balance = account_info.get('balance', 0)
+                remaining_amount = account_info.get('remaining_amount', 0)  # Используем remaining_amount
                 required = req['total_daily_budget']
                 
                 # Определяем deficit
-                deficit = max(0, required - balance) if balance < required else 0
+                deficit = max(0, required - remaining_amount) if remaining_amount < required else 0
                 
                 # Рассчитываем дни оставшиеся
                 if required > 0:
-                    days_remaining = balance / required
+                    days_remaining = remaining_amount / required
                 else:
                     days_remaining = 999999  # большое число вместо infinity
                 
                 warning = {
                     'account_id': req['account_id'],
                     'account_name': account_info.get('name', 'Unknown'),
-                    'balance': balance,
+                    'balance': account_info.get('balance', 0),  # Оставляем для информации
+                    'remaining_amount': remaining_amount,  # Добавляем remaining_amount
+                    'spend_cap': account_info.get('spend_cap', 0),  # Общий лимит
+                    'spend': account_info.get('spend', 0),  # Потрачено
                     'required_today': required,
                     'deficit': deficit,
                     'days_remaining': days_remaining,
@@ -4028,9 +4141,8 @@ def check_account_balance_sufficiency(user_id):
         return warnings
         
     except Exception as e:
-        logger.error(f"Ошибка проверки баланса: {e}")
+        logger.error(f"Ошибка проверки лимита: {e}")
         return []
-
 def send_balance_warnings(user_id):
     """Отправляет уведомления о недостаточном балансе"""
     try:

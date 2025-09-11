@@ -12,7 +12,9 @@ from database import get_db_connection, lock
 logger = logging.getLogger(__name__)
 
 def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
-   
+    """
+    Возвращает список адсетов пользователя вместе с CPM (и другими метриками).
+    """
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -20,7 +22,7 @@ def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
                 SELECT 
                     id, user_id, name, adset_id, campaign_id, 
                     COALESCE(effective_status, status, 'UNKNOWN') as status,
-                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, 
+                    account_id, token, budget, geo, ucpc, cpc, cpm, spend, cpa, leads, 
                     king, effective_status, ad_name, manual_pause,
                     auto_budget_increase, auto_budget_decrease,
                     max_budget, min_budget, budget_increase_step, budget_decrease_step,
@@ -32,8 +34,10 @@ def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
             adsets = []
             for row in cursor.fetchall():
                 adset = dict(row)
-               
+                # нормализуем статус
                 adset['status'] = str(adset.get('status', 'UNKNOWN')).strip()
+                # если CPM отсутствует, ставим 0
+                adset['cpm'] = float(adset.get('cpm', 0) or 0)
                 adsets.append(adset)
             
             return adsets

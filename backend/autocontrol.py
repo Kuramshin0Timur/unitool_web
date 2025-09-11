@@ -156,38 +156,47 @@ def start_auto_refresh(user_id, interval_minutes):
         auto_refresh_timers[user_id] = timer
         auto_control(user_id)
         logger.info(f"Автообновление запущено для пользователя {user_id}, интервал: {interval_minutes} мин")
-
 def auto_refresh_user_data(user_id, interval_minutes):
-
     try:
         with app.app_context():
             logger.info(f"Автообновление данных для пользователя {user_id}")
-            
-          
+
+            # 🔹 обновляем резервные токены
             auto_populate_reserve_tokens(user_id)
-            
-        
+
+            # 🔹 настройки пользователя
             settings = get_user_settings(user_id)
-            
-           
+
+            # 🔹 обновление кампаний
             if settings.get('auto_refresh_campaigns', True):
                 refresh_campaigns_internal(user_id)
-            
-        
+
+            # 🔹 обновление адсетов
             if settings.get('auto_refresh_adsets', True):
-                refresh_adsets_internal(user_id)
-            
-          
+                from backend.campaign import get_user_campaigns
+                campaigns = get_user_campaigns(user_id)
+                accounts = {
+                    c['account_id']: c['token']
+                    for c in campaigns
+                    if c['account_id'] and c['token']
+                }
+                for account_id, token in accounts.items():
+                    try:
+                        refresh_adsets_internal(user_id, account_id, token)
+                    except Exception as e:
+                        logger.error(f"Ошибка обновления адсетов для {account_id}: {e}")
+
+            # 🔹 обновление keitaro
             if settings.get('keitaro_api_key'):
                 sync_keitaro(user_id)
-            
+
             logger.info(f"Автообновление завершено для пользователя {user_id}")
-            
+
     except Exception as e:
         logger.error(f"Ошибка автообновления для пользователя {user_id}: {e}")
-    
+
     finally:
-        
+        # 🔁 перезапускаем цикл
         start_auto_refresh(user_id, interval_minutes)
 
 def load_all_tokens(user_id: int) -> Dict[str, List[str]]:
@@ -228,90 +237,99 @@ def load_all_tokens(user_id: int) -> Dict[str, List[str]]:
     
     return all_tokens
 def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):
-   
     adset_name = adset.get('name', '')
     adset_id = adset.get('adset_id', '')
     ucpc = float(adset.get('ucpc', 0))
     spend = float(adset.get('spend', 0))
     cpa = float(adset.get('cpa', 0))
     status = adset.get('status', '').strip().upper()
+    effective_status = adset.get('effective_status', '').strip().upper()
     account_id = adset.get('account_id', '')
     token = adset.get('token', '')
     leads = int(adset.get('leads', 0))
     manual_pause = bool(adset.get('manual_pause', 0))
     king = adset.get('king', '').strip()
-    
-    logger.debug(f"Обработка адсета: {adset_name} (ID: {adset_id}, статус: {status})")
-    
+
+    logger.debug(f"Обработка адсета: {adset_name} (ID: {adset_id}, статус: {status}, effective_status: {effective_status})")
 
     geo = extract_geo_from_name(adset_name, known_geos)
-    
 
     if geo == 'N/A' or geo not in geo_rules:
         msg = f"⏭️ Пропускаем (неизвестное GEO: {geo}) {adset_name}"
         logger.info(msg)
         return
-    
+
     rule = geo_rules[geo]
     should_pause = False
     should_resume = False
     pause_reason = ""
 
-    
+
+    # 🟣 Если отклонён модерацией
+    if effective_status == "DISAPPROVED":
+        update_user_adset_status(user_id, adset_id, "DISAPPROVED")
+        msg = (f"🟣 AdSet отклонен: {adset_name} "
+            f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
+        logger.info(msg)
+        send_telegram_message(msg, user_id=user_id)
+        return
+
     if status == "ACTIVE" and not manual_pause:
         max_cpa = rule.get("max_cpa", rule.get("cpa_red", 100))
-        min_spend = rule.get("min_spend", rule.get("spend_zero_leads", 50))
-        
-        logger.debug(f"Правила для GEO {geo}: max_cpa={max_cpa}, min_spend={min_spend}")
+        min_spend = rule.get("min_spend", 50)  # для правил CPA/uCPC
+        spend_zero_leads = rule.get("spend_zero_leads", min_spend)  # отдельный лимит для Zero Leads
+
+        logger.debug(f"Правила для GEO {geo}: max_cpa={max_cpa}, min_spend={min_spend}, spend_zero_leads={spend_zero_leads}")
         logger.debug(f"Показатели адсета: leads={leads}, ucpc={ucpc}, spend={spend}, cpa={cpa}")
-        
+
+        # 🔴 правило 1: нет лидов, uCPC выше лимита, бюджет откручен
         if leads == 0 and ucpc > max_cpa and spend >= min_spend:
             should_pause = True
             pause_reason = "uCPC"
-            logger.info(f"Условие паузы 1: leads=0, ucpc={ucpc} > {max_cpa}, spend={spend} >= {min_spend}")
+            logger.info(f"Условие паузы (uCPC): leads=0, ucpc={ucpc} > {max_cpa}, spend={spend} >= {min_spend}")
+
+        # 🔴 правило 2: есть лиды, но CPA выше лимита
         elif leads > 0 and cpa > max_cpa and spend >= min_spend:
             should_pause = True
             pause_reason = "CPA"
-            logger.info(f"Условие паузы 2: leads={leads}, cpa={cpa} > {max_cpa}, spend={spend} >= {min_spend}")
-        elif spend >= min_spend and leads == 0:
+            logger.info(f"Условие паузы (CPA): leads={leads}, cpa={cpa} > {max_cpa}, spend={spend} >= {min_spend}")
+
+        # 🔴 правило 3: вообще нет лидов, и спенд превысил лимит Zero Leads
+        elif leads == 0 and spend >= spend_zero_leads:
             should_pause = True
             pause_reason = "Zero Leads"
-            logger.info(f"Условие паузы 3: spend={spend} >= {min_spend}, leads=0")
+            logger.info(f"Условие паузы (Zero Leads): spend={spend} >= {spend_zero_leads}, leads=0")
 
     elif status == "PAUSED" and not manual_pause:
         cpa_green = rule.get("cpa_green", 20)
         cpa_orange = rule.get("cpa_orange", 50)
-        min_spend_half = rule.get("min_spend", rule.get("spend_zero_leads", 50)) / 2
-        
+        min_spend_half = rule.get("min_spend", 50) / 2
+
         logger.debug(f"Правила возобновления: cpa_green={cpa_green}, cpa_orange={cpa_orange}, min_spend_half={min_spend_half}")
-        
+
         if (leads > 0 and cpa <= cpa_green and ucpc <= cpa_orange and spend >= min_spend_half):
             should_resume = True
             logger.info(f"Условие возобновления: leads={leads}, cpa={cpa} <= {cpa_green}, ucpc={ucpc} <= {cpa_orange}, spend={spend} >= {min_spend_half}")
 
-   
+    # === Работа с токенами ===
     token_list = reserve_tokens.get(king, [])
     if token and token not in token_list:
         token_list = [token] + token_list  
-    
+
     if not token_list:
         logger.warning(f"Нет доступных токенов для KING={king}, адсет {adset_name}")
         return
 
-  
     def execute_with_token_rotation(api_call_func):
         for idx, current_token in enumerate(token_list):
             try:
                 result = api_call_func(current_token)
                 if result:
                     return result
-                
             except Exception as e:
                 error_msg = str(e).lower()
-                
-               
                 if any(limit_error in error_msg for limit_error in [
-                    'request limit', 'rate limit', 'too many requests', 
+                    'request limit', 'rate limit', 'too many requests',
                     'application request limit', 'quota'
                 ]):
                     logger.warning(f"⚠️ Токен №{idx+1} достиг лимита. Пробуем следующий...")
@@ -321,17 +339,16 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
                         raise Exception(f"❌ Все токены исчерпаны для KING={king}")
                 else:
                     raise e
-        
         return None
 
-    
+    # === Пауза ===
     if should_pause:
         logger.info(f"Попытка отключения адсета {adset_name} по причине: {pause_reason}")
-        
+
         def pause_adset(token):
             url = f"https://graph.facebook.com/v18.0/{adset_id}"
             data = {"status": "PAUSED"}
-            
+
             resp = session_obj.post(
                 url,
                 params={"access_token": token},
@@ -341,25 +358,24 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
 
             if resp.get("success") or resp.get("id") == adset_id:
                 update_user_adset_status(user_id, adset_id, "PAUSED")
-                
                 msg = (f"🔴 Отключен: {adset_name} "
                        f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f}) — причина: {pause_reason}")
                 logger.info(msg)
                 send_telegram_message(msg, user_id=user_id)
                 return True
-            
+
             return False
-        
+
         execute_with_token_rotation(pause_adset)
 
- 
+    # === Возобновление ===
     elif should_resume:
         logger.info(f"Попытка включения адсета {adset_name}")
-        
+
         def resume_adset(token):
             url = f"https://graph.facebook.com/v18.0/{adset_id}"
             data = {"status": "ACTIVE"}
-            
+
             resp = session_obj.post(
                 url,
                 params={"access_token": token},
@@ -369,16 +385,16 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
 
             if resp.get("success") or resp.get("id") == adset_id:
                 update_user_adset_status(user_id, adset_id, "ACTIVE")
-                
                 msg = (f"🟢 Включен: {adset_name} "
                        f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
                 logger.info(msg)
                 send_telegram_message(msg, user_id=user_id)
                 return True
-            
+
             return False
-        
+
         execute_with_token_rotation(resume_adset)
+
 def auto_control(user_id):
     try:
         logger.info(f"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")

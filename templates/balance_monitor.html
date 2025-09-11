@@ -7,7 +7,7 @@
         <div class="col">
             <div class="d-flex justify-content-between align-items-center">
                 <h1 class="h3 mb-0">
-                    <i class="bi bi-wallet2 me-2"></i>Мониторинг баланса
+                    <i class="bi bi-wallet2 me-2"></i>Мониторинг лимитов
                 </h1>
                 <div>
                     <button class="btn btn-outline-primary me-2" onclick="checkBalance()">
@@ -18,7 +18,7 @@
                     </button>
                 </div>
             </div>
-            <p class="text-muted">Мониторинг баланса и расходов по аккаунтам Facebook</p>
+            <p class="text-muted">Мониторинг оставшихся лимитов и расходов по аккаунтам Facebook</p>
         </div>
     </div>
 
@@ -55,8 +55,8 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="card-title text-white-50">Общий баланс</h6>
-                            <h3 class="card-text text-white" id="total-balance">$0</h3>
+                            <h6 class="card-title text-white-50">Общий остаток лимита</h6>
+                            <h3 class="card-text text-white" id="total-remaining">$0</h3>
                         </div>
                         <i class="bi bi-currency-dollar text-white-50" style="font-size: 2rem;"></i>
                     </div>
@@ -109,7 +109,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Настройки мониторинга баланса</h5>
+                <h5 class="modal-title">Настройки мониторинга лимитов</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -117,18 +117,18 @@
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="balance-check-enabled">
                         <label class="form-check-label" for="balance-check-enabled">
-                            Автоматическая проверка баланса
+                            Автоматическая проверка лимитов
                         </label>
                     </div>
                     <small class="form-text text-muted">
-                        При включении система будет автоматически проверять баланс каждые 4 часа
+                        При включении система будет автоматически проверять лимиты каждые 4 часа
                     </small>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Порог предупреждения ($)</label>
                     <input type="number" class="form-control" id="warning-threshold" min="0" step="10" value="50">
                     <small class="form-text text-muted">
-                        Уведомлять когда баланс опускается ниже этой суммы
+                        Уведомлять когда остаток лимита опускается ниже этой суммы
                     </small>
                 </div>
             </div>
@@ -175,122 +175,32 @@
         document.getElementById('warning-threshold').value = settings.warning_threshold || 50;
     }
 
-    // Проверка баланса
-// Проверка баланса
-async function checkBalance() {
-    showLoading();
-    
-    try {
-        const response = await fetch('/api/check_balance', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+    // Проверка лимитов
+    async function checkBalance() {
+        showLoading();
         
-        // Получаем полный текст ответа
-        const responseText = await response.text();
-        
-        // Для логирования используем отдельную переменную
-        const logText = responseText.length > 200 ? responseText.substring(0, 200) + '...' : responseText;
-        console.log('Raw response (first 200 chars):', logText);
-        console.log('Full response length:', responseText.length);
-        
-        let result;
         try {
-            // Парсим ПОЛНЫЙ responseText, а не обрезанную версию
-            result = JSON.parse(responseText);
-        } catch (parseError) {
-            console.error('JSON parse error:', parseError);
-            console.error('Problem at position 739:', responseText.charAt(738));
-            console.error('Context around position 739:', responseText.substring(730, 750));
-            showError('Ошибка формата данных от сервера');
-            return;
-        }
-        
-        if (result.success) {
-            accountsData = result.warnings || [];
-            updateAccountsList();
-            updateSummary();
-            updateLastUpdateTime();
+            const response = await fetch('/api/check_balance');
+            const result = await response.json();
             
-            if (result.count > 0) {
-                showNotification(`Обнаружено ${result.count} аккаунтов с недостаточным балансом`);
+            if (result.success) {
+                accountsData = result.warnings || [];
+                updateAccountsList();
+                updateSummary();
+                updateLastUpdateTime();
+                
+                if (result.count > 0) {
+                    showNotification(`Обнаружено ${result.count} аккаунтов с недостаточным лимитом`);
+                }
+            } else {
+                showError('Ошибка при проверке лимитов: ' + (result.error || 'Неизвестная ошибка'));
             }
-        } else {
-            showError('Ошибка при проверке баланса: ' + (result.error || 'Неизвестная ошибка'));
+        } catch (error) {
+            console.error('Ошибка:', error);
+            showError('Ошибка соединения с сервером');
         }
-    } catch (error) {
-        console.error('Ошибка:', error);
-        showError('Ошибка соединения с сервером');
     }
-}
-// Проверка баланса
-// Проверка баланса
-async function checkBalance() {
-    showLoading();
-    
-    try {
-        const response = await fetch('/api/check_balance', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        
-        // Получаем полный текст ответа
-        const responseText = await response.text();
-        
-        // Для логирования используем отдельную переменную
-        const logText = responseText.length > 200 ? responseText.substring(0, 200) + '...' : responseText;
-        console.log('Raw response (first 200 chars):', logText);
-        console.log('Full response length:', responseText.length);
-        
-        let result;
-        try {
-            // Парсим ПОЛНЫЙ responseText, а не обрезанную версию
-            result = JSON.parse(responseText);
-        } catch (parseError) {
-            console.error('JSON parse error:', parseError);
-            console.error('Problem at position 739:', responseText.charAt(738));
-            console.error('Context around position 739:', responseText.substring(730, 750));
-            showError('Ошибка формата данных от сервера');
-            return;
-        }
-        
-        if (result.success) {
-            accountsData = result.warnings || [];
-            updateAccountsList();
-            updateSummary();
-            updateLastUpdateTime();
-            
-            if (result.count > 0) {
-                showNotification(`Обнаружено ${result.count} аккаунтов с недостаточным балансом`);
-            }
-        } else {
-            showError('Ошибка при проверке баланса: ' + (result.error || 'Неизвестная ошибка'));
-        }
-    } catch (error) {
-        console.error('Ошибка:', error);
-        showError('Ошибка соединения с сервером');
-    }
-}
 
-// Функция для поиска позиции ошибки в JSON
-function findJsonErrorPosition(jsonString, error) {
-    try {
-        // Пробуем найти приблизительную позицию
-        const match = error.message.match(/position\s+(\d+)/);
-        if (match) {
-            return parseInt(match[1]);
-        }
-        return 0;
-    } catch {
-        return 0;
-    }
-}
-
-    // Обновление списка аккаунтов
     // Обновление списка аккаунтов
     function updateAccountsList() {
         const container = document.getElementById('accounts-container');
@@ -319,16 +229,20 @@ function findJsonErrorPosition(jsonString, error) {
                             <p class="text-muted mb-2">ID: ${account.account_id || 'N/A'}</p>
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-wallet2 me-2"></i>
-                                <span class="fw-bold">Баланс: $${account.balance?.toFixed(2) || '0.00'}</span>
+                                <span class="fw-bold">Остаток лимита: $${account.remaining_amount?.toFixed(2) || '0.00'}</span>
                             </div>
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-graph-up me-2"></i>
                                 <span>Требуется сегодня: $${account.required_today?.toFixed(2) || '0.00'}</span>
                             </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-currency-dollar me-2"></i>
+                                <span>Общий лимит: $${account.spend_cap?.toFixed(2) || '0.00'}</span>
+                            </div>
                             <div class="d-flex align-items-center">
                                 <i class="bi bi-exclamation-triangle me-2"></i>
                                 <span class="${account.deficit > 0 ? 'text-danger fw-bold' : 'text-success'}">
-                                    ${account.deficit > 0 ? `Дефицит: $${account.deficit?.toFixed(2) || '0.00'}` : 'Баланс достаточен'}
+                                    ${account.deficit > 0 ? `Дефицит: $${account.deficit?.toFixed(2) || '0.00'}` : 'Лимит достаточен'}
                                 </span>
                             </div>
                         </div>
@@ -339,11 +253,15 @@ function findJsonErrorPosition(jsonString, error) {
                                     ${account.days_remaining?.toFixed(1) || '0.0'} дней
                                 </span>
                             </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash-coin me-2"></i>
+                                <span>Потрачено: $${account.spend?.toFixed(2) || '0.00'}</span>
+                            </div>
                             ${account.deficit > 0 ? `
                             <div class="alert alert-warning py-2 mb-0">
                                 <small>
                                     <i class="bi bi-exclamation-triangle me-1"></i>
-                                    Недостаточно средств для сегодняшнего расхода
+                                    Недостаточно лимита для сегодняшнего расхода
                                 </small>
                             </div>
                             ` : ''}
@@ -357,7 +275,7 @@ function findJsonErrorPosition(jsonString, error) {
     // Вспомогательные функции для стилей
     function getCardClass(account) {
         if (account.deficit > 0) return 'danger';
-        if (account.balance < (account.required_today || 0) * 1.5) return 'warning';
+        if (account.remaining_amount < (account.required_today || 0) * 1.5) return 'warning';
         return 'success';
     }
 
@@ -377,12 +295,12 @@ function findJsonErrorPosition(jsonString, error) {
     function updateSummary() {
         const totalAccounts = accountsData.length;
         const warningAccounts = accountsData.filter(a => a.deficit > 0).length;
-        const totalBalance = accountsData.reduce((sum, a) => sum + (a.balance || 0), 0);
+        const totalRemaining = accountsData.reduce((sum, a) => sum + (a.remaining_amount || 0), 0);
         const totalRequired = accountsData.reduce((sum, a) => sum + (a.required_today || 0), 0);
         
         document.getElementById('total-accounts').textContent = totalAccounts;
         document.getElementById('warning-accounts').textContent = warningAccounts;
-        document.getElementById('total-balance').textContent = `$${totalBalance.toFixed(2)}`;
+        document.getElementById('total-remaining').textContent = `$${totalRemaining.toFixed(2)}`;
         document.getElementById('total-required').textContent = `$${totalRequired.toFixed(2)}`;
     }
 
@@ -410,7 +328,7 @@ function findJsonErrorPosition(jsonString, error) {
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Загрузка...</span>
                 </div>
-                <p class="mt-3 text-muted">Проверка баланса...</p>
+                <p class="mt-3 text-muted">Проверка лимитов...</p>
             </div>
         `;
     }
@@ -440,33 +358,33 @@ function findJsonErrorPosition(jsonString, error) {
     // Сохранение настроек
     async function saveSettings() {
         try {
-        const newSettings = {
-            balance_check_enabled: document.getElementById('balance-check-enabled').checked,
-            warning_threshold: parseFloat(document.getElementById('warning-threshold').value) || 50,
-            // Добавьте остальные обязательные поля с значениями по умолчанию
-            sync_api_key: settings.sync_api_key || '',
-            proxy: settings.proxy || '',
-            use_proxy: settings.use_proxy !== undefined ? settings.use_proxy : true,
-            auto_refresh_campaigns: settings.auto_refresh_campaigns !== undefined ? settings.auto_refresh_campaigns : true,
-            auto_refresh_adsets: settings.auto_refresh_adsets !== undefined ? settings.auto_refresh_adsets : true,
-            auto_refresh_interval: settings.auto_refresh_interval || 5,
-            telegram_bot_token: settings.telegram_bot_token || '',
-            telegram_chat_id: settings.telegram_chat_id || '',
-            keitaro_api_key: settings.keitaro_api_key || '',
-            keitaro_domain: settings.keitaro_domain || 'uniaffnu.com',
-            keitaro_range_days: settings.keitaro_range_days || 1,
-            auto_headline_optimization: settings.auto_headline_optimization !== undefined ? settings.auto_headline_optimization : false,
-            headline_optimization_interval: settings.headline_optimization_interval || 4,
-            account_timezone: settings.account_timezone || '-7'
-        };
-        
-        const response = await fetch('/api/settings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newSettings)
-        });
+            const newSettings = {
+                balance_check_enabled: document.getElementById('balance-check-enabled').checked,
+                warning_threshold: parseFloat(document.getElementById('warning-threshold').value) || 50,
+                // Добавьте остальные обязательные поля с значениями по умолчанию
+                sync_api_key: settings.sync_api_key || '',
+                proxy: settings.proxy || '',
+                use_proxy: settings.use_proxy !== undefined ? settings.use_proxy : true,
+                auto_refresh_campaigns: settings.auto_refresh_campaigns !== undefined ? settings.auto_refresh_campaigns : true,
+                auto_refresh_adsets: settings.auto_refresh_adsets !== undefined ? settings.auto_refresh_adsets : true,
+                auto_refresh_interval: settings.auto_refresh_interval || 5,
+                telegram_bot_token: settings.telegram_bot_token || '',
+                telegram_chat_id: settings.telegram_chat_id || '',
+                keitaro_api_key: settings.keitaro_api_key || '',
+                keitaro_domain: settings.keitaro_domain || 'uniaffnu.com',
+                keitaro_range_days: settings.keitaro_range_days || 1,
+                auto_headline_optimization: settings.auto_headline_optimization !== undefined ? settings.auto_headline_optimization : false,
+                headline_optimization_interval: settings.headline_optimization_interval || 4,
+                account_timezone: settings.account_timezone || '-7'
+            };
+            
+            const response = await fetch('/api/settings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newSettings)
+            });
             
             const result = await response.json();
             
