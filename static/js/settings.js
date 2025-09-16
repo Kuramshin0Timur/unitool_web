@@ -66,7 +66,7 @@ function saveSettings() {
         use_proxy: document.getElementById('useProxy').checked,
         auto_refresh_campaigns: document.getElementById('autoRefreshCampaigns').checked,
         auto_refresh_adsets: document.getElementById('autoRefreshAdsets').checked,
-        auto_refresh_interval: parseInt(document.getElementById('autoRefreshInterval').value) || 5,
+        auto_refresh_interval: parseInt(document.getElementById('autoRefreshInterval').value) || 60,
         telegram_bot_token: document.getElementById('telegramBotToken').value,
         telegram_chat_id: document.getElementById('telegramChatId').value,
         keitaro_api_key: document.getElementById('keitaroApiKey').value,
@@ -120,7 +120,7 @@ function saveSettings() {
 }
 
 function startAutoRefresh() {
-    const interval = parseInt(document.getElementById('autoRefreshInterval').value) || 5;
+    const interval = parseInt(document.getElementById('autoRefreshInterval').value) || 60;
     
     if (interval < 1 || interval > 60) {
         Swal.fire('Ошибка', 'Интервал должен быть от 1 до 60 минут', 'error');
@@ -227,7 +227,7 @@ function checkAutoRefreshStatus() {
     .then(data => {
         if (data.success) {
             const status = data.status;
-            const interval = parseInt(document.getElementById('autoRefreshInterval').value) || 5;
+            const interval = parseInt(document.getElementById('autoRefreshInterval').value) || 60;
             
             let statusText = status.running 
                 ? `✅ Система автоконтроля и автообновления запущена`
@@ -261,7 +261,7 @@ function updateAutoRefreshUI(isRunning) {
     
     const statusElement = document.getElementById('autoRefreshStatus');
     if (statusElement) {
-        const interval = parseInt(document.getElementById('autoRefreshInterval').value) || 5;
+        const interval = parseInt(document.getElementById('autoRefreshInterval').value) || 60;
         statusElement.className = isRunning ? 'mt-2 text-success fw-bold' : 'mt-2 text-muted';
     }
 }
@@ -450,7 +450,7 @@ document.head.appendChild(style);
 
 let autoRefreshState = {
     running: false,
-    interval: 5,
+    interval: 60,
     nextRefresh: null
 };
 

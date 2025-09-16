@@ -119,7 +119,80 @@ def update_adsets_geo():
         logger.error(f"Ошибка обновления GEO адсетов: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
-# app.py - добавьте этот endpoint
+import traceback
+
+
+@app.route('/api/auto_renumber_kings', methods=['POST'])
+@login_required
+def auto_renumber_kings():
+    """
+    Перенумеровывает KING так, чтобы у пользователя
+    они были уникальны (King_1, King_2, ...).
+    Нормализует токены (\n, \r, пробелы).
+    """
+    user_id = session['user_id']
+    logs = []
+
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+
+            # получаем уникальные нормализованные токены
+            cursor.execute("""
+                SELECT DISTINCT TRIM(REPLACE(REPLACE(token, char(10), ''), char(13), '')) as token_norm
+                FROM reserve_tokens
+                WHERE user_id = ?
+                ORDER BY token_norm
+            """, (user_id,))
+            tokens = [row['token_norm'] for row in cursor.fetchall() if row['token_norm']]
+            logs.append(f"Найдено {len(tokens)} токенов")
+
+            if not tokens:
+                return jsonify({'success': False, 'error': 'Нет токенов', 'logs': logs})
+
+            counter = 1
+            changes = []
+
+            for token in tokens:
+                new_king = f"King_{counter}"
+                logs.append(f"→ Обновляем token={token} → {new_king}")
+
+                for table in ["reserve_tokens", "reserve_token_accounts", "campaigns", "adsets"]:
+                    cursor.execute(f"""
+                        UPDATE {table}
+                        SET king = ?
+                        WHERE user_id = ?
+                          AND TRIM(REPLACE(REPLACE(token, char(10), ''), char(13), '')) = ?
+                    """, (new_king, user_id, token))
+                    updated = cursor.rowcount
+                    changes.append(f"{table}: {updated} строк обновлено")
+                    logs.append(f"{table}: {updated} строк обновлено")
+
+                counter += 1
+
+            conn.commit()
+
+            # финальный снимок
+            cursor.execute("""
+                SELECT king, token, account_id 
+                FROM reserve_token_accounts
+                WHERE user_id = ?
+                ORDER BY king
+            """, (user_id,))
+            current_state = [dict(row) for row in cursor.fetchall()]
+
+            return jsonify({
+                'success': True,
+                'message': 'KING перенумерованы',
+                'details': changes,
+                'logs': logs,
+                'current_state': current_state
+            })
+
+    except Exception as e:
+        tb = traceback.format_exc()
+        logs.append(f"Ошибка авто-ренумерации: {e}")
+        return jsonify({'success': False, 'error': str(e), 'traceback': tb, 'logs': logs}), 500
 
 @app.route('/api/auto_populate_reserve_tokens', methods=['POST'])
 @login_required
@@ -3148,7 +3221,7 @@ def login():
             
             # Запускаем автоконтроль и автообновление вместе
             settings = get_user_settings(user['id'])
-            if settings.get('auto_refresh_interval', 5) > 0:
+            if settings.get('auto_refresh_interval', 60) > 0:
                 start_auto_control_and_refresh(user['id'])
             
             return redirect(url_for('dashboard'))
@@ -5129,7 +5202,7 @@ def get_auto_refresh_status(user_id):
     with auto_refresh_lock:
         is_running = user_id in auto_refresh_timers
         settings = get_user_settings(user_id)
-        interval = settings.get('auto_refresh_interval', 5)
+        interval = settings.get('auto_refresh_interval', 60)
         
         return {
             'running': is_running,

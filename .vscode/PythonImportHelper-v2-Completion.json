@@ -985,6 +985,15 @@
         "documentation": {}
     },
     {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
         "label": "sqlite3",
         "kind": 6,
         "isExtraImport": true,
@@ -1085,7 +1094,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, \n                    king, effective_status, ad_name, manual_pause,",
+        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"\n    Возвращает список адсетов пользователя вместе с CPM (и другими метриками).\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, ",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1139,7 +1148,7 @@
         "kind": 5,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, \n                    COALESCE(effective_status, status, 'UNKNOWN') as status,\n                    account_id, token, budget, geo, ucpc, cpc, spend, cpa, leads, ",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"\n    Возвращает список адсетов пользователя вместе с CPM (и другими метриками).\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT ",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1166,7 +1175,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def get_combined_auto_status(user_id):\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n    running = auto_control_running or auto_refresh_running\n    return {\n        'running': running,",
+        "peekOfCode": "def get_combined_auto_status(user_id):\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 60)\n    running = auto_control_running or auto_refresh_running\n    return {\n        'running': running,",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1202,7 +1211,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            auto_populate_reserve_tokens(user_id)\n            settings = get_user_settings(user_id)\n            if settings.get('auto_refresh_campaigns', True):\n                refresh_campaigns_internal(user_id)\n            if settings.get('auto_refresh_adsets', True):\n                refresh_adsets_internal(user_id)",
+        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            # 🔹 обновляем резервные токены\n            auto_populate_reserve_tokens(user_id)\n            # 🔹 настройки пользователя\n            settings = get_user_settings(user_id)\n            # 🔹 обновление кампаний\n            if settings.get('auto_refresh_campaigns', True):",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1220,7 +1229,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')\n    leads = int(adset.get('leads', 0))",
+        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    effective_status = adset.get('effective_status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1247,7 +1256,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"\n    settings = get_user_settings(user_id)\n    interval = settings.get('auto_refresh_interval', 5)\n    with auto_control_lock:\n        if user_id not in auto_control_threads:\n            auto_control_threads[user_id] = {\n                'running': True,\n                'thread': threading.Thread(\n                    target=run_auto_control_for_user,",
+        "peekOfCode": "def start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"\n    settings = get_user_settings(user_id)\n    interval = settings.get('auto_refresh_interval', 60)\n    with auto_control_lock:\n        if user_id not in auto_control_threads:\n            auto_control_threads[user_id] = {\n                'running': True,\n                'thread': threading.Thread(\n                    target=run_auto_control_for_user,",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1549,6 +1558,24 @@
         "documentation": {}
     },
     {
+        "label": "update_reserve_token_king",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def update_reserve_token_king(user_id: int, old_king: str, new_king: str, token: str) -> bool:\n    \"\"\"Обновляет KING для резервного токена и связанных данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Обновляем KING в reserve_tokens\n            cursor.execute(\"\"\"\n                UPDATE reserve_tokens \n                SET king = ?\n                WHERE user_id = ? AND king = ? AND token = ?",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "delete_reserve_token_complete",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def delete_reserve_token_complete(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Полностью удаляет резервный токен и связанные данные\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Удаляем из reserve_token_accounts\n            cursor.execute(\"\"\"\n                DELETE FROM reserve_token_accounts \n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
         "label": "get_reserve_token_accounts",
         "kind": 2,
         "importPath": "backend.reserve_tokens",
@@ -1580,7 +1607,7 @@
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Возвращает резервные токены в формате для таблицы для конкретного пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")\n            table_exists = cursor.fetchone()",
+        "peekOfCode": "def get_reserve_tokens_table(user_id):\n    \"\"\"Возвращает объединённые данные о токенах и аккаунтах (только KING из reserve_tokens)\"\"\"\n    with get_db_connection(user_id) as conn:\n        cursor = conn.cursor()\n        # ИСПРАВЛЕННЫЙ ЗАПРОС - добавлено условие по king\n        cursor.execute(\"\"\"\n            SELECT rt.king, rt.token, \n                   rta.account_id, rta.requests_limit, \n                   rta.requests_today, rta.requests_usage_percent\n            FROM reserve_tokens rt",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1607,7 +1634,7 @@
         "kind": 2,
         "importPath": "backend.setting",
         "description": "backend.setting",
-        "peekOfCode": "def get_default_settings():\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 5,\n        'telegram_bot_token': '',\n        'telegram_chat_id': '',",
+        "peekOfCode": "def get_default_settings():\n    return {\n        'sync_api_key': '',\n        'proxy': '',\n        'use_proxy': True,\n        'auto_refresh_campaigns': True,\n        'auto_refresh_adsets': True,\n        'auto_refresh_interval': 60,\n        'telegram_bot_token': '',\n        'telegram_chat_id': '',",
         "detail": "backend.setting",
         "documentation": {}
     },
@@ -1666,6 +1693,15 @@
         "documentation": {}
     },
     {
+        "label": "auto_renumber_kings",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def auto_renumber_kings():\n    \"\"\"\n    Перенумеровывает KING так, чтобы у пользователя\n    они были уникальны (King_1, King_2, ...).\n    Нормализует токены (\\n, \\r, пробелы).\n    \"\"\"\n    user_id = session['user_id']\n    logs = []\n    try:\n        with get_db_connection(user_id) as conn:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "auto_populate_reserve_tokens",
         "kind": 2,
         "importPath": "app",
@@ -1679,7 +1715,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_combined_tokens_data():\n    \"\"\"Возвращает совмещенные данные: основные аккаунты + резервные токены\"\"\"\n    user_id = session['user_id']\n    try:\n        # Получаем основные аккаунты из campaigns\n        main_accounts = []\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Основные аккаунты из campaigns\n            cursor.execute(\"\"\"",
+        "peekOfCode": "def get_combined_tokens_data():\n    \"\"\"Возвращает совмещенные данные: основные аккаунты + резервные токены\"\"\"\n    user_id = session['user_id']\n    try:\n        # Получаем основные аккаунты из campaigns\n        main_accounts = []\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Основные аккаунты из campaigns с актуальным king\n            cursor.execute(\"\"\"",
         "detail": "app",
         "documentation": {}
     },
@@ -1697,7 +1733,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def update_king():\n    \"\"\"Обновляет KING для токена\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    current_king = data.get('currentKing')\n    new_king = data.get('newKing')\n    token = data.get('token')\n    if not all([current_king, new_king, token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:",
+        "peekOfCode": "def update_king():\n    \"\"\"Обновляет KING для токена во всех таблицах\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    current_king = data.get('currentKing')\n    new_king = data.get('newKing')\n    token = data.get('token')\n    if not all([current_king, new_king, token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:",
         "detail": "app",
         "documentation": {}
     },
@@ -1715,7 +1751,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def update_token_complete():\n    \"\"\"Полное обновление токена с возможностью изменения KING и аккаунтов\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    old_king = data.get('oldKing')\n    new_king = data.get('newKing')\n    old_token = data.get('oldToken')\n    new_token = data.get('newToken')\n    account_ids = data.get('account_ids', [])\n    if not all([old_king, old_token]):",
+        "peekOfCode": "def update_token_complete():\n    \"\"\"Полное обновление токена с изменением KING и обновлением основных таблиц\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    # Приводим все значения к строке\n    old_king = str(data.get('oldKing')) if data.get('oldKing') is not None else None\n    new_king = str(data.get('newKing')) if data.get('newKing') else None\n    old_token = str(data.get('oldToken')) if data.get('oldToken') else None\n    new_token = str(data.get('newToken')) if data.get('newToken') else None\n    account_ids = data.get('account_ids', [])",
         "detail": "app",
         "documentation": {}
     },
@@ -1801,11 +1837,20 @@
         "documentation": {}
     },
     {
+        "label": "delete_reserve_token_complete",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def delete_reserve_token_complete():\n    \"\"\"Полное удаление резервного токена и связанных данных\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    if not king or not token:\n        return jsonify({'success': False, 'error': 'Не указан KING или токен'})\n    try:\n        with get_db_connection(user_id) as conn:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "handle_reserve_token_accounts",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def handle_reserve_token_accounts():\n    \"\"\"Управление аккаунтами резервных токенов\"\"\"\n    user_id = session['user_id']\n    if request.method == 'POST':\n        data = request.json\n        king = data.get('king')\n        token = data.get('token')\n        account_id = data.get('account_id')\n        if not all([king, token, account_id]):\n            return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})",
+        "peekOfCode": "def handle_reserve_token_accounts():\n    \"\"\"Управление аккаунтами резервных токенов (добавление/удаление отдельных аккаунтов)\"\"\"\n    user_id = session['user_id']\n    if request.method == 'POST':\n        data = request.json\n        king = data.get('king')\n        token = data.get('token')\n        account_id = data.get('account_id')\n        if not all([king, token, account_id]):\n            return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})",
         "detail": "app",
         "documentation": {}
     },
@@ -1900,15 +1945,6 @@
         "documentation": {}
     },
     {
-        "label": "handle_reserve_tokens_get",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def handle_reserve_tokens_get():\n    \"\"\"Получает резервные токены с аккаунтами - исправленная версия\"\"\"\n    user_id = session['user_id']\n    try:\n        tokens = get_reserve_tokens(user_id)\n        return jsonify({'success': True, 'tokens': tokens})\n    except Exception as e:\n        logger.error(f\"Ошибка получения резервных токенов: {e}\")\n        return jsonify({'success': False, 'error': str(e)})\n@app.route('/account_limits')",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
         "label": "account_limits",
         "kind": 2,
         "importPath": "app",
@@ -1963,11 +1999,11 @@
         "documentation": {}
     },
     {
-        "label": "handle_reserve_token_accounts_delete",
+        "label": "handle_reserve_tokens_delete",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def handle_reserve_token_accounts_delete():\n    \"\"\"Удаляет аккаунт из резервного токена\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    account_id = data.get('account_id')\n    if not all([king, token, account_id]):\n        return jsonify({'success': False, 'error': 'Не указан KING, токен или account_id'})\n    try:",
+        "peekOfCode": "def handle_reserve_tokens_delete():\n    \"\"\"Удаляет резервный токен и обновляет основные таблицы\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    token = data.get('token')\n    if not king or not token:\n        return jsonify({'success': False, 'error': 'Не указан KING или токен'})\n    try:\n        with get_db_connection(user_id) as conn:",
         "detail": "app",
         "documentation": {}
     },
@@ -2552,7 +2588,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def check_account_balance_sufficiency(user_id):\n    \"\"\"Проверяет достаточность баланса на аккаунтах - ИСПРАВЛЕННАЯ ВЕРСИЯ\"\"\"\n    try:\n        # Получаем требования по бюджетам с правильным подсчетом активных адсетов\n        budget_requirements = calculate_daily_budget_requirements(user_id)\n        warnings = []\n        for req in budget_requirements:\n            # Проверяем, что есть account_id и token\n            if not req['account_id'] or not req['token']:\n                continue",
+        "peekOfCode": "def check_account_balance_sufficiency(user_id):\n    \"\"\"Проверяет достаточность лимита на аккаунтах - ИСПРАВЛЕННАЯ ВЕРСИЯ\"\"\"\n    try:\n        # Получаем требования по бюджетам с правильным подсчетом активных адсетов\n        budget_requirements = calculate_daily_budget_requirements(user_id)\n        warnings = []\n        for req in budget_requirements:\n            # Проверяем, что есть account_id и token\n            if not req['account_id'] or not req['token']:\n                continue",
         "detail": "app",
         "documentation": {}
     },
@@ -2822,7 +2858,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def get_auto_refresh_status(user_id):\n    \"\"\"Возвращает статус автообновления\"\"\"\n    with auto_refresh_lock:\n        is_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 5)\n        return {\n            'running': is_running,\n            'interval': interval,\n            'next_refresh': None  #",
+        "peekOfCode": "def get_auto_refresh_status(user_id):\n    \"\"\"Возвращает статус автообновления\"\"\"\n    with auto_refresh_lock:\n        is_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 60)\n        return {\n            'running': is_running,\n            'interval': interval,\n            'next_refresh': None  #",
         "detail": "app",
         "documentation": {}
     },

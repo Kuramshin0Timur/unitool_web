@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         running: false,
         auto_control: false,
         auto_refresh: false,
-        interval: 5
+        interval: 60
     };
     
   
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     function startAutoSystem() {
-        const interval = parseInt(intervalInput?.value) || 5;
+        const interval = parseInt(intervalInput?.value) || 60;
         
         if (interval < 1 || interval > 60) {
             addLog('❌ Интервал должен быть от 1 до 60 минут', 'error');
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
    
     function updateInterval() {
-        const newInterval = parseInt(intervalInput.value) || 5;
+        const newInterval = parseInt(intervalInput.value) || 60;
         
         if (newInterval < 1 || newInterval > 60) {
             Swal.fire('Ошибка', 'Интервал должен быть от 1 до 60 минут', 'error');

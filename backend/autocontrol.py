@@ -104,7 +104,7 @@ def get_combined_auto_status(user_id):
     with auto_refresh_lock:
         auto_refresh_running = user_id in auto_refresh_timers
         settings = get_user_settings(user_id)
-        interval = settings.get('auto_refresh_interval', 5)
+        interval = settings.get('auto_refresh_interval', 60)
     
    
     running = auto_control_running or auto_refresh_running
@@ -185,10 +185,6 @@ def auto_refresh_user_data(user_id, interval_minutes):
                         refresh_adsets_internal(user_id, account_id, token)
                     except Exception as e:
                         logger.error(f"Ошибка обновления адсетов для {account_id}: {e}")
-
-            # 🔹 обновление keitaro
-            if settings.get('keitaro_api_key'):
-                sync_keitaro(user_id)
 
             logger.info(f"Автообновление завершено для пользователя {user_id}")
 
@@ -299,6 +295,11 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
             should_pause = True
             pause_reason = "Zero Leads"
             logger.info(f"Условие паузы (Zero Leads): spend={spend} >= {spend_zero_leads}, leads=0")
+        # 🔴 правило 4: спенд есть, а лидов слишком мало
+        elif spend >= min_spend and leads < rule.get("max_leads_threshold", 1):
+            should_pause = True
+            pause_reason = "Low Leads"
+            logger.info(f"Условие паузы (Low Leads): spend={spend} >= {min_spend}, leads={leads}")
 
     elif status == "PAUSED" and not manual_pause:
         cpa_green = rule.get("cpa_green", 20)
@@ -463,7 +464,7 @@ def run_auto_control_for_user(user_id):
 def start_auto_control_and_refresh(user_id):
     """Запускает и автоконтроль и автообновление вместе"""
     settings = get_user_settings(user_id)
-    interval = settings.get('auto_refresh_interval', 5)
+    interval = settings.get('auto_refresh_interval', 60)
     
     
     with auto_control_lock:

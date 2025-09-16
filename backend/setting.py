@@ -1,8 +1,9 @@
 
 
+import logging
+
 from database import get_db_connection
 
-import logging
 logger = logging.getLogger(__name__)
 
 def update_user_settings(user_id, data):
@@ -33,7 +34,7 @@ def update_user_settings(user_id, data):
                     int(data.get('use_proxy', True)),
                     int(data.get('auto_refresh_campaigns', True)),
                     int(data.get('auto_refresh_adsets', True)),
-                    int(data.get('auto_refresh_interval', 5)),
+                    int(data.get('auto_refresh_interval', 60)),
                     data.get('telegram_bot_token', ''),
                     data.get('telegram_chat_id', ''),
                     data.get('keitaro_api_key', ''),
@@ -63,7 +64,7 @@ def update_user_settings(user_id, data):
                     int(data.get('use_proxy', True)),
                     int(data.get('auto_refresh_campaigns', True)),
                     int(data.get('auto_refresh_adsets', True)),
-                    int(data.get('auto_refresh_interval', 5)),
+                    int(data.get('auto_refresh_interval', 60)),
                     data.get('telegram_bot_token', ''),
                     data.get('telegram_chat_id', ''),
                     data.get('keitaro_api_key', ''),
@@ -91,7 +92,7 @@ def get_default_settings():
         'use_proxy': True,
         'auto_refresh_campaigns': True,
         'auto_refresh_adsets': True,
-        'auto_refresh_interval': 5,
+        'auto_refresh_interval': 60,
         'telegram_bot_token': '',
         'telegram_chat_id': '',
         'keitaro_api_key': '',
@@ -129,7 +130,7 @@ def get_user_settings(user_id):
                     'use_proxy': bool(row_dict.get('use_proxy', True)),
                     'auto_refresh_campaigns': bool(row_dict.get('auto_refresh_campaigns', True)),
                     'auto_refresh_adsets': bool(row_dict.get('auto_refresh_adsets', True)),
-                    'auto_refresh_interval': row_dict.get('auto_refresh_interval', 5),
+                    'auto_refresh_interval': row_dict.get('auto_refresh_interval', 60),
                     'telegram_bot_token': row_dict.get('telegram_bot_token', ''),
                     'telegram_chat_id': row_dict.get('telegram_chat_id', ''),
                     'keitaro_api_key': row_dict.get('keitaro_api_key', ''),

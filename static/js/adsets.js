@@ -388,9 +388,28 @@ function createAutoBudgetCell(value) {
     }
     
     function createStatusCell(status) {
-        const statusClass = status === 'ACTIVE' ? 'bg-success' : 'bg-secondary';
-        return `<span class="badge ${statusClass}">${status}</span>`;
+    let statusClass;
+    switch(status) {
+        case 'ACTIVE':
+            statusClass = 'bg-success';
+            break;
+        case 'PAUSED':
+            statusClass = 'bg-secondary';
+            break;
+        case 'DISABLED':
+            statusClass = 'bg-danger';
+            break;
+        case 'DISAPPROVED': // Добавляем обработку забаненных
+            statusClass = 'bg-danger';
+            break;
+        case 'ARCHIVED':
+            statusClass = 'bg-warning text-dark';
+            break;
+        default:
+            statusClass = 'bg-info';
     }
+    return `<span class="badge ${statusClass}">${status}</span>`;
+}
     
     function createActionsCell(adset) {
     return `

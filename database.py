@@ -69,7 +69,7 @@ def init_db():
                 use_proxy BOOLEAN DEFAULT TRUE,
                 auto_refresh_campaigns BOOLEAN DEFAULT TRUE,
                 auto_refresh_adsets BOOLEAN DEFAULT TRUE,
-                auto_refresh_interval INTEGER DEFAULT 5,
+                auto_refresh_interval INTEGER DEFAULT 60,
                 telegram_bot_token TEXT,
                 telegram_chat_id TEXT,
                 keitaro_api_key TEXT DEFAULT '',
