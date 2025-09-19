@@ -3,7 +3,8 @@ import threading
 from typing import Dict, List
 
 import requests
-from flask import app
+
+
 
 from backend.adsets import (get_user_adsets, refresh_adsets_internal,
                             update_user_adset_status)
@@ -260,62 +261,62 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
     should_resume = False
     pause_reason = ""
 
-
     # 🟣 Если отклонён модерацией
     if effective_status == "DISAPPROVED":
         update_user_adset_status(user_id, adset_id, "DISAPPROVED")
         msg = (f"🟣 AdSet отклонен: {adset_name} "
-            f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
+               f"(GEO={geo}, CPA={cpa:.2f}, uCPC={ucpc:.2f}, Leads={leads}, Spend={spend:.2f})")
         logger.info(msg)
         send_telegram_message(msg, user_id=user_id)
         return
 
+    max_cpa = rule.get("max_cpa", 100)
+    min_spend = rule.get("min_spend", 50)
+    max_leads_threshold = rule.get("max_leads_threshold", 1)
+    extended_spend_threshold = rule.get("extended_spend_threshold", min_spend)
+    max_ucpc = rule.get("max_ucpc", 100)
+    max_ucpc_spend = rule.get("max_ucpc_spend", min_spend)
+
     if status == "ACTIVE" and not manual_pause:
-        max_cpa = rule.get("max_cpa", rule.get("cpa_red", 100))
-        min_spend = rule.get("min_spend", 50)  # для правил CPA/uCPC
-        spend_zero_leads = rule.get("spend_zero_leads", min_spend)  # отдельный лимит для Zero Leads
+        logger.debug(f"Правила для GEO {geo}: max_cpa={max_cpa}, min_spend={min_spend}, "
+                     f"extended_spend_threshold={extended_spend_threshold}, "
+                     f"max_ucpc={max_ucpc}, max_ucpc_spend={max_ucpc_spend}")
 
-        logger.debug(f"Правила для GEO {geo}: max_cpa={max_cpa}, min_spend={min_spend}, spend_zero_leads={spend_zero_leads}")
-        logger.debug(f"Показатели адсета: leads={leads}, ucpc={ucpc}, spend={spend}, cpa={cpa}")
-
-        # 🔴 правило 1: нет лидов, uCPC выше лимита, бюджет откручен
-        if leads == 0 and ucpc > max_cpa and spend >= min_spend:
+        # 🔴 правило 1: нет лидов, uCPC выше лимита, открутили нужный бюджет
+        if leads == 0 and ucpc > max_ucpc and spend >= max_ucpc_spend:
             should_pause = True
             pause_reason = "uCPC"
-            logger.info(f"Условие паузы (uCPC): leads=0, ucpc={ucpc} > {max_cpa}, spend={spend} >= {min_spend}")
 
         # 🔴 правило 2: есть лиды, но CPA выше лимита
         elif leads > 0 and cpa > max_cpa and spend >= min_spend:
             should_pause = True
             pause_reason = "CPA"
-            logger.info(f"Условие паузы (CPA): leads={leads}, cpa={cpa} > {max_cpa}, spend={spend} >= {min_spend}")
 
-        # 🔴 правило 3: вообще нет лидов, и спенд превысил лимит Zero Leads
-        elif leads == 0 and spend >= spend_zero_leads:
+        # 🔴 правило 3: вообще нет лидов, и спенд превысил Extended Spend
+        elif leads == 0 and spend >= extended_spend_threshold:
             should_pause = True
             pause_reason = "Zero Leads"
-            logger.info(f"Условие паузы (Zero Leads): spend={spend} >= {spend_zero_leads}, leads=0")
+
         # 🔴 правило 4: спенд есть, а лидов слишком мало
-        elif spend >= min_spend and leads < rule.get("max_leads_threshold", 1):
+        elif spend >= min_spend and leads < max_leads_threshold:
             should_pause = True
             pause_reason = "Low Leads"
-            logger.info(f"Условие паузы (Low Leads): spend={spend} >= {min_spend}, leads={leads}")
-
+        elif spend >= min_spend and leads > max_leads_threshold:
+            should_pause = True
+            pause_reason = "Too Many Leads"
     elif status == "PAUSED" and not manual_pause:
-        cpa_green = rule.get("cpa_green", 20)
-        cpa_orange = rule.get("cpa_orange", 50)
-        min_spend_half = rule.get("min_spend", 50) / 2
+        logger.debug(f"Проверка условий для возобновления (GEO {geo})")
 
-        logger.debug(f"Правила возобновления: cpa_green={cpa_green}, cpa_orange={cpa_orange}, min_spend_half={min_spend_half}")
-
-        if (leads > 0 and cpa <= cpa_green and ucpc <= cpa_orange and spend >= min_spend_half):
+        # 🟢 условие возобновления: метрики снова в норме
+        if (leads > 0 and cpa <= max_cpa and ucpc <= max_ucpc and spend >= min_spend):
             should_resume = True
-            logger.info(f"Условие возобновления: leads={leads}, cpa={cpa} <= {cpa_green}, ucpc={ucpc} <= {cpa_orange}, spend={spend} >= {min_spend_half}")
+            logger.info(f"Условие возобновления: leads={leads}, cpa={cpa} <= {max_cpa}, "
+                        f"ucpc={ucpc} <= {max_ucpc}, spend={spend} >= {min_spend}")
 
     # === Работа с токенами ===
     token_list = reserve_tokens.get(king, [])
     if token and token not in token_list:
-        token_list = [token] + token_list  
+        token_list = [token] + token_list
 
     if not token_list:
         logger.warning(f"Нет доступных токенов для KING={king}, адсет {adset_name}")
@@ -349,14 +350,12 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
         def pause_adset(token):
             url = f"https://graph.facebook.com/v18.0/{adset_id}"
             data = {"status": "PAUSED"}
-
             resp = session_obj.post(
                 url,
                 params={"access_token": token},
                 data=data,
                 timeout=10
             ).json()
-
             if resp.get("success") or resp.get("id") == adset_id:
                 update_user_adset_status(user_id, adset_id, "PAUSED")
                 msg = (f"🔴 Отключен: {adset_name} "
@@ -364,7 +363,6 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
                 logger.info(msg)
                 send_telegram_message(msg, user_id=user_id)
                 return True
-
             return False
 
         execute_with_token_rotation(pause_adset)
@@ -376,14 +374,12 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
         def resume_adset(token):
             url = f"https://graph.facebook.com/v18.0/{adset_id}"
             data = {"status": "ACTIVE"}
-
             resp = session_obj.post(
                 url,
                 params={"access_token": token},
                 data=data,
                 timeout=10
             ).json()
-
             if resp.get("success") or resp.get("id") == adset_id:
                 update_user_adset_status(user_id, adset_id, "ACTIVE")
                 msg = (f"🟢 Включен: {adset_name} "
@@ -391,7 +387,6 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
                 logger.info(msg)
                 send_telegram_message(msg, user_id=user_id)
                 return True
-
             return False
 
         execute_with_token_rotation(resume_adset)

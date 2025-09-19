@@ -1,285 +1,75 @@
-2025-09-17 02:25:05,995 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 6604_102 ID voltaren news 13.09(vst1) 5
-2025-09-17 02:25:05,995 - backend.autocontrol - DEBUG - Обработка адсета: ID 6604_102 ID voltaren news 13.09(vst1) 4 (ID: 120233828227090541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,996 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 6604_102 ID voltaren news 13.09(vst1) 4
-2025-09-17 02:25:05,996 - backend.autocontrol - DEBUG - Обработка адсета: IN 6596_k108 IN korotish  15.09 monah_5 4 (ID: 120233784584790541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,996 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6596_k108 IN korotish  15.09 monah_5 4
-2025-09-17 02:25:05,996 - backend.autocontrol - DEBUG - Обработка адсета: IN 6596_k108 IN korotish  15.09 monah_5 3 (ID: 120233784584760541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,996 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6596_k108 IN korotish  15.09 monah_5 3
-2025-09-17 02:25:05,996 - backend.autocontrol - DEBUG - Обработка адсета: IN 6596_k108 IN korotish  15.09 monah_5 2 (ID: 120233784584750541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,996 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6596_k108 IN korotish  15.09 monah_5 2
-2025-09-17 02:25:05,996 - backend.autocontrol - DEBUG - Обработка адсета: IN 6596_k108 IN korotish  15.09 monah_5 1 (ID: 120233783630820541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,996 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6596_k108 IN korotish  15.09 monah_5 1
-2025-09-17 02:25:05,997 - backend.autocontrol - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 2 (ID: 120232754566730541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,997 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 2
-2025-09-17 02:25:05,997 - backend.autocontrol - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 3 (ID: 120232754566710541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,997 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 3
-2025-09-17 02:25:05,997 - backend.autocontrol - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 4 (ID: 120232754566670541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,997 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 4
-2025-09-17 02:25:05,997 - backend.autocontrol - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 5 (ID: 120232754566660541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,997 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 5
-2025-09-17 02:25:05,997 - backend.autocontrol - DEBUG - Обработка адсета: TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 1 (ID: 120232754293820541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,998 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6221_TH voltaren1.2 20.07(2)_2(lang1) 1
-2025-09-17 02:25:05,998 - backend.autocontrol - DEBUG - Обработка адсета: ID 5917_ID Swype_vitya6 monah 12.08(vv2) 5 (ID: 120232205849760541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,998 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5917_ID Swype_vitya6 monah 12.08(vv2) 5
-2025-09-17 02:25:05,998 - backend.autocontrol - DEBUG - Обработка адсета: ID 5917_ID Swype_vitya6 monah 12.08(vv2) 4 (ID: 120232205849730541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,998 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5917_ID Swype_vitya6 monah 12.08(vv2) 4
-2025-09-17 02:25:05,998 - backend.autocontrol - DEBUG - Обработка адсета: ID 5917_ID Swype_vitya6 monah 12.08(vv2) 3 (ID: 120232205849720541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,998 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5917_ID Swype_vitya6 monah 12.08(vv2) 3
-2025-09-17 02:25:05,998 - backend.autocontrol - DEBUG - Обработка адсета: ID 5917_ID Swype_vitya6 monah 12.08(vv2) 2 (ID: 120232205849700541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,998 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5917_ID Swype_vitya6 monah 12.08(vv2) 2
-2025-09-17 02:25:05,999 - backend.autocontrol - DEBUG - Обработка адсета: ID 5917_ID Swype_vitya6 monah 12.08(vv2) 1 (ID: 120232205623410541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,999 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5917_ID Swype_vitya6 monah 12.08(vv2) 1
-2025-09-17 02:25:05,999 - backend.autocontrol - DEBUG - Обработка адсета: ID 5912_ID  voltaren1 muslim 12.08(vvs2) 2 (ID: 120232203807110541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,999 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5912_ID  voltaren1 muslim 12.08(vvs2) 2
-2025-09-17 02:25:05,999 - backend.autocontrol - DEBUG - Обработка адсета: ID 5912_ID  voltaren1 muslim 12.08(vvs2) 5 (ID: 120232203807080541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,999 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5912_ID  voltaren1 muslim 12.08(vvs2) 5
-2025-09-17 02:25:05,999 - backend.autocontrol - DEBUG - Обработка адсета: ID 5912_ID  voltaren1 muslim 12.08(vvs2) 4 (ID: 120232203807060541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:05,999 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5912_ID  voltaren1 muslim 12.08(vvs2) 4
-2025-09-17 02:25:05,999 - backend.autocontrol - DEBUG - Обработка адсета: ID 5912_ID  voltaren1 muslim 12.08(vvs2) 3 (ID: 120232203807040541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,000 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5912_ID  voltaren1 muslim 12.08(vvs2) 3
-2025-09-17 02:25:06,000 - backend.autocontrol - DEBUG - Обработка адсета: ID 5912_ID  voltaren1 muslim 12.08(vvs2) 1 (ID: 120232203706220541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,000 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5912_ID  voltaren1 muslim 12.08(vvs2) 1
-2025-09-17 02:25:06,000 - backend.autocontrol - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 5 (ID: 120231567336470541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,000 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 5
-2025-09-17 02:25:06,000 - backend.autocontrol - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 4 (ID: 120231567336460541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,000 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 4
-2025-09-17 02:25:06,000 - backend.autocontrol - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 3 (ID: 120231567336440541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,001 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 3
-2025-09-17 02:25:06,001 - backend.autocontrol - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 2 (ID: 120231567336410541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,001 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 2
-2025-09-17 02:25:06,001 - backend.autocontrol - DEBUG - Обработка адсета: TH 5549_TH mark72 MONAHnew 30.07(lang2) 1 (ID: 120231567081860541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,001 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5549_TH mark72 MONAHnew 30.07(lang2) 1
-2025-09-17 02:25:06,001 - backend.autocontrol - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 5 (ID: 120231565406000541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,001 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 5
-2025-09-17 02:25:06,001 - backend.autocontrol - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 4 (ID: 120231565405960541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,001 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 4
-2025-09-17 02:25:06,002 - backend.autocontrol - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 3 (ID: 120231565405950541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,002 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 3
-2025-09-17 02:25:06,002 - backend.autocontrol - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 2 (ID: 120231565405940541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,002 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 2
-2025-09-17 02:25:06,002 - backend.autocontrol - DEBUG - Обработка адсета: TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 1 (ID: 120231564646970541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,002 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5541_Y-68 TH korotish  15.07 monah2_4(lang1) 1
-2025-09-17 02:25:06,002 - backend.autocontrol - DEBUG - Обработка адсета: L3 (ID: 120230460539350541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,002 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) L3
-2025-09-17 02:25:06,002 - backend.autocontrol - DEBUG - Обработка адсета: L5 (ID: 120230460539260541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,003 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) L5
-2025-09-17 02:25:06,003 - backend.autocontrol - DEBUG - Обработка адсета: L4 (ID: 120230460462950541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,003 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) L4
-2025-09-17 02:25:06,003 - backend.autocontrol - DEBUG - Обработка адсета: DD2 (ID: 120230077892420541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,003 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: DD) DD2
-2025-09-17 02:25:06,003 - backend.autocontrol - DEBUG - Обработка адсета: DD4 (ID: 120230077892390541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,003 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: DD) DD4
-2025-09-17 02:25:06,003 - backend.autocontrol - DEBUG - Обработка адсета: DD3 (ID: 120230077892380541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,003 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: DD) DD3
-2025-09-17 02:25:06,004 - backend.autocontrol - DEBUG - Обработка адсета: DD1 (ID: 120230076922410541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,004 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: DD) DD1
-2025-09-17 02:25:06,004 - backend.autocontrol - DEBUG - Обработка адсета: PP4 (ID: 120230075670610541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,004 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: PP) PP4
-2025-09-17 02:25:06,004 - backend.autocontrol - DEBUG - Обработка адсета: PP1 (ID: 120230075561420541, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,004 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: PP) PP1
-2025-09-17 02:25:06,004 - backend.autocontrol - DEBUG - Обработка адсета: MY 6459_MY dekz40 18.08_2(vst2) 5 (ID: 120231716151850610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,004 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: MY) MY 6459_MY dekz40 18.08_2(vst2) 5
-2025-09-17 02:25:06,004 - backend.autocontrol - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 5 (ID: 120230051400440610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,005 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 5
-2025-09-17 02:25:06,005 - backend.autocontrol - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 4 (ID: 120230051400430610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,005 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 4
-2025-09-17 02:25:06,005 - backend.autocontrol - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 3 (ID: 120230051400420610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,005 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 3
-2025-09-17 02:25:06,005 - backend.autocontrol - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 2 (ID: 120230051400410610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,005 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 2
-2025-09-17 02:25:06,005 - backend.autocontrol - DEBUG - Обработка адсета: TH 5735_TH y-52 podcast monah(vst2) 1 (ID: 120230051361300610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,005 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5735_TH y-52 podcast monah(vst2) 1
-2025-09-17 02:25:06,006 - backend.autocontrol - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 2 (ID: 120230050506200610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,006 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 2
-2025-09-17 02:25:06,006 - backend.autocontrol - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 5 (ID: 120230050506190610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,006 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 5
-2025-09-17 02:25:06,006 - backend.autocontrol - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 3 (ID: 120230050506160610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,006 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 3
-2025-09-17 02:25:06,006 - backend.autocontrol - DEBUG - Обработка адсета: TH 5730_TH K-69 monah 23.07_2(Vst1) 1 (ID: 120230050307300610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,006 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5730_TH K-69 monah 23.07_2(Vst1) 1
-2025-09-17 02:25:06,006 - backend.autocontrol - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 4 (ID: 120230050100230610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,007 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 4
-2025-09-17 02:25:06,007 - backend.autocontrol - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3 (ID: 120230050100220610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,007 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 3
-2025-09-17 02:25:06,007 - backend.autocontrol - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2 (ID: 120230050100200610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,007 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 2
-2025-09-17 02:25:06,007 - backend.autocontrol - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5 (ID: 120230050100190610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,007 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 5
-2025-09-17 02:25:06,007 - backend.autocontrol - DEBUG - Обработка адсета: TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1 (ID: 120230050018900610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,007 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5728_TH Y-67.9 bez gaza monah 2(Vst1) 1
-2025-09-17 02:25:06,008 - backend.autocontrol - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 3 (ID: 120229952748210610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,008 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 3
-2025-09-17 02:25:06,008 - backend.autocontrol - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 2 (ID: 120229952748200610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,008 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 2
-2025-09-17 02:25:06,008 - backend.autocontrol - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 5 (ID: 120229952748170610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,008 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 5
-2025-09-17 02:25:06,008 - backend.autocontrol - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 4 (ID: 120229952748160610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,008 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 4
-2025-09-17 02:25:06,008 - backend.autocontrol - DEBUG - Обработка адсета: TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 1 (ID: 120229952482500610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,009 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5686_TH Swype_vitya7 monah 15.07_4(vst1) 1
-2025-09-17 02:25:06,009 - backend.autocontrol - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 3 (ID: 120229951264520610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,009 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 3
-2025-09-17 02:25:06,009 - backend.autocontrol - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 2 (ID: 120229951264510610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,009 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 2
-2025-09-17 02:25:06,009 - backend.autocontrol - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 5 (ID: 120229951264480610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,009 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 5
-2025-09-17 02:25:06,009 - backend.autocontrol - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 4 (ID: 120229951264470610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,009 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 4
-2025-09-17 02:25:06,009 - backend.autocontrol - DEBUG - Обработка адсета: TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 1 (ID: 120229950945890610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,010 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5681_TH Y-67.9 bez gaza monah 2(vst1) 1
-2025-09-17 02:25:06,010 - backend.autocontrol - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 5 (ID: 120229903596170610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,010 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 5
-2025-09-17 02:25:06,010 - backend.autocontrol - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 4 (ID: 120229903596160610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,010 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 4
-2025-09-17 02:25:06,010 - backend.autocontrol - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 3 (ID: 120229903596140610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,010 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 3
-2025-09-17 02:25:06,010 - backend.autocontrol - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 2 (ID: 120229903596110610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,011 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 2
-2025-09-17 02:25:06,011 - backend.autocontrol - DEBUG - Обработка адсета: TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 1 (ID: 120229903551980610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,011 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5650_TH Z-SWIPE-4 otzv 04.08(Vst2) 1
-2025-09-17 02:25:06,011 - backend.autocontrol - DEBUG - Обработка адсета: D5 (ID: 120226915257380610, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,011 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: N/A) D5
-2025-09-17 02:25:06,011 - backend.autocontrol - DEBUG - Обработка адсета: TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 3 (ID: 120230362346320056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,011 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 3
-2025-09-17 02:25:06,011 - backend.autocontrol - DEBUG - Обработка адсета: TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 1 (ID: 120230362323880056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,011 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5831_TH voltaren2.2 veo 03.08_3(pz2) 1
-2025-09-17 02:25:06,012 - backend.autocontrol - DEBUG - Обработка адсета: TH 5829_mugshena78 red TH(pz2) 3 (ID: 120230361572470056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,012 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5829_mugshena78 red TH(pz2) 3
-2025-09-17 02:25:06,012 - backend.autocontrol - DEBUG - Обработка адсета: TH 5829_mugshena78 red TH(pz2) 1 (ID: 120230361572440056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,012 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5829_mugshena78 red TH(pz2) 1
-2025-09-17 02:25:06,012 - backend.autocontrol - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 2 (ID: 120230138086510056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,012 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 2
-2025-09-17 02:25:06,012 - backend.autocontrol - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 5 (ID: 120230138086490056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,012 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 5
-2025-09-17 02:25:06,012 - backend.autocontrol - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 4 (ID: 120230138086480056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,013 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 4
-2025-09-17 02:25:06,013 - backend.autocontrol - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 3 (ID: 120230138086460056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,013 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 3
-2025-09-17 02:25:06,013 - backend.autocontrol - DEBUG - Обработка адсета: TH 5751_TH voltaren1 monah4 07.08(vst2) 1 (ID: 120230138063520056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,013 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5751_TH voltaren1 monah4 07.08(vst2) 1
-2025-09-17 02:25:06,013 - backend.autocontrol - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 3 (ID: 120230137860060056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,013 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 3
-2025-09-17 02:25:06,013 - backend.autocontrol - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 2 (ID: 120230137860050056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,013 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 2
-2025-09-17 02:25:06,014 - backend.autocontrol - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 5 (ID: 120230137860000056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,014 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 5
-2025-09-17 02:25:06,014 - backend.autocontrol - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 4 (ID: 120230137859990056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,014 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 4
-2025-09-17 02:25:06,014 - backend.autocontrol - DEBUG - Обработка адсета: TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 1 (ID: 120230137741440056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,014 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5746_TH Swype_vitya6 monah4 07.08(Vst1) 1
-2025-09-17 02:25:06,014 - backend.autocontrol - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 3 (ID: 120230137694710056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,014 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 3
-2025-09-17 02:25:06,014 - backend.autocontrol - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 2 (ID: 120230137694690056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,015 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 2
-2025-09-17 02:25:06,015 - backend.autocontrol - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 5 (ID: 120230137694670056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,015 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 5
-2025-09-17 02:25:06,015 - backend.autocontrol - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 4 (ID: 120230137694650056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,015 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 4
-2025-09-17 02:25:06,015 - backend.autocontrol - DEBUG - Обработка адсета: TH 5745_Y-67 TH   monah4(vst1) 1 (ID: 120230135715480056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,015 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 5745_Y-67 TH   monah4(vst1) 1
-2025-09-17 02:25:06,015 - backend.autocontrol - DEBUG - Обработка адсета: TH  5743_K-68 monah4  07.08(vst2) 1 (ID: 120230135422980056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,015 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH  5743_K-68 monah4  07.08(vst2) 1
-2025-09-17 02:25:06,016 - backend.autocontrol - DEBUG - Обработка адсета: GG4 (ID: 120229037288050056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,016 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: GG) GG4
-2025-09-17 02:25:06,016 - backend.autocontrol - DEBUG - Обработка адсета: T1 (ID: 120227572089510056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,016 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: US) T1
-2025-09-17 02:25:06,016 - backend.autocontrol - DEBUG - Обработка адсета: KK4 (ID: 120227571066060056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,016 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: KK) KK4
-2025-09-17 02:25:06,016 - backend.autocontrol - DEBUG - Обработка адсета: KK3 (ID: 120227571066040056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,016 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: KK) KK3
-2025-09-17 02:25:06,016 - backend.autocontrol - DEBUG - Обработка адсета: KK1 (ID: 120227570322680056, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,017 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: KK) KK1
-2025-09-17 02:25:06,017 - backend.autocontrol - DEBUG - Обработка адсета: IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 4 (ID: 120234929039570312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,017 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 4
-2025-09-17 02:25:06,017 - backend.autocontrol - DEBUG - Обработка адсета: IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 3 (ID: 120234929039550312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,017 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 3
-2025-09-17 02:25:06,017 - backend.autocontrol - DEBUG - Обработка адсета: IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 5 (ID: 120234929039540312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,017 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 5
-2025-09-17 02:25:06,017 - backend.autocontrol - DEBUG - Обработка адсета: IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 2 (ID: 120234924514950312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,017 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6552_k-103 IN  Z MONAH-NEWS 11.09(vst1) 2
-2025-09-17 02:25:06,018 - backend.autocontrol - DEBUG - Обработка адсета: IN 6548_K-104 IN 52podcast short 11.09(vst1) 2 (ID: 120234920374210312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,018 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: IN) IN 6548_K-104 IN 52podcast short 11.09(vst1) 2
-2025-09-17 02:25:06,018 - backend.autocontrol - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 4 (ID: 120233779298360312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,018 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 4
-2025-09-17 02:25:06,018 - backend.autocontrol - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 2 (ID: 120233779298340312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,018 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 2
-2025-09-17 02:25:06,018 - backend.autocontrol - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 5 (ID: 120233779298330312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,018 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 5
-2025-09-17 02:25:06,018 - backend.autocontrol - DEBUG - Обработка адсета: TH 6212_K-95 TH sereg-podctast(lang1) 1 (ID: 120233777901980312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,019 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6212_K-95 TH sereg-podctast(lang1) 1
-2025-09-17 02:25:06,019 - backend.autocontrol - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 3 (ID: 120233677258970312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,019 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 3
-2025-09-17 02:25:06,019 - backend.autocontrol - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 4 (ID: 120233677258960312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,019 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 4
-2025-09-17 02:25:06,019 - backend.autocontrol - DEBUG - Обработка адсета: TH 6191_K-96 TH sereg-podctast(vst2) 5 (ID: 120233677258940312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,019 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: TH) TH 6191_K-96 TH sereg-podctast(vst2) 5
-2025-09-17 02:25:06,019 - backend.autocontrol - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 3 (ID: 120233173975760312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,019 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 3
-2025-09-17 02:25:06,019 - backend.autocontrol - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 2 (ID: 120233173975740312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,020 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 2
-2025-09-17 02:25:06,020 - backend.autocontrol - DEBUG - Обработка адсета: ID 5922_Y-67 ID  short  muslim(vvs2) 1 (ID: 120233173975730312, статус: PAUSED, effective_status: PAUSED)
-2025-09-17 02:25:06,020 - backend.autocontrol - INFO - ⏭️ Пропускаем (неизвестное GEO: ID) ID 5922_Y-67 ID  short  muslim(vvs2) 1
-2025-09-17 02:25:06,030 - backend.campaign - ERROR - Ошибка проверки кампаний: 'builtin_function_or_method' object does not support the context manager protocol
-2025-09-17 02:25:06,031 - backend.autocontrol - INFO - Автоконтроль завершен для пользователя 1
-2025-09-17 02:25:45,105 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:25:45] "GET /balance_monitor HTTP/1.1" 200 -
-2025-09-17 02:25:45,497 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:25:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-09-17 02:25:46,233 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:25:46] "GET /api/settings HTTP/1.1" 200 -
-2025-09-17 02:25:46,245 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:46,691 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-09-17 02:25:46,693 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:47,103 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 61
-2025-09-17 02:25:47,110 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:47,727 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-09-17 02:25:47,730 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:48,169 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 61
-2025-09-17 02:25:48,176 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:48,818 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-09-17 02:25:48,820 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:49,209 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2094484354409294?fields=&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 61
-2025-09-17 02:25:49,216 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:49,819 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 139
-2025-09-17 02:25:49,822 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:50,217 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2323202321483787?fields=&access_token=EAAPTAYDlTdwBO1yECbcRMYh9buZBiSAFCZCEnzyhyoHZBDpciS8VV7Lpy9xp7aTQZBJ1g74RlOT5nxi15oGUOfB3easiJkbtGa41fyjRZB51erWYHp8eDtfQzJRkVMqrxD4OZAdd4jYQSuAc00n1ucibyg5yFtZCyev9bA6qoMwMeGXbzlk37c4Ry4ZAuV2rArXlw5xsNyLafZCyCkwYWwZA47LUvy HTTP/1.1" 200 61
-2025-09-17 02:25:50,223 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:52,184 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 148
-2025-09-17 02:25:52,186 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:52,565 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 61
-2025-09-17 02:25:52,572 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:53,140 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-09-17 02:25:53,143 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:53,536 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 59
-2025-09-17 02:25:53,544 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:54,197 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 138
-2025-09-17 02:25:54,199 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:54,664 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_602672996199306?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 59
-2025-09-17 02:25:54,671 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:55,268 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 146
-2025-09-17 02:25:55,270 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:55,692 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 59
-2025-09-17 02:25:55,699 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:56,278 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-09-17 02:25:56,281 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:56,677 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 59
-2025-09-17 02:25:56,684 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:57,293 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 147
-2025-09-17 02:25:57,295 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:57,692 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 59
-2025-09-17 02:25:57,699 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:58,369 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 151
-2025-09-17 02:25:58,371 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:58,773 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 59
-2025-09-17 02:25:58,780 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:59,397 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 152
-2025-09-17 02:25:59,399 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-17 02:25:59,805 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=&access_token=EAANq4PbMXQoBPMelgfRE47oCQ4nbls60nGL5ZBwICD8kCD8zKGEVsxvBZCJa2MJezaZC67ffZAWMEYytRhXiq9xbqxeQPcVwVH15AgNQvyWdVExInM100DZCL8jlK2ZBFMWj5PQ2r2jE5n62AGkGWJUlQhCtKx3UIzRJ16nhfCZAdjiNpVYc8ju2O1AzXwDZAF0ojpX8wsTD HTTP/1.1" 200 61
-2025-09-17 02:25:59,811 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:25:59] "GET /api/check_balance HTTP/1.1" 200 -
-2025-09-17 02:26:00,232 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:26:00] "GET /adsets HTTP/1.1" 200 -
-2025-09-17 02:26:00,439 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:26:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-09-17 02:26:00,503 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:26:00] "[36mGET /static/js/adsets.js HTTP/1.1[0m" 304 -
-2025-09-17 02:26:01,077 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:26:01] "GET /api/auto_control/logs?ts=1758064976301 HTTP/1.1" 200 -
-2025-09-17 02:26:01,149 - werkzeug - INFO - 127.0.0.1 - - [17/Sep/2025 02:26:01] "GET /api/adsets HTTP/1.1" 200 -
-2025-09-17 02:26:44,376 - werkzeug - INFO - 92.51.30.25 - - [17/Sep/2025 02:26:44] "GET /adsets HTTP/1.1" 200 -
-2025-09-17 02:26:44,447 - werkzeug - INFO - 92.51.30.25 - - [17/Sep/2025 02:26:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-09-17 02:26:44,686 - werkzeug - INFO - 92.51.30.25 - - [17/Sep/2025 02:26:44] "GET /static/js/adsets.js HTTP/1.1" 200 -
-2025-09-17 02:26:45,259 - werkzeug - INFO - 92.51.30.25 - - [17/Sep/2025 02:26:45] "GET /api/auto_control/logs?ts=1758065205205 HTTP/1.1" 200 -
-2025-09-17 02:26:45,261 - werkzeug - INFO - 92.51.30.25 - - [17/Sep/2025 02:26:45] "GET /api/adsets HTTP/1.1" 200 -
+2025-09-19 23:33:33,424 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 874
+2025-09-19 23:33:33,425 - backend.campaign - DEBUG - Получено 16 кампаний. Status: {'PAUSED': 15, 'ACTIVE': 1}, Effective Status: {'PAUSED': 15, 'ACTIVE': 1}
+2025-09-19 23:33:33,425 - backend.campaign - INFO - Получено 16 кампаний, после фильтрации: 16 для аккаунта 1229693575829178
+2025-09-19 23:33:33,449 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:34,171 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1609
+2025-09-19 23:33:34,285 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:34,527 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 85
+2025-09-19 23:33:34,530 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:34,907 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1006
+2025-09-19 23:33:34,908 - backend.campaign - DEBUG - Получено 21 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 19}, Effective Status: {'ACTIVE': 2, 'PAUSED': 19}
+2025-09-19 23:33:34,908 - backend.campaign - INFO - Получено 21 кампаний, после фильтрации: 21 для аккаунта 4130588987263265
+2025-09-19 23:33:34,936 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:35,718 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2010
+2025-09-19 23:33:35,857 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:36,079 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-09-19 23:33:36,082 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:36,399 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1488
+2025-09-19 23:33:36,400 - backend.campaign - DEBUG - Получено 36 кампаний. Status: {'PAUSED': 34, 'ACTIVE': 2}, Effective Status: {'PAUSED': 34, 'ACTIVE': 2}
+2025-09-19 23:33:36,401 - backend.campaign - INFO - Получено 36 кампаний, после фильтрации: 36 для аккаунта 519765377868615
+2025-09-19 23:33:36,455 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:37,421 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2904
+2025-09-19 23:33:37,710 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:37,963 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 84
+2025-09-19 23:33:37,966 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:38,226 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 826
+2025-09-19 23:33:38,227 - backend.campaign - DEBUG - Получено 14 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 12}, Effective Status: {'ACTIVE': 2, 'PAUSED': 12}
+2025-09-19 23:33:38,227 - backend.campaign - INFO - Получено 14 кампаний, после фильтрации: 14 для аккаунта 618632521162363
+2025-09-19 23:33:38,252 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:39,026 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1547
+2025-09-19 23:33:39,150 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:39,379 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-09-19 23:33:39,381 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:39,662 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 821
+2025-09-19 23:33:39,663 - backend.campaign - DEBUG - Получено 13 кампаний. Status: {'PAUSED': 10, 'ACTIVE': 3}, Effective Status: {'PAUSED': 10, 'ACTIVE': 3}
+2025-09-19 23:33:39,663 - backend.campaign - INFO - Получено 13 кампаний, после фильтрации: 13 для аккаунта 684941790597261
+2025-09-19 23:33:39,682 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:40,343 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1484
+2025-09-19 23:33:40,447 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:40,686 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 84
+2025-09-19 23:33:40,689 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:40,974 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 756
+2025-09-19 23:33:40,975 - backend.campaign - DEBUG - Получено 13 кампаний. Status: {'ACTIVE': 3, 'PAUSED': 10}, Effective Status: {'ACTIVE': 3, 'PAUSED': 10}
+2025-09-19 23:33:40,975 - backend.campaign - INFO - Получено 13 кампаний, после фильтрации: 13 для аккаунта 690058783376774
+2025-09-19 23:33:40,999 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:41,660 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1424
+2025-09-19 23:33:41,739 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:41,977 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-09-19 23:33:41,981 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:42,306 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1274
+2025-09-19 23:33:42,307 - backend.campaign - DEBUG - Получено 29 кампаний. Status: {'ACTIVE': 3, 'PAUSED': 26}, Effective Status: {'ACTIVE': 3, 'PAUSED': 26}
+2025-09-19 23:33:42,307 - backend.campaign - INFO - Получено 29 кампаний, после фильтрации: 29 для аккаунта 707254618536242
+2025-09-19 23:33:42,361 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:43,491 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2514
+2025-09-19 23:33:43,729 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:43,961 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 89
+2025-09-19 23:33:43,964 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:44,317 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1309
+2025-09-19 23:33:44,318 - backend.campaign - DEBUG - Получено 31 кампаний. Status: {'PAUSED': 30, 'ACTIVE': 1}, Effective Status: {'PAUSED': 30, 'ACTIVE': 1}
+2025-09-19 23:33:44,318 - backend.campaign - INFO - Получено 31 кампаний, после фильтрации: 31 для аккаунта 9859604834059536
+2025-09-19 23:33:44,372 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-19 23:33:45,476 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2653
+2025-09-19 23:33:45,716 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-09-19 23:33:46,303 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-09-19 23:33:46,307 - __main__ - INFO - [save_and_sync] Keitaro обновил 0 адсетов для пользователя 3
+2025-09-19 23:33:46,308 - werkzeug - INFO - 127.0.0.1 - - [19/Sep/2025 23:33:46] "POST /api/save_and_sync HTTP/1.1" 200 -
+2025-09-19 23:33:48,640 - werkzeug - INFO - 127.0.0.1 - - [19/Sep/2025 23:33:48] "GET /api/adsets HTTP/1.1" 200 -
+2025-09-19 23:34:02,109 - werkzeug - INFO - 127.0.0.1 - - [19/Sep/2025 23:34:02] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-09-19 23:34:13,110 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://89.208.113.85:5000
+2025-09-19 23:34:13,110 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-19 23:34:15,661 - werkzeug - INFO - 154.84.184.122 - - [19/Sep/2025 23:34:15] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-19 23:34:18,787 - werkzeug - INFO - 92.51.30.53 - - [19/Sep/2025 23:34:18] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-09-19 23:34:18,790 - werkzeug - INFO - 92.51.30.53 - - [19/Sep/2025 23:34:18] "POST /api/auto_refresh HTTP/1.1" 200 -

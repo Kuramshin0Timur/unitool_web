@@ -4092,26 +4092,27 @@ def fetch_facebook_cpm_data(account_id, access_token):
     except Exception as e:
         logger.error(f"Ошибка получения CPM данных: {e}")
         return {}
-
 def calculate_daily_budget_requirements(user_id):
-    """Рассчитывает требуемый дневной бюджет для всех активных кампаний - исправленная версия"""
+    """Рассчитывает требуемый дневной бюджет - показывает все кампании, но считает только активные"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-            # Берём только реально активные адсеты (оба статуса ACTIVE)
+            # Берём ВСЕ адсеты, но считаем бюджет только для активных
             cursor.execute("""
                 SELECT 
                     a.account_id,
                     c.token,
-                    SUM(a.budget) as total_daily_budget,
-                    COUNT(a.adset_id) as active_adsets
+                    SUM(CASE WHEN UPPER(a.status) = 'ACTIVE' AND UPPER(a.effective_status) = 'ACTIVE' 
+                            THEN a.budget ELSE 0 END) as total_active_budget,
+                    SUM(a.budget) as total_all_budget,
+                    COUNT(a.adset_id) as total_adsets,
+                    SUM(CASE WHEN UPPER(a.status) = 'ACTIVE' AND UPPER(a.effective_status) = 'ACTIVE' 
+                            THEN 1 ELSE 0 END) as active_adsets
                 FROM adsets a
                 LEFT JOIN campaigns c 
                     ON a.campaign_id = c.campaign_id AND a.user_id = c.user_id
                 WHERE a.user_id = ? 
-                  AND UPPER(a.status) = 'ACTIVE'
-                  AND UPPER(a.effective_status) = 'ACTIVE'
                   AND a.budget > 0
                   AND a.account_id IS NOT NULL
                   AND a.account_id != ''
@@ -4123,7 +4124,9 @@ def calculate_daily_budget_requirements(user_id):
                 requirements.append({
                     'account_id': row['account_id'],
                     'token': row['token'],
-                    'total_daily_budget': float(row['total_daily_budget'] or 0.0),
+                    'total_active_budget': float(row['total_active_budget'] or 0.0),
+                    'total_all_budget': float(row['total_all_budget'] or 0.0),
+                    'total_adsets': row['total_adsets'],
                     'active_adsets': row['active_adsets']
                 })
             
@@ -4132,7 +4135,6 @@ def calculate_daily_budget_requirements(user_id):
     except Exception as e:
         logger.error(f"Ошибка расчета дневных бюджетов: {e}")
         return []
-
 @app.route('/api/debug/balance', methods=['GET'])
 @login_required
 def debug_balance():
@@ -4183,8 +4185,8 @@ def check_account_balance_sufficiency(user_id):
             account_info = get_account_limits_info(req['account_id'], req['token'])
             
             if account_info:
-                remaining_amount = account_info.get('remaining_amount', 0)  # Используем remaining_amount
-                required = req['total_daily_budget']
+                remaining_amount = account_info.get('remaining_amount', 0)
+                required = req['total_active_budget']  # Используем только активный бюджет для проверки
                 
                 # Определяем deficit
                 deficit = max(0, required - remaining_amount) if remaining_amount < required else 0
@@ -4198,14 +4200,16 @@ def check_account_balance_sufficiency(user_id):
                 warning = {
                     'account_id': req['account_id'],
                     'account_name': account_info.get('name', 'Unknown'),
-                    'balance': account_info.get('balance', 0),  # Оставляем для информации
-                    'remaining_amount': remaining_amount,  # Добавляем remaining_amount
-                    'spend_cap': account_info.get('spend_cap', 0),  # Общий лимит
-                    'spend': account_info.get('spend', 0),  # Потрачено
+                    'balance': account_info.get('balance', 0),
+                    'remaining_amount': remaining_amount,
+                    'spend_cap': account_info.get('spend_cap', 0),
+                    'spend': account_info.get('spend', 0),
                     'required_today': required,
+                    'total_budget': req['total_all_budget'],  # Общий бюджет (все адсеты)
                     'deficit': deficit,
                     'days_remaining': days_remaining,
                     'active_adsets': req['active_adsets'],
+                    'total_adsets': req['total_adsets'],  # Всего адсетов
                     'status': account_info.get('status', 'UNKNOWN')
                 }
                 
