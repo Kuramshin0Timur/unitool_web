@@ -308,11 +308,15 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
         logger.debug(f"Проверка условий для возобновления (GEO {geo})")
 
         # 🟢 условие возобновления: метрики снова в норме
-        if (leads > 0 and cpa <= max_cpa and ucpc <= max_ucpc and spend >= min_spend):
+        if (leads > 0 
+            and leads <= max_leads_threshold  # <-- добавлено ограничение
+            and cpa <= max_cpa 
+            and ucpc <= max_ucpc 
+            and spend >= min_spend):
             should_resume = True
             logger.info(f"Условие возобновления: leads={leads}, cpa={cpa} <= {max_cpa}, "
                         f"ucpc={ucpc} <= {max_ucpc}, spend={spend} >= {min_spend}")
-
+            
     # === Работа с токенами ===
     token_list = reserve_tokens.get(king, [])
     if token and token not in token_list:
