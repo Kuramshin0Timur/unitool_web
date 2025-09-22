@@ -409,6 +409,14 @@
         "documentation": {}
     },
     {
+        "label": "get_db_connection",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -424,6 +432,31 @@
         "importPath": "requests",
         "description": "requests",
         "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -660,7 +693,111 @@
         "documentation": {}
     },
     {
+        "label": "normalize_token",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_account_id",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "add_reserve_token",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "add_account_to_reserve_token",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "remove_account_from_reserve_token",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
         "label": "get_reserve_token_accounts",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "replace_token_everywhere",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "update_reserve_token_king",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "delete_reserve_token_complete",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_reserve_tokens_table",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_token",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_account_id",
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
         "isExtraImport": true,
@@ -968,15 +1105,6 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
         "label": "traceback",
         "kind": 6,
         "isExtraImport": true,
@@ -1086,7 +1214,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"\n    Возвращает список адсетов пользователя вместе с CPM (и другими метриками).\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT \n                    id, user_id, name, adset_id, campaign_id, ",
+        "peekOfCode": "def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"\n    Возвращает список адсетов пользователя с актуальными метриками.\n    Добавляем фильтрацию по времени для избежания устаревших данных.\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Фильтруем данные за последние 24 часа\n            cutoff_time = datetime.now() - timedelta(hours=24)",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1131,7 +1259,16 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def refresh_adsets_internal(user_id, account_id, token):\n    \"\"\"\n    Обновляет список адсетов и метрики из Facebook (CPM, Spend, CPC).\n    После этого подтягивает CPA и Leads из Keitaro.\n    \"\"\"\n    logger.info(f\"Обновление адсетов для аккаунта {account_id}\")\n    adsets = fetch_facebook_adsets(account_id, token)\n    logger.info(f\"Получено {len(adsets)} адсетов для аккаунта {account_id}\")\n    for adset in adsets:\n        adset_id = adset.get(\"id\")",
+        "peekOfCode": "def refresh_adsets_internal(user_id, account_id, token):\n    \"\"\"\n    Улучшенная функция обновления адсетов с обработкой ошибок.\n    \"\"\"\n    logger.info(f\"Обновление адсетов для аккаунта {account_id}, пользователь {user_id}\")\n    try:\n        adsets = fetch_facebook_adsets(account_id, token)\n        logger.info(f\"Получено {len(adsets)} адсетов\")\n        if not adsets:\n            logger.warning(f\"Не получено адсетов для аккаунта {account_id}\")",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "refresh_adsets_metrics_only",
+        "kind": 2,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "def refresh_adsets_metrics_only(user_id: int):\n    \"\"\"\n    Быстрое обновление только метрик без полной перезагрузки адсетов.\n    Используется для автообновления таблицы.\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем актуальные адсеты для пользователя\n            cursor.execute(\"SELECT adset_id, token FROM adsets WHERE user_id = ?\", (user_id,))",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1140,7 +1277,7 @@
         "kind": 5,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"\n    Возвращает список адсетов пользователя вместе с CPM (и другими метриками).\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT ",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"\n    Возвращает список адсетов пользователя с актуальными метриками.\n    Добавляем фильтрацию по времени для избежания устаревших данных.\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Фильтруем данные за последние 24 часа",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1514,29 +1651,29 @@
         "documentation": {}
     },
     {
+        "label": "normalize_token",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def normalize_token(token: str) -> str:\n    \"\"\"Убирает CR/LF, ведущие/хвостовые пробелы и лишние пробельные символы внутри.\"\"\"\n    if token is None:\n        return ''\n    t = str(token)\n    # удаляем переносы строк и невидимые символы\n    t = re.sub(r'[\\r\\n\\t]+', '', t)\n    # удаляем ведущие/концевые пробелы\n    t = t.strip()\n    # опционально: если в токене встречаются пробелы внутри — удаляем их тоже",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_account_id",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def normalize_account_id(account_id: str) -> str:\n    \"\"\"Возвращаем numeric-only account_id (без 'act_').\"\"\"\n    if account_id is None:\n        return ''\n    s = str(account_id).strip()\n    s = s.replace('act_', '')\n    # оставляем только цифры\n    s = ''.join(ch for ch in s if ch.isdigit())\n    return s\n# ----- CRUD-функции для резервных токенов -----",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
         "label": "add_reserve_token",
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def add_reserve_token(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Добавляет резервный токен в базу данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_tokens (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "remove_reserve_token",
-        "kind": 2,
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "peekOfCode": "def remove_reserve_token(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Удаляет резервный токен из базы данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\n                \"DELETE FROM reserve_tokens WHERE user_id = ? AND king = ? AND token = ?\",\n                (user_id, king, token)\n            )\n            conn.commit()",
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "get_all_reserve_tokens",
-        "kind": 2,
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "peekOfCode": "def get_all_reserve_tokens(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"Получает все резервные токены пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")",
+        "peekOfCode": "def add_reserve_token(user_id: int, king: str, token: str) -> bool:\n    token = normalize_token(token)\n    king = (king or '').strip()\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_tokens (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1545,25 +1682,16 @@
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def add_account_to_reserve_token(user_id, king, token, account_id):\n    \"\"\"Добавляет аккаунт к резервному токену (с проверкой на существование)\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_token_accounts (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
+        "peekOfCode": "def add_account_to_reserve_token(user_id: int, king: str, token: str, account_id: str) -> bool:\n    token = normalize_token(token)\n    king = (king or '').strip()\n    account_clean = normalize_account_id(account_id)\n    if not account_clean:\n        logger.warning(\"Попытка добавить пустой account_id\")\n        return False\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
     {
-        "label": "update_reserve_token_king",
+        "label": "remove_account_from_reserve_token",
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def update_reserve_token_king(user_id: int, old_king: str, new_king: str, token: str) -> bool:\n    \"\"\"Обновляет KING для резервного токена и связанных данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Обновляем KING в reserve_tokens\n            cursor.execute(\"\"\"\n                UPDATE reserve_tokens \n                SET king = ?\n                WHERE user_id = ? AND king = ? AND token = ?",
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "delete_reserve_token_complete",
-        "kind": 2,
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "peekOfCode": "def delete_reserve_token_complete(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Полностью удаляет резервный токен и связанные данные\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Удаляем из reserve_token_accounts\n            cursor.execute(\"\"\"\n                DELETE FROM reserve_token_accounts \n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))",
+        "peekOfCode": "def remove_account_from_reserve_token(user_id: int, king: str, token: str, account_id: str) -> bool:\n    token = normalize_token(token)\n    account_clean = normalize_account_id(account_id)\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                DELETE FROM reserve_token_accounts\n                WHERE user_id = ? AND king = ? AND token = ? AND account_id = ?\n            \"\"\", (user_id, king, token, account_clean))",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1572,16 +1700,7 @@
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def get_reserve_token_accounts(user_id: int, king: str, token: str) -> List[Dict[str, Any]]:\n    \"\"\"Получает аккаунты для резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT account_id, name, status, spend_cap, amount_spent, \n                       balance, daily_limit, remaining, requests_today, \n                       requests_limit, requests_usage_percent\n                FROM reserve_token_accounts ",
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "update_reserve_token_account_info",
-        "kind": 2,
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "peekOfCode": "def update_reserve_token_account_info(user_id: int, king: str, token: str, account_id: str, limits_info: Dict[str, Any]) -> bool:\n    \"\"\"Обновляет информацию об аккаунте резервного токена\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_token_accounts \n                SET name = ?, status = ?, spend_cap = ?, amount_spent = ?, \n                    balance = ?, daily_limit = ?, remaining = ?,\n                    requests_today = ?, requests_limit = ?, requests_usage_percent = ?,",
+        "peekOfCode": "def get_reserve_token_accounts(user_id: int, king: str, token: str) -> List[Dict[str, Any]]:\n    token = normalize_token(token)\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT account_id, name, status, spend_cap, amount_spent,\n                       balance, daily_limit, remaining, requests_today,\n                       requests_limit, requests_usage_percent\n                FROM reserve_token_accounts",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1590,16 +1709,34 @@
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Получает резервные токены с аккаунтами для конкретного пользователя\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы reserve_tokens\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='reserve_tokens'\n            \"\"\")",
+        "peekOfCode": "def get_reserve_tokens(user_id: int) -> Dict[str, List[Dict[str, Any]]]:\n    \"\"\"Возвращает структуру { king: [ { token:..., accounts:[...] }, ... ] }\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT rt.king, rt.token, rta.account_id, rta.name, rta.status,\n                       rta.spend_cap, rta.amount_spent, rta.balance, rta.daily_limit,\n                       rta.remaining, rta.requests_today, rta.requests_limit, rta.requests_usage_percent\n                FROM reserve_tokens rt",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
     {
-        "label": "get_reserve_tokens_table",
+        "label": "update_reserve_token_king",
         "kind": 2,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "def get_reserve_tokens_table(user_id):\n    \"\"\"Возвращает объединённые данные о токенах и аккаунтах (только KING из reserve_tokens)\"\"\"\n    with get_db_connection(user_id) as conn:\n        cursor = conn.cursor()\n        # ИСПРАВЛЕННЫЙ ЗАПРОС - добавлено условие по king\n        cursor.execute(\"\"\"\n            SELECT rt.king, rt.token, \n                   rta.account_id, rta.requests_limit, \n                   rta.requests_today, rta.requests_usage_percent\n            FROM reserve_tokens rt",
+        "peekOfCode": "def update_reserve_token_king(user_id: int, old_king: str, new_king: str, token: str) -> bool:\n    token = normalize_token(token)\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                UPDATE reserve_tokens SET king = ?\n                WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (new_king, user_id, old_king, token))\n            cursor.execute(\"\"\"",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "replace_token_everywhere",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def replace_token_everywhere(user_id: int, old_token: str, new_token: str, king: str, account_ids: List[str]=None) -> Dict[str,int]:\n    \"\"\"Замена токена везде (reserve_tokens, reserve_token_accounts, campaigns, adsets).\n       Возвращает словарь с counts: campaigns_updated, adsets_updated, reserve_tokens_updated, reserve_accounts_updated\"\"\"\n    old_token = normalize_token(old_token)\n    new_token = normalize_token(new_token) if new_token else ''\n    if not old_token:\n        return {'error': 'old_token empty'}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()",
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "delete_reserve_token_complete",
+        "kind": 2,
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "peekOfCode": "def delete_reserve_token_complete(user_id: int, king: str, token: str) -> bool:\n    token = normalize_token(token)\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                DELETE FROM reserve_token_accounts WHERE user_id = ? AND king = ? AND token = ?\n            \"\"\", (user_id, king, token))\n            cursor.execute(\"\"\"\n                DELETE FROM reserve_tokens WHERE user_id = ? AND king = ? AND token = ?",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1608,7 +1745,7 @@
         "kind": 5,
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef add_reserve_token(user_id: int, king: str, token: str) -> bool:\n    \"\"\"Добавляет резервный токен в базу данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_tokens (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n# ----- Нормализаторы (единственный источник правды) -----\ndef normalize_token(token: str) -> str:\n    \"\"\"Убирает CR/LF, ведущие/хвостовые пробелы и лишние пробельные символы внутри.\"\"\"\n    if token is None:\n        return ''\n    t = str(token)\n    # удаляем переносы строк и невидимые символы\n    t = re.sub(r'[\\r\\n\\t]+', '', t)\n    # удаляем ведущие/концевые пробелы",
         "detail": "backend.reserve_tokens",
         "documentation": {}
     },
@@ -1698,7 +1835,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def auto_populate_reserve_tokens():\n    \"\"\"Автоматически создает резервные токены из основных аккаунтов\"\"\"\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем все уникальные комбинации account_id + token из campaigns\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
+        "peekOfCode": "def auto_populate_reserve_tokens():\n    user_id = session['user_id']\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''",
         "detail": "app",
         "documentation": {}
     },
@@ -1716,7 +1853,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def replace_token():\n    \"\"\"Заменяет токен в кампаниях, адсетах и резервных токенах\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    old_token = data.get('old_token')\n    new_token = data.get('new_token')\n    king = data.get('king')\n    account_ids = data.get('account_ids', [])\n    if not all([old_token, king]):\n        return jsonify({'success': False, 'error': 'Не указаны старый токен или KING'})",
+        "peekOfCode": "def replace_token():\n    \"\"\"Заменяет токен во всех таблицах (atomic): reserve_tokens, reserve_token_accounts, campaigns, adsets\"\"\"\n    user_id = session['user_id']\n    data = request.json or {}\n    old_token = normalize_token(data.get('old_token') or data.get('oldToken'))\n    new_token = normalize_token(data.get('new_token') or data.get('newToken') or '')\n    king = data.get('king') or data.get('KING') or ''\n    account_ids = data.get('account_ids', None)\n    if not old_token or not king:\n        return jsonify({'success': False, 'error': 'Не указаны старый токен или KING'})",
         "detail": "app",
         "documentation": {}
     },
@@ -1725,7 +1862,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def update_king():\n    \"\"\"Обновляет KING для токена во всех таблицах\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    current_king = data.get('currentKing')\n    new_king = data.get('newKing')\n    token = data.get('token')\n    if not all([current_king, new_king, token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:",
+        "peekOfCode": "def update_king():\n    user_id = session['user_id']\n    data = request.json or {}\n    current_king = data.get('currentKing') or data.get('current_king')\n    new_king = data.get('newKing') or data.get('new_king')\n    token = normalize_token(data.get('token') or data.get('currentToken'))\n    if not all([current_king, new_king, token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:\n        ok = update_reserve_token_king(user_id, current_king, new_king, token)",
         "detail": "app",
         "documentation": {}
     },
@@ -1734,7 +1871,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def update_token():\n    \"\"\"Обновляет токен\"\"\"\n    user_id = session['user_id']\n    data = request.json\n    king = data.get('king')\n    current_token = data.get('currentToken')\n    new_token = data.get('newToken')\n    if not all([king, current_token, new_token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:",
+        "peekOfCode": "def update_token():\n    \"\"\"Обновляет токен в reserve_tokens и reserve_token_accounts (нормализует)\"\"\"\n    user_id = session['user_id']\n    data = request.json or {}\n    king = data.get('king')\n    current_token = normalize_token(data.get('currentToken') or data.get('current_token'))\n    new_token = normalize_token(data.get('newToken') or data.get('new_token'))\n    if not all([king, current_token, new_token]):\n        return jsonify({'success': False, 'error': 'Не указаны все параметры'})\n    try:",
         "detail": "app",
         "documentation": {}
     },
@@ -1978,15 +2115,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def get_account_details(account_id):\n    \"\"\"Возвращает детальную информацию об аккаунте\"\"\"\n    if not is_admin_user(session['user_id']):\n        return jsonify({'success': False, 'error': 'Доступ запрещен'})\n    try:\n        user_id = session['user_id']\n        # Находим токен аккаунта\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "add_reserve_token",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def add_reserve_token(user_id, king, token):\n    \"\"\"Добавляет резервный токен в базу данных\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Создаем таблицу если не существует\n            cursor.execute(\"\"\"\n                CREATE TABLE IF NOT EXISTS reserve_tokens (\n                    id INTEGER PRIMARY KEY AUTOINCREMENT,\n                    user_id INTEGER NOT NULL,",
         "detail": "app",
         "documentation": {}
     },
@@ -3122,6 +3250,24 @@
         "description": "init_db",
         "peekOfCode": "def generate_test_data():\n    \"\"\"Генерирует тестовые данные для базы данных\"\"\"\n    conn = get_db_connection()\n    cursor = conn.cursor()\n    # Очищаем таблицы\n    cursor.execute(\"DELETE FROM campaigns\")\n    cursor.execute(\"DELETE FROM adsets\")\n    cursor.execute(\"DELETE FROM geo_config\")\n    cursor.execute(\"DELETE FROM settings\")\n    # Добавляем настройки",
         "detail": "init_db",
+        "documentation": {}
+    },
+    {
+        "label": "migrate",
+        "kind": 2,
+        "importPath": "migration",
+        "description": "migration",
+        "peekOfCode": "def migrate(user_id=None):\n    with get_db_connection(user_id) as conn:\n        cur = conn.cursor()\n        # 1) Нормализуем reserve_tokens.token\n        cur.execute(\"SELECT id, user_id, king, token FROM reserve_tokens\")\n        rows = cur.fetchall()\n        for r in rows:\n            nid = normalize_token(r['token'])\n            if nid != r['token']:\n                try:",
+        "detail": "migration",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "migration",
+        "description": "migration",
+        "peekOfCode": "logger = logging.getLogger('migrate')\nlogging.basicConfig(level=logging.INFO)\ndef migrate(user_id=None):\n    with get_db_connection(user_id) as conn:\n        cur = conn.cursor()\n        # 1) Нормализуем reserve_tokens.token\n        cur.execute(\"SELECT id, user_id, king, token FROM reserve_tokens\")\n        rows = cur.fetchall()\n        for r in rows:\n            nid = normalize_token(r['token'])",
+        "detail": "migration",
         "documentation": {}
     }
 ]

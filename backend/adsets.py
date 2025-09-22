@@ -1,23 +1,28 @@
+
 import logging
 import time
 from typing import Any, Dict, List
 
 import requests
-
+from datetime import datetime, timedelta
 from backend.campaign import get_user_campaigns
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
 from backend.keitaro import sync_keitaro
 from database import get_db_connection, lock
 
 logger = logging.getLogger(__name__)
-
 def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
     """
-    Возвращает список адсетов пользователя вместе с CPM (и другими метриками).
+    Возвращает список адсетов пользователя с актуальными метриками.
+    Добавляем фильтрацию по времени для избежания устаревших данных.
     """
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
+            
+            # Фильтруем данные за последние 24 часа
+            cutoff_time = datetime.now() - timedelta(hours=24)
+            
             cursor.execute("""
                 SELECT 
                     id, user_id, name, adset_id, campaign_id, 
@@ -28,16 +33,21 @@ def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
                     max_budget, min_budget, budget_increase_step, budget_decrease_step,
                     created_at, updated_at
                 FROM adsets 
-                WHERE user_id = ?
-            """, (user_id,))
+                WHERE user_id = ? AND updated_at > ?
+                ORDER BY updated_at DESC
+            """, (user_id, cutoff_time))
             
             adsets = []
             for row in cursor.fetchall():
                 adset = dict(row)
-                # нормализуем статус
-                adset['status'] = str(adset.get('status', 'UNKNOWN')).strip()
-                # если CPM отсутствует, ставим 0
-                adset['cpm'] = float(adset.get('cpm', 0) or 0)
+                # Нормализуем данные
+                adset['status'] = str(adset.get('status', 'UNKNOWN')).strip().upper()
+                
+                # Заполняем нулями отсутствующие числовые значения
+                numeric_fields = ['ucpc', 'cpc', 'cpm', 'spend', 'cpa', 'leads', 'budget']
+                for field in numeric_fields:
+                    adset[field] = float(adset.get(field, 0) or 0)
+                
                 adsets.append(adset)
             
             return adsets
@@ -129,94 +139,118 @@ def fetch_facebook_adsets(account_id, access_token, fields=None):
     response = requests.get(url, params=params, timeout=30)
     response.raise_for_status()
     return response.json().get("data", [])
+
+
 def refresh_adsets_internal(user_id, account_id, token):
     """
-    Обновляет список адсетов и метрики из Facebook (CPM, Spend, CPC).
-    После этого подтягивает CPA и Leads из Keitaro.
+    Улучшенная функция обновления адсетов с обработкой ошибок.
     """
-    logger.info(f"Обновление адсетов для аккаунта {account_id}")
-
-    adsets = fetch_facebook_adsets(account_id, token)
-    logger.info(f"Получено {len(adsets)} адсетов для аккаунта {account_id}")
-
-    for adset in adsets:
-        adset_id = adset.get("id")
-        adset_name = adset.get("name", "")
-        budget_cents = adset.get("daily_budget") or adset.get("lifetime_budget") or 0
-        budget = float(budget_cents) / 100 if budget_cents else 0
-        geo = ""  # если где-то хранится geo — можно подтянуть
-
-        # Подгружаем метрики через insights
-        insights = fetch_facebook_adset_insights(adset_id, token)
-        spend = float(insights.get("spend", 0) or 0)
-        impressions = int(insights.get("impressions", 0) or 0)
-        cpm = float(insights.get("cpm", 0) or 0)
-        cpc = float(insights.get("cpc", 0) or 0)
-
-        add_user_adset(user_id, {
-            "name": adset_name,
-            "adset_id": adset_id,
-            "campaign_id": adset.get("campaign_id", ""),
-            "status": adset.get("status", "PAUSED"),
-            "account_id": account_id,
-            "token": token,
-            "budget": budget,
-            "geo": geo,
-            "ucpc": 0,   # подтянется из Keitaro
-            "cpc": cpc,
-            "cpm": cpm,
-            "spend": spend,
-            "king": "Facebook",
-            "effective_status": adset.get("effective_status", ""),
-            "ad_name": adset_name,
-            "manual_pause": 0,
-        })
-
-    # 🔥 Обновляем метрики CPA/Leads из Keitaro
+    logger.info(f"Обновление адсетов для аккаунта {account_id}, пользователь {user_id}")
+    
     try:
-        updated = sync_keitaro(user_id)
-        logger.info(f"Keitaro обновил {updated} адсетов для пользователя {user_id}")
+        adsets = fetch_facebook_adsets(account_id, token)
+        logger.info(f"Получено {len(adsets)} адсетов")
+        
+        if not adsets:
+            logger.warning(f"Не получено адсетов для аккаунта {account_id}")
+            return
+        
+        updated_count = 0
+        for adset in adsets:
+            try:
+                adset_id = adset.get("id")
+                if not adset_id:
+                    continue
+                    
+                # Получаем метрики с обработкой ошибок
+                insights = {}
+                try:
+                    insights = fetch_facebook_adset_insights(adset_id, token)
+                except Exception as e:
+                    logger.warning(f"Не удалось получить метрики для адсета {adset_id}: {e}")
+                
+                # Подготавливаем данные
+                budget_cents = adset.get("daily_budget") or adset.get("lifetime_budget") or 0
+                budget = float(budget_cents) / 100 if budget_cents else 0
+                
+                adset_data = {
+                    "name": adset.get("name", ""),
+                    "adset_id": adset_id,
+                    "campaign_id": adset.get("campaign_id", ""),
+                    "status": adset.get("status", "PAUSED"),
+                    "account_id": account_id,
+                    "token": token,
+                    "budget": budget,
+                    "geo": extract_geo_from_name(adset.get("name", "")),
+                    "ucpc": 0,  # Будет обновлено из Keitaro
+                    "cpc": float(insights.get("cpc", 0) or 0),
+                    "cpm": float(insights.get("cpm", 0) or 0),
+                    "spend": float(insights.get("spend", 0) or 0),
+                    "king": "Facebook",
+                    "effective_status": adset.get("effective_status", ""),
+                    "ad_name": adset.get("name", ""),
+                    "manual_pause": 0,
+                    "updated_at": datetime.now()  # Добавляем время обновления
+                }
+                
+                add_user_adset(user_id, adset_data)
+                updated_count += 1
+                
+            except Exception as e:
+                logger.error(f"Ошибка обработки адсета {adset.get('id')}: {e}")
+                continue
+        
+        # Обновляем данные из Keitaro
+        try:
+            keitaro_updated = sync_keitaro(user_id)
+            logger.info(f"Keitaro обновил {keitaro_updated} записей")
+        except Exception as e:
+            logger.error(f"Ошибка синхронизации с Keitaro: {e}")
+        
+        logger.info(f"Успешно обновлено {updated_count} адсетов")
+        return updated_count
+        
     except Exception as e:
-        logger.error(f"Ошибка при обновлении Keitaro для user_id={user_id}: {e}")
+        logger.error(f"Критическая ошибка при обновлении адсетов: {e}")
+        raise
 
+# Добавить функцию для быстрого обновления только метрик
+def refresh_adsets_metrics_only(user_id: int):
     """
-    Обновляет список адсетов и метрики из Facebook (CPM, Spend, CPC).
-    CPA и Leads не трогаем — они подтянутся из Keitaro.
+    Быстрое обновление только метрик без полной перезагрузки адсетов.
+    Используется для автообновления таблицы.
     """
-    logger.info(f"Обновление адсетов для аккаунта {account_id}")
-
-    adsets = fetch_facebook_adsets(account_id, token)
-    logger.info(f"Получено {len(adsets)} адсетов для аккаунта {account_id}")
-
-    for adset in adsets:
-        adset_id = adset.get("id")
-        adset_name = adset.get("name", "")
-        budget = adset.get("daily_budget") or adset.get("lifetime_budget") or 0
-        geo = ""  # если где-то хранится geo — можно подтянуть
-
-        # Подгружаем метрики через insights
-        insights = fetch_facebook_adset_insights(adset_id, token)
-        spend = float(insights.get("spend", 0) or 0)
-        impressions = int(insights.get("impressions", 0) or 0)
-        cpm = float(insights.get("cpm", 0) or 0)
-        cpc = float(insights.get("cpc", 0) or 0)
-
-        add_user_adset(user_id, {
-            "name": adset_name,
-            "adset_id": adset_id,
-            "campaign_id": adset.get("campaign_id", ""),
-            "status": adset.get("status", "PAUSED"),
-            "account_id": account_id,
-            "token": token,
-            "budget": budget,
-            "geo": geo,
-            "ucpc": 0,   # из Keitaro
-            "cpc": cpc,
-            "cpm": cpm,
-            "spend": spend,
-            # ⚠️ CPA и Leads не затираем
-            "king": "Facebook",
-            "effective_status": adset.get("effective_status", ""),
-            "ad_name": adset_name,
-            "manual_pause": 0,
-        })
+    with lock:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем актуальные адсеты для пользователя
+            cursor.execute("SELECT adset_id, token FROM adsets WHERE user_id = ?", (user_id,))
+            adsets = cursor.fetchall()
+            
+            updated = 0
+            for adset in adsets:
+                try:
+                    insights = fetch_facebook_adset_insights(adset['adset_id'], adset['token'])
+                    
+                    cursor.execute("""
+                        UPDATE adsets SET 
+                            cpc = ?, cpm = ?, spend = ?, updated_at = ?
+                        WHERE adset_id = ? AND user_id = ?
+                    """, (
+                        float(insights.get("cpc", 0) or 0),
+                        float(insights.get("cpm", 0) or 0),
+                        float(insights.get("spend", 0) or 0),
+                        datetime.now(),
+                        adset['adset_id'],
+                        user_id
+                    ))
+                    
+                    updated += 1
+                    
+                except Exception as e:
+                    logger.warning(f"Не удалось обновить метрики для {adset['adset_id']}: {e}")
+                    continue
+            
+            conn.commit()
+            return updated

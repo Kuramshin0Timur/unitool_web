@@ -1,3 +1,72 @@
+let autoRefreshInterval = null;
+let isAutoRefreshRunning = false;
+
+// Заменить существующий код автообновления
+function setupAutoRefresh() {
+    // Останавливаем предыдущий интервал если был
+    if (autoRefreshInterval) {
+        clearInterval(autoRefreshInterval);
+    }
+    
+    // Запускаем автообновление каждые 10 секунд (вместо 1 секунды - слишком часто)
+    autoRefreshInterval = setInterval(() => {
+        if (isAutoRefreshRunning && document.visibilityState === 'visible') {
+            loadAdsets();
+        }
+    }, 10000); // 10 секунд
+    
+    isAutoRefreshRunning = true;
+    updateAutoRefreshUI();
+}
+// Функция для управления автообновлением
+function toggleAutoRefresh() {
+    if (isAutoRefreshRunning) {
+        stopAutoRefresh();
+    } else {
+        startAutoRefresh();
+    }
+}
+
+function startAutoRefresh() {
+    isAutoRefreshRunning = true;
+    setupAutoRefresh();
+    addLogEntry('Автообновление таблицы запущено', 'success');
+}
+
+function stopAutoRefresh() {
+    isAutoRefreshRunning = false;
+    if (autoRefreshInterval) {
+        clearInterval(autoRefreshInterval);
+        autoRefreshInterval = null;
+    }
+    updateAutoRefreshUI();
+    addLogEntry('Автообновление таблицы остановлено', 'warning');
+}
+function updateLastRefreshTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+    const dateString = now.toLocaleDateString();
+    
+    const timeElement = document.getElementById('lastRefreshTime');
+    if (timeElement) {
+        timeElement.textContent = `Последнее обновление: ${dateString} ${timeString}`;
+    }
+}
+
+function updateAutoRefreshUI() {
+    const refreshBtn = document.getElementById('autoRefreshBtn');
+    if (refreshBtn) {
+        if (isAutoRefreshRunning) {
+            refreshBtn.innerHTML = '<i class="bi bi-pause-fill"></i> Пауза автообновления';
+            refreshBtn.classList.remove('btn-outline-primary');
+            refreshBtn.classList.add('btn-warning');
+        } else {
+            refreshBtn.innerHTML = '<i class="bi bi-play-fill"></i> Автообновление';
+            refreshBtn.classList.remove('btn-warning');
+            refreshBtn.classList.add('btn-outline-primary');
+        }
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     let adsetsData = [];
@@ -8,6 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
   
     loadAdsets();
+    setInterval(() => {
+        loadAdsets();
+    }, 1000);
     setupEventListeners();
     
 function initDataTable() {
@@ -157,7 +229,7 @@ function initDataTable() {
     document.getElementById('autoControlBtn')?.addEventListener('click', runAutoControl);
     document.getElementById('syncAllBtn')?.addEventListener('click', syncAllData);
     document.getElementById('refreshBtn')?.addEventListener('click', loadAdsets);
-    
+    document.getElementById('autoRefreshBtn')?.addEventListener('click', toggleAutoRefresh);
  
     document.getElementById('selectAll')?.addEventListener('change', function() {
         const checkboxes = document.querySelectorAll('#adsetsTable tbody input[type="checkbox"]');
@@ -274,37 +346,43 @@ function syncAllData() {
 
 window.syncAllData = syncAllData;
     function loadAdsets() {
-        console.log('Загрузка адсетов...');
-        showLoading();
-        
-        fetch('/api/adsets')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    adsetsData = data.data || [];
-                    renderAdsets(adsetsData);
-                    addLogEntry('Список адсетов обновлён');
-                    
-                    if (adsetsData.length === 0) {
-                        showInfo('Нет данных', 'Адсеты не найдены. Импортируйте данные сначала.');
-                    }
-                } else {
-                    showError('Ошибка загрузки адсетов', data.error || 'Неизвестная ошибка');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка загрузки адсетов:', error);
-                showError('Ошибка загрузки адсетов', error.message);
-            })
-            .finally(() => {
-                hideLoading();
-            });
+    // Если таблица не видна, не обновляем
+    if (document.visibilityState === 'hidden') {
+        return;
     }
+    
+    console.log('Загрузка адсетов...');
+    showLoading();
+    
+    // Добавляем timestamp для избежания кеширования
+    fetch(`/api/adsets?ts=${Date.now()}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                adsetsData = data.data || [];
+                renderAdsets(adsetsData);
+                
+                // Обновляем время последнего обновления
+                updateLastRefreshTime();
+                
+            } else {
+                showError('Ошибка загрузки адсетов', data.error || 'Неизвестная ошибка');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки адсетов:', error);
+            // Не показываем ошибку при каждом автообновлении, только в лог
+            addLogEntry(`Ошибка загрузки: ${error.message}`, 'error');
+        })
+        .finally(() => {
+            hideLoading();
+        });
+}
 
 columnDefs: [
     {
@@ -552,13 +630,30 @@ function loadAutoControlLogs() {
 }
 
 
-
+function addAutoRefreshButton() {
+    const buttonHtml = `
+        <button id="autoRefreshBtn" class="btn btn-outline-primary">
+            <i class="bi bi-play-fill"></i> Автообновление
+        </button>
+    `;
+    
+    const actionButtons = document.querySelector('.action-buttons');
+    if (actionButtons && !document.getElementById('autoRefreshBtn')) {
+        actionButtons.insertAdjacentHTML('beforeend', buttonHtml);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadAutoControlLogs();
+    initDataTable();
+    loadAdsets();
+    setupEventListeners();
+    addAutoRefreshButton();
     
-
-    setInterval(loadAutoControlLogs, 30000);
+    // Запускаем автообновление по умолчанию
+    startAutoRefresh();
+    
+    // Проверяем статус системы
+    checkAutoSystemStatus();
 });
     function updateSelectedCount() {
         const countElement = document.getElementById('selectedCount');
@@ -1162,11 +1257,21 @@ tableStyles.textContent = `
     }
 `;
 document.head.appendChild(tableStyles);
+function formatNumber(value, decimals) {
+    const num = parseFloat(value);
+    if (isNaN(num)) return "-";
+    return num.toFixed(decimals);
+}
 function renderAdsets(data) {
     if (!window.adsetsTable) {
         console.error('DataTable не инициализирован');
+        initDataTable(); // Пытаемся переинициализировать
         return;
     }
+    
+    // Сохраняем текущее состояние фильтров и пагинации
+    const currentPage = window.adsetsTable.page();
+    const currentSearch = window.adsetsTable.search();
     
     window.adsetsTable.clear();
     
@@ -1177,25 +1282,28 @@ function renderAdsets(data) {
     
     data.forEach(adset => {
         const row = [
-            createCheckboxCell(adset), 
-            adset.name || 'N/A', 
-            createStatusCell(adset.status), 
-            adset.ucpc || 0, 
-            adset.cpc || 0, 
-            adset.cpm || 0, 
-            adset.spend || 0, 
-            adset.cpa || 0, 
-            adset.leads || 0, 
-            adset.geo || 'N/A', 
-            adset.king || 'N/A', 
-            adset.budget || 0, 
-            createActionsCell(adset) 
+            createCheckboxCell(adset),
+            adset.name || 'N/A',
+            createStatusCell(adset.status),
+            formatNumber(adset.ucpc, 3),
+            formatNumber(adset.cpc, 3),
+            formatNumber(adset.cpm, 3),
+            formatNumber(adset.spend, 3),
+            formatNumber(adset.cpa, 3),
+            formatNumber(adset.leads, 0),
+            adset.geo || 'N/A',
+            adset.king || 'N/A',
+            formatNumber(adset.budget, 2),
+            createActionsCell(adset)
         ];
         
         window.adsetsTable.row.add(row);
     });
     
-    window.adsetsTable.draw();
+    // Восстанавливаем состояние
+    window.adsetsTable.search(currentSearch);
+    window.adsetsTable.page(currentPage).draw(false); // false чтобы не сбрасывать страницу
+    
     updateSelectedCount();
 }
 function formatCurrency(value) {

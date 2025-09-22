@@ -26,7 +26,14 @@ from backend.campaign import (add_user_campaign, fetch_facebook_campaigns,
                               update_user_campaign_status)
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
 from backend.keitaro import fetch_keitaro_report, sync_keitaro
-from backend.reserve_tokens import get_reserve_token_accounts
+from backend.reserve_tokens import (
+    normalize_token, normalize_account_id,
+    add_reserve_token, add_account_to_reserve_token, remove_account_from_reserve_token,
+    get_reserve_token_accounts, get_reserve_tokens, get_reserve_tokens as get_reserve_tokens_full,
+    replace_token_everywhere, update_reserve_token_king, delete_reserve_token_complete,
+    get_reserve_tokens_table
+)
+
 from backend.setting import get_user_settings, update_user_settings
 from backend.telegram import send_telegram_message
 from database import (authenticate_user, create_user, get_db_connection,
@@ -197,58 +204,32 @@ def auto_renumber_kings():
 @app.route('/api/auto_populate_reserve_tokens', methods=['POST'])
 @login_required
 def auto_populate_reserve_tokens():
-    """Автоматически создает резервные токены из основных аккаунтов"""
     user_id = session['user_id']
-    
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
-            
-            # Получаем все уникальные комбинации account_id + token из campaigns
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
                 WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL
                 AND account_id != '' AND token != ''
             """, (user_id,))
-            
             accounts = cursor.fetchall()
-            
             added_count = 0
             for account in accounts:
-                account_id = account['account_id']
-                token = account['token']
-                
-                # Автоматически определяем KING на основе токена
+                account_id = normalize_account_id(account['account_id'])
+                token = normalize_token(account['token'])
                 king = auto_determine_king(token)
-                
-                # Добавляем в резервные токены (если еще нет)
-                cursor.execute("""
-                    INSERT OR IGNORE INTO reserve_tokens (user_id, king, token)
-                    VALUES (?, ?, ?)
-                """, (user_id, king, token))
-                
-                # Добавляем аккаунт к токену (если еще нет)
-                cursor.execute("""
-                    INSERT OR IGNORE INTO reserve_token_accounts 
-                    (user_id, king, token, account_id)
-                    VALUES (?, ?, ?, ?)
-                """, (user_id, king, token, account_id))
-                
-                if cursor.rowcount > 0:
+                # добавляем токен и аккаунт через backend функции
+                add_reserve_token(user_id, king, token)
+                if account_id:
+                    add_account_to_reserve_token(user_id, king, token, account_id)
                     added_count += 1
-            
-            conn.commit()
-            
-            return jsonify({
-                'success': True,
-                'message': f'Добавлено {added_count} резервных токенов',
-                'added_count': added_count
-            })
-            
+            return jsonify({'success': True, 'message': f'Добавлено {added_count} резервных аккаунтов'})
     except Exception as e:
-        logger.error(f"Ошибка автоматического заполнения резервных токенов: {e}")
+        logger.error(f"auto_populate_reserve_tokens error: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/api/combined_tokens_table', methods=['GET'])
 @login_required
 def get_combined_tokens_data():
@@ -378,180 +359,71 @@ def get_combined_tokens_data():
 @app.route('/api/replace_token', methods=['POST'])
 @login_required
 def replace_token():
-    """Заменяет токен в кампаниях, адсетах и резервных токенах"""
+    """Заменяет токен во всех таблицах (atomic): reserve_tokens, reserve_token_accounts, campaigns, adsets"""
     user_id = session['user_id']
-    data = request.json
-    
-    old_token = data.get('old_token')
-    new_token = data.get('new_token')
-    king = data.get('king')
-    account_ids = data.get('account_ids', [])
-    
-    if not all([old_token, king]):
+    data = request.json or {}
+
+    old_token = normalize_token(data.get('old_token') or data.get('oldToken'))
+    new_token = normalize_token(data.get('new_token') or data.get('newToken') or '')
+    king = data.get('king') or data.get('KING') or ''
+    account_ids = data.get('account_ids', None)
+
+    if not old_token or not king:
         return jsonify({'success': False, 'error': 'Не указаны старый токен или KING'})
-    
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            campaigns_updated = 0
-            adsets_updated = 0
-            reserve_updated = False
-            
-            # Обновляем токен в кампаниях, если указан новый токен
-            if new_token and new_token != old_token:
-                cursor.execute("""
-                    UPDATE campaigns 
-                    SET token = ?
-                    WHERE user_id = ? AND token = ? AND king = ?
-                """, (new_token, user_id, old_token, king))
-                campaigns_updated = cursor.rowcount
-            
-            # Обновляем токен в адсетах, если указан новый токен
-            if new_token and new_token != old_token:
-                cursor.execute("""
-                    UPDATE adsets 
-                    SET token = ?
-                    WHERE user_id = ? AND token = ? AND king = ?
-                """, (new_token, user_id, old_token, king))
-                adsets_updated = cursor.rowcount
-            
-            # Обновляем аккаунты в резервных токенах, если указаны
-            if account_ids:
-                # Удаляем старые аккаунты
-                cursor.execute("""
-                    DELETE FROM reserve_token_accounts 
-                    WHERE user_id = ? AND king = ? AND token = ?
-                """, (user_id, king, old_token))
-                
-                # Добавляем новые аккаунты
-                for account_id in account_ids:
-                    cursor.execute("""
-                        INSERT INTO reserve_token_accounts (user_id, king, token, account_id)
-                        VALUES (?, ?, ?, ?)
-                    """, (user_id, king, old_token, account_id))
-                
-                reserve_updated = True
-            
-            conn.commit()
-            
-            message_parts = []
-            if campaigns_updated > 0:
-                message_parts.append(f'{campaigns_updated} кампаний')
-            if adsets_updated > 0:
-                message_parts.append(f'{adsets_updated} адсетов')
-            if reserve_updated:
-                message_parts.append('резервные аккаунты')
-            
-            return jsonify({
-                'success': True,
-                'message': f'Обновлено: {", ".join(message_parts)}',
-                'campaigns_updated': campaigns_updated,
-                'adsets_updated': adsets_updated,
-                'reserve_updated': reserve_updated
-            })
-            
-    except Exception as e:
-        logger.error(f"Ошибка замены токена: {e}")
-        return jsonify({'success': False, 'error': str(e)})
+
+    result = replace_token_everywhere(user_id, old_token, new_token, king, account_ids)
+    if 'error' in result:
+        return jsonify({'success': False, 'error': result['error']})
+
+    return jsonify({'success': True, 'details': result})
+
 @app.route('/api/update_king', methods=['POST'])
 @login_required
 def update_king():
-    """Обновляет KING для токена во всех таблицах"""
     user_id = session['user_id']
-    data = request.json
-
-    current_king = data.get('currentKing')
-    new_king = data.get('newKing')
-    token = data.get('token')
+    data = request.json or {}
+    current_king = data.get('currentKing') or data.get('current_king')
+    new_king = data.get('newKing') or data.get('new_king')
+    token = normalize_token(data.get('token') or data.get('currentToken'))
 
     if not all([current_king, new_king, token]):
         return jsonify({'success': False, 'error': 'Не указаны все параметры'})
 
     try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-
-            # --- 1. Обновляем KING у токена в reserve_tokens ---
-            cursor.execute("""
-                UPDATE reserve_tokens
-                SET king = ?
-                WHERE user_id = ? AND king = ? AND token = ?
-            """, (new_king, user_id, current_king, token))
-
-            # --- 2. Обновляем KING в reserve_token_accounts ---
-            cursor.execute("""
-                UPDATE reserve_token_accounts
-                SET king = ?
-                WHERE user_id = ? AND king = ? AND token = ?
-            """, (new_king, user_id, current_king, token))
-
-            # --- 3. Обновляем KING в основных таблицах (campaigns и adsets) ---
-            cursor.execute("""
-                UPDATE campaigns 
-                SET king = ?
-                WHERE user_id = ? AND token = ? AND king = ?
-            """, (new_king, user_id, token, current_king))
-            
-            cursor.execute("""
-                UPDATE adsets 
-                SET king = ?
-                WHERE user_id = ? AND token = ? AND king = ?
-            """, (new_king, user_id, token, current_king))
-
-            conn.commit()
-
-            return jsonify({
-                'success': True,
-                'message': f'KING обновлен с "{current_king}" на "{new_king}" во всех таблицах'
-            })
-
+        ok = update_reserve_token_king(user_id, current_king, new_king, token)
+        if ok:
+            return jsonify({'success': True, 'message': f'KING обновлен с "{current_king}" на "{new_king}"'})
+        else:
+            return jsonify({'success': False, 'error': 'Ошибка при обновлении KING'})
     except Exception as e:
-        logger.error(f"Ошибка обновления KING: {e}")
+        logger.error(f"Ошибка update_king endpoint: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
 @app.route('/api/update_token', methods=['POST'])
 @login_required
 def update_token():
-    """Обновляет токен"""
+    """Обновляет токен в reserve_tokens и reserve_token_accounts (нормализует)"""
     user_id = session['user_id']
-    data = request.json
-    
+    data = request.json or {}
+
     king = data.get('king')
-    current_token = data.get('currentToken')
-    new_token = data.get('newToken')
-    
+    current_token = normalize_token(data.get('currentToken') or data.get('current_token'))
+    new_token = normalize_token(data.get('newToken') or data.get('new_token'))
+
     if not all([king, current_token, new_token]):
         return jsonify({'success': False, 'error': 'Не указаны все параметры'})
-    
+
     try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            # Обновляем токен в reserve_tokens
-            cursor.execute("""
-                UPDATE reserve_tokens 
-                SET token = ?
-                WHERE user_id = ? AND king = ? AND token = ?
-            """, (new_token, user_id, king, current_token))
-            
-            # Обновляем токен в reserve_token_accounts
-            cursor.execute("""
-                UPDATE reserve_token_accounts 
-                SET token = ?
-                WHERE user_id = ? AND king = ? AND token = ?
-            """, (new_token, user_id, king, current_token))
-            
-            conn.commit()
-            
-            return jsonify({
-                'success': True,
-                'message': 'Токен успешно обновлен'
-            })
-            
+        # Используем функции из backend (add/update)
+        from backend.reserve_tokens import replace_token_everywhere
+        res = replace_token_everywhere(user_id, current_token, new_token, king, None)
+        if 'error' in res:
+            return jsonify({'success': False, 'error': res['error']})
+        return jsonify({'success': True, 'message': 'Токен успешно обновлен', 'details': res})
     except Exception as e:
-        logger.error(f"Ошибка обновления токена: {e}")
+        logger.error(f"Ошибка update_token: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/api/update_token_complete', methods=['POST'])
 @login_required
 def update_token_complete():
@@ -1827,34 +1699,6 @@ def get_account_details(account_id):
         logger.error(f"Ошибка получения деталей аккаунта {account_id}: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
-def add_reserve_token(user_id, king, token):
-    """Добавляет резервный токен в базу данных"""
-    try:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            # Создаем таблицу если не существует
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS reserve_tokens (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    user_id INTEGER NOT NULL,
-                    king TEXT NOT NULL,
-                    token TEXT NOT NULL,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (user_id) REFERENCES users (id),
-                    UNIQUE(user_id, king, token)
-                )
-            """)
-            
-            cursor.execute(
-                "INSERT OR IGNORE INTO reserve_tokens (user_id, king, token) VALUES (?, ?, ?)",
-                (user_id, king, token)
-            )
-            conn.commit()
-            return True
-    except Exception as e:
-        logger.error(f"Ошибка добавления резервного токена: {e}")
-        return False
 @app.route('/api/reserve_tokens/accounts', methods=['DELETE'])
 @login_required
 def handle_reserve_tokens_delete():
@@ -5799,4 +5643,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=8000, debug=False, threaded=True)
