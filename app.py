@@ -30,8 +30,7 @@ from backend.reserve_tokens import (
     normalize_token, normalize_account_id,
     add_reserve_token, add_account_to_reserve_token, remove_account_from_reserve_token,
     get_reserve_token_accounts, get_reserve_tokens, get_reserve_tokens as get_reserve_tokens_full,
-    replace_token_everywhere, update_reserve_token_king, delete_reserve_token_complete,
-    get_reserve_tokens_table
+    replace_token_everywhere, update_reserve_token_king, delete_reserve_token_complete
 )
 
 from backend.setting import get_user_settings, update_user_settings

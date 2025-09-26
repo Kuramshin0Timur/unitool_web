@@ -781,14 +781,6 @@
         "documentation": {}
     },
     {
-        "label": "get_reserve_tokens_table",
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "isExtraImport": true,
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
         "label": "normalize_token",
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
