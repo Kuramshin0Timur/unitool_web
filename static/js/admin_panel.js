@@ -216,7 +216,8 @@ function loadData() {
                     return account;
                 });
                 
-                updateStats(data.stats || {});
+                updateStats(normalizeStats(data.stats || {}));
+
                 renderAccountsTable(allAccounts);
                 
             } else {
@@ -325,8 +326,20 @@ function loadTokensStats() {
             console.error('Ошибка загрузки статистики токенов:', error);
         });
 }
+function normalizeStats(stats) {
+    return {
+        totalAccounts: stats.total_accounts ?? stats.totalAccounts ?? 0,
+        activeAccounts: stats.active_accounts ?? stats.activeAccounts ?? 0,
+        disabledAccounts: stats.disabled_accounts ?? stats.disabledAccounts ?? 0,
+        errorAccounts: stats.error_accounts ?? stats.errorAccounts ?? 0,
+        totalSpend: stats.total_spend ?? stats.totalSpend ?? 0,
+        totalBalance: stats.total_balance ?? stats.totalBalance ?? 0,
+        totalLimit: stats.total_limit ?? stats.totalLimit ?? 0,
+        totalRequests: stats.total_requests ?? stats.totalRequests ?? 0,
+    };
+}
+
 function updateStats(stats) {
-   
     const elements = {
         'totalAccounts': document.getElementById('totalAccounts'),
         'activeAccounts': document.getElementById('activeAccounts'),
@@ -338,7 +351,10 @@ function updateStats(stats) {
         'totalRequests': document.getElementById('totalRequests')
     };
 
-   
+    // Создаем недостающие элементы статистики
+    createMissingStatsElements(stats);
+
+    // Обновляем значения
     for (const [key, element] of Object.entries(elements)) {
         if (element && stats[key] !== undefined && stats[key] !== null) {
             if (key.includes('Spend') || key.includes('Balance') || key.includes('Limit')) {
@@ -347,13 +363,107 @@ function updateStats(stats) {
                 element.textContent = stats[key].toLocaleString();
             }
         } else if (element) {
-           
             if (key.includes('Spend') || key.includes('Balance') || key.includes('Limit')) {
                 element.textContent = formatCurrency(0);
             } else {
                 element.textContent = '0';
             }
         }
+    }
+}
+
+function createMissingStatsElements(stats) {
+    const statsContainer = document.getElementById('statsSection');
+    if (!statsContainer) return;
+
+    const statsConfig = [
+        { 
+            id: 'totalBalance', 
+            title: 'Тотал баланс', 
+            icon: 'fa-wallet', 
+            bg: 'primary', 
+            value: stats.totalBalance,
+            formatter: 'currency'
+        },
+        { 
+            id: 'totalLimit', 
+            title: 'Общий лимит', 
+            icon: 'fa-credit-card', 
+            bg: 'dark', 
+            value: stats.totalLimit,
+            formatter: 'currency'
+        },
+        { 
+            id: 'disabledAccounts', 
+            title: 'Отключенных', 
+            icon: 'fa-pause-circle', 
+            bg: 'danger', 
+            value: stats.disabledAccounts,
+            formatter: 'number'
+        },
+        { 
+            id: 'totalRequests', 
+            title: 'Запросов API', 
+            icon: 'fa-server', 
+            bg: 'info', 
+            value: stats.totalRequests,
+            formatter: 'number'
+        }
+    ];
+
+    statsConfig.forEach(stat => {
+        let element = document.getElementById(stat.id);
+        
+        // Если элемента нет - создаем его
+        if (!element) {
+            const col = document.createElement('div');
+            col.className = 'col-md-3 mb-3';
+            col.innerHTML = `
+                <div class="card stat-card bg-${stat.bg} text-white">
+                    <div class="card-body text-center">
+                        <h5><i class="fas ${stat.icon}"></i> ${stat.title}</h5>
+                        <h3 id="${stat.id}">${stat.formatter === 'currency' ? formatCurrency(stat.value || 0) : (stat.value || 0).toLocaleString()}</h3>
+                    </div>
+                </div>
+            `;
+            statsContainer.appendChild(col);
+            
+            // Находим созданный элемент
+            element = document.getElementById(stat.id);
+        }
+        
+        // Обновляем значение
+        if (element) {
+            if (stat.formatter === 'currency') {
+                element.textContent = formatCurrency(stat.value || 0);
+            } else {
+                element.textContent = (stat.value || 0).toLocaleString();
+            }
+        }
+    });
+}
+function updateTotalBalance(stats) {
+    // Создаем элемент если его нет
+    let totalBalanceElement = document.getElementById('totalBalance');
+    let totalBalanceCard = document.getElementById('totalBalanceCard');
+    
+    if (!totalBalanceCard) {
+        const statsContainer = document.getElementById('statsSection');
+        if (statsContainer) {
+            const col = document.createElement('div');
+            col.className = 'col-md-3 mb-3';
+            col.innerHTML = `
+                <div class="card stat-card bg-primary text-white" id="totalBalanceCard">
+                    <div class="card-body">
+                        <h5><i class="fas fa-wallet"></i> Тотал баланс</h5>
+                        <h3 id="totalBalance">${formatCurrency(stats.totalBalance || 0)}</h3>
+                    </div>
+                </div>
+            `;
+            statsContainer.appendChild(col);
+        }
+    } else if (totalBalanceElement) {
+        totalBalanceElement.textContent = formatCurrency(stats.totalBalance || 0);
     }
 }
 

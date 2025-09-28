@@ -929,14 +929,6 @@
         "documentation": {}
     },
     {
-        "label": "BackgroundScheduler",
-        "importPath": "apscheduler.schedulers.background",
-        "description": "apscheduler.schedulers.background",
-        "isExtraImport": true,
-        "detail": "apscheduler.schedulers.background",
-        "documentation": {}
-    },
-    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",

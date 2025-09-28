@@ -7,7 +7,6 @@ from functools import wraps
 from logging.handlers import RotatingFileHandler
 
 import requests
-from apscheduler.schedulers.background import BackgroundScheduler
 from flask import (Flask, flash, jsonify, redirect, render_template, request,
                    session, url_for)
 from fuzzywuzzy import fuzz, process
@@ -637,17 +636,19 @@ def debug_accounts():
             if account_info:
                 account_info.update(account_data)
                 checked_accounts.append(account_info)
-        
+        total_balance = sum(acc.get("balance", 0) for acc in checked_accounts)
+
         return jsonify({
             'success': True,
             'users_count': len(users),
             'raw_accounts_count': len(all_accounts_data),
             'valid_accounts_count': len(checked_accounts),
+            'total_balance': total_balance,
             'users': users,
-            'raw_accounts': all_accounts_data[:10],  # Первые 10 для отладки
-            'valid_accounts': checked_accounts[:10]   # Первые 10 для отладки
+            'raw_accounts': all_accounts_data[:10],
+            'valid_accounts': checked_accounts[:10]
         })
-        
+
     except Exception as e:
         logger.error(f"Ошибка отладки аккаунтов: {e}")
         return jsonify({'success': False, 'error': str(e)})
@@ -5224,8 +5225,8 @@ def get_all_accounts_limits():
             'disabled_accounts': 0,
             'error_accounts': 0,
             'total_spend': 0,
-            'total_balance': 0,
-            'total_limit': 0,
+            'total_balance': 0,  # Будет вычисляться
+            'total_limit': 0,    # Тотал лимит - сумма всех лимитов
             'total_requests': 0
         }
         
@@ -5249,11 +5250,11 @@ def get_all_accounts_limits():
                     total_stats['disabled_accounts'] += 1
                 
                 total_stats['total_spend'] += account_info.get('spend', 0)
-                total_stats['total_balance'] += account_info.get('balance', 0)
+                total_stats['total_balance'] += account_info.get('balance', 0)  # ВЫЧИСЛЯЕМ БАЛАНС
                 total_stats['total_limit'] += account_info.get('spend_cap', 0)
                 total_stats['total_requests'] += account_info.get('requests_today', 0)
         
-        logger.info(f"Обработано {len(accounts_info)} аккаунтов из {len(all_accounts_data)}")
+        logger.info(f"Обработано {len(accounts_info)} аккаунтов. Баланс: ${total_stats['total_balance']:.2f}")
         
         return jsonify({
             'success': True,
@@ -5261,7 +5262,8 @@ def get_all_accounts_limits():
             'accounts': accounts_info,
             'debug': {
                 'total_raw_accounts': len(all_accounts_data),
-                'total_processed_accounts': len(accounts_info)
+                'total_processed_accounts': len(accounts_info),
+                'computed_balance': total_stats['total_balance']  # Для отладки
             }
         })
         
@@ -5642,4 +5644,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port=8000, debug=False, threaded=True)
+    app.run(host='0.0.0.0', debug=False, threaded=True)
