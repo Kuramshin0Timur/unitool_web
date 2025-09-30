@@ -612,12 +612,38 @@
         "documentation": {}
     },
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "threading",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "threading",
         "description": "threading",
         "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "urllib",
+        "description": "urllib",
+        "isExtraImport": true,
+        "detail": "urllib",
         "documentation": {}
     },
     {
@@ -693,15 +719,7 @@
         "documentation": {}
     },
     {
-        "label": "normalize_token",
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "isExtraImport": true,
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "normalize_account_id",
+        "label": "add_account_to_reserve_token",
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
         "isExtraImport": true,
@@ -717,15 +735,7 @@
         "documentation": {}
     },
     {
-        "label": "add_account_to_reserve_token",
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "isExtraImport": true,
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "remove_account_from_reserve_token",
+        "label": "delete_reserve_token_complete",
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
         "isExtraImport": true,
@@ -749,7 +759,31 @@
         "documentation": {}
     },
     {
-        "label": "get_reserve_tokens",
+        "label": "\\",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_account_id",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_token",
+        "importPath": "backend.reserve_tokens",
+        "description": "backend.reserve_tokens",
+        "isExtraImport": true,
+        "detail": "backend.reserve_tokens",
+        "documentation": {}
+    },
+    {
+        "label": "remove_account_from_reserve_token",
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
         "isExtraImport": true,
@@ -766,14 +800,6 @@
     },
     {
         "label": "update_reserve_token_king",
-        "importPath": "backend.reserve_tokens",
-        "description": "backend.reserve_tokens",
-        "isExtraImport": true,
-        "detail": "backend.reserve_tokens",
-        "documentation": {}
-    },
-    {
-        "label": "delete_reserve_token_complete",
         "importPath": "backend.reserve_tokens",
         "description": "backend.reserve_tokens",
         "isExtraImport": true,
@@ -892,15 +918,6 @@
         "description": "venv",
         "isExtraImport": true,
         "detail": "venv",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
         "documentation": {}
     },
     {
@@ -1089,15 +1106,6 @@
         "documentation": {}
     },
     {
-        "label": "traceback",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "traceback",
-        "description": "traceback",
-        "detail": "traceback",
-        "documentation": {}
-    },
-    {
         "label": "sqlite3",
         "kind": 6,
         "isExtraImport": true,
@@ -1194,6 +1202,15 @@
         "documentation": {}
     },
     {
+        "label": "FacebookAPI",
+        "kind": 6,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "class FacebookAPI:\n    BASE_URL = \"https://graph.facebook.com/v18.0\"\n    def __init__(self, access_token: str):\n        self.session = requests.Session()\n        self.access_token = access_token\n    def fetch_adsets(self, account_id: str, fields=None, limit=500):\n        \"\"\"\n        Получение всех адсетов аккаунта с пагинацией\n        \"\"\"\n        if fields is None:",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
         "label": "get_user_adsets",
         "kind": 2,
         "importPath": "backend.adsets",
@@ -1234,7 +1251,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"\n    Получает список адсетов (только метаданные, без метрик).\n    \"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget\"\n    url = f\"https://graph.facebook.com/v18.0/act_{account_id}/adsets\"\n    params = {\n        \"fields\": fields,\n        \"access_token\": access_token,",
+        "peekOfCode": "def fetch_facebook_adsets(account_id, access_token, fields=None):\n    \"\"\"\n    Получает список адсетов (только метаданные, без метрик).\n    \"\"\"\n    if fields is None:\n        fields = \"id,name,campaign_id,daily_budget,status,effective_status\"\n    url = f\"https://graph.facebook.com/v18.0/act_{account_id}/adsets\"\n    params = {\n        \"fields\": fields,\n        \"access_token\": access_token,",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1243,7 +1260,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def refresh_adsets_internal(user_id, account_id, token):\n    \"\"\"\n    Улучшенная функция обновления адсетов с обработкой ошибок.\n    \"\"\"\n    logger.info(f\"Обновление адсетов для аккаунта {account_id}, пользователь {user_id}\")\n    try:\n        adsets = fetch_facebook_adsets(account_id, token)\n        logger.info(f\"Получено {len(adsets)} адсетов\")\n        if not adsets:\n            logger.warning(f\"Не получено адсетов для аккаунта {account_id}\")",
+        "peekOfCode": "def refresh_adsets_internal(user_id, account_id, token):\n    \"\"\"\n    Ускоренная версия: качаем все адсеты + метрики батчами\n    \"\"\"\n    fb = FacebookAPI(token)\n    adsets = fb.fetch_adsets(account_id)\n    adset_ids = [a[\"id\"] for a in adsets]\n    insights = {}\n    for i in range(0, len(adset_ids), 50):  # Facebook batch ограничен 50\n        batch_ids = adset_ids[i:i + 50]",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1252,7 +1269,7 @@
         "kind": 2,
         "importPath": "backend.adsets",
         "description": "backend.adsets",
-        "peekOfCode": "def refresh_adsets_metrics_only(user_id: int):\n    \"\"\"\n    Быстрое обновление только метрик без полной перезагрузки адсетов.\n    Используется для автообновления таблицы.\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем актуальные адсеты для пользователя\n            cursor.execute(\"SELECT adset_id, token FROM adsets WHERE user_id = ?\", (user_id,))",
+        "peekOfCode": "def refresh_adsets_metrics_only(user_id: int):\n    \"\"\"\n    Быстрое обновление только метрик без полной перезагрузки адсетов.\n    Использует batch-запросы для эффективности и избежания лимитов API.\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # 1. Получаем все уникальные токены и связанные с ними adset_id\n            cursor.execute(\"\"\"",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1262,6 +1279,15 @@
         "importPath": "backend.adsets",
         "description": "backend.adsets",
         "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_user_adsets(user_id: int) -> List[Dict[str, Any]]:\n    \"\"\"\n    Возвращает список адсетов пользователя с актуальными метриками.\n    Добавляем фильтрацию по времени для избежания устаревших данных.\n    \"\"\"\n    with lock:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Фильтруем данные за последние 24 часа",
+        "detail": "backend.adsets",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.adsets",
+        "description": "backend.adsets",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass FacebookAPI:\n    BASE_URL = \"https://graph.facebook.com/v18.0\"\n    def __init__(self, access_token: str):\n        self.session = requests.Session()\n        self.access_token = access_token\n    def fetch_adsets(self, account_id: str, fields=None, limit=500):\n        \"\"\"\n        Получение всех адсетов аккаунта с пагинацией\n        \"\"\"",
         "detail": "backend.adsets",
         "documentation": {}
     },
@@ -1288,7 +1314,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def get_combined_auto_status(user_id):\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        settings = get_user_settings(user_id)\n        interval = settings.get('auto_refresh_interval', 60)\n    running = auto_control_running or auto_refresh_running\n    return {\n        'running': running,",
+        "peekOfCode": "def get_combined_auto_status(user_id):\n    \"\"\"Получить статус системы с подробным логированием\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n        control_info = \"\"\n        if auto_control_running:\n            control_info = f\" (running: {auto_control_threads[user_id].get('running', 'unknown')})\"\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        refresh_info = \"\"",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1297,7 +1323,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def stop_auto_control_and_refresh(user_id):\n    with auto_control_lock:\n        if user_id in auto_control_threads:\n            auto_control_threads[user_id]['running'] = False\n            del auto_control_threads[user_id]\n            logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n            del auto_refresh_timers[user_id]",
+        "peekOfCode": "def stop_auto_control_and_refresh(user_id):\n    \"\"\"Полная остановка системы\"\"\"\n    logger.info(f\"🛑 Остановка системы для пользователя {user_id}\")\n    # Останавливаем автообновление\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n            del auto_refresh_timers[user_id]\n            logger.info(f\"⏹️ Автообновление остановлено для пользователя {user_id}\")\n    # Останавливаем автоконтроль",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1315,7 +1341,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        interval_seconds = interval_minutes * 60\n        timer = threading.Timer(interval_seconds, lambda: auto_refresh_user_data(user_id, interval_minutes))\n        timer.daemon = True\n        timer.start()\n        auto_refresh_timers[user_id] = timer\n        auto_control(user_id)",
+        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        interval_seconds = 30 * 60\n        def run_refresh():\n            # Проверяем, не остановлена ли система\n            with auto_refresh_lock:\n                if user_id not in auto_refresh_timers:\n                    return  # остановлено",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1324,7 +1350,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    try:\n        with app.app_context():\n            logger.info(f\"Автообновление данных для пользователя {user_id}\")\n            # 🔹 обновляем резервные токены\n            auto_populate_reserve_tokens(user_id)\n            # 🔹 настройки пользователя\n            settings = get_user_settings(user_id)\n            # 🔹 обновление кампаний\n            if settings.get('auto_refresh_campaigns', True):",
+        "peekOfCode": "def auto_refresh_user_data(user_id, interval_minutes):\n    \"\"\"Однократное обновление данных пользователя\"\"\"\n    try:\n        logger.info(f\"🔄 Автообновление данных для пользователя {user_id}\")\n        # Автозаполнение резервных токенов\n        auto_populate_reserve_tokens(user_id)\n        settings = get_user_settings(user_id)\n        # Обновление кампаний\n        if settings.get('auto_refresh_campaigns', True):\n            logger.info(\"📊 Обновление кампаний...\")",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1351,7 +1377,16 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_control(user_id):\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        settings = get_user_settings(user_id)        \n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),\n                'https': settings.get('proxy')\n            }",
+        "peekOfCode": "def auto_control(user_id):\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        settings = get_user_settings(user_id)      \n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),\n            }\n        check_and_pause_campaigns(user_id)",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "perform_auto_refresh",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def perform_auto_refresh(user_id):\n    \"\"\"Выполнить автообновление данных\"\"\"\n    try:\n        logger.info(f\"🔄 ВЫЗОВ perform_auto_refresh для user_id {user_id}\")\n        logger.info(f\"📊 Начало автообновления данных для user_id {user_id}\")\n        settings = get_user_settings(user_id)\n        logger.info(f\"⚙️ Настройки автообновления: campaigns={settings.get('auto_refresh_campaigns', True)}, adsets={settings.get('auto_refresh_adsets', True)}\")\n        # 1. Автозаполнение резервных токенов\n        logger.info(\"🔑 Автозаполнение резервных токенов...\")\n        auto_populate_reserve_tokens(user_id)",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1360,7 +1395,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Запускает автоконтроль для конкретного пользователя\"\"\"\n    logger.info(f\"Запуск автоконтроля для пользователя {user_id}\")\n    while True:\n        with auto_control_lock:\n            if user_id not in auto_control_threads or not auto_control_threads[user_id].get('running', False):\n                logger.info(f\"Автоконтроль остановлен для пользователя {user_id}\")\n                break\n        try:\n            logger.info(f\"Выполнение автоконтроля для пользователя {user_id}\")",
+        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Циклический автоконтроль с интегрированным автообновлением\"\"\"\n    logger.info(f\"🎯 Запуск цикла автоконтроля для user_id {user_id}\")\n    # Счетчик циклов для отладки\n    cycle_count = 0\n    while True:\n        cycle_count += 1\n        logger.info(f\"🔄 Цикл автоконтроля #{cycle_count} для user_id {user_id}\")\n        # Проверяем, нужно ли продолжать\n        with auto_control_lock:",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1369,7 +1404,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_control_and_refresh(user_id):\n    \"\"\"Запускает и автоконтроль и автообновление вместе\"\"\"\n    settings = get_user_settings(user_id)\n    interval = settings.get('auto_refresh_interval', 60)\n    with auto_control_lock:\n        if user_id not in auto_control_threads:\n            auto_control_threads[user_id] = {\n                'running': True,\n                'thread': threading.Thread(\n                    target=run_auto_control_for_user,",
+        "peekOfCode": "def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):\n    \"\"\"Запускает автоконтроль + автообновление (без лишнего таймера)\"\"\"\n    logger.info(f\"🚀 ЗАПУСК СИСТЕМЫ для user_id {user_id}\")\n    if interval_minutes is None:\n        settings = get_user_settings(user_id)\n        interval_minutes = 30\n    # 🔄 СНАЧАЛА ВЫПОЛНЯЕМ РАЗОВОЕ ОБНОВЛЕНИЕ ДАННЫХ\n    logger.info(\"🔄 Начальная синхронизация данных\")\n    try:\n        perform_auto_refresh(user_id)",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1545,6 +1580,15 @@
         "documentation": {}
     },
     {
+        "label": "extract_king_from_name",
+        "kind": 2,
+        "importPath": "backend.campaign",
+        "description": "backend.campaign",
+        "peekOfCode": "def extract_king_from_name(name: str) -> str:\n    \"\"\"\n    Извлекает KING из названия кампании\n    \"\"\"\n    if not name:\n        return 'UNKNOWN'\n    # Поиск паттернов KING в названии\n    import re\n    king_patterns = [\n        r'KING(\\d+)',",
+        "detail": "backend.campaign",
+        "documentation": {}
+    },
+    {
         "label": "logger",
         "kind": 5,
         "importPath": "backend.campaign",
@@ -1585,7 +1629,34 @@
         "kind": 2,
         "importPath": "backend.geo_config",
         "description": "backend.geo_config",
-        "peekOfCode": "def get_user_geo_rules(user_id):\n    \"\"\"Получает GEO правила из новой таблицы geo_rules\"\"\"\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT name FROM sqlite_master \n                WHERE type='table' AND name='geo_rules'\n            \"\"\")",
+        "peekOfCode": "def get_user_geo_rules(user_id):\n    \"\"\"\n    Получает GEO правила напрямую из таблицы geo_rules (правила автоконтроля с сайта)\n    Возвращает только актуальные правила для текущих GEO\n    \"\"\"\n    geo_rules = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Проверяем существование таблицы geo_rules",
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_geos_from_adsets",
+        "kind": 2,
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "peekOfCode": "def get_current_geos_from_adsets(user_id):\n    \"\"\"\n    Получает список GEO из текущих активных адсетов\n    (только те GEO, которые реально используются сейчас)\n    \"\"\"\n    current_geos = set()\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем GEO из активных адсетов",
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "get_filtered_geo_rules",
+        "kind": 2,
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "peekOfCode": "def get_filtered_geo_rules(user_id):\n    \"\"\"\n    Возвращает только те GEO правила, которые актуальны для текущих адсетов\n    (не анализирует старые/неиспользуемые GEO)\n    \"\"\"\n    # Получаем все правила из таблицы geo_rules\n    all_rules = get_user_geo_rules(user_id)\n    # Получаем GEO из текущих адсетов\n    current_geos = get_current_geos_from_adsets(user_id)\n    # Фильтруем правила только для актуальных GEO",
+        "detail": "backend.geo_config",
+        "documentation": {}
+    },
+    {
+        "label": "should_analyze_adset",
+        "kind": 2,
+        "importPath": "backend.geo_config",
+        "description": "backend.geo_config",
+        "peekOfCode": "def should_analyze_adset(adset_data, geo_rules):\n    \"\"\"\n    Определяет, нужно ли анализировать адсет\n    Возвращает True только если есть правила для его GEO\n    \"\"\"\n    geo = adset_data.get('geo', 'N/A')\n    if geo == 'N/A' or geo not in geo_rules:\n        logger.info(f\"⏭️ Пропускаем (нет правил для GEO: {geo}) {adset_data.get('name', 'Unknown')}\")\n        return False\n    # Дополнительные проверки для новых адсетов",
         "detail": "backend.geo_config",
         "documentation": {}
     },
@@ -2935,7 +3006,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def handle_auto_refresh():\n    \"\"\"Управление автообновлением и автоконтролем вместе\"\"\"\n    try:\n        user_id = session['user_id']\n        data = request.json\n        action = data.get('action')\n        interval = data.get('interval')\n        if action == 'start':\n            # Запускаем и автоконтроль и автообновление\n            if interval and isinstance(interval, int) and interval > 0:",
+        "peekOfCode": "def handle_auto_refresh():\n    \"\"\"Обрабатывает запуск, остановку и получение статуса системы автоконтроля.\"\"\"\n    try:\n        data = request.get_json()\n        action = data.get('action')\n        user_id = session['user_id']\n        if action == 'start':\n            # Интервал больше не передается от фронтенда\n            start_auto_control_and_refresh(user_id)\n            settings = get_user_settings(user_id)",
         "detail": "app",
         "documentation": {}
     },
@@ -3225,6 +3296,24 @@
         "description": "database",
         "peekOfCode": "lock = threading.Lock()\ndef get_db_connection(user_id: Optional[int] = None) -> sqlite3.Connection:\n    \"\"\"\n    Создает и возвращает соединение с базой данных с обработкой ошибок\n    Args:\n        user_id: ID пользователя для установки application_id\n    Returns:\n        sqlite3.Connection: соединение с базой данных\n    Raises:\n        sqlite3.Error: если не удалось установить соединение",
         "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "run_migration",
+        "kind": 2,
+        "importPath": "db_migration",
+        "description": "db_migration",
+        "peekOfCode": "def run_migration():\n    \"\"\"Выполняет SQL-запрос для добавления колонки max_cpa.\"\"\"\n    if not os.path.exists(DB_PATH):\n        print(f\"Ошибка: Файл базы данных '{DB_PATH}' не найден. Убедитесь, что скрипт находится в той же папке.\")\n        return\n    conn = None\n    try:\n        conn = sqlite3.connect(DB_PATH)\n        cursor = conn.cursor()\n        # Попытка добавить новую колонку",
+        "detail": "db_migration",
+        "documentation": {}
+    },
+    {
+        "label": "DB_PATH",
+        "kind": 5,
+        "importPath": "db_migration",
+        "description": "db_migration",
+        "peekOfCode": "DB_PATH = \"unitool.db\"\ndef run_migration():\n    \"\"\"Выполняет SQL-запрос для добавления колонки max_cpa.\"\"\"\n    if not os.path.exists(DB_PATH):\n        print(f\"Ошибка: Файл базы данных '{DB_PATH}' не найден. Убедитесь, что скрипт находится в той же папке.\")\n        return\n    conn = None\n    try:\n        conn = sqlite3.connect(DB_PATH)\n        cursor = conn.cursor()",
+        "detail": "db_migration",
         "documentation": {}
     },
     {

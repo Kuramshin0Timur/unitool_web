@@ -38,177 +38,7 @@ def add_user_geo_config(user_id: int, data: Dict[str, Any]):
             
             conn.commit()
 
-    """Генерирует тестовые данные для указанного пользователя"""
-    import random
-    
-    with lock:
-        conn = get_db_connection()
-        try:
-            cursor = conn.cursor()
-            
-            # Очищаем данные пользователя
-            cursor.execute("DELETE FROM campaigns WHERE user_id = ?", (user_id,))
-            cursor.execute("DELETE FROM adsets WHERE user_id = ?", (user_id,))
-            cursor.execute("DELETE FROM geo_config WHERE user_id = ?", (user_id,))
-            
-            # Добавляем GEO конфигурации
-            geo_codes = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
-            for geo in geo_codes:
-                cursor.execute("""
-                INSERT INTO geo_config (
-                    user_id, geo_code, spend_zero_leads, cpa_red, cpa_green, cpa_orange
-                ) VALUES (?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    geo,
-                    round(random.uniform(10, 50), 2),
-                    round(random.uniform(20, 100), 2),
-                    round(random.uniform(5, 20), 2),
-                    round(random.uniform(15, 50), 2)
-                ))
-            
-            # Добавляем кампании
-            kings = ['KING1', 'KING2', 'KING3', 'KING4', 'KING5']
-            statuses = ['ACTIVE', 'PAUSED']
-            
-            for i in range(1, 21):
-                king = random.choice(kings)
-                status = random.choice(statuses)
-                cursor.execute("""
-                INSERT INTO campaigns (
-                    user_id, king, name, status, campaign_id, account_id, token
-                ) VALUES (?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    king,
-                    f"Campaign {i} {king}",
-                    status,
-                    f"campaign_{i}",
-                    f"account_{random.randint(1, 5)}",
-                    f"token_{random.randint(1, 10)}"
-                ))
-            
-            # Добавляем адсеты
-            geos = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
-            ad_names = ["Ad 1", "Ad 2", "Ad 3", "Ad 4", "Ad 5"]
-            
-            for i in range(1, 101):
-                geo = random.choice(geos)
-                king = random.choice(kings)
-                status = random.choice(statuses)
-                effective_status = random.choice(["ACTIVE", "PAUSED", "DISAPPROVED", "PENDING_REVIEW"])
-                account_id = f"account_{random.randint(1, 5)}"
-                cursor.execute("""
-                INSERT INTO adsets (
-                    user_id, name, adset_id, ucpc, spend, cpa, status, geo, token, 
-                    leads, manual_pause, king, effective_status, ad_name, budget,campaign_id, account_id
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    f"AdSet {i} {geo}",
-                    f"adset_{i}",
-                    round(random.uniform(0.1, 5.0), 2),
-                    round(random.uniform(10, 500), 2),
-                    round(random.uniform(5, 100), 2),
-                    status,
-                    geo,
-                    f"token_{random.randint(1, 10)}",
-                    random.randint(0, 50),
-                    random.choice([0, 1]),
-                    king,
-                    effective_status,
-                    random.choice(ad_names),
-                    round(random.uniform(5, 50), 2),
-                    f"campaign_{random.randint(1, 20)}",  # campaign_id
-                     account_id  # <-- теперь account_id есть
-                ))
-            
-            conn.commit()
-        finally:
-            conn.close()
-    """Генерирует тестовые данные для указанного пользователя"""
-    import random
-    
-    with lock:
-        with get_db_connection(user_id) as conn:
-            cursor = conn.cursor()
-            
-            # Очищаем данные пользователя
-            cursor.execute("DELETE FROM campaigns WHERE user_id = ?", (user_id,))
-            cursor.execute("DELETE FROM adsets WHERE user_id = ?", (user_id,))
-            cursor.execute("DELETE FROM geo_config WHERE user_id = ?", (user_id,))
-            
-            # Добавляем GEO конфигурации
-            geo_codes = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
-            for geo in geo_codes:
-                cursor.execute("""
-                INSERT INTO geo_config (
-                    user_id, geo_code, spend_zero_leads, cpa_red, cpa_green, cpa_orange
-                ) VALUES (?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    geo,
-                    random.uniform(10, 50),
-                    random.uniform(20, 100),
-                    random.uniform(5, 20),
-                    random.uniform(15, 50)
-                ))
-            
-            # Добавляем кампании
-            kings = ['KING1', 'KING2', 'KING3', 'KING4', 'KING5']
-            statuses = ['ACTIVE', 'PAUSED']
-            
-            for i in range(1, 21):
-                king = random.choice(kings)
-                status = random.choice(statuses)
-                cursor.execute("""
-                INSERT INTO campaigns (
-                    user_id, king, name, status, campaign_id, account_id, token
-                ) VALUES (?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    king,
-                    f"Campaign {i} {king}",
-                    status,
-                    f"campaign_{i}",
-                    f"account_{random.randint(1, 5)}",
-                    f"token_{random.randint(1, 10)}"
-                ))
-            
-            # Добавляем адсеты
-            geos = ['US', 'RU', 'DE', 'FR', 'IT', 'TR', 'BR', 'IN', 'JP', 'CN']
-            ad_names = ["Ad 1", "Ad 2", "Ad 3", "Ad 4", "Ad 5"]
-            
-            for i in range(1, 101):
-                geo = random.choice(geos)
-                king = random.choice(kings)
-                status = random.choice(statuses)
-                effective_status = random.choice(["ACTIVE", "PAUSED", "DISAPPROVED", "PENDING_REVIEW"])
-                
-                cursor.execute("""
-                INSERT INTO adsets (
-                    user_id, name, adset_id, ucpc, spend, cpa, status, geo, token, 
-                    leads, manual_pause, king, effective_status, ad_name, budget
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (
-                    user_id,
-                    f"AdSet {i} {geo}",
-                    f"adset_{i}",
-                    round(random.uniform(0.1, 5.0), 2),
-                    round(random.uniform(10, 500), 2),
-                    round(random.uniform(5, 100), 2),
-                    status,
-                    geo,
-                    f"token_{random.randint(1, 10)}",
-                    random.randint(0, 50),
-                    random.choice([0, 1]),
-                    king,
-                    effective_status,
-                    random.choice(ad_names),
-                    round(random.uniform(5, 50), 2)
-                ))
-            
-            conn.commit()
+
 def extract_geo_from_name(name, known_geos=None):
     """
     Извлекает GEO код из названия адсета.
@@ -216,7 +46,7 @@ def extract_geo_from_name(name, known_geos=None):
     """
     if not name:
         return 'N/A'
-    
+
     country_mapping = {
         # Азия
         'thailand': 'TH', 'thai': 'TH', 'тайланд': 'TH', 'тай': 'TH',
@@ -306,6 +136,7 @@ def extract_geo_from_name(name, known_geos=None):
     
     return 'N/A'
 
+
 def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
     """Возвращает конфигурацию GEO пользователя"""
     with lock:
@@ -319,13 +150,18 @@ def get_user_geo_config(user_id: int) -> Dict[str, Dict[str, float]]:
                 'cpa_orange': row['cpa_orange']
             } for row in cursor.fetchall()}
 
+
 def get_user_geo_rules(user_id):
-    """Получает GEO правила из новой таблицы geo_rules"""
+    """
+    Получает GEO правила напрямую из таблицы geo_rules (правила автоконтроля с сайта)
+    Возвращает только актуальные правила для текущих GEO
+    """
     geo_rules = {}
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
+            # Проверяем существование таблицы geo_rules
             cursor.execute("""
                 SELECT name FROM sqlite_master 
                 WHERE type='table' AND name='geo_rules'
@@ -337,7 +173,7 @@ def get_user_geo_rules(user_id):
                     SELECT geo_code, max_cpa, min_spend, max_leads_threshold,
                            extended_spend_threshold, max_ucpc, max_ucpc_spend
                     FROM geo_rules 
-                    WHERE user_id = ?
+                    WHERE user_id = ? AND active = 1
                 """, (user_id,))
                 
                 for row in cursor.fetchall():
@@ -349,8 +185,87 @@ def get_user_geo_rules(user_id):
                         'max_ucpc': row['max_ucpc'],
                         'max_ucpc_spend': row['max_ucpc_spend']
                     }
+                logger.info(f"Загружено {len(geo_rules)} GEO правил из таблицы geo_rules")
+            else:
+                logger.warning("Таблица geo_rules не найдена, используем старую конфигурацию")
+                return get_user_geo_config(user_id)
     
     except Exception as e:
         logger.error(f"Ошибка получения GEO правил: {e}")
+        # В случае ошибки возвращаем пустой словарь
     
     return geo_rules
+
+
+def get_current_geos_from_adsets(user_id):
+    """
+    Получает список GEO из текущих активных адсетов
+    (только те GEO, которые реально используются сейчас)
+    """
+    current_geos = set()
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем GEO из активных адсетов
+            cursor.execute("""
+                SELECT DISTINCT geo FROM adsets 
+                WHERE user_id = ? AND status IN ('ACTIVE', 'PAUSED')
+            """, (user_id,))
+            
+            for row in cursor.fetchall():
+                if row['geo'] and row['geo'] != 'N/A':
+                    current_geos.add(row['geo'])
+            
+            logger.info(f"Текущие GEO из адсетов: {list(current_geos)}")
+    
+    except Exception as e:
+        logger.error(f"Ошибка получения текущих GEO: {e}")
+    
+    return list(current_geos)
+
+
+def get_filtered_geo_rules(user_id):
+    """
+    Возвращает только те GEO правила, которые актуальны для текущих адсетов
+    (не анализирует старые/неиспользуемые GEO)
+    """
+    # Получаем все правила из таблицы geo_rules
+    all_rules = get_user_geo_rules(user_id)
+    
+    # Получаем GEO из текущих адсетов
+    current_geos = get_current_geos_from_adsets(user_id)
+    
+    # Фильтруем правила только для актуальных GEO
+    filtered_rules = {}
+    for geo in current_geos:
+        if geo in all_rules:
+            filtered_rules[geo] = all_rules[geo]
+        else:
+            logger.warning(f"Нет правил для GEO: {geo} - адсеты будут пропущены")
+    
+    logger.info(f"Актуальные GEO правила: {len(filtered_rules)} из {len(all_rules)}")
+    return filtered_rules
+
+
+def should_analyze_adset(adset_data, geo_rules):
+    """
+    Определяет, нужно ли анализировать адсет
+    Возвращает True только если есть правила для его GEO
+    """
+    geo = adset_data.get('geo', 'N/A')
+    
+    if geo == 'N/A' or geo not in geo_rules:
+        logger.info(f"⏭️ Пропускаем (нет правил для GEO: {geo}) {adset_data.get('name', 'Unknown')}")
+        return False
+    
+    # Дополнительные проверки для новых адсетов
+    spend = adset_data.get('spend', 0)
+    leads = adset_data.get('leads', 0)
+    
+    # Не анализировать адсеты с очень малыми данными
+    if spend < 1.0:  # Меньше $1 трат
+        logger.info(f"⏭️ Пропускаем (мало данных: spend=${spend}) {adset_data.get('name', 'Unknown')}")
+        return False
+    
+    return True

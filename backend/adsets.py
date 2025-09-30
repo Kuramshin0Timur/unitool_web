@@ -33,7 +33,7 @@ def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
                     max_budget, min_budget, budget_increase_step, budget_decrease_step,
                     created_at, updated_at
                 FROM adsets 
-                WHERE user_id = ? AND updated_at > ?
+                WHERE user_id = ? AND updated_at > ? 
                 ORDER BY updated_at DESC
             """, (user_id, cutoff_time))
             
@@ -128,7 +128,7 @@ def fetch_facebook_adsets(account_id, access_token, fields=None):
     Получает список адсетов (только метаданные, без метрик).
     """
     if fields is None:
-        fields = "id,name,campaign_id,daily_budget,status,effective_status,budget_remaining,lifetime_budget"
+        fields = "id,name,campaign_id,daily_budget,status,effective_status"
 
     url = f"https://graph.facebook.com/v18.0/act_{account_id}/adsets"
     params = {
@@ -140,99 +140,171 @@ def fetch_facebook_adsets(account_id, access_token, fields=None):
     response.raise_for_status()
     return response.json().get("data", [])
 
+import json
+import time
+import logging
+import requests
+
+logger = logging.getLogger(__name__)
+
+class FacebookAPI:
+    BASE_URL = "https://graph.facebook.com/v18.0"
+
+    def __init__(self, access_token: str):
+        self.session = requests.Session()
+        self.access_token = access_token
+
+    def fetch_adsets(self, account_id: str, fields=None, limit=500):
+        """
+        Получение всех адсетов аккаунта с пагинацией
+        """
+        if fields is None:
+            fields = "id,name,campaign_id,daily_budget,status,effective_status"
+
+        url = f"{self.BASE_URL}/act_{account_id}/adsets"
+        params = {
+            "fields": fields,
+            "access_token": self.access_token,
+            "limit": limit,
+        }
+
+        all_adsets = []
+        while url:
+            resp = self.session.get(url, params=params, timeout=30)
+            try:
+                resp.raise_for_status()
+            except requests.HTTPError as e:
+                logger.error(f"Ошибка получения адсетов: {e}, ответ={resp.text}")
+                break
+
+            data = resp.json()
+            all_adsets.extend(data.get("data", []))
+            url = data.get("paging", {}).get("next")
+            params = None  # после первой итерации параметры не нужны
+
+        logger.info(f"✅ Получено {len(all_adsets)} адсетов из {account_id}")
+        return all_adsets
+
+    def fetch_adsets_insights_batch(self, adset_ids, fields=None, pause=1.0):
+        """
+        Получение метрик для группы адсетов через batch-запрос
+        """
+        if fields is None:
+            fields = "impressions,clicks,spend,cpm,cpc"
+
+        batch = []
+        for adset_id in adset_ids:
+            batch.append({
+                "method": "GET",
+                "relative_url": f"{adset_id}/insights?fields={fields}&limit=1"
+            })
+
+        url = self.BASE_URL
+        params = {"access_token": self.access_token}
+        resp = self.session.post(url, params=params, json={"batch": batch}, timeout=60)
+
+        try:
+            resp.raise_for_status()
+        except requests.HTTPError as e:
+            logger.error(f"Ошибка batch-запроса: {e}, ответ={resp.text}")
+            return {}
+
+        results = {}
+        for adset_id, item in zip(adset_ids, resp.json()):
+            if "body" in item:
+                try:
+                    body = json.loads(item["body"])
+                    if isinstance(body, dict) and "data" in body and body["data"]:
+                        results[adset_id] = body["data"][0]
+                    else:
+                        logger.warning(f"⚠️ Нет данных в инсайтах для адсета {adset_id}")
+                        results[adset_id] = {}
+                except Exception as e:
+                    logger.error(f"Ошибка парсинга batch-ответа {adset_id}: {e}")
+
+        time.sleep(pause)  # пауза для снижения лимитов API
+        return results
+
 
 def refresh_adsets_internal(user_id, account_id, token):
     """
-    Улучшенная функция обновления адсетов с обработкой ошибок.
+    Ускоренная версия: качаем все адсеты + метрики батчами
     """
-    logger.info(f"Обновление адсетов для аккаунта {account_id}, пользователь {user_id}")
-    
-    try:
-        adsets = fetch_facebook_adsets(account_id, token)
-        logger.info(f"Получено {len(adsets)} адсетов")
-        
-        if not adsets:
-            logger.warning(f"Не получено адсетов для аккаунта {account_id}")
-            return
-        
-        updated_count = 0
-        for adset in adsets:
-            try:
-                adset_id = adset.get("id")
-                if not adset_id:
-                    continue
-                    
-                # Получаем метрики с обработкой ошибок
-                insights = {}
-                try:
-                    insights = fetch_facebook_adset_insights(adset_id, token)
-                except Exception as e:
-                    logger.warning(f"Не удалось получить метрики для адсета {adset_id}: {e}")
-                
-                # Подготавливаем данные
-                budget_cents = adset.get("daily_budget") or adset.get("lifetime_budget") or 0
-                budget = float(budget_cents) / 100 if budget_cents else 0
-                
-                adset_data = {
-                    "name": adset.get("name", ""),
-                    "adset_id": adset_id,
-                    "campaign_id": adset.get("campaign_id", ""),
-                    "status": adset.get("status", "PAUSED"),
-                    "account_id": account_id,
-                    "token": token,
-                    "budget": budget,
-                    "geo": extract_geo_from_name(adset.get("name", "")),
-                    "ucpc": 0,  # Будет обновлено из Keitaro
-                    "cpc": float(insights.get("cpc", 0) or 0),
-                    "cpm": float(insights.get("cpm", 0) or 0),
-                    "spend": float(insights.get("spend", 0) or 0),
-                    "king": "Facebook",
-                    "effective_status": adset.get("effective_status", ""),
-                    "ad_name": adset.get("name", ""),
-                    "manual_pause": 0,
-                    "updated_at": datetime.now()  # Добавляем время обновления
-                }
-                
-                add_user_adset(user_id, adset_data)
-                updated_count += 1
-                
-            except Exception as e:
-                logger.error(f"Ошибка обработки адсета {adset.get('id')}: {e}")
-                continue
-        
-        # Обновляем данные из Keitaro
-        try:
-            keitaro_updated = sync_keitaro(user_id)
-            logger.info(f"Keitaro обновил {keitaro_updated} записей")
-        except Exception as e:
-            logger.error(f"Ошибка синхронизации с Keitaro: {e}")
-        
-        logger.info(f"Успешно обновлено {updated_count} адсетов")
-        return updated_count
-        
-    except Exception as e:
-        logger.error(f"Критическая ошибка при обновлении адсетов: {e}")
-        raise
+    fb = FacebookAPI(token)
+    adsets = fb.fetch_adsets(account_id)
 
-# Добавить функцию для быстрого обновления только метрик
+    adset_ids = [a["id"] for a in adsets]
+    insights = {}
+
+    for i in range(0, len(adset_ids), 50):  # Facebook batch ограничен 50
+        batch_ids = adset_ids[i:i + 50]
+        part = fb.fetch_adsets_insights_batch(batch_ids)
+        insights.update(part)
+
+    for adset in adsets:
+        adset_id = adset["id"]
+        if adset_id in insights:
+            adset.update(insights[adset_id])
+
+    logger.info(f"🎯 Обновлено {len(adsets)} адсетов для пользователя {user_id}")
+    return adsets
 def refresh_adsets_metrics_only(user_id: int):
     """
     Быстрое обновление только метрик без полной перезагрузки адсетов.
-    Используется для автообновления таблицы.
+    Использует batch-запросы для эффективности и избежания лимитов API.
     """
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
+
+            # 1. Получаем все уникальные токены и связанные с ними adset_id
+            cursor.execute("""
+                SELECT token, group_concat(adset_id) as adset_ids
+                FROM adsets
+                WHERE user_id = ? AND token != '' AND adset_id != '' AMDAND status = 'ACTIVE'
+                GROUP BY token
+            """, (user_id,))
             
-            # Получаем актуальные адсеты для пользователя
-            cursor.execute("SELECT adset_id, token FROM adsets WHERE user_id = ?", (user_id,))
-            adsets = cursor.fetchall()
+            adsets_by_token = cursor.fetchall()
             
-            updated = 0
-            for adset in adsets:
+            if not adsets_by_token:
+                logger.info("Не найдено адсетов для обновления метрик.")
+                return 0
+
+            all_insights = {}
+            total_adsets_to_update = 0
+
+            # 2. Обрабатываем адсеты для каждого токена отдельно
+            for row in adsets_by_token:
+                token = row['token']
+                adset_ids = row['adset_ids'].split(',')
+                total_adsets_to_update += len(adset_ids)
+                
+                fb_api = FacebookAPI(token)
+                
+                # 3. Делаем batch-запросы чанками по 50
+                for i in range(0, len(adset_ids), 50):
+                    batch_ids = adset_ids[i:i + 50]
+                    try:
+                        # Получаем метрики для пакета адсетов
+                        insights_batch = fb_api.fetch_adsets_insights_batch(batch_ids)
+                        all_insights.update(insights_batch)
+                        logger.info(f"Получены метрики для {len(insights_batch)} адсетов.")
+                    except Exception as e:
+                        logger.error(f"Ошибка batch-запроса метрик: {e}")
+                        continue
+            
+            if not all_insights:
+                logger.warning("Не удалось получить метрики ни для одного адсета.")
+                return 0
+
+            # 4. Обновляем базу данных одним коммитом
+            updated_count = 0
+            for adset_id, insights in all_insights.items():
+                if not insights:  # Пропускаем, если для адсета нет данных
+                    continue
+                
                 try:
-                    insights = fetch_facebook_adset_insights(adset['adset_id'], adset['token'])
-                    
                     cursor.execute("""
                         UPDATE adsets SET 
                             cpc = ?, cpm = ?, spend = ?, updated_at = ?
@@ -242,15 +314,13 @@ def refresh_adsets_metrics_only(user_id: int):
                         float(insights.get("cpm", 0) or 0),
                         float(insights.get("spend", 0) or 0),
                         datetime.now(),
-                        adset['adset_id'],
+                        adset_id,
                         user_id
                     ))
-                    
-                    updated += 1
-                    
+                    updated_count += 1
                 except Exception as e:
-                    logger.warning(f"Не удалось обновить метрики для {adset['adset_id']}: {e}")
-                    continue
-            
+                    logger.warning(f"Не удалось обновить метрики в БД для {adset_id}: {e}")
+
             conn.commit()
-            return updated
+            logger.info(f"✅ Успешно обновлены метрики для {updated_count} из {total_adsets_to_update} адсетов.")
+            return updated_count

@@ -1,461 +1,657 @@
-2025-09-27 23:19:05,261 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1851
-2025-09-27 23:19:05,398 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:05,685 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-09-27 23:19:05,689 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:05,958 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:05] "GET /api/adsets?ts=1759015145807 HTTP/1.1" 200 -
-2025-09-27 23:19:06,074 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 895
-2025-09-27 23:19:06,075 - backend.campaign - DEBUG - Получено 15 кампаний. Status: {'ACTIVE': 5, 'PAUSED': 10}, Effective Status: {'ACTIVE': 5, 'PAUSED': 10}
-2025-09-27 23:19:06,075 - backend.campaign - INFO - Получено 15 кампаний, после фильтрации: 15 для аккаунта 684941790597261
-2025-09-27 23:19:06,106 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:06,864 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1667
-2025-09-27 23:19:06,959 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:06] "GET /api/adsets?ts=1759015146807 HTTP/1.1" 200 -
-2025-09-27 23:19:07,020 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:07,264 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 84
-2025-09-27 23:19:07,267 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:07,562 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 874
-2025-09-27 23:19:07,562 - backend.campaign - DEBUG - Получено 17 кампаний. Status: {'ACTIVE': 5, 'PAUSED': 12}, Effective Status: {'ACTIVE': 5, 'PAUSED': 12}
-2025-09-27 23:19:07,562 - backend.campaign - INFO - Получено 17 кампаний, после фильтрации: 17 для аккаунта 690058783376774
-2025-09-27 23:19:07,594 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:07,957 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:07] "GET /api/adsets?ts=1759015147808 HTTP/1.1" 200 -
-2025-09-27 23:19:08,386 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1803
-2025-09-27 23:19:08,533 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:08,775 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
-2025-09-27 23:19:08,778 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:08,961 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:08] "GET /api/adsets?ts=1759015148809 HTTP/1.1" 200 -
-2025-09-27 23:19:09,123 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1401
-2025-09-27 23:19:09,124 - backend.campaign - DEBUG - Получено 33 кампаний. Status: {'ACTIVE': 3, 'PAUSED': 30}, Effective Status: {'ACTIVE': 3, 'PAUSED': 30}
-2025-09-27 23:19:09,124 - backend.campaign - INFO - Получено 33 кампаний, после фильтрации: 33 для аккаунта 707254618536242
-2025-09-27 23:19:09,179 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:09,964 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:09] "GET /api/adsets?ts=1759015149809 HTTP/1.1" 200 -
-2025-09-27 23:19:10,249 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2915
-2025-09-27 23:19:10,543 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:10,691 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:19:10] "[33mGET /x-8.6-.Sakura HTTP/1.1[0m" 404 -
-2025-09-27 23:19:10,801 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 89
-2025-09-27 23:19:10,804 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:10,954 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:10] "GET /api/adsets?ts=1759015150809 HTTP/1.1" 200 -
-2025-09-27 23:19:11,146 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1379
-2025-09-27 23:19:11,146 - backend.campaign - DEBUG - Получено 33 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 31}, Effective Status: {'ACTIVE': 2, 'PAUSED': 31}
-2025-09-27 23:19:11,146 - backend.campaign - INFO - Получено 33 кампаний, после фильтрации: 33 для аккаунта 9859604834059536
-2025-09-27 23:19:11,202 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:19:11,967 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:11] "GET /api/adsets?ts=1759015151810 HTTP/1.1" 200 -
-2025-09-27 23:19:12,115 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status%2Cbudget_remaining%2Clifetime_budget&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2937
-2025-09-27 23:19:12,489 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-09-27 23:19:12,965 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:12] "GET /api/adsets?ts=1759015152810 HTTP/1.1" 200 -
-2025-09-27 23:19:12,972 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
-2025-09-27 23:19:12,977 - __main__ - INFO - [save_and_sync] Keitaro обновил 0 адсетов для пользователя 3
-2025-09-27 23:19:12,977 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:12] "POST /api/save_and_sync HTTP/1.1" 200 -
-2025-09-27 23:19:13,960 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:13] "GET /api/adsets?ts=1759015153811 HTTP/1.1" 200 -
-2025-09-27 23:19:14,966 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:14] "GET /api/adsets?ts=1759015154812 HTTP/1.1" 200 -
-2025-09-27 23:19:15,151 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:15] "GET /api/adsets?ts=1759015155001 HTTP/1.1" 200 -
-2025-09-27 23:19:15,962 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:15] "GET /api/adsets?ts=1759015155812 HTTP/1.1" 200 -
-2025-09-27 23:19:16,970 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:16] "GET /api/adsets?ts=1759015156812 HTTP/1.1" 200 -
-2025-09-27 23:19:17,970 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:17] "GET /api/adsets?ts=1759015157813 HTTP/1.1" 200 -
-2025-09-27 23:19:18,958 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:18] "GET /api/adsets?ts=1759015158813 HTTP/1.1" 200 -
-2025-09-27 23:19:19,968 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:19] "GET /api/adsets?ts=1759015159814 HTTP/1.1" 200 -
-2025-09-27 23:19:20,964 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:20] "GET /api/adsets?ts=1759015160815 HTTP/1.1" 200 -
-2025-09-27 23:19:21,975 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:21] "GET /api/adsets?ts=1759015161816 HTTP/1.1" 200 -
-2025-09-27 23:19:22,972 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:22] "GET /api/adsets?ts=1759015162817 HTTP/1.1" 200 -
-2025-09-27 23:19:23,988 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:23] "GET /api/adsets?ts=1759015163818 HTTP/1.1" 200 -
-2025-09-27 23:19:24,964 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:24] "GET /api/adsets?ts=1759015164819 HTTP/1.1" 200 -
-2025-09-27 23:19:25,147 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:19:25] "[33mGET /a-r.m-5.Sakura HTTP/1.1[0m" 404 -
-2025-09-27 23:19:25,975 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:25] "GET /api/adsets?ts=1759015165820 HTTP/1.1" 200 -
-2025-09-27 23:19:26,979 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:26] "GET /api/adsets?ts=1759015166820 HTTP/1.1" 200 -
-2025-09-27 23:19:27,983 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:27] "GET /api/adsets?ts=1759015167821 HTTP/1.1" 200 -
-2025-09-27 23:19:28,886 - werkzeug - INFO - 92.51.30.7 - - [27/Sep/2025 23:19:28] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-09-27 23:19:28,974 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:28] "GET /api/adsets?ts=1759015168822 HTTP/1.1" 200 -
-2025-09-27 23:19:29,973 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:29] "GET /api/adsets?ts=1759015169823 HTTP/1.1" 200 -
-2025-09-27 23:19:30,989 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:30] "GET /api/adsets?ts=1759015170824 HTTP/1.1" 200 -
-2025-09-27 23:19:32,001 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:32] "GET /api/adsets?ts=1759015171825 HTTP/1.1" 200 -
-2025-09-27 23:19:32,985 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:32] "GET /api/adsets?ts=1759015172826 HTTP/1.1" 200 -
-2025-09-27 23:19:33,975 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:33] "GET /api/adsets?ts=1759015173827 HTTP/1.1" 200 -
-2025-09-27 23:19:34,978 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:34] "GET /api/adsets?ts=1759015174827 HTTP/1.1" 200 -
-2025-09-27 23:19:35,095 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:19:35] "[33mGET /i-5.8-6.Sakura HTTP/1.1[0m" 404 -
-2025-09-27 23:19:35,984 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:35] "GET /api/adsets?ts=1759015175827 HTTP/1.1" 200 -
-2025-09-27 23:19:36,975 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:36] "GET /api/adsets?ts=1759015176827 HTTP/1.1" 200 -
-2025-09-27 23:19:37,979 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:37] "GET /api/adsets?ts=1759015177829 HTTP/1.1" 200 -
-2025-09-27 23:19:38,972 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:38] "GET /api/adsets?ts=1759015178829 HTTP/1.1" 200 -
-2025-09-27 23:19:39,014 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:19:39] "[33mGET /x-3.2-.Sakura HTTP/1.1[0m" 404 -
-2025-09-27 23:19:39,977 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:39] "GET /api/adsets?ts=1759015179830 HTTP/1.1" 200 -
-2025-09-27 23:19:40,980 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:40] "GET /api/adsets?ts=1759015180831 HTTP/1.1" 200 -
-2025-09-27 23:19:41,904 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:19:41] "[33mGET /a-r.m-7.Sakura HTTP/1.1[0m" 404 -
-2025-09-27 23:19:41,992 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:41] "GET /api/adsets?ts=1759015181832 HTTP/1.1" 200 -
-2025-09-27 23:19:42,982 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:42] "GET /api/adsets?ts=1759015182833 HTTP/1.1" 200 -
-2025-09-27 23:19:44,023 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:44] "GET /api/adsets?ts=1759015183834 HTTP/1.1" 200 -
-2025-09-27 23:19:44,980 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:44] "GET /api/adsets?ts=1759015184835 HTTP/1.1" 200 -
-2025-09-27 23:19:45,983 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:45] "GET /api/adsets?ts=1759015185835 HTTP/1.1" 200 -
-2025-09-27 23:19:46,986 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:46] "GET /api/adsets?ts=1759015186836 HTTP/1.1" 200 -
-2025-09-27 23:19:47,980 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:47] "GET /api/adsets?ts=1759015187837 HTTP/1.1" 200 -
-2025-09-27 23:19:49,031 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:49] "GET /api/adsets?ts=1759015188887 HTTP/1.1" 200 -
-2025-09-27 23:19:49,887 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:19:49] "[33mGET /s-h.4-.Sakura HTTP/1.1[0m" 404 -
-2025-09-27 23:19:50,044 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:50] "GET /api/adsets?ts=1759015189889 HTTP/1.1" 200 -
-2025-09-27 23:19:51,046 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:51] "GET /api/adsets?ts=1759015190889 HTTP/1.1" 200 -
-2025-09-27 23:19:52,041 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:52] "GET /api/adsets?ts=1759015191889 HTTP/1.1" 200 -
-2025-09-27 23:19:53,040 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:53] "GET /api/adsets?ts=1759015192890 HTTP/1.1" 200 -
-2025-09-27 23:19:54,039 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:54] "GET /api/adsets?ts=1759015193891 HTTP/1.1" 200 -
-2025-09-27 23:19:54,875 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:19:54] "[33mGET /cnc HTTP/1.1[0m" 404 -
-2025-09-27 23:19:55,044 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:55] "GET /api/adsets?ts=1759015194892 HTTP/1.1" 200 -
-2025-09-27 23:19:56,045 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:56] "GET /api/adsets?ts=1759015195892 HTTP/1.1" 200 -
-2025-09-27 23:19:57,041 - werkzeug - INFO - 54.38.220.112 - - [27/Sep/2025 23:19:57] "GET /api/adsets?ts=1759015196893 HTTP/1.1" 200 -
-2025-09-27 23:19:58,893 - werkzeug - INFO - 92.51.30.7 - - [27/Sep/2025 23:19:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-09-27 23:20:00,087 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:00] "[33mGET /z/debug.dbg HTTP/1.1[0m" 404 -
-2025-09-27 23:20:01,921 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:01] "[33mGET /z/sh4 HTTP/1.1[0m" 404 -
-2025-09-27 23:20:08,157 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:08] "[33mGET /z/ppc HTTP/1.1[0m" 404 -
-2025-09-27 23:20:12,967 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:12] "[33mGET /z/mips HTTP/1.1[0m" 404 -
-2025-09-27 23:20:17,115 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:17] "[33mGET /z/m68k HTTP/1.1[0m" 404 -
-2025-09-27 23:20:23,311 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:23] "[33mGET /z/arm6 HTTP/1.1[0m" 404 -
-2025-09-27 23:20:28,882 - werkzeug - INFO - 92.51.30.7 - - [27/Sep/2025 23:20:28] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-09-27 23:20:29,457 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:29] "[33mGET /z/x86 HTTP/1.1[0m" 404 -
-2025-09-27 23:20:31,989 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:31] "[33mGET /rtz HTTP/1.1[0m" 404 -
-2025-09-27 23:20:36,448 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:36] "[33mGET /z/spc HTTP/1.1[0m" 404 -
-2025-09-27 23:20:54,253 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:54] "[33mGET /z/arm7 HTTP/1.1[0m" 404 -
-2025-09-27 23:20:56,137 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:20:56] "[33mGET /z/runtime HTTP/1.1[0m" 404 -
-2025-09-27 23:20:58,880 - werkzeug - INFO - 92.51.30.7 - - [27/Sep/2025 23:20:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-09-27 23:21:06,852 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:06] "[33mGET /z/mpsl HTTP/1.1[0m" 404 -
-2025-09-27 23:21:09,248 - werkzeug - INFO - 95.214.52.137 - - [27/Sep/2025 23:21:09] "[33mGET /cgi-bin/luci/;stok=/locale HTTP/1.1[0m" 404 -
-2025-09-27 23:21:09,788 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:09] "[33mGET /z/x86_64 HTTP/1.1[0m" 404 -
-2025-09-27 23:21:17,517 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:17] "[33mGET /z/arm HTTP/1.1[0m" 404 -
-2025-09-27 23:21:19,579 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:19] "[33mGET /z/arm5 HTTP/1.1[0m" 404 -
-2025-09-27 23:21:21,528 - werkzeug - INFO - 204.76.203.212 - - [27/Sep/2025 23:21:21] "[32mGET / HTTP/1.1[0m" 302 -
-2025-09-27 23:21:23,947 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:23] "[33mGET /z/89/mpsl HTTP/1.1[0m" 404 -
-2025-09-27 23:21:29,151 - werkzeug - INFO - 92.51.30.7 - - [27/Sep/2025 23:21:29] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-09-27 23:21:29,912 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:29] "[33mGET /z/89/m68k HTTP/1.1[0m" 404 -
-2025-09-27 23:21:34,082 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:34] "[33mGET /z/89/sh4 HTTP/1.1[0m" 404 -
-2025-09-27 23:21:39,058 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:39] "[33mGET /z/89/mips HTTP/1.1[0m" 404 -
-2025-09-27 23:21:42,235 - werkzeug - INFO - 172.234.228.172 - - [27/Sep/2025 23:21:42] "[32mGET / HTTP/1.0[0m" 302 -
-2025-09-27 23:21:43,487 - werkzeug - INFO - 172.234.228.172 - - [27/Sep/2025 23:21:43] "OPTIONS / HTTP/1.0" 200 -
-2025-09-27 23:21:43,810 - werkzeug - ERROR - 172.234.228.172 - - [27/Sep/2025 23:21:43] code 400, message Bad request version ('RTSP/1.0')
-2025-09-27 23:21:43,810 - werkzeug - INFO - 172.234.228.172 - - [27/Sep/2025 23:21:43] "[31m[1mOPTIONS / RTSP/1.0[0m" 400 -
-2025-09-27 23:21:48,920 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:48] "[33mGET /z/89/arm6 HTTP/1.1[0m" 404 -
-2025-09-27 23:21:49,124 - werkzeug - ERROR - 172.234.228.172 - - [27/Sep/2025 23:21:49] code 400, message Bad HTTP/0.9 request type ('l\x00')
-2025-09-27 23:21:49,124 - werkzeug - INFO - 172.234.228.172 - - [27/Sep/2025 23:21:49] "[31m[1ml\x00\x0b\x00\x00\x00\x00\x00\x00\x00\x00\x00[0m" 400 -
-2025-09-27 23:21:49,274 - werkzeug - INFO - 172.234.228.172 - - [27/Sep/2025 23:21:49] "[33mGET /nice%20ports,/Trinity.txt.bak HTTP/1.0[0m" 404 -
-2025-09-27 23:21:50,287 - werkzeug - ERROR - 172.234.228.172 - - [27/Sep/2025 23:21:50] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00')
-2025-09-27 23:21:50,288 - werkzeug - INFO - 172.234.228.172 - - [27/Sep/2025 23:21:50] "[31m[1m\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00[0m" 400 -
-2025-09-27 23:21:50,596 - werkzeug - ERROR - 172.234.228.172 - - [27/Sep/2025 23:21:50] code 400, message Bad request version ('\x00/\x00')
-2025-09-27 23:21:50,596 - werkzeug - INFO - 172.234.228.172 - - [27/Sep/2025 23:21:50] "[31m[1m\x16\x03\x00\x00i\x01\x00\x00e\x03\x03U\x1c§ärandom1random2random3random4\x00\x00\x0c\x00/\x00[0m" 400 -
-2025-09-27 23:21:51,672 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:51] "[33mGET /z/89/x86 HTTP/1.1[0m" 404 -
-2025-09-27 23:21:57,758 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:21:57] "[33mGET /z/89/arm5 HTTP/1.1[0m" 404 -
-2025-09-27 23:21:58,815 - werkzeug - INFO - 92.51.30.7 - - [27/Sep/2025 23:21:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-09-27 23:22:04,011 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:22:04] "[33mGET /z/89/arm HTTP/1.1[0m" 404 -
-2025-09-27 23:22:06,136 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:22:06] "[33mGET /z/89/arm7 HTTP/1.1[0m" 404 -
-2025-09-27 23:22:19,227 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:22:19] "[33mGET /z/89/spc HTTP/1.1[0m" 404 -
-2025-09-27 23:46:50,375 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://89.208.113.85:5000
-2025-09-27 23:46:50,375 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-09-27 23:55:44,163 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://89.208.113.85:5000
-2025-09-27 23:55:44,164 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-09-27 23:56:02,399 - werkzeug - INFO - 204.76.203.18 - - [27/Sep/2025 23:56:02] "[33mGET /bins/bin.mpsl HTTP/1.1[0m" 404 -
-2025-09-27 23:56:08,792 - werkzeug - INFO - 51.159.226.163 - - [27/Sep/2025 23:56:08] "[32mGET / HTTP/1.1[0m" 302 -
-2025-09-27 23:56:10,134 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:10] "[32mGET /login HTTP/1.1[0m" 302 -
-2025-09-27 23:56:10,278 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:10] "GET /dashboard HTTP/1.1" 200 -
-2025-09-27 23:56:10,592 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-09-27 23:56:18,722 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:18] "GET /adsets HTTP/1.1" 200 -
-2025-09-27 23:56:19,025 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-09-27 23:56:19,063 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:19] "GET /static/js/adsets.js HTTP/1.1" 200 -
-2025-09-27 23:56:20,231 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:20] "GET /api/auto_control/logs?ts=1759017186992 HTTP/1.1" 200 -
-2025-09-27 23:56:20,236 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:20] "GET /api/adsets?ts=1759017186992 HTTP/1.1" 200 -
-2025-09-27 23:56:21,254 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:21] "GET /api/adsets?ts=1759017187998 HTTP/1.1" 200 -
-2025-09-27 23:56:22,266 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:22] "GET /api/adsets?ts=1759017189013 HTTP/1.1" 200 -
-2025-09-27 23:56:23,228 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:23] "GET /admin/limits HTTP/1.1" 200 -
-2025-09-27 23:56:23,272 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:23] "GET /api/adsets?ts=1759017190026 HTTP/1.1" 200 -
-2025-09-27 23:56:23,542 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-09-27 23:56:23,551 - werkzeug - INFO - 51.159.226.157 - - [27/Sep/2025 23:56:23] "GET /static/js/admin_panel.js HTTP/1.1" 200 -
-2025-09-27 23:56:24,336 - werkzeug - INFO - 51.159.226.150 - - [27/Sep/2025 23:56:24] "GET /api/admin/check_access HTTP/1.1" 200 -
-2025-09-27 23:56:24,345 - __main__ - INFO - Найдено 47 аккаунтов у 4 пользователей
-2025-09-27 23:56:24,346 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:24,349 - werkzeug - INFO - 51.159.226.150 - - [27/Sep/2025 23:56:24] "GET /api/admin/reserve_tokens_stats HTTP/1.1" 200 -
-2025-09-27 23:56:24,351 - __main__ - INFO - Найдено 47 аккаунтов у 4 пользователей
-2025-09-27 23:56:24,353 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:24,361 - werkzeug - INFO - 51.159.226.150 - - [27/Sep/2025 23:56:24] "GET /api/admin/users HTTP/1.1" 200 -
-2025-09-27 23:56:24,469 - __main__ - INFO - Найдено 47 аккаунтов у 4 пользователей
-2025-09-27 23:56:24,470 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:24,473 - werkzeug - INFO - 51.159.226.150 - - [27/Sep/2025 23:56:24] "GET /api/admin/check_access HTTP/1.1" 200 -
-2025-09-27 23:56:24,476 - werkzeug - INFO - 51.159.226.150 - - [27/Sep/2025 23:56:24] "GET /api/admin/users HTTP/1.1" 200 -
-2025-09-27 23:56:24,516 - __main__ - INFO - Найдено 47 аккаунтов у 4 пользователей
-2025-09-27 23:56:24,517 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:24,527 - werkzeug - INFO - 51.159.226.150 - - [27/Sep/2025 23:56:24] "GET /api/admin/reserve_tokens_stats HTTP/1.1" 200 -
-2025-09-27 23:56:24,717 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 144
-2025-09-27 23:56:24,718 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:24,810 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 144
-2025-09-27 23:56:24,811 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:24,969 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 144
-2025-09-27 23:56:24,971 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:24,976 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 144
-2025-09-27 23:56:24,977 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,035 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,040 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,146 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,150 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,182 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,186 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,219 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,223 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,431 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 132
-2025-09-27 23:56:25,433 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,434 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 132
-2025-09-27 23:56:25,435 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,459 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 132
-2025-09-27 23:56:25,460 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,574 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 132
-2025-09-27 23:56:25,575 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,672 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,677 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,690 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,694 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,817 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,821 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:25,867 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:25,872 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,016 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 129
-2025-09-27 23:56:26,017 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,049 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 129
-2025-09-27 23:56:26,050 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,140 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 129
-2025-09-27 23:56:26,142 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,174 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 129
-2025-09-27 23:56:26,177 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,219 - __main__ - INFO - Найдено 47 аккаунтов у 4 пользователей
-2025-09-27 23:56:26,220 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,241 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:26,248 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,335 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:26,339 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,377 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:26,381 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,421 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:26,425 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,495 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 144
-2025-09-27 23:56:26,497 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,534 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 146
-2025-09-27 23:56:26,536 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,762 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1327614801627844?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:26,766 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,768 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:26,772 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,807 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 146
-2025-09-27 23:56:26,808 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,830 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 146
-2025-09-27 23:56:26,831 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:26,895 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 146
-2025-09-27 23:56:26,897 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,042 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,043 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 132
-2025-09-27 23:56:27,046 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,047 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,048 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,051 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,112 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,117 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,263 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:27,265 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,335 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1376043163813675?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,339 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,373 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:27,374 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,488 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,492 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,517 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:27,518 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,598 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 129
-2025-09-27 23:56:27,600 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,615 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,620 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,669 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:27,671 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,757 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,761 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,846 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1381534493271957?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,851 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,906 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:27,909 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,932 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:27,933 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:27,981 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:27,983 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,062 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:28,063 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,173 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,179 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,215 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,220 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,295 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 146
-2025-09-27 23:56:28,296 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,305 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,309 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,350 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:28,351 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,529 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1664420924462722?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,533 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,580 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,584 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,605 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:28,607 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,721 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:28,722 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,732 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:28,733 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,812 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:28,814 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,838 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,843 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,849 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:28,850 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,965 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,969 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:28,970 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:28,974 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,044 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1695810834652121?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:29,050 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,108 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:29,112 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,328 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:29,330 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,360 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:29,362 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,374 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:29,376 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,456 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:29,457 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,503 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:29,505 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,558 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:29,562 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,593 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2408153782871896?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:29,597 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,605 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:29,609 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,696 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:29,701 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,850 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:29,851 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,904 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:29,908 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:29,964 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:29,965 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,002 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:30,004 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,069 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2742784509254704?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:30,073 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,119 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:30,121 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,202 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:30,208 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,236 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:30,241 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,356 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:30,361 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,362 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:30,363 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,392 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 136
-2025-09-27 23:56:30,394 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,623 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2920157434829741?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:30,627 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,637 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:30,641 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,643 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:30,644 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,740 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:30,742 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,836 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:30,837 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,890 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 147
-2025-09-27 23:56:30,891 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,944 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:30,946 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:30,948 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:30,949 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,102 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,106 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,127 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_2998724036957139?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 61
-2025-09-27 23:56:31,132 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,176 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,181 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,222 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,227 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,446 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 127
-2025-09-27 23:56:31,447 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,461 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:31,463 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,533 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 127
-2025-09-27 23:56:31,535 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,568 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 127
-2025-09-27 23:56:31,569 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,624 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 127
-2025-09-27 23:56:31,625 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,733 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_662856349826442?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,736 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,804 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,808 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,810 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,814 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,816 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,819 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,845 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:31,849 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:31,985 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 127
-2025-09-27 23:56:31,986 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,153 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:32,154 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,184 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:32,185 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,202 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:32,204 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,206 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:32,207 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,209 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_682101251079254?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:32,214 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,377 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:32,382 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,433 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:32,437 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,467 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 140
-2025-09-27 23:56:32,470 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,581 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:32,586 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,586 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:32,592 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,697 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-09-27 23:56:32,699 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,720 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_699851432712882?fields=&access_token=EAAJcGzFw8rABPfuhjQu4JWMzy4U7WbKHBTjSLyN1sdDnKWrQXe4DyuSYxFyUZAce0SlZCzOMmquXwsng5URgsY2JTDQkbFZBYv5u8jxzvzSMr4s30hUObZBlc85V2TConZAmkZCS7CcPhi7ZAD1q5tvfZBCzvaekZBrKP3EdZBWfQuSoX72NJhf1sZAUElbQfCCySBaRq2ulRqK HTTP/1.1" 200 59
-2025-09-27 23:56:32,725 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,808 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-09-27 23:56:32,809 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,878 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-09-27 23:56:32,880 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:32,937 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:32,941 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,025 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-09-27 23:56:33,026 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,033 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:33,037 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,112 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:33,117 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,158 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-09-27 23:56:33,160 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,273 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-09-27 23:56:33,274 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:33,275 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,280 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,286 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-09-27 23:56:33,287 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,375 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:33,379 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,525 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-09-27 23:56:33,527 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,527 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:33,532 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,604 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:33,608 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,612 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-09-27 23:56:33,613 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,640 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-09-27 23:56:33,641 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,763 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-09-27 23:56:33,768 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-09-27 23:56:33,803 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-09-27 23:56:33,804 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:11:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227354014380509
+2025-09-30 01:11:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227353953130509
+2025-09-30 01:11:30,978 - backend.adsets - INFO - 🎯 Обновлено 164 адсетов для пользователя 3
+2025-09-30 01:11:30,980 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1034818791841582 обновлены
+2025-09-30 01:11:30,980 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1084247417068803
+2025-09-30 01:11:30,981 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:11:31,552 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2000
+2025-09-30 01:11:31,554 - backend.adsets - INFO - ✅ Получено 112 адсетов из 1084247417068803
+2025-09-30 01:11:34,326 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 2873
+2025-09-30 01:11:34,330 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234450750180282
+2025-09-30 01:11:34,330 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234450750160282
+2025-09-30 01:11:34,330 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234450750150282
+2025-09-30 01:11:34,331 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234450750140282
+2025-09-30 01:11:34,331 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234450201620282
+2025-09-30 01:11:34,331 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908268300282
+2025-09-30 01:11:34,331 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908268270282
+2025-09-30 01:11:34,331 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908268260282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908268250282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908185100282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908134600282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908134590282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908134570282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231908134530282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231907973500282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656819920282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656819900282
+2025-09-30 01:11:34,332 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656819890282
+2025-09-30 01:11:36,253 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=2мин, overall=RUNNING
+2025-09-30 01:11:36,253 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 01:11:36] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-09-30 01:11:38,262 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 870
+2025-09-30 01:11:38,264 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656819880282
+2025-09-30 01:11:38,264 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656546510282
+2025-09-30 01:11:38,264 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656169660282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656169650282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656169630282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231656169610282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231655977020282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230773948670282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230773948660282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230773948650282
+2025-09-30 01:11:38,265 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230773948630282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230773433890282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230771347090282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230771347080282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230771347070282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230771347020282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230770997470282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230385824130282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230385824110282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230385824090282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230385824080282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230385698400282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229695091320282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229695091300282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229695091290282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229695091270282
+2025-09-30 01:11:38,266 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229694769630282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229690022350282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229690022330282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229690022320282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229690022300282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229689356440282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229466244620282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229466244610282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229466244560282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229466244550282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229465747780282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229465719180282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229465719170282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229465719140282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229465719120282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229464945060282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229398223810282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229398223800282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229398223790282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229398223770282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229398042930282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229397066750282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229397066740282
+2025-09-30 01:11:38,267 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229397066720282
+2025-09-30 01:11:40,172 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 623
+2025-09-30 01:11:40,172 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229397066710282
+2025-09-30 01:11:40,172 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229396834740282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229347309500282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229347309490282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229347309480282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229347309460282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229347115210282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229346871120282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229346871110282
+2025-09-30 01:11:40,173 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229346871100282
+2025-09-30 01:11:40,174 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229346871090282
+2025-09-30 01:11:40,174 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229346810510282
+2025-09-30 01:11:41,174 - backend.adsets - INFO - 🎯 Обновлено 112 адсетов для пользователя 3
+2025-09-30 01:11:41,175 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1084247417068803 обновлены
+2025-09-30 01:11:41,175 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1229693575829178
+2025-09-30 01:11:41,176 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:11:41,866 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 400 341
+2025-09-30 01:11:41,867 - backend.adsets - ERROR - Ошибка получения адсетов: 400 Client Error: Bad Request for url: https://graph.facebook.com/v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500, ответ={"error":{"message":"User request limit reached","type":"OAuthException","is_transient":false,"code":17,"error_subcode":2446079,"error_user_title":"\u0421\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u043e\u0432 API \u0438\u0437 \u0440\u0435\u043a\u043b\u0430\u043c\u043d\u043e\u0433\u043e \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u0430","error_user_msg":"\u0421 \u044d\u0442\u043e\u0433\u043e \u0440\u0435\u043a\u043b\u0430\u043c\u043d\u043e\u0433\u043e \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u0430 \u043f\u043e\u0441\u0442\u0443\u043f\u0438\u043b\u043e \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u043e\u0432. \u041f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435 \u043d\u0435\u043c\u043d\u043e\u0433\u043e \u0438 \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443.","fbtrace_id":"AJg6mHBGv5ZY_aF-RMzGDJj"}}
+2025-09-30 01:11:41,867 - backend.adsets - INFO - ✅ Получено 0 адсетов из 1229693575829178
+2025-09-30 01:11:41,867 - backend.adsets - INFO - 🎯 Обновлено 0 адсетов для пользователя 3
+2025-09-30 01:11:41,868 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1229693575829178 обновлены
+2025-09-30 01:11:41,868 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 4130588987263265
+2025-09-30 01:11:41,869 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:11:43,395 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 400 337
+2025-09-30 01:11:43,396 - backend.adsets - ERROR - Ошибка получения адсетов: 400 Client Error: Bad Request for url: https://graph.facebook.com/v18.0/act_4130588987263265/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500, ответ={"error":{"message":"User request limit reached","type":"OAuthException","is_transient":false,"code":17,"error_subcode":2446079,"error_user_title":"\u0421\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u043e\u0432 API \u0438\u0437 \u0440\u0435\u043a\u043b\u0430\u043c\u043d\u043e\u0433\u043e \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u0430","error_user_msg":"\u0421 \u044d\u0442\u043e\u0433\u043e \u0440\u0435\u043a\u043b\u0430\u043c\u043d\u043e\u0433\u043e \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u0430 \u043f\u043e\u0441\u0442\u0443\u043f\u0438\u043b\u043e \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0432\u044b\u0437\u043e\u0432\u043e\u0432. \u041f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435 \u043d\u0435\u043c\u043d\u043e\u0433\u043e \u0438 \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443.","fbtrace_id":"AUGJYeXwAluagvm9g37FfHw"}}
+2025-09-30 01:11:43,396 - backend.adsets - INFO - ✅ Получено 0 адсетов из 4130588987263265
+2025-09-30 01:11:43,396 - backend.adsets - INFO - 🎯 Обновлено 0 адсетов для пользователя 3
+2025-09-30 01:11:43,397 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 4130588987263265 обновлены
+2025-09-30 01:11:43,398 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 519765377868615
+2025-09-30 01:11:43,398 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:11:44,376 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 3066
+2025-09-30 01:11:44,380 - backend.adsets - INFO - ✅ Получено 187 адсетов из 519765377868615
+2025-09-30 01:11:47,463 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 2447
+2025-09-30 01:11:47,464 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234465037430073
+2025-09-30 01:11:47,464 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234465037410073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234465037380073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234465033670073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234464269450073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234464234250073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234464234230073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234464234210073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234464231810073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234464059330073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233184051640073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233184051600073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233184051590073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233184051580073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233183881400073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232567281130073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232309188990073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232245193530073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232245193510073
+2025-09-30 01:11:47,465 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232245193500073
+2025-09-30 01:11:47,466 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232245193490073
+2025-09-30 01:11:47,466 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232245153800073
+2025-09-30 01:11:47,466 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232244867840073
+2025-09-30 01:11:47,466 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232244867830073
+2025-09-30 01:11:47,466 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232244867820073
+2025-09-30 01:11:51,152 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 863
+2025-09-30 01:11:51,154 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232244867810073
+2025-09-30 01:11:51,154 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232244829110073
+2025-09-30 01:11:51,154 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232038384130073
+2025-09-30 01:11:51,154 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232038384120073
+2025-09-30 01:11:51,154 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232038384100073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232038384080073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232037599460073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232037132570073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232037132560073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232037132520073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232037132510073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232036321980073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986994160073
+2025-09-30 01:11:51,155 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986994150073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986994130073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986994120073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986394630073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986302580073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986302560073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986302550073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986302540073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231986275800073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231984990220073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231984990210073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231984990190073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231984990160073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231984739950073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231402043710073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231402043690073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231402043680073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231402043660073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231401758210073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231401287040073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231401287010073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231401286980073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231401286970073
+2025-09-30 01:11:51,156 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231401249370073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231285328290073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231285325340073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231285318210073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231285307970073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231282878750073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231282878740073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231282878730073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231282878710073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231282211250073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230939820650073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230939820640073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230939820620073
+2025-09-30 01:11:51,157 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230939820600073
+2025-09-30 01:11:54,668 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 886
+2025-09-30 01:11:54,669 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230938480690073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230523317120073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230516904340073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230516904310073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230516904290073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230516904280073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230513874010073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230401333120073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230401333100073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230401333090073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230401333080073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230400552730073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230399056010073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230399056000073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230399055990073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230399055970073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230397029200073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230100992710073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230100992700073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230100992690073
+2025-09-30 01:11:54,670 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230100992650073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230100952110073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229975712790073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229975712770073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229975712760073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229975712730073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229975650140073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229658343890073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229658343880073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229658343870073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229658343860073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229658090110073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229582165190073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229582165180073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229582165170073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229582165140073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229581995700073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229435394290073
+2025-09-30 01:11:54,671 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229435394280073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229435394270073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229435394260073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229435239180073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229433959540073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229433959530073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229433959510073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229433959490073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229433357750073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229261503200073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229261503190073
+2025-09-30 01:11:54,672 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229261503170073
+2025-09-30 01:11:57,734 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 788
+2025-09-30 01:11:57,735 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229261503150073
+2025-09-30 01:11:57,735 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229260874690073
+2025-09-30 01:11:57,735 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229189265730073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229189265710073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229189265690073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229189265680073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229188973970073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229184315240073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229184315230073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229184315220073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229184315190073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229183595920073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229181399590073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229181399550073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229181399540073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229181399470073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229181199710073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229089071390073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229089071380073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229089071370073
+2025-09-30 01:11:57,736 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229089071360073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229087416290073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229086456550073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229086456540073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229086456530073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229086456520073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229086376610073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228999079240073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228999079230073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228999079220073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228999079210073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228998419740073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228997495560073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228997495550073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228997495540073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228997495530073
+2025-09-30 01:11:57,737 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228997411200073
+2025-09-30 01:11:58,738 - backend.adsets - INFO - 🎯 Обновлено 187 адсетов для пользователя 3
+2025-09-30 01:11:58,739 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 519765377868615 обновлены
+2025-09-30 01:11:58,739 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 618632521162363
+2025-09-30 01:11:58,741 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:11:59,200 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1806
+2025-09-30 01:11:59,201 - backend.adsets - INFO - ✅ Получено 90 адсетов из 618632521162363
+2025-09-30 01:12:02,530 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 2467
+2025-09-30 01:12:02,532 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231205467240788
+2025-09-30 01:12:02,532 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231205467230788
+2025-09-30 01:12:02,532 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231205467220788
+2025-09-30 01:12:02,532 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231205467200788
+2025-09-30 01:12:02,532 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231205095830788
+2025-09-30 01:12:02,532 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388600440788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388600430788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388600410788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388600400788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388558200788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229016055510788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229016055490788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229016055480788
+2025-09-30 01:12:02,533 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229016055450788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229015877300788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229013462550788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229013462520788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229013462500788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229013462490788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229013060630788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007986540788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007986520788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007986510788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007986500788
+2025-09-30 01:12:02,534 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007506730788
+2025-09-30 01:12:05,950 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 802
+2025-09-30 01:12:05,951 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007179400788
+2025-09-30 01:12:05,951 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007179390788
+2025-09-30 01:12:05,951 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007179340788
+2025-09-30 01:12:05,951 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229007179330788
+2025-09-30 01:12:05,951 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229006927410788
+2025-09-30 01:12:05,951 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228783198610788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228783198600788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228783198590788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228783198580788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228783091930788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228782444770788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228782444760788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228782444740788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228782444730788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228782424120788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228142591280788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228142591270788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228142591250788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228142591240788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228141646320788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227836418750788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227836418740788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227836418720788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227836418710788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227836302170788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227630753240788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227630753220788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227630753210788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227630753180788
+2025-09-30 01:12:05,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227630318790788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227320072260788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227320072240788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227320072230788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227320072220788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227319656490788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227319211620788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227319211610788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227319211600788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227319211590788
+2025-09-30 01:12:05,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227318750300788
+2025-09-30 01:12:06,850 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=2мин, overall=RUNNING
+2025-09-30 01:12:06,851 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 01:12:06] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-09-30 01:12:06,953 - backend.adsets - INFO - 🎯 Обновлено 90 адсетов для пользователя 3
+2025-09-30 01:12:06,955 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 618632521162363 обновлены
+2025-09-30 01:12:06,955 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 684941790597261
+2025-09-30 01:12:06,956 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:12:07,460 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1635
+2025-09-30 01:12:07,461 - backend.adsets - INFO - ✅ Получено 80 адсетов из 684941790597261
+2025-09-30 01:12:10,672 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 2746
+2025-09-30 01:12:10,673 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231195304450788
+2025-09-30 01:12:10,673 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231195289240788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231195169780788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231195054870788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231194368100788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230593566790788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230593566780788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230593566770788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230593566740788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230593385930788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388865340788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388864980788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388864440788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388864020788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388844700788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388825590788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388825580788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388825570788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388825560788
+2025-09-30 01:12:10,674 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229388811100788
+2025-09-30 01:12:13,081 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 740
+2025-09-30 01:12:13,082 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228938092880788
+2025-09-30 01:12:13,082 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228938092840788
+2025-09-30 01:12:13,082 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228938092830788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228938092820788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228937459910788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228936816030788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228936816010788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228936816000788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228936815990788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228936669500788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228285036560788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228285036550788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228285036530788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228285036520788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120228284904780788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227578522650788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227578522630788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227578522620788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227578522610788
+2025-09-30 01:12:13,083 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227578394350788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227455854760788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227455854750788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227455854740788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227455854710788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120227455824320788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120226760442050788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120226760442040788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120226760442030788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120226760442020788
+2025-09-30 01:12:13,084 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120226759542450788
+2025-09-30 01:12:14,084 - backend.adsets - INFO - 🎯 Обновлено 80 адсетов для пользователя 3
+2025-09-30 01:12:14,086 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 684941790597261 обновлены
+2025-09-30 01:12:14,087 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 690058783376774
+2025-09-30 01:12:14,087 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:12:14,560 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1752
+2025-09-30 01:12:14,560 - backend.adsets - INFO - ✅ Получено 90 адсетов из 690058783376774
+2025-09-30 01:12:19,812 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 3120
+2025-09-30 01:12:19,813 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236815765560204
+2025-09-30 01:12:19,813 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236815765550204
+2025-09-30 01:12:19,813 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236815765530204
+2025-09-30 01:12:19,813 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236815765520204
+2025-09-30 01:12:19,813 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236815318200204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236692862320204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236692862280204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120236692510710204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234486128690204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234486128680204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234486128650204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234486128620204
+2025-09-30 01:12:19,814 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234485983430204
+2025-09-30 01:12:25,160 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 819
+2025-09-30 01:12:25,161 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234485915850204
+2025-09-30 01:12:25,161 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234485915810204
+2025-09-30 01:12:25,161 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234485915800204
+2025-09-30 01:12:25,161 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234485915790204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234485815810204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233546363390204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233546363360204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233546363350204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233546363320204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233545988050204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233545094440204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233545094410204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233545094400204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233545094390204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233543999360204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233212067580204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233212067530204
+2025-09-30 01:12:25,162 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233212067520204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233212067510204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233211874720204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232357365650204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232357365640204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232357365620204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232357365580204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232357264310204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232356899100204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232356899090204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232356899080204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232356899070204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232356799090204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232232736650204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232232736630204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232232736610204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232232736600204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232232591000204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232231677250204
+2025-09-30 01:12:25,163 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232231677240204
+2025-09-30 01:12:25,164 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232231677230204
+2025-09-30 01:12:25,164 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232231677220204
+2025-09-30 01:12:25,164 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232231355490204
+2025-09-30 01:12:26,164 - backend.adsets - INFO - 🎯 Обновлено 90 адсетов для пользователя 3
+2025-09-30 01:12:26,166 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 690058783376774 обновлены
+2025-09-30 01:12:26,166 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 707254618536242
+2025-09-30 01:12:26,167 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:12:26,805 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2867
+2025-09-30 01:12:26,806 - backend.adsets - INFO - ✅ Получено 172 адсетов из 707254618536242
+2025-09-30 01:12:29,976 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 3169
+2025-09-30 01:12:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234445264810541
+2025-09-30 01:12:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234445264780541
+2025-09-30 01:12:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234445264770541
+2025-09-30 01:12:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234445264760541
+2025-09-30 01:12:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120234444483230541
+2025-09-30 01:12:29,978 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233833341730541
+2025-09-30 01:12:29,979 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233828738430541
+2025-09-30 01:12:29,979 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233828738410541
+2025-09-30 01:12:29,979 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233828738400541
+2025-09-30 01:12:29,979 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233828738390541
+2025-09-30 01:12:29,979 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233828490110541
+2025-09-30 01:12:34,290 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 1623
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232754566730541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232754566710541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232754566670541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232754566660541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232754293820541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232753649190541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232753649150541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232753649140541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232753649130541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232753172400541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232431721910541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232431721900541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232431721870541
+2025-09-30 01:12:34,291 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232431721860541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232431565820541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232390575980541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232390575970541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232389240710541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232389240700541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232389240690541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232389240660541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232389184690541
+2025-09-30 01:12:34,292 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232388745380541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232388745360541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232388745340541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232388745330541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232388688400541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232155765020541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232155765000541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232155764990541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232155764980541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232154940710541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232154874850541
+2025-09-30 01:12:34,293 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232154874810541
+2025-09-30 01:12:34,294 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232154874800541
+2025-09-30 01:12:34,294 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232154874790541
+2025-09-30 01:12:34,294 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120232154661200541
+2025-09-30 01:12:34,294 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231567336470541
+2025-09-30 01:12:34,294 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231567336460541
+2025-09-30 01:12:34,294 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231567336440541
+2025-09-30 01:12:37,517 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=2мин, overall=RUNNING
+2025-09-30 01:12:37,517 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 01:12:37] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-09-30 01:12:37,822 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 863
+2025-09-30 01:12:37,823 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231567336410541
+2025-09-30 01:12:37,823 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231567081860541
+2025-09-30 01:12:37,823 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231565406000541
+2025-09-30 01:12:37,823 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231565405960541
+2025-09-30 01:12:37,823 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231565405950541
+2025-09-30 01:12:37,823 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231565405940541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120231564646970541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230460539350541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230460539260541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230460539140541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230460539130541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230460462950541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230365209330541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230365209320541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230365209290541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230365209270541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230365167050541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230122171940541
+2025-09-30 01:12:37,824 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230122171930541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230122171920541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230122171910541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230120569700541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230077892420541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230077892400541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230077892390541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230077892380541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230076922410541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230075670680541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230075670630541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230075670620541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230075670610541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230075561420541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230073905420541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230073905410541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230073905400541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230073905380541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120230073725500541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229984118040541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229984118030541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229984118020541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229984118010541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229984001600541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229866922490541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229866922470541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229866922440541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229866922430541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229820937410541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229820891540541
+2025-09-30 01:12:37,825 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229820891510541
+2025-09-30 01:12:37,826 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229820891500541
+2025-09-30 01:12:40,208 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 685
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229820891490541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229820694300541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229813354880541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229813354850541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229813354830541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229813354820541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229813263650541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229754348710541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229754348690541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229754348680541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229754348670541
+2025-09-30 01:12:40,209 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688847050541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688847040541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688847030541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688847020541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688800800541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688400160541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688400150541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688400140541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688400130541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688141890541
+2025-09-30 01:12:40,210 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120229688136660541
+2025-09-30 01:12:41,211 - backend.adsets - INFO - 🎯 Обновлено 172 адсетов для пользователя 3
+2025-09-30 01:12:41,212 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 707254618536242 обновлены
+2025-09-30 01:12:41,212 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 9859604834059536
+2025-09-30 01:12:41,213 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-09-30 01:12:41,904 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2893
+2025-09-30 01:12:41,907 - backend.adsets - INFO - ✅ Получено 177 адсетов из 9859604834059536
+2025-09-30 01:12:44,949 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 2623
+2025-09-30 01:12:44,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233781359710312
+2025-09-30 01:12:44,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233781359700312
+2025-09-30 01:12:44,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233781359680312
+2025-09-30 01:12:44,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233781359640312
+2025-09-30 01:12:44,952 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233781321940312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233779298360312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233779298350312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233779298340312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233779298330312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233777901980312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233678465470312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233678465440312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233678465430312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233678465410312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233677321420312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233677258990312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233677258970312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233677258960312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233677258940312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233677209520312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233676054940312
+2025-09-30 01:12:44,953 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233676054930312
+2025-09-30 01:12:49,001 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "POST /v18.0?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 890
+2025-09-30 01:12:49,003 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233676054900312
+2025-09-30 01:12:49,003 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233676054890312
+2025-09-30 01:12:49,003 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233675812800312
+2025-09-30 01:12:49,003 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233362222050312
+2025-09-30 01:12:49,003 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233362222030312
+2025-09-30 01:12:49,003 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233362222020312
+2025-09-30 01:12:49,003 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233361563680312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233361563670312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233361563660312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233361563640312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233361373230312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233360837430312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233360837420312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233360837410312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233360837400312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233360568360312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233175943070312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233175943060312
+2025-09-30 01:12:49,004 - backend.adsets - WARNING - ⚠️ Нет данных в инсайтах для адсета 120233175943030312

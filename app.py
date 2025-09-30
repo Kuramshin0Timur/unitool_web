@@ -25,13 +25,17 @@ from backend.campaign import (add_user_campaign, fetch_facebook_campaigns,
                               update_user_campaign_status)
 from backend.geo_config import extract_geo_from_name, get_user_geo_rules
 from backend.keitaro import fetch_keitaro_report, sync_keitaro
-from backend.reserve_tokens import (
-    normalize_token, normalize_account_id,
-    add_reserve_token, add_account_to_reserve_token, remove_account_from_reserve_token,
-    get_reserve_token_accounts, get_reserve_tokens, get_reserve_tokens as get_reserve_tokens_full,
-    replace_token_everywhere, update_reserve_token_king, delete_reserve_token_complete
-)
-
+from backend.reserve_tokens import (add_account_to_reserve_token,
+                                    add_reserve_token,
+                                    delete_reserve_token_complete,
+                                    get_reserve_token_accounts)
+from backend.reserve_tokens import get_reserve_tokens
+from backend.reserve_tokens import \
+    get_reserve_tokens as get_reserve_tokens_full
+from backend.reserve_tokens import (normalize_account_id, normalize_token,
+                                    remove_account_from_reserve_token,
+                                    replace_token_everywhere,
+                                    update_reserve_token_king)
 from backend.setting import get_user_settings, update_user_settings
 from backend.telegram import send_telegram_message
 from database import (authenticate_user, create_user, get_db_connection,
@@ -4978,55 +4982,37 @@ def update_settings():
         logger.error(f"Ошибка сохранения настроек: {e}")
         return jsonify({'success': False, 'error': str(e)})
 
+
 @app.route('/api/auto_refresh', methods=['POST'])
 @login_required
 def handle_auto_refresh():
-    """Управление автообновлением и автоконтролем вместе"""
+    """Обрабатывает запуск, остановку и получение статуса системы автоконтроля."""
     try:
-        user_id = session['user_id']
-        data = request.json
+        data = request.get_json()
         action = data.get('action')
-        interval = data.get('interval')
-        
+        user_id = session['user_id']
+
         if action == 'start':
-            # Запускаем и автоконтроль и автообновление
-            if interval and isinstance(interval, int) and interval > 0:
-                # Обновляем настройки
-                settings = get_user_settings(user_id)
-                settings['auto_refresh_interval'] = interval
-                update_user_settings(user_id, settings)
-                
-                # Запускаем оба компонента
-                start_auto_control_and_refresh(user_id)
-                send_balance_warnings(user_id)
-                return jsonify({
-                    'success': True, 
-                    'message': f'Автоконтроль и автообновление запущены (интервал: {interval} мин)'
-                })
-            else:
-                return jsonify({'success': False, 'error': 'Неверный интервал'})
-                
+            # Интервал больше не передается от фронтенда
+            start_auto_control_and_refresh(user_id)
+            settings = get_user_settings(user_id)
+            interval = settings.get('auto_refresh_interval', 60)
+            return jsonify({'success': True, 'message': f'Система автоконтроля запущена с интервалом из настроек ({interval} мин).'})
+
         elif action == 'stop':
-            # Останавливаем и автоконтроль и автообновление
             stop_auto_control_and_refresh(user_id)
-            return jsonify({
-                'success': True, 
-                'message': 'Автоконтроль и автообновление остановлены'
-            })
-            
+            return jsonify({'success': True, 'message': 'Система автоконтроля остановлена.'})
+
         elif action == 'status':
-            # Получаем комбинированный статус
             status = get_combined_auto_status(user_id)
             return jsonify({'success': True, 'status': status})
-            
-        else:
-            return jsonify({'success': False, 'error': 'Неизвестное действие'})
-            
-    except Exception as e:
-        logger.error(f"Ошибка управления автообновлением: {e}")
-        return jsonify({'success': False, 'error': str(e)})
 
-# Глобальные переменные для управления автообновлением
+        else:
+            return jsonify({'success': False, 'error': 'Неизвестное действие'}), 400
+
+    except Exception as e:
+        logger.error(f"Ошибка в handle_auto_refresh: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': 'Внутренняя ошибка сервера'}), 500
 
 @app.route('/balance_monitor')
 @login_required
@@ -5644,4 +5630,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', debug=False, threaded=True)
+    app.run(host='0.0.0.0', port = 8000, debug=False, threaded=True)

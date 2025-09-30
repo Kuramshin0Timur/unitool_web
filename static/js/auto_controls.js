@@ -36,53 +36,51 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
     function startAutoSystem() {
-        const interval = parseInt(intervalInput?.value) || 60;
-        
-        if (interval < 1 || interval > 60) {
-            addLog('❌ Интервал должен быть от 1 до 60 минут', 'error');
-            Swal.fire('Ошибка', 'Интервал должен быть от 1 до 60 минут', 'error');
-            return;
-        }
-        
-        showLoading(runBtn, 'Запуск системы...');
-        
-        fetch('/api/auto_refresh', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                action: 'start',
-                interval: interval
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                addLog(`✅ Система запущена. Автоконтроль + автообновление (${interval} мин)`, 'success');
-                updateSystemUI(true);
-                loadStats();
-                
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Система запущена!',
-                    html: `Автоконтроль и автообновление работают<br>Интервал: <strong>${interval} минут</strong>`,
-                    timer: 3000,
-                    showConfirmButton: false
-                });
-            } else {
-                addLog('❌ Ошибка запуска: ' + (data.error || 'Неизвестная ошибка'), 'error');
-                Swal.fire('Ошибка!', data.error || 'Не удалось запустить систему', 'error');
-            }
-        })
-        .catch(error => {
-            addLog('❌ Ошибка сети: ' + error.message, 'error');
-            Swal.fire('Ошибка сети!', 'Не удалось подключиться к серверу', 'error');
-        })
-        .finally(() => {
-            hideLoading(runBtn, 'Запустить систему');
-        });
+    // Валидация интервала на стороне клиента все еще полезна
+    const intervalInput = document.getElementById('autoRefreshInterval');
+    const interval = parseInt(intervalInput?.value) || 60;
+    
+    if (interval < 1 || interval > 120) { // Можно увеличить максимальный лимит
+        addLog('❌ Интервал должен быть от 1 до 120 минут', 'error');
+        Swal.fire('Ошибка', 'Интервал должен быть от 1 до 120 минут', 'error');
+        return;
     }
+    
+    const runBtn = document.getElementById('runAutoControl');
+    showLoading(runBtn, 'Запуск системы...');
+    
+    // --- ИЗМЕНЕНИЕ ---
+    // Тело запроса теперь не содержит 'interval'
+    fetch('/api/auto_refresh', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            action: 'start' 
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            addLog(`✅ ${data.message}`, 'success');
+            Swal.fire('Запущено!', data.message, 'success');
+        } else {
+            addLog(`❌ Ошибка запуска: ${data.error}`, 'error');
+            Swal.fire('Ошибка!', data.error, 'error');
+        }
+    })
+    .catch(error => {
+        addLog(`❌ Сетевая ошибка: ${error}`, 'error');
+        Swal.fire('Сетевая ошибка!', 'Не удалось запустить систему.', 'error');
+    })
+    .finally(() => {
+        hideLoading(runBtn, '<i class="bi bi-play-fill"></i> Запустить');
+        // Обновляем статус через секунду, чтобы сервер успел обработать
+        setTimeout(checkSystemStatus, 1000); 
+    });
+}
+
     
     
     function stopAutoSystem() {

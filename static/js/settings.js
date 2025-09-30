@@ -457,7 +457,11 @@ let autoRefreshState = {
 
 function calculateNextRefreshTime(intervalMinutes) {
     const now = new Date();
-    const nextRefresh = new Date(now.getTime() + intervalMinutes * 60000);
+    // Учитываем, что автообновление работает по расписанию, а не через фиксированный интервал
+    const nextRefresh = new Date();
+    nextRefresh.setMinutes(nextRefresh.getMinutes() + intervalMinutes);
+    // Округляем до ближайшей минуты
+    nextRefresh.setSeconds(0, 0);
     return nextRefresh.toLocaleTimeString();
 }
 

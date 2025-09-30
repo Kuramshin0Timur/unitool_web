@@ -267,4 +267,27 @@ def check_and_pause_campaigns(user_id):
                     
     except Exception as e:
         logger.error(f"Ошибка проверки кампаний: {e}")
-  
+
+def extract_king_from_name(name: str) -> str:
+    """
+    Извлекает KING из названия кампании
+    """
+    if not name:
+        return 'UNKNOWN'
+    
+    # Поиск паттернов KING в названии
+    import re
+    
+    king_patterns = [
+        r'KING(\d+)',
+        r'K-(\d+)', 
+        r'king(\d+)',
+        r'k-(\d+)'
+    ]
+    
+    for pattern in king_patterns:
+        match = re.search(pattern, name.upper())
+        if match:
+            return f"KING{match.group(1)}"
+    
+    return 'UNKNOWN'
