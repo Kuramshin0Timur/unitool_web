@@ -96,12 +96,14 @@ def auto_determine_king(token: str) -> str:
     else:
         return "Facebook_Default"
 def get_combined_auto_status(user_id):
-    """Получить статус системы с подробным логированием"""
+    """Получить статус системы с учётом флагов running"""
     with auto_control_lock:
-        auto_control_running = user_id in auto_control_threads
+        auto_control_running = False
         control_info = ""
-        if auto_control_running:
-            control_info = f" (running: {auto_control_threads[user_id].get('running', 'unknown')})"
+        if user_id in auto_control_threads:
+            thread_info = auto_control_threads[user_id]
+            auto_control_running = thread_info.get('running', False)
+            control_info = f" (running: {auto_control_running})"
         
     with auto_refresh_lock:
         auto_refresh_running = user_id in auto_refresh_timers
@@ -114,10 +116,12 @@ def get_combined_auto_status(user_id):
     
     running = auto_control_running or auto_refresh_running
     
-    logger.info(f"📊 СТАТУС СИСТЕМЫ user_id={user_id}: "
-                f"control={auto_control_running}{control_info}, "
-                f"refresh={auto_refresh_running}{refresh_info}, "
-                f"interval={interval}мин, overall={'RUNNING' if running else 'STOPPED'}")
+    logger.info(
+        f"📊 СТАТУС СИСТЕМЫ user_id={user_id}: "
+        f"control={auto_control_running}{control_info}, "
+        f"refresh={auto_refresh_running}{refresh_info}, "
+        f"interval={interval}мин, overall={'RUNNING' if running else 'STOPPED'}"
+    )
     
     return {
         'running': running,
@@ -125,6 +129,7 @@ def get_combined_auto_status(user_id):
         'auto_refresh_running': auto_refresh_running,
         'interval': interval
     }
+
 def stop_auto_control_and_refresh(user_id: int):
     """Ручная остановка автоконтроля (с автообновлением внутри цикла)."""
     logger.info(f"🛑 РУЧНАЯ остановка системы для пользователя {user_id}")

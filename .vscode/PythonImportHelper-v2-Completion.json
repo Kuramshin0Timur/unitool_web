@@ -1347,7 +1347,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def get_combined_auto_status(user_id):\n    \"\"\"Получить статус системы с подробным логированием\"\"\"\n    with auto_control_lock:\n        auto_control_running = user_id in auto_control_threads\n        control_info = \"\"\n        if auto_control_running:\n            control_info = f\" (running: {auto_control_threads[user_id].get('running', 'unknown')})\"\n    with auto_refresh_lock:\n        auto_refresh_running = user_id in auto_refresh_timers\n        refresh_info = \"\"",
+        "peekOfCode": "def get_combined_auto_status(user_id):\n    \"\"\"Получить статус системы с учётом флагов running\"\"\"\n    with auto_control_lock:\n        auto_control_running = False\n        control_info = \"\"\n        if user_id in auto_control_threads:\n            thread_info = auto_control_threads[user_id]\n            auto_control_running = thread_info.get('running', False)\n            control_info = f\" (running: {auto_control_running})\"\n    with auto_refresh_lock:",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
