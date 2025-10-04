@@ -1,42 +1,34 @@
 import sqlite3
-import os
+from pathlib import Path
 
-# Путь к вашему файлу базы данных
-DB_PATH = "unitool.db"
+DB_PATH = Path("unitool.db")
 
-def run_migration():
-    """Выполняет SQL-запрос для добавления колонки max_cpa."""
-    if not os.path.exists(DB_PATH):
-        print(f"Ошибка: Файл базы данных '{DB_PATH}' не найден. Убедитесь, что скрипт находится в той же папке.")
-        return
-
-    conn = None
+def migrate_add_exclude_field():
+    """Добавляет поле exclude_from_autocontrol в таблицу adsets"""
     try:
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
         
-        # Попытка добавить новую колонку
-        print("Попытка добавить колонку 'max_cpa' в таблицу geo_config...")
+        # Проверяем, существует ли уже поле
+        cursor.execute("PRAGMA table_info(adsets)")
+        columns = [column[1] for column in cursor.fetchall()]
         
-        # ЭТО ТОТ САМЫЙ ЗАПРОС, который мы не смогли найти
-        cursor.execute("ALTER TABLE geo_config ADD COLUMN max_cpa REAL DEFAULT 0.0;")
-        conn.commit()
-        
-        print("✅ Успех! Колонка 'max_cpa' добавлена. База данных готова.")
-        
-    except sqlite3.OperationalError as e:
-        # Если колонка уже была добавлена, игнорируем ошибку
-        if "duplicate column name" in str(e):
-            print("ℹ️ Колонка 'max_cpa' уже существует. Пропускаем. База данных готова.")
-        else:
-            print(f"❌ Критическая ошибка при работе с БД: {e}")
+        if 'exclude_from_autocontrol' not in columns:
+            # Добавляем поле
+            cursor.execute("ALTER TABLE adsets ADD COLUMN exclude_from_autocontrol BOOLEAN DEFAULT 0")
+            print("✅ Поле exclude_from_autocontrol успешно добавлено в таблицу adsets")
             
-    except Exception as e:
-        print(f"❌ Непредвиденная ошибка: {e}")
+            # Создаем индекс для улучшения производительности
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_adsets_exclude ON adsets (user_id, exclude_from_autocontrol)")
+            print("✅ Индекс для поля exclude_from_autocontrol создан")
+        else:
+            print("ℹ️ Поле exclude_from_autocontrol уже существует")
         
-    finally:
-        if conn:
-            conn.close()
+        conn.commit()
+        conn.close()
+        
+    except Exception as e:
+        print(f"❌ Ошибка миграции: {e}")
 
-if __name__ == '__main__':
-    run_migration()
+if __name__ == "__main__":
+    migrate_add_exclude_field()

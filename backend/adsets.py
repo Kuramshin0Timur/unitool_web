@@ -56,8 +56,8 @@ def get_user_adsets(user_id: int) -> List[Dict[str, Any]]:
 
             return adsets
 
+# В функции add_user_adset добавим поле exclude_from_autocontrol
 def add_user_adset(user_id: int, data: Dict[str, Any]):
-   
     with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
@@ -67,8 +67,9 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
                 user_id, name, adset_id, ucpc, cpc, cpm, spend, cpa, status, geo, token, 
                 leads, manual_pause, king, effective_status, ad_name, budget,
                 campaign_id, account_id, auto_budget_increase, auto_budget_decrease,
-                max_budget, min_budget, budget_increase_step, budget_decrease_step
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                max_budget, min_budget, budget_increase_step, budget_decrease_step,
+                exclude_from_autocontrol
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 user_id,
                 data.get('name', ''),
@@ -94,12 +95,23 @@ def add_user_adset(user_id: int, data: Dict[str, Any]):
                 data.get('max_budget', 0),
                 data.get('min_budget', 0),
                 data.get('budget_increase_step', 1.2),
-                data.get('budget_decrease_step', 0.8)
+                data.get('budget_decrease_step', 0.8),
+                data.get('exclude_from_autocontrol', 0)  # Новое поле
             ))
             
             conn.commit()
 
-
+# Добавим функцию для обновления статуса исключения
+def update_adset_exclusion_status(user_id: int, adset_id: str, exclude: bool):
+    """Обновляет статус исключения адсета из автоконтроля"""
+    with lock:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+            UPDATE adsets SET exclude_from_autocontrol = ? 
+            WHERE user_id = ? AND adset_id = ?
+            """, (1 if exclude else 0, user_id, adset_id))
+            conn.commit()
 def update_user_adset_status(user_id: int, adset_id: str, status: str):
    
     with lock:
@@ -164,7 +176,7 @@ class FacebookAPI:
         Берем только нужные поля.
         """
         if fields is None:
-            fields = fields = "id,name,campaign_id,status,effective_status"
+            fields = "id,name,campaign_id,daily_budget,status,effective_status"
 
 
         url = f"{self.BASE_URL}/act_{account_id}/adsets"

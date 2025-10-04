@@ -14,7 +14,7 @@ from fuzzywuzzy import fuzz, process
 
 from backend.account import get_all_users, get_user_accounts_stats
 from backend.adsets import (add_user_adset, fetch_facebook_adsets,
-                            get_user_adsets, refresh_adsets_internal,
+                            get_user_adsets, refresh_adsets_internal, update_adset_exclusion_status,
                             update_user_adset_status)
 from backend.autocontrol import (auto_control, auto_refresh_lock,
                                  auto_refresh_timers, get_combined_auto_status,
@@ -4314,14 +4314,14 @@ def build_keitaro_tree(keitaro_data: Dict[str, Dict]) -> Dict:
         'entries_by_key': entries_by_key
     }
 from datetime import datetime  # Добавьте этот импорт в начале файла
-
 @app.route('/api/adsets/data', methods=['GET'])
 def get_adsets_data():
     """API endpoint для получения данных об адсетах из базы данных"""
     try:
-        user_id = session.get('user_id', 1)  # Используем get для безопасности
+        user_id = session.get('user_id', 1)
         status_filter = request.args.get('status', 'all')
         search_query = request.args.get('search', '')
+        excluded_filter = request.args.get('excluded')  # Новый параметр
         
         with sqlite3.connect('unitool.db') as conn:
             conn.row_factory = sqlite3.Row
@@ -4334,14 +4334,22 @@ def get_adsets_data():
                     budget, geo, ucpc, cpc, cpm, spend, cpa, leads, king,
                     manual_pause, auto_budget_increase, auto_budget_decrease,
                     max_budget, min_budget, budget_increase_step, budget_decrease_step,
-                    created_at, updated_at
+                    created_at, updated_at,
+                    exclude_from_autocontrol  -- Добавляем поле исключения
                 FROM adsets 
                 WHERE user_id = ?
             """
 
             params = [user_id]
             
-            # Добавляем фильтры
+            # Фильтр по исключенным адсетам
+            if excluded_filter is not None:
+                if excluded_filter.lower() == 'true':
+                    query += " AND (exclude_from_autocontrol = 1 OR name LIKE '%#NOAUTO%' OR name LIKE '%#EXCLUDE%' OR name LIKE '%#ИСКЛ%')"
+                elif excluded_filter.lower() == 'false':
+                    query += " AND exclude_from_autocontrol = 0 AND name NOT LIKE '%#NOAUTO%' AND name NOT LIKE '%#EXCLUDE%' AND name NOT LIKE '%#ИСКЛ%'"
+            
+            # Добавляем остальные фильтры
             if status_filter != 'all':
                 query += " AND status = ?"
                 params.append(status_filter.upper())
@@ -4366,6 +4374,13 @@ def get_adsets_data():
                 
                 adset_dict['leads'] = int(adset_dict['leads']) if adset_dict['leads'] else 0
                 
+                # Определяем, исключен ли адсет (учитываем и поле, и маркеры в названии)
+                exclude_from_autocontrol = bool(adset_dict.get('exclude_from_autocontrol', 0))
+                name = adset_dict.get('name', '')
+                has_exclude_marker = any(marker in name.upper() for marker in ['#NOAUTO', '#EXCLUDE', '#ИСКЛ'])
+                
+                adset_dict['is_excluded'] = exclude_from_autocontrol or has_exclude_marker
+                
                 adsets_data.append(adset_dict)
             
             return jsonify({
@@ -4374,9 +4389,10 @@ def get_adsets_data():
                 'count': len(adsets_data),
                 'filters': {
                     'status': status_filter,
-                    'search': search_query
+                    'search': search_query,
+                    'excluded': excluded_filter
                 },
-                'last_updated': datetime.now().isoformat()  # Теперь работает
+                'last_updated': datetime.now().isoformat()
             })
             
     except Exception as e:
@@ -4385,8 +4401,7 @@ def get_adsets_data():
             'success': False,
             'error': str(e),
             'data': []
-        }), 500
-        
+        }), 500     
 def find_in_tree(
     tree: Dict,
     used_keys: Set[str],
@@ -4662,6 +4677,83 @@ def save_and_sync():
     except Exception as e:
         logger.error(f"Критическая ошибка синхронизации: {e}")
         return jsonify({"success": False, "error": str(e)})
+@app.route('/api/adsets/exclude_multiple', methods=['POST'])
+def exclude_multiple_adsets():
+    try:
+        data = request.get_json()
+        user_id = get_current_user_id()
+        adset_ids = data.get('adset_ids', [])
+        exclude = data.get('exclude', True)
+        
+        if not adset_ids:
+            return jsonify({'success': False, 'error': 'adset_ids обязателен'})
+        
+        # Обновляем статус для каждого адсета
+        for adset_id in adset_ids:
+            update_adset_exclusion_status(user_id, adset_id, exclude)
+        
+        action = "исключены" if exclude else "включены"
+        logger.info(f"{len(adset_ids)} адсетов {action} из автоконтроля для user_id {user_id}")
+        
+        return jsonify({
+            'success': True, 
+            'message': f'{len(adset_ids)} адсетов {action} из автоконтроля'
+        })
+        
+    except Exception as e:
+        logger.error(f"Ошибка массового обновления статуса исключения: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/adsets/exclude', methods=['POST'])
+def toggle_adset_exclusion():
+    try:
+        # проверяем JSON
+        if not request.is_json:
+            logger.warning("Exclude: тело запроса не JSON, raw: %s", request.get_data(as_text=True))
+            return jsonify({'success': False, 'error': 'Требуется JSON тело запроса'}), 400
+
+        data = request.get_json(silent=True)
+        if not data:
+            logger.warning("Exclude: request.get_json() вернул None, raw: %s", request.get_data(as_text=True))
+            return jsonify({'success': False, 'error': 'Невалидный JSON'}), 400
+
+        # безопасно получаем user_id
+        user_id = session.get('user_id')
+        if not user_id:
+            logger.info("Exclude: не аутентифицированный запрос (нет session['user_id']). Cookies: %s", dict(request.cookies))
+            return jsonify({'success': False, 'error': 'Пользователь не аутентифицирован'}), 401
+
+        adset_id = data.get('adset_id')
+        # допускаем также список adset_ids на будущее
+        adset_ids = data.get('adset_ids')
+
+        if not adset_id and not adset_ids:
+            return jsonify({'success': False, 'error': 'adset_id или adset_ids обязателен'}), 400
+
+        exclude = data.get('exclude', True)
+
+        # Поддержка одного и нескольких id
+        ids = [adset_id] if adset_id else list(adset_ids)
+
+        # Выполняем обновление в БД для каждого id — оборачиваем в try чтобы логировать конкретный id
+        updated = []
+        errors = []
+        for aid in ids:
+            try:
+                update_adset_exclusion_status(user_id, aid, exclude)
+                updated.append(aid)
+                logger.info("Адсет %s %s автоконтроля для user_id=%s", aid, ("исключён" if exclude else "включён"), user_id)
+            except Exception as ex:
+                logger.exception("Ошибка при обновлении adset %s: %s", aid, ex)
+                errors.append({'adset_id': aid, 'error': str(ex)})
+
+        if errors:
+            return jsonify({'success': False, 'message': 'Частично выполнено', 'updated': updated, 'errors': errors}), 207
+
+        return jsonify({'success': True, 'message': f'Адсет{"ы" if len(updated)>1 else ""} обновлены', 'adset_ids': updated, 'excluded': exclude})
+
+    except Exception as e:
+        logger.exception("Ошибка обновления статуса исключения: %s", e)
+        return jsonify({'success': False, 'error': 'Внутренняя ошибка сервера'}), 500
 
 @app.route('/api/adsets/sync_status', methods=['POST'])
 @login_required

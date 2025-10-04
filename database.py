@@ -107,6 +107,7 @@ def init_db():
             """)
             
             # Таблица адсетов - ОБНОВЛЕННАЯ ВЕРСИЯ
+            # Таблица адсетов - ОБНОВЛЕННАЯ ВЕРСИЯ
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS adsets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -135,13 +136,13 @@ def init_db():
                 min_budget REAL DEFAULT 0,
                 budget_increase_step REAL DEFAULT 1.2,
                 budget_decrease_step REAL DEFAULT 0.8,
+                exclude_from_autocontrol BOOLEAN DEFAULT 0,  -- НОВОЕ ПОЛЕ
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users (id),
                 UNIQUE(user_id, adset_id)
             )
             """)
-            
             # Таблица GEO конфигурации
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS geo_config (

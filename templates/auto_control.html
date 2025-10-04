@@ -6,7 +6,7 @@
     
     <!-- Статистика и управление -->
     <div class="row mb-4">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card bg-primary text-white">
                 <div class="card-body text-center">
                     <h5><i class="bi bi-layers"></i> Всего AdSets</h5>
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card bg-success text-white">
                 <div class="card-body text-center">
                     <h5><i class="bi bi-play-circle"></i> Активные</h5>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card bg-secondary text-white">
                 <div class="card-body text-center">
                     <h5><i class="bi bi-pause-circle"></i> На паузе</h5>
@@ -30,24 +30,148 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h5><i class="bi bi-slash-circle"></i> Исключены</h5>
+                    <h3 id="excludedAdsets">0</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Прогресс бар активных адсетов -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-between mb-2">
+                <span>Активные адсеты</span>
+                <span id="activePercentage">0%</span>
+            </div>
+            <div class="progress" style="height: 20px;">
+                <div id="activeProgress" class="progress-bar bg-success" role="progressbar" style="width: 0%">0%</div>
+            </div>
+        </div>
     </div>
 
     <!-- Управление автоконтролем -->
     <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
             <h5><i class="bi bi-play-btn"></i> Управление автоконтролем</h5>
+            <div id="systemStatus" class="text-warning">
+                <i class="bi bi-pause-circle"></i> Система остановлена
+            </div>
         </div>
         <div class="card-body">
-            <div class="d-flex gap-2 mb-3">
-                <button id="runAutoControl" class="btn btn-success">
-                    <i class="bi bi-play-fill"></i> Запустить автоконтроль
-                </button>
-                <button id="stopAutoControl" class="btn btn-danger" disabled>
-                    <i class="bi bi-stop-fill"></i> Остановить автоконтроль
-                </button>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex gap-2 mb-3">
+                        <button id="runAutoControl" class="btn btn-success btn-system">
+                            <i class="bi bi-play-fill"></i> Запустить систему
+                        </button>
+                        <button id="stopAutoControl" class="btn btn-danger btn-system" disabled>
+                            <i class="bi bi-stop-fill"></i> Остановить систему
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text">Интервал (мин)</span>
+                        <input type="number" id="autoRefreshInterval" class="form-control interval-control" 
+                               min="1" max="120" value="30">
+                        <button class="btn btn-outline-secondary" type="button" onclick="updateInterval()">
+                            <i class="bi bi-arrow-clockwise"></i> Обновить
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="text-muted">
-                <small><i class="bi bi-info-circle"></i> Последний запуск: <span id="lastRun">никогда</span></small>
+                <small><i class="bi bi-info-circle"></i> Система автоматически управляет адсетами на основе GEO правил</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таблица адсетов с управлением исключениями -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h5><i class="bi bi-table"></i> Управление адсетами</h5>
+            <div>
+                <button id="refreshAdsets" class="btn btn-light btn-sm">
+                    <i class="bi bi-arrow-clockwise"></i> Обновить
+                </button>
+                <button id="bulkExclude" class="btn btn-warning btn-sm ms-2" style="display: none;">
+                    <i class="bi bi-slash-circle"></i> Исключить выбранные
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="autoControlAdsetsTable" class="table table-striped table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th width="30">
+                                <input type="checkbox" id="selectAllAdsets" class="form-check-input">
+                            </th>
+                            <th width="250">Название</th>
+                            <th width="80">Статус</th>
+                            <th width="80">uCPC</th>
+                            <th width="80">CPC</th>
+                            <th width="80">CPM</th>
+                            <th width="80">Spend</th>
+                            <th width="80">CPA</th>
+                            <th width="70">Leads</th>
+                            <th width="60">GEO</th>
+                            <th width="80">King</th>
+                            <th width="80">Бюджет</th>
+                            <th width="120">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Данные загружаются через Ajax -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Таблица исключенных адсетов -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+            <h5><i class="bi bi-slash-circle"></i> Исключенные адсеты</h5>
+            <div>
+                <button id="refreshExcluded" class="btn btn-light btn-sm">
+                    <i class="bi bi-arrow-clockwise"></i> Обновить
+                </button>
+                <button id="bulkInclude" class="btn btn-success btn-sm ms-2" style="display: none;">
+                    <i class="bi bi-arrow-clockwise"></i> Вернуть выбранные
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="excludedAdsetsTable" class="table table-striped table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th width="30">
+                                <input type="checkbox" id="selectAllExcluded" class="form-check-input">
+                            </th>
+                            <th width="250">Название</th>
+                            <th width="80">Статус</th>
+                            <th width="80">uCPC</th>
+                            <th width="80">CPC</th>
+                            <th width="80">CPM</th>
+                            <th width="80">Spend</th>
+                            <th width="80">CPA</th>
+                            <th width="70">Leads</th>
+                            <th width="60">GEO</th>
+                            <th width="80">King</th>
+                            <th width="80">Бюджет</th>
+                            <th width="120">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Данные загружаются через Ajax -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -76,7 +200,47 @@
             <h5><i class="bi bi-list-check"></i> Лог выполнения</h5>
         </div>
         <div class="card-body">
-            <div id="autoControlLog" class="log-container" style="height: 200px; overflow-y: auto;"></div>
+            <div id="autoControlLog" class="log-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для массового исключения -->
+<div class="modal fade" id="bulkExcludeModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Массовое исключение адсетов</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите исключить <span id="selectedCount">0</span> адсетов из автоконтроля?</p>
+                <p class="text-muted small">Исключенные адсеты не будут управляться системой автоконтроля.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-warning" onclick="confirmBulkExclude()">Исключить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для массового включения -->
+<div class="modal fade" id="bulkIncludeModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Вернуть адсеты в автоконтроль</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите вернуть <span id="selectedExcludedCount">0</span> адсетов в автоконтроль?</p>
+                <p class="text-muted small">Адсеты снова будут управляться системой автоконтроля.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-success" onclick="confirmBulkInclude()">Вернуть в контроль</button>
+            </div>
         </div>
     </div>
 </div>
@@ -87,6 +251,911 @@
 <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" rel="stylesheet">
 
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<!-- Сначала загружаем JS файлы, потом наш скрипт -->
 <script src="{{ url_for('static', filename='js/auto_controls.js') }}"></script>
 <script src="{{ url_for('static', filename='js/geo_rules.js') }}"></script>
+
+<script>
+// Глобальные переменные
+let autoControlAdsetsTable;
+let excludedAdsetsTable;
+let selectedAdsets = new Set();
+let selectedExcludedAdsets = new Set();
+
+// Инициализация таблицы адсетов с DataTable
+function initializeAdsetsTable() {
+    if (!$.fn.DataTable) {
+        console.error('DataTable не подключен');
+        setTimeout(initializeAdsetsTable, 100);
+        return;
+    }
+    
+    // Уничтожаем существующую таблицу если есть
+    if ($.fn.DataTable.isDataTable('#autoControlAdsetsTable')) {
+        $('#autoControlAdsetsTable').DataTable().destroy();
+        $('#autoControlAdsetsTable').empty();
+    }
+
+    autoControlAdsetsTable = $('#autoControlAdsetsTable').DataTable({
+        fixedHeader: {
+            header: true,
+            footer: false
+        },
+        order: [[6, 'desc']],
+        ajax: {
+            url: '/api/adsets/data?excluded=false',
+            dataSrc: function(json) {
+                if (json.success) {
+                    updateStats(json.data);
+                    return json.data;
+                }
+                return [];
+            }
+        },
+        columns: [
+            { 
+                orderable: false,
+                searchable: false,
+                width: '30px',
+                render: function(data, type, row) {
+                    return `
+                        <input type="checkbox" class="form-check-input adset-checkbox" 
+                               data-id="${row.adset_id}" 
+                               onchange="toggleAdsetSelection('${row.adset_id}', this.checked)">
+                    `;
+                }
+            },
+            { 
+                type: 'string',
+                width: '250px',
+                render: function(data, type, row) {
+                    const name = row.name || 'N/A';
+                    const displayName = name.length > 50 ? name.substring(0, 50) + '...' : name;
+                    return `<div class="text-truncate" style="max-width: 250px" title="${name}">${displayName}</div>`;
+                }
+            },
+            { 
+                orderable: true,
+                searchable: true,
+                width: '80px',
+                render: function(data, type, row) {
+                    return createStatusCell(row.status);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.ucpc, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.cpc, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.cpm, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.spend, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.cpa, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '70px',
+                render: function(data, type, row) {
+                    return formatNumber(row.leads, 0);
+                }
+            },
+            { 
+                type: 'string',
+                width: '60px',
+                data: 'geo',
+                render: function(data) {
+                    return data || 'N/A';
+                }
+            },
+            { 
+                type: 'string',
+                width: '80px',
+                data: 'king',
+                render: function(data) {
+                    return data || 'Facebook';
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.budget, 2);
+                }
+            },
+            { 
+                orderable: false,
+                searchable: false,
+                width: '120px',
+                render: function(data, type, row) {
+                    return createMainActionsCell(row);
+                }
+            }
+        ],
+        language: {
+            emptyTable: "Нет активных адсетов для отображения",
+            loadingRecords: "Загрузка...",
+            zeroRecords: "Совпадений не найдено",
+            info: "Показано с _START_ по _END_ из _TOTAL_ записей",
+            infoEmpty: "Показано 0 записей",
+            infoFiltered: "(отфильтровано из _MAX_ записей)",
+            lengthMenu: "Показать _MENU_ записей",
+            search: "Поиск:",
+            paginate: {
+                first: "Первая",
+                last: "Последняя",
+                next: "→",
+                previous: "←"
+            }
+        },
+        pageLength: 25,
+        responsive: true,
+        autoWidth: false,
+        dom: '<"row"<"col-md-6"l><"col-md-6"f>>rt<"row"<"col-md-6"i><"col-md-6"p>>'
+    });
+}
+
+// Инициализация таблицы исключенных адсетов
+function initializeExcludedAdsetsTable() {
+    if (!$.fn.DataTable) {
+        console.error('DataTable не подключен');
+        setTimeout(initializeExcludedAdsetsTable, 100);
+        return;
+    }
+    
+    // Уничтожаем существующую таблицу если есть
+    if ($.fn.DataTable.isDataTable('#excludedAdsetsTable')) {
+        $('#excludedAdsetsTable').DataTable().destroy();
+        $('#excludedAdsetsTable').empty();
+    }
+
+    excludedAdsetsTable = $('#excludedAdsetsTable').DataTable({
+        fixedHeader: {
+            header: true,
+            footer: false
+        },
+        order: [[6, 'desc']],
+        ajax: {
+            url: '/api/adsets/data?excluded=true',
+            dataSrc: function(json) {
+                if (json.success) {
+                    return json.data;
+                }
+                return [];
+            }
+        },
+        columns: [
+            { 
+                orderable: false,
+                searchable: false,
+                width: '30px',
+                render: function(data, type, row) {
+                    return `
+                        <input type="checkbox" class="form-check-input excluded-adset-checkbox" 
+                               data-id="${row.adset_id}" 
+                               onchange="toggleExcludedAdsetSelection('${row.adset_id}', this.checked)">
+                    `;
+                }
+            },
+            { 
+                type: 'string',
+                width: '250px',
+                render: function(data, type, row) {
+                    const name = row.name || 'N/A';
+                    const hasMarker = name.includes('#NOAUTO') || name.includes('#EXCLUDE') || name.includes('#ИСКЛ');
+                    const displayName = name.length > 50 ? name.substring(0, 50) + '...' : name;
+                    
+                    if (hasMarker) {
+                        return `<div class="text-truncate text-warning" style="max-width: 250px" title="${name}">${displayName} ⚠️</div>`;
+                    } else {
+                        return `<div class="text-truncate" style="max-width: 250px" title="${name}">${displayName}</div>`;
+                    }
+                }
+            },
+            { 
+                orderable: true,
+                searchable: true,
+                width: '80px',
+                render: function(data, type, row) {
+                    return createStatusCell(row.status);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.ucpc, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.cpc, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.cpm, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.spend, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.cpa, 3);
+                }
+            },
+            { 
+                type: 'num',
+                width: '70px',
+                render: function(data, type, row) {
+                    return formatNumber(row.leads, 0);
+                }
+            },
+            { 
+                type: 'string',
+                width: '60px',
+                data: 'geo',
+                render: function(data) {
+                    return data || 'N/A';
+                }
+            },
+            { 
+                type: 'string',
+                width: '80px',
+                data: 'king',
+                render: function(data) {
+                    return data || 'Facebook';
+                }
+            },
+            { 
+                type: 'num',
+                width: '80px',
+                render: function(data, type, row) {
+                    return formatNumber(row.budget, 2);
+                }
+            },
+            { 
+                orderable: false,
+                searchable: false,
+                width: '120px',
+                render: function(data, type, row) {
+                    return createExcludedActionsCell(row);
+                }
+            }
+        ],
+        language: {
+            emptyTable: "Нет исключенных адсетов",
+            loadingRecords: "Загрузка...",
+            zeroRecords: "Совпадений не найдено",
+            info: "Показано с _START_ по _END_ из _TOTAL_ записей",
+            infoEmpty: "Показано 0 записей",
+            infoFiltered: "(отфильтровано из _MAX_ записей)",
+            lengthMenu: "Показать _MENU_ записей",
+            search: "Поиск:",
+            paginate: {
+                first: "Первая",
+                last: "Последняя",
+                next: "→",
+                previous: "←"
+            }
+        },
+        pageLength: 25,
+        responsive: true,
+        autoWidth: false,
+        dom: '<"row"<"col-md-6"l><"col-md-6"f>>rt<"row"<"col-md-6"i><"col-md-6"p>>'
+    });
+}
+
+// Вспомогательные функции для рендеринга
+function createStatusCell(status) {
+    let statusClass;
+    switch(status) {
+        case 'ACTIVE':
+            statusClass = 'bg-success';
+            break;
+        case 'PAUSED':
+            statusClass = 'bg-secondary';
+            break;
+        case 'DISABLED':
+            statusClass = 'bg-danger';
+            break;
+        case 'DISAPPROVED':
+            statusClass = 'bg-danger';
+            break;
+        case 'ARCHIVED':
+            statusClass = 'bg-warning text-dark';
+            break;
+        default:
+            statusClass = 'bg-info';
+    }
+    return `<span class="badge ${statusClass}">${status}</span>`;
+}
+
+function formatNumber(value, decimals) {
+    const num = parseFloat(value);
+    if (isNaN(num)) return "-";
+    return num.toFixed(decimals);
+}
+
+function createMainActionsCell(adset) {
+    return `
+        <div class="btn-group-sm">
+            <button class="btn btn-sm btn-warning exclude-btn" 
+                    onclick="toggleAdsetExclusion('${adset.adset_id}', '${(adset.name || '').replace(/'/g, "\\'")}', false)"
+                    title="Исключить из автоконтроля">
+                <i class="bi bi-slash-circle"></i> Исключить
+            </button>
+            ${adset.status === 'ACTIVE' ? `
+                <button class="btn btn-sm btn-danger pause-btn" 
+                        onclick="pauseAdset('${adset.adset_id}', '${adset.token}', '${(adset.name || '').replace(/'/g, "\\'")}')">
+                    <i class="bi bi-pause-fill"></i>
+                </button>
+            ` : `
+                <button class="btn btn-sm btn-success resume-btn" 
+                        onclick="resumeAdset('${adset.adset_id}', '${adset.token}', '${(adset.name || '').replace(/'/g, "\\'")}')">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+            `}
+        </div>
+    `;
+}
+
+function createExcludedActionsCell(adset) {
+    return `
+        <div class="btn-group-sm">
+            <button class="btn btn-sm btn-success include-btn" 
+                    onclick="toggleAdsetExclusion('${adset.adset_id}', '${(adset.name || '').replace(/'/g, "\\'")}', true)"
+                    title="Вернуть в автоконтроль">
+                <i class="bi bi-arrow-clockwise"></i> Вернуть
+            </button>
+            ${adset.status === 'ACTIVE' ? `
+                <button class="btn btn-sm btn-danger pause-btn" 
+                        onclick="pauseAdset('${adset.adset_id}', '${adset.token}', '${(adset.name || '').replace(/'/g, "\\'")}')">
+                    <i class="bi bi-pause-fill"></i>
+                </button>
+            ` : `
+                <button class="btn btn-sm btn-success resume-btn" 
+                        onclick="resumeAdset('${adset.adset_id}', '${adset.token}', '${(adset.name || '').replace(/'/g, "\\'")}')">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+            `}
+        </div>
+    `;
+}
+
+// Функции для работы с адсетами
+function pauseAdset(adsetId, token, name) {
+    fetch('/api/adset/pause', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            adset_id: adsetId,
+            token: token,
+            name: name
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            addLog(`⏸️ Адсет "${name}" приостановлен`, 'success');
+            reloadAllTables();
+            Swal.fire('Успех!', `Адсет "${name}" приостановлен`, 'success');
+        } else {
+            addLog(`❌ Ошибка приостановки адсета: ${data.error}`, 'error');
+            Swal.fire('Ошибка!', data.error, 'error');
+        }
+    })
+    .catch(error => {
+        addLog(`❌ Сетевая ошибка: ${error.message}`, 'error');
+        Swal.fire('Ошибка сети!', 'Не удалось приостановить адсет', 'error');
+    });
+}
+
+function resumeAdset(adsetId, token, name) {
+    fetch('/api/adset/resume', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            adset_id: adsetId,
+            token: token,
+            name: name
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            addLog(`▶️ Адсет "${name}" возобновлен`, 'success');
+            reloadAllTables();
+            Swal.fire('Успех!', `Адсет "${name}" возобновлен`, 'success');
+        } else {
+            addLog(`❌ Ошибка возобновления адсета: ${data.error}`, 'error');
+            Swal.fire('Ошибка!', data.error, 'error');
+        }
+    })
+    .catch(error => {
+        addLog(`❌ Сетевая ошибка: ${error.message}`, 'error');
+        Swal.fire('Ошибка сети!', 'Не удалось возобновить адсет', 'error');
+    });
+}
+
+// Управление выделением адсетов
+window.toggleAdsetSelection = function(adsetId, isChecked) {
+    if (isChecked) {
+        selectedAdsets.add(adsetId);
+    } else {
+        selectedAdsets.delete(adsetId);
+    }
+    updateBulkExcludeButton();
+};
+
+window.toggleExcludedAdsetSelection = function(adsetId, isChecked) {
+    if (isChecked) {
+        selectedExcludedAdsets.add(adsetId);
+    } else {
+        selectedExcludedAdsets.delete(adsetId);
+    }
+    updateBulkIncludeButton();
+};
+
+// Обновление статистики
+function updateStats(adsets) {
+    const total = adsets.length;
+    const active = adsets.filter(a => a.status === 'ACTIVE').length;
+    const paused = adsets.filter(a => a.status === 'PAUSED').length;
+    
+    // Загружаем отдельно исключенные адсеты для точного подсчета
+    fetch('/api/adsets/data?excluded=true')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const excluded = data.data.length;
+                
+                $('#totalAdsets').text(total + excluded);
+                $('#activeAdsets').text(active);
+                $('#pausedAdsets').text(paused);
+                $('#excludedAdsets').text(excluded);
+
+                const progressBar = $('#activeProgress');
+                const activePercentage = $('#activePercentage');
+                
+                if (progressBar.length && total + excluded > 0) {
+                    const percentage = (active / (total + excluded)) * 100;
+                    progressBar.css('width', `${percentage}%`);
+                    progressBar.attr('aria-valuenow', percentage);
+                    progressBar.text(`${Math.round(percentage)}%`);
+                    activePercentage.text(`${Math.round(percentage)}%`);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки статистики исключенных:', error);
+        });
+}
+$(document).ready(function() {
+    // --- Подготовка и ссылки на элементы ---
+    initializeAdsetsTable();
+    initializeExcludedAdsetsTable();
+
+    const runBtnEl = document.getElementById('runAutoControl');
+    const stopBtnEl = document.getElementById('stopAutoControl');
+    const intervalInputEl = document.getElementById('autoRefreshInterval');
+
+    // Вставим CSS для .spin, если ещё нет
+    if (!document.querySelector('style#auto-control-spin')) {
+        const style = document.createElement('style');
+        style.id = 'auto-control-spin';
+        style.textContent = `
+            .spin { animation: spin 1s linear infinite; display: inline-block; }
+            @keyframes spin { 100% { transform: rotate(360deg); } }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Использовать глобальные showLoading/hideLoading если они есть, иначе локальные
+    const localShowLoading = (btn, text) => {
+        if (!btn) return;
+        btn.disabled = true;
+        btn.innerHTML = `<i class="bi bi-arrow-repeat spin"></i> ${text}`;
+    };
+    const localHideLoading = (btn, text) => {
+        if (!btn) return;
+        btn.disabled = false;
+        btn.innerHTML = text;
+    };
+
+    const showLoadingFn = (typeof window.showLoading === 'function') ? window.showLoading : localShowLoading;
+    const hideLoadingFn = (typeof window.hideLoading === 'function') ? window.hideLoading : localHideLoading;
+
+    // ==== Управление системой (через /api/auto_refresh с action) ====
+    $('#runAutoControl').on('click', function() {
+        const btn = runBtnEl || this;
+        showLoadingFn(btn, 'Запуск системы...');
+
+        fetch('/api/auto_refresh', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'start' })
+        })
+        .then(response => {
+            if (!response.ok) {
+                // прочитать текст ошибки/HTML и выбросить для catch
+                return response.text().then(text => { throw new Error(text || response.statusText); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.success) {
+                $('#systemStatus')
+                    .removeClass('text-warning')
+                    .addClass('text-success')
+                    .html('<i class="bi bi-play-circle"></i> Система запущена');
+
+                $('#runAutoControl').attr('disabled', true);
+                $('#stopAutoControl').removeAttr('disabled');
+
+                addLog('▶️ Система автоконтроля запущена', 'success');
+                if (typeof updateSystemUI === 'function') updateSystemUI(true);
+            } else {
+                const err = (data && data.error) ? data.error : 'Не удалось запустить систему';
+                addLog(`❌ Ошибка запуска: ${err}`, 'error');
+                Swal.fire('Ошибка!', err, 'error');
+            }
+        })
+        .catch(err => {
+            console.error('runAutoControl error:', err);
+            addLog(`❌ Сетевая ошибка: ${err.message}`, 'error');
+            Swal.fire('Ошибка сети!', err.message || 'Сервер вернул некорректный ответ', 'error');
+        })
+        .finally(() => {
+            // восстановим текст кнопки (используем тот же текст, что в UI)
+            hideLoadingFn(btn, '<i class="bi bi-play-fill"></i> Запустить систему');
+            // обновим статус чуть позже, чтобы бэкенд успел переключиться
+            setTimeout(() => { 
+                if (typeof checkSystemStatus === 'function') checkSystemStatus();
+            }, 1000);
+        });
+    });
+
+    $('#stopAutoControl').on('click', function() {
+        const btn = stopBtnEl || this;
+        showLoadingFn(btn, 'Остановка...');
+
+        fetch('/api/auto_refresh', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'stop' })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => { throw new Error(text || response.statusText); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.success) {
+                $('#systemStatus')
+                    .removeClass('text-success')
+                    .addClass('text-warning')
+                    .html('<i class="bi bi-pause-circle"></i> Система остановлена');
+
+                $('#stopAutoControl').attr('disabled', true);
+                $('#runAutoControl').removeAttr('disabled');
+
+                addLog('⏸️ Система автоконтроля остановлена', 'warning');
+                if (typeof updateSystemUI === 'function') updateSystemUI(false);
+            } else {
+                const err = (data && data.error) ? data.error : 'Не удалось остановить систему';
+                addLog(`❌ Ошибка остановки: ${err}`, 'error');
+                Swal.fire('Ошибка!', err, 'error');
+            }
+        })
+        .catch(err => {
+            console.error('stopAutoControl error:', err);
+            addLog(`❌ Сетевая ошибка: ${err.message}`, 'error');
+            Swal.fire('Ошибка сети!', err.message || 'Сервер вернул некорректный ответ', 'error');
+        })
+        .finally(() => {
+            hideLoadingFn(btn, 'Остановить систему');
+            setTimeout(() => { 
+                if (typeof checkSystemStatus === 'function') checkSystemStatus();
+            }, 1000);
+        });
+    });
+
+    // ==== Работа с таблицами (bulk + обновления) ====
+    // Выделить все в основной таблице
+    $('#selectAllAdsets').on('change', function() {
+        const isChecked = $(this).is(':checked');
+        $('#autoControlAdsetsTable .adset-checkbox').prop('checked', isChecked);
+
+        if (isChecked) {
+            const allCheckboxes = document.querySelectorAll('#autoControlAdsetsTable .adset-checkbox');
+            allCheckboxes.forEach(checkbox => {
+                const adsetId = checkbox.dataset.id;
+                selectedAdsets.add(adsetId);
+            });
+        } else {
+            selectedAdsets.clear();
+        }
+
+        updateBulkExcludeButton();
+    });
+
+    // Выделить все в таблице исключенных
+    $('#selectAllExcluded').on('change', function() {
+        const isChecked = $(this).is(':checked');
+        $('#excludedAdsetsTable .excluded-adset-checkbox').prop('checked', isChecked);
+
+        if (isChecked) {
+            const allCheckboxes = document.querySelectorAll('#excludedAdsetsTable .excluded-adset-checkbox');
+            allCheckboxes.forEach(checkbox => {
+                const adsetId = checkbox.dataset.id;
+                selectedExcludedAdsets.add(adsetId);
+            });
+        } else {
+            selectedExcludedAdsets.clear();
+        }
+
+        updateBulkIncludeButton();
+    });
+
+    // Кнопки обновления таблиц
+    $('#refreshAdsets').on('click', function() {
+        reloadAllTables();
+    });
+
+    $('#refreshExcluded').on('click', function() {
+        if (excludedAdsetsTable) {
+            excludedAdsetsTable.ajax.reload();
+        }
+    });
+
+    // Кнопка массового исключения
+    $('#bulkExclude').on('click', function() {
+        const selectedIds = Array.from(selectedAdsets);
+        if (selectedIds.length > 0) {
+            $('#selectedCount').text(selectedIds.length);
+            new bootstrap.Modal(document.getElementById('bulkExcludeModal')).show();
+        }
+    });
+
+    // Кнопка массового включения
+    $('#bulkInclude').on('click', function() {
+        const selectedIds = Array.from(selectedExcludedAdsets);
+        if (selectedIds.length > 0) {
+            $('#selectedExcludedCount').text(selectedIds.length);
+            new bootstrap.Modal(document.getElementById('bulkIncludeModal')).show();
+        }
+    });
+});
+
+function updateBulkExcludeButton() {
+    const selectedCount = selectedAdsets.size;
+    const bulkExcludeBtn = $('#bulkExclude');
+    
+    if (selectedCount > 0) {
+        bulkExcludeBtn.show().text(`Исключить выбранные (${selectedCount})`);
+    } else {
+        bulkExcludeBtn.hide();
+    }
+}
+
+function updateBulkIncludeButton() {
+    const selectedCount = selectedExcludedAdsets.size;
+    const bulkIncludeBtn = $('#bulkInclude');
+    
+    if (selectedCount > 0) {
+        bulkIncludeBtn.show().text(`Вернуть выбранные (${selectedCount})`);
+    } else {
+        bulkIncludeBtn.hide();
+    }
+}
+
+function confirmBulkExclude() {
+    const selectedIds = Array.from(selectedAdsets);
+    
+    fetch('/api/adsets/exclude_multiple', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            adset_ids: selectedIds,
+            exclude: true
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            $('#bulkExcludeModal').modal('hide');
+            selectedAdsets.clear();
+            updateBulkExcludeButton();
+            
+            reloadAllTables();
+            
+            addLog(`✅ ${selectedIds.length} адсетов исключено из автоконтроля`, 'success');
+            Swal.fire('Успех!', `${selectedIds.length} адсетов исключено из автоконтроля`, 'success');
+        } else {
+            Swal.fire('Ошибка!', data.error || 'Не удалось исключить адсеты', 'error');
+        }
+    })
+    .catch(error => {
+        Swal.fire('Ошибка сети!', 'Не удалось подключиться к серверу', 'error');
+    });
+}
+
+function confirmBulkInclude() {
+    const selectedIds = Array.from(selectedExcludedAdsets);
+    
+    fetch('/api/adsets/exclude_multiple', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            adset_ids: selectedIds,
+            exclude: false
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            $('#bulkIncludeModal').modal('hide');
+            selectedExcludedAdsets.clear();
+            updateBulkIncludeButton();
+            
+            reloadAllTables();
+            
+            addLog(`✅ ${selectedIds.length} адсетов возвращено в автоконтроль`, 'success');
+            Swal.fire('Успех!', `${selectedIds.length} адсетов возвращено в автоконтроль`, 'success');
+        } else {
+            Swal.fire('Ошибка!', data.error || 'Не удалось вернуть адсеты', 'error');
+        }
+    })
+    .catch(error => {
+        Swal.fire('Ошибка сети!', 'Не удалось подключиться к серверу', 'error');
+    });
+}
+
+function reloadAllTables() {
+    if (autoControlAdsetsTable) {
+        autoControlAdsetsTable.ajax.reload();
+    }
+    if (excludedAdsetsTable) {
+        excludedAdsetsTable.ajax.reload();
+    }
+}
+
+// Добавление логов
+function addLog(message, type = 'info') {
+    const logContainer = document.getElementById('autoControlLog');
+    if (!logContainer) return;
+    
+    const timestamp = new Date().toLocaleTimeString();
+    const logEntry = document.createElement('div');
+    logEntry.className = `log-entry log-${type}`;
+    logEntry.innerHTML = `<span class="log-time">[${timestamp}]</span> ${message}`;
+    
+    logContainer.appendChild(logEntry);
+    logContainer.scrollTop = logContainer.scrollHeight;
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    addLog('🚀 Система автоконтроля инициализирована', 'info');
+});
+</script>
+
+<style>
+.progress {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 0.5s ease-in-out;
+}
+
+.log-container {
+    max-height: 300px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+
+.log-info { background: #e7f3ff; }
+.log-success { background: #d4edda; color: #155724; }
+.log-warning { background: #fff3cd; color: #856404; }
+.log-error { background: #f8d7da; color: #721c24; }
+
+.log-time {
+    color: #6c757d;
+    font-weight: bold;
+}
+
+.btn-system {
+    min-width: 120px;
+}
+
+.interval-control {
+    max-width: 100px;
+}
+
+.hot-container {
+    height: 400px;
+    overflow: hidden;
+}
+
+.table-responsive {
+    max-height: 600px;
+}
+
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge {
+    font-size: 0.8em;
+}
+
+.btn-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.775rem;
+}
+</style>
 {% endblock %}

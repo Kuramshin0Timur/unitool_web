@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const runBtn = document.getElementById('runAutoControl');
     const stopBtn = document.getElementById('stopAutoControl');
@@ -14,74 +13,61 @@ document.addEventListener('DOMContentLoaded', function() {
         interval: 60
     };
     
-  
+    // Инициализация системы
     initializeSystem();
     
-  
+    // Обработчики событий
     runBtn?.addEventListener('click', startAutoSystem);
     stopBtn?.addEventListener('click', stopAutoSystem);
     intervalInput?.addEventListener('change', updateInterval);
     
-  
     function initializeSystem() {
-    
         loadStats();
-        
-       
         checkSystemStatus();
-        
-     
         loadCurrentInterval();
     }
     
-    
     function startAutoSystem() {
-    // Валидация интервала на стороне клиента все еще полезна
-    const intervalInput = document.getElementById('autoRefreshInterval');
-    const interval = parseInt(intervalInput?.value) || 60;
-    
-    if (interval < 1 || interval > 120) { // Можно увеличить максимальный лимит
-        addLog('❌ Интервал должен быть от 1 до 120 минут', 'error');
-        Swal.fire('Ошибка', 'Интервал должен быть от 1 до 120 минут', 'error');
-        return;
-    }
-    
-    const runBtn = document.getElementById('runAutoControl');
-    showLoading(runBtn, 'Запуск системы...');
-    
-    // --- ИЗМЕНЕНИЕ ---
-    // Тело запроса теперь не содержит 'interval'
-    fetch('/api/auto_refresh', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            action: 'start' 
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            addLog(`✅ ${data.message}`, 'success');
-            Swal.fire('Запущено!', data.message, 'success');
-        } else {
-            addLog(`❌ Ошибка запуска: ${data.error}`, 'error');
-            Swal.fire('Ошибка!', data.error, 'error');
+        const intervalInput = document.getElementById('autoRefreshInterval');
+        const interval = parseInt(intervalInput?.value) || 60;
+        
+        if (interval < 1 || interval > 120) {
+            addLog('❌ Интервал должен быть от 1 до 120 минут', 'error');
+            Swal.fire('Ошибка', 'Интервал должен быть от 1 до 120 минут', 'error');
+            return;
         }
-    })
-    .catch(error => {
-        addLog(`❌ Сетевая ошибка: ${error}`, 'error');
-        Swal.fire('Сетевая ошибка!', 'Не удалось запустить систему.', 'error');
-    })
-    .finally(() => {
-        hideLoading(runBtn, '<i class="bi bi-play-fill"></i> Запустить');
-        // Обновляем статус через секунду, чтобы сервер успел обработать
-        setTimeout(checkSystemStatus, 1000); 
-    });
-}
-
-    
+        
+        const runBtn = document.getElementById('runAutoControl');
+        showLoading(runBtn, 'Запуск системы...');
+        
+        fetch('/api/auto_refresh', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'start' 
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                addLog(`✅ ${data.message}`, 'success');
+                Swal.fire('Запущено!', data.message, 'success');
+            } else {
+                addLog(`❌ Ошибка запуска: ${data.error}`, 'error');
+                Swal.fire('Ошибка!', data.error, 'error');
+            }
+        })
+        .catch(error => {
+            addLog(`❌ Сетевая ошибка: ${error}`, 'error');
+            Swal.fire('Сетевая ошибка!', 'Не удалось запустить систему.', 'error');
+        })
+        .finally(() => {
+            hideLoading(runBtn, '<i class="bi bi-play-fill"></i> Запустить');
+            setTimeout(checkSystemStatus, 1000); 
+        });
+    }
     
     function stopAutoSystem() {
         showLoading(stopBtn, 'Остановка...');
@@ -122,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-
     function checkSystemStatus() {
         fetch('/api/auto_refresh', {
             method: 'POST',
@@ -150,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    
     function loadCurrentInterval() {
         fetch('/api/settings')
             .then(response => response.json())
@@ -168,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-   
     function updateInterval() {
         const newInterval = parseInt(intervalInput.value) || 60;
         
@@ -199,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-      function updateSystemInterval(interval) {
+    function updateSystemInterval(interval) {
         fetch('/api/auto_refresh', {
             method: 'POST',
             headers: {
@@ -236,7 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-   
     function updateSystemUI(isRunning) {
         if (runBtn) runBtn.disabled = isRunning;
         if (stopBtn) stopBtn.disabled = !isRunning;
@@ -268,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-      
         if (runBtn) {
             runBtn.innerHTML = isRunning 
                 ? '<i class="bi bi-check-circle"></i> Система запущена' 
@@ -283,7 +264,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-
     function loadStats() {
         fetch('/api/adsets')
             .then(response => response.json())
@@ -298,13 +278,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    
     function updateStats(adsets) {
         const total = adsets.length;
         const active = adsets.filter(a => a.effective_status === 'ACTIVE').length;
         const paused = adsets.filter(a => a.effective_status === 'PAUSED').length;
         
- 
         const updateStatElement = (id, value) => {
             const element = document.getElementById(id);
             if (element) element.textContent = value;
@@ -314,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateStatElement('activeAdsets', active);
         updateStatElement('pausedAdsets', paused);
         
-      
         const progressBar = document.getElementById('activeProgress');
         if (progressBar && total > 0) {
             const percentage = (active / total) * 100;
@@ -324,7 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-
     function addLog(message, type = 'info') {
         if (!logContainer) return;
         
@@ -357,24 +333,93 @@ document.addEventListener('DOMContentLoaded', function() {
         return classes[type] || 'text-info';
     }
     
-
     function showLoading(button, text) {
         if (!button) return;
         button.disabled = true;
         button.innerHTML = `<i class="bi bi-arrow-repeat spin"></i> ${text}`;
     }
     
-
     function hideLoading(button, text) {
         if (!button) return;
         button.disabled = false;
         button.innerHTML = text;
     }
     
-   
+    // Функция для переключения статуса исключения адсета
+    // includeFlag: true  -> вернуть в автоконтроль
+// includeFlag: false -> исключить из автоконтроля
+function toggleAdsetExclusion(adsetId, name, includeFlag = false) {
+    const exclude = !Boolean(includeFlag); // true = исключить
+    const actionText = exclude ? 'Исключить' : 'Вернуть';
+    const confirmText = exclude ? `Исключить адсет "${name}" из автоконтроля?` : `Вернуть адсет "${name}" в автоконтроль?`;
+
+    Swal.fire({
+        title: actionText,
+        text: confirmText,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: actionText,
+        cancelButtonText: 'Отмена'
+    }).then(result => {
+        if (!result.isConfirmed) return;
+
+        // Найдём кнопку на странице (если есть) чтобы показать локальный спиннер
+        // лучшее — передавать кнопку явным параметром, но ищем по data-id
+        const btnSelector = `.exclude-btn[onclick*="${adsetId}"], .include-btn[onclick*="${adsetId}"]`;
+        const btn = document.querySelector(btnSelector);
+
+        const originalBtnHtml = btn ? btn.innerHTML : null;
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = `<i class="bi bi-arrow-repeat spin"></i> ${actionText}...`;
+        }
+
+        fetch('/api/adsets/exclude', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin', // важно — чтобы сессия (cookie) пришла на бэкенд
+            body: JSON.stringify({ adset_id: adsetId, exclude: exclude })
+        })
+        .then(response => {
+            if (!response.ok) {
+                // читаем текст ошибки (html / текст) для логирования
+                return response.text().then(text => { throw new Error(text || response.statusText); });
+            }
+            // ожидаем JSON; если сервер вернул не JSON — упадём в catch
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.success) {
+                addLog(`✅ Адсет "${name}" ${exclude ? 'исключён' : 'возвращён'} в автоконтроль`, 'success');
+                Swal.fire('Готово', data.message || `${actionText} выполнено`, 'success');
+                // Перезагрузим таблицы, чтобы отразить изменения
+                reloadAllTables();
+            } else {
+                const err = (data && data.error) ? data.error : 'Неизвестная ошибка';
+                addLog(`❌ Ошибка: ${err}`, 'error');
+                Swal.fire('Ошибка', err, 'error');
+            }
+        })
+        .catch(err => {
+            console.error('toggleAdsetExclusion error:', err);
+            addLog(`❌ Сетевая/серверная ошибка: ${err.message}`, 'error');
+            Swal.fire('Ошибка', err.message || 'Сервер вернул некорректный ответ', 'error');
+        })
+        .finally(() => {
+            if (btn) {
+                btn.disabled = false;
+                // восстановим оригинальный HTML кнопки — если не знаем, подставим текст
+                btn.innerHTML = originalBtnHtml || (exclude ? '<i class="bi bi-slash-circle"></i> Исключить' : '<i class="bi bi-arrow-clockwise"></i> Вернуть');
+            }
+        });
+    });
+}
+
+    
+    // Периодическая проверка статуса
     setInterval(checkSystemStatus, 30000);
     
-
+    // Стили
     const style = document.createElement('style');
     style.textContent = `
         .spin { 
@@ -453,6 +498,11 @@ document.addEventListener('DOMContentLoaded', function() {
             font-weight: 500;
         }
         
+        .btn-exclude {
+            min-width: 100px;
+            font-size: 0.8rem;
+        }
+        
         @media (max-width: 768px) {
             .btn-system {
                 width: 100%;
@@ -462,12 +512,17 @@ document.addEventListener('DOMContentLoaded', function() {
             .interval-control {
                 max-width: 100%;
             }
+            
+            .btn-exclude {
+                min-width: 80px;
+                font-size: 0.75rem;
+            }
         }
     `;
     document.head.appendChild(style);
 });
 
-
+// Глобальный объект для управления системой
 window.AutoControlSystem = {
     start: function() {
         const runBtn = document.getElementById('runAutoControl');
@@ -506,5 +561,92 @@ window.AutoControlSystem = {
             logEntry.innerHTML = `<span class="text-muted">[${timeString}]</span> ${message}`;
             logContainer.prepend(logEntry);
         }
+    },
+    
+    excludeAdset: function(adsetId, adsetName) {
+        // Вызываем глобальную функцию toggleAdsetExclusion
+        if (typeof toggleAdsetExclusion === 'function') {
+            toggleAdsetExclusion(adsetId, adsetName, false);
+        }
+    },
+    
+    includeAdset: function(adsetId, adsetName) {
+        // Вызываем глобальную функцию toggleAdsetExclusion
+        if (typeof toggleAdsetExclusion === 'function') {
+            toggleAdsetExclusion(adsetId, adsetName, true);
+        }
+    },
+    
+    // Новая функция для массового исключения адсетов
+    excludeMultipleAdsets: function(adsetIds, adsetNames) {
+        if (!adsetIds || !adsetIds.length) {
+            Swal.fire('Ошибка!', 'Не выбраны адсеты для исключения', 'error');
+            return;
+        }
+        
+        Swal.fire({
+            title: 'Исключить несколько адсетов?',
+            html: `Будет исключено <strong>${adsetIds.length}</strong> адсетов из автоконтроля<br><br>
+                   <small>Адсеты будут пропускаться системой автоконтроля</small>`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Исключить',
+            cancelButtonText: 'Отмена'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch('/api/adsets/exclude_multiple', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        adset_ids: adsetIds,
+                        exclude: true
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const message = `✅ ${adsetIds.length} адсетов исключено из автоконтроля`;
+                        this.addLog(message, 'success');
+                        Swal.fire('Успех!', message, 'success');
+                        
+                        // Обновляем таблицу
+                        if (window.adsetsTable) {
+                            window.adsetsTable.ajax.reload();
+                        }
+                    } else {
+                        Swal.fire('Ошибка!', data.error || 'Не удалось исключить адсеты', 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Ошибка сети!', 'Не удалось подключиться к серверу', 'error');
+                });
+            }
+        });
     }
 };
+function toggleAdsetExclusion(adsetId, name, includeFlag = false) {
+    const exclude = !Boolean(includeFlag); 
+    const actionText = exclude ? 'Исключить' : 'Вернуть';
+
+    fetch('/api/adsets/exclude', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ adset_id: adsetId, exclude: exclude })
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            addLog(`✅ Адсет "${name}" ${exclude ? 'исключён' : 'возвращён'} в автоконтроль`, 'success');
+            Swal.fire('Успех', data.message, 'success');
+            reloadAllTables(); // только таблицы
+        } else {
+            Swal.fire('Ошибка', data.error || 'Не удалось изменить статус адсета', 'error');
+        }
+    })
+    .catch(err => {
+        Swal.fire('Ошибка сети!', err.message, 'error');
+    });
+}

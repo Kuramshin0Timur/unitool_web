@@ -1288,7 +1288,7 @@ function renderAdsets(data) {
         const row = [
             createCheckboxCell(adset),
             adset.name || 'N/A',
-            createStatusCell(adset.effective_status),
+            createStatusCell(adset.status),
             formatNumber(adset.ucpc, 3),
             formatNumber(adset.cpc, 3),
             formatNumber(adset.cpm, 3),
