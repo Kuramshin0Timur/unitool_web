@@ -345,8 +345,7 @@ function syncAllData() {
 }
 
 window.syncAllData = syncAllData;
-    function loadAdsets() {
-    // Если таблица не видна, не обновляем
+function loadAdsets() {
     if (document.visibilityState === 'hidden') {
         return;
     }
@@ -354,8 +353,17 @@ window.syncAllData = syncAllData;
     console.log('Загрузка адсетов...');
     showLoading();
     
-    // Добавляем timestamp для избежания кеширования
-    fetch(`/api/adsets?ts=${Date.now()}`)
+    const statusFilter = document.getElementById('statusFilter')?.value || 'all';
+    const nameSearch = document.getElementById('nameSearch')?.value || '';
+    
+    const params = new URLSearchParams({
+        ts: Date.now(),
+        status: statusFilter,
+        search: nameSearch
+    });
+    
+    // Используем новый endpoint
+    fetch(`/api/adsets/data?${params}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -366,17 +374,13 @@ window.syncAllData = syncAllData;
             if (data.success) {
                 adsetsData = data.data || [];
                 renderAdsets(adsetsData);
-                
-                // Обновляем время последнего обновления
                 updateLastRefreshTime();
-                
             } else {
                 showError('Ошибка загрузки адсетов', data.error || 'Неизвестная ошибка');
             }
         })
         .catch(error => {
             console.error('Ошибка загрузки адсетов:', error);
-            // Не показываем ошибку при каждом автообновлении, только в лог
             addLogEntry(`Ошибка загрузки: ${error.message}`, 'error');
         })
         .finally(() => {
@@ -465,9 +469,9 @@ function createAutoBudgetCell(value) {
         `;
     }
     
-    function createStatusCell(status) {
+    function createStatusCell(effective_status) {
     let statusClass;
-    switch(status) {
+    switch(effective_status) {
         case 'ACTIVE':
             statusClass = 'bg-success';
             break;
@@ -486,13 +490,13 @@ function createAutoBudgetCell(value) {
         default:
             statusClass = 'bg-info';
     }
-    return `<span class="badge ${statusClass}">${status}</span>`;
+    return `<span class="badge ${statusClass}">${effective_status}</span>`;
 }
     
     function createActionsCell(adset) {
     return `
         <div class="btn-group-sm">
-            ${adset.status === 'ACTIVE' ? `
+            ${adset.effective_status === 'ACTIVE' ? `
                 <button class="btn btn-sm btn-danger pause-btn" 
                         onclick="pauseAdset('${adset.adset_id}', '${adset.token}', '${adset.name.replace(/'/g, "\\'")}')">
                     <i class="bi bi-pause-fill"></i>
@@ -1284,7 +1288,7 @@ function renderAdsets(data) {
         const row = [
             createCheckboxCell(adset),
             adset.name || 'N/A',
-            createStatusCell(adset.status),
+            createStatusCell(adset.effective_status),
             formatNumber(adset.ucpc, 3),
             formatNumber(adset.cpc, 3),
             formatNumber(adset.cpm, 3),

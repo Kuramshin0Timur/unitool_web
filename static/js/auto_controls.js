@@ -301,8 +301,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function updateStats(adsets) {
         const total = adsets.length;
-        const active = adsets.filter(a => a.status === 'ACTIVE').length;
-        const paused = adsets.filter(a => a.status === 'PAUSED').length;
+        const active = adsets.filter(a => a.effective_status === 'ACTIVE').length;
+        const paused = adsets.filter(a => a.effective_status === 'PAUSED').length;
         
  
         const updateStatElement = (id, value) => {

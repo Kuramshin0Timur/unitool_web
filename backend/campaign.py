@@ -211,7 +211,7 @@ def refresh_campaigns_internal(user_id):
 
 def update_user_campaign_status(user_id: int, campaign_id: str, status: str):
   
-    with fcntl.flock:
+    with lock:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             cursor.execute("""

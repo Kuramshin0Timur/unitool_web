@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import re
+import sqlite3
 import threading
 from functools import wraps
 from logging.handlers import RotatingFileHandler
@@ -3821,10 +3822,6 @@ def test_keitaro_connection():
 @login_required
 def logout():
     user_id = session['user_id']
-    
-    # Останавливаем и автоконтроль и автообновление
-    stop_auto_control_and_refresh(user_id)
-    
     session.clear()
     flash('Вы вышли из системы', 'info')
     return redirect(url_for('login'))
@@ -4316,6 +4313,80 @@ def build_keitaro_tree(keitaro_data: Dict[str, Dict]) -> Dict:
         'token_index': token_index,
         'entries_by_key': entries_by_key
     }
+from datetime import datetime  # Добавьте этот импорт в начале файла
+
+@app.route('/api/adsets/data', methods=['GET'])
+def get_adsets_data():
+    """API endpoint для получения данных об адсетах из базы данных"""
+    try:
+        user_id = session.get('user_id', 1)  # Используем get для безопасности
+        status_filter = request.args.get('status', 'all')
+        search_query = request.args.get('search', '')
+        
+        with sqlite3.connect('unitool.db') as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            
+            # Базовый запрос
+            query = """
+                SELECT 
+                    adset_id, name, status, effective_status, account_id, token,
+                    budget, geo, ucpc, cpc, cpm, spend, cpa, leads, king,
+                    manual_pause, auto_budget_increase, auto_budget_decrease,
+                    max_budget, min_budget, budget_increase_step, budget_decrease_step,
+                    created_at, updated_at
+                FROM adsets 
+                WHERE user_id = ?
+            """
+
+            params = [user_id]
+            
+            # Добавляем фильтры
+            if status_filter != 'all':
+                query += " AND status = ?"
+                params.append(status_filter.upper())
+            
+            if search_query:
+                query += " AND name LIKE ?"
+                params.append(f'%{search_query}%')
+            
+            query += " ORDER BY updated_at DESC"
+            
+            cursor.execute(query, params)
+            adsets = cursor.fetchall()
+            
+            # Преобразуем в словарь
+            adsets_data = []
+            for adset in adsets:
+                adset_dict = dict(adset)
+                
+                # Форматируем числовые значения
+                for field in ['budget', 'spend', 'ucpc', 'cpc', 'cpm', 'cpa']:
+                    adset_dict[field] = float(adset_dict[field]) if adset_dict[field] else 0
+                
+                adset_dict['leads'] = int(adset_dict['leads']) if adset_dict['leads'] else 0
+                
+                adsets_data.append(adset_dict)
+            
+            return jsonify({
+                'success': True,
+                'data': adsets_data,
+                'count': len(adsets_data),
+                'filters': {
+                    'status': status_filter,
+                    'search': search_query
+                },
+                'last_updated': datetime.now().isoformat()  # Теперь работает
+            })
+            
+    except Exception as e:
+        print(f"Ошибка загрузки адсетов: {e}")
+        return jsonify({
+            'success': False,
+            'error': str(e),
+            'data': []
+        }), 500
+        
 def find_in_tree(
     tree: Dict,
     used_keys: Set[str],
@@ -4546,7 +4617,8 @@ def save_and_sync():
                         "name": ad_name,
                         "adset_id": adset_id,
                         "campaign_id": camp_id,
-                        "status": ad.get("status", "PAUSED"),
+                        "status": ad.get("status", "UNKNOWN"),             # сырой status
+                        "effective_status": ad.get("effective_status", "UNKNOWN"),  # сырой effective_status
                         "account_id": account_id,
                         "token": token,
                         "budget": budget,
@@ -4557,10 +4629,9 @@ def save_and_sync():
                         "cpm": stats.get("cpm", 0),
                         "cpc": stats.get("cpc", 0),
                         "king": "Facebook",
-                        "effective_status": ad.get("effective_status", ""),
                         "ad_name": ad_name,
                         "manual_pause": 0,
-                        "geo": geo 
+                        "geo": geo
                     })
 
                     if stats:
@@ -4755,25 +4826,6 @@ def add_adset_page():
         flash('AdSet успешно добавлен', 'success')
         return redirect(url_for('adsets'))
     return render_template('add_adset.html')
-@app.route('/api/adsets', methods=['GET'])
-@login_required
-def get_adsets():
-    try:
-        user_id = session['user_id']
-        account_id = request.args.get('account_id')
-        
-        if account_id:
-            adsets = get_account_adsets(user_id, account_id)
-        else:
-            adsets = get_user_adsets(user_id)
-        
-        return jsonify({
-            'success': True,
-            'data': adsets
-        })
-    except Exception as e:
-        logger.error(f"Ошибка получения адсетов: {str(e)}")
-        return jsonify({'success': False, 'error': str(e)})
 
 def get_account_adsets(user_id, account_id):
     """Получает все адсеты для конкретного аккаунта, включая из выключенных кампаний"""
