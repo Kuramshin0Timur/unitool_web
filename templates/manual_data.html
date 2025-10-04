@@ -7,6 +7,9 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4>Ручной ввод кампаний</h4>
             <div>
+                <button id="addRowBtn" class="btn btn-primary me-2">
+                    <i class="bi bi-plus-circle"></i> Добавить строку
+                </button>
                 <button id="saveData" class="btn btn-success">
                     <i class="bi bi-save"></i> Сохранить
                 </button>
@@ -19,6 +22,7 @@
             <p class="text-muted small">
                 Заполните таблицу данными. Для сохранения нажмите кнопку "Сохранить".
                 Пустые строки будут автоматически игнорироваться.
+                <strong>Примечание:</strong> При сохранении будут удалены все кампании и адсеты, которых нет в текущем списке.
             </p>
         </div>
     </div>
@@ -29,5 +33,179 @@
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
-<script src="{{ url_for('static', filename='js/handsontable-init.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('hot');
+    if (!container) {
+        console.error('Контейнер для таблицы не найден');
+        return;
+    }
+
+    // Функция для загрузки существующих данных
+    function loadExistingAccounts() {
+        return fetch('/api/get_existing_accounts')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки данных');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success && data.accounts && data.accounts.length > 0) {
+                    // Преобразуем данные в формат для таблицы
+                    return data.accounts.map(account => [account.account_id, account.token]);
+                }
+                return [['', '']]; // Возвращаем пустую строку если данных нет
+            })
+            .catch(error => {
+                console.error('Ошибка загрузки аккаунтов:', error);
+                return [['', '']]; // Возвращаем пустую строку при ошибке
+            });
+    }
+
+    // Инициализация таблицы с загрузкой данных
+    let hot;
+
+    loadExistingAccounts().then(initialData => {
+        hot = new Handsontable(container, {
+            data: initialData,
+            colHeaders: ['ID аккаунта', 'Токен'],
+            columns: [
+                { 
+                    type: 'text',
+                    validator: function(value, callback) {
+                        if (value && !value.match(/^\d+$/) && !value.match(/^act_\d+$/)) {
+                            callback(false);
+                        } else {
+                            callback(true);
+                        }
+                    }
+                },
+                { 
+                    type: 'text',
+                    validator: function(value, callback) {
+                        if (value && value.length < 10) {
+                            callback(false);
+                        } else {
+                            callback(true);
+                        }
+                    }
+                }
+            ],
+            rowHeaders: true,
+            contextMenu: true,
+            licenseKey: 'non-commercial-and-evaluation',
+            width: '100%',
+            height: 400,
+            minSpareRows: 1,
+            colWidths: [150, 300],
+            manualColumnResize: true,
+            manualRowResize: true,
+            afterChange: function(changes, source) {
+                if (source === 'edit') {
+                    console.log('Изменения:', changes);
+                }
+            },
+            cells: function(row, col) {
+                const cellProperties = {};
+                if (col === 0) {
+                    cellProperties.placeholder = '123456789 или act_123456789';
+                } else if (col === 1) {
+                    cellProperties.placeholder = 'EAAB... (Facebook Access Token)';
+                }
+                return cellProperties;
+            }
+        });
+
+        // Добавляем кнопку добавления строки после инициализации таблицы
+        document.getElementById('addRowBtn')?.addEventListener('click', function() {
+            hot.alter('insert_row');
+        });
+
+        document.getElementById('saveData')?.addEventListener('click', function() {
+            saveData();
+        });
+    });
+
+    function saveData() {
+        hot.validateCells(() => {});
+        hot.render();
+
+        const data = hot.getSourceData();
+        console.log('Данные для сохранения:', data);
+        
+        const filteredData = data.filter(row => 
+            row && row[0] !== null && row[0] !== "" &&
+            row[1] !== null && row[1] !== ""
+        );
+
+        console.log(`Строк для отправки: ${filteredData.length}`, filteredData);
+
+        if (filteredData.length === 0) {
+            alert('Нет данных для сохранения!');
+            return;
+        }
+
+        const saveBtn = document.getElementById('saveData');
+        const addRowBtn = document.getElementById('addRowBtn');
+        saveBtn.disabled = true;
+        addRowBtn.disabled = true;
+        saveBtn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Импорт и очистка...';
+
+        const payload = filteredData.map(row => ({
+            account_id: row[0],
+            token: row[1]
+        }));
+
+        // Получаем список всех аккаунтов для очистки удаленных
+        const allAccounts = filteredData.map(row => row[0]);
+
+        fetch('/api/manual_import_bulk', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                accounts: payload,
+                cleanup_accounts: allAccounts // Отправляем список аккаунтов для очистки
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const message = `Успешно! 
+Импортировано: ${data.total_campaigns} кампаний, ${data.total_adsets} адсетов
+Удалено: ${data.cleaned_campaigns || 0} кампаний, ${data.cleaned_adsets || 0} адсетов`;
+                alert(message);
+                
+                // Обновляем данные в таблице, убирая пустые строки
+                hot.loadData([...filteredData, ['', '']]);
+            } else {
+                alert('Ошибка: ' + (data.error || 'Неизвестная ошибка'));
+            }
+        })
+        .catch(error => {
+            alert('Ошибка сети: ' + error);
+        })
+        .finally(() => {
+            saveBtn.disabled = false;
+            addRowBtn.disabled = false;
+            saveBtn.innerHTML = '<i class="bi bi-save"></i> Сохранить';
+        });
+    }
+
+    // Добавляем стили для анимации
+    const style = document.createElement('style');
+    style.textContent = `
+        .spin { animation: spin 1s linear infinite; }
+        @keyframes spin { 
+            100% { transform: rotate(360deg); } 
+        }
+        .handsontable .htInvalid {
+            background-color: #ffcccc;
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
 {% endblock %}

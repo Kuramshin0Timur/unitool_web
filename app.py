@@ -2146,6 +2146,7 @@ def manual_import_bulk():
     try:
         user_id = session['user_id']
         accounts_data = request.json.get('accounts', [])
+        cleanup_accounts = request.json.get('cleanup_accounts', [])
         
         if not accounts_data:
             return jsonify({'success': False, 'error': 'Нет аккаунтов для импорта'})
@@ -2156,7 +2157,12 @@ def manual_import_bulk():
         
         total_campaigns = 0
         total_adsets = 0
+        cleaned_campaigns = 0
+        cleaned_adsets = 0
 
+        # Собираем все аккаунты из запроса для очистки
+        imported_account_ids = []
+        
         for account_data in accounts_data:
             account_id = account_data.get('account_id', '').strip()
             token = account_data.get('token', '').strip()
@@ -2166,6 +2172,7 @@ def manual_import_bulk():
 
             # Очищаем account_id от префикса act_
             clean_account_id = account_id.replace('act_', '')
+            imported_account_ids.append(clean_account_id)
             
             # 🔹 Получаем кампании
             campaigns = fetch_facebook_campaigns(clean_account_id, token)
@@ -2216,16 +2223,88 @@ def manual_import_bulk():
                 except Exception as e:
                     logger.error(f"Ошибка сохранения адсета {adset.get('id')}: {e}")
 
+        # 🔹 ОЧИСТКА УДАЛЕННЫХ АККАУНТОВ
+        if cleanup_accounts:
+            # Преобразуем cleanup_accounts в чистые ID (убираем act_)
+            clean_cleanup_accounts = [acc.replace('act_', '') for acc in cleanup_accounts if acc]
+            
+            # Удаляем кампании, которых нет в текущем списке
+            with get_db_connection(user_id) as conn:
+                cursor = conn.cursor()
+                
+                # Удаляем кампании
+                placeholders = ','.join('?' * len(clean_cleanup_accounts))
+                cursor.execute(f"""
+                    DELETE FROM campaigns 
+                    WHERE user_id = ? AND account_id NOT IN ({placeholders})
+                """, [user_id] + clean_cleanup_accounts)
+                cleaned_campaigns = cursor.rowcount
+                
+                # Удаляем адсеты
+                cursor.execute(f"""
+                    DELETE FROM adsets 
+                    WHERE user_id = ? AND account_id NOT IN ({placeholders})
+                """, [user_id] + clean_cleanup_accounts)
+                cleaned_adsets = cursor.rowcount
+                
+                conn.commit()
+                
+                logger.info(f"Очистка: удалено {cleaned_campaigns} кампаний и {cleaned_adsets} адсетов для аккаунтов вне списка: {clean_cleanup_accounts}")
+
         return jsonify({
             'success': True,
-            'message': f'Импортировано {total_campaigns} кампаний и {total_adsets} адсетов',
+            'message': f'Импортировано {total_campaigns} кампаний и {total_adsets} адсетов. Очищено {cleaned_campaigns} кампаний и {cleaned_adsets} адсетов',
             'total_campaigns': total_campaigns,
-            'total_adsets': total_adsets
+            'total_adsets': total_adsets,
+            'cleaned_campaigns': cleaned_campaigns,
+            'cleaned_adsets': cleaned_adsets
         })
 
     except Exception as e:
         logger.error(f"Ошибка bulk-импорта: {e}")
         return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/get_existing_accounts', methods=['GET'])
+@login_required
+def get_existing_accounts():
+    """Получает уникальные аккаунты и токены из базы данных"""
+    try:
+        user_id = session['user_id']
+        
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            
+            # Получаем уникальные комбинации account_id и token из кампаний
+            cursor.execute("""
+                SELECT DISTINCT account_id, token 
+                FROM campaigns 
+                WHERE user_id = ? AND account_id != '' AND token != ''
+                UNION
+                SELECT DISTINCT account_id, token 
+                FROM adsets 
+                WHERE user_id = ? AND account_id != '' AND token != ''
+            """, (user_id, user_id))
+            
+            accounts = cursor.fetchall()
+            
+            result = []
+            for account in accounts:
+                result.append({
+                    'account_id': account['account_id'],
+                    'token': account['token']
+                })
+            
+            return jsonify({
+                'success': True,
+                'accounts': result
+            })
+            
+    except Exception as e:
+        logger.error(f"Ошибка получения аккаунтов: {e}")
+        return jsonify({
+            'success': False, 
+            'error': str(e),
+            'accounts': []
+        })
 @app.route('/api/manual_adsets', methods=['POST'])
 @login_required
 def save_manual_adsets():

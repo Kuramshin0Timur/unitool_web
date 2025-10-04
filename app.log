@@ -1,174 +1,52 @@
-2025-10-04 21:53:04,405 - backend.autocontrol - DEBUG - Обработка адсета: IN 6696_K-116 IN tunahitrost 1 18.09(vst2) 2 (ID: 120232995640500509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,405 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,405 - backend.autocontrol - DEBUG - Обработка адсета: IN 6696_K-116 IN tunahitrost 1 18.09(vst2) 5 (ID: 120232995640470509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,405 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6696_K-116 IN tunahitrost 1 18.09(vst2) 4 (ID: 120232995640460509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6696_K-116 IN tunahitrost 1 18.09(vst2) 1 (ID: 120232995621600509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6553_k-103 IN  Z MONAH-NEWS 11.09(vst2) 5 (ID: 120232387973360509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6553_k-103 IN  Z MONAH-NEWS 11.09(vst2) 4 (ID: 120232387973340509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6553_k-103 IN  Z MONAH-NEWS 11.09(vst2) 3 (ID: 120232387973330509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6553_k-103 IN  Z MONAH-NEWS 11.09(vst2) 2 (ID: 120232387973310509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6553_k-103 IN  Z MONAH-NEWS 11.09(vst2) 1 (ID: 120232387914910509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,406 - backend.autocontrol - DEBUG - Обработка адсета: IN 6547_K-105 IN  sereg-podctast monah(vst1) 5 (ID: 120232385308670509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: IN 6547_K-105 IN  sereg-podctast monah(vst1) 4 (ID: 120232385308660509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: IN 6547_K-105 IN  sereg-podctast monah(vst1) 3 (ID: 120232385308650509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: IN 6547_K-105 IN  sereg-podctast monah(vst1) 2 (ID: 120232385308640509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: IN 6547_K-105 IN  sereg-podctast monah(vst1) 1 (ID: 120232384654100509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO IN: max_cpa=3.0, min_spend=2.0, extended_spend_threshold=2.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: ID 6413_ID serega_molekula1 2706(1) 4 (ID: 120231817155560509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: ID 6413_ID serega_molekula1 2706(1) 3 (ID: 120231817155550509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: ID 6413_ID serega_molekula1 2706(1) 2 (ID: 120231817155540509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,407 - backend.autocontrol - DEBUG - Обработка адсета: ID 6413_ID serega_molekula1 2706(1) 5 (ID: 120231817155500509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Обработка адсета: ID 6413_ID serega_molekula1 2706(1) 1 (ID: 120231817039700509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Обработка адсета: TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 5 (ID: 120231299068550509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,408 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Обработка адсета: TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 4 (ID: 120231299068540509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,408 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Обработка адсета: TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 3 (ID: 120231299068530509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,408 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Обработка адсета: TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 2 (ID: 120231299068510509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,408 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Обработка адсета: TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 1 (ID: 120231298971350509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,408 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6218_TH Z-SWIPE-1 otzv 03.08(lang2) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,408 - backend.autocontrol - DEBUG - Обработка адсета: TH 6215_K-94 TH y-52 podcast monah(lang1) 2 (ID: 120231298256770509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6215_K-94 TH y-52 podcast monah(lang1) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6215_K-94 TH y-52 podcast monah(lang1) 3 (ID: 120231298256760509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6215_K-94 TH y-52 podcast monah(lang1) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6215_K-94 TH y-52 podcast monah(lang1) 4 (ID: 120231298256740509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6215_K-94 TH y-52 podcast monah(lang1) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6215_K-94 TH y-52 podcast monah(lang1) 5 (ID: 120231298256710509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6215_K-94 TH y-52 podcast monah(lang1) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6215_K-94 TH y-52 podcast monah(lang1) 1 (ID: 120231297850010509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6215_K-94 TH y-52 podcast monah(lang1) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6049_K-89 TH novostik  18.08_1(vst1) 4 (ID: 120230855552630509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6049_K-89 TH novostik  18.08_1(vst1) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6049_K-89 TH novostik  18.08_1(vst1) 3 (ID: 120230855552610509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6049_K-89 TH novostik  18.08_1(vst1) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6049_K-89 TH novostik  18.08_1(vst1) 2 (ID: 120230855552600509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6049_K-89 TH novostik  18.08_1(vst1) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6049_K-89 TH novostik  18.08_1(vst1) 5 (ID: 120230855552590509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6049_K-89 TH novostik  18.08_1(vst1) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,409 - backend.autocontrol - DEBUG - Обработка адсета: TH 6049_K-89 TH novostik  18.08_1(vst1) 1 (ID: 120230853622900509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,409 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6049_K-89 TH novostik  18.08_1(vst1) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6033_K-84 TH voltaren1 15.08(vst2) 5 (ID: 120230742407040509, статус: PAUSED, effective_status: PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6033_K-84 TH voltaren1 15.08(vst2) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6033_K-84 TH voltaren1 15.08(vst2) 4 (ID: 120230742407030509, статус: PAUSED, effective_status: PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6033_K-84 TH voltaren1 15.08(vst2) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6033_K-84 TH voltaren1 15.08(vst2) 3 (ID: 120230742407020509, статус: PAUSED, effective_status: PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6033_K-84 TH voltaren1 15.08(vst2) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6033_K-84 TH voltaren1 15.08(vst2) 2 (ID: 120230742407010509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6033_K-84 TH voltaren1 15.08(vst2) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6033_K-84 TH voltaren1 15.08(vst2) 1 (ID: 120230742251620509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6033_K-84 TH voltaren1 15.08(vst2) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6022_K-86 TH GOLD3  15.08_1(vst1) 2 (ID: 120230739348590509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6022_K-86 TH GOLD3  15.08_1(vst1) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6022_K-86 TH GOLD3  15.08_1(vst1) 3 (ID: 120230739348560509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6022_K-86 TH GOLD3  15.08_1(vst1) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6022_K-86 TH GOLD3  15.08_1(vst1) 4 (ID: 120230739348550509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6022_K-86 TH GOLD3  15.08_1(vst1) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6022_K-86 TH GOLD3  15.08_1(vst1) 5 (ID: 120230739348540509, статус: PAUSED, effective_status: PAUSED)
-2025-10-04 21:53:04,410 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6022_K-86 TH GOLD3  15.08_1(vst1) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,410 - backend.autocontrol - DEBUG - Обработка адсета: TH 6022_K-86 TH GOLD3  15.08_1(vst1) 1 (ID: 120230738511100509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 6022_K-86 TH GOLD3  15.08_1(vst1) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: ID 5920_Y-67 ID  short  muslim(vvs1) 3 (ID: 120230381400810509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: ID 5920_Y-67 ID  short  muslim(vvs1) 2 (ID: 120230381400800509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: ID 5920_Y-67 ID  short  muslim(vvs1) 5 (ID: 120230381400780509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: ID 5920_Y-67 ID  short  muslim(vvs1) 4 (ID: 120230381400750509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: ID 5920_Y-67 ID  short  muslim(vvs1) 1 (ID: 120230380806250509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Правила для GEO ID: max_cpa=5.0, min_spend=3.0, extended_spend_threshold=4.0
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: TH 5615_mugshena78 red TH(vst1) 5 (ID: 120229724474280509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5615_mugshena78 red TH(vst1) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: TH 5615_mugshena78 red TH(vst1) 4 (ID: 120229724474250509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5615_mugshena78 red TH(vst1) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: TH 5615_mugshena78 red TH(vst1) 3 (ID: 120229724474240509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5615_mugshena78 red TH(vst1) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,411 - backend.autocontrol - DEBUG - Обработка адсета: TH 5615_mugshena78 red TH(vst1) 2 (ID: 120229724474220509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,411 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5615_mugshena78 red TH(vst1) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH 5615_mugshena78 red TH(vst1) 1 (ID: 120229724323790509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5615_mugshena78 red TH(vst1) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH 5548_TH mark72 MONAHnew 30.07(lang1) 5 (ID: 120229580575530509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5548_TH mark72 MONAHnew 30.07(lang1) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH 5548_TH mark72 MONAHnew 30.07(lang1) 4 (ID: 120229580575490509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5548_TH mark72 MONAHnew 30.07(lang1) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH 5548_TH mark72 MONAHnew 30.07(lang1) 3 (ID: 120229580575480509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5548_TH mark72 MONAHnew 30.07(lang1) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH 5548_TH mark72 MONAHnew 30.07(lang1) 2 (ID: 120229580575460509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5548_TH mark72 MONAHnew 30.07(lang1) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH 5548_TH mark72 MONAHnew 30.07(lang1) 1 (ID: 120229578844420509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5548_TH mark72 MONAHnew 30.07(lang1) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 5 (ID: 120229021971740509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 5 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 4 (ID: 120229021971730509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 4 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 3 (ID: 120229021971720509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 3 (неизвестное GEO: TH)
-2025-10-04 21:53:04,412 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 2 (ID: 120229021971710509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,412 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 2 (неизвестное GEO: TH)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 1 (ID: 120229021185320509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 1 (неизвестное GEO: TH)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GD5 (ID: 120228119833140509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GD5 (неизвестное GEO: GD)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GD4 (ID: 120228119833120509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GD4 (неизвестное GEO: GD)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GD3 (ID: 120228119833110509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GD3 (неизвестное GEO: GD)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GD2 (ID: 120228119833100509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GD2 (неизвестное GEO: GD)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GD1 (ID: 120228119753000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GD1 (неизвестное GEO: GD)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GF2 (ID: 120228119689030509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GF2 (неизвестное GEO: GF)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GF3 (ID: 120228119689020509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GF3 (неизвестное GEO: GF)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GF4 (ID: 120228119689000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,413 - backend.autocontrol - INFO - ⏭️ Пропускаем GF4 (неизвестное GEO: GF)
-2025-10-04 21:53:04,413 - backend.autocontrol - DEBUG - Обработка адсета: GF5 (ID: 120228119688990509, статус: PAUSED, effective_status: PAUSED)
-2025-10-04 21:53:04,414 - backend.autocontrol - INFO - ⏭️ Пропускаем GF5 (неизвестное GEO: GF)
-2025-10-04 21:53:04,414 - backend.autocontrol - DEBUG - Обработка адсета: GF1 (ID: 120228119565650509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,414 - backend.autocontrol - INFO - ⏭️ Пропускаем GF1 (неизвестное GEO: GF)
-2025-10-04 21:53:04,414 - backend.autocontrol - DEBUG - Обработка адсета: TT52 (ID: 120227905502050509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 21:53:04,414 - backend.autocontrol - INFO - ⏭️ Пропускаем TT52 (неизвестное GEO: TT)
-2025-10-04 21:53:04,419 - backend.autocontrol - INFO - ✅ === АВТОКОНТРОЛЬ ЗАВЕРШЕН (цикл #1) ===
-2025-10-04 21:53:04,419 - backend.autocontrol - INFO - ✅ Цикл #1 завершен успешно
-2025-10-04 21:53:04,420 - backend.autocontrol - INFO - ⏰ Ожидание 30 минут до следующего цикла...
-2025-10-04 21:53:04,420 - backend.autocontrol - INFO - 🛑 Остановка: флаг running=False
-2025-10-04 21:53:13,952 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:13] "GET /adsets HTTP/1.1" 200 -
-2025-10-04 21:53:14,473 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-10-04 21:53:14,540 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:14] "GET /static/js/adsets.js HTTP/1.1" 200 -
-2025-10-04 21:53:15,551 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:15] "GET /api/adsets/data?ts=1759614598357&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:53:15,565 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:15] "GET /api/auto_control/logs?ts=1759614598357 HTTP/1.1" 200 -
-2025-10-04 21:53:16,530 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:16] "GET /api/adsets/data?ts=1759614599369&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:53:17,580 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:17] "GET /api/adsets/data?ts=1759614600381&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:53:18,534 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:18] "GET /api/adsets/data?ts=1759614601380&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:53:19,541 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:19] "GET /api/adsets/data?ts=1759614602394&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:53:20,539 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:20] "GET /api/adsets/data?ts=1759614603400&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:53:21,660 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:21] "GET /api/adsets/data?ts=1759614604414&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:53:22,538 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:53:22] "GET /api/adsets/data?ts=1759614605418&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:54:09,911 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:09] "GET /api/adsets/data?ts=1759614652730&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:54:11,105 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:11] "GET /api/adsets/data?ts=1759614653740&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:54:12,376 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:12] "GET /api/adsets/data?ts=1759614654750&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:54:13,078 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:13] "GET /api/adsets/data?ts=1759614655972&status=all&search= HTTP/1.1" 200 -
-2025-10-04 21:54:13,739 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:13] "GET /manual_data HTTP/1.1" 200 -
-2025-10-04 21:54:14,207 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:14] "GET /static/css/style.css HTTP/1.1" 200 -
-2025-10-04 21:54:14,209 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:14] "[36mGET /static/js/handsontable-init.js HTTP/1.1[0m" 304 -
-2025-10-04 21:54:15,303 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 21:54:15] "GET /api/accounts HTTP/1.1" 200 -
+2025-10-04 22:05:01,858 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1800
+2025-10-04 22:05:02,009 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:02,236 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 84
+2025-10-04 22:05:02,239 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:02,506 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 992
+2025-10-04 22:05:02,506 - backend.campaign - DEBUG - Получено 20 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 18}, Effective Status: {'ACTIVE': 2, 'PAUSED': 18}
+2025-10-04 22:05:02,507 - backend.campaign - INFO - Получено 20 кампаний, после фильтрации: 20 для аккаунта 690058783376774
+2025-10-04 22:05:02,564 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:02,854 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:02] "GET /api/adsets/data?ts=1759615305630&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:03,116 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1835
+2025-10-04 22:05:03,383 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:03,625 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 88
+2025-10-04 22:05:03,628 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:03,897 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:03] "GET /api/adsets/data?ts=1759615306633&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:03,967 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1543
+2025-10-04 22:05:03,968 - backend.campaign - DEBUG - Получено 38 кампаний. Status: {'PAUSED': 38}, Effective Status: {'PAUSED': 38}
+2025-10-04 22:05:03,968 - backend.campaign - INFO - Получено 38 кампаний, после фильтрации: 38 для аккаунта 707254618536242
+2025-10-04 22:05:04,054 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:04,725 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2947
+2025-10-04 22:05:04,834 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:04] "GET /api/adsets/data?ts=1759615307647&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:05,100 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:05,367 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&fields=id%2Cname%2Caccount_status HTTP/1.1" 200 89
+2025-10-04 22:05:05,371 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:05,751 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1375
+2025-10-04 22:05:05,752 - backend.campaign - DEBUG - Получено 33 кампаний. Status: {'PAUSED': 32, 'ACTIVE': 1}, Effective Status: {'PAUSED': 32, 'ACTIVE': 1}
+2025-10-04 22:05:05,752 - backend.campaign - INFO - Получено 33 кампаний, после фильтрации: 33 для аккаунта 9859604834059536
+2025-10-04 22:05:05,782 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:05] "GET /api/adsets/data?ts=1759615308654&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:05,834 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-04 22:05:06,605 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 2909
+2025-10-04 22:05:06,890 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:06] "GET /api/adsets/data?ts=1759615309659&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:07,181 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-04 22:05:07,801 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:07] "GET /api/adsets/data?ts=1759615310671&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:07,866 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-04 22:05:07,870 - __main__ - INFO - [save_and_sync] Keitaro обновил 0 адсетов для пользователя 3
+2025-10-04 22:05:07,870 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:07] "POST /api/save_and_sync HTTP/1.1" 200 -
+2025-10-04 22:05:08,786 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:08] "GET /api/adsets/data?ts=1759615311673&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:09,821 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:09] "GET /api/adsets/data?ts=1759615312688&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:10,555 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:10] "GET /api/adsets/data?ts=1759615313429&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:10,891 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:10] "GET /api/adsets/data?ts=1759615313703&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:12,035 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:12] "GET /api/adsets/data?ts=1759615314765&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:12,908 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:12] "GET /api/adsets/data?ts=1759615315785&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:13,969 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:13] "GET /api/adsets/data?ts=1759615316795&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:14,928 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:14] "GET /api/adsets/data?ts=1759615317799&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:15,999 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:15] "GET /api/adsets/data?ts=1759615318799&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:16,986 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:16] "GET /api/adsets/data?ts=1759615319812&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:18,011 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:18] "GET /api/adsets/data?ts=1759615320814&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:19,021 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:19] "GET /api/adsets/data?ts=1759615321874&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:20,070 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:20] "GET /api/adsets/data?ts=1759615322878&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:20,965 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:20] "GET /api/adsets/data?ts=1759615323891&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:22,017 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:22] "GET /api/adsets/data?ts=1759615324894&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:23,011 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:23] "GET /api/adsets/data?ts=1759615325907&status=all&search= HTTP/1.1" 200 -
+2025-10-04 22:05:24,142 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 22:05:24] "GET /api/adsets/data?ts=1759615326915&status=all&search= HTTP/1.1" 200 -

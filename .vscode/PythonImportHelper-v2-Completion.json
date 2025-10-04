@@ -2319,7 +2319,16 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def manual_import_bulk():\n    try:\n        user_id = session['user_id']\n        accounts_data = request.json.get('accounts', [])\n        if not accounts_data:\n            return jsonify({'success': False, 'error': 'Нет аккаунтов для импорта'})\n        # Получаем известные GEO коды\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        total_campaigns = 0",
+        "peekOfCode": "def manual_import_bulk():\n    try:\n        user_id = session['user_id']\n        accounts_data = request.json.get('accounts', [])\n        cleanup_accounts = request.json.get('cleanup_accounts', [])\n        if not accounts_data:\n            return jsonify({'success': False, 'error': 'Нет аккаунтов для импорта'})\n        # Получаем известные GEO коды\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_existing_accounts",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_existing_accounts():\n    \"\"\"Получает уникальные аккаунты и токены из базы данных\"\"\"\n    try:\n        user_id = session['user_id']\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            # Получаем уникальные комбинации account_id и token из кампаний\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
         "detail": "app",
         "documentation": {}
     },
