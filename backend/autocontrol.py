@@ -16,7 +16,8 @@ from backend.reserve_tokens import get_reserve_tokens
 from backend.setting import get_user_settings
 from backend.telegram import send_telegram_message
 from database import get_db_connection
-
+# Убедитесь, что этот импорт есть
+from backend.telegram import send_telegram_message
 logger = logging.getLogger(__name__)
 
 auto_control_threads = {}
@@ -129,10 +130,16 @@ def get_combined_auto_status(user_id):
         'auto_refresh_running': auto_refresh_running,
         'interval': interval
     }
-
 def stop_auto_control_and_refresh(user_id: int):
     """Ручная остановка автоконтроля (с автообновлением внутри цикла)."""
     logger.info(f"🛑 РУЧНАЯ остановка системы для пользователя {user_id}")
+    
+    # Уведомление об остановке
+    send_telegram_message(
+        f"🛑 Система автоконтроля остановлена\n"
+        f"🆔 Пользователь: {user_id}",
+        user_id=user_id
+    )
     
     with auto_control_lock:
         if user_id in auto_control_threads:
@@ -140,7 +147,6 @@ def stop_auto_control_and_refresh(user_id: int):
             logger.info(f"⏹️ Флаг остановки выставлен для пользователя {user_id}")
         else:
             logger.info(f"⚠️ Автоконтроль не был запущен для пользователя {user_id}")
-
 def get_session():
    
     session = requests.Session()
@@ -411,7 +417,6 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
             should_resume = True
             logger.info(f"🟢 ВОЗОБНОВЛЯЕМ {adset_name} - 0 лидов, но Spend ${spend:.2f} < "
                         f"Extended Spend Threshold ${geo_rules[geo]['extended_spend_threshold']:.2f}")
-
 def auto_control(user_id):
     try:
         logger.info(f"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")
@@ -445,16 +450,37 @@ def auto_control(user_id):
             
         logger.info(f"Найдено {len(all_adsets)} всего адсетов. В обработку взято {len(active_adsets)} активных.")
         
+        # Счетчики для уведомления
+        paused_count = 0
+        resumed_count = 0
+        errors_count = 0
+        
         # 3. Теперь цикл работает с коротким списком `active_adsets`
         for adset in active_adsets:
             try:
+                # Сохраняем предыдущий статус для сравнения
+                previous_status = adset.get('status', '')
+                
                 process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings)
+                
+                # Здесь можно добавить логику подсчета изменений
+                # (нужно будет модифицировать process_adset_control чтобы возвращать изменения)
                 
             except Exception as e:
                 logger.error(f"Ошибка обработки адсета {adset.get('name', 'unknown')}: {e}")
+                errors_count += 1
                 continue
                 
         check_and_pause_campaigns(user_id)
+        
+        # Итоговое уведомление о работе автоконтроля
+        send_telegram_message(
+            f"📊 Автоконтроль завершен\n"
+            f"• Всего адсетов: {len(all_adsets)}\n"
+            f"• Активных: {len(active_adsets)}\n"
+            f"• Ошибок: {errors_count}",
+            user_id=user_id
+        )
         
     except Exception as e:
         logger.error(f"Критическая ошибка автоконтроля для пользователя {user_id}: {e}")
@@ -478,6 +504,7 @@ def perform_auto_refresh(user_id):
             logger.info("🔄 Обновление кампаний...")
             refresh_campaigns_internal(user_id)
             logger.info("✅ Обновление кампаний завершено")
+            send_telegram_message("✅ Обновление кампаний завершено", user_id=user_id)
         else:
             logger.info("⏭️ Обновление кампаний пропущено (отключено в настройках)")
         
@@ -503,6 +530,7 @@ def perform_auto_refresh(user_id):
                     logger.error(f"❌ Подробности ошибки: {traceback.format_exc()}")
                     
             logger.info("✅ Обновление адсетов завершено")
+            send_telegram_message("✅ Обновление адсетов завершено", user_id=user_id)
         else:
             logger.info("⏭️ Обновление адсетов пропущено (отключено в настройках)")
         
@@ -510,16 +538,25 @@ def perform_auto_refresh(user_id):
         logger.info("🔗 Синхронизация с Keitaro...")
         sync_keitaro(user_id)
         logger.info("✅ Синхронизация с Keitaro завершена")
+        send_telegram_message("✅ Синхронизация с Keitaro завершена", user_id=user_id)
         
         logger.info(f"✅ АВТООБНОВЛЕНИЕ ДАННЫХ ЗАВЕРШЕНО для user_id {user_id}")
         
     except Exception as e:
         logger.error(f"❌ КРИТИЧЕСКАЯ ОШИБКА в автообновлении: {e}")
         logger.error(f"❌ Подробности ошибки: {traceback.format_exc()}")
+        send_telegram_message(f"❌ Критическая ошибка автообновления: {e}", user_id=user_id)
         raise  # Пробрасываем исключение дальше
 def run_auto_control_for_user(user_id):
     """Циклический автоконтроль с интегрированным автообновлением"""
     logger.info(f"🎯 Запуск цикла автоконтроля для user_id {user_id}")
+    
+    # Уведомление о начале работы цикла
+    send_telegram_message(
+        f"🎯 Запущен цикл автоконтроля\n"
+        f"🆔 Пользователь: {user_id}",
+        user_id=user_id
+    )
     
     # Счетчик циклов для отладки
     cycle_count = 0
@@ -532,9 +569,11 @@ def run_auto_control_for_user(user_id):
         with auto_control_lock:
             if user_id not in auto_control_threads:
                 logger.info(f"🛑 Автоконтроль остановлен (поток удален) для user_id {user_id}")
+                send_telegram_message(f"🛑 Автоконтроль остановлен (поток удален)", user_id=user_id)
                 break
             if not auto_control_threads[user_id].get('running', True):
                 logger.info(f"🛑 Автоконтроль остановлен (флаг running=False) для user_id {user_id}")
+                send_telegram_message(f"🛑 Автоконтроль остановлен по команде", user_id=user_id)
                 break
         
         try:
@@ -550,9 +589,23 @@ def run_auto_control_for_user(user_id):
             
             logger.info(f"✅ Цикл #{cycle_count} завершен успешно")
             
+            # Уведомление об успешном завершении цикла
+            send_telegram_message(
+                f"✅ Цикл автоконтроля #{cycle_count} завершен успешно\n"
+                f"⏰ Следующий цикл через 30 минут",
+                user_id=user_id
+            )
+            
         except Exception as e:
             logger.error(f"❌ Ошибка в цикле автоконтроля #{cycle_count}: {e}")
             logger.error(f"❌ Подробности ошибки: {traceback.format_exc()}")
+            
+            # Уведомление об ошибке
+            send_telegram_message(
+                f"❌ Ошибка в цикле автоконтроля #{cycle_count}:\n"
+                f"{str(e)[:200]}...",  # Ограничиваем длину сообщения
+                user_id=user_id
+            )
         
         # ⏰ Ждем указанный интервал между циклами
         settings = get_user_settings(user_id)
@@ -583,6 +636,14 @@ def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):
     """Запускает автоконтроль + автообновление (без лишнего таймера)"""
     logger.info(f"🚀 ЗАПУСК СИСТЕМЫ для user_id {user_id}")
     
+    # Уведомление о запуске системы
+    send_telegram_message(
+        f"🚀 Система автоконтроля запущена\n"
+        f"⏰ Интервал: {interval_minutes} минут\n"
+        f"🆔 Пользователь: {user_id}",
+        user_id=user_id
+    )
+    
     if interval_minutes is None:
         settings = get_user_settings(user_id)
         interval_minutes = 30
@@ -592,8 +653,10 @@ def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):
     try:
         perform_auto_refresh(user_id)
         logger.info("✅ Начальная синхронизация завершена")
+        send_telegram_message("✅ Начальная синхронизация данных завершена", user_id=user_id)
     except Exception as e:
         logger.error(f"⚠️ Ошибка начальной синхронизации: {e}")
+        send_telegram_message(f"❌ Ошибка начальной синхронизации: {e}", user_id=user_id)
     
     # 🎯 ЗАПУСКАЕМ АВТОКОНТРОЛЬ (он внутри себя делает обновление перед каждым циклом)
     with auto_control_lock:

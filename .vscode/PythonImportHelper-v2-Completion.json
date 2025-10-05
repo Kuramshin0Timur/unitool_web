@@ -911,6 +911,14 @@
         "documentation": {}
     },
     {
+        "label": "send_telegram_message",
+        "importPath": "backend.telegram",
+        "description": "backend.telegram",
+        "isExtraImport": true,
+        "detail": "backend.telegram",
+        "documentation": {}
+    },
+    {
         "label": "TELEGRAM_BOT_TOKEN",
         "importPath": "backend.telegram",
         "description": "backend.telegram",
@@ -1469,7 +1477,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def stop_auto_control_and_refresh(user_id: int):\n    \"\"\"Ручная остановка автоконтроля (с автообновлением внутри цикла).\"\"\"\n    logger.info(f\"🛑 РУЧНАЯ остановка системы для пользователя {user_id}\")\n    with auto_control_lock:\n        if user_id in auto_control_threads:\n            auto_control_threads[user_id]['running'] = False\n            logger.info(f\"⏹️ Флаг остановки выставлен для пользователя {user_id}\")\n        else:\n            logger.info(f\"⚠️ Автоконтроль не был запущен для пользователя {user_id}\")\ndef get_session():",
+        "peekOfCode": "def stop_auto_control_and_refresh(user_id: int):\n    \"\"\"Ручная остановка автоконтроля (с автообновлением внутри цикла).\"\"\"\n    logger.info(f\"🛑 РУЧНАЯ остановка системы для пользователя {user_id}\")\n    # Уведомление об остановке\n    send_telegram_message(\n        f\"🛑 Система автоконтроля остановлена\\n\"\n        f\"🆔 Пользователь: {user_id}\",\n        user_id=user_id\n    )\n    with auto_control_lock:",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1541,7 +1549,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Циклический автоконтроль с интегрированным автообновлением\"\"\"\n    logger.info(f\"🎯 Запуск цикла автоконтроля для user_id {user_id}\")\n    # Счетчик циклов для отладки\n    cycle_count = 0\n    while True:\n        cycle_count += 1\n        logger.info(f\"🔄 Цикл автоконтроля #{cycle_count} для user_id {user_id}\")\n        # Проверяем, нужно ли продолжать\n        with auto_control_lock:",
+        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Циклический автоконтроль с интегрированным автообновлением\"\"\"\n    logger.info(f\"🎯 Запуск цикла автоконтроля для user_id {user_id}\")\n    # Уведомление о начале работы цикла\n    send_telegram_message(\n        f\"🎯 Запущен цикл автоконтроля\\n\"\n        f\"🆔 Пользователь: {user_id}\",\n        user_id=user_id\n    )\n    # Счетчик циклов для отладки",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1550,7 +1558,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):\n    \"\"\"Запускает автоконтроль + автообновление (без лишнего таймера)\"\"\"\n    logger.info(f\"🚀 ЗАПУСК СИСТЕМЫ для user_id {user_id}\")\n    if interval_minutes is None:\n        settings = get_user_settings(user_id)\n        interval_minutes = 30\n    # 🔄 СНАЧАЛА ВЫПОЛНЯЕМ РАЗОВОЕ ОБНОВЛЕНИЕ ДАННЫХ\n    logger.info(\"🔄 Начальная синхронизация данных\")\n    try:\n        perform_auto_refresh(user_id)",
+        "peekOfCode": "def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):\n    \"\"\"Запускает автоконтроль + автообновление (без лишнего таймера)\"\"\"\n    logger.info(f\"🚀 ЗАПУСК СИСТЕМЫ для user_id {user_id}\")\n    # Уведомление о запуске системы\n    send_telegram_message(\n        f\"🚀 Система автоконтроля запущена\\n\"\n        f\"⏰ Интервал: {interval_minutes} минут\\n\"\n        f\"🆔 Пользователь: {user_id}\",\n        user_id=user_id\n    )",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
