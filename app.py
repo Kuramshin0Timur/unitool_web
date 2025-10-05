@@ -5839,13 +5839,40 @@ def get_user_reserve_tokens_by_king(king):
     except Exception as e:
         logger.error(f"Ошибка получения токенов для king {king} пользователя {user_id}: {e}")
         return jsonify({'success': False, 'error': str(e)})
+def update_username(user_id: int, new_username: str) -> bool:
+    """
+    Обновляет имя пользователя по его ID.
+
+    Args:
+        user_id (int): ID пользователя
+        new_username (str): новое имя пользователя
+
+    Returns:
+        bool: True, если обновление прошло успешно, иначе False
+    """
+    with lock:
+        with get_db_connection(user_id) as conn:
+            try:
+                cursor = conn.cursor()
+                cursor.execute(
+                    "UPDATE users SET username = ? WHERE id = ?",
+                    (new_username, user_id)
+                )
+                conn.commit()
+                return cursor.rowcount > 0
+            except sqlite3.IntegrityError:
+                print(f"Имя пользователя '{new_username}' уже занято.")
+                return False
+            except Exception as e:
+                print(f"Ошибка при обновлении имени пользователя: {e}")
+                return False
+
 if __name__ == '__main__':
     init_db()
     
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        
         # Проверяем существование пользователя admin
         cursor.execute("SELECT id FROM users WHERE username = 'admin'")
         admin_exists = cursor.fetchone()

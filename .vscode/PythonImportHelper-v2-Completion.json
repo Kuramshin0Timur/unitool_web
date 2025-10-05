@@ -3278,6 +3278,15 @@
         "documentation": {}
     },
     {
+        "label": "update_username",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def update_username(user_id: int, new_username: str) -> bool:\n    \"\"\"\n    Обновляет имя пользователя по его ID.\n    Args:\n        user_id (int): ID пользователя\n        new_username (str): новое имя пользователя\n    Returns:\n        bool: True, если обновление прошло успешно, иначе False\n    \"\"\"\n    with lock:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 5,
         "importPath": "app",
