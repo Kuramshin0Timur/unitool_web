@@ -323,7 +323,8 @@ function initializeAdsetsTable() {
                 searchable: true,
                 width: '80px',
                 render: function(data, type, row) {
-                    return createStatusCell(row.status);
+                    // Используем effective_status вместо status
+                    return createStatusCell(row.effective_status || row.status);
                 }
             },
             { 
@@ -396,7 +397,9 @@ function initializeAdsetsTable() {
                 searchable: false,
                 width: '120px',
                 render: function(data, type, row) {
-                    return createMainActionsCell(row);
+                    // Используем effective_status для определения состояния кнопок
+                    const effectiveStatus = row.effective_status || row.status;
+                    return createMainActionsCell(row, effectiveStatus);
                 }
             }
         ],
@@ -485,7 +488,8 @@ function initializeExcludedAdsetsTable() {
                 searchable: true,
                 width: '80px',
                 render: function(data, type, row) {
-                    return createStatusCell(row.status);
+                    // Используем effective_status вместо status
+                    return createStatusCell(row.effective_status || row.status);
                 }
             },
             { 
@@ -558,7 +562,9 @@ function initializeExcludedAdsetsTable() {
                 searchable: false,
                 width: '120px',
                 render: function(data, type, row) {
-                    return createExcludedActionsCell(row);
+                    // Используем effective_status для определения состояния кнопок
+                    const effectiveStatus = row.effective_status || row.status;
+                    return createExcludedActionsCell(row, effectiveStatus);
                 }
             }
         ],
@@ -588,7 +594,14 @@ function initializeExcludedAdsetsTable() {
 // Вспомогательные функции для рендеринга
 function createStatusCell(status) {
     let statusClass;
-    switch(status) {
+    let displayStatus = status;
+    
+    // Приводим статус к верхнему регистру для консистентности
+    if (status) {
+        displayStatus = status.toUpperCase();
+    }
+    
+    switch(displayStatus) {
         case 'ACTIVE':
             statusClass = 'bg-success';
             break;
@@ -604,10 +617,19 @@ function createStatusCell(status) {
         case 'ARCHIVED':
             statusClass = 'bg-warning text-dark';
             break;
+        case 'IN_PROCESS':
+            statusClass = 'bg-info';
+            break;
+        case 'WITH_ISSUES':
+            statusClass = 'bg-warning text-dark';
+            break;
+        case 'DELETED':
+            statusClass = 'bg-dark';
+            break;
         default:
             statusClass = 'bg-info';
     }
-    return `<span class="badge ${statusClass}">${status}</span>`;
+    return `<span class="badge ${statusClass}">${displayStatus}</span>`;
 }
 
 function formatNumber(value, decimals) {
@@ -616,7 +638,10 @@ function formatNumber(value, decimals) {
     return num.toFixed(decimals);
 }
 
-function createMainActionsCell(adset) {
+function createMainActionsCell(adset, effectiveStatus) {
+    // Используем effective_status для определения состояния кнопок
+    const isActive = effectiveStatus === 'ACTIVE';
+    
     return `
         <div class="btn-group-sm">
             <button class="btn btn-sm btn-warning exclude-btn" 
@@ -624,7 +649,7 @@ function createMainActionsCell(adset) {
                     title="Исключить из автоконтроля">
                 <i class="bi bi-slash-circle"></i> Исключить
             </button>
-            ${adset.status === 'ACTIVE' ? `
+            ${isActive ? `
                 <button class="btn btn-sm btn-danger pause-btn" 
                         onclick="pauseAdset('${adset.adset_id}', '${adset.token}', '${(adset.name || '').replace(/'/g, "\\'")}')">
                     <i class="bi bi-pause-fill"></i>
@@ -639,7 +664,10 @@ function createMainActionsCell(adset) {
     `;
 }
 
-function createExcludedActionsCell(adset) {
+function createExcludedActionsCell(adset, effectiveStatus) {
+    // Используем effective_status для определения состояния кнопок
+    const isActive = effectiveStatus === 'ACTIVE';
+    
     return `
         <div class="btn-group-sm">
             <button class="btn btn-sm btn-success include-btn" 
@@ -647,7 +675,7 @@ function createExcludedActionsCell(adset) {
                     title="Вернуть в автоконтроль">
                 <i class="bi bi-arrow-clockwise"></i> Вернуть
             </button>
-            ${adset.status === 'ACTIVE' ? `
+            ${isActive ? `
                 <button class="btn btn-sm btn-danger pause-btn" 
                         onclick="pauseAdset('${adset.adset_id}', '${adset.token}', '${(adset.name || '').replace(/'/g, "\\'")}')">
                     <i class="bi bi-pause-fill"></i>
@@ -743,8 +771,10 @@ window.toggleExcludedAdsetSelection = function(adsetId, isChecked) {
 // Обновление статистики
 function updateStats(adsets) {
     const total = adsets.length;
-    const active = adsets.filter(a => a.status === 'ACTIVE').length;
-    const paused = adsets.filter(a => a.status === 'PAUSED').length;
+    
+    // Используем effective_status для подсчета активных и приостановленных
+    const active = adsets.filter(a => (a.effective_status || a.status) === 'ACTIVE').length;
+    const paused = adsets.filter(a => (a.effective_status || a.status) === 'PAUSED').length;
     
     // Загружаем отдельно исключенные адсеты для точного подсчета
     fetch('/api/adsets/data?excluded=true')
@@ -774,6 +804,7 @@ function updateStats(adsets) {
             console.error('Ошибка загрузки статистики исключенных:', error);
         });
 }
+
 $(document).ready(function() {
     // --- Подготовка и ссылки на элементы ---
     initializeAdsetsTable();

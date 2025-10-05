@@ -2148,8 +2148,6 @@ def manual_import_bulk():
         accounts_data = request.json.get('accounts', [])
         cleanup_accounts = request.json.get('cleanup_accounts', [])
         
-        if not accounts_data:
-            return jsonify({'success': False, 'error': 'Нет аккаунтов для импорта'})
 
         # Получаем известные GEO коды
         geo_rules = get_user_geo_rules(user_id)
@@ -2167,9 +2165,6 @@ def manual_import_bulk():
             account_id = account_data.get('account_id', '').strip()
             token = account_data.get('token', '').strip()
             
-            if not account_id or not token:
-                continue
-
             # Очищаем account_id от префикса act_
             clean_account_id = account_id.replace('act_', '')
             imported_account_ids.append(clean_account_id)
@@ -2223,33 +2218,44 @@ def manual_import_bulk():
                 except Exception as e:
                     logger.error(f"Ошибка сохранения адсета {adset.get('id')}: {e}")
 
-        # 🔹 ОЧИСТКА УДАЛЕННЫХ АККАУНТОВ
-        if cleanup_accounts:
-            # Преобразуем cleanup_accounts в чистые ID (убираем act_)
+ # 🔹 Очистка удаленных аккаунтов
+        if cleanup_accounts is not None:
             clean_cleanup_accounts = [acc.replace('act_', '') for acc in cleanup_accounts if acc]
-            
-            # Удаляем кампании, которых нет в текущем списке
+
             with get_db_connection(user_id) as conn:
                 cursor = conn.cursor()
-                
-                # Удаляем кампании
-                placeholders = ','.join('?' * len(clean_cleanup_accounts))
-                cursor.execute(f"""
-                    DELETE FROM campaigns 
-                    WHERE user_id = ? AND account_id NOT IN ({placeholders})
-                """, [user_id] + clean_cleanup_accounts)
-                cleaned_campaigns = cursor.rowcount
-                
-                # Удаляем адсеты
-                cursor.execute(f"""
-                    DELETE FROM adsets 
-                    WHERE user_id = ? AND account_id NOT IN ({placeholders})
-                """, [user_id] + clean_cleanup_accounts)
-                cleaned_adsets = cursor.rowcount
-                
+
+                if clean_cleanup_accounts:
+                    placeholders = ','.join('?' * len(clean_cleanup_accounts))
+
+                    # Удаляем кампании вне переданного списка
+                    cursor.execute(f"""
+                        DELETE FROM campaigns 
+                        WHERE user_id = ? AND account_id NOT IN ({placeholders})
+                    """, [user_id] + clean_cleanup_accounts)
+                    cleaned_campaigns = cursor.rowcount
+
+                    # Удаляем адсеты вне переданного списка
+                    cursor.execute(f"""
+                        DELETE FROM adsets 
+                        WHERE user_id = ? AND account_id NOT IN ({placeholders})
+                    """, [user_id] + clean_cleanup_accounts)
+                    cleaned_adsets = cursor.rowcount
+
+                else:
+                    # Если список пуст — удаляем все кампании и адсеты пользователя
+                    cursor.execute("DELETE FROM campaigns WHERE user_id = ?", (user_id,))
+                    cleaned_campaigns = cursor.rowcount
+
+                    cursor.execute("DELETE FROM adsets WHERE user_id = ?", (user_id,))
+                    cleaned_adsets = cursor.rowcount
+
                 conn.commit()
-                
-                logger.info(f"Очистка: удалено {cleaned_campaigns} кампаний и {cleaned_adsets} адсетов для аккаунтов вне списка: {clean_cleanup_accounts}")
+
+                logger.info(
+                    f"Очистка: удалено {cleaned_campaigns} кампаний и {cleaned_adsets} адсетов "
+                    f"для аккаунтов вне списка: {clean_cleanup_accounts or 'все аккаунты'}"
+                )
 
         return jsonify({
             'success': True,
@@ -2263,6 +2269,7 @@ def manual_import_bulk():
     except Exception as e:
         logger.error(f"Ошибка bulk-импорта: {e}")
         return jsonify({'success': False, 'error': str(e)})
+
 @app.route('/api/get_existing_accounts', methods=['GET'])
 @login_required
 def get_existing_accounts():
@@ -5880,4 +5887,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', port = 8000, debug=False, threaded=True)
+    app.run(host='0.0.0.0', debug=False, threaded=True)

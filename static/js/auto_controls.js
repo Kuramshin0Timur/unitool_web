@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                systemStatus = data.status;
+                systemStatus = data.effective_status;
                 updateSystemUI(systemStatus.running);
                 
                 if (systemStatus.running) {

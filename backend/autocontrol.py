@@ -392,21 +392,25 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
         execute_with_token_rotation(pause_adset)
 
     # === Возобновление ===
-    elif should_resume:
-        def resume_adset(token):
-            url = f"https://graph.facebook.com/v18.0/{adset_id}"
-            data = {"status": "ACTIVE"}
-            resp = session_obj.post(url, params={"access_token": token}, data=data, timeout=10).json()
-            if resp.get("success") or resp.get("id") == adset_id:
-                update_user_adset_status(user_id, adset_id, "ACTIVE")
-                msg = (f"🟢 Включен: {adset_name} "
-                       f"(GEO={geo}, CPA={cpa:.2f}, Leads={leads}, Spend={spend:.2f})")
-                logger.info(msg)
-                send_telegram_message(msg, user_id=user_id)
-                return True
-            return False
+# 🟢 Логика возобновления
+    elif status == "PAUSED" and not manual_pause:
+        logger.debug(f"Проверка условий для возобновления {adset_name} (GEO {geo})")
 
-        execute_with_token_rotation(resume_adset)
+        # 🔒 Проверка: разрешено ли GEO вообще в правилах
+        if geo not in geo_rules:
+            logger.info(f"⏭️ Пропуск возобновления {adset_name} — GEO {geo} отсутствует в правилах")
+            return
+
+        # 1) Если есть лиды и CPA снова в норме
+        if leads > 0 and cpa <= geo_rules[geo]["max_cpa"] and spend >= geo_rules[geo]["min_spend"]:
+            should_resume = True
+            logger.info(f"🟢 ВОЗОБНОВЛЯЕМ {adset_name} - CPA ${cpa:.2f} <= Max CPA ${geo_rules[geo]['max_cpa']:.2f}")
+
+        # 2) Если лидов нет, но расходы упали ниже extended_spend_threshold
+        elif leads == 0 and spend < geo_rules[geo]["extended_spend_threshold"]:
+            should_resume = True
+            logger.info(f"🟢 ВОЗОБНОВЛЯЕМ {adset_name} - 0 лидов, но Spend ${spend:.2f} < "
+                        f"Extended Spend Threshold ${geo_rules[geo]['extended_spend_threshold']:.2f}")
 
 def auto_control(user_id):
     try:

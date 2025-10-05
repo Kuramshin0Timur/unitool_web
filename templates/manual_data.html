@@ -141,10 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log(`Строк для отправки: ${filteredData.length}`, filteredData);
 
-        if (filteredData.length === 0) {
-            alert('Нет данных для сохранения!');
-            return;
-        }
 
         const saveBtn = document.getElementById('saveData');
         const addRowBtn = document.getElementById('addRowBtn');

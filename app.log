@@ -1,394 +1,53 @@
-2025-10-04 23:52:29,028 - backend.autocontrol - DEBUG - Обработка адсета: TH 5548_TH mark72 MONAHnew 30.07(lang1) 1 (ID: 120229578844420509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,028 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5548_TH mark72 MONAHnew 30.07(lang1) 1 (неизвестное GEO: TH)
-2025-10-04 23:52:29,028 - backend.autocontrol - INFO - ⏭️ Пропускаем TH 5548_TH mark72 MONAHnew 30.07(lang1) 1 (неизвестное GEO: TH)
-2025-10-04 23:52:29,028 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 5 (ID: 120229021971740509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,028 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 5 (ID: 120229021971740509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,029 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 5 (неизвестное GEO: TH)
-2025-10-04 23:52:29,029 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 5 (неизвестное GEO: TH)
-2025-10-04 23:52:29,029 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 4 (ID: 120229021971730509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,029 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 4 (ID: 120229021971730509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,029 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 4 (неизвестное GEO: TH)
-2025-10-04 23:52:29,029 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 4 (неизвестное GEO: TH)
-2025-10-04 23:52:29,029 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 3 (ID: 120229021971720509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,029 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 3 (ID: 120229021971720509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,029 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 3 (неизвестное GEO: TH)
-2025-10-04 23:52:29,029 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 3 (неизвестное GEO: TH)
-2025-10-04 23:52:29,030 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 2 (ID: 120229021971710509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,030 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 2 (ID: 120229021971710509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,030 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 2 (неизвестное GEO: TH)
-2025-10-04 23:52:29,030 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 2 (неизвестное GEO: TH)
-2025-10-04 23:52:29,030 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 1 (ID: 120229021185320509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,030 - backend.autocontrol - DEBUG - Обработка адсета: TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 1 (ID: 120229021185320509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,030 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 1 (неизвестное GEO: TH)
-2025-10-04 23:52:29,030 - backend.autocontrol - INFO - ⏭️ Пропускаем TH5461_Y-68 TH korotish  15.07 monah_3(lang1) 1 (неизвестное GEO: TH)
-2025-10-04 23:52:29,030 - backend.autocontrol - DEBUG - Обработка адсета: GD5 (ID: 120228119833140509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,030 - backend.autocontrol - DEBUG - Обработка адсета: GD5 (ID: 120228119833140509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,030 - backend.autocontrol - INFO - ⏭️ Пропускаем GD5 (неизвестное GEO: GD)
-2025-10-04 23:52:29,031 - backend.autocontrol - INFO - ⏭️ Пропускаем GD5 (неизвестное GEO: GD)
-2025-10-04 23:52:29,031 - backend.autocontrol - DEBUG - Обработка адсета: GD4 (ID: 120228119833120509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,031 - backend.autocontrol - DEBUG - Обработка адсета: GD4 (ID: 120228119833120509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,031 - backend.autocontrol - INFO - ⏭️ Пропускаем GD4 (неизвестное GEO: GD)
-2025-10-04 23:52:29,031 - backend.autocontrol - INFO - ⏭️ Пропускаем GD4 (неизвестное GEO: GD)
-2025-10-04 23:52:29,031 - backend.autocontrol - DEBUG - Обработка адсета: GD3 (ID: 120228119833110509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,031 - backend.autocontrol - DEBUG - Обработка адсета: GD3 (ID: 120228119833110509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,031 - backend.autocontrol - INFO - ⏭️ Пропускаем GD3 (неизвестное GEO: GD)
-2025-10-04 23:52:29,031 - backend.autocontrol - INFO - ⏭️ Пропускаем GD3 (неизвестное GEO: GD)
-2025-10-04 23:52:29,031 - backend.autocontrol - DEBUG - Обработка адсета: GD2 (ID: 120228119833100509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,031 - backend.autocontrol - DEBUG - Обработка адсета: GD2 (ID: 120228119833100509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,031 - backend.autocontrol - INFO - ⏭️ Пропускаем GD2 (неизвестное GEO: GD)
-2025-10-04 23:52:29,032 - backend.autocontrol - INFO - ⏭️ Пропускаем GD2 (неизвестное GEO: GD)
-2025-10-04 23:52:29,032 - backend.autocontrol - DEBUG - Обработка адсета: GD1 (ID: 120228119753000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,032 - backend.autocontrol - DEBUG - Обработка адсета: GD1 (ID: 120228119753000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,032 - backend.autocontrol - INFO - ⏭️ Пропускаем GD1 (неизвестное GEO: GD)
-2025-10-04 23:52:29,032 - backend.autocontrol - INFO - ⏭️ Пропускаем GD1 (неизвестное GEO: GD)
-2025-10-04 23:52:29,032 - backend.autocontrol - DEBUG - Обработка адсета: GF2 (ID: 120228119689030509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,032 - backend.autocontrol - DEBUG - Обработка адсета: GF2 (ID: 120228119689030509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,032 - backend.autocontrol - INFO - ⏭️ Пропускаем GF2 (неизвестное GEO: GF)
-2025-10-04 23:52:29,032 - backend.autocontrol - INFO - ⏭️ Пропускаем GF2 (неизвестное GEO: GF)
-2025-10-04 23:52:29,032 - backend.autocontrol - DEBUG - Обработка адсета: GF3 (ID: 120228119689020509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,032 - backend.autocontrol - DEBUG - Обработка адсета: GF3 (ID: 120228119689020509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,033 - backend.autocontrol - INFO - ⏭️ Пропускаем GF3 (неизвестное GEO: GF)
-2025-10-04 23:52:29,033 - backend.autocontrol - INFO - ⏭️ Пропускаем GF3 (неизвестное GEO: GF)
-2025-10-04 23:52:29,033 - backend.autocontrol - DEBUG - Обработка адсета: GF4 (ID: 120228119689000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,033 - backend.autocontrol - DEBUG - Обработка адсета: GF4 (ID: 120228119689000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,033 - backend.autocontrol - INFO - ⏭️ Пропускаем GF4 (неизвестное GEO: GF)
-2025-10-04 23:52:29,033 - backend.autocontrol - INFO - ⏭️ Пропускаем GF4 (неизвестное GEO: GF)
-2025-10-04 23:52:29,033 - backend.autocontrol - DEBUG - Обработка адсета: GF5 (ID: 120228119688990509, статус: PAUSED, effective_status: PAUSED)
-2025-10-04 23:52:29,033 - backend.autocontrol - DEBUG - Обработка адсета: GF5 (ID: 120228119688990509, статус: PAUSED, effective_status: PAUSED)
-2025-10-04 23:52:29,033 - backend.autocontrol - INFO - ⏭️ Пропускаем GF5 (неизвестное GEO: GF)
-2025-10-04 23:52:29,033 - backend.autocontrol - INFO - ⏭️ Пропускаем GF5 (неизвестное GEO: GF)
-2025-10-04 23:52:29,033 - backend.autocontrol - DEBUG - Обработка адсета: GF1 (ID: 120228119565650509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,034 - backend.autocontrol - DEBUG - Обработка адсета: GF1 (ID: 120228119565650509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,034 - backend.autocontrol - INFO - ⏭️ Пропускаем GF1 (неизвестное GEO: GF)
-2025-10-04 23:52:29,034 - backend.autocontrol - INFO - ⏭️ Пропускаем GF1 (неизвестное GEO: GF)
-2025-10-04 23:52:29,034 - backend.autocontrol - DEBUG - Обработка адсета: TT52 (ID: 120227905502050509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,034 - backend.autocontrol - DEBUG - Обработка адсета: TT52 (ID: 120227905502050509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,034 - backend.autocontrol - INFO - ⏭️ Пропускаем TT52 (неизвестное GEO: TT)
-2025-10-04 23:52:29,034 - backend.autocontrol - INFO - ⏭️ Пропускаем TT52 (неизвестное GEO: TT)
-2025-10-04 23:52:29,034 - backend.autocontrol - DEBUG - Обработка адсета: TT42 (ID: 120227905502000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,034 - backend.autocontrol - DEBUG - Обработка адсета: TT42 (ID: 120227905502000509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,034 - backend.autocontrol - INFO - ⏭️ Пропускаем TT42 (неизвестное GEO: TT)
-2025-10-04 23:52:29,034 - backend.autocontrol - INFO - ⏭️ Пропускаем TT42 (неизвестное GEO: TT)
-2025-10-04 23:52:29,034 - backend.autocontrol - DEBUG - Обработка адсета: TT32 (ID: 120227905501990509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,034 - backend.autocontrol - DEBUG - Обработка адсета: TT32 (ID: 120227905501990509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,035 - backend.autocontrol - INFO - ⏭️ Пропускаем TT32 (неизвестное GEO: TT)
-2025-10-04 23:52:29,035 - backend.autocontrol - INFO - ⏭️ Пропускаем TT32 (неизвестное GEO: TT)
-2025-10-04 23:52:29,035 - backend.autocontrol - DEBUG - Обработка адсета: TT22 (ID: 120227905501980509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,035 - backend.autocontrol - DEBUG - Обработка адсета: TT22 (ID: 120227905501980509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,035 - backend.autocontrol - INFO - ⏭️ Пропускаем TT22 (неизвестное GEO: TT)
-2025-10-04 23:52:29,035 - backend.autocontrol - INFO - ⏭️ Пропускаем TT22 (неизвестное GEO: TT)
-2025-10-04 23:52:29,035 - backend.autocontrol - DEBUG - Обработка адсета: TTS2 (ID: 120227846197200509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,035 - backend.autocontrol - DEBUG - Обработка адсета: TTS2 (ID: 120227846197200509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,035 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,036 - backend.autocontrol - DEBUG - Обработка адсета: TTS5 (ID: 120227846197190509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,036 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,036 - backend.autocontrol - DEBUG - Обработка адсета: TTS4 (ID: 120227846197170509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,036 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,035 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,036 - backend.autocontrol - DEBUG - Обработка адсета: TTS3 (ID: 120227846197140509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,036 - backend.autocontrol - DEBUG - Обработка адсета: TTS5 (ID: 120227846197190509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,036 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,036 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,036 - backend.autocontrol - DEBUG - Обработка адсета: TTS1 (ID: 120227845752890509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,036 - backend.autocontrol - DEBUG - Обработка адсета: TTS4 (ID: 120227846197170509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,036 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS1 (неизвестное GEO: US)
-2025-10-04 23:52:29,037 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,037 - backend.autocontrol - DEBUG - Обработка адсета: TT5 (ID: 120227840768110509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,037 - backend.autocontrol - DEBUG - Обработка адсета: TTS3 (ID: 120227846197140509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,037 - backend.autocontrol - INFO - ⏭️ Пропускаем TT5 (неизвестное GEO: TT)
-2025-10-04 23:52:29,037 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,037 - backend.autocontrol - DEBUG - Обработка адсета: TT4 (ID: 120227840768080509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,037 - backend.autocontrol - DEBUG - Обработка адсета: TTS1 (ID: 120227845752890509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,037 - backend.autocontrol - INFO - ⏭️ Пропускаем TT4 (неизвестное GEO: TT)
-2025-10-04 23:52:29,037 - backend.autocontrol - INFO - ⏭️ Пропускаем TTS1 (неизвестное GEO: US)
-2025-10-04 23:52:29,037 - backend.autocontrol - DEBUG - Обработка адсета: TT3 (ID: 120227840768070509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,037 - backend.autocontrol - DEBUG - Обработка адсета: TT5 (ID: 120227840768110509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,037 - backend.autocontrol - INFO - ⏭️ Пропускаем TT3 (неизвестное GEO: TT)
-2025-10-04 23:52:29,038 - backend.autocontrol - INFO - ⏭️ Пропускаем TT5 (неизвестное GEO: TT)
-2025-10-04 23:52:29,038 - backend.autocontrol - DEBUG - Обработка адсета: TT2 (ID: 120227840768060509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,038 - backend.autocontrol - DEBUG - Обработка адсета: TT4 (ID: 120227840768080509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,038 - backend.autocontrol - INFO - ⏭️ Пропускаем TT2 (неизвестное GEO: TT)
-2025-10-04 23:52:29,038 - backend.autocontrol - INFO - ⏭️ Пропускаем TT4 (неизвестное GEO: TT)
-2025-10-04 23:52:29,038 - backend.autocontrol - DEBUG - Обработка адсета: TT1 (ID: 120227840561930509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,038 - backend.autocontrol - DEBUG - Обработка адсета: TT3 (ID: 120227840768070509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,038 - backend.autocontrol - INFO - ⏭️ Пропускаем TT1 (неизвестное GEO: TT)
-2025-10-04 23:52:29,038 - backend.autocontrol - INFO - ⏭️ Пропускаем TT3 (неизвестное GEO: TT)
-2025-10-04 23:52:29,038 - backend.autocontrol - DEBUG - Обработка адсета: TT5 (ID: 120227786286260509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,038 - backend.autocontrol - DEBUG - Обработка адсета: TT2 (ID: 120227840768060509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,038 - backend.autocontrol - INFO - ⏭️ Пропускаем TT5 (неизвестное GEO: TT)
-2025-10-04 23:52:29,038 - backend.autocontrol - INFO - ⏭️ Пропускаем TT2 (неизвестное GEO: TT)
-2025-10-04 23:52:29,039 - backend.autocontrol - DEBUG - Обработка адсета: TT4 (ID: 120227786286250509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,039 - backend.autocontrol - DEBUG - Обработка адсета: TT1 (ID: 120227840561930509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,039 - backend.autocontrol - INFO - ⏭️ Пропускаем TT4 (неизвестное GEO: TT)
-2025-10-04 23:52:29,039 - backend.autocontrol - INFO - ⏭️ Пропускаем TT1 (неизвестное GEO: TT)
-2025-10-04 23:52:29,039 - backend.autocontrol - DEBUG - Обработка адсета: TT3 (ID: 120227786286230509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,039 - backend.autocontrol - DEBUG - Обработка адсета: TT5 (ID: 120227786286260509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,039 - backend.autocontrol - INFO - ⏭️ Пропускаем TT3 (неизвестное GEO: TT)
-2025-10-04 23:52:29,039 - backend.autocontrol - INFO - ⏭️ Пропускаем TT5 (неизвестное GEO: TT)
-2025-10-04 23:52:29,039 - backend.autocontrol - DEBUG - Обработка адсета: TT2 (ID: 120227786286200509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,039 - backend.autocontrol - DEBUG - Обработка адсета: TT4 (ID: 120227786286250509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,039 - backend.autocontrol - INFO - ⏭️ Пропускаем TT2 (неизвестное GEO: TT)
-2025-10-04 23:52:29,040 - backend.autocontrol - INFO - ⏭️ Пропускаем TT4 (неизвестное GEO: TT)
-2025-10-04 23:52:29,040 - backend.autocontrol - DEBUG - Обработка адсета: TT1 (ID: 120227786128400509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,040 - backend.autocontrol - DEBUG - Обработка адсета: TT3 (ID: 120227786286230509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,040 - backend.autocontrol - INFO - ⏭️ Пропускаем TT1 (неизвестное GEO: TT)
-2025-10-04 23:52:29,040 - backend.autocontrol - INFO - ⏭️ Пропускаем TT3 (неизвестное GEO: TT)
-2025-10-04 23:52:29,040 - backend.autocontrol - DEBUG - Обработка адсета: RR5 (ID: 120227783468040509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,040 - backend.autocontrol - DEBUG - Обработка адсета: TT2 (ID: 120227786286200509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,040 - backend.autocontrol - INFO - ⏭️ Пропускаем RR5 (неизвестное GEO: RR)
-2025-10-04 23:52:29,040 - backend.autocontrol - INFO - ⏭️ Пропускаем TT2 (неизвестное GEO: TT)
-2025-10-04 23:52:29,040 - backend.autocontrol - DEBUG - Обработка адсета: RR4 (ID: 120227783468030509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,041 - backend.autocontrol - DEBUG - Обработка адсета: TT1 (ID: 120227786128400509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,041 - backend.autocontrol - INFO - ⏭️ Пропускаем RR4 (неизвестное GEO: RR)
-2025-10-04 23:52:29,041 - backend.autocontrol - INFO - ⏭️ Пропускаем TT1 (неизвестное GEO: TT)
-2025-10-04 23:52:29,041 - backend.autocontrol - DEBUG - Обработка адсета: RR3 (ID: 120227783468020509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,041 - backend.autocontrol - DEBUG - Обработка адсета: RR5 (ID: 120227783468040509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,041 - backend.autocontrol - INFO - ⏭️ Пропускаем RR3 (неизвестное GEO: RR)
-2025-10-04 23:52:29,041 - backend.autocontrol - INFO - ⏭️ Пропускаем RR5 (неизвестное GEO: RR)
-2025-10-04 23:52:29,041 - backend.autocontrol - DEBUG - Обработка адсета: RR2 (ID: 120227783467990509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,041 - backend.autocontrol - DEBUG - Обработка адсета: RR4 (ID: 120227783468030509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,041 - backend.autocontrol - INFO - ⏭️ Пропускаем RR2 (неизвестное GEO: RR)
-2025-10-04 23:52:29,041 - backend.autocontrol - INFO - ⏭️ Пропускаем RR4 (неизвестное GEO: RR)
-2025-10-04 23:52:29,042 - backend.autocontrol - DEBUG - Обработка адсета: RR1 (ID: 120227783263910509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,042 - backend.autocontrol - DEBUG - Обработка адсета: RR3 (ID: 120227783468020509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,042 - backend.autocontrol - INFO - ⏭️ Пропускаем RR1 (неизвестное GEO: RR)
-2025-10-04 23:52:29,042 - backend.autocontrol - INFO - ⏭️ Пропускаем RR3 (неизвестное GEO: RR)
-2025-10-04 23:52:29,042 - backend.autocontrol - DEBUG - Обработка адсета: T5 (ID: 120227691333240509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,042 - backend.autocontrol - DEBUG - Обработка адсета: RR2 (ID: 120227783467990509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,043 - backend.autocontrol - INFO - ⏭️ Пропускаем T5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,043 - backend.autocontrol - INFO - ⏭️ Пропускаем RR2 (неизвестное GEO: RR)
-2025-10-04 23:52:29,043 - backend.autocontrol - DEBUG - Обработка адсета: T4 (ID: 120227691333230509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,043 - backend.autocontrol - DEBUG - Обработка адсета: RR1 (ID: 120227783263910509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,043 - backend.autocontrol - INFO - ⏭️ Пропускаем T4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,043 - backend.autocontrol - INFO - ⏭️ Пропускаем RR1 (неизвестное GEO: RR)
-2025-10-04 23:52:29,043 - backend.autocontrol - DEBUG - Обработка адсета: T3 (ID: 120227691333200509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,043 - backend.autocontrol - DEBUG - Обработка адсета: T5 (ID: 120227691333240509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,043 - backend.autocontrol - INFO - ⏭️ Пропускаем T3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,044 - backend.autocontrol - INFO - ⏭️ Пропускаем T5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,044 - backend.autocontrol - DEBUG - Обработка адсета: T2 (ID: 120227691333190509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,044 - backend.autocontrol - DEBUG - Обработка адсета: T4 (ID: 120227691333230509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,044 - backend.autocontrol - INFO - ⏭️ Пропускаем T2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,044 - backend.autocontrol - INFO - ⏭️ Пропускаем T4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,044 - backend.autocontrol - DEBUG - Обработка адсета: T1 (ID: 120227691088230509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,044 - backend.autocontrol - DEBUG - Обработка адсета: T3 (ID: 120227691333200509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,044 - backend.autocontrol - INFO - ⏭️ Пропускаем T1 (неизвестное GEO: US)
-2025-10-04 23:52:29,045 - backend.autocontrol - INFO - ⏭️ Пропускаем T3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,045 - backend.autocontrol - DEBUG - Обработка адсета: T3 (ID: 120227689175110509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,045 - backend.autocontrol - DEBUG - Обработка адсета: T2 (ID: 120227691333190509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,045 - backend.autocontrol - INFO - ⏭️ Пропускаем T3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,045 - backend.autocontrol - INFO - ⏭️ Пропускаем T2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,045 - backend.autocontrol - DEBUG - Обработка адсета: T2 (ID: 120227689175100509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,045 - backend.autocontrol - DEBUG - Обработка адсета: T1 (ID: 120227691088230509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,045 - backend.autocontrol - INFO - ⏭️ Пропускаем T2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,045 - backend.autocontrol - INFO - ⏭️ Пропускаем T1 (неизвестное GEO: US)
-2025-10-04 23:52:29,046 - backend.autocontrol - DEBUG - Обработка адсета: T5 (ID: 120227689175090509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,046 - backend.autocontrol - DEBUG - Обработка адсета: T3 (ID: 120227689175110509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,046 - backend.autocontrol - INFO - ⏭️ Пропускаем T5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,046 - backend.autocontrol - INFO - ⏭️ Пропускаем T3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,046 - backend.autocontrol - DEBUG - Обработка адсета: T4 (ID: 120227689175040509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,046 - backend.autocontrol - DEBUG - Обработка адсета: T2 (ID: 120227689175100509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,046 - backend.autocontrol - INFO - ⏭️ Пропускаем T4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,046 - backend.autocontrol - INFO - ⏭️ Пропускаем T2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,046 - backend.autocontrol - DEBUG - Обработка адсета: T1 (ID: 120227688923890509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,046 - backend.autocontrol - DEBUG - Обработка адсета: T5 (ID: 120227689175090509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,047 - backend.autocontrol - INFO - ⏭️ Пропускаем T1 (неизвестное GEO: US)
-2025-10-04 23:52:29,047 - backend.autocontrol - INFO - ⏭️ Пропускаем T5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,047 - backend.autocontrol - DEBUG - Обработка адсета: GG4 (ID: 120227561504730509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,047 - backend.autocontrol - DEBUG - Обработка адсета: T4 (ID: 120227689175040509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,047 - backend.autocontrol - INFO - ⏭️ Пропускаем GG4 (неизвестное GEO: GG)
-2025-10-04 23:52:29,047 - backend.autocontrol - INFO - ⏭️ Пропускаем T4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,047 - backend.autocontrol - DEBUG - Обработка адсета: GG3 (ID: 120227561504720509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,047 - backend.autocontrol - DEBUG - Обработка адсета: T1 (ID: 120227688923890509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,047 - backend.autocontrol - INFO - ⏭️ Пропускаем GG3 (неизвестное GEO: GG)
-2025-10-04 23:52:29,047 - backend.autocontrol - INFO - ⏭️ Пропускаем T1 (неизвестное GEO: US)
-2025-10-04 23:52:29,047 - backend.autocontrol - DEBUG - Обработка адсета: GG2 (ID: 120227561504690509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,048 - backend.autocontrol - DEBUG - Обработка адсета: GG4 (ID: 120227561504730509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,048 - backend.autocontrol - INFO - ⏭️ Пропускаем GG2 (неизвестное GEO: GG)
-2025-10-04 23:52:29,048 - backend.autocontrol - INFO - ⏭️ Пропускаем GG4 (неизвестное GEO: GG)
-2025-10-04 23:52:29,048 - backend.autocontrol - DEBUG - Обработка адсета: GG1 (ID: 120227561504680509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,048 - backend.autocontrol - DEBUG - Обработка адсета: GG3 (ID: 120227561504720509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,048 - backend.autocontrol - INFO - ⏭️ Пропускаем GG1 (неизвестное GEO: GG)
-2025-10-04 23:52:29,048 - backend.autocontrol - INFO - ⏭️ Пропускаем GG3 (неизвестное GEO: GG)
-2025-10-04 23:52:29,048 - backend.autocontrol - DEBUG - Обработка адсета: GG5 (ID: 120227561226570509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,048 - backend.autocontrol - DEBUG - Обработка адсета: GG2 (ID: 120227561504690509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,048 - backend.autocontrol - INFO - ⏭️ Пропускаем GG5 (неизвестное GEO: GG)
-2025-10-04 23:52:29,048 - backend.autocontrol - INFO - ⏭️ Пропускаем GG2 (неизвестное GEO: GG)
-2025-10-04 23:52:29,048 - backend.autocontrol - DEBUG - Обработка адсета: GG1 (ID: 120227503059500509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,048 - backend.autocontrol - DEBUG - Обработка адсета: GG1 (ID: 120227561504680509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,049 - backend.autocontrol - INFO - ⏭️ Пропускаем GG1 (неизвестное GEO: GG)
-2025-10-04 23:52:29,049 - backend.autocontrol - INFO - ⏭️ Пропускаем GG1 (неизвестное GEO: GG)
-2025-10-04 23:52:29,049 - backend.autocontrol - DEBUG - Обработка адсета: GG4 (ID: 120227503059490509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,049 - backend.autocontrol - DEBUG - Обработка адсета: GG5 (ID: 120227561226570509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,049 - backend.autocontrol - INFO - ⏭️ Пропускаем GG4 (неизвестное GEO: GG)
-2025-10-04 23:52:29,049 - backend.autocontrol - INFO - ⏭️ Пропускаем GG5 (неизвестное GEO: GG)
-2025-10-04 23:52:29,049 - backend.autocontrol - DEBUG - Обработка адсета: GG3 (ID: 120227503059480509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,049 - backend.autocontrol - DEBUG - Обработка адсета: GG1 (ID: 120227503059500509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,049 - backend.autocontrol - INFO - ⏭️ Пропускаем GG3 (неизвестное GEO: GG)
-2025-10-04 23:52:29,049 - backend.autocontrol - INFO - ⏭️ Пропускаем GG1 (неизвестное GEO: GG)
-2025-10-04 23:52:29,050 - backend.autocontrol - DEBUG - Обработка адсета: GG2 (ID: 120227503059470509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,050 - backend.autocontrol - DEBUG - Обработка адсета: GG4 (ID: 120227503059490509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,050 - backend.autocontrol - INFO - ⏭️ Пропускаем GG2 (неизвестное GEO: GG)
-2025-10-04 23:52:29,050 - backend.autocontrol - INFO - ⏭️ Пропускаем GG4 (неизвестное GEO: GG)
-2025-10-04 23:52:29,050 - backend.autocontrol - DEBUG - Обработка адсета: GG5 (ID: 120227502753280509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,050 - backend.autocontrol - DEBUG - Обработка адсета: GG3 (ID: 120227503059480509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,050 - backend.autocontrol - INFO - ⏭️ Пропускаем GG5 (неизвестное GEO: GG)
-2025-10-04 23:52:29,050 - backend.autocontrol - INFO - ⏭️ Пропускаем GG3 (неизвестное GEO: GG)
-2025-10-04 23:52:29,050 - backend.autocontrol - DEBUG - Обработка адсета: FF5 (ID: 120227497299270509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,050 - backend.autocontrol - DEBUG - Обработка адсета: GG2 (ID: 120227503059470509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,050 - backend.autocontrol - INFO - ⏭️ Пропускаем FF5 (неизвестное GEO: FF)
-2025-10-04 23:52:29,050 - backend.autocontrol - INFO - ⏭️ Пропускаем GG2 (неизвестное GEO: GG)
-2025-10-04 23:52:29,051 - backend.autocontrol - DEBUG - Обработка адсета: FF4 (ID: 120227497299260509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,051 - backend.autocontrol - DEBUG - Обработка адсета: GG5 (ID: 120227502753280509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,051 - backend.autocontrol - INFO - ⏭️ Пропускаем FF4 (неизвестное GEO: FF)
-2025-10-04 23:52:29,051 - backend.autocontrol - INFO - ⏭️ Пропускаем GG5 (неизвестное GEO: GG)
-2025-10-04 23:52:29,051 - backend.autocontrol - DEBUG - Обработка адсета: FF3 (ID: 120227497299220509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,051 - backend.autocontrol - DEBUG - Обработка адсета: FF5 (ID: 120227497299270509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,051 - backend.autocontrol - INFO - ⏭️ Пропускаем FF3 (неизвестное GEO: FF)
-2025-10-04 23:52:29,051 - backend.autocontrol - INFO - ⏭️ Пропускаем FF5 (неизвестное GEO: FF)
-2025-10-04 23:52:29,051 - backend.autocontrol - DEBUG - Обработка адсета: FF2 (ID: 120227497299210509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,051 - backend.autocontrol - DEBUG - Обработка адсета: FF4 (ID: 120227497299260509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,052 - backend.autocontrol - INFO - ⏭️ Пропускаем FF2 (неизвестное GEO: FF)
-2025-10-04 23:52:29,052 - backend.autocontrol - INFO - ⏭️ Пропускаем FF4 (неизвестное GEO: FF)
-2025-10-04 23:52:29,052 - backend.autocontrol - DEBUG - Обработка адсета: FF1 (ID: 120227497230500509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,052 - backend.autocontrol - DEBUG - Обработка адсета: FF3 (ID: 120227497299220509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,052 - backend.autocontrol - INFO - ⏭️ Пропускаем FF1 (неизвестное GEO: FF)
-2025-10-04 23:52:29,052 - backend.autocontrol - INFO - ⏭️ Пропускаем FF3 (неизвестное GEO: FF)
-2025-10-04 23:52:29,052 - backend.autocontrol - DEBUG - Обработка адсета: T5 (ID: 120227492590970509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,052 - backend.autocontrol - DEBUG - Обработка адсета: FF2 (ID: 120227497299210509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,052 - backend.autocontrol - INFO - ⏭️ Пропускаем T5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,052 - backend.autocontrol - INFO - ⏭️ Пропускаем FF2 (неизвестное GEO: FF)
-2025-10-04 23:52:29,052 - backend.autocontrol - DEBUG - Обработка адсета: T4 (ID: 120227492590940509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,052 - backend.autocontrol - DEBUG - Обработка адсета: FF1 (ID: 120227497230500509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,053 - backend.autocontrol - INFO - ⏭️ Пропускаем T4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,053 - backend.autocontrol - INFO - ⏭️ Пропускаем FF1 (неизвестное GEO: FF)
-2025-10-04 23:52:29,053 - backend.autocontrol - DEBUG - Обработка адсета: T3 (ID: 120227492590930509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,053 - backend.autocontrol - DEBUG - Обработка адсета: T5 (ID: 120227492590970509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,053 - backend.autocontrol - INFO - ⏭️ Пропускаем T3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,053 - backend.autocontrol - INFO - ⏭️ Пропускаем T5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,053 - backend.autocontrol - DEBUG - Обработка адсета: T2 (ID: 120227492590920509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,053 - backend.autocontrol - DEBUG - Обработка адсета: T4 (ID: 120227492590940509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,053 - backend.autocontrol - INFO - ⏭️ Пропускаем T2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,053 - backend.autocontrol - INFO - ⏭️ Пропускаем T4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,053 - backend.autocontrol - DEBUG - Обработка адсета: T1 (ID: 120227491393510509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,053 - backend.autocontrol - DEBUG - Обработка адсета: T3 (ID: 120227492590930509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,053 - backend.autocontrol - INFO - ⏭️ Пропускаем T1 (неизвестное GEO: US)
-2025-10-04 23:52:29,054 - backend.autocontrol - INFO - ⏭️ Пропускаем T3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,054 - backend.autocontrol - DEBUG - Обработка адсета: GS2 (ID: 120227419317400509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,054 - backend.autocontrol - DEBUG - Обработка адсета: T2 (ID: 120227492590920509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,054 - backend.autocontrol - INFO - ⏭️ Пропускаем GS2 (неизвестное GEO: GS)
-2025-10-04 23:52:29,054 - backend.autocontrol - INFO - ⏭️ Пропускаем T2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,054 - backend.autocontrol - DEBUG - Обработка адсета: GS5 (ID: 120227419317360509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,054 - backend.autocontrol - DEBUG - Обработка адсета: T1 (ID: 120227491393510509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,054 - backend.autocontrol - INFO - ⏭️ Пропускаем GS5 (неизвестное GEO: GS)
-2025-10-04 23:52:29,054 - backend.autocontrol - INFO - ⏭️ Пропускаем T1 (неизвестное GEO: US)
-2025-10-04 23:52:29,054 - backend.autocontrol - DEBUG - Обработка адсета: GS4 (ID: 120227419317350509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,054 - backend.autocontrol - DEBUG - Обработка адсета: GS2 (ID: 120227419317400509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,054 - backend.autocontrol - INFO - ⏭️ Пропускаем GS4 (неизвестное GEO: GS)
-2025-10-04 23:52:29,055 - backend.autocontrol - INFO - ⏭️ Пропускаем GS2 (неизвестное GEO: GS)
-2025-10-04 23:52:29,055 - backend.autocontrol - DEBUG - Обработка адсета: GS3 (ID: 120227419317340509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,055 - backend.autocontrol - DEBUG - Обработка адсета: GS5 (ID: 120227419317360509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,055 - backend.autocontrol - INFO - ⏭️ Пропускаем GS3 (неизвестное GEO: GS)
-2025-10-04 23:52:29,055 - backend.autocontrol - INFO - ⏭️ Пропускаем GS5 (неизвестное GEO: GS)
-2025-10-04 23:52:29,055 - backend.autocontrol - DEBUG - Обработка адсета: GS1 (ID: 120227419246430509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,055 - backend.autocontrol - DEBUG - Обработка адсета: GS4 (ID: 120227419317350509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,055 - backend.autocontrol - INFO - ⏭️ Пропускаем GS1 (неизвестное GEO: GS)
-2025-10-04 23:52:29,055 - backend.autocontrol - INFO - ⏭️ Пропускаем GS4 (неизвестное GEO: GS)
-2025-10-04 23:52:29,055 - backend.autocontrol - DEBUG - Обработка адсета: KK5 (ID: 120227354746680509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,055 - backend.autocontrol - DEBUG - Обработка адсета: GS3 (ID: 120227419317340509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,055 - backend.autocontrol - INFO - ⏭️ Пропускаем KK5 (неизвестное GEO: KK)
-2025-10-04 23:52:29,056 - backend.autocontrol - INFO - ⏭️ Пропускаем GS3 (неизвестное GEO: GS)
-2025-10-04 23:52:29,056 - backend.autocontrol - DEBUG - Обработка адсета: KK4 (ID: 120227354746660509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,056 - backend.autocontrol - DEBUG - Обработка адсета: GS1 (ID: 120227419246430509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,056 - backend.autocontrol - INFO - ⏭️ Пропускаем KK4 (неизвестное GEO: KK)
-2025-10-04 23:52:29,056 - backend.autocontrol - INFO - ⏭️ Пропускаем GS1 (неизвестное GEO: GS)
-2025-10-04 23:52:29,056 - backend.autocontrol - DEBUG - Обработка адсета: KK3 (ID: 120227354746640509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,056 - backend.autocontrol - DEBUG - Обработка адсета: KK5 (ID: 120227354746680509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,056 - backend.autocontrol - INFO - ⏭️ Пропускаем KK3 (неизвестное GEO: KK)
-2025-10-04 23:52:29,056 - backend.autocontrol - INFO - ⏭️ Пропускаем KK5 (неизвестное GEO: KK)
-2025-10-04 23:52:29,056 - backend.autocontrol - DEBUG - Обработка адсета: KK1 (ID: 120227354746630509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,056 - backend.autocontrol - DEBUG - Обработка адсета: KK4 (ID: 120227354746660509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,056 - backend.autocontrol - INFO - ⏭️ Пропускаем KK1 (неизвестное GEO: KK)
-2025-10-04 23:52:29,057 - backend.autocontrol - INFO - ⏭️ Пропускаем KK4 (неизвестное GEO: KK)
-2025-10-04 23:52:29,057 - backend.autocontrol - DEBUG - Обработка адсета: KK2 (ID: 120227354675600509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,057 - backend.autocontrol - DEBUG - Обработка адсета: KK3 (ID: 120227354746640509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,057 - backend.autocontrol - INFO - ⏭️ Пропускаем KK2 (неизвестное GEO: KK)
-2025-10-04 23:52:29,057 - backend.autocontrol - INFO - ⏭️ Пропускаем KK3 (неизвестное GEO: KK)
-2025-10-04 23:52:29,057 - backend.autocontrol - DEBUG - Обработка адсета: KSK4 (ID: 120227354014440509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,057 - backend.autocontrol - DEBUG - Обработка адсета: KK1 (ID: 120227354746630509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,057 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,057 - backend.autocontrol - INFO - ⏭️ Пропускаем KK1 (неизвестное GEO: KK)
-2025-10-04 23:52:29,057 - backend.autocontrol - DEBUG - Обработка адсета: KSK3 (ID: 120227354014410509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,057 - backend.autocontrol - DEBUG - Обработка адсета: KK2 (ID: 120227354675600509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,057 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,058 - backend.autocontrol - INFO - ⏭️ Пропускаем KK2 (неизвестное GEO: KK)
-2025-10-04 23:52:29,058 - backend.autocontrol - DEBUG - Обработка адсета: KSK2 (ID: 120227354014400509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,058 - backend.autocontrol - DEBUG - Обработка адсета: KSK4 (ID: 120227354014440509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,058 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,058 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK4 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,058 - backend.autocontrol - DEBUG - Обработка адсета: KSK5 (ID: 120227354014380509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,058 - backend.autocontrol - DEBUG - Обработка адсета: KSK3 (ID: 120227354014410509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,058 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,058 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK3 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,058 - backend.autocontrol - DEBUG - Обработка адсета: KSK1 (ID: 120227353953130509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,058 - backend.autocontrol - DEBUG - Обработка адсета: KSK2 (ID: 120227354014400509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,058 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK1 (неизвестное GEO: US)
-2025-10-04 23:52:29,058 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK2 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,059 - backend.autocontrol - DEBUG - Обработка адсета: KSK5 (ID: 120227354014380509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,059 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK5 (неизвестное GEO: N/A)
-2025-10-04 23:52:29,059 - backend.autocontrol - DEBUG - Обработка адсета: KSK1 (ID: 120227353953130509, статус: ACTIVE, effective_status: CAMPAIGN_PAUSED)
-2025-10-04 23:52:29,059 - backend.autocontrol - INFO - ⏭️ Пропускаем KSK1 (неизвестное GEO: US)
-2025-10-04 23:52:29,064 - backend.autocontrol - INFO - ✅ === АВТОКОНТРОЛЬ ЗАВЕРШЕН (цикл #1) ===
-2025-10-04 23:52:29,064 - backend.autocontrol - INFO - ✅ Цикл #1 завершен успешно
-2025-10-04 23:52:29,066 - backend.autocontrol - INFO - ⏰ Ожидание 30 минут до следующего цикла...
-2025-10-04 23:52:29,069 - backend.autocontrol - INFO - ✅ === АВТОКОНТРОЛЬ ЗАВЕРШЕН (цикл #1) ===
-2025-10-04 23:52:29,069 - backend.autocontrol - INFO - ✅ Цикл #1 завершен успешно
-2025-10-04 23:52:29,072 - backend.autocontrol - INFO - ⏰ Ожидание 30 минут до следующего цикла...
-2025-10-04 23:52:56,898 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:52:56,898 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:52:56] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:52:58,848 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:52:58,849 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:52:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:53:27,584 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:53:27,585 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:53:27] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:53:58,657 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:53:58,657 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:53:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:53:59,429 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:53:59,430 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:53:59] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:54:01,545 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:54:01] "GET /api/adsets/data?excluded=true&_=1759621658491 HTTP/1.1" 200 -
-2025-10-04 23:54:01,602 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:54:01] "GET /api/adsets/data?excluded=false&_=1759621658490 HTTP/1.1" 200 -
-2025-10-04 23:54:02,002 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:54:02] "GET /api/adsets/data?excluded=true HTTP/1.1" 200 -
-2025-10-04 23:54:28,977 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:54:28,977 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:54:28] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:54:58,845 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:54:58,845 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:54:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:54:59,793 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:54:59,794 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:54:59] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:55:30,008 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:55:30,009 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:55:30] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:55:59,400 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:55:59,401 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:55:59] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:56:00,772 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:56:00,773 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:56:00] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:56:31,009 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:56:31,010 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:56:31] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:56:58,857 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:56:58,857 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:56:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:57:01,602 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:57:01,602 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:57:01] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:57:31,647 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:57:31,649 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:57:31] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:57:59,394 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:57:59,394 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:57:59] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:58:02,368 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:58:02,368 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:58:02] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:58:32,809 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:58:32,809 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:58:32] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:58:58,844 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:58:58,845 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:58:58] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:59:03,421 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:59:03,421 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:59:03] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:59:33,868 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:59:33,869 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:59:33] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-04 23:59:59,393 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-04 23:59:59,394 - werkzeug - INFO - 127.0.0.1 - - [04/Oct/2025 23:59:59] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 00:00:04,443 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 00:00:04,446 - werkzeug - INFO - 127.0.0.1 - - [05/Oct/2025 00:00:04] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:24:09,439 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 153
+2025-10-05 16:24:09,442 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-05 16:24:09,807 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
+2025-10-05 16:24:09,811 - werkzeug - INFO - 89.107.202.220 - - [05/Oct/2025 16:24:09] "GET /api/check_balance HTTP/1.1" 200 -
+2025-10-05 16:24:11,638 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:24:11,638 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:24:11] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:24:42,060 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:24:42,061 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:24:42] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:24:52,223 - werkzeug - ERROR - 195.178.110.109 - - [05/Oct/2025 16:24:52] code 400, message Bad request version ('À\x13À')
+2025-10-05 16:24:52,223 - werkzeug - INFO - 195.178.110.109 - - [05/Oct/2025 16:24:52] "[31m[1m\x16\x03\x01\x00ê\x01\x00\x00æ\x03\x03àË­3\x87{°9¼\\!£\x89ù°Z\x94æã\x96FÌ´P\x8fö38Àú\x1f- G}P\x14aE±´¶¥0µP&a\x06Q\x96|Ç)b\x8b÷\x11\x16\x02Ä*¹!\x17\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" 400 -
+2025-10-05 16:24:52,271 - werkzeug - INFO - 195.178.110.109 - - [05/Oct/2025 16:24:52] "[32mGET / HTTP/1.1[0m" 302 -
+2025-10-05 16:24:52,313 - werkzeug - INFO - 195.178.110.109 - - [05/Oct/2025 16:24:52] "[32mGET / HTTP/1.1[0m" 302 -
+2025-10-05 16:25:03,262 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:25:03,263 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:25:03] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:25:12,039 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:25:12,039 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:25:12] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:25:42,696 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:25:42,696 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:25:42] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:26:03,245 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:26:03,245 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:26:03] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:26:12,692 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:26:12,693 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:26:12] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:26:44,483 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:26:44,484 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:26:44] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:27:03,256 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:27:03,257 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:27:03] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:27:13,486 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:27:13,486 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:27:13] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:27:44,193 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:27:44,193 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:27:44] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:28:03,249 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-05 16:28:03,249 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:28:03] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:28:10,457 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://89.208.113.85:5000
+2025-10-05 16:28:10,457 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-05 16:28:14,144 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
+2025-10-05 16:28:14,145 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:14] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:28:15,823 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:15] "GET /auto_control HTTP/1.1" 200 -
+2025-10-05 16:28:16,272 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-10-05 16:28:16,544 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:16] "GET /static/js/geo_rules.js HTTP/1.1" 200 -
+2025-10-05 16:28:16,544 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:16] "GET /static/js/auto_controls.js HTTP/1.1" 200 -
+2025-10-05 16:28:17,668 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
+2025-10-05 16:28:17,670 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-05 16:28:17,838 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "GET /api/geo_rules HTTP/1.1" 200 -
+2025-10-05 16:28:17,862 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "GET /api/settings HTTP/1.1" 200 -
+2025-10-05 16:28:17,913 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "GET /api/adsets HTTP/1.1" 200 -
+2025-10-05 16:28:18,029 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:18] "GET /api/adsets/data?excluded=true&_=1759681498350 HTTP/1.1" 200 -
+2025-10-05 16:28:19,034 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:19] "GET /api/adsets/data?excluded=false&_=1759681498349 HTTP/1.1" 200 -
+2025-10-05 16:28:21,688 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:21] "GET /api/adsets/data?excluded=true HTTP/1.1" 200 -
+2025-10-05 16:28:48,213 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
+2025-10-05 16:28:48,214 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:48] "POST /api/auto_refresh HTTP/1.1" 200 -

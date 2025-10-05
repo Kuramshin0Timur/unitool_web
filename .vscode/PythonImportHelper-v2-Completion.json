@@ -2319,7 +2319,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def manual_import_bulk():\n    try:\n        user_id = session['user_id']\n        accounts_data = request.json.get('accounts', [])\n        cleanup_accounts = request.json.get('cleanup_accounts', [])\n        if not accounts_data:\n            return jsonify({'success': False, 'error': 'Нет аккаунтов для импорта'})\n        # Получаем известные GEO коды\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []",
+        "peekOfCode": "def manual_import_bulk():\n    try:\n        user_id = session['user_id']\n        accounts_data = request.json.get('accounts', [])\n        cleanup_accounts = request.json.get('cleanup_accounts', [])\n        # Получаем известные GEO коды\n        geo_rules = get_user_geo_rules(user_id)\n        known_geos = list(geo_rules.keys()) if geo_rules else []\n        total_campaigns = 0\n        total_adsets = 0",
         "detail": "app",
         "documentation": {}
     },
