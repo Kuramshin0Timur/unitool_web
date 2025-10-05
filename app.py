@@ -5873,6 +5873,190 @@ def update_username(user_id: int, new_username: str) -> bool:
             except Exception as e:
                 print(f"Ошибка при обновлении имени пользователя: {e}")
                 return False
+# Если telegram.py в папке backend
+from backend.telegram import (
+    TELEGRAM_BOT_TOKEN, BOT_USERNAME, get_bot_info, set_user_telegram_chat_id, 
+    get_user_telegram_chat_id, disconnect_telegram, send_telegram_direct_message,
+    init_telegram_bot, process_telegram_update, generate_connect_code, send_telegram_message
+)
+@app.route('/settings')
+@login_required
+def settings_page():
+    """Страница настроек"""
+    user_id = session['user_id']
+    
+    # Проверяем подключение Telegram
+    telegram_connected = get_user_telegram_chat_id(user_id) is not None
+    bot_info = get_bot_info()
+    
+    return render_template('settings.html', 
+                         telegram_connected=telegram_connected,
+                         telegram_bot_url=bot_info.get('bot_url', '#'))
+@app.route('/api/telegram/connect', methods=['POST'])
+@login_required
+def connect_telegram():
+    """Подключить Telegram аккаунт"""
+    user_id = session['user_id']
+    
+    try:
+        data = request.get_json()
+        chat_id = data.get('chat_id')
+        
+        if not chat_id:
+            return jsonify({'success': False, 'error': 'Chat ID is required'})
+        
+        # Сохраняем связь user_id -> chat_id
+        if set_user_telegram_chat_id(user_id, chat_id):
+            # Отправляем приветственное сообщение
+            send_telegram_direct_message(chat_id, 
+                "✅ Ваш Telegram аккаунт успешно подключен к UniTool!\n\n"
+                "Теперь вы будете получать уведомления о:\n"
+                "• Автоматическом контроле рекламных кампаний\n"
+                "• Изменениях статусов адсетов\n"
+                "• Критических событиях и ошибках\n"
+                "• Результатах оптимизации")
+            
+            return jsonify({'success': True, 'message': 'Telegram successfully connected'})
+        else:
+            return jsonify({'success': False, 'error': 'Failed to save Telegram connection'})
+            
+    except Exception as e:
+        logger.error(f"Error connecting Telegram: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/telegram/disconnect', methods=['POST'])
+@login_required
+def disconnect_telegram_route():
+    """Отключить Telegram уведомления"""
+    user_id = session['user_id']
+    
+    try:
+        if disconnect_telegram(user_id):
+            return jsonify({'success': True, 'message': 'Telegram notifications disabled'})
+        else:
+            return jsonify({'success': False, 'error': 'Failed to disconnect Telegram'})
+            
+    except Exception as e:
+        logger.error(f"Error disconnecting Telegram: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/telegram/status', methods=['GET'])
+@login_required
+def get_telegram_status():
+    """Получить статус подключения Telegram"""
+    user_id = session['user_id']
+    
+    try:
+        chat_id = get_user_telegram_chat_id(user_id)
+        connected = chat_id is not None
+        
+        return jsonify({
+            'success': True,
+            'connected': connected,
+            'chat_id': chat_id
+        })
+        
+    except Exception as e:
+        logger.error(f"Error getting Telegram status: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/telegram/test', methods=['POST'])
+@login_required
+def test_telegram_notification():
+    """Отправить тестовое уведомление"""
+    user_id = session['user_id']
+    
+    try:
+        test_message = "🔔 Тестовое уведомление от UniTool\n\nЭто сообщение подтверждает, что ваши Telegram уведомления настроены правильно!"
+        
+        # Используйте функцию send_telegram_message, которая уже импортирована
+        if send_telegram_message(test_message, user_id=user_id):
+            return jsonify({'success': True, 'message': 'Test notification sent'})
+        else:
+            return jsonify({'success': False, 'error': 'Failed to send test notification. Check if Telegram is connected.'})
+            
+    except Exception as e:
+        logger.error(f"Error sending test Telegram notification: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/telegram/connect_link', methods=['GET'])
+@login_required
+def get_telegram_connect_link():
+    """Получить уникальную ссылку для подключения Telegram"""
+    user_id = session['user_id']
+    
+    try:
+        bot_info = get_bot_info()
+        if not bot_info.get('username'):
+            return jsonify({'success': False, 'error': 'Bot username not configured'})
+        
+        # Создаем уникальный код для пользователя
+        unique_code = generate_connect_code(user_id)
+        
+        connect_url = f"https://t.me/{bot_info['username']}?start={unique_code}"
+        
+        return jsonify({
+            'success': True,
+            'connect_url': connect_url,
+            'bot_username': bot_info['username']
+        })
+        
+    except Exception as e:
+        logger.error(f"Error generating Telegram connect link: {e}")
+        return jsonify({'success': False, 'error': str(e)})
+@app.route('/api/telegram/webhook', methods=['POST'])
+def telegram_webhook():
+    """Webhook для получения обновлений от Telegram"""
+    try:
+        if not TELEGRAM_BOT_TOKEN or TELEGRAM_BOT_TOKEN == "YOUR_BOT_TOKEN_HERE":
+            return jsonify({'status': 'error', 'message': 'Bot token not configured'})
+        
+        update = request.get_json()
+        
+        # Обрабатываем обновление (функция уже импортирована)
+        process_telegram_update(update)
+        
+        return jsonify({'status': 'ok'})
+        
+    except Exception as e:
+        logger.error(f"Error in Telegram webhook: {e}")
+        return jsonify({'status': 'error', 'message': str(e)})
+def start_telegram_polling():
+    """Запуск polling для Telegram бота (в отдельном потоке)"""
+    import threading
+    import time
+    import requests
+    
+    def polling_worker():
+        logger.info("🔄 Starting Telegram bot polling...")
+        offset = 0
+        
+        while True:
+            try:
+                url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates"
+                params = {
+                    'offset': offset,
+                    'timeout': 30,
+                    'allowed_updates': ['message']
+                }
+                
+                response = requests.get(url, params=params, timeout=35)
+                data = response.json()
+                
+                if data.get('ok'):
+                    for update in data['result']:
+                        offset = update['update_id'] + 1
+                        # Используйте функцию, импортированную в основном файле
+                        process_telegram_update(update)
+                
+            except requests.exceptions.Timeout:
+                continue
+            except Exception as e:
+                logger.error(f"Error in Telegram polling: {e}")
+                time.sleep(5)
+    if TELEGRAM_BOT_TOKEN and TELEGRAM_BOT_TOKEN != "YOUR_BOT_TOKEN_HERE":
+        polling_thread = threading.Thread(target=polling_worker, daemon=True)
+        polling_thread.start()
+        logger.info("✅ Telegram bot polling started")
+
 
 if __name__ == '__main__':
     init_db()
@@ -5885,6 +6069,6 @@ if __name__ == '__main__':
         admin_exists = cursor.fetchone()
     except Exception as e:
         print(f"Ошибка при инициализации тестового пользователя: {e}")
-    
+    start_telegram_polling() 
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', debug=False, threaded=True)
+    app.run(host='0.0.0.0', port = 8000, debug=False, threaded=True)

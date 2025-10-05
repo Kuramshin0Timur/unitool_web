@@ -1,53 +1,629 @@
-2025-10-05 16:24:09,439 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 153
-2025-10-05 16:24:09,442 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 16:24:09,807 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-10-05 16:24:09,811 - werkzeug - INFO - 89.107.202.220 - - [05/Oct/2025 16:24:09] "GET /api/check_balance HTTP/1.1" 200 -
-2025-10-05 16:24:11,638 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:24:11,638 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:24:11] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:24:42,060 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:24:42,061 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:24:42] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:24:52,223 - werkzeug - ERROR - 195.178.110.109 - - [05/Oct/2025 16:24:52] code 400, message Bad request version ('À\x13À')
-2025-10-05 16:24:52,223 - werkzeug - INFO - 195.178.110.109 - - [05/Oct/2025 16:24:52] "[31m[1m\x16\x03\x01\x00ê\x01\x00\x00æ\x03\x03àË­3\x87{°9¼\\!£\x89ù°Z\x94æã\x96FÌ´P\x8fö38Àú\x1f- G}P\x14aE±´¶¥0µP&a\x06Q\x96|Ç)b\x8b÷\x11\x16\x02Ä*¹!\x17\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À[0m" 400 -
-2025-10-05 16:24:52,271 - werkzeug - INFO - 195.178.110.109 - - [05/Oct/2025 16:24:52] "[32mGET / HTTP/1.1[0m" 302 -
-2025-10-05 16:24:52,313 - werkzeug - INFO - 195.178.110.109 - - [05/Oct/2025 16:24:52] "[32mGET / HTTP/1.1[0m" 302 -
-2025-10-05 16:25:03,262 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:25:03,263 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:25:03] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:25:12,039 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:25:12,039 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:25:12] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:25:42,696 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:25:42,696 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:25:42] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:26:03,245 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:26:03,245 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:26:03] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:26:12,692 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:26:12,693 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:26:12] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:26:44,483 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:26:44,484 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:26:44] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:27:03,256 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:27:03,257 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:27:03] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:27:13,486 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:27:13,486 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:27:13] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:27:44,193 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:27:44,193 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:27:44] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:28:03,249 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
-2025-10-05 16:28:03,249 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 16:28:03] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:28:10,457 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-10-05 22:28:24,014 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:24,224 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/1194 HTTP/1.1" 200 None
+2025-10-05 22:28:24,226 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:24,457 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/2505 HTTP/1.1" 200 None
+2025-10-05 22:28:24,460 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:24,696 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/5739 HTTP/1.1" 200 None
+2025-10-05 22:28:24,698 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:25,226 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:28:25] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:28:27,028 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:28:27,031 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:28:29,941 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/6820 HTTP/1.1" 200 None
+2025-10-05 22:28:29,944 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:30,171 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/7487 HTTP/1.1" 200 None
+2025-10-05 22:28:30,174 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:30,370 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/8563 HTTP/1.1" 200 None
+2025-10-05 22:28:30,373 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:30,579 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/10858 HTTP/1.1" 200 None
+2025-10-05 22:28:30,581 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:30,792 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12172 HTTP/1.1" 200 None
+2025-10-05 22:28:30,795 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:31,003 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12531 HTTP/1.1" 200 None
+2025-10-05 22:28:31,007 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:31,215 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12914 HTTP/1.1" 200 None
+2025-10-05 22:28:31,218 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:32,444 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12936 HTTP/1.1" 200 None
+2025-10-05 22:28:32,447 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:32,660 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13039 HTTP/1.1" 200 None
+2025-10-05 22:28:32,663 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:32,867 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13052 HTTP/1.1" 200 None
+2025-10-05 22:28:32,869 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:33,068 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13079 HTTP/1.1" 200 None
+2025-10-05 22:28:33,071 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:33,273 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13080 HTTP/1.1" 200 None
+2025-10-05 22:28:33,276 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:33,500 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13308 HTTP/1.1" 200 None
+2025-10-05 22:28:33,503 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:33,724 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13309 HTTP/1.1" 200 None
+2025-10-05 22:28:33,728 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:33,970 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13322 HTTP/1.1" 200 None
+2025-10-05 22:28:33,973 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:34,174 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13369 HTTP/1.1" 200 None
+2025-10-05 22:28:34,176 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:34,383 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13370 HTTP/1.1" 200 None
+2025-10-05 22:28:34,386 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:35,639 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13373 HTTP/1.1" 200 None
+2025-10-05 22:28:35,641 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:35,853 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13397 HTTP/1.1" 200 None
+2025-10-05 22:28:35,859 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:36,071 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13398 HTTP/1.1" 200 None
+2025-10-05 22:28:36,074 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:36,284 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13399 HTTP/1.1" 200 None
+2025-10-05 22:28:36,287 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:36,526 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13400 HTTP/1.1" 200 None
+2025-10-05 22:28:36,528 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:36,737 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13402 HTTP/1.1" 200 None
+2025-10-05 22:28:36,741 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:36,946 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13403 HTTP/1.1" 200 None
+2025-10-05 22:28:36,949 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:37,145 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13404 HTTP/1.1" 200 None
+2025-10-05 22:28:37,147 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:37,339 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13405 HTTP/1.1" 200 None
+2025-10-05 22:28:37,342 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:37,544 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13497 HTTP/1.1" 200 None
+2025-10-05 22:28:37,547 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:37,753 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13498 HTTP/1.1" 200 None
+2025-10-05 22:28:37,755 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:37,975 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13501 HTTP/1.1" 200 None
+2025-10-05 22:28:37,977 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:38,188 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13502 HTTP/1.1" 200 None
+2025-10-05 22:28:38,190 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:38,423 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13507 HTTP/1.1" 200 None
+2025-10-05 22:28:38,425 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:38,642 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13508 HTTP/1.1" 200 None
+2025-10-05 22:28:38,644 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:38,847 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13511 HTTP/1.1" 200 None
+2025-10-05 22:28:38,850 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:39,060 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13512 HTTP/1.1" 200 None
+2025-10-05 22:28:39,063 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:39,262 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13570 HTTP/1.1" 200 None
+2025-10-05 22:28:39,264 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:39,468 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13581 HTTP/1.1" 200 None
+2025-10-05 22:28:39,470 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:39,671 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13582 HTTP/1.1" 200 None
+2025-10-05 22:28:39,673 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:39,895 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13585 HTTP/1.1" 200 None
+2025-10-05 22:28:39,899 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:40,114 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13586 HTTP/1.1" 200 None
+2025-10-05 22:28:40,117 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:40,314 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13587 HTTP/1.1" 200 None
+2025-10-05 22:28:40,317 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:40,527 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13588 HTTP/1.1" 200 None
+2025-10-05 22:28:40,531 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:40,747 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13589 HTTP/1.1" 200 None
+2025-10-05 22:28:40,750 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:40,968 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13590 HTTP/1.1" 200 None
+2025-10-05 22:28:40,972 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:41,180 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/campaigns/all HTTP/1.1" 404 None
+2025-10-05 22:28:41,181 - __main__ - ERROR - Ошибка получения информации о кампании all: 404 Client Error: Not Found for url: https://uniaffnu.com/admin_api/v1/campaigns/all
+2025-10-05 22:28:41,182 - __main__ - INFO - Отправка данных: 47 потоков
+2025-10-05 22:28:41,183 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:28:41] "GET /api/headline_optimization/status?campaign_id=all HTTP/1.1" 200 -
+2025-10-05 22:28:53,488 - __main__ - INFO - Запрос статистики для кампании all
+2025-10-05 22:28:53,488 - __main__ - INFO - Отправка запроса к Keitaro с правильными метриками
+2025-10-05 22:28:53,489 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:54,363 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-05 22:28:54,364 - __main__ - INFO - Получено 47 записей из Keitaro
+2025-10-05 22:28:54,364 - __main__ - INFO - Пример данных: {"stream_id": 13, "conversions": 0, "revenue": 0, "cost": 0, "roi": 0, "epc": 0, "clicks": 891}
+2025-10-05 22:28:54,366 - __main__ - INFO - Получено 47 записей статистики
+2025-10-05 22:28:54,366 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:54,584 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13 HTTP/1.1" 200 None
+2025-10-05 22:28:54,587 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:54,800 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/1194 HTTP/1.1" 200 None
+2025-10-05 22:28:54,803 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:55,016 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/2505 HTTP/1.1" 200 None
+2025-10-05 22:28:55,018 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:55,231 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/5739 HTTP/1.1" 200 None
+2025-10-05 22:28:55,234 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:55,439 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/6820 HTTP/1.1" 200 None
+2025-10-05 22:28:55,442 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:55,635 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:28:55] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:28:55,657 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/7487 HTTP/1.1" 200 None
+2025-10-05 22:28:55,660 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:55,871 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/8563 HTTP/1.1" 200 None
+2025-10-05 22:28:55,874 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:56,087 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/10858 HTTP/1.1" 200 None
+2025-10-05 22:28:56,090 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:56,298 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12172 HTTP/1.1" 200 None
+2025-10-05 22:28:56,301 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:56,511 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12531 HTTP/1.1" 200 None
+2025-10-05 22:28:56,514 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:56,717 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12914 HTTP/1.1" 200 None
+2025-10-05 22:28:56,720 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:56,938 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12936 HTTP/1.1" 200 None
+2025-10-05 22:28:56,940 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:57,124 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:28:57,126 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:28:57,152 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13039 HTTP/1.1" 200 None
+2025-10-05 22:28:57,156 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:57,371 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13052 HTTP/1.1" 200 None
+2025-10-05 22:28:57,374 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:57,596 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13079 HTTP/1.1" 200 None
+2025-10-05 22:28:57,599 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:57,809 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13080 HTTP/1.1" 200 None
+2025-10-05 22:28:57,812 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:58,016 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13308 HTTP/1.1" 200 None
+2025-10-05 22:28:58,018 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:58,217 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13309 HTTP/1.1" 200 None
+2025-10-05 22:28:58,219 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:58,436 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13322 HTTP/1.1" 200 None
+2025-10-05 22:28:58,440 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:58,649 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13369 HTTP/1.1" 200 None
+2025-10-05 22:28:58,652 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:58,855 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13370 HTTP/1.1" 200 None
+2025-10-05 22:28:58,858 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:59,055 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13373 HTTP/1.1" 200 None
+2025-10-05 22:28:59,058 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:59,274 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13397 HTTP/1.1" 200 None
+2025-10-05 22:28:59,277 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:59,500 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13398 HTTP/1.1" 200 None
+2025-10-05 22:28:59,503 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:59,708 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13399 HTTP/1.1" 200 None
+2025-10-05 22:28:59,711 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:28:59,942 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13400 HTTP/1.1" 200 None
+2025-10-05 22:28:59,946 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:00,160 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13402 HTTP/1.1" 200 None
+2025-10-05 22:29:00,163 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:00,376 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13403 HTTP/1.1" 200 None
+2025-10-05 22:29:00,379 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:00,591 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13404 HTTP/1.1" 200 None
+2025-10-05 22:29:00,593 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:00,809 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13405 HTTP/1.1" 200 None
+2025-10-05 22:29:00,812 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:01,016 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13497 HTTP/1.1" 200 None
+2025-10-05 22:29:01,018 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:01,221 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13498 HTTP/1.1" 200 None
+2025-10-05 22:29:01,224 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:01,432 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13501 HTTP/1.1" 200 None
+2025-10-05 22:29:01,435 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:01,636 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13502 HTTP/1.1" 200 None
+2025-10-05 22:29:01,639 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:01,856 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13507 HTTP/1.1" 200 None
+2025-10-05 22:29:01,859 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:02,082 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13508 HTTP/1.1" 200 None
+2025-10-05 22:29:02,085 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:02,317 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13511 HTTP/1.1" 200 None
+2025-10-05 22:29:02,320 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:02,514 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13512 HTTP/1.1" 200 None
+2025-10-05 22:29:02,517 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:02,713 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13570 HTTP/1.1" 200 None
+2025-10-05 22:29:02,715 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:02,928 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13581 HTTP/1.1" 200 None
+2025-10-05 22:29:02,931 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:03,129 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13582 HTTP/1.1" 200 None
+2025-10-05 22:29:03,133 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:03,327 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13585 HTTP/1.1" 200 None
+2025-10-05 22:29:03,329 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:03,535 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13586 HTTP/1.1" 200 None
+2025-10-05 22:29:03,538 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:03,737 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13587 HTTP/1.1" 200 None
+2025-10-05 22:29:03,741 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:03,952 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13588 HTTP/1.1" 200 None
+2025-10-05 22:29:03,956 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:04,158 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13589 HTTP/1.1" 200 None
+2025-10-05 22:29:04,160 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:04,349 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13590 HTTP/1.1" 200 None
+2025-10-05 22:29:04,351 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:04,530 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/campaigns/all HTTP/1.1" 404 None
+2025-10-05 22:29:04,531 - __main__ - ERROR - Ошибка получения информации о кампании all: 404 Client Error: Not Found for url: https://uniaffnu.com/admin_api/v1/campaigns/all
+2025-10-05 22:29:04,532 - __main__ - INFO - Отправка данных: 47 потоков
+2025-10-05 22:29:04,533 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:29:04] "GET /api/headline_optimization/status?campaign_id=all HTTP/1.1" 200 -
+2025-10-05 22:29:23,985 - __main__ - INFO - Запрос статистики для кампании all
+2025-10-05 22:29:23,985 - __main__ - INFO - Отправка запроса к Keitaro с правильными метриками
+2025-10-05 22:29:23,986 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:24,756 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-05 22:29:24,757 - __main__ - INFO - Получено 47 записей из Keitaro
+2025-10-05 22:29:24,757 - __main__ - INFO - Пример данных: {"stream_id": 13, "conversions": 0, "revenue": 0, "cost": 0, "roi": 0, "epc": 0, "clicks": 903}
+2025-10-05 22:29:24,758 - __main__ - INFO - Получено 47 записей статистики
+2025-10-05 22:29:24,759 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:24,995 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13 HTTP/1.1" 200 None
+2025-10-05 22:29:24,997 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:25,215 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/1194 HTTP/1.1" 200 None
+2025-10-05 22:29:25,217 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:25,420 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/2505 HTTP/1.1" 200 None
+2025-10-05 22:29:25,423 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:25,642 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/5739 HTTP/1.1" 200 None
+2025-10-05 22:29:25,646 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:25,853 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/6820 HTTP/1.1" 200 None
+2025-10-05 22:29:25,856 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:26,019 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:29:26] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:29:26,063 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/7487 HTTP/1.1" 200 None
+2025-10-05 22:29:26,065 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:26,264 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/8563 HTTP/1.1" 200 None
+2025-10-05 22:29:26,267 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:26,491 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/10858 HTTP/1.1" 200 None
+2025-10-05 22:29:26,494 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:26,684 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12172 HTTP/1.1" 200 None
+2025-10-05 22:29:26,687 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:26,910 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12531 HTTP/1.1" 200 None
+2025-10-05 22:29:26,913 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:27,131 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12914 HTTP/1.1" 200 None
+2025-10-05 22:29:27,134 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:27,218 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:29:27,220 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:29:32,364 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12936 HTTP/1.1" 200 None
+2025-10-05 22:29:32,367 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:32,575 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13039 HTTP/1.1" 200 None
+2025-10-05 22:29:32,578 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:32,765 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13052 HTTP/1.1" 200 None
+2025-10-05 22:29:32,768 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:32,976 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13079 HTTP/1.1" 200 None
+2025-10-05 22:29:32,979 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:38,194 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13080 HTTP/1.1" 200 None
+2025-10-05 22:29:38,197 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:38,747 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13308 HTTP/1.1" 200 None
+2025-10-05 22:29:38,750 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:38,962 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13309 HTTP/1.1" 200 None
+2025-10-05 22:29:38,965 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:40,303 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13322 HTTP/1.1" 200 None
+2025-10-05 22:29:40,307 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:40,514 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13369 HTTP/1.1" 200 None
+2025-10-05 22:29:40,517 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:40,747 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13370 HTTP/1.1" 200 None
+2025-10-05 22:29:40,749 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:40,953 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13373 HTTP/1.1" 200 None
+2025-10-05 22:29:40,956 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:41,173 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13397 HTTP/1.1" 200 None
+2025-10-05 22:29:41,176 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:41,382 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13398 HTTP/1.1" 200 None
+2025-10-05 22:29:41,385 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:41,599 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13399 HTTP/1.1" 200 None
+2025-10-05 22:29:41,602 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:41,810 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13400 HTTP/1.1" 200 None
+2025-10-05 22:29:41,814 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:42,038 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13402 HTTP/1.1" 200 None
+2025-10-05 22:29:42,041 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:42,231 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13403 HTTP/1.1" 200 None
+2025-10-05 22:29:42,233 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:42,447 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13404 HTTP/1.1" 200 None
+2025-10-05 22:29:42,450 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:42,665 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13405 HTTP/1.1" 200 None
+2025-10-05 22:29:42,667 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:42,881 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13497 HTTP/1.1" 200 None
+2025-10-05 22:29:42,884 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:43,098 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13498 HTTP/1.1" 200 None
+2025-10-05 22:29:43,102 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:43,311 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13501 HTTP/1.1" 200 None
+2025-10-05 22:29:43,314 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:43,519 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13502 HTTP/1.1" 200 None
+2025-10-05 22:29:43,522 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:43,714 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13507 HTTP/1.1" 200 None
+2025-10-05 22:29:43,716 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:43,914 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13508 HTTP/1.1" 200 None
+2025-10-05 22:29:43,917 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:44,115 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13511 HTTP/1.1" 200 None
+2025-10-05 22:29:44,118 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:44,345 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13512 HTTP/1.1" 200 None
+2025-10-05 22:29:44,348 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:44,566 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13570 HTTP/1.1" 200 None
+2025-10-05 22:29:44,568 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:44,799 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13581 HTTP/1.1" 200 None
+2025-10-05 22:29:44,802 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:45,000 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13582 HTTP/1.1" 200 None
+2025-10-05 22:29:45,002 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:45,203 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13585 HTTP/1.1" 200 None
+2025-10-05 22:29:45,206 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:45,408 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13586 HTTP/1.1" 200 None
+2025-10-05 22:29:45,411 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:45,610 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13587 HTTP/1.1" 200 None
+2025-10-05 22:29:45,613 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:45,822 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13588 HTTP/1.1" 200 None
+2025-10-05 22:29:45,825 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:46,021 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13589 HTTP/1.1" 200 None
+2025-10-05 22:29:46,024 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:46,231 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13590 HTTP/1.1" 200 None
+2025-10-05 22:29:46,234 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:46,425 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/campaigns/all HTTP/1.1" 404 None
+2025-10-05 22:29:46,426 - __main__ - ERROR - Ошибка получения информации о кампании all: 404 Client Error: Not Found for url: https://uniaffnu.com/admin_api/v1/campaigns/all
+2025-10-05 22:29:46,427 - __main__ - INFO - Отправка данных: 47 потоков
+2025-10-05 22:29:46,428 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:29:46] "GET /api/headline_optimization/status?campaign_id=all HTTP/1.1" 200 -
+2025-10-05 22:29:55,852 - __main__ - INFO - Запрос статистики для кампании all
+2025-10-05 22:29:55,852 - __main__ - INFO - Отправка запроса к Keitaro с правильными метриками
+2025-10-05 22:29:55,853 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:56,724 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-05 22:29:56,725 - __main__ - INFO - Получено 47 записей из Keitaro
+2025-10-05 22:29:56,725 - __main__ - INFO - Пример данных: {"stream_id": 13, "conversions": 0, "revenue": 0, "cost": 0, "roi": 0, "epc": 0, "clicks": 903}
+2025-10-05 22:29:56,726 - __main__ - INFO - Получено 47 записей статистики
+2025-10-05 22:29:56,727 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:56,934 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13 HTTP/1.1" 200 None
+2025-10-05 22:29:56,937 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:57,006 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:29:57] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:29:57,144 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/1194 HTTP/1.1" 200 None
+2025-10-05 22:29:57,147 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:57,304 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:29:57,307 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:29:57,366 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/2505 HTTP/1.1" 200 None
+2025-10-05 22:29:57,369 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:57,626 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/5739 HTTP/1.1" 200 None
+2025-10-05 22:29:57,630 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:57,827 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/6820 HTTP/1.1" 200 None
+2025-10-05 22:29:57,830 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:58,023 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/7487 HTTP/1.1" 200 None
+2025-10-05 22:29:58,026 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:58,253 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/8563 HTTP/1.1" 200 None
+2025-10-05 22:29:58,256 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:58,485 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/10858 HTTP/1.1" 200 None
+2025-10-05 22:29:58,488 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:58,704 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12172 HTTP/1.1" 200 None
+2025-10-05 22:29:58,708 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:58,937 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12531 HTTP/1.1" 200 None
+2025-10-05 22:29:58,941 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:59,148 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12914 HTTP/1.1" 200 None
+2025-10-05 22:29:59,151 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:29:59,366 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12936 HTTP/1.1" 200 None
+2025-10-05 22:29:59,369 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:00,452 - __main__ - INFO - 🔄 Starting Telegram bot polling...
+2025-10-05 22:30:00,452 - __main__ - INFO - ✅ Telegram bot polling started
+2025-10-05 22:30:00,453 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:30:00,457 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://89.208.113.85:5000
-2025-10-05 16:28:10,457 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-10-05 16:28:14,144 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 16:28:14,145 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:14] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:28:15,823 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:15] "GET /auto_control HTTP/1.1" 200 -
-2025-10-05 16:28:16,272 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-10-05 16:28:16,544 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:16] "GET /static/js/geo_rules.js HTTP/1.1" 200 -
-2025-10-05 16:28:16,544 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:16] "GET /static/js/auto_controls.js HTTP/1.1" 200 -
-2025-10-05 16:28:17,668 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 16:28:17,670 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 16:28:17,838 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "GET /api/geo_rules HTTP/1.1" 200 -
-2025-10-05 16:28:17,862 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "GET /api/settings HTTP/1.1" 200 -
-2025-10-05 16:28:17,913 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:17] "GET /api/adsets HTTP/1.1" 200 -
-2025-10-05 16:28:18,029 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:18] "GET /api/adsets/data?excluded=true&_=1759681498350 HTTP/1.1" 200 -
-2025-10-05 16:28:19,034 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:19] "GET /api/adsets/data?excluded=false&_=1759681498349 HTTP/1.1" 200 -
-2025-10-05 16:28:21,688 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:21] "GET /api/adsets/data?excluded=true HTTP/1.1" 200 -
-2025-10-05 16:28:48,213 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 16:28:48,214 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 16:28:48] "POST /api/auto_refresh HTTP/1.1" 200 -
+ * Running on http://127.0.0.1:8000
+ * Running on http://89.208.113.85:8000
+2025-10-05 22:30:00,457 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-05 22:30:03,319 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:03] "GET /settings HTTP/1.1" 200 -
+2025-10-05 22:30:03,679 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:03] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-10-05 22:30:03,694 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:03] "GET /static/js/settings.js HTTP/1.1" 200 -
+2025-10-05 22:30:04,867 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:04] "GET /api/settings HTTP/1.1" 200 -
+2025-10-05 22:30:05,828 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:05] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:30:09,130 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:09] "GET /api/telegram/connect_link HTTP/1.1" 200 -
+2025-10-05 22:30:10,949 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 409
+2025-10-05 22:30:10,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:30:16,939 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:16] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:30:17,497 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:17] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:30:17,693 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:17] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:30:19,523 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:19] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:30:25,471 - __main__ - INFO - Запрос статистики для кампании all
+2025-10-05 22:30:25,471 - __main__ - INFO - Отправка запроса к Keitaro с правильными метриками
+2025-10-05 22:30:25,472 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:26,211 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-05 22:30:26,214 - __main__ - INFO - Получено 47 записей из Keitaro
+2025-10-05 22:30:26,214 - __main__ - INFO - Пример данных: {"stream_id": 13, "conversions": 0, "revenue": 0, "cost": 0, "roi": 0, "epc": 0, "clicks": 907}
+2025-10-05 22:30:26,216 - __main__ - INFO - Получено 47 записей статистики
+2025-10-05 22:30:26,218 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:26,431 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13 HTTP/1.1" 200 None
+2025-10-05 22:30:26,435 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:26,636 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/1194 HTTP/1.1" 200 None
+2025-10-05 22:30:26,638 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:26,837 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/2505 HTTP/1.1" 200 None
+2025-10-05 22:30:26,840 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:27,063 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/5739 HTTP/1.1" 200 None
+2025-10-05 22:30:27,067 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:27,270 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/6820 HTTP/1.1" 200 None
+2025-10-05 22:30:27,273 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:27,490 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/7487 HTTP/1.1" 200 None
+2025-10-05 22:30:27,494 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:27,683 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:27] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:30:27,698 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/8563 HTTP/1.1" 200 None
+2025-10-05 22:30:27,701 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:27,928 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/10858 HTTP/1.1" 200 None
+2025-10-05 22:30:27,931 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:28,133 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12172 HTTP/1.1" 200 None
+2025-10-05 22:30:28,137 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:28,357 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12531 HTTP/1.1" 200 None
+2025-10-05 22:30:28,360 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:28,573 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12914 HTTP/1.1" 200 None
+2025-10-05 22:30:28,576 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:28,790 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12936 HTTP/1.1" 200 None
+2025-10-05 22:30:28,793 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:29,006 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13039 HTTP/1.1" 200 None
+2025-10-05 22:30:29,010 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:29,240 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13052 HTTP/1.1" 200 None
+2025-10-05 22:30:29,242 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:29,447 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13079 HTTP/1.1" 200 None
+2025-10-05 22:30:29,449 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:29,671 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13080 HTTP/1.1" 200 None
+2025-10-05 22:30:29,674 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:29,898 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13308 HTTP/1.1" 200 None
+2025-10-05 22:30:29,901 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:30,117 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13309 HTTP/1.1" 200 None
+2025-10-05 22:30:30,121 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:30,341 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13322 HTTP/1.1" 200 None
+2025-10-05 22:30:30,344 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:30,550 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13369 HTTP/1.1" 200 None
+2025-10-05 22:30:30,554 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:30,768 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13370 HTTP/1.1" 200 None
+2025-10-05 22:30:30,771 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:30,991 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13373 HTTP/1.1" 200 None
+2025-10-05 22:30:30,993 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:31,222 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13397 HTTP/1.1" 200 None
+2025-10-05 22:30:31,224 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:31,444 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13398 HTTP/1.1" 200 None
+2025-10-05 22:30:31,446 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:31,659 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13399 HTTP/1.1" 200 None
+2025-10-05 22:30:31,662 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:31,874 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13400 HTTP/1.1" 200 None
+2025-10-05 22:30:31,877 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:32,082 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13402 HTTP/1.1" 200 None
+2025-10-05 22:30:32,085 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:32,291 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13403 HTTP/1.1" 200 None
+2025-10-05 22:30:32,294 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:32,490 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13404 HTTP/1.1" 200 None
+2025-10-05 22:30:32,493 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:32,697 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13405 HTTP/1.1" 200 None
+2025-10-05 22:30:32,700 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:32,903 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13497 HTTP/1.1" 200 None
+2025-10-05 22:30:32,906 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:33,121 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13498 HTTP/1.1" 200 None
+2025-10-05 22:30:33,124 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:33,328 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13501 HTTP/1.1" 200 None
+2025-10-05 22:30:33,331 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:33,537 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13502 HTTP/1.1" 200 None
+2025-10-05 22:30:33,540 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:33,741 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13507 HTTP/1.1" 200 None
+2025-10-05 22:30:33,744 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:33,958 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13508 HTTP/1.1" 200 None
+2025-10-05 22:30:33,962 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:34,178 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13511 HTTP/1.1" 200 None
+2025-10-05 22:30:34,181 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:34,395 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13512 HTTP/1.1" 200 None
+2025-10-05 22:30:34,398 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:34,607 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13570 HTTP/1.1" 200 None
+2025-10-05 22:30:34,610 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:34,834 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:34] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:30:34,856 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13581 HTTP/1.1" 200 None
+2025-10-05 22:30:34,859 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:35,066 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13582 HTTP/1.1" 200 None
+2025-10-05 22:30:35,068 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:35,281 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13585 HTTP/1.1" 200 None
+2025-10-05 22:30:35,284 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:35,481 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13586 HTTP/1.1" 200 None
+2025-10-05 22:30:35,484 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:35,699 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13587 HTTP/1.1" 200 None
+2025-10-05 22:30:35,702 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:35,897 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13588 HTTP/1.1" 200 None
+2025-10-05 22:30:35,900 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:36,102 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13589 HTTP/1.1" 200 None
+2025-10-05 22:30:36,105 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:36,318 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13590 HTTP/1.1" 200 None
+2025-10-05 22:30:36,321 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-05 22:30:36,522 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/campaigns/all HTTP/1.1" 404 None
+2025-10-05 22:30:36,523 - __main__ - ERROR - Ошибка получения информации о кампании all: 404 Client Error: Not Found for url: https://uniaffnu.com/admin_api/v1/campaigns/all
+2025-10-05 22:30:36,525 - __main__ - INFO - Отправка данных: 47 потоков
+2025-10-05 22:30:36,525 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:30:36] "GET /api/headline_optimization/status?campaign_id=all HTTP/1.1" 200 -
+2025-10-05 22:30:37,570 - __main__ - INFO - 🔄 Starting Telegram bot polling...
+2025-10-05 22:30:37,571 - __main__ - INFO - ✅ Telegram bot polling started
+2025-10-05 22:30:37,572 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:30:37,577 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://89.208.113.85:8000
+2025-10-05 22:30:37,577 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-05 22:31:05,783 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:31:05] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:31:07,657 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:31:07,658 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:31:36,394 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:31:36] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:31:37,755 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:31:37,757 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:32:06,787 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:32:06] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:32:07,849 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:32:07,853 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:32:36,807 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:32:36] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:32:37,943 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:32:37,945 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:33:07,535 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:33:07] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:33:08,032 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:33:08,035 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:33:37,894 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:33:37] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:33:38,128 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:33:38,131 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:34:03,385 - __main__ - INFO - 🔄 Starting Telegram bot polling...
+2025-10-05 22:34:03,385 - __main__ - INFO - ✅ Telegram bot polling started
+2025-10-05 22:34:03,386 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:34:03,390 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://89.208.113.85:8000
+2025-10-05 22:34:03,390 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-05 22:34:06,062 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:06] "GET /settings HTTP/1.1" 200 -
+2025-10-05 22:34:06,369 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:06] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-10-05 22:34:06,701 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:06] "[36mGET /static/js/settings.js HTTP/1.1[0m" 304 -
+2025-10-05 22:34:07,907 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:07] "GET /api/settings HTTP/1.1" 200 -
+2025-10-05 22:34:08,583 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:08] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:34:13,034 - __main__ - ERROR - Error generating Telegram connect link: No module named 'telegram'
+2025-10-05 22:34:13,035 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:13] "GET /api/telegram/connect_link HTTP/1.1" 200 -
+2025-10-05 22:34:17,448 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:17] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:34:33,471 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:34:33,472 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:34:37,740 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:34:37] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:35:03,558 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:35:03,561 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:35:08,543 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:35:08] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:35:33,648 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:35:33,650 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:35:39,040 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:35:39] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:36:03,729 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:36:03,732 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:36:09,698 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:09] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:36:13,743 - __main__ - INFO - 🔄 Starting Telegram bot polling...
+2025-10-05 22:36:13,743 - __main__ - INFO - ✅ Telegram bot polling started
+2025-10-05 22:36:13,745 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:36:13,749 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://89.208.113.85:8000
+2025-10-05 22:36:13,749 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-05 22:36:16,179 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:16] "GET /settings HTTP/1.1" 200 -
+2025-10-05 22:36:16,572 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:16] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-10-05 22:36:16,793 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:16] "[36mGET /static/js/settings.js HTTP/1.1[0m" 304 -
+2025-10-05 22:36:17,564 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:17] "GET /api/settings HTTP/1.1" 200 -
+2025-10-05 22:36:18,584 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:18] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:36:22,012 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:22] "GET /api/telegram/connect_link HTTP/1.1" 200 -
+2025-10-05 22:36:23,322 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 409
+2025-10-05 22:36:23,328 - backend.telegram - INFO - ✅ Telegram chat ID 1677190353 saved for user 3
+2025-10-05 22:36:23,329 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:36:23,471 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 2015
+2025-10-05 22:36:23,473 - backend.telegram - INFO - ✅ User 3 connected Telegram chat 1677190353
+2025-10-05 22:36:23,474 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:36:30,289 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:30] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:36:32,258 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:32] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:36:32,383 - __main__ - ERROR - Error sending test Telegram notification: No module named 'telegram'
+2025-10-05 22:36:32,384 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:32] "POST /api/telegram/test HTTP/1.1" 200 -
+2025-10-05 22:36:47,591 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:47] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:36:48,814 - __main__ - ERROR - Error sending test Telegram notification: No module named 'telegram'
+2025-10-05 22:36:48,814 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:36:48] "POST /api/telegram/test HTTP/1.1" 200 -
+2025-10-05 22:36:53,563 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601519&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:36:53,565 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:37:18,200 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:37:18] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:37:23,650 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601519&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:37:23,653 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:37:48,878 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:37:48] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:37:53,743 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601519&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:37:53,746 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:38:19,449 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:38:19] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:38:23,826 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601519&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:38:23,829 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:38:49,875 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:38:49] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:38:53,916 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601519&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:38:53,919 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:39:20,818 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:20] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:39:24,000 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601519&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:39:24,003 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:39:28,434 - __main__ - INFO - 🔄 Starting Telegram bot polling...
+2025-10-05 22:39:28,434 - __main__ - INFO - ✅ Telegram bot polling started
+2025-10-05 22:39:28,437 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:39:28,440 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://89.208.113.85:8000
+2025-10-05 22:39:28,440 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-05 22:39:31,265 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:31] "GET /settings HTTP/1.1" 200 -
+2025-10-05 22:39:31,458 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-10-05 22:39:31,634 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:31] "[36mGET /static/js/settings.js HTTP/1.1[0m" 304 -
+2025-10-05 22:39:32,618 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:32] "GET /api/settings HTTP/1.1" 200 -
+2025-10-05 22:39:33,375 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:33] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:39:37,488 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:37] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:39:43,462 - backend.telegram - INFO - ✅ Telegram disconnected for user 3
+2025-10-05 22:39:43,463 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:43] "POST /api/telegram/disconnect HTTP/1.1" 200 -
+2025-10-05 22:39:43,608 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:43] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:39:45,822 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:45] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:39:46,883 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:46] "GET /api/telegram/connect_link HTTP/1.1" 200 -
+2025-10-05 22:39:47,940 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 409
+2025-10-05 22:39:47,943 - backend.telegram - INFO - ✅ Telegram chat ID 1677190353 saved for user 3
+2025-10-05 22:39:47,944 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:39:48,041 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 2015
+2025-10-05 22:39:48,043 - backend.telegram - INFO - ✅ User 3 connected Telegram chat 1677190353
+2025-10-05 22:39:48,044 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:39:56,375 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:56] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:39:57,083 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:57] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:39:57,946 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:39:58,041 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 894
+2025-10-05 22:39:58,041 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-05 22:39:58,043 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:39:58] "POST /api/telegram/test HTTP/1.1" 200 -
+2025-10-05 22:40:02,432 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:40:02] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:40:18,122 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601520&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:40:18,125 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:40:33,160 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:40:33] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:40:48,211 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601520&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:40:48,214 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:41:04,083 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:41:04] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:41:18,282 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601520&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:41:18,285 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:41:34,064 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:41:34] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:41:48,374 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601520&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:41:48,377 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:42:04,616 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:42:04] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:42:18,463 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601520&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:42:18,466 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:42:35,139 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:42:35] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-05 22:42:48,545 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601520&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-05 22:42:48,548 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-05 22:43:05,999 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 22:43:05] "GET /api/telegram/status HTTP/1.1" 200 -
