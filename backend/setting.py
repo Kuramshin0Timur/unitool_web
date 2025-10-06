@@ -22,9 +22,9 @@ def update_user_settings(user_id, data):
                     UPDATE settings SET
                         sync_api_key = ?, proxy = ?, use_proxy = ?,
                         auto_refresh_campaigns = ?, auto_refresh_adsets = ?,
-                        auto_refresh_interval = ?, telegram_bot_token = ?,
-                        telegram_chat_id = ?, keitaro_api_key = ?,
-                        keitaro_domain = ?, keitaro_range_days = ?,
+                        auto_refresh_interval = ?, auto_control_interval = ?,
+                        telegram_bot_token = ?, telegram_chat_id = ?,
+                        keitaro_api_key = ?, keitaro_domain = ?, keitaro_range_days = ?,
                         auto_headline_optimization = ?, headline_optimization_interval = ?,
                         account_timezone = ?, balance_check_enabled = ?, warning_threshold = ?
                     WHERE user_id = ?
@@ -35,6 +35,7 @@ def update_user_settings(user_id, data):
                     int(data.get('auto_refresh_campaigns', True)),
                     int(data.get('auto_refresh_adsets', True)),
                     int(data.get('auto_refresh_interval', 60)),
+                    int(data.get('auto_control_interval', 30)),
                     data.get('telegram_bot_token', ''),
                     data.get('telegram_chat_id', ''),
                     data.get('keitaro_api_key', ''),
@@ -52,11 +53,11 @@ def update_user_settings(user_id, data):
                 cursor.execute("""
                     INSERT INTO settings (
                         user_id, sync_api_key, proxy, use_proxy,
-                        auto_refresh_campaigns, auto_refresh_adsets, auto_refresh_interval,
+                        auto_refresh_campaigns, auto_refresh_adsets, auto_refresh_interval, auto_control_interval,
                         telegram_bot_token, telegram_chat_id, keitaro_api_key,
                         keitaro_domain, keitaro_range_days, auto_headline_optimization,
                         headline_optimization_interval, account_timezone, balance_check_enabled, warning_threshold
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
                     user_id,
                     data.get('sync_api_key', ''),
@@ -65,6 +66,7 @@ def update_user_settings(user_id, data):
                     int(data.get('auto_refresh_campaigns', True)),
                     int(data.get('auto_refresh_adsets', True)),
                     int(data.get('auto_refresh_interval', 60)),
+                    int(data.get('auto_control_interval', 30)),
                     data.get('telegram_bot_token', ''),
                     data.get('telegram_chat_id', ''),
                     data.get('keitaro_api_key', ''),
@@ -93,6 +95,7 @@ def get_default_settings():
         'auto_refresh_campaigns': True,
         'auto_refresh_adsets': True,
         'auto_refresh_interval': 60,
+        'auto_control_interval': 30,
         'telegram_bot_token': '',
         'telegram_chat_id': '',
         'keitaro_api_key': '',
@@ -113,8 +116,8 @@ def get_user_settings(user_id):
             cursor.execute("""
                 SELECT 
                     sync_api_key, proxy, use_proxy, auto_refresh_campaigns, 
-                    auto_refresh_adsets, auto_refresh_interval, telegram_bot_token, 
-                    telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,
+                    auto_refresh_adsets, auto_refresh_interval, auto_control_interval,
+                    telegram_bot_token, telegram_chat_id, keitaro_api_key, keitaro_domain, keitaro_range_days,
                     auto_headline_optimization, headline_optimization_interval,
                     account_timezone, balance_check_enabled, warning_threshold
                 FROM settings WHERE user_id = ?
@@ -131,6 +134,7 @@ def get_user_settings(user_id):
                     'auto_refresh_campaigns': bool(row_dict.get('auto_refresh_campaigns', True)),
                     'auto_refresh_adsets': bool(row_dict.get('auto_refresh_adsets', True)),
                     'auto_refresh_interval': row_dict.get('auto_refresh_interval', 60),
+                    'auto_control_interval': row_dict.get('auto_control_interval', 30),
                     'telegram_bot_token': row_dict.get('telegram_bot_token', ''),
                     'telegram_chat_id': row_dict.get('telegram_chat_id', ''),
                     'keitaro_api_key': row_dict.get('keitaro_api_key', ''),

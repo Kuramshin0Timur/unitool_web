@@ -712,7 +712,8 @@ def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):
     
     if interval_minutes is None:
         settings = get_user_settings(user_id)
-        interval_minutes = settings.get('auto_refresh_interval', 30)
+        # Используем auto_control_interval если есть, иначе auto_refresh_interval
+        interval_minutes = settings.get('auto_control_interval', settings.get('auto_refresh_interval', 30))
     
     # Уведомление о запуске системы
     send_telegram_message(

@@ -30,5 +30,29 @@ def migrate_add_exclude_field():
     except Exception as e:
         print(f"❌ Ошибка миграции: {e}")
 
+def migrate_add_auto_control_interval():
+    """Добавляет поле auto_control_interval в таблицу settings"""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        # Проверяем, существует ли уже поле
+        cursor.execute("PRAGMA table_info(settings)")
+        columns = [column[1] for column in cursor.fetchall()]
+        
+        if 'auto_control_interval' not in columns:
+            # Добавляем поле
+            cursor.execute("ALTER TABLE settings ADD COLUMN auto_control_interval INTEGER DEFAULT 30")
+            print("✅ Поле auto_control_interval успешно добавлено в таблицу settings")
+        else:
+            print("ℹ️ Поле auto_control_interval уже существует")
+        
+        conn.commit()
+        conn.close()
+        
+    except Exception as e:
+        print(f"❌ Ошибка миграции auto_control_interval: {e}")
+
 if __name__ == "__main__":
     migrate_add_exclude_field()
+    migrate_add_auto_control_interval()

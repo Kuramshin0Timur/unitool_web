@@ -266,8 +266,8 @@ function saveTokenChanges(king, oldToken, kingInputId, tokenInputId, accountsInp
     const finalToken = newToken || oldToken;
 
     const data = { 
-        king, 
-        oldToken,
+        oldKing: king,  // Исправлено: передаем старый KING
+        oldToken: oldToken,
         newKing: finalKing,
         newToken: finalToken,
         account_ids: account_ids.length > 0 ? account_ids : undefined

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('startAutoRefresh')?.addEventListener('click', startAutoRefresh);
     document.getElementById('stopAutoRefresh')?.addEventListener('click', stopAutoRefresh);
     document.getElementById('refreshStatus')?.addEventListener('click', checkAutoRefreshStatus);
+    document.getElementById('saveIntervals')?.addEventListener('click', saveIntervals);
     document.getElementById('testKeitaroBtn')?.addEventListener('click', testKeitaroConnection);
     document.getElementById('syncKeitaroBtn')?.addEventListener('click', syncKeitaroOnly);
 
@@ -31,7 +32,8 @@ function loadSettings() {
                 document.getElementById('useProxy').checked = config.use_proxy || false;
                 document.getElementById('autoRefreshCampaigns').checked = config.auto_refresh_campaigns || false;
                 document.getElementById('autoRefreshAdsets').checked = config.auto_refresh_adsets || false;
-                document.getElementById('autoRefreshInterval').value = config.auto_refresh_interval || 15;
+                document.getElementById('autoRefreshInterval').value = config.auto_refresh_interval || 60;
+                document.getElementById('autoControlInterval').value = config.auto_control_interval || 30;
             
                 document.getElementById('keitaroApiKey').value = config.keitaro_api_key || '';
                 document.getElementById('keitaroDomain').value = config.keitaro_domain || 'uniaffnu.com';
@@ -575,8 +577,51 @@ function updateNextRefreshInfo() {
 
 setInterval(updateNextRefreshInfo, 60000);
 
+// Функция для сохранения интервалов
+function saveIntervals() {
+    const autoRefreshInterval = document.getElementById('autoRefreshInterval').value;
+    const autoControlInterval = document.getElementById('autoControlInterval').value;
+    
+    if (!autoRefreshInterval || !autoControlInterval) {
+        Swal.fire('Ошибка', 'Пожалуйста, заполните все поля интервалов', 'error');
+        return;
+    }
+    
+    if (autoRefreshInterval < 1 || autoRefreshInterval > 120 || 
+        autoControlInterval < 1 || autoControlInterval > 120) {
+        Swal.fire('Ошибка', 'Интервалы должны быть от 1 до 120 минут', 'error');
+        return;
+    }
+    
+    const data = {
+        auto_refresh_interval: parseInt(autoRefreshInterval),
+        auto_control_interval: parseInt(autoControlInterval)
+    };
+    
+    fetch('/api/settings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            Swal.fire('Успех', 'Интервалы сохранены успешно', 'success');
+        } else {
+            Swal.fire('Ошибка', result.error || 'Не удалось сохранить интервалы', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка сохранения интервалов:', error);
+        Swal.fire('Ошибка', 'Ошибка сети при сохранении интервалов', 'error');
+    });
+}
+
 // Делаем функции глобальными, чтобы HTML onclick их видел
 window.connectTelegram = connectTelegram;
 window.checkTelegramStatus = checkTelegramStatus;
 window.disconnectTelegram = disconnectTelegram;
 window.testTelegramNotification = testTelegramNotification;
+window.saveIntervals = saveIntervals;

@@ -3,16 +3,22 @@
 {% block content %}
 <div id="autoRefreshStatus" class="auto-refresh-status mt-2"></div>
     <div class="row">
+    <!-- Настройки интервалов -->
     <div class="card mb-4">
         <div class="card-header">
-            <h5 class="mb-0">Автообновление данных</h5>
+            <h5 class="mb-0"><i class="bi bi-clock"></i> Настройки интервалов</h5>
         </div>
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="form-label">Интервал автообновления (минуты)</label>
-                    <input type="number" class="form-control" id="autoRefreshInterval" min="1" max="60" value="60">
-                    <div class="form-text">Интервал в минутах для автоматического обновления данных</div>
+                    <input type="number" class="form-control" id="autoRefreshInterval" min="1" max="120" value="60">
+                    <div class="form-text">Интервал для автоматического обновления данных из Facebook</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Интервал автоконтроля (минуты)</label>
+                    <input type="number" class="form-control" id="autoControlInterval" min="1" max="120" value="30">
+                    <div class="form-text">Интервал для автоматического управления адсетами</div>
                 </div>
             </div>
             
@@ -27,6 +33,9 @@
                         </button>
                         <button type="button" class="btn btn-info" id="refreshStatus">
                             <i class="bi bi-info-circle"></i> Статус
+                        </button>
+                        <button type="button" class="btn btn-warning" id="saveIntervals">
+                            <i class="bi bi-save"></i> Сохранить интервалы
                         </button>
                     </div>
                     <div id="autoRefreshStatus" class="mt-2 text-muted"></div>

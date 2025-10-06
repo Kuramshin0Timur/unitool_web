@@ -139,8 +139,9 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('/api/settings')
             .then(response => response.json())
             .then(data => {
-                if (data.success && data.config.auto_refresh_interval) {
-                    const interval = data.config.auto_refresh_interval;
+                if (data.success && data.config) {
+                    // Используем auto_control_interval если есть, иначе auto_refresh_interval
+                    const interval = data.config.auto_control_interval || data.config.auto_refresh_interval || 30;
                     if (intervalInput) {
                         intervalInput.value = interval;
                     }
@@ -155,8 +156,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateInterval() {
         const newInterval = parseInt(intervalInput.value) || 60;
         
-        if (newInterval < 1 || newInterval > 60) {
-            Swal.fire('Ошибка', 'Интервал должен быть от 1 до 60 минут', 'error');
+        if (newInterval < 1 || newInterval > 120) {
+            Swal.fire('Ошибка', 'Интервал должен быть от 1 до 120 минут', 'error');
             intervalInput.value = systemStatus.interval;
             return;
         }

@@ -454,6 +454,18 @@ def update_token_complete():
 
             # --- 1. Смена KING ---
             if new_king and new_king != old_king:
+                # Проверяем, не существует ли уже токен с новым KING
+                cursor.execute("""
+                    SELECT COUNT(*) FROM reserve_tokens 
+                    WHERE user_id = ? AND king = ? AND token = ?
+                """, (user_id, new_king, old_token))
+                
+                if cursor.fetchone()[0] > 0:
+                    return jsonify({
+                        'success': False, 
+                        'error': f'Токен уже существует в группе "{new_king}". Сначала удалите дублирующий токен.'
+                    })
+                
                 # Обновляем во всех таблицах
                 tables_to_update = ["reserve_tokens", "reserve_token_accounts", "campaigns", "adsets"]
                 for table in tables_to_update:
@@ -478,6 +490,7 @@ def update_token_complete():
                 tables_to_update = ["reserve_tokens", "reserve_token_accounts", "campaigns", "adsets"]
                 for table in tables_to_update:
                     try:
+                        # Используем final_king (уже обновленный) и old_token для поиска записей
                         cursor.execute(f"""
                             UPDATE {table}
                             SET token = ?
@@ -1271,16 +1284,26 @@ def get_combined_tokens_table():
                         'requests_today': token_info.get('requests_today', 0),
                         'requests_usage_percent': token_info.get('requests_usage_percent', 0)
                     }
+                else:
+                    # Если токен уже существует, обновляем тип на 'reserve' (приоритет резервным токенам)
+                    combined_data[king][token]['type'] = 'reserve'
+                    combined_data[king][token]['requests_limit'] = token_info.get('requests_limit', 100)
+                    combined_data[king][token]['requests_today'] = token_info.get('requests_today', 0)
+                    combined_data[king][token]['requests_usage_percent'] = token_info.get('requests_usage_percent', 0)
                 
                 # Добавляем аккаунты резервных токенов
                 for account in token_info.get('accounts', []):
-                    combined_data[king][token]['accounts'].append({
-                        'account_id': account['account_id'],
-                        'type': 'reserve',
-                        'requests_limit': account.get('requests_limit', 100),
-                        'requests_today': account.get('requests_today', 0),
-                        'requests_usage_percent': account.get('requests_usage_percent', 0)
-                    })
+                    # Проверяем, не существует ли уже такой аккаунт
+                    existing_account = next((acc for acc in combined_data[king][token]['accounts'] 
+                                          if acc['account_id'] == account['account_id']), None)
+                    if not existing_account:
+                        combined_data[king][token]['accounts'].append({
+                            'account_id': account['account_id'],
+                            'type': 'reserve',
+                            'requests_limit': account.get('requests_limit', 100),
+                            'requests_today': account.get('requests_today', 0),
+                            'requests_usage_percent': account.get('requests_usage_percent', 0)
+                        })
         
         # Преобразуем в нужный формат
         result = {}
