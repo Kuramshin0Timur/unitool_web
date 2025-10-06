@@ -462,12 +462,15 @@ function createAutoBudgetCell(value) {
     return `<i class="bi ${icon} ${colorClass}"></i>`;
 }
     function createCheckboxCell(adset) {
+        const checked = selectedAdsets.has(adset.adset_id) ? 'checked' : '';
         return `
             <input type="checkbox" class="form-check-input adset-checkbox" 
-                   data-id="${adset.adset_id}" 
-                   onchange="toggleAdsetSelection('${adset.adset_id}', this.checked)">
+                data-id="${adset.adset_id}" 
+                ${checked}
+                onchange="toggleAdsetSelection('${adset.adset_id}', this.checked)">
         `;
     }
+
     
     function createStatusCell(effective_status) {
     let statusClass;
@@ -1269,21 +1272,24 @@ function formatNumber(value, decimals) {
 function renderAdsets(data) {
     if (!window.adsetsTable) {
         console.error('DataTable не инициализирован');
-        initDataTable(); // Пытаемся переинициализировать
+        initDataTable();
         return;
     }
-    
-    // Сохраняем текущее состояние фильтров и пагинации
+
+    // Сохраняем текущую страницу и поиск
     const currentPage = window.adsetsTable.page();
     const currentSearch = window.adsetsTable.search();
-    
+
+    // Сохраняем видимость колонок
+    const columnVisibility = columnConfig.map(col => col.visible);
+
     window.adsetsTable.clear();
-    
+
     if (!data || data.length === 0) {
         window.adsetsTable.draw();
         return;
     }
-    
+
     data.forEach(adset => {
         const row = [
             createCheckboxCell(adset),
@@ -1300,16 +1306,22 @@ function renderAdsets(data) {
             formatNumber(adset.budget, 2),
             createActionsCell(adset)
         ];
-        
+
         window.adsetsTable.row.add(row);
     });
-    
-    // Восстанавливаем состояние
+
+    // Восстанавливаем видимость колонок
+    columnConfig.forEach((col, index) => {
+        window.adsetsTable.column(col.index).visible(columnVisibility[index]);
+    });
+
+    // Восстанавливаем поиск и страницу
     window.adsetsTable.search(currentSearch);
-    window.adsetsTable.page(currentPage).draw(false); // false чтобы не сбрасывать страницу
-    
+    window.adsetsTable.page(currentPage).draw(false);
+
     updateSelectedCount();
 }
+
 function formatCurrency(value) {
     const num = parseFloat(value);
     if (isNaN(num)) return "$0.000";

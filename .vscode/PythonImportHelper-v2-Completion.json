@@ -73,6 +73,22 @@
         "documentation": {}
     },
     {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -911,14 +927,6 @@
         "documentation": {}
     },
     {
-        "label": "send_telegram_message",
-        "importPath": "backend.telegram",
-        "description": "backend.telegram",
-        "isExtraImport": true,
-        "detail": "backend.telegram",
-        "documentation": {}
-    },
-    {
         "label": "TELEGRAM_BOT_TOKEN",
         "importPath": "backend.telegram",
         "description": "backend.telegram",
@@ -1446,11 +1454,29 @@
         "documentation": {}
     },
     {
+        "label": "AdsetControlResult",
+        "kind": 6,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "class AdsetControlResult:\n    \"\"\"Класс для отслеживания результатов контроля адсета\"\"\"\n    def __init__(self):\n        self.paused_count = 0\n        self.resumed_count = 0\n        self.errors_count = 0\n        self.processed_adsets = []\ndef process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings, result_tracker):\n    \"\"\"Обработка контроля одного адсета с отслеживанием изменений\"\"\"\n    adset_name = adset.get('name', '')",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "get_session",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"\n    global _session\n    with _session_lock:\n        if _session is None:\n            _session = requests.Session()\n            _session.headers.update({\n                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n            })\n            # Настройки для оптимизации производительности",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
         "label": "auto_populate_reserve_tokens",
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''\n            \"\"\", (user_id,))",
+        "peekOfCode": "def auto_populate_reserve_tokens(user_id: int):\n    \"\"\"Автозаполнение резервных токенов\"\"\"\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1459,7 +1485,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_determine_king(token: str) -> str:\n    if not token:\n        return \"Facebook_Default\"\n    token_lower = token.lower()\n    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):\n        return \"Facebook\"\n    elif any(x in token_lower for x in ['ig', 'instagram']):\n        return \"Instagram\" \n    elif any(x in token_lower for x in ['tt', 'tiktok']):\n        return \"TikTok\"",
+        "peekOfCode": "def auto_determine_king(token: str) -> str:\n    \"\"\"Определение платформы по токену\"\"\"\n    if not token:\n        return \"Facebook_Default\"\n    token_lower = token.lower()\n    if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):\n        return \"Facebook\"\n    elif any(x in token_lower for x in ['ig', 'instagram']):\n        return \"Instagram\" \n    elif any(x in token_lower for x in ['tt', 'tiktok']):",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1477,16 +1503,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def stop_auto_control_and_refresh(user_id: int):\n    \"\"\"Ручная остановка автоконтроля (с автообновлением внутри цикла).\"\"\"\n    logger.info(f\"🛑 РУЧНАЯ остановка системы для пользователя {user_id}\")\n    # Уведомление об остановке\n    send_telegram_message(\n        f\"🛑 Система автоконтроля остановлена\\n\"\n        f\"🆔 Пользователь: {user_id}\",\n        user_id=user_id\n    )\n    with auto_control_lock:",
-        "detail": "backend.autocontrol",
-        "documentation": {}
-    },
-    {
-        "label": "get_session",
-        "kind": 2,
-        "importPath": "backend.autocontrol",
-        "description": "backend.autocontrol",
-        "peekOfCode": "def get_session():\n    session = requests.Session()\n    session.headers.update({\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n    })\n    return session\ndef start_auto_refresh(user_id, interval_minutes):\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()",
+        "peekOfCode": "def stop_auto_control_and_refresh(user_id: int):\n    \"\"\"Ручная остановка автоконтроля и автообновления\"\"\"\n    logger.info(f\"🛑 РУЧНАЯ остановка системы для пользователя {user_id}\")\n    # Останавливаем автоконтроль\n    with auto_control_lock:\n        if user_id in auto_control_threads:\n            auto_control_threads[user_id]['running'] = False\n            # Ждем завершения потока\n            time.sleep(2)\n            # Удаляем из словаря",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1495,7 +1512,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            auto_refresh_timers[user_id].cancel()\n        interval_seconds = 30 * 60\n        def run_refresh():\n            # Проверяем, не остановлена ли система\n            with auto_refresh_lock:\n                if user_id not in auto_refresh_timers:\n                    return  # остановлено",
+        "peekOfCode": "def start_auto_refresh(user_id, interval_minutes):\n    \"\"\"Запуск автообновления с заданным интервалом\"\"\"\n    with auto_refresh_lock:\n        if user_id in auto_refresh_timers:\n            logger.info(f\"⚠️ Автообновление уже запущено для пользователя {user_id}\")\n            return\n        # Используем переданный интервал, а не фиксированный\n        interval_seconds = interval_minutes * 60\n        def run_refresh():\n            # Проверяем, не остановлена ли система",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1513,7 +1530,16 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def load_all_tokens(user_id: int) -> Dict[str, List[str]]:\n    all_tokens = {}\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''",
+        "peekOfCode": "def load_all_tokens(user_id: int) -> Dict[str, List[str]]:\n    \"\"\"Загрузка всех токенов пользователя\"\"\"\n    all_tokens = {}\n    try:\n        # Токены из кампаний\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_cpm",
+        "kind": 2,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "def calculate_cpm(spend: float, impressions: int) -> float:\n    \"\"\"Расчет CPM из spend и impressions\"\"\"\n    if impressions > 0 and spend > 0:\n        return (spend / impressions) * 1000\n    return 0.0\nclass AdsetControlResult:\n    \"\"\"Класс для отслеживания результатов контроля адсета\"\"\"\n    def __init__(self):\n        self.paused_count = 0\n        self.resumed_count = 0",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1522,7 +1548,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    effective_status = adset.get('effective_status', '').strip().upper()\n    account_id = adset.get('account_id', '')\n    token = adset.get('token', '')",
+        "peekOfCode": "def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings, result_tracker):\n    \"\"\"Обработка контроля одного адсета с отслеживанием изменений\"\"\"\n    adset_name = adset.get('name', '')\n    adset_id = adset.get('adset_id', '')\n    ucpc = float(adset.get('ucpc', 0))\n    spend = float(adset.get('spend', 0))\n    cpa = float(adset.get('cpa', 0))\n    status = adset.get('status', '').strip().upper()\n    effective_status = adset.get('effective_status', '').strip().upper()\n    account_id = adset.get('account_id', '')",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1531,7 +1557,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def auto_control(user_id):\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        settings = get_user_settings(user_id)      \n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),\n            }\n        check_and_pause_campaigns(user_id)",
+        "peekOfCode": "def auto_control(user_id):\n    \"\"\"Основная функция автоконтроля с оптимизацией производительности\"\"\"\n    try:\n        logger.info(f\"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===\")\n        settings = get_user_settings(user_id)      \n        session_obj = get_session()\n        if settings.get('use_proxy') and settings.get('proxy'):\n            session_obj.proxies = {\n                'http': settings.get('proxy'),\n                'https': settings.get('proxy'),",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1540,7 +1566,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def perform_auto_refresh(user_id):\n    \"\"\"Выполнить автообновление данных\"\"\"\n    try:\n        logger.info(f\"🔄 ВЫЗОВ perform_auto_refresh для user_id {user_id}\")\n        logger.info(f\"📊 Начало автообновления данных для user_id {user_id}\")\n        settings = get_user_settings(user_id)\n        logger.info(f\"⚙️ Настройки автообновления: campaigns={settings.get('auto_refresh_campaigns', True)}, adsets={settings.get('auto_refresh_adsets', True)}\")\n        # 1. Автозаполнение резервных токенов\n        logger.info(\"🔑 Автозаполнение резервных токенов...\")\n        auto_populate_reserve_tokens(user_id)",
+        "peekOfCode": "def perform_auto_refresh(user_id):\n    \"\"\"Выполнить автообновление данных с оптимизацией\"\"\"\n    try:\n        logger.info(f\"🔄 ВЫЗОВ perform_auto_refresh для user_id {user_id}\")\n        settings = get_user_settings(user_id)\n        logger.info(f\"⚙️ Настройки автообновления: campaigns={settings.get('auto_refresh_campaigns', True)}, adsets={settings.get('auto_refresh_adsets', True)}\")\n        # 1. Автозаполнение резервных токенов\n        logger.info(\"🔑 Автозаполнение резервных токенов...\")\n        auto_populate_reserve_tokens(user_id)\n        logger.info(\"✅ Автозаполнение резервных токенов завершено\")",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1549,7 +1575,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Циклический автоконтроль с интегрированным автообновлением\"\"\"\n    logger.info(f\"🎯 Запуск цикла автоконтроля для user_id {user_id}\")\n    # Уведомление о начале работы цикла\n    send_telegram_message(\n        f\"🎯 Запущен цикл автоконтроля\\n\"\n        f\"🆔 Пользователь: {user_id}\",\n        user_id=user_id\n    )\n    # Счетчик циклов для отладки",
+        "peekOfCode": "def run_auto_control_for_user(user_id):\n    \"\"\"Циклический автоконтроль с интегрированным автообновлением\"\"\"\n    logger.info(f\"🎯 Запуск цикла автоконтроля для user_id {user_id}\")\n    # Уведомление о начале работы цикла\n    send_telegram_message(\n        f\"🎯 Запущен цикл автоконтроля\\n\"\n        f\"🆔 Пользователь: {user_id}\",\n        user_id=user_id\n    )\n    cycle_count = 0",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1558,7 +1584,7 @@
         "kind": 2,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):\n    \"\"\"Запускает автоконтроль + автообновление (без лишнего таймера)\"\"\"\n    logger.info(f\"🚀 ЗАПУСК СИСТЕМЫ для user_id {user_id}\")\n    # Уведомление о запуске системы\n    send_telegram_message(\n        f\"🚀 Система автоконтроля запущена\\n\"\n        f\"⏰ Интервал: {interval_minutes} минут\\n\"\n        f\"🆔 Пользователь: {user_id}\",\n        user_id=user_id\n    )",
+        "peekOfCode": "def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):\n    \"\"\"Запускает автоконтроль + автообновление (с защитой от дублирования)\"\"\"\n    logger.info(f\"🚀 ЗАПУСК СИСТЕМЫ для user_id {user_id}\")\n    # Проверяем, не запущена ли система уже\n    with auto_control_lock:\n        if user_id in auto_control_threads and auto_control_threads[user_id].get('running', False):\n            logger.info(f\"⚠️ Система уже запущена для пользователя {user_id}\")\n            send_telegram_message(\n                f\"⚠️ Система уже запущена\\n\"\n                f\"🆔 Пользователь: {user_id}\",",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1567,7 +1593,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "logger = logging.getLogger(__name__)\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nauto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\n# Глобальная сессия для повторного использования соединений\n_session = None\n_session_lock = threading.Lock()\ndef get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1576,7 +1602,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token ",
+        "peekOfCode": "auto_control_threads = {}\nauto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\n# Глобальная сессия для повторного использования соединений\n_session = None\n_session_lock = threading.Lock()\ndef get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"\n    global _session",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1585,7 +1611,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns ",
+        "peekOfCode": "auto_control_lock = threading.Lock()\nauto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\n# Глобальная сессия для повторного использования соединений\n_session = None\n_session_lock = threading.Lock()\ndef get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"\n    global _session\n    with _session_lock:",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1594,7 +1620,7 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL",
+        "peekOfCode": "auto_refresh_timers = {}\nauto_refresh_lock = threading.Lock()\n# Глобальная сессия для повторного использования соединений\n_session = None\n_session_lock = threading.Lock()\ndef get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"\n    global _session\n    with _session_lock:\n        if _session is None:",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -1603,7 +1629,25 @@
         "kind": 5,
         "importPath": "backend.autocontrol",
         "description": "backend.autocontrol",
-        "peekOfCode": "auto_refresh_lock = threading.Lock()\ndef auto_populate_reserve_tokens(user_id: int):\n    try:\n        with get_db_connection(user_id) as conn:\n            cursor = conn.cursor()\n            cursor.execute(\"\"\"\n                SELECT DISTINCT account_id, token \n                FROM campaigns \n                WHERE user_id = ? AND account_id IS NOT NULL AND token IS NOT NULL\n                AND account_id != '' AND token != ''",
+        "peekOfCode": "auto_refresh_lock = threading.Lock()\n# Глобальная сессия для повторного использования соединений\n_session = None\n_session_lock = threading.Lock()\ndef get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"\n    global _session\n    with _session_lock:\n        if _session is None:\n            _session = requests.Session()",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "_session",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "_session = None\n_session_lock = threading.Lock()\ndef get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"\n    global _session\n    with _session_lock:\n        if _session is None:\n            _session = requests.Session()\n            _session.headers.update({\n                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'",
+        "detail": "backend.autocontrol",
+        "documentation": {}
+    },
+    {
+        "label": "_session_lock",
+        "kind": 5,
+        "importPath": "backend.autocontrol",
+        "description": "backend.autocontrol",
+        "peekOfCode": "_session_lock = threading.Lock()\ndef get_session():\n    \"\"\"Получить глобальную сессию с повторным использованием соединений\"\"\"\n    global _session\n    with _session_lock:\n        if _session is None:\n            _session = requests.Session()\n            _session.headers.update({\n                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n            })",
         "detail": "backend.autocontrol",
         "documentation": {}
     },
@@ -3133,7 +3177,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def exclude_multiple_adsets():\n    try:\n        data = request.get_json()\n        user_id = get_current_user_id()\n        adset_ids = data.get('adset_ids', [])\n        exclude = data.get('exclude', True)\n        if not adset_ids:\n            return jsonify({'success': False, 'error': 'adset_ids обязателен'})\n        # Обновляем статус для каждого адсета\n        for adset_id in adset_ids:",
+        "peekOfCode": "def exclude_multiple_adsets():\n    try:\n        data = request.get_json()\n        user_id = session['user_id']\n        adset_ids = data.get('adset_ids', [])\n        exclude = data.get('exclude', True)\n        if not adset_ids:\n            return jsonify({'success': False, 'error': 'adset_ids обязателен'})\n        # Обновляем статус для каждого адсета\n        for adset_id in adset_ids:",
         "detail": "app",
         "documentation": {}
     },

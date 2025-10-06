@@ -260,7 +260,7 @@ def check_and_pause_campaigns(user_id):
                     response.raise_for_status()
                     
                     logger.info(f"🔴 Кампания «{name}» отключена (все адсеты неактивны)")
-                    send_telegram_message(f"🔴 Кампания «{name}» отключена (все адсеты неактивны)")
+                    send_telegram_message(f"🔴 Кампания «{name}» отключена (все адсеты неактивны)", user_id=user_id)
                     
                 except Exception as e:
                     logger.error(f"Ошибка отключения кампании {campaign_id}: {e}")

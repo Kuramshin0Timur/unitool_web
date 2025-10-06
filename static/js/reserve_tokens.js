@@ -502,24 +502,6 @@ function addSampleAccounts() {
     document.getElementById('groupAccounts').dispatchEvent(event);
 }
 
-function addSampleAccountsToEdit() {
-    const sampleAccounts = [
-        '123456789',
-        '987654321',
-        '1122334455',
-        '5566778899',
-        '9988776655',
-        '1112223334',
-        '4445556667',
-        '7778889990'
-    ];
-    
-    document.getElementById('editTokenAccounts').value = sampleAccounts.join('\n');
-    
-
-    const event = new Event('input', { bubbles: true });
-    document.getElementById('editTokenAccounts').dispatchEvent(event);
-}
 
 
 function addSampleAccountsToNew() {
@@ -731,19 +713,6 @@ function clearAccounts() {
 }
 
 
-function addSampleAccountsToEdit() {
-    const sampleAccounts = [
-        '123456789',
-        '987654321',
-        'act_1122334455'
-    ];
-    
-    document.getElementById('editTokenAccounts').value = sampleAccounts.join('\n');
-    
-  
-    const event = new Event('input', { bubbles: true });
-    document.getElementById('editTokenAccounts').dispatchEvent(event);
-}
 
 function handleApiError(error, defaultMessage = 'Ошибка сервера') {
     console.error('API Error:', error);
@@ -1671,7 +1640,7 @@ function loadTokensTable() {
     fetch('/api/user/reserve_tokens/table')
         .then(response => {
             console.log('Response status:', response.status);
-            return response.jsonuser();
+            return response.json();
         })
         .then(data => {
             console.log('Tokens data received:', data);

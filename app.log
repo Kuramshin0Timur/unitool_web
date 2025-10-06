@@ -1,279 +1,363 @@
-2025-10-05 23:09:38,483 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13405 HTTP/1.1" 200 None
-2025-10-05 23:09:38,486 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:38,699 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13497 HTTP/1.1" 200 None
-2025-10-05 23:09:38,703 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:38,935 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13498 HTTP/1.1" 200 None
-2025-10-05 23:09:38,938 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:39,161 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13501 HTTP/1.1" 200 None
-2025-10-05 23:09:39,164 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:39,364 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13502 HTTP/1.1" 200 None
-2025-10-05 23:09:39,367 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:39,591 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13507 HTTP/1.1" 200 None
-2025-10-05 23:09:39,594 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:39,795 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13508 HTTP/1.1" 200 None
-2025-10-05 23:09:39,798 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:40,014 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13511 HTTP/1.1" 200 None
-2025-10-05 23:09:40,018 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:40,231 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13512 HTTP/1.1" 200 None
-2025-10-05 23:09:40,234 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:40,432 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13570 HTTP/1.1" 200 None
-2025-10-05 23:09:40,435 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:40,506 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 23:09:40,507 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:40] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 23:09:40,645 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13581 HTTP/1.1" 200 None
-2025-10-05 23:09:40,648 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:40,860 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13582 HTTP/1.1" 200 None
-2025-10-05 23:09:40,863 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:41,063 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13585 HTTP/1.1" 200 None
-2025-10-05 23:09:41,065 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:41,287 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13586 HTTP/1.1" 200 None
-2025-10-05 23:09:41,290 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:41,499 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13587 HTTP/1.1" 200 None
-2025-10-05 23:09:41,502 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:41,715 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13588 HTTP/1.1" 200 None
-2025-10-05 23:09:41,718 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:41,913 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13589 HTTP/1.1" 200 None
-2025-10-05 23:09:41,916 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:42,124 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13590 HTTP/1.1" 200 None
-2025-10-05 23:09:42,127 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:42,326 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/campaigns/all HTTP/1.1" 404 None
-2025-10-05 23:09:42,326 - __main__ - ERROR - Ошибка получения информации о кампании all: 404 Client Error: Not Found for url: https://uniaffnu.com/admin_api/v1/campaigns/all
-2025-10-05 23:09:42,328 - __main__ - INFO - Отправка данных: 50 потоков
-2025-10-05 23:09:42,329 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:42] "GET /api/headline_optimization/status?campaign_id=all HTTP/1.1" 200 -
-2025-10-05 23:09:51,645 - __main__ - INFO - Запрос статистики для кампании all
-2025-10-05 23:09:51,645 - __main__ - INFO - Отправка запроса к Keitaro с правильными метриками
-2025-10-05 23:09:51,646 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:52,473 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
-2025-10-05 23:09:52,474 - __main__ - INFO - Получено 50 записей из Keitaro
-2025-10-05 23:09:52,474 - __main__ - INFO - Пример данных: {"stream_id": 13, "conversions": 0, "revenue": 0, "cost": 0, "roi": 0, "epc": 0, "clicks": 1066}
-2025-10-05 23:09:52,475 - __main__ - INFO - Получено 50 записей статистики
-2025-10-05 23:09:52,476 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:52,704 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13 HTTP/1.1" 200 None
-2025-10-05 23:09:52,708 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:52,937 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/1194 HTTP/1.1" 200 None
-2025-10-05 23:09:52,941 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:53,158 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/2505 HTTP/1.1" 200 None
-2025-10-05 23:09:53,162 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:53,363 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/5739 HTTP/1.1" 200 None
-2025-10-05 23:09:53,366 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:53,574 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/6820 HTTP/1.1" 200 None
-2025-10-05 23:09:53,577 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:53,773 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/6973 HTTP/1.1" 200 None
-2025-10-05 23:09:53,777 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:53,996 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/7487 HTTP/1.1" 200 None
-2025-10-05 23:09:53,999 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:54,208 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/8563 HTTP/1.1" 200 None
-2025-10-05 23:09:54,211 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:54,439 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/10858 HTTP/1.1" 200 None
-2025-10-05 23:09:54,442 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:54,680 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/11547 HTTP/1.1" 200 None
-2025-10-05 23:09:54,683 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:54,900 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12172 HTTP/1.1" 200 None
-2025-10-05 23:09:54,903 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:55,111 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12531 HTTP/1.1" 200 None
-2025-10-05 23:09:55,114 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:55,312 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12914 HTTP/1.1" 200 None
-2025-10-05 23:09:55,316 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:55,517 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/12936 HTTP/1.1" 200 None
-2025-10-05 23:09:55,520 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:55,707 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13039 HTTP/1.1" 200 None
-2025-10-05 23:09:55,711 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:55,898 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13052 HTTP/1.1" 200 None
-2025-10-05 23:09:55,902 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:56,115 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13079 HTTP/1.1" 200 None
-2025-10-05 23:09:56,118 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:56,128 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:56] "GET /settings HTTP/1.1" 200 -
-2025-10-05 23:09:56,238 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-10-05 23:09:56,316 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:56] "[36mGET /static/js/settings.js HTTP/1.1[0m" 304 -
-2025-10-05 23:09:56,339 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13080 HTTP/1.1" 200 None
-2025-10-05 23:09:56,341 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:56,542 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13308 HTTP/1.1" 200 None
-2025-10-05 23:09:56,545 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:56,700 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:56] "GET /api/settings HTTP/1.1" 200 -
-2025-10-05 23:09:56,739 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13309 HTTP/1.1" 200 None
-2025-10-05 23:09:56,743 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:56,941 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13322 HTTP/1.1" 200 None
-2025-10-05 23:09:56,943 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:57,151 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13369 HTTP/1.1" 200 None
-2025-10-05 23:09:57,154 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:57,368 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13370 HTTP/1.1" 200 None
-2025-10-05 23:09:57,371 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:57,579 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13373 HTTP/1.1" 200 None
-2025-10-05 23:09:57,582 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:57,696 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:57] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:09:57,801 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13374 HTTP/1.1" 200 None
-2025-10-05 23:09:57,804 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:58,011 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13397 HTTP/1.1" 200 None
-2025-10-05 23:09:58,014 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:58,211 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13398 HTTP/1.1" 200 None
-2025-10-05 23:09:58,213 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:58,432 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13399 HTTP/1.1" 200 None
-2025-10-05 23:09:58,434 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:58,511 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
-2025-10-05 23:09:58,514 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
-2025-10-05 23:09:58,563 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:58] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:09:58,644 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13400 HTTP/1.1" 200 None
-2025-10-05 23:09:58,646 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:58,912 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13402 HTTP/1.1" 200 None
-2025-10-05 23:09:58,915 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:59,123 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13403 HTTP/1.1" 200 None
-2025-10-05 23:09:59,127 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:59,337 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13404 HTTP/1.1" 200 None
-2025-10-05 23:09:59,340 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:59,553 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13405 HTTP/1.1" 200 None
-2025-10-05 23:09:59,557 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:59,561 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:09:59] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:09:59,764 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13497 HTTP/1.1" 200 None
-2025-10-05 23:09:59,767 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:09:59,981 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13498 HTTP/1.1" 200 None
-2025-10-05 23:09:59,984 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:00,143 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:00] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:00,207 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13501 HTTP/1.1" 200 None
-2025-10-05 23:10:00,210 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:00,408 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13502 HTTP/1.1" 200 None
-2025-10-05 23:10:00,411 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:00,606 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13507 HTTP/1.1" 200 None
-2025-10-05 23:10:00,609 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:00,634 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:00] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:00,824 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13508 HTTP/1.1" 200 None
-2025-10-05 23:10:00,827 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:01,040 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13511 HTTP/1.1" 200 None
-2025-10-05 23:10:01,043 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:01,095 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:01] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:01,285 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13512 HTTP/1.1" 200 None
-2025-10-05 23:10:01,288 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:01,517 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13570 HTTP/1.1" 200 None
-2025-10-05 23:10:01,520 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:01,569 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:01] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:01,734 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13581 HTTP/1.1" 200 None
-2025-10-05 23:10:01,736 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:01,948 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13582 HTTP/1.1" 200 None
-2025-10-05 23:10:01,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:02,189 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13585 HTTP/1.1" 200 None
-2025-10-05 23:10:02,193 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:02,409 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13586 HTTP/1.1" 200 None
-2025-10-05 23:10:02,412 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:02,621 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13587 HTTP/1.1" 200 None
-2025-10-05 23:10:02,624 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:02,837 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13588 HTTP/1.1" 200 None
-2025-10-05 23:10:02,840 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:02,917 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:02] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:03,059 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13589 HTTP/1.1" 200 None
-2025-10-05 23:10:03,062 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:03,259 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/streams/13590 HTTP/1.1" 200 None
-2025-10-05 23:10:03,264 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
-2025-10-05 23:10:03,469 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:03] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:03,696 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "GET /admin_api/v1/campaigns/all HTTP/1.1" 404 None
-2025-10-05 23:10:03,697 - __main__ - ERROR - Ошибка получения информации о кампании all: 404 Client Error: Not Found for url: https://uniaffnu.com/admin_api/v1/campaigns/all
-2025-10-05 23:10:03,699 - __main__ - INFO - Отправка данных: 50 потоков
-2025-10-05 23:10:03,699 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:03] "GET /api/headline_optimization/status?campaign_id=all HTTP/1.1" 200 -
-2025-10-05 23:10:04,071 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:04] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:04,875 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:04] "POST /api/settings HTTP/1.1" 200 -
-2025-10-05 23:10:05,556 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 23:10:05,556 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:05] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 23:10:06,077 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:06] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:06,993 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:06] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:10,277 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:10] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:10,870 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:10] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:11,363 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:11] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:14,804 - werkzeug - INFO - 204.76.203.18 - - [05/Oct/2025 23:10:14] "[33mGET /harm6 HTTP/1.1[0m" 404 -
-2025-10-05 23:10:15,000 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:15] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:15,623 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:15] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:16,171 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:16] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:16,889 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:16] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:18,873 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:18] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:26,693 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:26] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:28,597 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
-2025-10-05 23:10:28,599 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
-2025-10-05 23:10:29,358 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 387
-2025-10-05 23:10:29,361 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
-2025-10-05 23:10:29,467 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 931
-2025-10-05 23:10:29,470 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
-2025-10-05 23:10:34,237 - werkzeug - INFO - 204.76.203.18 - - [05/Oct/2025 23:10:34] "[33mGET /phanes.mips HTTP/1.1[0m" 404 -
-2025-10-05 23:10:35,497 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:35] "GET /api/settings HTTP/1.1" 200 -
-2025-10-05 23:10:35,558 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:35,948 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 152
-2025-10-05 23:10:35,950 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:36,190 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-10-05 23:10:36,194 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:36,671 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-10-05 23:10:36,672 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:36,975 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-10-05 23:10:36,978 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:36,990 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:36] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:37,421 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 147
-2025-10-05 23:10:37,423 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:37,676 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-10-05 23:10:37,680 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:38,056 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 148
-2025-10-05 23:10:38,057 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:38,333 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-10-05 23:10:38,337 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:38,758 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-10-05 23:10:38,760 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:39,005 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 59
-2025-10-05 23:10:39,009 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:39,049 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:39] "GET /settings HTTP/1.1" 200 -
-2025-10-05 23:10:39,109 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:39] "GET /static/js/settings.js HTTP/1.1" 200 -
-2025-10-05 23:10:39,121 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
-2025-10-05 23:10:39,229 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:39] "GET /auto_control HTTP/1.1" 200 -
-2025-10-05 23:10:39,342 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:39] "GET /api/settings HTTP/1.1" 200 -
-2025-10-05 23:10:39,493 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 146
-2025-10-05 23:10:39,495 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:39,504 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:39] "GET /static/css/style.css HTTP/1.1" 200 -
-2025-10-05 23:10:39,699 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:39] "[36mGET /static/js/auto_controls.js HTTP/1.1[0m" 304 -
-2025-10-05 23:10:39,701 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:39] "[36mGET /static/js/geo_rules.js HTTP/1.1[0m" 304 -
-2025-10-05 23:10:39,722 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 59
-2025-10-05 23:10:39,726 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:40,023 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-10-05 23:10:40,024 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:40,263 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 59
-2025-10-05 23:10:40,267 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:40,353 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:40] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:40,452 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 23:10:40,452 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:40] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 23:10:40,455 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:40] "GET /api/settings HTTP/1.1" 200 -
-2025-10-05 23:10:40,487 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:40] "GET /api/adsets HTTP/1.1" 200 -
-2025-10-05 23:10:40,568 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:40] "GET /api/geo_rules HTTP/1.1" 200 -
-2025-10-05 23:10:40,627 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:40] "GET /api/adsets/data?excluded=false&_=1759705642137 HTTP/1.1" 200 -
-2025-10-05 23:10:40,649 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 146
-2025-10-05 23:10:40,651 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:40,689 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:40] "GET /api/adsets/data?excluded=true&_=1759705642138 HTTP/1.1" 200 -
-2025-10-05 23:10:40,928 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 59
-2025-10-05 23:10:40,932 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:41,360 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 151
-2025-10-05 23:10:41,363 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:41,589 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:41] "GET /api/telegram/connect_link HTTP/1.1" 200 -
-2025-10-05 23:10:41,608 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 59
-2025-10-05 23:10:41,613 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:42,112 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=id%2Cname%2Caccount_status%2Camount_spent%2Cbalance%2Cspend_cap&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 153
-2025-10-05 23:10:42,114 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
-2025-10-05 23:10:42,351 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536?fields=&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB HTTP/1.1" 200 61
-2025-10-05 23:10:42,355 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:42] "GET /api/check_balance HTTP/1.1" 200 -
-2025-10-05 23:10:45,193 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:10:45] "GET /api/adsets/data?excluded=true HTTP/1.1" 200 -
-2025-10-05 23:10:51,749 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:51] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:52,313 - werkzeug - INFO - 204.76.203.18 - - [05/Oct/2025 23:10:52] "[33mGET /phanes.arm6 HTTP/1.1[0m" 404 -
-2025-10-05 23:10:53,581 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:10:53] "GET /api/telegram/connect_link HTTP/1.1" 200 -
-2025-10-05 23:10:57,485 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:10:57] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:10:59,547 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601525&timeout=30&allowed_updates=message HTTP/1.1" 200 23
-2025-10-05 23:10:59,550 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
-2025-10-05 23:11:03,744 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:03] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:11:04,833 - werkzeug - INFO - 204.76.203.18 - - [05/Oct/2025 23:11:04] "[33mGET /phanes.arm7 HTTP/1.1[0m" 404 -
-2025-10-05 23:11:05,893 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:05] "GET /api/telegram/connect_link HTTP/1.1" 200 -
-2025-10-05 23:11:09,347 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:09] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:11:11,081 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 23:11:11,081 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:11:11] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 23:11:16,063 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:16] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:11:27,509 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:11:27] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:11:29,628 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=369601525&timeout=30&allowed_updates=message HTTP/1.1" 200 23
-2025-10-05 23:11:29,631 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
-2025-10-05 23:11:36,504 - werkzeug - INFO - 204.76.203.18 - - [05/Oct/2025 23:11:36] "[33mGET /phanes.mpsl HTTP/1.1[0m" 404 -
-2025-10-05 23:11:39,349 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:39] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:11:41,086 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
-2025-10-05 23:11:41,086 - werkzeug - INFO - 51.159.226.150 - - [05/Oct/2025 23:11:41] "POST /api/auto_refresh HTTP/1.1" 200 -
-2025-10-05 23:11:44,313 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:44] "GET /api/telegram/connect_link HTTP/1.1" 200 -
-2025-10-05 23:11:46,048 - werkzeug - INFO - 204.76.203.18 - - [05/Oct/2025 23:11:46] "[33mGET /phanes.ppc HTTP/1.1[0m" 404 -
-2025-10-05 23:11:53,069 - werkzeug - INFO - 87.120.191.93 - - [05/Oct/2025 23:11:53] "[32mGET / HTTP/1.1[0m" 302 -
-2025-10-05 23:11:54,452 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:54] "GET /api/telegram/status HTTP/1.1" 200 -
-2025-10-05 23:11:54,503 - werkzeug - INFO - 46.138.34.55 - - [05/Oct/2025 23:11:54] "GET /api/telegram/connect_link HTTP/1.1" 200 -
-2025-10-05 23:11:56,709 - werkzeug - INFO - 92.51.30.27 - - [05/Oct/2025 23:11:56] "GET /api/telegram/status HTTP/1.1" 200 -
+2025-10-06 00:55:54,102 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-06 00:55:54,102 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:55:54] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:55:54,155 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:55:54] "GET /api/adsets/data?ts=1759711955816&status=all&search= HTTP/1.1" 200 -
+2025-10-06 00:55:54,726 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:55:54] "GET /api/adsets/data?ts=1759711956819&status=all&search= HTTP/1.1" 200 -
+2025-10-06 00:56:04,729 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-06 00:56:04,732 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:56:24,105 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-06 00:56:24,105 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:56:24] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:56:30,504 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=True (running: True), refresh=False, interval=60мин, overall=RUNNING
+2025-10-06 00:56:30,505 - werkzeug - INFO - 92.51.30.27 - - [06/Oct/2025 00:56:30] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:56:34,820 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-06 00:56:34,824 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:56:54,844 - __main__ - INFO - 🔄 Starting Telegram bot polling...
+2025-10-06 00:56:54,844 - __main__ - INFO - ✅ Telegram bot polling started
+2025-10-06 00:56:54,846 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:56:54,851 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://89.208.113.85:5000
+2025-10-06 00:56:54,851 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-06 00:56:57,530 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:56:57] "GET /api/adsets/data?ts=1759712019627&status=all&search= HTTP/1.1" 200 -
+2025-10-06 00:57:00,183 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:00] "GET /api/adsets/data?ts=1759712022282&status=all&search= HTTP/1.1" 200 -
+2025-10-06 00:57:01,779 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:01] "GET /api/adsets/data?ts=1759712023283&status=all&search= HTTP/1.1" 200 -
+2025-10-06 00:57:02,554 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:02] "GET /auto_control HTTP/1.1" 200 -
+2025-10-06 00:57:02,786 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-10-06 00:57:02,916 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:02] "[36mGET /static/js/auto_controls.js HTTP/1.1[0m" 304 -
+2025-10-06 00:57:02,945 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:02] "[36mGET /static/js/geo_rules.js HTTP/1.1[0m" 304 -
+2025-10-06 00:57:03,484 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:03] "GET /api/settings HTTP/1.1" 200 -
+2025-10-06 00:57:03,485 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
+2025-10-06 00:57:03,485 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:03] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:57:03,504 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:03] "GET /api/adsets HTTP/1.1" 200 -
+2025-10-06 00:57:03,594 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:03] "GET /api/geo_rules HTTP/1.1" 200 -
+2025-10-06 00:57:03,657 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:03] "GET /api/adsets/data?excluded=false&_=1759712025413 HTTP/1.1" 200 -
+2025-10-06 00:57:03,729 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:03] "GET /api/adsets/data?excluded=true&_=1759712025414 HTTP/1.1" 200 -
+2025-10-06 00:57:08,009 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:08] "GET /api/adsets/data?excluded=true HTTP/1.1" 200 -
+2025-10-06 00:57:11,665 - backend.autocontrol - INFO - 🚀 ЗАПУСК СИСТЕМЫ для user_id 3
+2025-10-06 00:57:11,667 - backend.autocontrol - INFO - 🚀 ЗАПУСК СИСТЕМЫ для user_id 3
+2025-10-06 00:57:11,670 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:11,671 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:11,776 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 723
+2025-10-06 00:57:11,776 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:11,778 - backend.autocontrol - INFO - 🔄 Начальная синхронизация данных
+2025-10-06 00:57:11,778 - backend.autocontrol - INFO - 🔄 ВЫЗОВ perform_auto_refresh для user_id 3
+2025-10-06 00:57:11,785 - backend.autocontrol - INFO - ⚙️ Настройки автообновления: campaigns=True, adsets=True
+2025-10-06 00:57:11,785 - backend.autocontrol - INFO - 🔑 Автозаполнение резервных токенов...
+2025-10-06 00:57:11,789 - backend.autocontrol - INFO - ✅ Автозаполнение резервных токенов завершено
+2025-10-06 00:57:11,789 - backend.autocontrol - INFO - 🔄 Обновление кампаний...
+2025-10-06 00:57:11,792 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 723
+2025-10-06 00:57:11,792 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:11,795 - backend.autocontrol - INFO - 🔄 Начальная синхронизация данных
+2025-10-06 00:57:11,795 - backend.autocontrol - INFO - 🔄 ВЫЗОВ perform_auto_refresh для user_id 3
+2025-10-06 00:57:11,798 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:11,803 - backend.autocontrol - INFO - ⚙️ Настройки автообновления: campaigns=True, adsets=True
+2025-10-06 00:57:11,803 - backend.autocontrol - INFO - 🔑 Автозаполнение резервных токенов...
+2025-10-06 00:57:11,806 - backend.autocontrol - INFO - ✅ Автозаполнение резервных токенов завершено
+2025-10-06 00:57:11,806 - backend.autocontrol - INFO - 🔄 Обновление кампаний...
+2025-10-06 00:57:11,813 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:12,119 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1428
+2025-10-06 00:57:12,119 - backend.campaign - DEBUG - Получено 34 кампаний. Status: {'PAUSED': 34}, Effective Status: {'PAUSED': 34}
+2025-10-06 00:57:12,120 - backend.campaign - INFO - Получено 34 кампаний, после фильтрации: 34 для аккаунта 1034818791841582
+2025-10-06 00:57:12,122 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1428
+2025-10-06 00:57:12,123 - backend.campaign - DEBUG - Получено 34 кампаний. Status: {'PAUSED': 34}, Effective Status: {'PAUSED': 34}
+2025-10-06 00:57:12,123 - backend.campaign - INFO - Получено 34 кампаний, после фильтрации: 34 для аккаунта 1034818791841582
+2025-10-06 00:57:12,186 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:12,243 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:12,497 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1224
+2025-10-06 00:57:12,498 - backend.campaign - DEBUG - Получено 28 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 26}, Effective Status: {'ACTIVE': 2, 'PAUSED': 26}
+2025-10-06 00:57:12,498 - backend.campaign - INFO - Получено 28 кампаний, после фильтрации: 28 для аккаунта 1084247417068803
+2025-10-06 00:57:12,541 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:12,564 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1224
+2025-10-06 00:57:12,564 - backend.campaign - DEBUG - Получено 28 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 26}, Effective Status: {'ACTIVE': 2, 'PAUSED': 26}
+2025-10-06 00:57:12,565 - backend.campaign - INFO - Получено 28 кампаний, после фильтрации: 28 для аккаунта 1084247417068803
+2025-10-06 00:57:12,621 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:12,871 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1107
+2025-10-06 00:57:12,872 - backend.campaign - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 24}, Effective Status: {'PAUSED': 24}
+2025-10-06 00:57:12,872 - backend.campaign - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 1229693575829178
+2025-10-06 00:57:12,909 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:13,098 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1107
+2025-10-06 00:57:13,099 - backend.campaign - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 24}, Effective Status: {'PAUSED': 24}
+2025-10-06 00:57:13,099 - backend.campaign - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 1229693575829178
+2025-10-06 00:57:13,140 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:13,202 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1088
+2025-10-06 00:57:13,203 - backend.campaign - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 22, 'ACTIVE': 2}, Effective Status: {'PAUSED': 22, 'ACTIVE': 2}
+2025-10-06 00:57:13,203 - backend.campaign - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 4130588987263265
+2025-10-06 00:57:13,245 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:13,395 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1088
+2025-10-06 00:57:13,395 - backend.campaign - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 22, 'ACTIVE': 2}, Effective Status: {'PAUSED': 22, 'ACTIVE': 2}
+2025-10-06 00:57:13,396 - backend.campaign - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 4130588987263265
+2025-10-06 00:57:13,439 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:13,648 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1649
+2025-10-06 00:57:13,649 - backend.campaign - DEBUG - Получено 41 кампаний. Status: {'PAUSED': 41}, Effective Status: {'PAUSED': 41}
+2025-10-06 00:57:13,649 - backend.campaign - INFO - Получено 41 кампаний, после фильтрации: 41 для аккаунта 519765377868615
+2025-10-06 00:57:13,702 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:13,756 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1649
+2025-10-06 00:57:13,757 - backend.campaign - DEBUG - Получено 41 кампаний. Status: {'PAUSED': 41}, Effective Status: {'PAUSED': 41}
+2025-10-06 00:57:13,757 - backend.campaign - INFO - Получено 41 кампаний, после фильтрации: 41 для аккаунта 519765377868615
+2025-10-06 00:57:13,830 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:13,981 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1001
+2025-10-06 00:57:13,982 - backend.campaign - DEBUG - Получено 20 кампаний. Status: {'PAUSED': 19, 'ACTIVE': 1}, Effective Status: {'PAUSED': 19, 'ACTIVE': 1}
+2025-10-06 00:57:13,982 - backend.campaign - INFO - Получено 20 кампаний, после фильтрации: 20 для аккаунта 618632521162363
+2025-10-06 00:57:14,010 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:14,183 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1001
+2025-10-06 00:57:14,184 - backend.campaign - DEBUG - Получено 20 кампаний. Status: {'PAUSED': 19, 'ACTIVE': 1}, Effective Status: {'PAUSED': 19, 'ACTIVE': 1}
+2025-10-06 00:57:14,184 - backend.campaign - INFO - Получено 20 кампаний, после фильтрации: 20 для аккаунта 618632521162363
+2025-10-06 00:57:14,222 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:14,392 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1037
+2025-10-06 00:57:14,393 - backend.campaign - DEBUG - Получено 19 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 17}, Effective Status: {'ACTIVE': 2, 'PAUSED': 17}
+2025-10-06 00:57:14,393 - backend.campaign - INFO - Получено 19 кампаний, после фильтрации: 19 для аккаунта 684941790597261
+2025-10-06 00:57:14,416 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:14,562 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1037
+2025-10-06 00:57:14,563 - backend.campaign - DEBUG - Получено 19 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 17}, Effective Status: {'ACTIVE': 2, 'PAUSED': 17}
+2025-10-06 00:57:14,563 - backend.campaign - INFO - Получено 19 кампаний, после фильтрации: 19 для аккаунта 684941790597261
+2025-10-06 00:57:14,602 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:14,734 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 992
+2025-10-06 00:57:14,734 - backend.campaign - DEBUG - Получено 20 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 18}, Effective Status: {'ACTIVE': 2, 'PAUSED': 18}
+2025-10-06 00:57:14,735 - backend.campaign - INFO - Получено 20 кампаний, после фильтрации: 20 для аккаунта 690058783376774
+2025-10-06 00:57:14,764 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:14,933 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 992
+2025-10-06 00:57:14,934 - backend.campaign - DEBUG - Получено 20 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 18}, Effective Status: {'ACTIVE': 2, 'PAUSED': 18}
+2025-10-06 00:57:14,934 - backend.campaign - INFO - Получено 20 кампаний, после фильтрации: 20 для аккаунта 690058783376774
+2025-10-06 00:57:14,968 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:15,085 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1543
+2025-10-06 00:57:15,085 - backend.campaign - DEBUG - Получено 38 кампаний. Status: {'PAUSED': 38}, Effective Status: {'PAUSED': 38}
+2025-10-06 00:57:15,085 - backend.campaign - INFO - Получено 38 кампаний, после фильтрации: 38 для аккаунта 707254618536242
+2025-10-06 00:57:15,135 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:15,321 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1543
+2025-10-06 00:57:15,324 - backend.campaign - DEBUG - Получено 38 кампаний. Status: {'PAUSED': 38}, Effective Status: {'PAUSED': 38}
+2025-10-06 00:57:15,325 - backend.campaign - INFO - Получено 38 кампаний, после фильтрации: 38 для аккаунта 707254618536242
+2025-10-06 00:57:15,380 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:15,481 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1375
+2025-10-06 00:57:15,482 - backend.campaign - DEBUG - Получено 33 кампаний. Status: {'PAUSED': 32, 'ACTIVE': 1}, Effective Status: {'PAUSED': 32, 'ACTIVE': 1}
+2025-10-06 00:57:15,482 - backend.campaign - INFO - Получено 33 кампаний, после фильтрации: 33 для аккаунта 9859604834059536
+2025-10-06 00:57:15,541 - backend.autocontrol - INFO - ✅ Обновление кампаний завершено
+2025-10-06 00:57:15,542 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:15,626 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 535
+2025-10-06 00:57:15,626 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:15,628 - backend.autocontrol - INFO - 🎯 Обновление адсетов...
+2025-10-06 00:57:15,633 - backend.autocontrol - INFO - 📋 Найдено 10 аккаунтов для обновления адсетов
+2025-10-06 00:57:15,633 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1034818791841582
+2025-10-06 00:57:15,634 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:15,776 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1375
+2025-10-06 00:57:15,777 - backend.campaign - DEBUG - Получено 33 кампаний. Status: {'PAUSED': 32, 'ACTIVE': 1}, Effective Status: {'PAUSED': 32, 'ACTIVE': 1}
+2025-10-06 00:57:15,777 - backend.campaign - INFO - Получено 33 кампаний, после фильтрации: 33 для аккаунта 9859604834059536
+2025-10-06 00:57:15,845 - backend.autocontrol - INFO - ✅ Обновление кампаний завершено
+2025-10-06 00:57:15,846 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:15,940 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 535
+2025-10-06 00:57:15,940 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:15,942 - backend.autocontrol - INFO - 🎯 Обновление адсетов...
+2025-10-06 00:57:15,950 - backend.autocontrol - INFO - 📋 Найдено 10 аккаунтов для обновления адсетов
+2025-10-06 00:57:15,950 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1034818791841582
+2025-10-06 00:57:15,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:16,296 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2732
+2025-10-06 00:57:16,597 - backend.adsets - INFO - ✅ Получено 166 адсетов из 1034818791841582
+2025-10-06 00:57:16,600 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:16,717 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2732
+2025-10-06 00:57:17,018 - backend.adsets - INFO - ✅ Получено 166 адсетов из 1034818791841582
+2025-10-06 00:57:17,021 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:17,472 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:17,753 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1034818791841582 обновлены
+2025-10-06 00:57:17,753 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1084247417068803
+2025-10-06 00:57:17,754 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:17,808 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:18,118 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1034818791841582 обновлены
+2025-10-06 00:57:18,118 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1084247417068803
+2025-10-06 00:57:18,119 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:18,289 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2363
+2025-10-06 00:57:18,590 - backend.adsets - INFO - ✅ Получено 134 адсетов из 1084247417068803
+2025-10-06 00:57:18,593 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:18,724 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2363
+2025-10-06 00:57:19,025 - backend.adsets - INFO - ✅ Получено 134 адсетов из 1084247417068803
+2025-10-06 00:57:19,028 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:19,364 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:19,604 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1084247417068803 обновлены
+2025-10-06 00:57:19,604 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1229693575829178
+2025-10-06 00:57:19,605 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:19,692 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:19,956 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1084247417068803 обновлены
+2025-10-06 00:57:19,956 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 1229693575829178
+2025-10-06 00:57:19,957 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:20,377 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2024
+2025-10-06 00:57:20,465 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2024
+2025-10-06 00:57:20,678 - backend.adsets - INFO - ✅ Получено 110 адсетов из 1229693575829178
+2025-10-06 00:57:20,681 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:20,766 - backend.adsets - INFO - ✅ Получено 110 адсетов из 1229693575829178
+2025-10-06 00:57:20,769 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:21,551 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:21,561 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:21,981 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1229693575829178 обновлены
+2025-10-06 00:57:21,982 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 4130588987263265
+2025-10-06 00:57:21,983 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:21,992 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 1229693575829178 обновлены
+2025-10-06 00:57:21,992 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 4130588987263265
+2025-10-06 00:57:21,993 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:22,557 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2172
+2025-10-06 00:57:22,561 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2172
+2025-10-06 00:57:22,858 - backend.adsets - INFO - ✅ Получено 124 адсетов из 4130588987263265
+2025-10-06 00:57:22,861 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:22,862 - backend.adsets - INFO - ✅ Получено 124 адсетов из 4130588987263265
+2025-10-06 00:57:22,864 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:23,616 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:23,623 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:24,085 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 4130588987263265 обновлены
+2025-10-06 00:57:24,086 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 519765377868615
+2025-10-06 00:57:24,087 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:24,094 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 4130588987263265 обновлены
+2025-10-06 00:57:24,095 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 519765377868615
+2025-10-06 00:57:24,096 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:24,796 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 3131
+2025-10-06 00:57:24,916 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/getUpdates?offset=0&timeout=30&allowed_updates=message HTTP/1.1" 200 23
+2025-10-06 00:57:24,918 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:24,922 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 3131
+2025-10-06 00:57:24,930 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
+2025-10-06 00:57:24,930 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:24] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:57:25,097 - backend.adsets - INFO - ✅ Получено 189 адсетов из 519765377868615
+2025-10-06 00:57:25,100 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:25,223 - backend.adsets - INFO - ✅ Получено 189 адсетов из 519765377868615
+2025-10-06 00:57:25,228 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:25,873 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:25,957 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:26,497 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 519765377868615 обновлены
+2025-10-06 00:57:26,497 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 618632521162363
+2025-10-06 00:57:26,498 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:26,563 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 519765377868615 обновлены
+2025-10-06 00:57:26,564 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 618632521162363
+2025-10-06 00:57:26,565 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:26,987 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1961
+2025-10-06 00:57:27,015 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1961
+2025-10-06 00:57:27,288 - backend.adsets - INFO - ✅ Получено 100 адсетов из 618632521162363
+2025-10-06 00:57:27,292 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:27,316 - backend.adsets - INFO - ✅ Получено 100 адсетов из 618632521162363
+2025-10-06 00:57:27,326 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:28,047 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:28,075 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:28,384 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 618632521162363 обновлены
+2025-10-06 00:57:28,385 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 684941790597261
+2025-10-06 00:57:28,386 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:28,405 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 618632521162363 обновлены
+2025-10-06 00:57:28,405 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 684941790597261
+2025-10-06 00:57:28,406 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:28,929 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1849
+2025-10-06 00:57:29,046 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1849
+2025-10-06 00:57:29,230 - backend.adsets - INFO - ✅ Получено 91 адсетов из 684941790597261
+2025-10-06 00:57:29,233 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:29,347 - backend.adsets - INFO - ✅ Получено 91 адсетов из 684941790597261
+2025-10-06 00:57:29,350 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:30,010 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:30,131 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:30,216 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 684941790597261 обновлены
+2025-10-06 00:57:30,217 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 690058783376774
+2025-10-06 00:57:30,218 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:30,336 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 684941790597261 обновлены
+2025-10-06 00:57:30,336 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 690058783376774
+2025-10-06 00:57:30,337 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:30,491 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
+2025-10-06 00:57:30,491 - werkzeug - INFO - 92.51.30.27 - - [06/Oct/2025 00:57:30] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:57:30,706 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1885
+2025-10-06 00:57:30,931 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_690058783376774/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 1885
+2025-10-06 00:57:31,007 - backend.adsets - INFO - ✅ Получено 99 адсетов из 690058783376774
+2025-10-06 00:57:31,010 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:31,232 - backend.adsets - INFO - ✅ Получено 99 адсетов из 690058783376774
+2025-10-06 00:57:31,235 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:31,801 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:31,969 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:32,081 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 690058783376774 обновлены
+2025-10-06 00:57:32,081 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 707254618536242
+2025-10-06 00:57:32,082 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:32,218 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 690058783376774 обновлены
+2025-10-06 00:57:32,218 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 707254618536242
+2025-10-06 00:57:32,218 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:32,773 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2947
+2025-10-06 00:57:32,855 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_707254618536242/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2947
+2025-10-06 00:57:33,077 - backend.adsets - INFO - ✅ Получено 176 адсетов из 707254618536242
+2025-10-06 00:57:33,080 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:33,157 - backend.adsets - INFO - ✅ Получено 176 адсетов из 707254618536242
+2025-10-06 00:57:33,162 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:33,844 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:33,932 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:34,430 - backend.autocontrol - INFO - 📊 СТАТУС СИСТЕМЫ user_id=3: control=False, refresh=False, interval=60мин, overall=STOPPED
+2025-10-06 00:57:34,430 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:34] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:57:34,441 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 707254618536242 обновлены
+2025-10-06 00:57:34,442 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 9859604834059536
+2025-10-06 00:57:34,443 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:34,499 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 707254618536242 обновлены
+2025-10-06 00:57:34,500 - backend.autocontrol - INFO - 🔄 Обновление адсетов для аккаунта 9859604834059536
+2025-10-06 00:57:34,501 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:35,218 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2910
+2025-10-06 00:57:35,411 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_9859604834059536/adsets?fields=id%2Cname%2Ccampaign_id%2Cdaily_budget%2Cstatus%2Ceffective_status&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=500 HTTP/1.1" 200 2910
+2025-10-06 00:57:35,523 - backend.adsets - INFO - ✅ Получено 181 адсетов из 9859604834059536
+2025-10-06 00:57:35,531 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:35,713 - backend.adsets - INFO - ✅ Получено 181 адсетов из 9859604834059536
+2025-10-06 00:57:35,716 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:36,257 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:36,489 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:36,618 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 9859604834059536 обновлены
+2025-10-06 00:57:36,619 - backend.autocontrol - INFO - ✅ Обновление адсетов завершено
+2025-10-06 00:57:36,619 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:36,732 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 529
+2025-10-06 00:57:36,733 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:36,734 - backend.autocontrol - INFO - 🔗 Синхронизация с Keitaro...
+2025-10-06 00:57:36,844 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:36,861 - backend.autocontrol - INFO - ✅ Адсеты для аккаунта 9859604834059536 обновлены
+2025-10-06 00:57:36,861 - backend.autocontrol - INFO - ✅ Обновление адсетов завершено
+2025-10-06 00:57:36,862 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:36,969 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 529
+2025-10-06 00:57:36,969 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:36,971 - backend.autocontrol - INFO - 🔗 Синхронизация с Keitaro...
+2025-10-06 00:57:36,973 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): uniaffnu.com:443
+2025-10-06 00:57:37,598 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:37,601 - backend.autocontrol - INFO - ✅ Синхронизация с Keitaro завершена
+2025-10-06 00:57:37,602 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:37,689 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 519
+2025-10-06 00:57:37,689 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:37,691 - backend.autocontrol - INFO - ✅ АВТООБНОВЛЕНИЕ ДАННЫХ ЗАВЕРШЕНО для user_id 3
+2025-10-06 00:57:37,691 - backend.autocontrol - INFO - ✅ Начальная синхронизация завершена
+2025-10-06 00:57:37,692 - backend.autocontrol - INFO - 🎯 Запуск цикла автоконтроля для user_id 3
+2025-10-06 00:57:37,692 - backend.autocontrol - INFO - 🎯 Автоконтроль запущен в потоке AutoControl-3
+2025-10-06 00:57:37,692 - backend.autocontrol - INFO - 🔄 Цикл автоконтроля #1 для user_id 3
+2025-10-06 00:57:37,692 - backend.autocontrol - INFO - 🚀 СИСТЕМА ПОЛНОСТЬЮ ЗАПУЩЕНА
+2025-10-06 00:57:37,692 - backend.autocontrol - INFO - 📊 === НАЧАЛО АВТООБНОВЛЕНИЯ ДАННЫХ (цикл #1) ===
+2025-10-06 00:57:37,692 - backend.autocontrol - INFO - 📊 Режим: автоконтроль (с автообновлением внутри цикла, интервал 60 мин)
+2025-10-06 00:57:37,693 - backend.autocontrol - INFO - 🔄 ВЫЗОВ perform_auto_refresh для user_id 3
+2025-10-06 00:57:37,694 - werkzeug - INFO - 51.159.226.150 - - [06/Oct/2025 00:57:37] "POST /api/auto_refresh HTTP/1.1" 200 -
+2025-10-06 00:57:37,695 - backend.autocontrol - INFO - ⚙️ Настройки автообновления: campaigns=True, adsets=True
+2025-10-06 00:57:37,695 - backend.autocontrol - INFO - 🔑 Автозаполнение резервных токенов...
+2025-10-06 00:57:37,697 - backend.autocontrol - INFO - ✅ Автозаполнение резервных токенов завершено
+2025-10-06 00:57:37,698 - backend.autocontrol - INFO - 🔄 Обновление кампаний...
+2025-10-06 00:57:37,703 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:37,752 - urllib3.connectionpool - DEBUG - https://uniaffnu.com:443 "POST /admin_api/v1/report/build HTTP/1.1" 200 None
+2025-10-06 00:57:37,757 - backend.autocontrol - INFO - ✅ Синхронизация с Keitaro завершена
+2025-10-06 00:57:37,758 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-10-06 00:57:37,852 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot8270713137:AAF-pyYSF62KzA1hYkKWJXhMfGJ0bVvpwfs/sendMessage HTTP/1.1" 200 519
+2025-10-06 00:57:37,852 - backend.telegram - DEBUG - ✅ Telegram message sent to user 3 (chat_id: 1677190353)
+2025-10-06 00:57:37,854 - backend.autocontrol - INFO - ✅ АВТООБНОВЛЕНИЕ ДАННЫХ ЗАВЕРШЕНО для user_id 3
+2025-10-06 00:57:37,854 - backend.autocontrol - INFO - ✅ Начальная синхронизация завершена
+2025-10-06 00:57:37,854 - backend.autocontrol - INFO - ⚠️ Останавливаем предыдущую версию автоконтроля
+2025-10-06 00:57:38,009 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1034818791841582/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1428
+2025-10-06 00:57:38,010 - backend.campaign - DEBUG - Получено 34 кампаний. Status: {'PAUSED': 34}, Effective Status: {'PAUSED': 34}
+2025-10-06 00:57:38,010 - backend.campaign - INFO - Получено 34 кампаний, после фильтрации: 34 для аккаунта 1034818791841582
+2025-10-06 00:57:38,076 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:38,389 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1084247417068803/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1224
+2025-10-06 00:57:38,390 - backend.campaign - DEBUG - Получено 28 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 26}, Effective Status: {'ACTIVE': 2, 'PAUSED': 26}
+2025-10-06 00:57:38,390 - backend.campaign - INFO - Получено 28 кампаний, после фильтрации: 28 для аккаунта 1084247417068803
+2025-10-06 00:57:38,438 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:38,762 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_1229693575829178/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1107
+2025-10-06 00:57:38,763 - backend.campaign - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 24}, Effective Status: {'PAUSED': 24}
+2025-10-06 00:57:38,763 - backend.campaign - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 1229693575829178
+2025-10-06 00:57:38,803 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:39,072 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_4130588987263265/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1088
+2025-10-06 00:57:39,072 - backend.campaign - DEBUG - Получено 24 кампаний. Status: {'PAUSED': 22, 'ACTIVE': 2}, Effective Status: {'PAUSED': 22, 'ACTIVE': 2}
+2025-10-06 00:57:39,073 - backend.campaign - INFO - Получено 24 кампаний, после фильтрации: 24 для аккаунта 4130588987263265
+2025-10-06 00:57:39,108 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:39,479 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_519765377868615/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1649
+2025-10-06 00:57:39,479 - backend.campaign - DEBUG - Получено 41 кампаний. Status: {'PAUSED': 41}, Effective Status: {'PAUSED': 41}
+2025-10-06 00:57:39,479 - backend.campaign - INFO - Получено 41 кампаний, после фильтрации: 41 для аккаунта 519765377868615
+2025-10-06 00:57:39,551 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:40,042 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_618632521162363/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1001
+2025-10-06 00:57:40,042 - backend.campaign - DEBUG - Получено 20 кампаний. Status: {'PAUSED': 19, 'ACTIVE': 1}, Effective Status: {'PAUSED': 19, 'ACTIVE': 1}
+2025-10-06 00:57:40,043 - backend.campaign - INFO - Получено 20 кампаний, после фильтрации: 20 для аккаунта 618632521162363
+2025-10-06 00:57:40,079 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443
+2025-10-06 00:57:40,476 - urllib3.connectionpool - DEBUG - https://graph.facebook.com:443 "GET /v18.0/act_684941790597261/campaigns?fields=id%2Cname%2Cstatus%2Ceffective_status%2Cdaily_budget%2Cobjective%2Cstart_time%2Cstop_time&access_token=EAAP9XqUnKLQBPaeq6uZAD3nKkgcZCC3uYNioU9g2WdVdZAmStUA5pQ2vEiTYa16tNZAiC2aWqrGrGIS2ivZBEs8vXjl0VSVNOAHMIkcY0TQ0ffFeAVgjgNn49jYWDfiR0EZB0CZAmJNmVMSyCBsypDQW68wIUjZBP8NQScZBWKJCmGv2jxgDKGAYLsEqTl6u4TyCW2sMZB&limit=1000 HTTP/1.1" 200 1037
+2025-10-06 00:57:40,477 - backend.campaign - DEBUG - Получено 19 кампаний. Status: {'ACTIVE': 2, 'PAUSED': 17}, Effective Status: {'ACTIVE': 2, 'PAUSED': 17}
+2025-10-06 00:57:40,477 - backend.campaign - INFO - Получено 19 кампаний, после фильтрации: 19 для аккаунта 684941790597261
+2025-10-06 00:57:40,512 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): graph.facebook.com:443

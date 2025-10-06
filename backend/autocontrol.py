@@ -1,7 +1,7 @@
 import logging
 import threading
 import time
-from typing import Dict, List
+from typing import Dict, List, Optional, Callable
 import traceback
 from urllib import request
 import requests
@@ -16,8 +16,7 @@ from backend.reserve_tokens import get_reserve_tokens
 from backend.setting import get_user_settings
 from backend.telegram import send_telegram_message
 from database import get_db_connection
-# Убедитесь, что этот импорт есть
-from backend.telegram import send_telegram_message
+
 logger = logging.getLogger(__name__)
 
 auto_control_threads = {}
@@ -25,13 +24,31 @@ auto_control_lock = threading.Lock()
 auto_refresh_timers = {}
 auto_refresh_lock = threading.Lock()
 
+# Глобальная сессия для повторного использования соединений
+_session = None
+_session_lock = threading.Lock()
+
+def get_session():
+    """Получить глобальную сессию с повторным использованием соединений"""
+    global _session
+    with _session_lock:
+        if _session is None:
+            _session = requests.Session()
+            _session.headers.update({
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            })
+            # Настройки для оптимизации производительности
+            adapter = requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=100, max_retries=3)
+            _session.mount('http://', adapter)
+            _session.mount('https://', adapter)
+        return _session
+
 def auto_populate_reserve_tokens(user_id: int):
-    
+    """Автозаполнение резервных токенов"""
     try:
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-           
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
@@ -46,15 +63,12 @@ def auto_populate_reserve_tokens(user_id: int):
                 account_id = account['account_id']
                 token = account['token']
                 
-               
                 king = auto_determine_king(token)
-                
                 
                 cursor.execute("""
                     INSERT OR IGNORE INTO reserve_tokens (user_id, king, token)
                     VALUES (?, ?, ?)
                 """, (user_id, king, token))
-                
                 
                 cursor.execute("""
                     INSERT OR IGNORE INTO reserve_token_accounts 
@@ -73,13 +87,12 @@ def auto_populate_reserve_tokens(user_id: int):
         logger.error(f"Ошибка автоматического заполнения резервных токенов: {e}")
 
 def auto_determine_king(token: str) -> str:
-    
+    """Определение платформы по токену"""
     if not token:
         return "Facebook_Default"
     
     token_lower = token.lower()
     
-   
     if any(x in token_lower for x in ['ea', 'facebook', 'fb', 'act_']):
         return "Facebook"
     elif any(x in token_lower for x in ['ig', 'instagram']):
@@ -90,12 +103,13 @@ def auto_determine_king(token: str) -> str:
         return "Google"
     elif any(x in token_lower for x in ['tw', 'twitter', 'x.com']):
         return "Twitter"
-    elif len(token) > 100:  
+    elif len(token) > 100:
         return "Facebook_Long"
-    elif len(token) > 50:   
+    elif len(token) > 50:
         return "Facebook_Medium"
     else:
         return "Facebook_Default"
+
 def get_combined_auto_status(user_id):
     """Получить статус системы с учётом флагов running"""
     with auto_control_lock:
@@ -130,9 +144,32 @@ def get_combined_auto_status(user_id):
         'auto_refresh_running': auto_refresh_running,
         'interval': interval
     }
+
 def stop_auto_control_and_refresh(user_id: int):
-    """Ручная остановка автоконтроля (с автообновлением внутри цикла)."""
+    """Ручная остановка автоконтроля и автообновления"""
     logger.info(f"🛑 РУЧНАЯ остановка системы для пользователя {user_id}")
+    
+    # Останавливаем автоконтроль
+    with auto_control_lock:
+        if user_id in auto_control_threads:
+            auto_control_threads[user_id]['running'] = False
+            # Ждем завершения потока
+            time.sleep(2)
+            # Удаляем из словаря
+            if user_id in auto_control_threads:
+                del auto_control_threads[user_id]
+            logger.info(f"⏹️ Автоконтроль остановлен для пользователя {user_id}")
+        else:
+            logger.info(f"⚠️ Автоконтроль не был запущен для пользователя {user_id}")
+    
+    # Останавливаем автообновление
+    with auto_refresh_lock:
+        if user_id in auto_refresh_timers:
+            auto_refresh_timers[user_id].cancel()
+            del auto_refresh_timers[user_id]
+            logger.info(f"⏹️ Таймер автообновления остановлен для пользователя {user_id}")
+        else:
+            logger.info(f"⚠️ Автообновление не было запущено для пользователя {user_id}")
     
     # Уведомление об остановке
     send_telegram_message(
@@ -140,27 +177,16 @@ def stop_auto_control_and_refresh(user_id: int):
         f"🆔 Пользователь: {user_id}",
         user_id=user_id
     )
-    
-    with auto_control_lock:
-        if user_id in auto_control_threads:
-            auto_control_threads[user_id]['running'] = False
-            logger.info(f"⏹️ Флаг остановки выставлен для пользователя {user_id}")
-        else:
-            logger.info(f"⚠️ Автоконтроль не был запущен для пользователя {user_id}")
-def get_session():
-   
-    session = requests.Session()
-    session.headers.update({
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    })
-    return session
 
 def start_auto_refresh(user_id, interval_minutes):
+    """Запуск автообновления с заданным интервалом"""
     with auto_refresh_lock:
         if user_id in auto_refresh_timers:
-            auto_refresh_timers[user_id].cancel()
+            logger.info(f"⚠️ Автообновление уже запущено для пользователя {user_id}")
+            return
 
-        interval_seconds = 30 * 60
+        # Используем переданный интервал, а не фиксированный
+        interval_seconds = interval_minutes * 60
 
         def run_refresh():
             # Проверяем, не остановлена ли система
@@ -185,7 +211,7 @@ def start_auto_refresh(user_id, interval_minutes):
         auto_refresh_timers[user_id] = timer
 
         logger.info(f"⏱️ Автообновление запущено для {user_id}, интервал {interval_minutes} мин")
-        
+
 def auto_refresh_user_data(user_id, interval_minutes):
     """Однократное обновление данных пользователя"""
     try:
@@ -224,16 +250,16 @@ def auto_refresh_user_data(user_id, interval_minutes):
 
     except Exception as e:
         logger.error(f"❌ Ошибка автообновления для пользователя {user_id}: {e}")
+
 def load_all_tokens(user_id: int) -> Dict[str, List[str]]:
-  
+    """Загрузка всех токенов пользователя"""
     all_tokens = {}
     
     try:
-        
+        # Токены из кампаний
         with get_db_connection(user_id) as conn:
             cursor = conn.cursor()
             
-           
             cursor.execute("""
                 SELECT DISTINCT account_id, token 
                 FROM campaigns 
@@ -248,7 +274,7 @@ def load_all_tokens(user_id: int) -> Dict[str, List[str]]:
                 if row['token'] not in all_tokens[king]:
                     all_tokens[king].append(row['token'])
         
-   
+        # Резервные токены
         reserve_tokens = get_reserve_tokens(user_id)
         for king, tokens in reserve_tokens.items():
             if king not in all_tokens:
@@ -262,7 +288,22 @@ def load_all_tokens(user_id: int) -> Dict[str, List[str]]:
     
     return all_tokens
 
-def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings):
+def calculate_cpm(spend: float, impressions: int) -> float:
+    """Расчет CPM из spend и impressions"""
+    if impressions > 0 and spend > 0:
+        return (spend / impressions) * 1000
+    return 0.0
+
+class AdsetControlResult:
+    """Класс для отслеживания результатов контроля адсета"""
+    def __init__(self):
+        self.paused_count = 0
+        self.resumed_count = 0
+        self.errors_count = 0
+        self.processed_adsets = []
+
+def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings, result_tracker):
+    """Обработка контроля одного адсета с отслеживанием изменений"""
     adset_name = adset.get('name', '')
     adset_id = adset.get('adset_id', '')
     ucpc = float(adset.get('ucpc', 0))
@@ -276,12 +317,12 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
     manual_pause = bool(adset.get('manual_pause', 0))
     king = adset.get('king', '').strip()
     exclude_from_autocontrol = bool(adset.get('exclude_from_autocontrol', 0))
+    
+    # Проверка исключений
     if exclude_from_autocontrol:
-        logger.info(f"⏭️ Адсет {adset.get('name', '')} исключен из автоконтроля")
+        logger.info(f"⏭️ Адсет {adset_name} исключен из автоконтроля")
         return
         
-    # Проверяем специальные маркеры в названии
-    adset_name = adset.get('name', '')
     if any(marker in adset_name.upper() for marker in ['#NOAUTO', '#EXCLUDE', '#ИСКЛ']):
         logger.info(f"⏭️ Адсет {adset_name} исключен по маркеру в названии")
         return
@@ -359,12 +400,13 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
         logger.warning(f"Нет доступных токенов для KING={king}, адсет {adset_name}")
         return
 
-    def execute_with_token_rotation(api_call_func):
+    def execute_with_token_rotation(api_call_func: Callable) -> bool:
+        """Выполнить API-вызов с ротацией токенов"""
         for idx, current_token in enumerate(token_list):
             try:
                 result = api_call_func(current_token)
                 if result:
-                    return result
+                    return True
             except Exception as e:
                 error_msg = str(e).lower()
                 if any(limit_error in error_msg for limit_error in [
@@ -372,21 +414,24 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
                     'application request limit', 'quota'
                 ]):
                     if idx + 1 < len(token_list):
+                        logger.warning(f"Токен {idx+1} исчерпан, пробуем следующий...")
                         continue
                     else:
                         raise Exception(f"❌ Все токены исчерпаны для KING={king}")
                 else:
                     raise e
-        return None
+        return False
 
     # === Пауза ===
     if should_pause:
-        def pause_adset(token):
+        def pause_adset(current_token: str) -> bool:
+            """Функция паузы адсета"""
             url = f"https://graph.facebook.com/v18.0/{adset_id}"
             data = {"status": "PAUSED"}
-            resp = session_obj.post(url, params={"access_token": token}, data=data, timeout=10).json()
+            resp = session_obj.post(url, params={"access_token": current_token}, data=data, timeout=10).json()
             if resp.get("success") or resp.get("id") == adset_id:
                 update_user_adset_status(user_id, adset_id, "PAUSED")
+                result_tracker.paused_count += 1
                 msg = (f"🔴 Отключен: {adset_name} "
                        f"(GEO={geo}, CPA={cpa:.2f}, Leads={leads}, Spend={spend:.2f}) "
                        f"— причина: {pause_reason}")
@@ -395,43 +440,57 @@ def process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens,
                 return True
             return False
 
-        execute_with_token_rotation(pause_adset)
+        success = execute_with_token_rotation(pause_adset)
+        if success:
+            result_tracker.processed_adsets.append({
+                'name': adset_name,
+                'id': adset_id,
+                'action': 'PAUSED',
+                'reason': pause_reason
+            })
 
     # === Возобновление ===
-# 🟢 Логика возобновления
-    elif status == "PAUSED" and not manual_pause:
-        logger.debug(f"Проверка условий для возобновления {adset_name} (GEO {geo})")
+    elif should_resume:
+        def resume_adset(current_token: str) -> bool:
+            """Функция возобновления адсета"""
+            url = f"https://graph.facebook.com/v18.0/{adset_id}"
+            data = {"status": "ACTIVE"}
+            resp = session_obj.post(url, params={"access_token": current_token}, data=data, timeout=10).json()
+            if resp.get("success") or resp.get("id") == adset_id:
+                update_user_adset_status(user_id, adset_id, "ACTIVE")
+                result_tracker.resumed_count += 1
+                msg = (f"🟢 Возобновлен: {adset_name} "
+                       f"(GEO={geo}, CPA={cpa:.2f}, Leads={leads}, Spend={spend:.2f})")
+                logger.info(msg)
+                send_telegram_message(msg, user_id=user_id)
+                return True
+            return False
 
-        # 🔒 Проверка: разрешено ли GEO вообще в правилах
-        if geo not in geo_rules:
-            logger.info(f"⏭️ Пропуск возобновления {adset_name} — GEO {geo} отсутствует в правилах")
-            return
+        success = execute_with_token_rotation(resume_adset)
+        if success:
+            result_tracker.processed_adsets.append({
+                'name': adset_name,
+                'id': adset_id,
+                'action': 'RESUMED',
+                'reason': 'Условия улучшились'
+            })
 
-        # 1) Если есть лиды и CPA снова в норме
-        if leads > 0 and cpa <= geo_rules[geo]["max_cpa"] and spend >= geo_rules[geo]["min_spend"]:
-            should_resume = True
-            logger.info(f"🟢 ВОЗОБНОВЛЯЕМ {adset_name} - CPA ${cpa:.2f} <= Max CPA ${geo_rules[geo]['max_cpa']:.2f}")
-
-        # 2) Если лидов нет, но расходы упали ниже extended_spend_threshold
-        elif leads == 0 and spend < geo_rules[geo]["extended_spend_threshold"]:
-            should_resume = True
-            logger.info(f"🟢 ВОЗОБНОВЛЯЕМ {adset_name} - 0 лидов, но Spend ${spend:.2f} < "
-                        f"Extended Spend Threshold ${geo_rules[geo]['extended_spend_threshold']:.2f}")
 def auto_control(user_id):
+    """Основная функция автоконтроля с оптимизацией производительности"""
     try:
         logger.info(f"=== НАЧАЛО АВТОКОНТРОЛЯ ДЛЯ ПОЛЬЗОВАТЕЛЯ {user_id} ===")
         
         settings = get_user_settings(user_id)      
         session_obj = get_session()
+        
         if settings.get('use_proxy') and settings.get('proxy'):
             session_obj.proxies = {
                 'http': settings.get('proxy'),
+                'https': settings.get('proxy'),
             }
         
-        check_and_pause_campaigns(user_id)
-        
+        # Загрузка GEO правил
         geo_rules = get_user_geo_rules(user_id)
-        
         if not geo_rules:
             geo_rules = get_user_geo_config(user_id)
             logger.info("Используются правила из старой таблицы geo_config")
@@ -439,57 +498,71 @@ def auto_control(user_id):
         known_geos = list(geo_rules.keys()) if geo_rules else []
         reserve_tokens = load_all_tokens(user_id)
         
-        # 1. Получаем ВСЕ адсеты, как и раньше
+        # Получение всех адсетов
         all_adsets = get_user_adsets(user_id)
         
-        # 🔥 2. КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: Фильтруем список, оставляя только активные адсеты
+        # Фильтрация активных адсетов
         active_adsets = [
             adset for adset in all_adsets
-            if not adset.get('manual_pause')
+            if not adset.get('manual_pause') and 
+            not adset.get('exclude_from_autocontrol') and
+            not any(marker in adset.get('name', '').upper() for marker in ['#NOAUTO', '#EXCLUDE', '#ИСКЛ'])
         ]
             
         logger.info(f"Найдено {len(all_adsets)} всего адсетов. В обработку взято {len(active_adsets)} активных.")
         
-        # Счетчики для уведомления
-        paused_count = 0
-        resumed_count = 0
-        errors_count = 0
+        # Инициализация трекера результатов
+        result_tracker = AdsetControlResult()
         
-        # 3. Теперь цикл работает с коротким списком `active_adsets`
+        # Обработка адсетов
         for adset in active_adsets:
             try:
-                # Сохраняем предыдущий статус для сравнения
-                previous_status = adset.get('status', '')
-                
-                process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings)
-                
-                # Здесь можно добавить логику подсчета изменений
-                # (нужно будет модифицировать process_adset_control чтобы возвращать изменения)
-                
+                process_adset_control(user_id, adset, geo_rules, known_geos, reserve_tokens, session_obj, settings, result_tracker)
             except Exception as e:
                 logger.error(f"Ошибка обработки адсета {adset.get('name', 'unknown')}: {e}")
-                errors_count += 1
+                result_tracker.errors_count += 1
                 continue
-                
+        
+        # Финальная проверка и пауза кампаний (только один раз в конце)
         check_and_pause_campaigns(user_id)
         
-        # Итоговое уведомление о работе автоконтроля
-        send_telegram_message(
-            f"📊 Автоконтроль завершен\n"
-            f"• Всего адсетов: {len(all_adsets)}\n"
-            f"• Активных: {len(active_adsets)}\n"
-            f"• Ошибок: {errors_count}",
-            user_id=user_id
-        )
+        # Детальное логирование результатов
+        logger.info(f"📊 ИТОГИ АВТОКОНТРОЛЯ: "
+                   f"Приостановлено: {result_tracker.paused_count}, "
+                   f"Возобновлено: {result_tracker.resumed_count}, "
+                   f"Ошибок: {result_tracker.errors_count}")
+        
+        # Итоговое уведомление (только при изменениях или ошибках)
+        if result_tracker.paused_count > 0 or result_tracker.resumed_count > 0 or result_tracker.errors_count > 0:
+            send_telegram_message(
+                f"📊 Автоконтроль завершен\n"
+                f"• Всего адсетов: {len(all_adsets)}\n"
+                f"• Обработано: {len(active_adsets)}\n"
+                f"• Приостановлено: {result_tracker.paused_count}\n"
+                f"• Возобновлено: {result_tracker.resumed_count}\n"
+                f"• Ошибок: {result_tracker.errors_count}",
+                user_id=user_id
+            )
+        
+        # Детальное уведомление о конкретных изменениях (если есть)
+        if result_tracker.processed_adsets:
+            detailed_message = "🔍 Изменения:\n"
+            for adset_info in result_tracker.processed_adsets[:10]:  # Ограничиваем первые 10
+                detailed_message += f"• {adset_info['name']} - {adset_info['action']}\n"
+            
+            if len(result_tracker.processed_adsets) > 10:
+                detailed_message += f"• ... и еще {len(result_tracker.processed_adsets) - 10} изменений\n"
+            
+            send_telegram_message(detailed_message, user_id=user_id)
         
     except Exception as e:
         logger.error(f"Критическая ошибка автоконтроля для пользователя {user_id}: {e}")
         send_telegram_message(f"🚫 Ошибка автоконтроля: {e}", user_id=user_id)
-def perform_auto_refresh(user_id):
-    """Выполнить автообновление данных"""
+
+def perform_auto_refresh(user_id, send_notifications=True):
+    """Выполнить автообновление данных с оптимизацией"""
     try:
         logger.info(f"🔄 ВЫЗОВ perform_auto_refresh для user_id {user_id}")
-        logger.info(f"📊 Начало автообновления данных для user_id {user_id}")
         
         settings = get_user_settings(user_id)
         logger.info(f"⚙️ Настройки автообновления: campaigns={settings.get('auto_refresh_campaigns', True)}, adsets={settings.get('auto_refresh_adsets', True)}")
@@ -504,7 +577,8 @@ def perform_auto_refresh(user_id):
             logger.info("🔄 Обновление кампаний...")
             refresh_campaigns_internal(user_id)
             logger.info("✅ Обновление кампаний завершено")
-            send_telegram_message("✅ Обновление кампаний завершено", user_id=user_id)
+            if send_notifications:
+                send_telegram_message("✅ Обновление кампаний завершено", user_id=user_id)
         else:
             logger.info("⏭️ Обновление кампаний пропущено (отключено в настройках)")
         
@@ -528,9 +602,10 @@ def perform_auto_refresh(user_id):
                 except Exception as e:
                     logger.error(f"❌ Ошибка обновления адсетов {account_id}: {e}")
                     logger.error(f"❌ Подробности ошибки: {traceback.format_exc()}")
-                    
+            
             logger.info("✅ Обновление адсетов завершено")
-            send_telegram_message("✅ Обновление адсетов завершено", user_id=user_id)
+            if send_notifications:
+                send_telegram_message("✅ Обновление адсетов завершено", user_id=user_id)
         else:
             logger.info("⏭️ Обновление адсетов пропущено (отключено в настройках)")
         
@@ -538,27 +613,25 @@ def perform_auto_refresh(user_id):
         logger.info("🔗 Синхронизация с Keitaro...")
         sync_keitaro(user_id)
         logger.info("✅ Синхронизация с Keitaro завершена")
-        send_telegram_message("✅ Синхронизация с Keitaro завершена", user_id=user_id)
+        if send_notifications:
+            send_telegram_message("✅ Синхронизация с Keitaro завершена", user_id=user_id)
         
         logger.info(f"✅ АВТООБНОВЛЕНИЕ ДАННЫХ ЗАВЕРШЕНО для user_id {user_id}")
         
     except Exception as e:
         logger.error(f"❌ КРИТИЧЕСКАЯ ОШИБКА в автообновлении: {e}")
         logger.error(f"❌ Подробности ошибки: {traceback.format_exc()}")
-        send_telegram_message(f"❌ Критическая ошибка автообновления: {e}", user_id=user_id)
-        raise  # Пробрасываем исключение дальше
+        if send_notifications:
+            send_telegram_message(f"❌ Критическая ошибка автообновления: {e}", user_id=user_id)
+        raise
+
 def run_auto_control_for_user(user_id):
     """Циклический автоконтроль с интегрированным автообновлением"""
     logger.info(f"🎯 Запуск цикла автоконтроля для user_id {user_id}")
     
-    # Уведомление о начале работы цикла
-    send_telegram_message(
-        f"🎯 Запущен цикл автоконтроля\n"
-        f"🆔 Пользователь: {user_id}",
-        user_id=user_id
-    )
+    # Уведомление о начале работы цикла отправляется только один раз
+    # при запуске системы, а не при каждом цикле
     
-    # Счетчик циклов для отладки
     cycle_count = 0
     
     while True:
@@ -569,57 +642,48 @@ def run_auto_control_for_user(user_id):
         with auto_control_lock:
             if user_id not in auto_control_threads:
                 logger.info(f"🛑 Автоконтроль остановлен (поток удален) для user_id {user_id}")
-                send_telegram_message(f"🛑 Автоконтроль остановлен (поток удален)", user_id=user_id)
+                # Уведомление об остановке уже отправлено в stop_auto_control_and_refresh
                 break
             if not auto_control_threads[user_id].get('running', True):
                 logger.info(f"🛑 Автоконтроль остановлен (флаг running=False) для user_id {user_id}")
-                send_telegram_message(f"🛑 Автоконтроль остановлен по команде", user_id=user_id)
+                # Уведомление об остановке уже отправлено в stop_auto_control_and_refresh
                 break
         
         try:
-            # 🔄 ВЫПОЛНЯЕМ АВТООБНОВЛЕНИЕ ДАННЫХ ПЕРЕД КОНТРОЛЕМ
+            # 🔄 АВТООБНОВЛЕНИЕ ДАННЫХ ПЕРЕД КОНТРОЛЕМ (без уведомлений)
             logger.info(f"📊 === НАЧАЛО АВТООБНОВЛЕНИЯ ДАННЫХ (цикл #{cycle_count}) ===")
-            perform_auto_refresh(user_id)
+            perform_auto_refresh(user_id, send_notifications=False)
             logger.info(f"✅ === АВТООБНОВЛЕНИЕ ДАННЫХ ЗАВЕРШЕНО (цикл #{cycle_count}) ===")
             
-            # 🎯 ВЫПОЛНЯЕМ АВТОКОНТРОЛЬ
+            # 🎯 АВТОКОНТРОЛЬ
             logger.info(f"🎯 === НАЧАЛО АВТОКОНТРОЛЯ (цикл #{cycle_count}) ===")
             auto_control(user_id)
             logger.info(f"✅ === АВТОКОНТРОЛЬ ЗАВЕРШЕН (цикл #{cycle_count}) ===")
             
             logger.info(f"✅ Цикл #{cycle_count} завершен успешно")
             
-            # Уведомление об успешном завершении цикла
-            send_telegram_message(
-                f"✅ Цикл автоконтроля #{cycle_count} завершен успешно\n"
-                f"⏰ Следующий цикл через 30 минут",
-                user_id=user_id
-            )
-            
         except Exception as e:
             logger.error(f"❌ Ошибка в цикле автоконтроля #{cycle_count}: {e}")
             logger.error(f"❌ Подробности ошибки: {traceback.format_exc()}")
             
-            # Уведомление об ошибке
             send_telegram_message(
                 f"❌ Ошибка в цикле автоконтроля #{cycle_count}:\n"
-                f"{str(e)[:200]}...",  # Ограничиваем длину сообщения
+                f"{str(e)[:200]}...",
                 user_id=user_id
             )
         
-        # ⏰ Ждем указанный интервал между циклами
+        # ⏰ Ожидание между циклами
         settings = get_user_settings(user_id)
-        interval_minutes = 30
+        interval_minutes = settings.get('auto_refresh_interval', 30)
         interval_seconds = interval_minutes * 60
         
         logger.info(f"⏰ Ожидание {interval_minutes} минут до следующего цикла...")
         
-        # Разбиваем ожидание на короткие интервалы для быстрой остановки
-        check_interval = 10  # Проверяем каждые 10 секунд
+        # Разбиваем ожидание для быстрой остановки
+        check_interval = 10
         total_checks = interval_seconds // check_interval
         
         for i in range(total_checks):
-            # Проверяем флаг остановки каждые 10 секунд
             with auto_control_lock:
                 if user_id not in auto_control_threads:
                     logger.info("🛑 Остановка: поток удален из словаря")
@@ -627,14 +691,28 @@ def run_auto_control_for_user(user_id):
                 if not auto_control_threads[user_id].get('running', True):
                     logger.info("🛑 Остановка: флаг running=False")
                     return
-            
-            # Ждем 10 секунд
             time.sleep(check_interval)
             
         logger.info(f"⏰ Ожидание завершено, начинаем следующий цикл")
+
 def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):
-    """Запускает автоконтроль + автообновление (без лишнего таймера)"""
+    """Запускает автоконтроль + автообновление (с защитой от дублирования)"""
     logger.info(f"🚀 ЗАПУСК СИСТЕМЫ для user_id {user_id}")
+    
+    # Проверяем, не запущена ли система уже
+    with auto_control_lock:
+        if user_id in auto_control_threads and auto_control_threads[user_id].get('running', False):
+            logger.info(f"⚠️ Система уже запущена для пользователя {user_id}")
+            send_telegram_message(
+                f"⚠️ Система уже запущена\n"
+                f"🆔 Пользователь: {user_id}",
+                user_id=user_id
+            )
+            return False
+    
+    if interval_minutes is None:
+        settings = get_user_settings(user_id)
+        interval_minutes = settings.get('auto_refresh_interval', 30)
     
     # Уведомление о запуске системы
     send_telegram_message(
@@ -644,27 +722,23 @@ def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):
         user_id=user_id
     )
     
-    if interval_minutes is None:
-        settings = get_user_settings(user_id)
-        interval_minutes = 30
-    
-    # 🔄 СНАЧАЛА ВЫПОЛНЯЕМ РАЗОВОЕ ОБНОВЛЕНИЕ ДАННЫХ
+    # 🔄 НАЧАЛЬНАЯ СИНХРОНИЗАЦИЯ ДАННЫХ
     logger.info("🔄 Начальная синхронизация данных")
     try:
-        perform_auto_refresh(user_id)
+        perform_auto_refresh(user_id, send_notifications=True)
         logger.info("✅ Начальная синхронизация завершена")
-        send_telegram_message("✅ Начальная синхронизация данных завершена", user_id=user_id)
+        # Уведомление уже отправлено в perform_auto_refresh
     except Exception as e:
         logger.error(f"⚠️ Ошибка начальной синхронизации: {e}")
         send_telegram_message(f"❌ Ошибка начальной синхронизации: {e}", user_id=user_id)
     
-    # 🎯 ЗАПУСКАЕМ АВТОКОНТРОЛЬ (он внутри себя делает обновление перед каждым циклом)
+    # 🎯 ЗАПУСК АВТОКОНТРОЛЯ
     with auto_control_lock:
+        # Останавливаем предыдущий запуск, если есть (на всякий случай)
         if user_id in auto_control_threads:
-            logger.info("⚠️ Автоконтроль уже запущен, останавливаем старую версию")
+            logger.info("⚠️ Останавливаем предыдущую версию автоконтроля")
             auto_control_threads[user_id]['running'] = False
-            # Даем время потоку остановиться
-            time.sleep(2)
+            time.sleep(3)
         
         # Создаем новый поток
         control_thread = threading.Thread(
@@ -677,7 +751,8 @@ def start_auto_control_and_refresh(user_id: int, interval_minutes: int = None):
         auto_control_threads[user_id] = {
             'thread': control_thread, 
             'running': True,
-            'start_time': time.time()
+            'start_time': time.time(),
+            'interval': interval_minutes
         }
         logger.info(f"🎯 Автоконтроль запущен в потоке {control_thread.name}")
     

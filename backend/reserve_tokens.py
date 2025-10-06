@@ -21,14 +21,17 @@ def normalize_token(token: str) -> str:
     return t
 
 def normalize_account_id(account_id: str) -> str:
-    """Возвращаем numeric-only account_id (без 'act_')."""
+    """Возвращаем account_id в формате act_XXXXXXXXX."""
     if account_id is None:
         return ''
     s = str(account_id).strip()
-    s = s.replace('act_', '')
-    # оставляем только цифры
+    # Убираем act_ если есть
+    if s.lower().startswith('act_'):
+        s = s[4:]
+    # Оставляем только цифры
     s = ''.join(ch for ch in s if ch.isdigit())
-    return s
+    # Возвращаем в формате act_XXXXXXXXX
+    return f'act_{s}' if s else ''
 
 # ----- CRUD-функции для резервных токенов -----
 
@@ -96,7 +99,7 @@ def add_account_to_reserve_token(user_id: int, king: str, token: str, account_id
                 VALUES (?, ?, ?, ?)
             """, (user_id, king, token, account_clean))
             conn.commit()
-            return True
+            return cursor.rowcount > 0
     except Exception as e:
         logger.error(f"Ошибка add_account_to_reserve_token: {e}")
         return False
@@ -302,3 +305,49 @@ def delete_reserve_token_complete(user_id: int, king: str, token: str) -> bool:
     except Exception as e:
         logger.error(f"Ошибка delete_reserve_token_complete: {e}")
         return False
+
+def get_reserve_tokens_table(user_id: int) -> Dict[str, List[Dict[str, Any]]]:
+    """Возвращает резервные токены в формате для таблицы"""
+    try:
+        with get_db_connection(user_id) as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT rt.king, rt.token, rta.account_id, rta.name, rta.status,
+                       rta.spend_cap, rta.amount_spent, rta.balance, rta.daily_limit,
+                       rta.remaining, rta.requests_today, rta.requests_limit, rta.requests_usage_percent
+                FROM reserve_tokens rt
+                LEFT JOIN reserve_token_accounts rta ON rt.user_id = rta.user_id
+                    AND rt.king = rta.king AND rt.token = rta.token
+                WHERE rt.user_id = ?
+                ORDER BY rt.king, rt.token
+            """, (user_id,))
+            rows = cursor.fetchall()
+            tokens_by_king = {}
+            for r in rows:
+                king = r['king'] or 'Facebook_Default'
+                token = r['token']
+                if king not in tokens_by_king:
+                    tokens_by_king[king] = []
+                # find token entry
+                entry = next((e for e in tokens_by_king[king] if e['token'] == token), None)
+                if not entry:
+                    entry = {'token': token, 'accounts': []}
+                    tokens_by_king[king].append(entry)
+                if r['account_id']:
+                    entry['accounts'].append({
+                        'account_id': r['account_id'],
+                        'name': r['name'],
+                        'status': r['status'],
+                        'spend_cap': r['spend_cap'],
+                        'amount_spent': r['amount_spent'],
+                        'balance': r['balance'],
+                        'daily_limit': r['daily_limit'],
+                        'remaining': r['remaining'],
+                        'requests_today': r['requests_today'],
+                        'requests_limit': r['requests_limit'],
+                        'requests_usage_percent': r['requests_usage_percent']
+                    })
+            return tokens_by_king
+    except Exception as e:
+        logger.error(f"Ошибка get_reserve_tokens_table: {e}")
+        return {}

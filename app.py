@@ -2048,14 +2048,15 @@ def handle_geo_rules():
         except Exception as e:
             logger.error(f"Ошибка сохранения GEO правил: {e}")
             return jsonify({'success': False, 'error': str(e)})
-@app.route('/api/reserve_tokens', methods=['GET', 'POST', 'DELETE'])
+@app.route('/api/reserve_tokens_legacy', methods=['GET', 'POST', 'DELETE'])
 @login_required
-def handle_reserve_tokens():
+def handle_reserve_tokens_legacy():
+    """Legacy endpoint - deprecated, use /api/user/reserve_tokens instead"""
     user_id = session['user_id']
     
     if request.method == 'GET':
         king = request.args.get('king')
-        tokens = get_reserve_tokens(user_id, king)
+        tokens = get_reserve_tokens(user_id)
         return jsonify({'success': True, 'tokens': tokens})
     
     elif request.method == 'POST':
@@ -2079,7 +2080,7 @@ def handle_reserve_tokens():
         if not king or not token:
             return jsonify({'success': False, 'error': 'Не указан KING или токен'})
         
-        if remove_reserve_token(user_id, king, token):
+        if delete_reserve_token_complete(user_id, king, token):
             return jsonify({'success': True, 'message': 'Токен удален'})
         else:
             return jsonify({'success': False, 'error': 'Ошибка удаления токена'})
@@ -3154,10 +3155,8 @@ def login():
             session['username'] = user['username']
             flash('Вы успешно вошли в систему', 'success')
             
-            # Запускаем автоконтроль и автообновление вместе
-            settings = get_user_settings(user['id'])
-            if settings.get('auto_refresh_interval', 60) > 0:
-                start_auto_control_and_refresh(user['id'])
+            # Автоматический запуск автоконтроля отключен
+            # Пользователь должен запускать систему вручную через интерфейс
             
             return redirect(url_for('dashboard'))
         else:
@@ -4631,6 +4630,8 @@ def find_in_tree(
     logger.info(f"[MATCH] Не найдено релевантных совпадений для: "
                 f"id={fb_id}, name={fb_name}, parent={fb_parent_name}, campaign_id={fb_campaign_id}")
     return zeros
+
+
 @app.route('/api/save_and_sync', methods=['POST'])
 @login_required
 def save_and_sync():
@@ -4654,16 +4655,15 @@ def save_and_sync():
                 adset_name = str(row.get("sub_id_9") or "").strip()
                 if not adset_name:
                     continue
-
                 metrics = {
                     "spend": float(row.get("cost", 0) or 0),
                     "leads": int(row.get("leads", 0) or 0),
                     "cpa": float(row.get("cpa", 0) or 0),
                     "ucpc": float(row.get("ucpc", 0) or 0),
-                    "cpc": float(row.get("cpc", 0) or 0)
+                    "cpc": float(row.get("cpc", 0) or 0),
+                    "cpm": float(row.get("cpm", 0) or 0)
                 }
                 keitaro_data_by_name[adset_name] = metrics
-
             logger.info(f"Обработано записей из Keitaro: {len(keitaro_data_by_name)} по имени")
 
         saved_accounts = total_campaigns = total_adsets = keitaro_matched = 0
@@ -4690,7 +4690,6 @@ def save_and_sync():
                 for camp in campaigns:
                     camp_id = camp["id"]
                     camp_name = camp.get("name", "")
-
                     add_user_campaign(user_id, {
                         "king": "Facebook",
                         "name": camp_name,
@@ -4701,34 +4700,73 @@ def save_and_sync():
                     })
                     total_campaigns += 1
 
-                # Адсеты
+                # Загружаем адсеты
                 adsets = fetch_facebook_adsets(account_id, token)
+
+                # Загружаем инсайты сразу для всех адсетов
+                insights_by_adset = {}
+                try:
+                    insights_res = requests.get(
+                        f"https://graph.facebook.com/v18.0/act_{account_id}/insights",
+                        params={
+                            "access_token": token,
+                            "level": "adset",
+                            "fields": "adset_id,impressions,spend,cpm,cpc,actions",
+                            "date_preset": "today",
+                            "time_increment": 1
+                        },
+                        timeout=60
+                    ).json()
+                    for row in insights_res.get("data", []):
+                        adset_id = row.get("adset_id")
+                        if not adset_id:
+                            continue
+                        impressions = int(row.get("impressions", 0) or 0)
+                        spend = float(row.get("spend", 0) or 0)
+                        fb_cpm = float(row.get("cpm", 0) or 0)
+                        if not fb_cpm and impressions > 0 and spend > 0:
+                            fb_cpm = round(spend / impressions * 1000, 2)
+                        insights_by_adset[adset_id] = {
+                            "spend": spend,
+                            "cpm": fb_cpm,
+                            "cpc": float(row.get("cpc", 0) or 0)
+                        }
+                except Exception as e:
+                    logger.warning(f"Не удалось загрузить инсайты аккаунта {account_id}: {e}")
+
+                # Обрабатываем адсеты
                 for ad in adsets:
                     ad_name = ad.get("name", "")
                     adset_id = ad.get("id", "")
                     camp_id = ad.get("campaign_id", "")
-                    from backend.geo_config import (extract_geo_from_name,
-                                                    get_user_geo_rules)
+                    from backend.geo_config import extract_geo_from_name
 
                     stats = keitaro_data_by_name.get(ad_name, {})
+                    fb_stats = insights_by_adset.get(adset_id, {})
+
+                    # Итоговые метрики
+                    spend = stats.get("spend", fb_stats.get("spend", 0))
+                    cpm = stats.get("cpm", 0) or fb_stats.get("cpm", 0)
+                    cpc = stats.get("cpc", 0) or fb_stats.get("cpc", 0)
 
                     budget = float(ad.get("daily_budget", 0)) / 100 if ad.get("daily_budget") else 0
                     geo = extract_geo_from_name(ad_name)
+
                     add_user_adset(user_id, {
                         "name": ad_name,
                         "adset_id": adset_id,
                         "campaign_id": camp_id,
-                        "status": ad.get("status", "UNKNOWN"),             # сырой status
-                        "effective_status": ad.get("effective_status", "UNKNOWN"),  # сырой effective_status
+                        "status": ad.get("status", "UNKNOWN"),
+                        "effective_status": ad.get("effective_status", "UNKNOWN"),
                         "account_id": account_id,
                         "token": token,
                         "budget": budget,
-                        "spend": stats.get("spend", 0),
+                        "spend": spend,
                         "leads": stats.get("leads", 0),
                         "cpa": stats.get("cpa", 0),
                         "ucpc": stats.get("ucpc", 0),
-                        "cpm": stats.get("cpm", 0),
-                        "cpc": stats.get("cpc", 0),
+                        "cpm": cpm,
+                        "cpc": cpc,
                         "king": "Facebook",
                         "ad_name": ad_name,
                         "manual_pause": 0,
@@ -4737,14 +4775,14 @@ def save_and_sync():
 
                     if stats:
                         keitaro_matched += 1
-
                     total_adsets += 1
 
                 saved_accounts += 1
-            
+
             except requests.exceptions.RequestException as e:
                 logger.warning(f"Ошибка сети для аккаунта {account_id}: {e}")
                 continue
+
         try:
             updated = sync_keitaro(user_id)
             logger.info(f"[save_and_sync] Keitaro обновил {updated} адсетов для пользователя {user_id}")
@@ -4763,11 +4801,13 @@ def save_and_sync():
     except Exception as e:
         logger.error(f"Критическая ошибка синхронизации: {e}")
         return jsonify({"success": False, "error": str(e)})
+
+
 @app.route('/api/adsets/exclude_multiple', methods=['POST'])
 def exclude_multiple_adsets():
     try:
         data = request.get_json()
-        user_id = get_current_user_id()
+        user_id = session['user_id']
         adset_ids = data.get('adset_ids', [])
         exclude = data.get('exclude', True)
         
@@ -5773,21 +5813,25 @@ def add_user_reserve_token():
     except Exception as e:
         logger.error(f"Ошибка проверки существования токена: {e}")
     
-    if add_reserve_token(user_id, king, token):
-        # Добавляем аккаунты если они указаны
-        added_accounts = 0
-        for account_id in account_ids:
-            if account_id:
-                if add_account_to_reserve_token(user_id, king, token, account_id):
-                    added_accounts += 1
-        
-        return jsonify({
-            'success': True, 
-            'message': f'Токен добавлен ({added_accounts} аккаунтов)', 
-            'auto_determined_king': king
-        })
-    else:
-        return jsonify({'success': False, 'error': 'Ошибка добавления токена'})
+    try:
+        if add_reserve_token(user_id, king, token):
+            # Добавляем аккаунты если они указаны
+            added_accounts = 0
+            for account_id in account_ids:
+                if account_id:
+                    if add_account_to_reserve_token(user_id, king, token, account_id):
+                        added_accounts += 1
+            
+            return jsonify({
+                'success': True, 
+                'message': f'Токен добавлен ({added_accounts} аккаунтов)', 
+                'auto_determined_king': king
+            })
+        else:
+            return jsonify({'success': False, 'error': 'Ошибка добавления токена'})
+    except Exception as e:
+        logger.error(f"Ошибка добавления резервного токена: {e}")
+        return jsonify({'success': False, 'error': str(e)})
 def check_reserve_token_exists(user_id, king, token):
     """Проверяет, существует ли уже такой токен"""
     try:
@@ -6071,4 +6115,4 @@ if __name__ == '__main__':
         print(f"Ошибка при инициализации тестового пользователя: {e}")
     start_telegram_polling() 
     # Запускаем приложение ОДИН раз
-    app.run(host='0.0.0.0', debug=False, threaded=True)
+    app.run(host='0.0.0.0', port = 5000, debug=False, threaded=True)
